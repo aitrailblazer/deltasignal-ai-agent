@@ -15,6 +15,8 @@ The project is a new Google Cloud-native autonomous issuer intelligence agent. I
 
 Existing DeltaSignal systems are treated as authorized integrations and data sources. This repository is the new competition project.
 
+The primary disclosed integration is **DeltaSignal ATLAS-7**, a public SEC/XBRL-grounded issuer-intelligence surface for crypto-exposed public companies. It exposes MCP, OpenAPI/REST, Arazzo workflow metadata, x402-compatible public access, and bounded workflows such as readiness checks, Morning Brief, Company Report, Pressure Board, Alpha Sweep, peer ranking, company fundamentals, risk distribution, alpha signals, and daily-change evidence.
+
 ## Repository Contents
 
 - `cmd/server`: HTTP service for the competition demo.
@@ -22,6 +24,7 @@ Existing DeltaSignal systems are treated as authorized integrations and data sou
 - `Dockerfile`: Cloud Run-ready container image.
 - `cloudbuild.yaml`: Cloud Build and Cloud Run deployment template.
 - `docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html`: Judge-facing submission packet with architecture, data sources, findings, and demo plan.
+- `docs/DeltaSignal_ATLAS_7_Relevance_Map_2026_06_04.html`: Public-source map for how ATLAS-7 is used as a disclosed integration.
 
 ## Local Setup
 

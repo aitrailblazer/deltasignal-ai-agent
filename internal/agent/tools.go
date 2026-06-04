@@ -22,9 +22,9 @@ func (DemoToolClient) StressSignals(ctx context.Context, issuer string) (Special
 		Confidence: "demo-medium",
 		Evidence: []Evidence{
 			{
-				Source:      "demo-deltasignal",
-				Title:       "Stress signal fixture",
-				Observation: "Fixture represents the intended DeltaSignal MCP stress-scan output shape for the competition demo.",
+				Source:      "deltasignal-atlas-7-demo",
+				Title:       "ATLAS-7 pressure-board fixture",
+				Observation: "Fixture represents the intended DeltaSignal ATLAS-7 MCP pressure-board/top-stressed output shape for the competition demo.",
 			},
 		},
 	}, nil
@@ -38,9 +38,9 @@ func (DemoToolClient) CompanyEvidence(ctx context.Context, issuer string) (Speci
 		Confidence: "demo-high",
 		Evidence: []Evidence{
 			{
-				Source:      "sec-companyfacts",
-				Title:       "SEC evidence fixture",
-				Observation: "Public-company claims should be grounded in filings, company facts, and dated source records.",
+				Source:      "deltasignal-atlas-7-demo",
+				Title:       "ATLAS-7 company-fundamentals fixture",
+				Observation: "Public-company claims should be grounded in SEC/XBRL filings, company facts, and dated source records.",
 			},
 		},
 	}, nil
@@ -54,9 +54,9 @@ func (DemoToolClient) PeerContext(ctx context.Context, issuer string) (Specialis
 		Confidence: "demo-medium",
 		Evidence: []Evidence{
 			{
-				Source:      "demo-peer-ranking",
-				Title:       "Peer ranking fixture",
-				Observation: "Fixture represents a peer-comparison tool result for judge-safe deterministic demos.",
+				Source:      "deltasignal-atlas-7-demo",
+				Title:       "ATLAS-7 peer-ranking fixture",
+				Observation: "Fixture represents a peer-ranking tool result for judge-safe deterministic demos.",
 			},
 		},
 	}, nil

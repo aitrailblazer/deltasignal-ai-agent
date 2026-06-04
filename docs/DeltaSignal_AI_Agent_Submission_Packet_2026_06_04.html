@@ -32,6 +32,7 @@
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
     <Feature>Specialist tool interface supports deterministic demo fixtures and future live DeltaSignal integrations.</Feature>
+    <Feature>DeltaSignal ATLAS-7 integration path provides SEC/XBRL-grounded issuer intelligence through MCP, OpenAPI/REST, Arazzo workflows, and x402-compatible public routes.</Feature>
     <Feature>Gemini synthesis hook uses Vertex AI / Gemini Enterprise Agent Platform in startup-ai-deltasignal.</Feature>
     <Feature>Cloud Run-ready HTTP service provides health and brief-generation endpoints.</Feature>
     <Feature>Output includes confidence, uncertainty, disclosures, and next action.</Feature>
@@ -43,11 +44,12 @@
     <Technology>Cloud Run</Technology>
     <Technology>Cloud Build</Technology>
     <Technology>MCP-compatible tool boundary</Technology>
+    <Technology>DeltaSignal ATLAS-7 public MCP/OpenAPI integration surface</Technology>
     <Technology>GitHub Actions CI</Technology>
   </Technologies>
   <DataSources>
     <DataSource mode="demo">Deterministic competition fixtures for judge-safe reproducibility.</DataSource>
-    <DataSource mode="integration">Existing DeltaSignal APIs and MCP tools, disclosed as authorized integrations.</DataSource>
+    <DataSource mode="integration">DeltaSignal ATLAS-7 public issuer-intelligence surface, disclosed as an authorized integration and data source.</DataSource>
     <DataSource mode="public">SEC/company facts and public market evidence where licensed and available.</DataSource>
   </DataSources>
   <Architecture>
@@ -57,6 +59,7 @@
     <Node>Stress scanner specialist</Node>
     <Node>Evidence retriever specialist</Node>
     <Node>Peer analyst specialist</Node>
+    <Node>DeltaSignal ATLAS-7 MCP/OpenAPI tool layer</Node>
     <Node>Gemini synthesis through Vertex AI</Node>
     <Node>Structured JSON action brief</Node>
   </Architecture>
@@ -84,7 +87,7 @@
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
       ['Orchestration', 'Coordinator plus specialist agents.'],
       ['Tools', 'MCP-compatible bounded tool interface.'],
-      ['Evidence', 'SEC/public evidence and disclosed DeltaSignal integrations.'],
+      ['Evidence', 'SEC/public evidence and disclosed DeltaSignal ATLAS-7 integration.'],
       ['Output', 'Structured action brief with confidence, uncertainty, and next action.']
     ];
     const flow = [
@@ -144,7 +147,8 @@
               <h2>Data Sources and Disclosures</h2>
               <ul>
                 <li>Deterministic demo fixtures are included for judge-safe reproducibility.</li>
-                <li>Existing DeltaSignal systems are disclosed as authorized integrations and data sources.</li>
+                <li>DeltaSignal ATLAS-7 is disclosed as an existing authorized integration and data source, not as newly created contest code.</li>
+                <li>Relevant ATLAS-7 workflows include readiness, Morning Brief, Company Report, Pressure Board, Alpha Sweep, peer ranking, fundamentals, risk distribution, alpha signals, and daily-change evidence.</li>
                 <li>Production evidence should use SEC/company facts and licensed public data with dated provenance.</li>
                 <li>No secrets, API keys, or private customer data are included in the repository.</li>
               </ul>
