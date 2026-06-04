@@ -1,0 +1,31 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_IMAGE}
+      - .
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - ${_IMAGE}
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - deltasignal-ai-agent
+      - --image
+      - ${_IMAGE}
+      - --region
+      - ${_REGION}
+      - --platform
+      - managed
+      - --allow-unauthenticated
+      - --set-env-vars
+      - GOOGLE_CLOUD_PROJECT=${PROJECT_ID},GOOGLE_CLOUD_LOCATION=global,GOOGLE_GENAI_USE_VERTEXAI=true
+substitutions:
+  _REGION: us-central1
+  _IMAGE: us-central1-docker.pkg.dev/$PROJECT_ID/deltasignal-ai-agent/app:$COMMIT_SHA
+images:
+  - ${_IMAGE}

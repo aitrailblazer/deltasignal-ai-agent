@@ -16,3 +16,11 @@ tmp/
 # Dependency/cache directories
 node_modules/
 .cache/
+
+# Local challenge/source PDFs are kept out of the public repository.
+*.pdf
+
+# Internal planning analyses are local-only; the public repo uses the submission packet.
+docs/*Rules_Analysis*.html
+docs/*Resource_Guide_Analysis*.html
+docs/*Winning_Strategy*.html

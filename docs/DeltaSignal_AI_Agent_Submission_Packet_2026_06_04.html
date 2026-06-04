@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal AI Agent Submission Packet</title>
+  <meta name="description" content="Judge-facing submission packet for the Google for Startups AI Agents Challenge.">
+  <style>
+    html {
+      background: #080a10;
+      color: #f5efe3;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    body { margin: 0; min-height: 100vh; }
+    submission-packet:not(:defined) { display: block; padding: 32px; }
+  </style>
+</head>
+<body>
+  <submission-packet></submission-packet>
+
+  <script id="strategix-submission-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="judge-facing" generated="2026-06-04" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal AI Agent Submission Packet</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <GcpProject>startup-ai-deltasignal</GcpProject>
+    <Challenge>Google for Startups AI Agents Challenge</Challenge>
+    <Track>Build</Track>
+  </CanonicalArtifact>
+  <Summary>DeltaSignal AI Agent is a new autonomous issuer intelligence agent that coordinates specialist agents and MCP-compatible tools to produce evidence-backed B2B market intelligence briefs.</Summary>
+  <Features>
+    <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
+    <Feature>Specialist tool interface supports deterministic demo fixtures and future live DeltaSignal integrations.</Feature>
+    <Feature>Gemini synthesis hook uses Vertex AI / Gemini Enterprise Agent Platform in startup-ai-deltasignal.</Feature>
+    <Feature>Cloud Run-ready HTTP service provides health and brief-generation endpoints.</Feature>
+    <Feature>Output includes confidence, uncertainty, disclosures, and next action.</Feature>
+  </Features>
+  <Technologies>
+    <Technology>Go backend</Technology>
+    <Technology>Google Gen AI SDK for Go</Technology>
+    <Technology>Gemini through Vertex AI / Agent Platform</Technology>
+    <Technology>Cloud Run</Technology>
+    <Technology>Cloud Build</Technology>
+    <Technology>MCP-compatible tool boundary</Technology>
+    <Technology>GitHub Actions CI</Technology>
+  </Technologies>
+  <DataSources>
+    <DataSource mode="demo">Deterministic competition fixtures for judge-safe reproducibility.</DataSource>
+    <DataSource mode="integration">Existing DeltaSignal APIs and MCP tools, disclosed as authorized integrations.</DataSource>
+    <DataSource mode="public">SEC/company facts and public market evidence where licensed and available.</DataSource>
+  </DataSources>
+  <Architecture>
+    <Node>User demo UI or curl client</Node>
+    <Node>Cloud Run HTTP server</Node>
+    <Node>Coordinator agent</Node>
+    <Node>Stress scanner specialist</Node>
+    <Node>Evidence retriever specialist</Node>
+    <Node>Peer analyst specialist</Node>
+    <Node>Gemini synthesis through Vertex AI</Node>
+    <Node>Structured JSON action brief</Node>
+  </Architecture>
+  <FindingsAndLearnings>
+    <Learning>For challenge-credit alignment, Gemini must be used through Google Cloud / Vertex AI, not AI Studio keys.</Learning>
+    <Learning>Track 1 Build is the safest eligibility path because the rules contain a New Projects Only clause.</Learning>
+    <Learning>A deterministic demo path is necessary so judges can evaluate the autonomous workflow without private data access.</Learning>
+    <Learning>The strongest judging story is one polished autonomous B2B workflow rather than a broad but shallow platform.</Learning>
+  </FindingsAndLearnings>
+  <TestingInstructions>
+    <Command>GOWORK=off go test ./...</Command>
+    <Command>GOWORK=off go run ./cmd/server</Command>
+    <Command>curl http://localhost:8080/healthz</Command>
+    <Command>curl -s http://localhost:8080/v1/brief -H 'Content-Type: application/json' -d '{"issuer":"MSTR","question":"What issuer stress or opportunity should an analyst investigate next?"}'</Command>
+  </TestingInstructions>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+
+    const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
+    const stack = [
+      ['Runtime', 'Cloud Run service with health and brief endpoints.'],
+      ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
+      ['Orchestration', 'Coordinator plus specialist agents.'],
+      ['Tools', 'MCP-compatible bounded tool interface.'],
+      ['Evidence', 'SEC/public evidence and disclosed DeltaSignal integrations.'],
+      ['Output', 'Structured action brief with confidence, uncertainty, and next action.']
+    ];
+    const flow = [
+      ['Request', 'Analyst asks for issuer stress or opportunity.'],
+      ['Plan', 'Coordinator decomposes task into specialist lanes.'],
+      ['Call Tools', 'Stress, evidence, and peer specialists return packets.'],
+      ['Synthesize', 'Gemini or deterministic demo synthesis builds the brief.'],
+      ['Review', 'Output labels uncertainty and required follow-up.']
+    ];
+
+    class SubmissionPacket extends LitElement {
+      static styles = css`
+        :host {
+          display: block;
+          min-height: 100vh;
+          background:
+            radial-gradient(circle at 15% 0%, rgba(231,185,89,.18), transparent 32%),
+            linear-gradient(180deg, #080a10 0%, #11131c 100%);
+        }
+        main { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; padding: 34px 0 56px; }
+        .hero { border: 1px solid rgba(231,185,89,.38); background: rgba(24,23,20,.88); border-radius: 10px; padding: 28px; box-shadow: 0 24px 72px rgba(0,0,0,.34); }
+        .eyebrow { color: #e7b959; font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+        h1 { margin: 8px 0 10px; font-size: clamp(34px, 5.2vw, 62px); line-height: .98; letter-spacing: 0; }
+        h2 { margin: 0 0 12px; color: #e7b959; font-size: 18px; letter-spacing: 0; }
+        p { color: rgba(245,239,227,.78); margin: 0; }
+        .panel, .card, .step { border: 1px solid rgba(255,255,255,.1); background: rgba(18,20,31,.76); border-radius: 8px; padding: 16px; }
+        .panel { margin-top: 16px; }
+        .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+        .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+        .card b, .step b { display: block; color: #f5efe3; margin-bottom: 6px; }
+        .card span, .step span, li { color: rgba(245,239,227,.72); font-size: 13px; }
+        ol, ul { margin: 0; padding-left: 20px; }
+        li { margin: 7px 0; }
+        pre { white-space: pre-wrap; overflow: auto; max-height: 420px; color: #e9ddc3; font-size: 12px; line-height: 1.45; margin: 0; }
+        @media (max-width: 900px) { .grid, .flow { grid-template-columns: 1fr; } }
+      `;
+      render() {
+        return html`
+          <main>
+            <section class="hero">
+              <div class="eyebrow">Google for Startups AI Agents Challenge</div>
+              <h1>DeltaSignal AI Agent</h1>
+              <p>A new autonomous B2B issuer intelligence agent that uses Gemini, Google Cloud runtime, MCP-compatible tools, and evidence-aware specialist agents to produce analyst-ready action briefs.</p>
+            </section>
+
+            <section class="panel">
+              <h2>Feature Summary</h2>
+              <div class="grid">${stack.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Architecture Flow</h2>
+              <div class="flow">${flow.map(([k, v]) => html`<div class="step"><b>${k}</b><span>${v}</span></div>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Data Sources and Disclosures</h2>
+              <ul>
+                <li>Deterministic demo fixtures are included for judge-safe reproducibility.</li>
+                <li>Existing DeltaSignal systems are disclosed as authorized integrations and data sources.</li>
+                <li>Production evidence should use SEC/company facts and licensed public data with dated provenance.</li>
+                <li>No secrets, API keys, or private customer data are included in the repository.</li>
+              </ul>
+            </section>
+
+            <section class="panel">
+              <h2>Testing Instructions</h2>
+              <pre>GOWORK=off go test ./...
+GOWORK=off go run ./cmd/server
+curl http://localhost:8080/healthz
+curl -s http://localhost:8080/v1/brief -H 'Content-Type: application/json' -d '{"issuer":"MSTR","question":"What issuer stress or opportunity should an analyst investigate next?"}'</pre>
+            </section>
+
+            <section class="panel">
+              <h2>Findings and Learnings</h2>
+              <ul>
+                <li>Credit-backed model usage should go through Vertex AI / Agent Platform, not AI Studio keys.</li>
+                <li>Track 1 Build is the safest rules posture while still allowing disclosed integrations.</li>
+                <li>The strongest demo is a single autonomous workflow with visible tool calls and grounded output.</li>
+                <li>Cloud Run gives the fastest credible deployment path; Agent Runtime can be added if schedule allows.</li>
+              </ul>
+            </section>
+
+            <section class="panel">
+              <h2>Embedded XML Contract</h2>
+              <pre>${xml}</pre>
+            </section>
+          </main>
+        `;
+      }
+    }
+
+    customElements.define('submission-packet', SubmissionPacket);
+  </script>
+</body>
+</html>
