@@ -19,6 +19,8 @@ The primary disclosed integration is **DeltaSignal ATLAS-7**, a public SEC/XBRL-
 
 ## Repository Contents
 
+- `index.html`: Professional landing/spec page for GitHub Pages or local preview.
+- `assets/atlas7-evidence-pipeline.png`: Hero image asset sourced from the public ATLAS-7 site.
 - `cmd/server`: HTTP service for the competition demo.
 - `internal/agent`: Coordinator, specialist tool interface, deterministic demo tools, and Gemini synthesis hook.
 - `Dockerfile`: Cloud Run-ready container image.
