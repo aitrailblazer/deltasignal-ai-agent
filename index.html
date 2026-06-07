@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DeltaSignal AI Agent | Google for Startups AI Agents Challenge</title>
-  <meta name="description" content="DeltaSignal AI Agent is a Google Cloud-native autonomous issuer intelligence agent for evidence-backed B2B market decisions.">
+  <meta name="description" content="DeltaSignal AI Agent is a Google Cloud-native autonomous B2B issuer-intelligence agent using Gemini, Cloud Run, MCP-compatible tools, and SEC/XBRL-grounded evidence.">
   <meta property="og:title" content="DeltaSignal AI Agent">
-  <meta property="og:description" content="Autonomous issuer intelligence with Gemini, Google Cloud, MCP tools, and SEC/XBRL-grounded evidence.">
+  <meta property="og:description" content="Autonomous issuer intelligence for evidence-backed B2B market decisions. Built for the Google for Startups AI Agents Challenge.">
   <meta property="og:image" content="./assets/atlas7-evidence-pipeline.png">
   <style>
     html {
-      background: #07090d;
-      color: #fff7ed;
+      background: #05070b;
+      color: #fff8ef;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.45;
       scroll-behavior: smooth;
@@ -24,46 +24,50 @@
   <delta-agent-landing></delta-agent-landing>
 
   <script id="strategix-landing-contract" type="application/xml">
-<StrategiXVisualSpec version="1.0" status="public-landing-spec" generated="2026-06-04" artifact="index.html">
+<StrategiXVisualSpec version="1.1" status="public-competition-landing" generated="2026-06-07" artifact="index.html">
   <CanonicalArtifact>
     <Title>DeltaSignal AI Agent Landing Page</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
     <Challenge>Google for Startups AI Agents Challenge</Challenge>
-    <Track>Build</Track>
-    <GcpProject>startup-ai-deltasignal</GcpProject>
+    <Track>Track 1 Build</Track>
+    <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
     <HeroImage>assets/atlas7-evidence-pipeline.png</HeroImage>
   </CanonicalArtifact>
-  <Purpose>Present the challenge submission as a professional public landing page and machine-readable specification.</Purpose>
+  <Purpose>Present the competition project as a judge-readable landing page with one official spec, runnable code, and clear Google Cloud / Gemini / MCP alignment.</Purpose>
   <ProductContract>
-    <Summary>DeltaSignal AI Agent is a new autonomous B2B issuer intelligence agent that coordinates specialist agents and bounded tools to produce evidence-backed action briefs.</Summary>
-    <Buyer>Analysts, funds, corporate finance teams, and startup operators who need faster issuer-risk triage.</Buyer>
-    <CoreWorkflow>User asks a market-intelligence question; coordinator decomposes the task; specialists retrieve stress, fundamentals, peer, and evidence context; Gemini synthesizes a grounded brief; review layer surfaces uncertainty and non-advice boundaries.</CoreWorkflow>
+    <Summary>DeltaSignal AI Agent is a new autonomous B2B issuer-intelligence agent that converts fragmented public-company risk signals into evidence-backed action briefs.</Summary>
+    <Buyer>Analysts, funds, corporate finance teams, startup operators, and business users who need faster issuer-risk triage.</Buyer>
+    <CoreWorkflow>User asks an issuer question; the coordinator decomposes the task; specialist lanes retrieve stress, evidence, and peer context; Gemini synthesizes a grounded brief; review output preserves caveats and next actions.</CoreWorkflow>
+    <EvidenceBoundary>ATLAS-7 is disclosed as an existing authorized integration and data source. The submitted competition project is the new autonomous agent and orchestration layer.</EvidenceBoundary>
   </ProductContract>
+  <CompetitionFit>
+    <Fit>Autonomous agent for a concrete B2B business workflow.</Fit>
+    <Fit>Google Cloud-native runtime through Cloud Run, with a future Agent Runtime path.</Fit>
+    <Fit>Gemini synthesis through Vertex AI for production mode.</Fit>
+    <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval.</Fit>
+    <Fit>Deterministic demo mode so judges can run and inspect the workflow without private data access.</Fit>
+  </CompetitionFit>
   <Architecture>
-    <Component>Google Cloud project startup-ai-deltasignal</Component>
-    <Component>Cloud Run service</Component>
-    <Component>Gemini through Vertex AI / Agent Platform</Component>
-    <Component>Coordinator agent</Component>
+    <Component>Cloud Run HTTP service</Component>
+    <Component>Go coordinator agent</Component>
     <Component>Stress scanner specialist</Component>
     <Component>SEC/evidence specialist</Component>
     <Component>Peer analyst specialist</Component>
-    <Component>DeltaSignal ATLAS-7 MCP/OpenAPI integration</Component>
-    <Component>Structured action brief output</Component>
+    <Component>Gemini via Vertex AI synthesis hook</Component>
+    <Component>ATLAS-7 MCP/OpenAPI integration boundary</Component>
+    <Component>Structured B2B action brief output</Component>
   </Architecture>
-  <Badges>
-    <Badge>Google Cloud</Badge>
-    <Badge>Vertex AI Gemini</Badge>
-    <Badge>Cloud Run</Badge>
-    <Badge>MCP</Badge>
-    <Badge>SEC/XBRL Evidence</Badge>
-    <Badge>ATLAS-7 Integration</Badge>
-    <Badge>Go Backend</Badge>
-  </Badges>
+  <PublicSurface>
+    <Link name="LandingPage">https://aitrailblazer.github.io/deltasignal-ai-agent/</Link>
+    <Link name="Repository">https://github.com/aitrailblazer/deltasignal-ai-agent</Link>
+    <Link name="OfficialSpec">docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Link>
+  </PublicSurface>
   <AcceptanceCriteria>
-    <Criterion>Landing page loads as a static GitHub Pages-compatible HTML file.</Criterion>
-    <Criterion>Hero uses a real visual asset, not a placeholder.</Criterion>
-    <Criterion>Badges and architecture make Google Cloud, Gemini, MCP, and ATLAS-7 usage legible.</Criterion>
-    <Criterion>Embedded XML contract captures the submission architecture and product contract.</Criterion>
+    <Criterion>Landing page is static and GitHub Pages-compatible.</Criterion>
+    <Criterion>Only one official document is exposed in public docs.</Criterion>
+    <Criterion>Hero uses the real ATLAS-7 evidence-pipeline visual asset.</Criterion>
+    <Criterion>Page makes Google Cloud, Gemini, Cloud Run, MCP, and evidence boundaries legible without exposing private data.</Criterion>
+    <Criterion>Local run instructions are visible and match the repository implementation.</Criterion>
   </AcceptanceCriteria>
 </StrategiXVisualSpec>
   </script>
@@ -73,39 +77,28 @@
 
     const xml = document.getElementById('strategix-landing-contract')?.textContent.trim() ?? '';
 
-    const badges = [
-      'Google Cloud',
-      'Vertex AI Gemini',
-      'Cloud Run',
-      'MCP',
-      'SEC/XBRL Evidence',
-      'ATLAS-7',
-      'Go Backend',
-      'B2B Intelligence'
-    ];
-
-    const stats = [
-      ['Track', 'Build'],
-      ['Runtime', 'Cloud Run'],
-      ['Model', 'Gemini via Vertex AI'],
-      ['Tool Layer', 'MCP + OpenAPI']
+    const proof = [
+      ['Google Cloud Native', 'Cloud Run, Cloud Build, Artifact Registry path, and Vertex AI-ready synthesis.'],
+      ['Gemini Reasoning Path', 'Deterministic demo by default, Gemini via Vertex AI when enabled in Google Cloud.'],
+      ['MCP Tool Boundary', 'Specialist lanes use agent-readable tool contracts instead of hidden manual workflows.'],
+      ['Evidence Grounding', 'Briefs preserve SEC/XBRL source boundaries, caveats, uncertainty, and non-advice framing.']
     ];
 
     const workflow = [
-      ['Ask', 'Analyst requests an issuer stress or opportunity brief.'],
-      ['Plan', 'Coordinator decomposes into stress, fundamentals, peer, and review lanes.'],
-      ['Retrieve', 'Specialists call bounded tools and ATLAS-7-style evidence surfaces.'],
-      ['Ground', 'Evidence layer preserves source dates, caveats, and quality signals.'],
-      ['Brief', 'Gemini synthesizes a B2B action brief with uncertainty and next steps.']
+      ['Ask', 'A business user asks which issuer risk or opportunity needs attention.'],
+      ['Route', 'The coordinator splits the task into stress, evidence, peer, and review lanes.'],
+      ['Retrieve', 'Specialists collect bounded evidence and ATLAS-7-style issuer context.'],
+      ['Synthesize', 'Gemini or the deterministic fallback produces a concise action brief.'],
+      ['Review', 'Output keeps source limits, caveats, confidence, and next action visible.']
     ];
 
-    const stack = [
-      ['Google Cloud', 'Project, IAM, Cloud Run, Cloud Build, logging, and future Agent Runtime path.'],
-      ['Gemini / Vertex AI', 'Production model path for competition credit alignment and enterprise controls.'],
-      ['DeltaSignal ATLAS-7', 'Disclosed integration for SEC/XBRL-grounded issuer intelligence and bounded workflows.'],
-      ['MCP Tooling', 'Agent-readable tools and workflow metadata instead of brittle endpoint guessing.'],
-      ['Deterministic Demo', 'Judge-safe fixture mode that proves the orchestration contract without private data.'],
-      ['Evidence Review', 'Final brief keeps caveats, non-advice boundaries, and provenance visible.']
+    const judgeChecks = [
+      ['Runnable', 'Go service, tests, Dockerfile, Cloud Build, and Cloud Run deployment template.'],
+      ['Inspectable', 'Small source surface with coordinator, specialist interface, demo tools, and Gemini hook.'],
+      ['Safe Demo', 'No private credentials or customer data required for the default workflow.'],
+      ['Business Fit', 'Built for B2B issuer-risk triage, not consumer chat or generic summarization.'],
+      ['Disclosure', 'ATLAS-7 is clearly disclosed as an existing integration/data source.'],
+      ['One Spec', 'The public docs folder exposes a single official submission packet.']
     ];
 
     class DeltaAgentLanding extends LitElement {
@@ -113,30 +106,34 @@
         :host {
           display: block;
           min-height: 100vh;
-          --bg: #07090d;
-          --panel: rgba(15, 18, 26, .82);
-          --line: rgba(255, 255, 255, .11);
-          --ink: #fff7ed;
-          --muted: rgba(255, 247, 237, .72);
-          --gold: #f4bd50;
-          --amber: #ff8a2a;
-          --red: #ff3d2e;
-          --blue: #74a7ff;
+          --bg: #05070b;
+          --panel: rgba(14, 17, 24, .86);
+          --panel2: rgba(22, 24, 31, .9);
+          --ink: #fff8ef;
+          --muted: rgba(255, 248, 239, .72);
+          --line: rgba(255, 255, 255, .13);
+          --amber: #ffb743;
+          --orange: #ff7c2f;
+          --red: #ff3b30;
+          --cyan: #72d9ff;
+          --green: #5df58b;
+          --max: 1180px;
         }
+        * { box-sizing: border-box; }
         a { color: inherit; }
-        .shell { min-height: 100vh; background: #07090d; }
+        .shell { min-height: 100vh; background: var(--bg); overflow: hidden; }
         header {
-          position: fixed;
-          inset: 0 0 auto 0;
-          z-index: 20;
-          border-bottom: 1px solid rgba(255,255,255,.08);
-          background: rgba(7,9,13,.72);
-          backdrop-filter: blur(18px);
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          background: rgba(5, 7, 11, .82);
+          backdrop-filter: blur(16px);
+          border-bottom: 1px solid rgba(255, 255, 255, .08);
         }
         nav {
-          width: min(1180px, calc(100vw - 32px));
-          margin: 0 auto;
+          width: min(var(--max), calc(100vw - 32px));
           height: 64px;
+          margin: 0 auto;
           display: flex;
           align-items: center;
           gap: 18px;
@@ -146,38 +143,38 @@
           align-items: center;
           gap: 10px;
           font-weight: 900;
-          letter-spacing: 0;
           white-space: nowrap;
         }
         .mark {
           width: 34px;
           height: 34px;
           border-radius: 9px;
-          background: linear-gradient(135deg, #ff3d2e, #f4bd50);
           display: grid;
           place-items: center;
-          color: #170c07;
-          font-weight: 950;
-          box-shadow: 0 0 28px rgba(244,189,80,.32);
+          background: linear-gradient(135deg, var(--orange), var(--amber));
+          color: #130b05;
+          box-shadow: 0 0 28px rgba(255, 124, 47, .34);
         }
         .navlinks {
           margin-left: auto;
           display: flex;
-          align-items: center;
           gap: 14px;
+          align-items: center;
           color: var(--muted);
           font-size: 13px;
-          font-weight: 700;
+          font-weight: 750;
         }
-        .navlinks a { text-decoration: none; }
+        .navlinks a {
+          text-decoration: none;
+        }
         .navlinks a:hover { color: var(--ink); }
         .hero {
-          min-height: 92svh;
           position: relative;
-          overflow: hidden;
+          min-height: min(760px, 88svh);
           display: grid;
-          align-items: end;
-          padding: 112px 0 42px;
+          align-items: center;
+          padding: 64px 0 42px;
+          border-bottom: 1px solid rgba(255, 124, 47, .14);
           isolation: isolate;
         }
         .hero::before {
@@ -185,11 +182,10 @@
           position: absolute;
           inset: 0;
           z-index: -3;
-          background-image: url("./assets/atlas7-evidence-pipeline.png");
-          background-size: cover;
-          background-position: center;
-          filter: saturate(1.08) contrast(1.06);
-          transform: scale(1.02);
+          background:
+            linear-gradient(90deg, rgba(5,7,11,.97) 0%, rgba(5,7,11,.87) 42%, rgba(5,7,11,.38) 78%, rgba(5,7,11,.76) 100%),
+            linear-gradient(180deg, rgba(5,7,11,.16) 0%, rgba(5,7,11,.54) 72%, #05070b 100%),
+            url("./assets/atlas7-evidence-pipeline.png") center right / cover no-repeat;
         }
         .hero::after {
           content: "";
@@ -197,78 +193,59 @@
           inset: 0;
           z-index: -2;
           background:
-            linear-gradient(90deg, rgba(7,9,13,.96) 0%, rgba(7,9,13,.82) 38%, rgba(7,9,13,.38) 74%, rgba(7,9,13,.72) 100%),
-            linear-gradient(180deg, rgba(7,9,13,.28) 0%, rgba(7,9,13,.52) 58%, #07090d 100%);
+            linear-gradient(rgba(255, 183, 67, .035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(114, 217, 255, .028) 1px, transparent 1px);
+          background-size: 44px 44px;
+          mask-image: linear-gradient(to bottom, #000 0%, transparent 84%);
+          pointer-events: none;
         }
-        .hero-grid {
-          width: min(1180px, calc(100vw - 32px));
+        .hero-inner {
+          width: min(var(--max), calc(100vw - 32px));
           margin: 0 auto;
           display: grid;
-          grid-template-columns: minmax(0, 1.05fr) minmax(280px, .7fr);
-          gap: 34px;
-          align-items: end;
+          grid-template-columns: minmax(0, 1fr) minmax(330px, .78fr);
+          gap: 28px;
+          align-items: center;
         }
-        .kicker {
-          color: var(--gold);
+        .eyebrow {
+          width: fit-content;
+          margin: 0 0 16px;
+          padding: 7px 11px;
+          border: 1px solid rgba(255, 183, 67, .34);
+          border-radius: 999px;
+          color: #ffe0a6;
+          background: rgba(255, 183, 67, .1);
           font-size: 12px;
           font-weight: 900;
-          letter-spacing: .08em;
           text-transform: uppercase;
-          margin-bottom: 14px;
+        }
+        h1, h2, h3 {
+          margin: 0;
+          letter-spacing: 0;
+          line-height: 1;
         }
         h1 {
-          margin: 0;
-          font-size: clamp(44px, 7.3vw, 92px);
-          line-height: .92;
-          letter-spacing: 0;
-          max-width: 840px;
+          max-width: 850px;
+          font-size: clamp(46px, 7vw, 94px);
+          font-weight: 950;
         }
         .lede {
-          color: rgba(255,247,237,.84);
-          margin: 22px 0 0;
+          max-width: 780px;
+          margin: 20px 0 0;
+          color: rgba(255, 248, 239, .84);
           font-size: clamp(17px, 2vw, 22px);
-          max-width: 760px;
-        }
-        .badge-row {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-top: 24px;
-        }
-        .badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 7px;
-          height: 30px;
-          padding: 0 11px;
-          border: 1px solid rgba(244,189,80,.34);
-          border-radius: 999px;
-          background: rgba(244,189,80,.1);
-          color: #ffe5a6;
-          font-size: 12px;
-          font-weight: 800;
-          white-space: nowrap;
-        }
-        .badge::before {
-          content: "";
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--gold);
-          box-shadow: 0 0 12px rgba(244,189,80,.8);
         }
         .actions {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
-          margin-top: 30px;
+          gap: 10px;
+          margin-top: 28px;
         }
         .button {
           min-height: 44px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
           padding: 0 16px;
           border-radius: 8px;
           border: 1px solid rgba(255,255,255,.14);
@@ -280,70 +257,61 @@
         }
         .button.primary {
           background: linear-gradient(135deg, var(--red), var(--amber));
+          color: #140b04;
           border-color: rgba(255,255,255,.08);
-          color: #170c07;
-          box-shadow: 0 18px 42px rgba(255, 92, 42, .28);
+          box-shadow: 0 18px 46px rgba(255, 84, 39, .28);
         }
-        .stat-panel {
-          border: 1px solid rgba(255,255,255,.14);
-          background: rgba(7,9,13,.62);
+        .hero-card {
+          border: 1px solid rgba(255, 255, 255, .14);
+          background: rgba(5, 7, 11, .72);
           border-radius: 10px;
-          padding: 16px;
+          padding: 14px;
           backdrop-filter: blur(18px);
         }
-        .stat-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-        }
-        .stat {
-          min-height: 92px;
-          border: 1px solid rgba(255,255,255,.1);
-          border-radius: 8px;
-          padding: 12px;
-          background: rgba(255,255,255,.06);
-        }
-        .stat b {
+        .hero-card img {
           display: block;
-          color: var(--gold);
-          font-size: 11px;
-          text-transform: uppercase;
-          letter-spacing: .06em;
-          margin-bottom: 8px;
+          width: 100%;
+          aspect-ratio: 3 / 2;
+          object-fit: cover;
+          border-radius: 8px;
+          border: 1px solid rgba(255, 255, 255, .12);
+          background: #111;
         }
-        .stat span { color: var(--ink); font-size: 18px; font-weight: 900; }
+        .hero-card figcaption {
+          margin-top: 10px;
+          color: var(--muted);
+          font-size: 13px;
+        }
         main section {
-          width: min(1180px, calc(100vw - 32px));
+          width: min(var(--max), calc(100vw - 32px));
           margin: 0 auto;
           padding: 72px 0 0;
         }
         .section-head {
-          max-width: 760px;
-          margin-bottom: 22px;
+          max-width: 790px;
+          margin-bottom: 20px;
         }
         h2 {
-          margin: 0;
-          color: var(--ink);
-          font-size: clamp(28px, 4vw, 48px);
-          line-height: 1.02;
-          letter-spacing: 0;
+          font-size: clamp(30px, 4vw, 52px);
+          font-weight: 920;
         }
         .section-head p {
           margin: 12px 0 0;
           color: var(--muted);
           font-size: 17px;
         }
-        .cards {
+        .grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 12px;
         }
+        .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .card {
           border: 1px solid var(--line);
           background: var(--panel);
           border-radius: 8px;
           padding: 18px;
-          min-height: 156px;
+          min-height: 150px;
         }
         .card b {
           display: block;
@@ -362,57 +330,67 @@
           gap: 8px;
         }
         .step {
-          position: relative;
-          border: 1px solid rgba(244,189,80,.28);
-          background: rgba(244,189,80,.08);
+          border: 1px solid rgba(255, 183, 67, .28);
+          background: rgba(255, 183, 67, .08);
           border-radius: 8px;
-          padding: 16px;
-          min-height: 144px;
+          padding: 15px;
+          min-height: 148px;
         }
-        .step .num {
+        .num {
           width: 28px;
           height: 28px;
-          border-radius: 50%;
           display: grid;
           place-items: center;
-          color: #170c07;
-          background: var(--gold);
+          border-radius: 50%;
+          background: var(--amber);
+          color: #140b04;
           font-weight: 950;
-          margin-bottom: 14px;
+          margin-bottom: 12px;
         }
         .step b { display: block; margin-bottom: 7px; }
         .step p { margin: 0; color: var(--muted); font-size: 13px; }
+        .callout {
+          border: 1px solid rgba(93, 245, 139, .28);
+          background: rgba(93, 245, 139, .08);
+          border-radius: 8px;
+          padding: 18px;
+        }
+        .callout b {
+          display: block;
+          color: #d9ffe4;
+          margin-bottom: 7px;
+        }
         .split {
           display: grid;
-          grid-template-columns: .9fr 1.1fr;
+          grid-template-columns: .95fr 1.05fr;
           gap: 14px;
+          align-items: start;
         }
         .codebox {
           border: 1px solid rgba(255,255,255,.12);
-          background: #0c0f16;
+          background: #090d13;
           border-radius: 8px;
           padding: 16px;
           overflow: auto;
+          max-height: 420px;
         }
         pre {
           margin: 0;
-          color: #f6d9a0;
-          font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
           white-space: pre-wrap;
+          color: #f8d998;
+          font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         }
         footer {
-          width: min(1180px, calc(100vw - 32px));
+          width: min(var(--max), calc(100vw - 32px));
           margin: 0 auto;
           padding: 68px 0 42px;
-          color: rgba(255,247,237,.58);
+          color: rgba(255, 248, 239, .58);
           font-size: 13px;
         }
-        @media (max-width: 920px) {
+        @media (max-width: 980px) {
           .navlinks { display: none; }
-          .hero { min-height: auto; padding: 104px 0 32px; }
-          .hero-grid, .split { grid-template-columns: 1fr; }
-          .stat-panel { margin-top: 10px; }
-          .cards, .flow { grid-template-columns: 1fr; }
+          .hero { min-height: auto; padding: 46px 0 30px; }
+          .hero-inner, .split, .grid, .grid.two, .flow { grid-template-columns: 1fr; }
           h1 { font-size: clamp(42px, 13vw, 68px); }
         }
       `;
@@ -424,76 +402,93 @@
               <nav>
                 <div class="brand"><span class="mark">Δ</span><span>DeltaSignal AI Agent</span></div>
                 <div class="navlinks">
-                  <a href="#product">Product</a>
-                  <a href="#architecture">Architecture</a>
-                  <a href="#demo">Demo</a>
-                  <a href="#spec">Spec</a>
+                  <a href="#fit">Competition fit</a>
+                  <a href="#workflow">Workflow</a>
+                  <a href="#judge">Judge checks</a>
+                  <a href="#run">Run</a>
                 </div>
               </nav>
             </header>
 
             <section class="hero">
-              <div class="hero-grid">
+              <div class="hero-inner">
                 <div>
-                  <div class="kicker">Google for Startups AI Agents Challenge · Track 1 Build</div>
-                  <h1>Autonomous issuer intelligence, grounded in evidence.</h1>
-                  <p class="lede">DeltaSignal AI Agent coordinates Gemini, Google Cloud, MCP-compatible tools, and ATLAS-7 SEC/XBRL evidence to produce analyst-ready B2B action briefs.</p>
-                  <div class="badge-row">
-                    ${badges.map(label => html`<span class="badge">${label}</span>`)}
-                  </div>
+                  <p class="eyebrow">Track 1 Build · Gemini · Cloud Run · MCP · SEC/XBRL evidence</p>
+                  <h1>Evidence-backed issuer intelligence for business decisions.</h1>
+                  <p class="lede">A new autonomous agent that routes issuer-risk questions through specialist lanes, grounds the answer in structured evidence, and returns an analyst-ready B2B action brief.</p>
                   <div class="actions">
-                    <a class="button primary" href="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">View Submission Packet</a>
+                    <a class="button primary" href="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official Submission Packet</a>
                     <a class="button" href="https://github.com/aitrailblazer/deltasignal-ai-agent">GitHub Repo</a>
-                    <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/">ATLAS-7 Integration</a>
+                    <a class="button" href="#run">Run Locally</a>
                   </div>
                 </div>
-                <aside class="stat-panel" aria-label="Project summary">
-                  <div class="stat-grid">
-                    ${stats.map(([k, v]) => html`<div class="stat"><b>${k}</b><span>${v}</span></div>`)}
-                  </div>
-                </aside>
+                <figure class="hero-card">
+                  <img src="./assets/atlas7-evidence-pipeline.png" alt="ATLAS-7 evidence pipeline visual showing SEC/XBRL evidence flowing into agent-ready intelligence outputs" loading="eager" decoding="async">
+                  <figcaption>Reference integration path: SEC/XBRL evidence, ATLAS-7 intelligence surfaces, MCP-compatible tool access, and agent-ready outputs.</figcaption>
+                </figure>
               </div>
             </section>
 
             <main>
-              <section id="product">
+              <section id="fit">
                 <div class="section-head">
-                  <h2>Built for B2B market-intelligence work.</h2>
-                  <p>The agent focuses on one judgeable workflow: turn a fragmented issuer-risk question into a sourced decision brief with confidence, caveats, and next investigative action.</p>
+                  <h2>Designed around the competition requirements.</h2>
+                  <p>The page mirrors the ATLAS-7 reference style but focuses on what judges need to see: new agent, B2B value, Google Cloud runtime, Gemini path, and safe evidence boundaries.</p>
                 </div>
-                <div class="cards">
-                  <article class="card"><b>Issuer Stress</b><p>Surfaces pressure-board, top-stressed, covenant-stress, and risk-distribution style signals for triage.</p></article>
-                  <article class="card"><b>Evidence Grounding</b><p>Maps claims to SEC/XBRL company facts, dated evidence, route provenance, and quality flags.</p></article>
-                  <article class="card"><b>Peer Context</b><p>Compares a target issuer against relevant crypto-exposed public-company peers before synthesis.</p></article>
+                <div class="grid two">
+                  ${proof.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
                 </div>
               </section>
 
-              <section id="architecture">
+              <section id="workflow">
                 <div class="section-head">
-                  <h2>Agent architecture that judges can inspect.</h2>
-                  <p>Cloud Run hosts the service; Gemini synthesizes through Vertex AI; the coordinator routes work to specialist lanes and ATLAS-7-compatible tool surfaces.</p>
-                </div>
-                <div class="cards">
-                  ${stack.map(([k, v]) => html`<article class="card"><b>${k}</b><p>${v}</p></article>`)}
-                </div>
-              </section>
-
-              <section id="demo">
-                <div class="section-head">
-                  <h2>Demo flow: from question to action brief.</h2>
-                  <p>The default deterministic mode makes the workflow reproducible for judges. Vertex AI Gemini mode can be enabled in authenticated Google Cloud environments.</p>
+                  <h2>One workflow, end to end.</h2>
+                  <p>The default demo is deterministic so anyone can inspect the orchestration. Production mode swaps the synthesis layer to Gemini through Vertex AI.</p>
                 </div>
                 <div class="flow">
-                  ${workflow.map(([k, v], index) => html`<article class="step"><div class="num">${index + 1}</div><b>${k}</b><p>${v}</p></article>`)}
+                  ${workflow.map(([title, body], index) => html`
+                    <article class="step">
+                      <div class="num">${index + 1}</div>
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
                 </div>
               </section>
 
-              <section id="spec">
+              <section id="judge">
+                <div class="section-head">
+                  <h2>What is visible and testable.</h2>
+                  <p>The public repo stays lean: landing page, one official spec, runnable Go service, tests, Dockerfile, and Cloud Run deployment template.</p>
+                </div>
+                <div class="grid">
+                  ${judgeChecks.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <div class="callout">
+                  <b>Official document policy</b>
+                  <p>The public <code>docs/</code> folder exposes one official judge-facing document: <code>DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</code>. Supporting diligence and strategy files are kept out of the public surface.</p>
+                </div>
+              </section>
+
+              <section id="run">
                 <div class="split">
                   <div>
                     <div class="section-head">
-                      <h2>Run it locally.</h2>
-                      <p>Start with the deterministic agent path, then enable Gemini synthesis through Vertex AI for the production model route.</p>
+                      <h2>Run the demo.</h2>
+                      <p>Use the deterministic path first. Enable Gemini only in an authenticated Google Cloud environment.</p>
                     </div>
                     <div class="codebox"><pre>GOWORK=off go test ./...
 GOWORK=off go run ./cmd/server
@@ -504,8 +499,8 @@ curl -s http://localhost:8080/v1/brief \\
                   </div>
                   <div>
                     <div class="section-head">
-                      <h2>Embedded StrategiX contract.</h2>
-                      <p>The landing page doubles as a durable HTML spec with a machine-readable XML contract for the challenge submission.</p>
+                      <h2>Embedded machine contract.</h2>
+                      <p>The landing page is also a StrategiX Visual Spec with an embedded XML contract.</p>
                     </div>
                     <div class="codebox"><pre>${xml}</pre></div>
                   </div>
@@ -514,7 +509,7 @@ curl -s http://localhost:8080/v1/brief \\
             </main>
 
             <footer>
-              DeltaSignal AI Agent is a competition build. ATLAS-7 is disclosed as an existing integration and data source, not as newly created contest code. Outputs are issuer-intelligence research aids, not personalized investment advice.
+              DeltaSignal AI Agent is a competition build. ATLAS-7 is disclosed as an existing authorized integration and data source, not as newly created contest code. Outputs are issuer-intelligence research aids, not personalized investment advice.
             </footer>
           </div>
         `;
