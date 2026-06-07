@@ -443,9 +443,16 @@
           .competition-inner { align-items: flex-start; flex-direction: column; padding: 9px 0; }
           .hero { min-height: auto; padding: 46px 0 30px; }
           .hero-inner, .split, .grid, .grid.two, .flow { grid-template-columns: 1fr; }
+          .grid.challenge-facts { grid-template-columns: 1fr; }
           h1 { font-size: clamp(42px, 13vw, 68px); }
         }
       `;
+
+      scrollToSection(event, id) {
+        event.preventDefault();
+        this.renderRoot.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', `#${id}`);
+      }
 
       render() {
         return html`
@@ -460,10 +467,10 @@
               <nav>
                 <div class="brand"><span class="mark">Δ</span><span>DeltaSignal AI Agent</span></div>
                 <div class="navlinks">
-                  <a href="#fit">Competition fit</a>
-                  <a href="#workflow">Workflow</a>
-                  <a href="#judge">Judge checks</a>
-                  <a href="#run">Run</a>
+                  <a href="#fit" @click=${event => this.scrollToSection(event, 'fit')}>Competition fit</a>
+                  <a href="#workflow" @click=${event => this.scrollToSection(event, 'workflow')}>Workflow</a>
+                  <a href="#judge" @click=${event => this.scrollToSection(event, 'judge')}>Judge checks</a>
+                  <a href="#run" @click=${event => this.scrollToSection(event, 'run')}>Run</a>
                 </div>
               </nav>
             </header>
@@ -477,9 +484,9 @@
                   <div class="actions">
                     <a class="button primary" href="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official Submission Packet</a>
                     <a class="button" href="https://devpost.team/google-cloud-for-startups/hackathons/3197" target="_blank" rel="noopener noreferrer">Official Contest Site</a>
-                    <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html">ATLAS-7 Codex Plugin</a>
-                    <a class="button" href="https://github.com/aitrailblazer/deltasignal-ai-agent">GitHub Repo</a>
-                    <a class="button" href="#run">Run Locally</a>
+                    <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html" target="_blank" rel="noopener noreferrer">ATLAS-7 Codex Plugin</a>
+                    <a class="button" href="https://github.com/aitrailblazer/deltasignal-ai-agent" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                    <a class="button" href="#run" @click=${event => this.scrollToSection(event, 'run')}>Run Locally</a>
                   </div>
                 </div>
                 <figure class="hero-card">
