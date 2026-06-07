@@ -52,6 +52,13 @@
     <DataSource mode="integration">DeltaSignal ATLAS-7 public issuer-intelligence surface, disclosed as an authorized integration and data source.</DataSource>
     <DataSource mode="public">SEC/company facts and public market evidence where licensed and available.</DataSource>
   </DataSources>
+  <ResearchMemoryExtension status="product-expansion">
+    <Summary>The same agent architecture can turn the DeltaSignal Substack archive into a subscriber research memory system using TripCodes, article Rivers, and filing evidence.</Summary>
+    <TripCodeRole>Each article can expose a stable TripCode that resolves to a machine-readable research object with title, thesis, tickers, linked evidence, caveats, and related River membership.</TripCodeRole>
+    <RiverRole>Rivers group related articles into ordered thesis trails so subscribers can ask what changed across a ticker, theme, or thesis over time.</RiverRole>
+    <SubscriberWorkflow>Subscriber opens an article, reads the TripCode, asks the agent to resolve it, and receives the prior River, thesis evolution, filing confirmations, weakened assumptions, and next monitoring checklist.</SubscriberWorkflow>
+    <EvidenceBoundary>Article memory remains separate from SEC/XBRL evidence. The agent must label article-derived claims, filing-backed claims, MCP evidence, inference, and missing data.</EvidenceBoundary>
+  </ResearchMemoryExtension>
   <Architecture>
     <Node>User demo UI or curl client</Node>
     <Node>Cloud Run HTTP server</Node>
@@ -96,6 +103,12 @@
       ['Call Tools', 'Stress, evidence, and peer specialists return packets.'],
       ['Synthesize', 'Gemini or deterministic demo synthesis builds the brief.'],
       ['Review', 'Output labels uncertainty and required follow-up.']
+    ];
+    const memory = [
+      ['TripCodes', 'Stable article identifiers that resolve Substack research into machine-readable objects.'],
+      ['Rivers', 'Ordered trails of related articles that show how a thesis evolved over time.'],
+      ['Subscriber Prompt', 'Resolve this article TripCode and compare it with prior River nodes and filing evidence.'],
+      ['Evidence Labels', 'Separate article memory, SEC/XBRL evidence, MCP results, inference, and missing data.']
     ];
 
     class SubmissionPacket extends LitElement {
@@ -152,6 +165,12 @@
                 <li>Production evidence should use SEC/company facts and licensed public data with dated provenance.</li>
                 <li>No secrets, API keys, or private customer data are included in the repository.</li>
               </ul>
+            </section>
+
+            <section class="panel">
+              <h2>Research Memory Extension</h2>
+              <p>Beyond the competition demo, the same agent pattern can power subscriber continuity: Substack articles receive TripCodes, related articles form Rivers, and the agent compares thesis history against current SEC/XBRL evidence.</p>
+              <div class="grid">${memory.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
             </section>
 
             <section class="panel">

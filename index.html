@@ -39,6 +39,7 @@
     <Buyer>Analysts, funds, corporate finance teams, startup operators, and business users who need faster issuer-risk triage.</Buyer>
     <CoreWorkflow>User asks an issuer question; the coordinator decomposes the task; specialist lanes retrieve stress, evidence, and peer context; Gemini synthesizes a grounded brief; review output preserves caveats and next actions.</CoreWorkflow>
     <EvidenceBoundary>ATLAS-7 is disclosed as an existing authorized integration and data source. The submitted competition project is the new autonomous agent and orchestration layer.</EvidenceBoundary>
+    <ResearchMemoryExtension>TripCodes and Substack Rivers extend the same agent into subscriber research memory: resolve an article, reconstruct the thesis River, compare it with filing evidence, and surface what changed.</ResearchMemoryExtension>
   </ProductContract>
   <CompetitionFit>
     <Fit>Autonomous agent for a concrete B2B business workflow.</Fit>
@@ -99,6 +100,11 @@
       ['Business Fit', 'Built for B2B issuer-risk triage, not consumer chat or generic summarization.'],
       ['Disclosure', 'ATLAS-7 is clearly disclosed as an existing integration/data source.'],
       ['One Spec', 'The public docs folder exposes a single official submission packet.']
+    ];
+    const memoryLayer = [
+      ['Article TripCodes', 'Stable identifiers for Substack research objects that subscribers can paste into an agent.'],
+      ['Research Rivers', 'Ordered thesis trails across articles, tickers, filings, and follow-up evidence.'],
+      ['Ask a River', 'A subscriber prompt that reconstructs what changed, what was confirmed, and what remains unresolved.']
     ];
 
     class DeltaAgentLanding extends LitElement {
@@ -468,6 +474,21 @@
                 </div>
                 <div class="grid">
                   ${judgeChecks.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <div class="section-head">
+                  <h2>Where the agent becomes subscriber memory.</h2>
+                  <p>The same architecture can resolve Substack TripCodes, follow article Rivers, and compare historical thesis claims against current filing evidence.</p>
+                </div>
+                <div class="grid">
+                  ${memoryLayer.map(([title, body]) => html`
                     <article class="card">
                       <b>${title}</b>
                       <p>${body}</p>
