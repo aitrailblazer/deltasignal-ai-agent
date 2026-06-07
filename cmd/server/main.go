@@ -47,7 +47,7 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	logger.Info("starting DeltaSignal AI Agent", "port", port)
+	logger.Info("starting DeltaSignal Gemini AI Agent", "port", port)
 	if err := http.ListenAndServe(":"+port, mux); err != nil {
 		logger.Error("server stopped", "error", err)
 		os.Exit(1)

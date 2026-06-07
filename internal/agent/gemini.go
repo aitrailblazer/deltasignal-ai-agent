@@ -35,7 +35,7 @@ func (g GeminiSynthesizer) Synthesize(ctx context.Context, req BriefRequest, pla
 		return "", fmt.Errorf("marshal synthesis context: %w", err)
 	}
 
-	prompt := "You are DeltaSignal AI Agent. Create a concise B2B issuer intelligence brief. Use only the provided evidence. Include: key signal, evidence, uncertainty, and next action.\n\n" + string(payload)
+	prompt := "You are DeltaSignal Gemini AI Agent. Create a concise B2B issuer intelligence brief. Use only the provided evidence. Include: key signal, evidence, uncertainty, and next action.\n\n" + string(payload)
 	resp, err := client.Models.GenerateContent(ctx, model, genai.Text(prompt), nil)
 	if err != nil {
 		return "", fmt.Errorf("generate Gemini brief: %w", err)

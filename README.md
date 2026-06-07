@@ -1,6 +1,6 @@
-# DeltaSignal AI Agent
+# DeltaSignal Gemini AI Agent
 
-DeltaSignal AI Agent is a competition build for the Google for Startups AI Agents Challenge.
+DeltaSignal Gemini AI Agent is a competition build for the Google for Startups AI Agents Challenge.
 
 The project is a new Google Cloud-native autonomous issuer intelligence agent. It turns fragmented public-company stress signals, SEC-grounded evidence, and peer context into a concise B2B action brief for analysts, funds, and startup operators.
 

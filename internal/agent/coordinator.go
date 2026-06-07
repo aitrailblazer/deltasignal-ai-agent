@@ -83,7 +83,7 @@ func (c Coordinator) BuildBrief(ctx context.Context, req BriefRequest) (BriefRes
 
 func fallbackBrief(req BriefRequest, findings []SpecialistResult) string {
 	parts := []string{
-		fmt.Sprintf("DeltaSignal AI Agent reviewed %s for: %s", strings.ToUpper(req.Issuer), req.Question),
+		fmt.Sprintf("DeltaSignal Gemini AI Agent reviewed %s for: %s", strings.ToUpper(req.Issuer), req.Question),
 	}
 	for _, finding := range findings {
 		parts = append(parts, fmt.Sprintf("%s: %s", finding.Agent, finding.Summary))
