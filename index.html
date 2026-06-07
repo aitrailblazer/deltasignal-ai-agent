@@ -29,6 +29,7 @@
     <Title>DeltaSignal AI Agent Landing Page</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
     <Challenge>Google for Startups AI Agents Challenge</Challenge>
+    <ChallengeUrl>https://devpost.team/google-cloud-for-startups/hackathons/3197</ChallengeUrl>
     <Track>Track 1 Build</Track>
     <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
     <HeroImage>assets/atlas7-evidence-pipeline.png</HeroImage>
@@ -60,6 +61,7 @@
   </Architecture>
   <PublicSurface>
     <Link name="LandingPage">https://aitrailblazer.github.io/deltasignal-ai-agent/</Link>
+    <Link name="CompetitionDevpost">https://devpost.team/google-cloud-for-startups/hackathons/3197</Link>
     <Link name="Repository">https://github.com/aitrailblazer/deltasignal-ai-agent</Link>
     <Link name="OfficialSpec">docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Link>
   </PublicSurface>
@@ -143,6 +145,35 @@
           display: flex;
           align-items: center;
           gap: 18px;
+        }
+        .competition-bar {
+          border-bottom: 1px solid rgba(255, 183, 67, .14);
+          background: linear-gradient(90deg, rgba(255, 183, 67, .13), rgba(114, 217, 255, .07));
+        }
+        .competition-inner {
+          width: min(var(--max), calc(100vw - 32px));
+          min-height: 38px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          color: rgba(255, 248, 239, .82);
+          font-size: 13px;
+          font-weight: 750;
+        }
+        .competition-inner b {
+          color: #ffe2a7;
+        }
+        .competition-inner a {
+          color: var(--cyan);
+          text-decoration: none;
+          font-weight: 850;
+          white-space: nowrap;
+        }
+        .competition-inner a:hover {
+          text-decoration: underline;
+          text-underline-offset: 4px;
         }
         .brand {
           display: flex;
@@ -395,6 +426,7 @@
         }
         @media (max-width: 980px) {
           .navlinks { display: none; }
+          .competition-inner { align-items: flex-start; flex-direction: column; padding: 9px 0; }
           .hero { min-height: auto; padding: 46px 0 30px; }
           .hero-inner, .split, .grid, .grid.two, .flow { grid-template-columns: 1fr; }
           h1 { font-size: clamp(42px, 13vw, 68px); }
@@ -405,6 +437,12 @@
         return html`
           <div class="shell">
             <header>
+              <div class="competition-bar">
+                <div class="competition-inner">
+                  <span><b>Google for Startups AI Agents Challenge</b> · Devpost competition submission</span>
+                  <a href="https://devpost.team/google-cloud-for-startups/hackathons/3197" target="_blank" rel="noopener noreferrer">View Devpost page</a>
+                </div>
+              </div>
               <nav>
                 <div class="brand"><span class="mark">Δ</span><span>DeltaSignal AI Agent</span></div>
                 <div class="navlinks">
