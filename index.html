@@ -44,6 +44,7 @@
     <ResearchMemoryExtension>TripCodes and Substack Rivers extend the same agent into subscriber research memory: resolve an article, reconstruct the thesis River, compare it with filing evidence, and surface what changed.</ResearchMemoryExtension>
   </ProductContract>
   <CompetitionFit>
+    <ContestSiteAccess>Official Contest Site is Devpost for Teams and requires login; the landing page exposes the competition name and context publicly.</ContestSiteAccess>
     <Fit>Autonomous agent for a concrete B2B business workflow.</Fit>
     <Fit>Google Cloud-native runtime through Cloud Run, with a future Agent Runtime path.</Fit>
     <Fit>Gemini synthesis through Vertex AI for production mode.</Fit>
@@ -87,6 +88,13 @@
       ['Gemini Reasoning Path', 'Deterministic demo by default, Gemini via Vertex AI when enabled in Google Cloud.'],
       ['MCP Tool Boundary', 'Specialist lanes use agent-readable tool contracts instead of hidden manual workflows.'],
       ['Evidence Grounding', 'Briefs preserve SEC/XBRL source boundaries, caveats, uncertainty, and non-advice framing.']
+    ];
+
+    const challengeFacts = [
+      ['Competition', 'Google for Startups AI Agents Challenge'],
+      ['Official Site', 'Devpost for Teams contest portal'],
+      ['Access', 'Login required by Devpost for Teams'],
+      ['Submitted Track', 'Track 1 Build, Net-New Agents']
     ];
 
     const workflow = [
@@ -345,6 +353,10 @@
           gap: 12px;
         }
         .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid.challenge-facts {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          margin-bottom: 14px;
+        }
         .card {
           border: 1px solid var(--line);
           background: var(--panel);
@@ -459,7 +471,7 @@
             <section class="hero">
               <div class="hero-inner">
                 <div>
-                  <p class="eyebrow">Track 1 Build · Gemini · Cloud Run · MCP · SEC/XBRL evidence</p>
+                  <p class="eyebrow">Google for Startups AI Agents Challenge · Track 1 Build</p>
                   <h1>Evidence-backed issuer intelligence for business decisions.</h1>
                   <p class="lede">A new autonomous agent that routes issuer-risk questions through specialist lanes, grounds the answer in structured evidence, and returns an analyst-ready B2B action brief.</p>
                   <div class="actions">
@@ -482,6 +494,14 @@
                 <div class="section-head">
                   <h2>Built for the Google for Startups AI Agents Challenge.</h2>
                   <p>A Cloud Run agent that turns issuer signals into evidence-backed B2B action briefs, with Gemini-ready synthesis, MCP-style tool boundaries, and safe ATLAS-7 evidence disclosure.</p>
+                </div>
+                <div class="grid challenge-facts">
+                  ${challengeFacts.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
                 </div>
                 <div class="grid two">
                   ${proof.map(([title, body]) => html`
