@@ -24,3 +24,7 @@ node_modules/
 docs/*Rules_Analysis*.html
 docs/*Resource_Guide_Analysis*.html
 docs/*Winning_Strategy*.html
+docs/*Data_Collection*.html
+
+# Private design-partner, customer, route-validation, and competition strategy artifacts.
+private/

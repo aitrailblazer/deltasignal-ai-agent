@@ -25,8 +25,7 @@ The primary disclosed integration is **DeltaSignal ATLAS-7**, a public SEC/XBRL-
 - `internal/agent`: Coordinator, specialist tool interface, deterministic demo tools, and Gemini synthesis hook.
 - `Dockerfile`: Cloud Run-ready container image.
 - `cloudbuild.yaml`: Cloud Build and Cloud Run deployment template.
-- `docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html`: Judge-facing submission packet with architecture, data sources, findings, and demo plan.
-- `docs/DeltaSignal_ATLAS_7_Relevance_Map_2026_06_04.html`: Public-source map for how ATLAS-7 is used as a disclosed integration.
+- `docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html`: The single official judge-facing submission packet with architecture, data sources, findings, and demo plan.
 
 ## Local Setup
 
