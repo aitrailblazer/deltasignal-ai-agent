@@ -59,17 +59,25 @@ func (s *TripCodeMemoryStore) Snapshot(sessionID string) TripCodeMemorySnapshot 
 }
 
 func newTripCodeMemoryEntry(response TripCodeResearchResponse) TripCodeMemoryEntry {
+	packet := researchPacket(response.Packet)
 	return TripCodeMemoryEntry{
 		TripCode:            response.TripCode,
 		Issuer:              response.Issuer,
 		Mode:                response.Mode,
 		GeneratedAt:         response.GeneratedAt,
-		ArticleTitle:        firstString(response.Packet, "title", "article_title", "headline"),
-		RiverNodeCount:      inferRiverNodeCount(response.Packet),
+		ArticleTitle:        firstString(packet, "title", "article_title", "headline"),
+		RiverNodeCount:      inferRiverNodeCount(packet),
 		PacketKeys:          sortedKeys(response.Packet),
-		MonitorItems:        firstStringList(response.Packet, "monitor_next", "what_to_monitor_next", "monitor_items"),
-		WeakenedAssumptions: firstStringList(response.Packet, "weakened_assumptions", "prior_assumptions_weakened", "assumptions_weakened"),
+		MonitorItems:        firstStringList(packet, "monitor_next", "what_to_monitor_next", "monitor_items"),
+		WeakenedAssumptions: firstStringList(packet, "weakened_assumptions", "prior_assumptions_weakened", "assumptions_weakened"),
 	}
+}
+
+func researchPacket(packet map[string]any) map[string]any {
+	if nested, ok := packet["research_packet"].(map[string]any); ok && len(nested) > 0 {
+		return nested
+	}
+	return packet
 }
 
 func snapshotForEntries(sessionID string, entries []TripCodeMemoryEntry) TripCodeMemorySnapshot {

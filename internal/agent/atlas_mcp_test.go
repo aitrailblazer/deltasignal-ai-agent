@@ -120,20 +120,23 @@ func TestAtlasMCPToolClientResolvesTripCodeResearchPacket(t *testing.T) {
 		gotTripCode, _ = body.Params.Arguments["tripcode"].(string)
 		gotIssuer, _ = body.Params.Arguments["issuer"].(string)
 
-		packet := map[string]any{
-			"tool":     "deltasignal_resolve_tripcode_research_packet",
-			"tripcode": "TF-SUB-9DA70A7F98",
-			"research_packet": map[string]any{
-				"article": map[string]any{"tripcode": "TF-SUB-9DA70A7F98"},
-			},
-		}
-		text, _ := json.Marshal(packet)
 		w.Header().Set("Content-Type", "application/json")
 		_ = json.NewEncoder(w).Encode(map[string]any{
 			"jsonrpc": "2.0",
 			"id":      "deltasignal-ai-agent",
 			"result": map[string]any{
-				"content": []map[string]any{{"type": "text", "text": string(text)}},
+				"content": []map[string]any{{"type": "text", "text": "resolved HUT TripCode research packet"}},
+				"structuredContent": map[string]any{
+					"data": map[string]any{
+						"tool":     "deltasignal_resolve_tripcode_research_packet",
+						"status":   "ready",
+						"tripcode": "TF-SUB-9DA70A7F98",
+						"research_packet": map[string]any{
+							"article": map[string]any{"tripcode": "TF-SUB-9DA70A7F98"},
+							"river":   map[string]any{"node_count": float64(10)},
+						},
+					},
+				},
 			},
 		})
 	}))
@@ -168,6 +171,15 @@ func TestAtlasMCPToolClientResolvesTripCodeResearchPacket(t *testing.T) {
 	}
 	if result.Packet["tool"] != "deltasignal_resolve_tripcode_research_packet" {
 		t.Fatalf("unexpected packet: %#v", result.Packet)
+	}
+	if result.Packet["status"] != "ready" {
+		t.Fatalf("structured data not preserved: %#v", result.Packet)
+	}
+	if result.Packet["raw_text"] != nil {
+		t.Fatalf("structured packet should not collapse to raw_text: %#v", result.Packet)
+	}
+	if result.Packet["mcp_text_summary"] != "resolved HUT TripCode research packet" {
+		t.Fatalf("text summary not preserved: %#v", result.Packet)
 	}
 	if len(result.Disclosures) == 0 {
 		t.Fatal("expected evidence boundary disclosures")
@@ -363,8 +375,30 @@ func TestAtlasMCPHelpers(t *testing.T) {
 	if parseMCPResultData(map[string]any{"content": []any{"bad", map[string]any{"text": ""}, map[string]any{"text": "not-json"}}})["raw_text"] != "not-json" {
 		t.Fatal("raw text parse failed")
 	}
+	if parseMCPResultData(map[string]any{"content": []any{map[string]any{"text": `{"json_status":"ready"}`}}})["json_status"] != "ready" {
+		t.Fatal("JSON text parse failed")
+	}
 	if parseMCPResultData(map[string]any{"structuredContent": map[string]any{"ok": true}})["ok"] != true {
 		t.Fatal("structured parse failed")
+	}
+	nested := parseMCPResultData(map[string]any{
+		"content": []any{map[string]any{"text": "human summary"}},
+		"structuredContent": map[string]any{
+			"data": map[string]any{"status": "ready"},
+		},
+	})
+	if nested["status"] != "ready" || nested["mcp_text_summary"] != "human summary" || nested["raw_text"] != nil {
+		t.Fatalf("nested structured data parse failed: %#v", nested)
+	}
+	preserved := parseMCPResultData(map[string]any{
+		"content":           []any{map[string]any{"text": "new summary"}},
+		"structuredContent": map[string]any{"mcp_text_summary": "existing summary"},
+	})
+	if preserved["mcp_text_summary"] != "existing summary" {
+		t.Fatalf("existing text summary overwritten: %#v", preserved)
+	}
+	if parseMCPResultData(map[string]any{"structuredContent": map[string]any{}, "fallback": true})["fallback"] != true {
+		t.Fatal("empty structured content should fall back to result")
 	}
 	if mcpContentText(map[string]any{"content": []any{"bad", map[string]any{"text": ""}, map[string]any{"text": " a "}, map[string]any{"text": "b"}}}) != "a\nb" {
 		t.Fatal("content text extraction failed")

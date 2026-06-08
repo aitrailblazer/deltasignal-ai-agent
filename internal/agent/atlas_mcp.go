@@ -273,6 +273,23 @@ func summarizeMCPResult(result map[string]any) string {
 }
 
 func parseMCPResultData(result map[string]any) map[string]any {
+	text := strings.TrimSpace(mcpContentText(result))
+	if structured, ok := result["structuredContent"].(map[string]any); ok {
+		packet := structured
+		if data, ok := structured["data"].(map[string]any); ok {
+			packet = data
+		}
+		if len(packet) > 0 {
+			packet = cloneMap(packet)
+			if text != "" {
+				if _, exists := packet["mcp_text_summary"]; !exists {
+					packet["mcp_text_summary"] = compactText(text, 1600)
+				}
+			}
+			return packet
+		}
+	}
+
 	content, ok := result["content"].([]any)
 	if ok {
 		for _, item := range content {
@@ -291,10 +308,15 @@ func parseMCPResultData(result map[string]any) map[string]any {
 			return map[string]any{"raw_text": text}
 		}
 	}
-	if structured, ok := result["structuredContent"].(map[string]any); ok {
-		return structured
-	}
 	return result
+}
+
+func cloneMap(input map[string]any) map[string]any {
+	out := make(map[string]any, len(input))
+	for key, value := range input {
+		out[key] = value
+	}
+	return out
 }
 
 func mcpContentText(result map[string]any) string {

@@ -151,6 +151,22 @@ func TestTripCodeMemoryStoreEdgeBranches(t *testing.T) {
 		t.Fatalf("river article node count = %d", count)
 	}
 
+	resp.Packet = map[string]any{
+		"status": "ready",
+		"research_packet": map[string]any{
+			"article": map[string]any{"title": "Live Nested Article"},
+			"river":   map[string]any{"nodes": []any{1, 2, 3, 4}},
+			"thesis_map": map[string]any{
+				"monitor_next":         []any{"watch power"},
+				"weakened_assumptions": []any{"watch timing"},
+			},
+		},
+	}
+	entry = newTripCodeMemoryEntry(resp)
+	if entry.ArticleTitle != "Live Nested Article" || entry.RiverNodeCount != 4 || len(entry.MonitorItems) != 1 || len(entry.WeakenedAssumptions) != 1 {
+		t.Fatalf("research_packet entry = %#v", entry)
+	}
+
 	if sortedKeys(nil) != nil {
 		t.Fatal("nil sortedKeys should return nil")
 	}

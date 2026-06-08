@@ -43,8 +43,8 @@
     <EvidenceBoundary>ATLAS-7 is disclosed as an existing authorized integration and data source. The submitted competition project is the new autonomous agent and orchestration layer.</EvidenceBoundary>
     <ResearchMemoryExtension>TripCodes and Substack Rivers extend the same agent into subscriber research memory: resolve an article, reconstruct the thesis River, compare it with filing evidence, and surface what changed.</ResearchMemoryExtension>
     <CompetitionThesis>TripCodes are the resolver layer that turns static financial prose into portable, inspectable, executable research memory for Gemini and MCP-aware agents.</CompetitionThesis>
-    <CompositeMCPContract>deltasignal_resolve_tripcode_research_packet is the one-call subscriber resolver contract: TripCode -> article object -> River -> filing-backed evidence refs -> thesis evolution map -> boundaries. The deployed Go service implements this boundary now; the public ATLAS-7 MCP endpoint still needs the composite tool promoted.</CompositeMCPContract>
-    <ProofCase>In the deployed HUT case, one TripCode resolved the current article through Cloud Run, returned a deterministic 10-node HUT River fixture, exposed the live_mcp_error boundary for the missing public MCP composite tool, produced a Gemini summary, preserved session memory, and returned monitor-next items and scenario framing.</ProofCase>
+    <CompositeMCPContract>deltasignal_resolve_tripcode_research_packet is the one-call subscriber resolver contract: TripCode -> article object -> River -> filing-backed evidence refs -> thesis evolution map -> boundaries. The deployed Go service implements this boundary now, and the public ATLAS-7 MCP endpoint exposes the composite tool.</CompositeMCPContract>
+    <ProofCase>In the deployed HUT case, one TripCode resolved the current article through Cloud Run, called the live ATLAS-7 MCP composite resolver, returned a structured 10-node HUT River research packet with filing evidence refs, produced a Gemini summary, preserved session memory, and returned monitor-next items and scenario framing.</ProofCase>
     <PositioningLock>TripCodes convert financial commentary into structured research memory: the bridge from prose to evidence.</PositioningLock>
   </ProductContract>
   <CompetitorContrast>
@@ -58,7 +58,7 @@
     <Fit>Autonomous agent for a concrete B2B business workflow.</Fit>
     <Fit>Google Cloud-native runtime through a validated Cloud Run service, with a future Agent Runtime path.</Fit>
     <Fit>Gemini synthesis through Vertex AI is verified in the deployed HUT TripCode flow.</Fit>
-    <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval, with explicit fallback when the public MCP composite tool is missing.</Fit>
+    <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval, with explicit fallback if the public MCP composite tool is unavailable.</Fit>
     <Fit>TripCode resolver layer makes newsletter research executable by agents rather than leaving it as passive archive content.</Fit>
     <Fit>Deterministic demo mode so judges can run and inspect the workflow without private data access.</Fit>
   </CompetitionFit>
@@ -70,7 +70,7 @@
   <CurrentReadiness>
     <Ready>The Cloud Run service is live at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app with public health and protected judge routes.</Ready>
     <Ready>The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River fixture, produces a Gemini summary, preserves session memory, and updates the usage ledger.</Ready>
-    <Ready>The public ATLAS-7 MCP endpoint does not yet expose the composite TripCode resolver; the response preserves live_mcp_error and uses deterministic HUT fallback for judge-safe Build validation.</Ready>
+    <Ready>The public ATLAS-7 MCP endpoint exposes the composite TripCode resolver; the response preserves structured research_packet data and keeps deterministic HUT fallback for resilience.</Ready>
     <Next>Record the three-minute judge demo, then promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint after submission.</Next>
   </CurrentReadiness>
   <CostDiscipline>
@@ -181,7 +181,7 @@
     const readiness = [
       ['Validated service', 'The Cloud Run service is live at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app with public health and protected judge routes.'],
       ['HUT proof path', 'The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River fixture, produces a Gemini summary, preserves session memory, and updates the usage ledger.'],
-      ['Live MCP boundary', 'The public ATLAS-7 MCP endpoint does not yet expose the composite TripCode resolver; the response preserves live_mcp_error and uses deterministic HUT fallback for judge-safe Build validation.'],
+      ['Live MCP boundary', 'The public ATLAS-7 MCP endpoint exposes the composite TripCode resolver; the response carries structured research_packet data and keeps deterministic HUT fallback for resilience.'],
       ['Next hardening', 'Record the three-minute judge demo, then promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint after submission.']
     ];
     const costDiscipline = [

@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="1.6" status="deployed-build-validated" generated="2026-06-08" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="1.7" status="live-mcp-build-validated" generated="2026-06-08" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -36,8 +36,8 @@
   </CanonicalArtifact>
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
-  <VersionSummary version="1.6" date="2026-06-08">This version records deployed Build validation: Cloud Run health, HUT TripCode resolution, Gemini summary, session-memory follow-up, and usage ledger all passed against the live service URL.</VersionSummary>
-  <CurrentImplementation>Deployed Go Cloud Run service with deterministic fallback mode, live ATLAS-7 MCP attempt, Gemini synthesis, TripCode research packet resolution, session memory, protected judge access, and local-estimate cost tracking.</CurrentImplementation>
+  <VersionSummary version="1.7" date="2026-06-08">This version records live MCP Build validation: Cloud Run health, HUT TripCode resolution, full structured ATLAS-7 research_packet propagation, Gemini summary, session-memory follow-up, and usage ledger all passed against the live service URL.</VersionSummary>
+  <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, and local-estimate cost tracking.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
     <Feature>Specialist tool interface supports deterministic demo fixtures and live DeltaSignal ATLAS-7 MCP integrations.</Feature>
@@ -128,8 +128,8 @@
   </JudgeNarrative>
   <CurrentReadiness>
     <Ready>Cloud Run service is deployed and validated at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Ready>
-    <Ready>HUT TripCode proof path resolves through the deployed Go service with judge API-key verification, Gemini summary, and deterministic River fallback when the public MCP composite tool is missing.</Ready>
-    <Ready>The response explicitly preserves live_mcp_error so judges can see the current live MCP boundary instead of receiving a silent synthetic claim.</Ready>
+    <Ready>HUT TripCode proof path resolves through the deployed Go service with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, and deterministic River fallback only as a resilience path.</Ready>
+    <Ready>The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.</Ready>
     <Ready>Go judge shortcut routes GET /resolve and POST /resolve are implemented and covered by tests.</Ready>
     <Ready>scripts/judge-demo.sh runs the TripCode, Memory Bank, and usage-ledger flow without requiring Python ADK wrapper code.</Ready>
     <Next>Record the 3-minute demo using the validated Cloud Run URL and scripts/judge-demo.sh path.</Next>
@@ -153,13 +153,14 @@
     <Step order="4">Show the Memory Bank response, proving the agent preserved River context across turns.</Step>
     <Step order="5">Call /v1/usage to show estimated request spend and remaining configured budget.</Step>
   </JudgeDemoFlow>
-  <DeploymentValidation date="2026-06-08" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00003-tjs">
+  <DeploymentValidation date="2026-06-08" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00004-rz5">
     <Check status="passed">Cloud Run public invocation granted while protected judge routes still require DELTASIGNAL_DEMO_API_KEY.</Check>
     <Check status="passed">GET /health returned ok from the deployed service.</Check>
-    <Check status="passed">scripts/judge-demo.sh returned the HUT research packet for TF-SUB-9DA70A7F98, including 10-node River, thesis map, evidence boundaries, and Gemini summary.</Check>
+    <Check status="passed">scripts/judge-demo.sh returned mode live-mcp-tripcode-gemini for TF-SUB-9DA70A7F98, including status ready, structured research_packet, 10-node HUT River, filing evidence refs, evidence boundaries, and Gemini summary.</Check>
     <Check status="passed">POST /resolve follow-up returned session-memory mode with prior HUT River context.</Check>
     <Check status="passed">GET /v1/usage returned 0.10 USD tracked spend and 499.90 USD remaining from the configured 500 USD local-estimate budget after the validation run.</Check>
-    <Boundary>The live public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the response preserves live_mcp_error and uses the deterministic HUT fixture for judge-safe Build validation.</Boundary>
+    <Check status="passed">ATLAS-7 MCP revision ca-web-intel-mcp--0000499 exposes deltasignal_resolve_tripcode_research_packet on both the public custom domain and Azure Container App FQDN.</Check>
+    <Boundary>Deterministic HUT fallback remains available only for resilience if live MCP is unavailable; the validated judge path now uses the live MCP composite packet.</Boundary>
   </DeploymentValidation>
   <HUTProofCard>
     <TripCode>TF-SUB-9DA70A7F98</TripCode>
@@ -174,7 +175,7 @@
     <Boundary>Application cost tracking is immediate rehearsal telemetry, not the official Google Cloud Billing balance.</Boundary>
   </CostAndAccessPolicy>
   <RisksAndOpenQuestions>
-    <Risk level="medium">The live public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet. The Cloud Run service preserves live_mcp_error and uses deterministic HUT fallback for judge-safe Build validation.</Risk>
+    <Risk level="low">The live public ATLAS-7 MCP endpoint now exposes deltasignal_resolve_tripcode_research_packet. Deterministic HUT fallback remains enabled for resilience, so judges should treat fallback entries as safety-path evidence rather than the primary live path.</Risk>
     <Risk level="high">The TripCode path proves the strongest provenance story; the /v1/brief coordinator path still needs richer ATLAS-7 metadata propagation for parity.</Risk>
     <Risk level="medium">Session memory is in-memory for the judge demo. It proves continuity in a controlled session but is not durable across Cloud Run restarts or multi-replica routing.</Risk>
     <Risk level="medium">Shared demo-key access is appropriate for judges but should not be treated as product-grade identity, rate limiting, or abuse protection.</Risk>
@@ -198,7 +199,7 @@
   <ImmediateNextSteps>
     <Step order="1">Record the 3-minute judge demo using the validated Cloud Run URL and scripts/judge-demo.sh flow.</Step>
     <Step order="2">Submit the public landing page, GitHub repository, demo video, architecture diagram, and this packet.</Step>
-    <Step order="3">Promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint after submission so live_mcp_error is no longer needed.</Step>
+    <Step order="3">Record the 3-minute judge demo using the live MCP composite TripCode path and the usage ledger after each request.</Step>
   </ImmediateNextSteps>
   <VersionHistory>
     <Version number="1.0" date="2026-06-07">Initial judge-facing submission packet.</Version>
@@ -208,6 +209,7 @@
     <Version number="1.4" date="2026-06-08">Added plain-language Track 1 / Track 2 / Track 3 judge narrative and judge close for submission reuse.</Version>
     <Version number="1.5" date="2026-06-08">Reframed track fit as Build equals working demo, Optimize equals evidence fidelity, and Path equals agent ecosystem expansion.</Version>
     <Version number="1.6" date="2026-06-08">Recorded live Cloud Run Build validation, replaced the demo URL placeholder, and documented the deterministic HUT fallback boundary for the missing public MCP composite tool.</Version>
+    <Version number="1.7" date="2026-06-08">Recorded live MCP composite Build validation: ATLAS-7 exposes the TripCode research packet tool, Cloud Run propagates structured research_packet data, and the judge flow returns 10 HUT River nodes with filing evidence refs and session memory.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -259,7 +261,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '1.6';
+    const version = '1.7';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
@@ -327,8 +329,8 @@
     ];
     const readiness = [
       ['Live service', 'Cloud Run is deployed and validated at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.'],
-      ['HUT proof path', 'The deployed service resolves TF-SUB-9DA70A7F98 with judge API-key verification, Gemini summary, and deterministic River fallback when the public MCP composite tool is missing.'],
-      ['Boundary clarity', 'The response preserves live_mcp_error so judges see the live MCP boundary instead of a silent synthetic claim.'],
+      ['HUT proof path', 'The deployed service resolves TF-SUB-9DA70A7F98 with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, and deterministic River fallback only as a resilience path.'],
+      ['Boundary clarity', 'The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.'],
       ['Judge routes', 'GET /resolve and POST /resolve are implemented, tested, deployed, and documented for the competition demo.'],
       ['Immediate next step', 'Record the three-minute judge demo against the validated Cloud Run URL, then submit.']
     ];
@@ -359,10 +361,10 @@
     const nextSteps = [
       ['Record', 'Record the three-minute judge demo using the validated Cloud Run URL and the exact Judge Demo Path below.'],
       ['Submit', 'Submit the public landing page, GitHub repo, demo video, architecture diagram, and this packet.'],
-      ['Promote MCP', 'After submission, expose the composite TripCode resolver from the public ATLAS-7 MCP endpoint so live_mcp_error is no longer needed.']
+      ['Demo packet', 'The live judge response includes status ready, research_packet, 10 HUT River nodes, filing evidence refs, Gemini synthesis, and session-memory continuity.']
     ];
     const risks = [
-      ['Medium', 'The live public ATLAS-7 MCP endpoint does not yet expose the composite TripCode resolver. The Cloud Run service preserves live_mcp_error and uses deterministic HUT fallback for judge-safe Build validation.'],
+      ['Low', 'The live public ATLAS-7 MCP endpoint now exposes the composite TripCode resolver. Deterministic HUT fallback remains enabled for resilience if MCP is unavailable.'],
       ['High', 'The TripCode path proves the strongest provenance story; /v1/brief still needs richer ATLAS-7 metadata propagation.'],
       ['Medium', 'Session memory is in-memory for the judge demo and should not be overclaimed as durable production memory.'],
       ['Medium', 'Shared demo-key access is judge-safe but not product-grade identity, rate limiting, or abuse protection.'],

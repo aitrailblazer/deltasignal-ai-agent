@@ -21,7 +21,7 @@ The primary disclosed integration is **DeltaSignal ATLAS-7**, a public SEC/XBRL-
 
 The strongest product extension is **TripCode Research Memory**. DeltaSignal articles can expose stable resolver keys such as `TF-SUB-9DA70A7F98`; the agent resolves the article object, prior River nodes, filing evidence refs, caveats, scenario map, invalidation checklist, and monitor-next queue. In the HUT proof case, one TripCode recovered the current article plus 9 prior HUT research nodes and returned a structured thesis map.
 
-The core resolver contract is `deltasignal_resolve_tripcode_research_packet`: one TripCode returns the article object, River continuity, filing-backed evidence refs, thesis evolution map, missing evidence, and the four required boundaries: article memory, evidence identity, resolver identity, and non-advice. The Go service implements the contract boundary today. The public ATLAS-7 MCP endpoint does not yet expose this composite tool, so the deployed Build demo preserves `live_mcp_error` and uses a deterministic HUT River fixture instead of silently inventing a live MCP result.
+The core resolver contract is `deltasignal_resolve_tripcode_research_packet`: one TripCode returns the article object, River continuity, filing-backed evidence refs, thesis evolution map, missing evidence, and the four required boundaries: article memory, evidence identity, resolver identity, and non-advice. The public ATLAS-7 MCP endpoint now exposes this composite tool, and the deployed Build demo passes its structured `research_packet` through the Go Cloud Run agent while preserving deterministic fallback as a safety path.
 
 ## Why This Is Different
 
@@ -34,7 +34,7 @@ The HUT proof path is the current deployed proof for the core resolver flow:
 - The deployed Cloud Run service returns thesis changes, confirmed signal, weakened assumptions, bridge risks, proof milestones, invalidation logic, and monitor-next items.
 - Gemini synthesis through Vertex AI returns a diligence summary from the resolved HUT packet.
 - A second `/resolve` turn with the same `session_id` returns session-memory mode and preserves HUT River context.
-- Public execution remains honest about the live boundary: the ATLAS-7 MCP endpoint currently rejects `deltasignal_resolve_tripcode_research_packet`, and the response exposes that as `live_mcp_error`.
+- Public execution now resolves the live ATLAS-7 composite TripCode packet; fallback remains enabled only for resilience if the MCP endpoint is unavailable.
 
 The composite packet contract is exposed through this Go service at `/v1/tripcode` and `/resolve`. The next competition hardening work is to promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint, add observability traces, add synthetic HUT edge-case simulation, and record the short judge demo video.
 
@@ -163,7 +163,7 @@ The live client attempts these MCP tools:
 
 Tool names can be overridden with `DELTASIGNAL_MCP_STRESS_TOOL`, `DELTASIGNAL_MCP_COMPANY_TOOL`, `DELTASIGNAL_MCP_PEER_TOOL`, and `DELTASIGNAL_MCP_TRIPCODE_TOOL`. Keep `MCP_API_KEY` in your shell, Keychain, Secret Manager, or deployment secret store. Do not commit it.
 
-If `DELTASIGNAL_USE_LIVE_MCP=true` is set without an API key, the service falls back to deterministic demo tools. If live MCP is configured but the public endpoint does not support the composite TripCode tool, the deployed service returns `live_mcp_error` and falls back to the deterministic HUT River fixture when `DELTASIGNAL_ENABLE_TRIPCODE_FALLBACK=true`.
+If `DELTASIGNAL_USE_LIVE_MCP=true` is set without an API key, the service falls back to deterministic demo tools. If live MCP is configured but the endpoint is unavailable or returns an error, the deployed service returns `live_mcp_error` and falls back to the deterministic HUT River fixture when `DELTASIGNAL_ENABLE_TRIPCODE_FALLBACK=true`.
 
 Judge-friendly TripCode proof request:
 
@@ -192,7 +192,7 @@ curl -s http://localhost:8080/v1/tripcode \
   -d '{"session_id":"hut-demo","tripcode":"TF-SUB-9DA70A7F98","issuer":"HUT","payload_mode":"compact"}' | jq
 ```
 
-The route returns the resolved packet plus fixed evidence boundaries: TripCodes are resolver keys, article memory is not official filing evidence, missing evidence remains missing, and the output is diligence triage rather than investment advice. In the current public deployment, the packet includes `live_mcp_error` because the public MCP endpoint does not yet expose the composite resolver, then uses the deterministic HUT fixture for judge-safe Build validation.
+The route returns the resolved packet plus fixed evidence boundaries: TripCodes are resolver keys, article memory is not official filing evidence, missing evidence remains missing, and the output is diligence triage rather than investment advice. In the current public deployment, the packet includes the live MCP `research_packet` with article, River, filing evidence, thesis map, provenance, and evidence boundaries; deterministic HUT fallback remains available only if live MCP fails.
 
 When `DELTASIGNAL_USE_GEMINI=true`, the same route also returns `gemini_summary`. The summary is generated from the resolved MCP packet plus any `session_id` memory and must preserve the evidence boundaries. If Gemini fails, the route still returns the raw resolver packet.
 

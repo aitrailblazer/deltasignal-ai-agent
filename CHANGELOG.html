@@ -124,6 +124,15 @@
       <Detail>Verified GET /v1/usage returns local-estimate tracking after the judge flow: 0.10 USD spent and 499.90 USD remaining from the configured 500 USD budget.</Detail>
       <Detail>Documented that the public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the Cloud Run service therefore reports live_mcp_error and falls back to the deterministic HUT River fixture for judge-safe Build validation.</Detail>
     </Entry>
+    <Entry date="2026-06-08" type="deployment">
+      <Title>Completed live MCP composite Build path</Title>
+      <Detail>Redeployed the ATLAS-7 MCP Container App to revision ca-web-intel-mcp--0000499 from clean commit 42911815ebcf47551620e7480520497b5609a542.</Detail>
+      <Detail>Verified both https://api.aitrailblazer.net/mcp and the Azure Container App FQDN expose 46 tools including deltasignal_resolve_tripcode_research_packet.</Detail>
+      <Detail>Deployed the Go agent to Cloud Run revision deltasignal-ai-agent-00004-rz5 with structured MCP packet propagation.</Detail>
+      <Detail>Ran scripts/judge-demo.sh against the live Cloud Run service; /resolve returned mode live-mcp-tripcode-gemini, status ready, the full research_packet, 10 HUT River nodes, filing evidence refs, Gemini synthesis, and session-memory continuity.</Detail>
+      <Detail>Verified make check still passes with total Go coverage at 100.0 percent after the parser and Memory Bank changes.</Detail>
+      <Detail>Verified app usage ledger after live test requests: 0.10 USD tracked spend and 499.90 USD remaining from the configured 500 USD budget; official Google Billing spend still requires Billing export or console access.</Detail>
+    </Entry>
   </Entries>
   <PublicLinks>
     <Link name="LandingPage">index.html</Link>
@@ -272,6 +281,19 @@
           'Verified POST /resolve with the same session_id returns session-memory mode and preserves the prior HUT River context for follow-up questions.',
           'Verified GET /v1/usage returns local-estimate tracking after the judge flow: 0.10 USD spent and 499.90 USD remaining from the configured 500 USD budget.',
           'Documented that the public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the Cloud Run service therefore reports live_mcp_error and falls back to the deterministic HUT River fixture for judge-safe Build validation.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Deployment',
+        title: 'Completed live MCP composite Build path',
+        details: [
+          'Redeployed the ATLAS-7 MCP Container App to revision ca-web-intel-mcp--0000499 from clean commit 42911815ebcf47551620e7480520497b5609a542.',
+          'Verified both https://api.aitrailblazer.net/mcp and the Azure Container App FQDN expose 46 tools including deltasignal_resolve_tripcode_research_packet.',
+          'Deployed the Go agent to Cloud Run revision deltasignal-ai-agent-00004-rz5 with structured MCP packet propagation.',
+          'Ran scripts/judge-demo.sh against the live Cloud Run service; /resolve returned mode live-mcp-tripcode-gemini, status ready, the full research_packet, 10 HUT River nodes, filing evidence refs, Gemini synthesis, and session-memory continuity.',
+          'Verified make check still passes with total Go coverage at 100.0 percent after the parser and Memory Bank changes.',
+          'Verified app usage ledger after live test requests: 0.10 USD tracked spend and 499.90 USD remaining from the configured 500 USD budget; official Google Billing spend still requires Billing export or console access.'
         ]
       }
     ];
