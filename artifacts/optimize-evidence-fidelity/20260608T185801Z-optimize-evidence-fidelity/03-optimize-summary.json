@@ -1,0 +1,12 @@
+{
+  "artifact_dir": "artifacts/optimize-evidence-fidelity/20260608T185801Z-optimize-evidence-fidelity",
+  "issuer": "HUT",
+  "mode": "deterministic-demo",
+  "has_evidence_fidelity": true,
+  "evidence_fidelity_status": "minimal",
+  "finding_count": 3,
+  "brief_contains_evidence_fidelity_line": true,
+  "disclosure_contains_evidence_fidelity_line": true,
+  "cost_request_usd": 0.02,
+  "tracked_spent_usd": 0.02
+}

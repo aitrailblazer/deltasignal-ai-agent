@@ -29,6 +29,7 @@
       <h1>Working Demo Evidence Session</h1>
       <p><strong>Phase covered:</strong> Build.</p>
       <p>Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.</p>
+      <p><strong>Runtime autonomy:</strong> the submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</p>
     </div>
 
     <section>
@@ -73,6 +74,7 @@
     <section>
       <h2>Agent Autonomy Boundary</h2>
       <p>The shell script is only the judge harness. It supplies the input and records evidence. The deployed Google agent performs the internal workflow autonomously after the request reaches Cloud Run.</p>
+      <p><strong>Runtime relevance:</strong> DeltaSignal Gemini AI Agent is the runtime Google Cloud product agent. It turns a high-level TripCode request into a hosted, repeatable, evidence-bounded diligence workflow.</p>
       <ol>
         <li><strong>Human or judge action:</strong> provide one TripCode and session_id, then ask one follow-up question.</li>
         <li><strong>Agent action:</strong> validate the request, call the TripCode resolver, call the ATLAS-7 MCP tool, parse the structured MCP packet, write session memory, optionally synthesize with Gemini, attach disclosures, and record local-estimate cost.</li>
@@ -125,6 +127,7 @@
       <pre>&lt;StrategiXVisualSpec id="deltasignal-judge-demo-build-session" version="1.0" status="verified-evidence-session"&gt;
   &lt;Phase&gt;Build&lt;/Phase&gt;
   &lt;BuildClaim&gt;Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.&lt;/BuildClaim&gt;
+  &lt;RuntimeAutonomyClaim&gt;The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.&lt;/RuntimeAutonomyClaim&gt;
   &lt;Run id="20260608T093801Z-verified" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" session_id="judge-demo-hut" revision="deltasignal-ai-agent-00004-rz5" /&gt;
   &lt;RoleSplit&gt;
     &lt;GoogleAgent role="orchestrator"&gt;Cloud Run Go service handles judge routes, protected demo access, session memory, cost ledger, Gemini synthesis through Vertex AI, and response shaping.&lt;/GoogleAgent&gt;
@@ -162,6 +165,7 @@
 <StrategiXVisualSpec id="deltasignal-judge-demo-build-session" version="1.0" status="verified-evidence-session">
   <Phase>Build</Phase>
   <BuildClaim>Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.</BuildClaim>
+  <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
   <Run id="20260608T093801Z-verified" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" session_id="judge-demo-hut" revision="deltasignal-ai-agent-00004-rz5" />
   <RoleSplit>
     <GoogleAgent role="orchestrator">Cloud Run Go service handles judge routes, protected demo access, session memory, cost ledger, Gemini synthesis through Vertex AI, and response shaping.</GoogleAgent>

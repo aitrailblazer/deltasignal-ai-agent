@@ -44,6 +44,12 @@ func TestCoordinatorBuildBriefUsesDeterministicDemo(t *testing.T) {
 	if !strings.Contains(resp.Brief, "stress-scanner") {
 		t.Fatalf("brief did not include stress scanner output: %s", resp.Brief)
 	}
+	if resp.EvidenceFidelity.Status != "minimal" {
+		t.Fatalf("demo evidence fidelity = %#v", resp.EvidenceFidelity)
+	}
+	if !strings.Contains(resp.Brief, "Evidence fidelity:") {
+		t.Fatalf("brief did not include evidence fidelity line: %s", resp.Brief)
+	}
 }
 
 func TestCoordinatorBuildBriefDefaultsAndSynthesizer(t *testing.T) {
@@ -55,8 +61,22 @@ func TestCoordinatorBuildBriefDefaultsAndSynthesizer(t *testing.T) {
 	if err != nil {
 		t.Fatalf("BuildBrief returned error: %v", err)
 	}
-	if resp.Issuer != "MSTR" || resp.Question == "" || resp.Mode != "vertex-ai-gemini" || resp.Brief != "generated brief" {
+	if resp.Issuer != "MSTR" || resp.Question == "" || resp.Mode != "vertex-ai-gemini" || !strings.Contains(resp.Brief, "generated brief") {
 		t.Fatalf("unexpected synthesized response: %#v", resp)
+	}
+	if !strings.Contains(resp.Brief, "Evidence fidelity:") {
+		t.Fatalf("synthesized brief did not preserve evidence fidelity line: %s", resp.Brief)
+	}
+}
+
+func TestEnsureEvidenceFidelityLine(t *testing.T) {
+	summary := EvidenceFidelitySummary{Status: "minimal"}
+	if got := ensureEvidenceFidelityLine("", summary); got != evidenceFidelityLine(summary) {
+		t.Fatalf("empty brief got %q", got)
+	}
+	existing := "brief\nEvidence fidelity: already present"
+	if got := ensureEvidenceFidelityLine(existing, summary); got != existing {
+		t.Fatalf("existing line should not be changed: %q", got)
 	}
 }
 
@@ -100,6 +120,39 @@ func TestToolModeLiveMCPBranches(t *testing.T) {
 	}
 }
 
+func TestCoordinatorBuildBriefCarriesEvidenceFidelity(t *testing.T) {
+	stale := false
+	c := Coordinator{
+		Tools: staticToolClient{result: SpecialistResult{
+			Agent:      "evidence-retriever",
+			Summary:    "live result",
+			Confidence: "live-mcp",
+			Evidence: []Evidence{{
+				Source:         "deltasignal-atlas-7-mcp",
+				Title:          "MCP tool: deltasignal_company_report",
+				Observation:    "live result",
+				SourceDate:     "2026-06-07",
+				ComputedAt:     "2026-06-08T17:37:01Z",
+				Stale:          &stale,
+				Caveats:        []string{"none"},
+				QualityFlags:   []string{"fresh"},
+				EvidenceHashes: []string{"hash1"},
+				PayloadMode:    "compact",
+			}},
+		}},
+	}
+	resp, err := c.BuildBrief(context.Background(), BriefRequest{Issuer: "HUT"})
+	if err != nil {
+		t.Fatalf("BuildBrief returned error: %v", err)
+	}
+	if resp.EvidenceFidelity.Status != "provenance-carried" || len(resp.EvidenceFidelity.SourceDates) != 1 || len(resp.EvidenceFidelity.EvidenceHashes) != 1 {
+		t.Fatalf("evidence fidelity not carried: %#v", resp.EvidenceFidelity)
+	}
+	if !strings.Contains(strings.Join(resp.Disclosures, "\n"), "Evidence fidelity: provenance-carried") {
+		t.Fatalf("disclosures did not include evidence fidelity: %#v", resp.Disclosures)
+	}
+}
+
 type failingAgentTool struct{}
 
 func (failingAgentTool) StressSignals(context.Context, string) (SpecialistResult, error) {
@@ -112,4 +165,20 @@ func (failingAgentTool) CompanyEvidence(context.Context, string) (SpecialistResu
 
 func (failingAgentTool) PeerContext(context.Context, string) (SpecialistResult, error) {
 	return SpecialistResult{}, errors.New("peer failed")
+}
+
+type staticToolClient struct {
+	result SpecialistResult
+}
+
+func (s staticToolClient) StressSignals(context.Context, string) (SpecialistResult, error) {
+	return s.result, nil
+}
+
+func (s staticToolClient) CompanyEvidence(context.Context, string) (SpecialistResult, error) {
+	return s.result, nil
+}
+
+func (s staticToolClient) PeerContext(context.Context, string) (SpecialistResult, error) {
+	return s.result, nil
 }

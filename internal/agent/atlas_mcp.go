@@ -128,18 +128,17 @@ func (c AtlasMCPToolClient) callLane(ctx context.Context, agentName, toolName st
 		return SpecialistResult{}, err
 	}
 	summary := summarizeMCPResult(result)
+	evidence := enrichEvidenceFromMCP(Evidence{
+		Source:      "deltasignal-atlas-7-mcp",
+		Title:       "MCP tool: " + toolName,
+		Observation: compactText(summary, 900),
+		URL:         c.endpointURL(),
+	}, result, args)
 	return SpecialistResult{
 		Agent:      agentName,
 		Summary:    summary,
 		Confidence: "live-mcp",
-		Evidence: []Evidence{
-			{
-				Source:      "deltasignal-atlas-7-mcp",
-				Title:       "MCP tool: " + toolName,
-				Observation: compactText(summary, 900),
-				URL:         c.endpointURL(),
-			},
-		},
+		Evidence:   []Evidence{evidence},
 	}, nil
 }
 

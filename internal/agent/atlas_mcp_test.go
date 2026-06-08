@@ -47,7 +47,7 @@ func TestAtlasMCPToolClientCallsMCPWithAPIKey(t *testing.T) {
 		gotTicker, _ = body.Params.Arguments["ticker"].(string)
 
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = w.Write([]byte(`{"jsonrpc":"2.0","id":"deltasignal-ai-agent","result":{"content":[{"type":"text","text":"HUT live evidence packet"}]}}`))
+		_, _ = w.Write([]byte(`{"jsonrpc":"2.0","id":"deltasignal-ai-agent","result":{"content":[{"type":"text","text":"HUT live evidence packet"}],"structuredContent":{"source_date":"2026-06-07","computed_at":"2026-06-08T17:37:01Z","stale":false,"caveats":["live caveat"],"quality_flags":["fresh"],"evidence_hash":"hash-live","route_provenance":"company_report"}}}`))
 	}))
 	defer server.Close()
 
@@ -80,6 +80,18 @@ func TestAtlasMCPToolClientCallsMCPWithAPIKey(t *testing.T) {
 	}
 	if result.Evidence[0].Source != "deltasignal-atlas-7-mcp" {
 		t.Fatalf("evidence source = %q, want live MCP source", result.Evidence[0].Source)
+	}
+	if result.Evidence[0].SourceDate != "2026-06-07" || result.Evidence[0].ComputedAt != "2026-06-08T17:37:01Z" {
+		t.Fatalf("evidence provenance not preserved: %#v", result.Evidence[0])
+	}
+	if result.Evidence[0].Stale == nil || *result.Evidence[0].Stale {
+		t.Fatalf("stale marker not preserved: %#v", result.Evidence[0].Stale)
+	}
+	if result.Evidence[0].PayloadMode != "compact" || result.Evidence[0].RouteProvenance != "company_report" {
+		t.Fatalf("payload/provenance not preserved: %#v", result.Evidence[0])
+	}
+	if len(result.Evidence[0].Caveats) != 1 || len(result.Evidence[0].QualityFlags) != 1 || len(result.Evidence[0].EvidenceHashes) != 1 {
+		t.Fatalf("evidence metadata arrays not preserved: %#v", result.Evidence[0])
 	}
 }
 

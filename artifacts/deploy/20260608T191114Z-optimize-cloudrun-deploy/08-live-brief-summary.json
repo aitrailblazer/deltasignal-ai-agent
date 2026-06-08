@@ -1,0 +1,67 @@
+{
+  "issuer": "HUT",
+  "mode": "vertex-ai-gemini",
+  "evidence_fidelity": {
+    "status": "provenance-carried",
+    "payload_modes": [
+      "compact"
+    ],
+    "source_dates": [
+      "2026-06-08"
+    ],
+    "computed_at": [
+      "2026-06-08T06:30:57.517617Z"
+    ],
+    "caveats": [
+      "deltasignal_spectra_field_map failed: spectra_field_map_not_found"
+    ],
+    "quality_flags": [
+      "High",
+      "Medium"
+    ],
+    "evidence_hashes": [
+      "sha256:2bb01b984f933417c78cc6dc046234bd4e6aa161922bd1f7a3490dec6c8c93d9",
+      "sha256:bae7ce3a3dea88f3c4b8dee5878b4e9704eeeec114da8f32675b23ba3ef00bb4"
+    ],
+    "route_provenance": [
+      "deltasignal_pressure_board",
+      "deltasignal_company_report",
+      "deltasignal_covenant_stress"
+    ],
+    "provenance_labels": [
+      "{ \"caveats\": [], \"compacted\": false, \"compaction\": [ { \"compacted\": false, \"tool\": \"deltasignal_readiness\" }, { \"compacted\": false, \"tool\": \"deltasignal_top_stressed\" }, { \"compacted\": false, \"tool\": \"deltasignal_risk_distribution\" } ], \"c...",
+      "{ \"compacted\": false, \"elapsed_ms\": 550, \"latest_computed_source_date\": \"2026-06-08\", \"source_date\": \"2026-06-08\" }",
+      "{ \"computed_at_utc\": \"2026-06-08T06:33:48.368837Z\", \"crypto_units_basis\": \"filing_xbrl_context\", \"data_source\": \"linkbase_rollup\", \"debt_coverage_status\": \"resolved_zero\", \"is_linkbase_backed\": true, \"market_regime\": \"bearish_falling_vol\",...",
+      "{ \"data_source\": \"linkbase_rooted_facts\", \"is_linkbase_backed\": true, \"mapping_hit_count\": 0, \"quality_flag\": \"High\", \"root_resolution_method\": \"standard_root_match\" }",
+      "{ \"caveats\": [ \"deltasignal_spectra_field_map failed: spectra_field_map_not_found\" ], \"compacted\": false, \"compaction\": [ { \"compacted\": false, \"tool\": \"deltasignal_readiness\" }, { \"compacted\": false, \"tool\": \"deltasignal_company_fundament...",
+      "{ \"compacted\": false, \"elapsed_ms\": 323, \"latest_computed_source_date\": \"2026-06-08\", \"source_date\": \"2026-06-08\" }",
+      "{ \"compacted\": false, \"elapsed_ms\": 53, \"source_date\": \"2026-06-08\" }"
+    ]
+  },
+  "brief_has_evidence_fidelity_line": false,
+  "disclosures": [
+    "Competition build: existing DeltaSignal systems are treated as authorized integrations or data sources.",
+    "Demo mode uses deterministic fixtures so judges can evaluate the workflow even without private data access.",
+    "Production mode should route Gemini through Vertex AI in project startup-ai-deltasignal.",
+    "Evidence fidelity: provenance-carried; payload_mode=compact; source_date=2026-06-08; computed_at=2026-06-08T06:30:57.517617Z; quality_flags=High, Medium; caveats=deltasignal_spectra_field_map failed: spectra_field_map_not_found; evidence_hashes=sha256:2bb01b984f933417c78cc6dc046234bd4e6aa161922bd1f7a3490dec6c8c93d9, sha256:bae7ce3a3dea88f3c4b8dee5878b4e9704eeeec114da8f32675b23ba3ef00bb4; route=deltasignal_pressure_board, deltasignal_company_report"
+  ],
+  "cost": {
+    "enabled": true,
+    "source": "local-estimate",
+    "currency": "USD",
+    "request_kind": "brief",
+    "request_cost_usd": 0.02,
+    "tracked_spent_usd": 0.07,
+    "budget_usd": 500,
+    "remaining_usd": 499.93,
+    "official_billing": {
+      "available": false,
+      "source": "unavailable",
+      "project_id": "startup-ai-deltasignal",
+      "billing_account_name": "billingAccounts/018530-615AB8-696753",
+      "billing_enabled": true,
+      "note": "Official Google Cloud Billing spend is unavailable unless supplied from Cloud Billing export, Billing console, or another official billing source."
+    },
+    "note": "Local estimate for demo/test requests. Exact Google Cloud account spend and remaining credits require Cloud Billing export or the Billing console."
+  }
+}

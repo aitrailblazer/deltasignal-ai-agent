@@ -18,18 +18,44 @@ type TripCodeResearchRequest struct {
 	IncludeFilingEvidence bool   `json:"include_filing_evidence,omitempty"`
 	IncludePriorArticles  bool   `json:"include_prior_articles,omitempty"`
 	IncludeThesisMap      bool   `json:"include_thesis_map,omitempty"`
+	IncludeAgentContext   bool   `json:"include_agent_context,omitempty"`
 }
 
 type TripCodeResearchResponse struct {
-	TripCode      string                  `json:"tripcode"`
-	Issuer        string                  `json:"issuer,omitempty"`
-	GeneratedAt   time.Time               `json:"generated_at"`
-	Mode          string                  `json:"mode"`
-	Packet        map[string]any          `json:"packet"`
-	GeminiSummary string                  `json:"gemini_summary,omitempty"`
-	Disclosures   []string                `json:"disclosures"`
-	Memory        *TripCodeMemorySnapshot `json:"memory,omitempty"`
-	Cost          *CostSnapshot           `json:"cost,omitempty"`
+	TripCode       string                  `json:"tripcode"`
+	Issuer         string                  `json:"issuer,omitempty"`
+	GeneratedAt    time.Time               `json:"generated_at"`
+	Mode           string                  `json:"mode"`
+	Packet         map[string]any          `json:"packet"`
+	GeminiSummary  string                  `json:"gemini_summary,omitempty"`
+	Disclosures    []string                `json:"disclosures"`
+	Memory         *TripCodeMemorySnapshot `json:"memory,omitempty"`
+	AgentContext   *AgentContextSnapshot   `json:"agent_context,omitempty"`
+	ExecutionTrace []ExecutionTraceStep    `json:"execution_trace,omitempty"`
+	Cost           *CostSnapshot           `json:"cost,omitempty"`
+}
+
+type AgentContextSnapshot struct {
+	Enabled bool                 `json:"enabled"`
+	Purpose string               `json:"purpose,omitempty"`
+	Sources []AgentContextSource `json:"sources"`
+}
+
+type AgentContextSource struct {
+	URL        string `json:"url"`
+	Status     string `json:"status"`
+	HTTPStatus int    `json:"http_status,omitempty"`
+	Bytes      int    `json:"bytes,omitempty"`
+	SHA256     string `json:"sha256,omitempty"`
+	Excerpt    string `json:"excerpt,omitempty"`
+	Error      string `json:"error,omitempty"`
+}
+
+type ExecutionTraceStep struct {
+	Order    int    `json:"order"`
+	Actor    string `json:"actor"`
+	Action   string `json:"action"`
+	Evidence string `json:"evidence,omitempty"`
 }
 
 type TripCodeMemoryEntry struct {
@@ -55,10 +81,21 @@ type TripCodeMemorySnapshot struct {
 }
 
 type Evidence struct {
-	Source      string `json:"source"`
-	Title       string `json:"title"`
-	Observation string `json:"observation"`
-	URL         string `json:"url,omitempty"`
+	Source           string   `json:"source"`
+	Title            string   `json:"title"`
+	Observation      string   `json:"observation"`
+	URL              string   `json:"url,omitempty"`
+	SourceDate       string   `json:"source_date,omitempty"`
+	ComputedAt       string   `json:"computed_at,omitempty"`
+	FilingDate       string   `json:"filing_date,omitempty"`
+	FiledAt          string   `json:"filed_at,omitempty"`
+	Stale            *bool    `json:"stale,omitempty"`
+	Caveats          []string `json:"caveats,omitempty"`
+	QualityFlags     []string `json:"quality_flags,omitempty"`
+	EvidenceHashes   []string `json:"evidence_hashes,omitempty"`
+	PayloadMode      string   `json:"payload_mode,omitempty"`
+	RouteProvenance  string   `json:"route_provenance,omitempty"`
+	ProvenanceLabels []string `json:"provenance_labels,omitempty"`
 }
 
 type SpecialistResult struct {
@@ -69,16 +106,32 @@ type SpecialistResult struct {
 }
 
 type BriefResponse struct {
-	Issuer      string             `json:"issuer"`
-	Question    string             `json:"question"`
-	GeneratedAt time.Time          `json:"generated_at"`
-	Mode        string             `json:"mode"`
-	Plan        []string           `json:"plan"`
-	Findings    []SpecialistResult `json:"findings"`
-	Brief       string             `json:"brief"`
-	NextAction  string             `json:"next_action"`
-	Disclosures []string           `json:"disclosures"`
-	Cost        *CostSnapshot      `json:"cost,omitempty"`
+	Issuer           string                  `json:"issuer"`
+	Question         string                  `json:"question"`
+	GeneratedAt      time.Time               `json:"generated_at"`
+	Mode             string                  `json:"mode"`
+	Plan             []string                `json:"plan"`
+	Findings         []SpecialistResult      `json:"findings"`
+	EvidenceFidelity EvidenceFidelitySummary `json:"evidence_fidelity"`
+	Brief            string                  `json:"brief"`
+	NextAction       string                  `json:"next_action"`
+	Disclosures      []string                `json:"disclosures"`
+	Cost             *CostSnapshot           `json:"cost,omitempty"`
+}
+
+type EvidenceFidelitySummary struct {
+	Status           string   `json:"status"`
+	PayloadModes     []string `json:"payload_modes,omitempty"`
+	SourceDates      []string `json:"source_dates,omitempty"`
+	ComputedAt       []string `json:"computed_at,omitempty"`
+	FilingDates      []string `json:"filing_dates,omitempty"`
+	FiledAt          []string `json:"filed_at,omitempty"`
+	StaleMarkers     []string `json:"stale_markers,omitempty"`
+	Caveats          []string `json:"caveats,omitempty"`
+	QualityFlags     []string `json:"quality_flags,omitempty"`
+	EvidenceHashes   []string `json:"evidence_hashes,omitempty"`
+	RouteProvenance  []string `json:"route_provenance,omitempty"`
+	ProvenanceLabels []string `json:"provenance_labels,omitempty"`
 }
 
 type CostSnapshot struct {

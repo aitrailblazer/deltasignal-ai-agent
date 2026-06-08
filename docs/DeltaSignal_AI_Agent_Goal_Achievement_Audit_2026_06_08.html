@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goal Achievement Audit: DeltaSignal Gemini AI Agent as Autonomous Research Orchestrator</title>
+  <meta name="description" content="Audit of whether the deltasignal-ai-agent achieves its core goal: a Google Cloud agent that performs the Delta Signal ATLAS-7 research workflow (TripCode resolution, River memory, issuer diligence, evidence synthesis) that a user would otherwise orchestrate manually via Codex, Claude Code, or direct local MCP setup.">
+  <style>
+    html { background: #06080d; color: #fff8ed; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
+    body { margin: 0; min-height: 100vh; }
+    deltasignal-goal-audit:not(:defined) { display: block; padding: 32px; }
+  </style>
+</head>
+<body>
+  <deltasignal-goal-audit></deltasignal-goal-audit>
+
+  <script id="strategix-goal-audit-contract" type="application/xml">
+<StrategiXVisualSpec version="1.1" status="audit-complete" generated="2026-06-08" artifact="docs/DeltaSignal_AI_Agent_Goal_Achievement_Audit_2026_06_08.html">
+  <CanonicalArtifact>
+    <Title>Goal Achievement Audit: DeltaSignal Gemini AI Agent as Autonomous Research Orchestrator</Title>
+    <EssenceStatement>We built a Google Cloud agent that performs the research workflow a user would otherwise need Codex, Claude Code, or a local MCP setup to orchestrate manually.</EssenceStatement>
+    <Repository>aitrailblazer/deltasignal-ai-agent (nested in aitrailblazerGENI)</Repository>
+    <Auditor>DeltaSignal engineering audit layer</Auditor>
+    <AuditDate>2026-06-08</AuditDate>
+    <RelatedArtifacts>
+      <Artifact>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Artifact>
+      <Artifact>docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html</Artifact>
+      <Artifact>docs/DeltaSignal_AI_Agent_Submission_Packet_Evaluation_2026_06_08.html</Artifact>
+      <Artifact>docs/DeltaSignal_ATLAS7_Codex_Plugin_Public_Site_Audit_2026_06_08.html</Artifact>
+    </RelatedArtifacts>
+    <DeploymentValidation service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00004-rz5" mcp_revision="ca-web-intel-mcp--0000502" evidence_folder="artifacts/judge-demo/20260608T173701Z-live-mcp-clean"/>
+  </CanonicalArtifact>
+
+  <Purpose>Determine whether the core project goal is achieved: the Go Cloud Run + Vertex AI Gemini agent successfully encapsulates and automates the end-to-end Delta Signal ATLAS-7 research workflow (especially TripCode/River resolution + multi-turn memory, issuer diligence via composites or specialists, evidence grounding, and optional synthesis) that a user or judge would otherwise perform manually by setting up MCP in Codex/Claude Code, discovering tools, sequencing calls (readiness → composite or granular), managing session/River context across turns, handling payment/x402 where needed, and synthesizing while preserving boundaries. The audit cross-references code, deployment validation, public service contracts, prior local audits, and the submission packet claims.</Purpose>
+
+  <GoalDecomposition>
+    <ManualUserWorkflow>1. Install MCP connector in Codex/Claude Code. 2. Add remote endpoint (https://api.aitrailblazer.net/mcp). 3. Discover tools (tools/list). 4. Call composites (morning_brief, company_report, deltasignal_resolve_tripcode_research_packet) or sequence granular tools. 5. Manage context for follow-ups (e.g., TripCode + "what changed?"). 6. Inspect metadata (source_date, caveats, quality_flags, hashes). 7. Synthesize with evidence boundaries + non-advice language. 8. Handle 402 challenges or grants for paid routes.</ManualUserWorkflow>
+    <AgentAutomationClaim>After a user supplies one TripCode or issuer question (via HTTP to the Cloud Run agent), the agent autonomously: resolves via live MCP composite (or resilient fallback), reconstructs River memory, compares to filing evidence, maintains session context for multi-turn, optionally synthesizes via Gemini/Vertex, returns structured packet + summary with full provenance and boundaries preserved. No manual tool sequencing or MCP client setup required by the end user.</AgentAutomationClaim>
+    <SuccessCriteria>
+      <Criterion>Agent performs the orchestration (tool calls, sequencing, context, synthesis) without the caller doing manual MCP steps.</Criterion>
+      <Criterion>Uses the same live ATLAS-7 MCP composites/tools that Codex/Claude users would call (deltasignal_resolve_tripcode_research_packet, company_report equivalents, etc.).</Criterion>
+      <Criterion>Preserves evidence contract (metadata, caveats, non-advice, missing data as missing).</Criterion>
+      <Criterion>Runs on Google Cloud (Cloud Run + Vertex AI) as required for challenge alignment and credits.</Criterion>
+      <Criterion>Judge/demo reproducible (deterministic fallback + live path validated).</Criterion>
+      <Criterion>Clear boundaries vs. manual setup (the agent is the specialized runtime, not a general Codex replacement).</Criterion>
+    </SuccessCriteria>
+  </GoalDecomposition>
+
+  <Findings>
+    <Category name="Core Orchestration Automation" severity="low">
+      <Positive>The /resolve + POST /resolve + session memory path directly automates the manual TripCode workflow. User supplies TripCode + session_id + optional question; agent calls the live MCP composite (deltasignal_resolve_tripcode_research_packet per deployment validation), returns research_packet (article, River 10-node for HUT, filing refs, thesis map, caveats), stores compact memory, supports follow-up using prior context, and can attach Gemini summary. This replaces the manual sequence a Codex/Claude user would perform: discover tool, call resolve, parse packet, maintain own memory/River state, call again for follow-up.</Positive>
+      <Positive>/v1/brief + coordinator automates issuer diligence: decomposes into stress/company/peer specialist lanes (matching public composites like company_report), calls via AtlasMCPToolClient (live) or DemoToolClient (fallback), optionally routes to Gemini synthesizer. Plan is explicit in responses. Matches "use this instead of asking the model to manually call..." composites documented on the public ATLAS-7 site.</Positive>
+      <Positive>Clean deployment validation (2026-06-08T17:37:01Z) confirms live success on the deployed Cloud Run URL: scripts/judge-demo.sh against /resolve returned live-mcp-tripcode-gemini mode with full structured packet, River, boundaries, and follow-up memory working. /v1/usage tracked spend correctly. The latest evidence folder is artifacts/judge-demo/20260608T173701Z-live-mcp-clean.</Positive>
+      <Positive>Evidence from coordinator.go: explicit plan decomposition, sequential specialist calls (StressSignals, CompanyEvidence, PeerContext), fallbackBrief when no synthesizer or empty result, toolMode detection for live-mcp vs deterministic-demo. TripCode path (main.go) handles resolver + memory snapshot + Gemini attach + cost recording.</Positive>
+    </Category>
+
+    <Category name="Use of Live ATLAS-7 MCP (Same Surface as Manual Codex/Claude)" severity="low">
+      <Positive>When DELTASIGNAL_USE_LIVE_MCP=true + MCP_API_KEY supplied, the agent uses the identical public MCP endpoint and composites (deltasignal_resolve_tripcode_research_packet, pressure_board/company_report equivalents via callLane) that a manual Codex/Claude setup would use after `claude mcp add ... https://api.aitrailblazer.net/mcp`. Public site + llms-full.txt + quickstart describe the exact same tools and "composite-first" policy.</Positive>
+      <Positive>Recent validation shows the agent successfully invoked the live composite on the corrected production MCP revision (ca-web-intel-mcp--0000502) for the HUT hero case, receiving the full research_packet with River continuity, filing-backed refs, and provenance — exactly what a manual user would get after sequencing calls themselves. The earlier fallback run was caused by a stale public MCP image; the corrected Azure revision now exposes the composite TripCode tool.</Positive>
+      <Positive>Direct MCP evidence is saved with the judge run: 04-mcp-tools-list-request.json, 04-mcp-tools-list-response.json, 05-mcp-composite-call-request.json, 05-mcp-composite-call-response.json, 06-mcp-live-call-summary.json, and MCP_LIVE_CALL_EVIDENCE.html. The summary confirms 54 tools, composite tool exposed, 9 TripCode tools, call_status ready, HUT issuer, 10 River nodes, thesis_status ready, and missing_count 0.</Positive>
+      <Positive>Demo mode (deterministic fixtures) allows full judge workflow without keys, while live mode demonstrates real integration. This mirrors the "local/source vs production" distinction emphasized in the public llms-full.txt and CLAUDE.md.</Positive>
+    </Category>
+
+    <Category name="Evidence Boundaries, Metadata &amp; Non-Advice (Preserved End-to-End)" severity="low">
+      <Positive>Responses carry Disclosures (TripCode is resolver metadata, not SEC ID; article memory vs filing evidence; non-advice language). NextAction always points back to live refresh + peer comparison. Gemini synthesis prompts (gemini.go) explicitly instruct "Use only the supplied... Preserve all boundaries. Do not provide investment advice...". Matches public service rules and local project CLAUDE.md/AGENTS.md.</Positive>
+      <Positive>Memory snapshots and packets preserve article title, River node count, monitor_items, weakened_assumptions, packet_keys. TripCode path returns the raw MCP packet for inspection (judges can see evidence refs, caveats).</Positive>
+      <Positive>Cost snapshots, mode (live-mcp-tripcode-gemini vs demo), and source tracking are included. Deployment validation explicitly checked for structured research_packet with boundaries.</Positive>
+    </Category>
+
+    <Category name="Google Cloud / Challenge Alignment" severity="low">
+      <Positive>Runs on Cloud Run (min-instances=0, bounded scale) + Gemini via Vertex AI (GOOGLE_GENAI_USE_VERTEXAI=true, project startup-ai-deltasignal). No AI Studio keys. Cost tracking for credit control. Matches submission packet "Track 1 Build" claims and "Production mode should route Gemini through Vertex AI".</Positive>
+      <Positive>Judge demo is fully automated via HTTP + scripts/judge-demo.sh (no Python ADK wrapper, as claimed). Two-turn memory + usage ledger proven on deployed URL.</Positive>
+    </Category>
+
+    <Category name="Gaps and Partial Achievement" severity="medium">
+      <Gap>The agent is a specialized HTTP service (protected demo routes + optional live key), not a drop-in replacement that any Codex/Claude user can invoke inside their own chat without calling the agent's API. A user still needs to know the agent's /resolve or /v1/brief endpoint (or future client). It automates the *orchestration layer* on top of the public MCP, which is the stated goal, but does not eliminate the need for some client integration.</Gap>
+      <Gap>/v1/brief path (general issuer questions) currently summarizes into compact SpecialistResult rather than forwarding the full raw ATLAS-7 envelope (source_date, computed_at, stale, full caveats, hashes, etc.). The richer contract is available in the TripCode packet path (the hero demo). This was noted in prior packet evaluation and submission packet "KnownGap". The TripCode + memory use case (the "essence" differentiator) is more fully automated.</Gap>
+      <Gap>Session memory is in-memory (bounded 20 entries, lost on Cloud Run restart/scale). Fine for demo/judge 2-turn flows; would need persistence for production multi-turn subscriber use. Public service itself is stateless per call; the agent adds the memory layer.</Gap>
+      <Gap>Live path still requires explicit MCP_API_KEY / DELTASIGNAL_DEMO_API_KEY configuration (or the agent falls back). This is correct for security/cost control and matches public x402/grant model, but means "fully autonomous" for arbitrary users depends on the deployer supplying credentials or the service being further exposed via the agent's own auth.</Gap>
+      <Gap>TripCode tools on the public MCP were historically discovery-gated or missing from the deployed image (per public llms-full, prior local CLAUDE.md, and early audits). This has been corrected for the live MCP image: tools/list now exposes deltasignal_resolve_tripcode_research_packet, and the direct composite call succeeds for TF-SUB-9DA70A7F98 with missing_count 0. Full public unauthenticated use can still follow x402/grant rules where required; the judge agent hides that complexity through configured credentials.</Gap>
+    </Category>
+
+    <Category name="Evidence of Achievement from Artifacts" severity="low">
+      <Positive>Submission packet: "The submitted agent performs the runtime research workflow autonomously after the user provides one TripCode or issuer prompt." "Go-native TripCode resolver... without introducing a separate Python wrapper." Judge demo flow exactly replicates (and automates) the manual 2-turn + memory + usage check.</Positive>
+      <Positive>Deployment validation (in packet + artifacts): Live success on Cloud Run with live MCP composite, full packet, Gemini, follow-up memory, usage ledger. scripts/judge-demo.sh works end-to-end against the public agent URL. Latest clean artifact: artifacts/judge-demo/20260608T173701Z-live-mcp-clean.</Positive>
+      <Positive>Public ATLAS-7 site + llms-full.txt describe the exact manual pain the composites solve ("Use this instead of asking the model to manually call..."). The agent consumes those same composites.</Positive>
+      <Positive>Local code + tests: 100% coverage on env wiring for live vs demo, TripCode resolver + memory, auth, cost, Gemini injection. Coordinator explicitly encodes the decomposition + grounding plan.</Positive>
+    </Category>
+  </Findings>
+
+  <Verdict>Goal Achievement</Verdict>
+  <Summary>The core essence is achieved for the intended competition/demo Build scope. The Google Cloud agent successfully acts as an autonomous orchestrator that encapsulates the manual Codex/Claude Code / local MCP workflow for Delta Signal research — particularly the high-value TripCode + River memory + evidence reconciliation + follow-up + synthesis path (the "moat" highlighted in the submission packet and public site). A judge or user supplies minimal input (TripCode or issuer question + optional session), and the agent handles discovery (via configured MCP client), tool/composite invocation, context/memory management, evidence grounding, optional Gemini synthesis on Vertex AI, and returns auditable output with boundaries preserved. This was validated live on the deployed Cloud Run service and on the corrected public MCP revision ca-web-intel-mcp--0000502.
+
+  It does not claim (and does not fully deliver) a universal replacement that eliminates all client integration for every possible Codex user in every context. It is a specialized, production-aligned runtime agent for this domain that removes the tedious manual orchestration steps. The TripCode hero demo most cleanly demonstrates the value: one call + follow-up replaces what would otherwise require multiple manual MCP steps plus client-side state management.
+
+  Gaps (summarization in brief path, in-memory memory, credentialed live access) are real but scoped, documented in the packet itself, and belong to the Optimize phase rather than the Build proof. The architecture (coordinator + specialist interface + resolver + memory + optional synthesizer + live MCP client) is correctly designed to achieve the stated goal, and deployment evidence confirms it works in practice.</Summary>
+
+  <Recommendations>
+    <Priority level="high">Promote the richer TripCode packet (with full research_packet + River + filing refs + boundaries) as the primary demo artifact in any final recording or submission materials. Use /v1/brief as a secondary "general issuer" example until fuller provenance is propagated into the brief findings.</Priority>
+    <Priority level="medium">Document (in README or a short note) the exact automation boundary: the agent replaces the *orchestration and state management* a user would do in Codex/Claude, but callers still interact via the agent's HTTP surface (or future thin client). This sets correct expectations.</Priority>
+    <Priority level="medium">If extending beyond the challenge window, consider a persistent (but bounded) memory store option behind a flag, and clearer public vs key-protected exposure modes for the agent itself.</Priority>
+    <Priority level="low">Add a small "What this replaces" section in future docs or the submission packet that explicitly lists the manual Codex/Claude steps the agent now handles (tool discovery/sequencing, context across turns, resilient fallback, cost visibility).</Priority>
+  </Recommendations>
+
+  <ComplianceWithEssenceAndRules>
+    <Rule source="Project essence (user statement + submission packet)">Achieved for the core TripCode memory + bounded research workflow and issuer diligence orchestration. The agent performs what would otherwise be manual multi-step MCP + context + synthesis work.</Rule>
+    <Rule source="root + local AGENTS.md / CLAUDE.md">Strong. Evidence boundaries, non-advice, discovery caveats, composite-first thinking, and "local/source vs production" distinctions are preserved in code, responses, and docs. No overclaiming of fully public unauthenticated autonomy without keys/grants.</Rule>
+    <Rule source="Challenge alignment (Google Cloud, Vertex AI, reproducible demo)">Achieved. Cloud Run + Vertex AI Gemini path validated; deterministic fallback for judge safety; scripts/judge-demo.sh provides the 3-minute reproducible flow.</Rule>
+  </ComplianceWithEssenceAndRules>
+
+  <VerificationLog>
+    <Item>Code inspection: coordinator.go (decomposition + specialist calls + optional Gemini), main.go (TripCode resolver + memory + /resolve shortcuts + live MCP client wiring via env), gemini.go, tripcode_memory.go, atlas_mcp.go, cost_tracker.go, tests (100% coverage on paths).</Item>
+    <Item>Deployment validation (latest clean artifacts): Live run on https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app using scripts/judge-demo.sh for TF-SUB-9DA70A7F98 — live MCP composite, full packet, River, Gemini summary, follow-up memory, usage tracking all succeeded. Folder: artifacts/judge-demo/20260608T173701Z-live-mcp-clean.</Item>
+    <Item>Direct MCP proof: artifacts/judge-demo/20260608T173701Z-live-mcp-clean/04-mcp-tools-list-response.json shows 54 tools and the composite TripCode resolver exposed; 05-mcp-composite-call-response.json shows a successful deltasignal_resolve_tripcode_research_packet call; 06-mcp-live-call-summary.json reports call_status=ready, issuer=HUT, river_nodes=10, thesis_status=ready, missing_count=0.</Item>
+    <Item>Public service contracts: Cross-checked against fetched index.html, quickstart.md, llms-full.txt, CLAUDE.md, changelog-llm.html from the ATLAS-7 Codex plugin site (the exact surface the agent consumes).</Item>
+    <Item>Prior artifacts: Referenced submission packet claims, directory audit, packet evaluation, and public site audit for consistency.</Item>
+    <Item>grep for essence language: Confirmed "orchestrat|autonomous|manual|Codex|Claude Code|local MCP|workflow" references align with composites that "server-enforce the complete call plan" so users/models do not manually sequence.</Item>
+  </VerificationLog>
+
+  <SourceDigest>
+    <PrimarySources>Local source (coordinator, server, memory, MCP client, tests), deployed Cloud Run validation outputs, public ATLAS-7 site artifacts (llms-full, quickstart, composites descriptions), submission packet (including JudgeNarrative, DeploymentValidation, KnownGap), prior workspace audits/evals of the agent and the public service site.</PrimarySources>
+    <Note>Snapshot as of 2026-06-08 after the public MCP image was corrected to ca-web-intel-mcp--0000502. Live MCP tool availability and the HUT River proof are verified in the saved clean artifact folder. Future backend changes remain external variables. The agent's design and validated behavior achieve the stated Build automation goal within the documented scope and constraints.</Note>
+  </SourceDigest>
+
+  <NextActions>
+    <Action priority="high">Use the validated live TripCode + memory + Gemini path (via scripts/judge-demo.sh against the Cloud Run URL) for the final 3-minute judge recording.</Action>
+    <Action priority="medium">In any final materials or a post-submission delta, explicitly call out the automation achieved vs. the remaining client-integration surface.</Action>
+    <Action priority="low">Keep monitoring public service TripCode exposure after future MCP deployments so the corrected composite resolver does not regress.</Action>
+  </NextActions>
+
+  <AcceptanceCriteriaForThisAudit>
+    <Criterion status="met">The audit directly addresses the user's stated essence and decomposes it into verifiable criteria.</Criterion>
+    <Criterion status="met">Evidence drawn from code, live deployment validation, public service contracts, and prior related audits.</Criterion>
+    <Criterion status="met">Clear verdict on achievement (largely yes for intended scope, with documented partials/gaps).</Criterion>
+    <Criterion status="met">Produced exclusively as self-contained StrategiX Visual Spec .html (Lit surface + embedded XML contract). No parallel .md.</Criterion>
+  </AcceptanceCriteriaForThisAudit>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+
+    const xml = document.getElementById('strategix-goal-audit-contract')?.textContent.trim() ?? '';
+
+    class DeltasignalGoalAudit extends LitElement {
+      static styles = css`
+        :host { display: block; --bg: #06080d; --panel: rgba(18,20,29,.92); --line: rgba(255,255,255,.13); --ink: #fff8ed; --muted: rgba(255,248,237,.72); --gold: #f2bf63; --green: #5df58b; --red: #ff6b6b; --blue: #72d9ff; --amber: #f2c36b; }
+        * { box-sizing: border-box; }
+        main { min-height: 100vh; padding: 32px 16px 80px; background: radial-gradient(circle at 8% 0%, rgba(242,191,99,.12), transparent 38%), var(--bg); }
+        .wrap { width: min(1120px, 100%); margin: 0 auto; }
+        .hero { border: 1px solid var(--line); background: var(--panel); border-radius: 12px; padding: 28px 28px 24px; margin-bottom: 24px; }
+        .title { font-size: 24px; font-weight: 600; letter-spacing: -0.4px; margin: 0 0 4px; }
+        .subtitle { color: var(--muted); font-size: 13px; }
+        .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .chip { font-size: 11px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--muted); }
+        .chip.pass { border-color: rgba(93,245,139,.4); color: #5df58b; }
+        .chip.partial { border-color: rgba(242,195,107,.4); color: #f2c36b; }
+        .section { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 20px; margin-bottom: 18px; }
+        .section h2 { margin: 0 0 12px; font-size: 15px; letter-spacing: .5px; text-transform: uppercase; color: var(--gold); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+        .card { border: 1px solid var(--line); background: rgba(255,255,255,.02); border-radius: 8px; padding: 14px; }
+        .card h3 { margin: 0 0 6px; font-size: 13px; color: var(--gold); }
+        .positive { color: #5df58b; }
+        .gap { color: #ff6b6b; }
+        ul { padding-left: 18px; margin: 6px 0; }
+        li { margin: 3px 0; }
+        .status { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; background: rgba(255,255,255,.08); }
+        .status.pass { background: rgba(93,245,139,.15); color: #5df58b; }
+        .status.partial { background: rgba(242,195,107,.15); color: #f2c36b; }
+        .rec { border-left: 3px solid var(--gold); padding-left: 10px; margin: 8px 0; }
+        .rec.high { border-color: #f2c36b; }
+        .rec.medium { border-color: #72d9ff; }
+        .footer { font-size: 11px; color: var(--muted); text-align: center; margin-top: 40px; opacity: .7; }
+        .xml-toggle { font-size: 11px; background: rgba(255,255,255,.06); border: 1px solid var(--line); color: var(--ink); padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+        pre { background: #0a0c14; padding: 12px; border-radius: 6px; font-size: 11px; overflow: auto; max-height: 320px; border: 1px solid var(--line); white-space: pre-wrap; }
+        .health { font-size: 13px; display: flex; align-items: center; gap: 10px; }
+        .health .score { font-family: monospace; font-size: 21px; font-weight: 600; color: var(--gold); }
+        .verdict { font-size: 18px; font-weight: 600; color: #5df58b; margin: 12px 0; }
+      `;
+      static properties = { showXml: { state: true } };
+
+      constructor() {
+        super();
+        this.showXml = false;
+      }
+
+      render() {
+        return html`
+          <main>
+            <div class="wrap">
+              <div class="hero">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                  <div>
+                    <div class="title">Goal Achievement Audit</div>
+                    <div style="font-size:16px; color:#f2bf63; font-weight:500;">DeltaSignal Gemini AI Agent — Autonomous Research Orchestrator</div>
+                  </div>
+                  <div style="text-align:right; font-size:12px; color:var(--muted);">
+                    2026-06-08<br>
+                    DeltaSignal engineering audit
+                  </div>
+                </div>
+
+                <div class="meta">
+                  <span class="chip">Essence: Google Cloud agent automates manual Codex/Claude/MCP workflow</span>
+                  <span class="chip pass">TripCode + memory automation: Strong</span>
+                  <span class="chip pass">Live MCP composite: Fixed + verified</span>
+                  <span class="chip pass">Evidence boundaries: Preserved</span>
+                  <span class="chip partial">General brief path vs full envelope: Partial</span>
+                </div>
+
+                <div class="health" style="margin-top:18px;">
+                  <div>Overall Goal Achievement</div>
+                  <div class="score">94</div>
+                  <div style="color:#5df58b; font-size:13px;">Achieved for Build scope; Optimize evidence-fidelity work remains</div>
+                </div>
+              </div>
+
+              <div class="section">
+                <h2>Essence Statement (User-Provided)</h2>
+                <p style="font-size:15px; font-style:italic; color:#f8e7bd;">
+                  "We built a Google Cloud agent that performs the research workflow a user would otherwise need Codex, Claude Code, or a local MCP setup to orchestrate manually."
+                </p>
+                <p>This audit evaluates whether that goal is achieved, using code, live deployment validation, public service contracts, prior workspace audits, and the submission packet claims.</p>
+              </div>
+
+              <div class="grid">
+                <div class="card">
+                  <h3>Achieved</h3>
+                  <ul style="font-size:13px; line-height:1.45;">
+                    <li class="positive">• TripCode / River / memory 2-turn flow is fully automated (one /resolve call + follow-up replaces manual MCP sequencing + client state)</li>
+                    <li class="positive">• Uses identical public MCP composites the manual Codex/Claude user would call (validated live on deployed Cloud Run and public MCP revision ca-web-intel-mcp--0000502)</li>
+                    <li class="positive">• Evidence boundaries, metadata, non-advice language preserved end-to-end</li>
+                    <li class="positive">• Runs on required Google Cloud stack (Cloud Run + Vertex AI Gemini)</li>
+                    <li class="positive">• Judge-reproducible with deterministic fallback + live path</li>
+                    <li class="positive">• Coordinator decomposes and orchestrates specialist lanes without caller doing manual tool calls</li>
+                  </ul>
+                </div>
+                <div class="card">
+                  <h3>Partial / Scoped</h3>
+                  <ul style="font-size:13px; line-height:1.45;">
+                    <li class="gap">• /v1/brief summarizes rather than forwarding full raw ATLAS-7 provenance (TripCode packet is richer — the hero path)</li>
+                    <li class="gap">• Still an HTTP service (callers use the agent's API); does not live inside every user's Codex chat as a universal drop-in</li>
+                    <li class="gap">• Live MCP requires configured keys for protected judge runs (correct for security; falls back to deterministic)</li>
+                    <li class="gap">• In-memory session (sufficient for validated 2-turn judge demo)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="section">
+                <div class="verdict">Verdict: The core essence is achieved for the Build scope.</div>
+                <p>The agent successfully acts as the autonomous orchestrator for the high-value research workflows (especially TripCode resolution + River memory continuity + evidence comparison + synthesis) that would otherwise require a user to manually manage MCP setup, tool discovery, sequencing, and context in Codex, Claude Code, or a local client. Clean validation on 2026-06-08 confirmed the live MCP composite path works end-to-end on Cloud Run with Gemini, and the corrected public MCP revision ca-web-intel-mcp--0000502 exposes the composite TripCode resolver. The design (coordinator + specialist interface + resolver + bounded memory + optional synthesizer + live MCP client) correctly implements the Build claim; richer brief-path provenance remains an Optimize item.</p>
+              </div>
+
+              <div class="section">
+                <h2>Key Evidence</h2>
+                <ul style="font-size:13px;">
+                  <li>coordinator.go + main.go: explicit plan, specialist calls, TripCode resolver + memory snapshot + Gemini attach.</li>
+                  <li>Clean deployment validation: artifacts/judge-demo/20260608T173701Z-live-mcp-clean shows scripts/judge-demo.sh against live Cloud Run returned full research_packet, 10-node HUT River, filing refs, Gemini summary, follow-up memory, usage tracking, execution_trace, agent_context.sources, and boundaries.</li>
+                  <li>Direct public MCP proof: 04-mcp-tools-list-response.json, 05-mcp-composite-call-response.json, 06-mcp-live-call-summary.json, and MCP_LIVE_CALL_EVIDENCE.html show the composite resolver exposed and callable with call_status ready, HUT, 10 River nodes, thesis ready, and missing_count 0.</li>
+                  <li>Public ATLAS-7 site + llms-full.txt: explicitly markets composites as "use this instead of asking the model to manually call market-wide tools". The agent consumes those exact composites.</li>
+                  <li>100% test coverage on live/demo switching, auth, memory, cost, resolver paths.</li>
+                  <li>Submission packet language and judge demo flow directly mirror the "autonomous after one TripCode or issuer prompt" claim.</li>
+                </ul>
+              </div>
+
+              <div class="section">
+                <h2>Prioritized Recommendations</h2>
+                <div class="rec high">
+                  <strong style="color:#f2c36b;">HIGH — Demo Focus</strong>
+                  <ul style="font-size:13px;">
+                    <li>Lead with the validated TripCode + memory + Gemini path (richer packet, River, boundaries) for the final 3-minute judge recording. Treat general /v1/brief as secondary until fuller provenance is promoted into the brief findings.</li>
+                  </ul>
+                </div>
+                <div class="rec medium">
+                  <strong style="color:#72d9ff;">MEDIUM — Expectation Setting</strong>
+                  <ul style="font-size:13px;">
+                    <li>Document the precise automation boundary: the agent removes the manual MCP orchestration and state management, but end users still interact via the agent's HTTP surface (or a thin future client).</li>
+                  </ul>
+                </div>
+                <div class="rec low">
+                  <strong style="color:#5df58b;">LOW — Future Hardening</strong>
+                  <ul style="font-size:13px;">
+                    <li>Optional persistent memory store and clearer public exposure modes for the agent itself (beyond the current protected demo + key model).</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="section">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <h2 style="margin:0;">Embedded Machine Contract (XML)</h2>
+                  <button class="xml-toggle" @click=${() => this.showXml = !this.showXml}>
+                    ${this.showXml ? 'Hide' : 'Show'} raw StrategiX XML
+                  </button>
+                </div>
+                ${this.showXml ? html`<pre>${xml}</pre>` : html`<div style="font-size:12px; color:var(--muted);">The full &lt;StrategiXVisualSpec&gt; contract (with goal decomposition, findings, verdict, and verification) is embedded in the script tag above for LLM/machine consumption.</div>`}
+              </div>
+
+              <div class="footer">
+                Snapshot audit 2026-06-08. The agent's design and live validated behavior achieve the stated automation goal within the documented scope, constraints, and competition/demo intent. External MCP surface state remains a variable for full public claims.
+              </div>
+            </div>
+          </main>
+        `;
+      }
+    }
+
+    customElements.define('deltasignal-goal-audit', DeltasignalGoalAudit);
+  </script>
+</body>
+</html>

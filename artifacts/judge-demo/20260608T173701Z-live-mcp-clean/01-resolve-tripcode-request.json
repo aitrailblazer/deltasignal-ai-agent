@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/resolve?tripcode=TF-SUB-9DA70A7F98&session_id=judge-demo-hut&issuer=HUT&payload_mode=compact&include_filing_evidence=true&include_prior_articles=true&include_thesis_map=true&include_agent_context=true",
+  "headers": {
+    "X-Demo-Key": "[REDACTED]"
+  },
+  "body": null
+}

@@ -54,6 +54,7 @@ func (c Coordinator) BuildBrief(ctx context.Context, req BriefRequest) (BriefRes
 		findings = append(findings, result)
 	}
 
+	evidenceFidelity := BuildEvidenceFidelitySummary(findings)
 	brief := fallbackBrief(req, findings)
 	mode := toolMode(findings)
 	if c.Synthesizer != nil {
@@ -62,6 +63,7 @@ func (c Coordinator) BuildBrief(ctx context.Context, req BriefRequest) (BriefRes
 			mode = "vertex-ai-gemini"
 		}
 	}
+	brief = ensureEvidenceFidelityLine(brief, evidenceFidelity)
 
 	now := time.Now().UTC()
 	if c.Clock != nil {
@@ -69,18 +71,20 @@ func (c Coordinator) BuildBrief(ctx context.Context, req BriefRequest) (BriefRes
 	}
 
 	return BriefResponse{
-		Issuer:      strings.ToUpper(strings.TrimSpace(req.Issuer)),
-		Question:    req.Question,
-		GeneratedAt: now,
-		Mode:        mode,
-		Plan:        plan,
-		Findings:    findings,
-		Brief:       brief,
-		NextAction:  "Review the cited evidence packet, then run a live DeltaSignal/SEC refresh before making any external claim or business decision.",
+		Issuer:           strings.ToUpper(strings.TrimSpace(req.Issuer)),
+		Question:         req.Question,
+		GeneratedAt:      now,
+		Mode:             mode,
+		Plan:             plan,
+		Findings:         findings,
+		EvidenceFidelity: evidenceFidelity,
+		Brief:            brief,
+		NextAction:       "Review the cited evidence packet, then run a live DeltaSignal/SEC refresh before making any external claim or business decision.",
 		Disclosures: []string{
 			"Competition build: existing DeltaSignal systems are treated as authorized integrations or data sources.",
 			"Demo mode uses deterministic fixtures so judges can evaluate the workflow even without private data access.",
 			"Production mode should route Gemini through Vertex AI in project startup-ai-deltasignal.",
+			evidenceFidelityLine(evidenceFidelity),
 		},
 	}, nil
 }
@@ -92,8 +96,21 @@ func fallbackBrief(req BriefRequest, findings []SpecialistResult) string {
 	for _, finding := range findings {
 		parts = append(parts, fmt.Sprintf("%s: %s", finding.Agent, finding.Summary))
 	}
+	parts = append(parts, evidenceFidelityLine(BuildEvidenceFidelitySummary(findings)))
 	parts = append(parts, "Assessment: investigate the issuer only after refreshing live evidence and comparing the stress signal against peers.")
 	return strings.Join(parts, "\n")
+}
+
+func ensureEvidenceFidelityLine(brief string, summary EvidenceFidelitySummary) string {
+	line := evidenceFidelityLine(summary)
+	if strings.Contains(brief, "Evidence fidelity:") {
+		return brief
+	}
+	brief = strings.TrimSpace(brief)
+	if brief == "" {
+		return line
+	}
+	return brief + "\n\n" + line
 }
 
 func toolMode(findings []SpecialistResult) string {

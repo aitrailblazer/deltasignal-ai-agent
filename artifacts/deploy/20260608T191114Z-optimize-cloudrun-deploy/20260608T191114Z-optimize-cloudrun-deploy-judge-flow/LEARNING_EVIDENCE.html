@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Judge Demo | Learning Evidence</title>
+  <style>
+    html { background: #07090f; color: #fff8ef; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
+    body { margin: 0; padding: 28px; }
+    main { max-width: 980px; margin: 0 auto; }
+    .hero, section { border: 1px solid rgba(255,255,255,.14); background: rgba(18,20,28,.9); border-radius: 10px; padding: 22px; margin: 0 0 16px; }
+    .eyebrow { color: #72d9ff; font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 8px 0 12px; font-size: clamp(32px, 6vw, 56px); line-height: 1; letter-spacing: 0; }
+    h2 { margin: 0 0 10px; color: #ffbd5a; font-size: 22px; letter-spacing: 0; }
+    p, li { color: rgba(255,248,239,.8); }
+    code { color: #72d9ff; background: rgba(114,217,255,.09); padding: 2px 5px; border-radius: 5px; }
+    ol { margin: 0; padding-left: 22px; }
+    li { margin: 0 0 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-top: 12px; }
+    .card { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); border-radius: 8px; padding: 14px; }
+    .card b { display: block; color: #fff8ef; margin-bottom: 6px; }
+    pre { overflow: auto; border: 1px solid rgba(255,255,255,.12); background: #0b0e15; border-radius: 8px; padding: 14px; color: #d9f7ff; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Post-run learning evidence | Build to Optimize</div>
+      <h1>What This Run Teaches The Codebase</h1>
+      <p>This file is generated after the judge demo requests complete. It is not the judge proof itself; it is the engineering learning layer used to decide what to harden next.</p>
+    </div>
+
+    <section>
+      <h2>Run Snapshot</h2>
+      <div class="grid">
+        <div class="card"><b>Run ID</b><code>20260608T191114Z-optimize-cloudrun-deploy-judge-flow</code></div>
+        <div class="card"><b>TripCode</b><code>TF-SUB-9DA70A7F98</code></div>
+        <div class="card"><b>Resolve mode</b><code>live-mcp-tripcode-gemini</code></div>
+        <div class="card"><b>Follow-up mode</b><code>session-memory</code></div>
+        <div class="card"><b>Agent context sources</b><code>2</code></div>
+        <div class="card"><b>Agent context status</b><code>fetched, fetched</code></div>
+        <div class="card"><b>Execution trace steps</b><code>8</code></div>
+        <div class="card"><b>Disclosures</b><code>4</code></div>
+        <div class="card"><b>Tracked spend</b><code>0.05 USD</code></div>
+        <div class="card"><b>Remaining estimate</b><code>499.95 USD</code></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Who Evaluated The Run</h2>
+      <p><strong>Evaluator:</strong> <code>scripts/judge-demo.sh deterministic post-run evaluator</code>.</p>
+      <p>The score is not assigned by Gemini. Gemini may synthesize the diligence text, but the run score is computed deterministically from saved JSON fields so it can be repeated by judges or by us after each code change.</p>
+    </section>
+
+    <section>
+      <h2>Run Eval Score</h2>
+      <div class="grid">
+        <div class="card"><b>Total</b><code>100 / 100</code></div>
+        <div class="card"><b>Route packet</b><code>15 / 15</code></div>
+        <div class="card"><b>Public guide context</b><code>15 / 15</code></div>
+        <div class="card"><b>Execution trace</b><code>15 / 15</code></div>
+        <div class="card"><b>Session memory</b><code>15 / 15</code></div>
+        <div class="card"><b>Boundaries</b><code>10 / 10</code></div>
+        <div class="card"><b>Resolver parity</b><code>20 / 20</code></div>
+        <div class="card"><b>Cost ledger</b><code>10 / 10</code></div>
+      </div>
+      <p><strong>Improvement signal:</strong> resolver parity is the largest remaining swing factor. A fully live MCP composite response scores 20/20; a disclosed deterministic fallback scores 10/20 because it is reliable but not the final production path.</p>
+    </section>
+
+    <section>
+      <h2>What The Run Proved</h2>
+      <ol>
+        <li>The cloud-hosted Go agent accepted one high-level TripCode goal through the judge route.</li>
+        <li>The agent fetched public ATLAS-7 operating guides when <code>include_agent_context=true</code> was set, and the response recorded source status, byte count, SHA-256 hashes, and excerpts.</li>
+        <li>The response exposed <code>execution_trace</code>, giving observable proof of tool selection, resolver call, memory write, context loading, Gemini synthesis, and cost recording without exposing hidden chain-of-thought.</li>
+        <li>The second request used session memory, proving the agent can preserve River continuity across turns.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>What The Run Exposed</h2>
+      <p>Live MCP resolver returned without a live_mcp_error field. Preserve this as the preferred production path and keep fallback tests for resilience.</p>
+    </section>
+
+    <section>
+      <h2>Code Improvements To Carry Forward</h2>
+      <ol>
+        <li><strong>Resolver parity:</strong> make the public ATLAS-7 MCP endpoint and configured tool name match the Cloud Run agent contract before recording the final public demo.</li>
+        <li><strong>Trace precision:</strong> keep separate actors for <code>google-agent</code>, <code>mcp</code>, and <code>gemini</code> so evidence does not overstate which layer performed which work.</li>
+        <li><strong>Evidence fidelity:</strong> propagate source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels through every brief path in the Optimize phase.</li>
+        <li><strong>Cost guardrail:</strong> keep <code>min-instances=0</code>, reuse saved artifacts for review, and avoid repeated live Gemini/MCP runs unless they prove a new deployment or fixed resolver path.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Machine Contract</h2>
+      <pre>&lt;StrategiXVisualSpec id="deltasignal-judge-demo-learning-evidence" version="1.0" status="post-run-learning"&gt;
+  &lt;Run id="20260608T191114Z-optimize-cloudrun-deploy-judge-flow" tripcode="TF-SUB-9DA70A7F98" resolve_mode="live-mcp-tripcode-gemini" followup_mode="session-memory" /&gt;
+  &lt;Evaluator type="deterministic-script" owner="scripts/judge-demo.sh"&gt;Scores are computed from saved JSON response fields, not assigned by Gemini.&lt;/Evaluator&gt;
+  &lt;Score total="100" max="100"&gt;
+    &lt;Criterion name="RoutePacket" score="15" max="15" /&gt;
+    &lt;Criterion name="PublicGuideContext" score="15" max="15" /&gt;
+    &lt;Criterion name="ExecutionTrace" score="15" max="15" /&gt;
+    &lt;Criterion name="SessionMemory" score="15" max="15" /&gt;
+    &lt;Criterion name="Boundaries" score="10" max="10" /&gt;
+    &lt;Criterion name="ResolverParity" score="20" max="20" /&gt;
+    &lt;Criterion name="CostLedger" score="10" max="10" /&gt;
+  &lt;/Score&gt;
+  &lt;Purpose&gt;Capture post-run learning that should improve the Go agent, MCP resolver parity, evidence trace, and Optimize-phase roadmap.&lt;/Purpose&gt;
+  &lt;Proofs&gt;
+    &lt;AgentContext sources="2" statuses="fetched, fetched" /&gt;
+    &lt;ExecutionTrace steps="8" /&gt;
+    &lt;SessionMemory mode="session-memory" /&gt;
+    &lt;Cost tracked_spend_usd="0.05" remaining_usd="499.95" /&gt;
+  &lt;/Proofs&gt;
+  &lt;Learning&gt;Live MCP resolver returned without a live_mcp_error field. Preserve this as the preferred production path and keep fallback tests for resilience.&lt;/Learning&gt;
+  &lt;NextCodeImprovements&gt;
+    &lt;Item&gt;Fix public MCP resolver parity and configured tool-name agreement before final public demo claims.&lt;/Item&gt;
+    &lt;Item&gt;Preserve observable execution_trace without exposing hidden chain-of-thought.&lt;/Item&gt;
+    &lt;Item&gt;Carry richer ATLAS-7 provenance into every user-facing brief path in Optimize.&lt;/Item&gt;
+    &lt;Item&gt;Keep cost guardrails active for the 500 USD credit budget.&lt;/Item&gt;
+  &lt;/NextCodeImprovements&gt;
+&lt;/StrategiXVisualSpec&gt;</pre>
+    </section>
+  </main>
+  <script id="strategix-learning-evidence-contract" type="application/xml">
+<StrategiXVisualSpec id="deltasignal-judge-demo-learning-evidence" version="1.0" status="post-run-learning">
+  <Run id="20260608T191114Z-optimize-cloudrun-deploy-judge-flow" tripcode="TF-SUB-9DA70A7F98" resolve_mode="live-mcp-tripcode-gemini" followup_mode="session-memory" />
+  <Evaluator type="deterministic-script" owner="scripts/judge-demo.sh">Scores are computed from saved JSON response fields, not assigned by Gemini.</Evaluator>
+  <Score total="100" max="100">
+    <Criterion name="RoutePacket" score="15" max="15" />
+    <Criterion name="PublicGuideContext" score="15" max="15" />
+    <Criterion name="ExecutionTrace" score="15" max="15" />
+    <Criterion name="SessionMemory" score="15" max="15" />
+    <Criterion name="Boundaries" score="10" max="10" />
+    <Criterion name="ResolverParity" score="20" max="20" />
+    <Criterion name="CostLedger" score="10" max="10" />
+  </Score>
+  <Purpose>Capture post-run learning that should improve the Go agent, MCP resolver parity, evidence trace, and Optimize-phase roadmap.</Purpose>
+  <Proofs>
+    <AgentContext sources="2" statuses="fetched, fetched" />
+    <ExecutionTrace steps="8" />
+    <SessionMemory mode="session-memory" />
+    <Cost tracked_spend_usd="0.05" remaining_usd="499.95" />
+  </Proofs>
+  <Learning>Live MCP resolver returned without a live_mcp_error field. Preserve this as the preferred production path and keep fallback tests for resilience.</Learning>
+  <NextCodeImprovements>
+    <Item>Fix public MCP resolver parity and configured tool-name agreement before final public demo claims.</Item>
+    <Item>Preserve observable execution_trace without exposing hidden chain-of-thought.</Item>
+    <Item>Carry richer ATLAS-7 provenance into every user-facing brief path in Optimize.</Item>
+    <Item>Keep cost guardrails active for the 500 USD credit budget.</Item>
+  </NextCodeImprovements>
+</StrategiXVisualSpec>
+  </script>
+</body>
+</html>

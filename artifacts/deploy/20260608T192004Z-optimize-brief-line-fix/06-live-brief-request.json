@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/v1/brief",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Demo-Key": "[REDACTED]"
+  },
+  "body": {
+    "issuer": "HUT",
+    "question": "After the HUT TripCode River proof, what evidence-backed execution risks should the agent surface next?"
+  },
+  "purpose": "Post-redeploy Track 2 Optimize validation: synthesized /v1/brief body must include Evidence fidelity line."
+}

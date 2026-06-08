@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal MCP Live Call Evidence</title>
+  <style>
+    html { background:#05070b; color:#fff8ef; font-family:Inter,system-ui,sans-serif; line-height:1.5; }
+    body { margin:0; padding:32px 16px 56px; }
+    main { max-width:1120px; margin:0 auto; }
+    .hero,.panel { border:1px solid rgba(255,255,255,.13); background:rgba(16,18,25,.9); border-radius:10px; padding:22px; margin:16px 0; }
+    .hero { border-color:rgba(93,245,139,.35); background:linear-gradient(135deg,rgba(93,245,139,.13),rgba(114,217,255,.06)),rgba(16,18,25,.9); }
+    h1 { margin:8px 0 10px; font-size:clamp(34px,6vw,68px); line-height:1; letter-spacing:0; }
+    h2 { margin:0 0 12px; color:#ffb743; letter-spacing:0; }
+    p,li { color:rgba(255,248,239,.76); }
+    .eyebrow { color:#5df58b; font-weight:900; text-transform:uppercase; font-size:12px; }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+    .card { border:1px solid rgba(255,255,255,.11); border-radius:8px; padding:14px; background:rgba(255,255,255,.04); }
+    .card b { display:block; color:#fff8ef; margin-bottom:4px; }
+    code { color:#72d9ff; }
+    pre { max-height:420px; overflow:auto; white-space:pre-wrap; font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; color:#f8d998; background:#080b10; border-radius:8px; padding:14px; }
+    @media(max-width:850px){.grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="eyebrow">Live MCP evidence | Track 1 Build</div>
+    <h1>Composite TripCode resolver call saved.</h1>
+    <p>This artifact records the live MCP calls made after fixing the stale public MCP deployment. Request files redact the API key; response files preserve the full JSON returned by the endpoint.</p>
+  </section>
+  <section class="panel">
+    <h2>Summary</h2>
+    <div class="grid">
+      <div class="card"><b>Tools exposed</b><span>54</span></div>
+      <div class="card"><b>Composite tool</b><span>True</span></div>
+      <div class="card"><b>Call status</b><span>ready</span></div>
+      <div class="card"><b>River nodes</b><span>10</span></div>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>Saved Files</h2>
+    <ul>
+      <li><code>04-mcp-tools-list-request.json</code>: redacted tools/list request.</li>
+      <li><code>04-mcp-tools-list-response.json</code>: full tools/list response proving the composite tool is exposed.</li>
+      <li><code>05-mcp-composite-call-request.json</code>: redacted composite TripCode resolver request.</li>
+      <li><code>05-mcp-composite-call-response.json</code>: full composite resolver response.</li>
+      <li><code>06-mcp-live-call-summary.json</code>: compact verification summary.</li>
+    </ul>
+  </section>
+  <section class="panel">
+    <h2>Machine Summary</h2>
+    <pre>{
+  &quot;tool_count&quot;: 54,
+  &quot;has_composite_tool&quot;: true,
+  &quot;tripcode_tools&quot;: [
+    &quot;deltasignal_generate_article_tripcode&quot;,
+    &quot;deltasignal_list_article_tripcodes&quot;,
+    &quot;deltasignal_resolve_article_tripcode&quot;,
+    &quot;deltasignal_resolve_tripcode_research_packet&quot;,
+    &quot;deltasignal_resolve_river_tripcode&quot;,
+    &quot;deltasignal_reverse_search_river&quot;,
+    &quot;deltasignal_generate_filing_tripcode&quot;,
+    &quot;deltasignal_resolve_filing_tripcode&quot;,
+    &quot;deltasignal_article_thesis_map&quot;
+  ],
+  &quot;call_has_error&quot;: false,
+  &quot;call_status&quot;: &quot;ready&quot;,
+  &quot;tripcode&quot;: &quot;TF-SUB-9DA70A7F98&quot;,
+  &quot;issuer&quot;: &quot;HUT&quot;,
+  &quot;river_nodes&quot;: 10,
+  &quot;thesis_status&quot;: &quot;ready&quot;,
+  &quot;missing_count&quot;: 0
+}</pre>
+  </section>
+  <section class="panel">
+    <h2>Embedded XML Contract</h2>
+    <pre>&lt;StrategiXVisualSpec version=&quot;1.0&quot; status=&quot;evidence&quot; generated=&quot;2026-06-08&quot; artifact=&quot;MCP_LIVE_CALL_EVIDENCE.html&quot;&gt;
+  &lt;Artifact&gt;DeltaSignal MCP Live Call Evidence&lt;/Artifact&gt;
+  &lt;Phase&gt;Build&lt;/Phase&gt;
+  &lt;Purpose&gt;Persist the live MCP tools/list and composite TripCode tools/call evidence after fixing the stale public MCP deployment.&lt;/Purpose&gt;
+  &lt;Endpoint&gt;https://api.aitrailblazer.net/mcp&lt;/Endpoint&gt;
+  &lt;SecurityBoundary&gt;X-API-Key is required for the call and is redacted from saved request artifacts.&lt;/SecurityBoundary&gt;
+  &lt;ToolsList tool_count=&quot;54&quot; has_composite_tool=&quot;true&quot; /&gt;
+  &lt;CompositeCall tool=&quot;deltasignal_resolve_tripcode_research_packet&quot; tripcode=&quot;TF-SUB-9DA70A7F98&quot; issuer=&quot;HUT&quot; status=&quot;ready&quot; river_nodes=&quot;10&quot; thesis_status=&quot;ready&quot; missing_count=&quot;0&quot; has_error=&quot;false&quot; /&gt;
+  &lt;SavedFiles&gt;
+    &lt;File&gt;04-mcp-tools-list-request.json&lt;/File&gt;
+    &lt;File&gt;04-mcp-tools-list-response.json&lt;/File&gt;
+    &lt;File&gt;05-mcp-composite-call-request.json&lt;/File&gt;
+    &lt;File&gt;05-mcp-composite-call-response.json&lt;/File&gt;
+    &lt;File&gt;06-mcp-live-call-summary.json&lt;/File&gt;
+  &lt;/SavedFiles&gt;
+&lt;/StrategiXVisualSpec&gt;</pre>
+  </section>
+</main>
+<script id="strategix-xml" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="evidence" generated="2026-06-08" artifact="MCP_LIVE_CALL_EVIDENCE.html">
+  <Artifact>DeltaSignal MCP Live Call Evidence</Artifact>
+  <Phase>Build</Phase>
+  <Purpose>Persist the live MCP tools/list and composite TripCode tools/call evidence after fixing the stale public MCP deployment.</Purpose>
+  <Endpoint>https://api.aitrailblazer.net/mcp</Endpoint>
+  <SecurityBoundary>X-API-Key is required for the call and is redacted from saved request artifacts.</SecurityBoundary>
+  <ToolsList tool_count="54" has_composite_tool="true" />
+  <CompositeCall tool="deltasignal_resolve_tripcode_research_packet" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" status="ready" river_nodes="10" thesis_status="ready" missing_count="0" has_error="false" />
+  <SavedFiles>
+    <File>04-mcp-tools-list-request.json</File>
+    <File>04-mcp-tools-list-response.json</File>
+    <File>05-mcp-composite-call-request.json</File>
+    <File>05-mcp-composite-call-response.json</File>
+    <File>06-mcp-live-call-summary.json</File>
+  </SavedFiles>
+</StrategiXVisualSpec>
+</script>
+</body>
+</html>

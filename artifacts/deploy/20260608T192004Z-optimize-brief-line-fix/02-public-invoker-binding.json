@@ -1,0 +1,13 @@
+Updated IAM policy for service [deltasignal-ai-agent].
+{
+  "bindings": [
+    {
+      "members": [
+        "allUsers"
+      ],
+      "role": "roles/run.invoker"
+    }
+  ],
+  "etag": "BwZTwvKrp7U=",
+  "version": 1
+}

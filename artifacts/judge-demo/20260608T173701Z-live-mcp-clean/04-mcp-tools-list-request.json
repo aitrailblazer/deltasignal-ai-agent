@@ -1,0 +1,14 @@
+{
+  "url": "https://api.aitrailblazer.net/mcp",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-API-Key": "[REDACTED]"
+  },
+  "body": {
+    "jsonrpc": "2.0",
+    "id": "list",
+    "method": "tools/list",
+    "params": {}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "url": "https://api.aitrailblazer.net/mcp",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-API-Key": "[REDACTED]"
+  },
+  "body": {
+    "jsonrpc": "2.0",
+    "id": "call",
+    "method": "tools/call",
+    "params": {
+      "name": "deltasignal_resolve_tripcode_research_packet",
+      "arguments": {
+        "tripcode": "TF-SUB-9DA70A7F98",
+        "issuer": "HUT",
+        "payload_mode": "compact"
+      }
+    }
+  }
+}

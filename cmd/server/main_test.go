@@ -451,6 +451,20 @@ func TestMuxTripCodeRoutes(t *testing.T) {
 }
 
 func TestMuxResolveJudgeRoutes(t *testing.T) {
+	oldFetchContext := agent.FetchDefaultAgentContext
+	t.Cleanup(func() { agent.FetchDefaultAgentContext = oldFetchContext })
+	agent.FetchDefaultAgentContext = func(context.Context) (agent.AgentContextSnapshot, error) {
+		return agent.AgentContextSnapshot{
+			Enabled: true,
+			Purpose: "test context",
+			Sources: []agent.AgentContextSource{{
+				URL:    "https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/CLAUDE.md",
+				Status: "fetched",
+				Bytes:  123,
+				SHA256: "abc123",
+			}},
+		}, nil
+	}
 	memory := agent.NewTripCodeMemoryStore(2)
 	mux := newMux(
 		slog.New(slog.NewTextHandler(io.Discard, nil)),
@@ -479,11 +493,11 @@ func TestMuxResolveJudgeRoutes(t *testing.T) {
 		t.Fatalf("resolve post unauthorized code = %d", rr.Code)
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/resolve?tripcode=tf-sub-9da70a7f98&session_id=demo2&issuer=hut&payload_mode=compact&include_article_body=true&include_filing_evidence=true&include_prior_articles=true&include_thesis_map=true", nil)
+	req := httptest.NewRequest(http.MethodGet, "/resolve?tripcode=tf-sub-9da70a7f98&session_id=demo2&issuer=hut&payload_mode=compact&include_article_body=true&include_filing_evidence=true&include_prior_articles=true&include_thesis_map=true&include_agent_context=true", nil)
 	req.Header.Set("Authorization", "Bearer judge-key")
 	rr = httptest.NewRecorder()
 	mux.ServeHTTP(rr, req)
-	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"tripcode":"TF-SUB-9DA70A7F98"`) || !strings.Contains(rr.Body.String(), `"issuer":"HUT"`) || !strings.Contains(rr.Body.String(), `"gemini_summary":"judge gemini summary"`) {
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"tripcode":"TF-SUB-9DA70A7F98"`) || !strings.Contains(rr.Body.String(), `"issuer":"HUT"`) || !strings.Contains(rr.Body.String(), `"gemini_summary":"judge gemini summary"`) || !strings.Contains(rr.Body.String(), `"agent_context"`) || !strings.Contains(rr.Body.String(), `"execution_trace"`) {
 		t.Fatalf("resolve get response = %d %s", rr.Code, rr.Body.String())
 	}
 
@@ -538,6 +552,18 @@ func TestMuxTripCodeResolverMissingAndErrors(t *testing.T) {
 	if rr.Code != http.StatusOK || strings.Contains(rr.Body.String(), "gemini_summary") {
 		t.Fatalf("synth error response = %d %s", rr.Code, rr.Body.String())
 	}
+
+	oldFetchContext := agent.FetchDefaultAgentContext
+	t.Cleanup(func() { agent.FetchDefaultAgentContext = oldFetchContext })
+	agent.FetchDefaultAgentContext = func(context.Context) (agent.AgentContextSnapshot, error) {
+		return agent.AgentContextSnapshot{}, errors.New("context failed")
+	}
+	mux = newMux(logger, coordinator, fakeTripCodeResolver{}, agent.NewTripCodeMemoryStore(1), nil, nil)
+	rr = httptest.NewRecorder()
+	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/tripcode", strings.NewReader(`{"tripcode":"TF-SUB-X","include_agent_context":true}`)))
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"agent_context"`) || !strings.Contains(rr.Body.String(), "context failed") {
+		t.Fatalf("context error response = %d %s", rr.Code, rr.Body.String())
+	}
 }
 
 func TestTripCodeRequestHelpers(t *testing.T) {
@@ -549,19 +575,20 @@ func TestTripCodeRequestHelpers(t *testing.T) {
 	values.Set("payload_mode", "full")
 	values.Set("include_article_body", "true")
 	values.Set("include_filing_evidence", "not-bool")
+	values.Set("include_agent_context", "true")
 	req := tripCodeRequestFromQuery(values)
 	if req.TripCode != "TF-SUB-1" || req.Issuer != "HUT" || req.SessionID != "demo" || req.Question != "what changed" || req.PayloadMode != "full" {
 		t.Fatalf("query request fields not loaded: %#v", req)
 	}
-	if !req.IncludeArticleBody || req.IncludeFilingEvidence {
+	if !req.IncludeArticleBody || req.IncludeFilingEvidence || !req.IncludeAgentContext {
 		t.Fatalf("query bools not parsed as expected: %#v", req)
 	}
 
 	merged := mergeTripCodeRequest(
 		agent.TripCodeResearchRequest{TripCode: "base", IncludePriorArticles: true},
-		agent.TripCodeResearchRequest{TripCode: "override", Issuer: "HUT", SessionID: "s", Question: "q", PayloadMode: "compact", IncludeThesisMap: true},
+		agent.TripCodeResearchRequest{TripCode: "override", Issuer: "HUT", SessionID: "s", Question: "q", PayloadMode: "compact", IncludeThesisMap: true, IncludeAgentContext: true},
 	)
-	if merged.TripCode != "override" || merged.Issuer != "HUT" || merged.SessionID != "s" || merged.Question != "q" || merged.PayloadMode != "compact" || !merged.IncludePriorArticles || !merged.IncludeThesisMap {
+	if merged.TripCode != "override" || merged.Issuer != "HUT" || merged.SessionID != "s" || merged.Question != "q" || merged.PayloadMode != "compact" || !merged.IncludePriorArticles || !merged.IncludeThesisMap || !merged.IncludeAgentContext {
 		t.Fatalf("merged request unexpected: %#v", merged)
 	}
 
@@ -574,6 +601,35 @@ func TestTripCodeRequestHelpers(t *testing.T) {
 	errReq.Body = errReadCloser{}
 	if _, err := tripCodeRequestFromResolvePost(errReq); err == nil {
 		t.Fatal("tripCodeRequestFromResolvePost returned nil error for failing body")
+	}
+
+	if got := packetTraceEvidence(nil); got != "packet_keys=0" {
+		t.Fatalf("packetTraceEvidence(nil) = %q", got)
+	}
+	if got := agentContextTraceEvidence(agent.AgentContextSnapshot{Sources: []agent.AgentContextSource{{Status: "unavailable"}}}); !strings.Contains(got, "unknown status=unavailable") {
+		t.Fatalf("agentContextTraceEvidence empty URL = %q", got)
+	}
+	fallbackPacket := map[string]any{"live_mcp_error": "unsupported"}
+	if actor := resolverTraceActor(fallbackPacket); actor != "google-agent" {
+		t.Fatalf("resolverTraceActor fallback = %q", actor)
+	}
+	if action := resolverTraceAction(fallbackPacket); !strings.Contains(action, "fallback") {
+		t.Fatalf("resolverTraceAction fallback = %q", action)
+	}
+	if mode := tripcodeGeminiMode("demo-tripcode-river", fallbackPacket); mode != "demo-tripcode-river-gemini" {
+		t.Fatalf("tripcodeGeminiMode fallback = %q", mode)
+	}
+	if mode := tripcodeGeminiMode("", fallbackPacket); mode != "demo-tripcode-river-gemini" {
+		t.Fatalf("tripcodeGeminiMode empty fallback = %q", mode)
+	}
+	if actor := resolverTraceActor(map[string]any{}); actor != "mcp" {
+		t.Fatalf("resolverTraceActor live = %q", actor)
+	}
+	if action := resolverTraceAction(map[string]any{}); !strings.Contains(action, "bounded research packet") {
+		t.Fatalf("resolverTraceAction live = %q", action)
+	}
+	if mode := tripcodeGeminiMode("live-mcp-tripcode", map[string]any{}); mode != "live-mcp-tripcode-gemini" {
+		t.Fatalf("tripcodeGeminiMode live = %q", mode)
 	}
 }
 

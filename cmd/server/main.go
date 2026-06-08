@@ -155,6 +155,11 @@ func resolveTripCodeHTTP(
 			return tripCodeHTTPResult{status: http.StatusNotFound, body: map[string]string{"error": "no TripCode session memory found"}}
 		}
 		resp := agent.NewSessionMemoryResponse(req, snapshot)
+		resp.ExecutionTrace = []agent.ExecutionTraceStep{
+			traceStep(1, "judge-harness", "Submitted a session-memory follow-up request.", "session_id="+req.SessionID),
+			traceStep(2, "google-agent", "Loaded prior TripCode/River context from the in-memory session store.", "turns="+strconv.Itoa(snapshot.Turns)),
+			traceStep(3, "google-agent", "Returned the stateful follow-up packet without rerunning the TripCode resolver.", "mode=session-memory"),
+		}
 		resp.Cost = costTracker.Record("session-memory")
 		return tripCodeHTTPResult{status: http.StatusOK, body: resp}
 	}
@@ -168,19 +173,42 @@ func resolveTripCodeHTTP(
 		logger.Error("resolve tripcode failed", "error", err)
 		return tripCodeHTTPResult{status: http.StatusBadGateway, body: map[string]string{"error": err.Error()}}
 	}
+	resp.ExecutionTrace = []agent.ExecutionTraceStep{
+		traceStep(1, "judge-harness", "Submitted a high-level TripCode research goal.", "tripcode="+req.TripCode),
+		traceStep(2, "google-agent", "Validated request flags and selected the TripCode/River resolver workflow.", requestTraceEvidence(req)),
+		traceStep(3, "google-agent", "Called the configured ATLAS-7 MCP TripCode resolver.", "tool=deltasignal_resolve_tripcode_research_packet"),
+		traceStep(4, resolverTraceActor(resp.Packet), resolverTraceAction(resp.Packet), packetTraceEvidence(resp.Packet)),
+	}
 	if strings.TrimSpace(req.SessionID) != "" {
 		snapshot := tripcodeMemory.Remember(req.SessionID, resp)
 		resp.Memory = &snapshot
+		resp.ExecutionTrace = append(resp.ExecutionTrace, traceStep(5, "google-agent", "Wrote a session memory entry for second-turn River continuity.", "session_id="+req.SessionID+", turns="+strconv.Itoa(snapshot.Turns)))
+	}
+	if req.IncludeAgentContext {
+		contextSnapshot, err := agent.FetchDefaultAgentContext(ctx)
+		if err != nil {
+			logger.Warn("agent context fetch failed", "error", err)
+			contextSnapshot = agent.AgentContextSnapshot{
+				Enabled: true,
+				Purpose: "Public ATLAS-7 operating guide fetch was requested but failed; do not claim public guide context was used.",
+				Sources: []agent.AgentContextSource{{Status: "unavailable", Error: err.Error()}},
+			}
+		}
+		resp.AgentContext = &contextSnapshot
+		resp.ExecutionTrace = append(resp.ExecutionTrace, traceStep(nextTraceOrder(resp.ExecutionTrace), "google-agent", "Fetched public ATLAS-7 agent operating guides for autonomous workflow context.", agentContextTraceEvidence(contextSnapshot)))
 	}
 	if tripcodeSynthesizer != nil {
 		if generated, err := tripcodeSynthesizer.SynthesizeTripCode(ctx, req, resp); err == nil && strings.TrimSpace(generated) != "" {
 			resp.GeminiSummary = generated
-			resp.Mode = "live-mcp-tripcode-gemini"
+			resp.Mode = tripcodeGeminiMode(resp.Mode, resp.Packet)
+			resp.ExecutionTrace = append(resp.ExecutionTrace, traceStep(nextTraceOrder(resp.ExecutionTrace), "gemini", "Synthesized the judge-facing diligence summary from packet, memory, public agent context, and boundaries.", "model=configured Gemini model"))
 		} else if err != nil {
 			logger.Warn("tripcode Gemini synthesis skipped", "error", err)
+			resp.ExecutionTrace = append(resp.ExecutionTrace, traceStep(nextTraceOrder(resp.ExecutionTrace), "google-agent", "Skipped Gemini synthesis after a synthesis error and preserved the raw MCP packet.", "error="+err.Error()))
 		}
 	}
 	resp.Cost = costTracker.Record("tripcode")
+	resp.ExecutionTrace = append(resp.ExecutionTrace, traceStep(nextTraceOrder(resp.ExecutionTrace), "google-agent", "Recorded local-estimate Google credit usage for this request.", "request_kind=tripcode"))
 	return tripCodeHTTPResult{status: http.StatusOK, body: resp}
 }
 
@@ -219,6 +247,7 @@ func tripCodeRequestFromQuery(values url.Values) agent.TripCodeResearchRequest {
 		IncludeFilingEvidence: queryBool(values, "include_filing_evidence"),
 		IncludePriorArticles:  queryBool(values, "include_prior_articles"),
 		IncludeThesisMap:      queryBool(values, "include_thesis_map"),
+		IncludeAgentContext:   queryBool(values, "include_agent_context"),
 	}
 }
 
@@ -242,7 +271,86 @@ func mergeTripCodeRequest(base, override agent.TripCodeResearchRequest) agent.Tr
 	base.IncludeFilingEvidence = base.IncludeFilingEvidence || override.IncludeFilingEvidence
 	base.IncludePriorArticles = base.IncludePriorArticles || override.IncludePriorArticles
 	base.IncludeThesisMap = base.IncludeThesisMap || override.IncludeThesisMap
+	base.IncludeAgentContext = base.IncludeAgentContext || override.IncludeAgentContext
 	return base
+}
+
+func traceStep(order int, actor, action, evidence string) agent.ExecutionTraceStep {
+	return agent.ExecutionTraceStep{Order: order, Actor: actor, Action: action, Evidence: evidence}
+}
+
+func nextTraceOrder(steps []agent.ExecutionTraceStep) int {
+	maxOrder := 0
+	for _, step := range steps {
+		if step.Order > maxOrder {
+			maxOrder = step.Order
+		}
+	}
+	return maxOrder + 1
+}
+
+func requestTraceEvidence(req agent.TripCodeResearchRequest) string {
+	flags := []string{"payload_mode=" + req.PayloadMode}
+	if req.IncludeFilingEvidence {
+		flags = append(flags, "include_filing_evidence=true")
+	}
+	if req.IncludePriorArticles {
+		flags = append(flags, "include_prior_articles=true")
+	}
+	if req.IncludeThesisMap {
+		flags = append(flags, "include_thesis_map=true")
+	}
+	if req.IncludeAgentContext {
+		flags = append(flags, "include_agent_context=true")
+	}
+	return strings.Join(flags, ", ")
+}
+
+func packetTraceEvidence(packet map[string]any) string {
+	if len(packet) == 0 {
+		return "packet_keys=0"
+	}
+	keys := make([]string, 0, len(packet))
+	for key := range packet {
+		keys = append(keys, key)
+	}
+	return "packet_keys=" + strings.Join(keys, ",")
+}
+
+func resolverTraceActor(packet map[string]any) string {
+	if _, ok := packet["live_mcp_error"]; ok {
+		return "google-agent"
+	}
+	return "mcp"
+}
+
+func resolverTraceAction(packet map[string]any) string {
+	if _, ok := packet["live_mcp_error"]; ok {
+		return "Detected live MCP unavailability and used the deterministic HUT fixture fallback while preserving live_mcp_error in the packet."
+	}
+	return "Returned the bounded research packet with article memory, River context, evidence refs, caveats, and provenance."
+}
+
+func tripcodeGeminiMode(mode string, packet map[string]any) string {
+	if _, ok := packet["live_mcp_error"]; ok {
+		if strings.TrimSpace(mode) == "" {
+			return "demo-tripcode-river-gemini"
+		}
+		return mode + "-gemini"
+	}
+	return "live-mcp-tripcode-gemini"
+}
+
+func agentContextTraceEvidence(snapshot agent.AgentContextSnapshot) string {
+	parts := make([]string, 0, len(snapshot.Sources))
+	for _, source := range snapshot.Sources {
+		label := source.URL
+		if label == "" {
+			label = "unknown"
+		}
+		parts = append(parts, label+" status="+source.Status+" bytes="+strconv.Itoa(source.Bytes)+" sha256="+source.SHA256)
+	}
+	return strings.Join(parts, " | ")
 }
 
 func queryBool(values url.Values, key string) bool {

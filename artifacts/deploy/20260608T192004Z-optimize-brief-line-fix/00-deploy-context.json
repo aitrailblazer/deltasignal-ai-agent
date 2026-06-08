@@ -1,0 +1,8 @@
+{
+  "run_id": "20260608T192004Z-optimize-brief-line-fix",
+  "project": "startup-ai-deltasignal",
+  "region": "us-central1",
+  "service": "deltasignal-ai-agent",
+  "phase": "Track 2 Optimize redeployment",
+  "purpose": "Deploy ensureEvidenceFidelityLine so synthesized /v1/brief bodies carry the evidence-fidelity line."
+}

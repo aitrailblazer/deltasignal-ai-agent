@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:49081/v1/brief",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-Demo-Key": "[REDACTED]"
+  },
+  "body": {
+    "issuer": "HUT",
+    "question": "What issuer stress or opportunity should an analyst investigate next?"
+  },
+  "mode": "deterministic-demo",
+  "purpose": "Verify Track 2 Optimize evidence_fidelity appears in every /v1/brief response without spending live MCP or Gemini credits."
+}

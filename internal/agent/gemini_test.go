@@ -17,11 +17,11 @@ func TestGeminiSynthesizerSynthesizeUsesInjectedGenerator(t *testing.T) {
 			return "brief", nil
 		},
 	}
-	text, err := s.Synthesize(context.Background(), BriefRequest{Issuer: "HUT"}, []string{"plan"}, []SpecialistResult{{Agent: "test"}})
+	text, err := s.Synthesize(context.Background(), BriefRequest{Issuer: "HUT"}, []string{"plan"}, []SpecialistResult{{Agent: "test", Evidence: []Evidence{{PayloadMode: "compact", SourceDate: "2026-06-07"}}}})
 	if err != nil {
 		t.Fatalf("Synthesize returned error: %v", err)
 	}
-	if text != "brief" || gotModel != "gemini-2.5-flash" || !strings.Contains(gotPrompt, "DeltaSignal Gemini AI Agent") || !strings.Contains(gotPrompt, `"issuer": "HUT"`) {
+	if text != "brief" || gotModel != "gemini-2.5-flash" || !strings.Contains(gotPrompt, "DeltaSignal Gemini AI Agent") || !strings.Contains(gotPrompt, `"issuer": "HUT"`) || !strings.Contains(gotPrompt, "evidence_fidelity") || !strings.Contains(gotPrompt, "source dates") {
 		t.Fatalf("unexpected synthesis: text=%q model=%q prompt=%s", text, gotModel, gotPrompt)
 	}
 }
@@ -38,14 +38,23 @@ func TestGeminiSynthesizerSynthesizeTripCodeUsesInjectedGenerator(t *testing.T) 
 		},
 	}
 	text, err := s.SynthesizeTripCode(context.Background(), TripCodeResearchRequest{TripCode: "TF-SUB-X"}, TripCodeResearchResponse{
-		TripCode:    "TF-SUB-X",
-		Packet:      map[string]any{"status": "ready"},
-		Disclosures: DefaultTripCodeDisclosures(),
+		TripCode: "TF-SUB-X",
+		Packet:   map[string]any{"status": "ready"},
+		AgentContext: &AgentContextSnapshot{
+			Enabled: true,
+			Sources: []AgentContextSource{{
+				URL:    "https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/CLAUDE.md",
+				Status: "fetched",
+				SHA256: "abc123",
+			}},
+		},
+		ExecutionTrace: []ExecutionTraceStep{{Order: 1, Actor: "google-agent", Action: "loaded context"}},
+		Disclosures:    DefaultTripCodeDisclosures(),
 	})
 	if err != nil {
 		t.Fatalf("SynthesizeTripCode returned error: %v", err)
 	}
-	if text != "trip summary" || gotModel != "gemini-test" || !strings.Contains(gotPrompt, "TF-SUB-X") || !strings.Contains(gotPrompt, "Preserve all boundaries") {
+	if text != "trip summary" || gotModel != "gemini-test" || !strings.Contains(gotPrompt, "TF-SUB-X") || !strings.Contains(gotPrompt, "Preserve all boundaries") || !strings.Contains(gotPrompt, "agent_context") || !strings.Contains(gotPrompt, "execution_trace") {
 		t.Fatalf("unexpected TripCode synthesis: text=%q model=%q prompt=%s", text, gotModel, gotPrompt)
 	}
 }

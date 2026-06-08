@@ -1,0 +1,10 @@
+{
+  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+  "revision": "deltasignal-ai-agent-00007-x65",
+  "image": "us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T191114Z-optimize-cloudrun-deploy",
+  "health": {
+    "ok": true,
+    "service": "deltasignal-ai-agent",
+    "time": "2026-06-08T19:14:58.085977631Z"
+  }
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Cloud Run Deployment Validation</title>
+  <style>
+    html { background:#05070b; color:#fff8ef; font-family:Inter,system-ui,sans-serif; line-height:1.5; }
+    body { margin:0; padding:32px; }
+    main { max-width:1080px; margin:0 auto; }
+    section,.hero { border:1px solid rgba(255,255,255,.14); background:rgba(16,18,25,.9); border-radius:10px; padding:22px; margin:0 0 16px; }
+    .eyebrow { color:#5df58b; font-size:12px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
+    h1 { margin:8px 0 12px; font-size:clamp(34px,6vw,62px); line-height:1; letter-spacing:0; }
+    h2 { color:#ffb743; margin:0 0 10px; }
+    p,li { color:rgba(255,248,239,.76); }
+    code,pre { background:#0a0d14; color:#72d9ff; border:1px solid rgba(114,217,255,.2); border-radius:6px; padding:2px 6px; }
+    pre { padding:12px; overflow:auto; color:#f8d998; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <div class="eyebrow">Google Cloud Run | Track 2 Optimize</div>
+    <h1>Deployment validation complete.</h1>
+    <p>The latest deployment carries the evidence-fidelity brief-line fix and proves the live /v1/brief path returns provenance-carried evidence metadata in both JSON and user-visible brief text.</p>
+  </div>
+  <section>
+    <h2>Deployment</h2>
+    <ul>
+      <li>Revision: <code>deltasignal-ai-agent-00008-kzh</code></li>
+      <li>Image: <code>us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T192004Z-optimize-brief-line-fix</code></li>
+      <li>URL: <code>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</code></li>
+      <li>Health: <code>ok=true</code></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Live Brief Validation</h2>
+    <pre>{
+  "issuer": "HUT",
+  "mode": "vertex-ai-gemini",
+  "evidence_fidelity": {
+    "status": "provenance-carried",
+    "payload_modes": [
+      "compact"
+    ],
+    "source_dates": [
+      "2026-06-08"
+    ],
+    "computed_at": [
+      "2026-06-08T06:30:57.517617Z"
+    ],
+    "caveats": [
+      "deltasignal_spectra_field_map failed: spectra_field_map_not_found"
+    ],
+    "quality_flags": [
+      "High",
+      "Medium"
+    ],
+    "evidence_hashes": [
+      "sha256:71b3f45be716c038b11f130c4890ec5263d6b0d7cfe17083da3237d8dcb35b4e",
+      "sha256:12fe62111ea0767b78f518da888a3dfbf2bce789a1cb029aedec0829759794ea"
+    ],
+    "route_provenance": [
+      "deltasignal_pressure_board",
+      "deltasignal_company_report",
+      "deltasignal_covenant_stress"
+    ],
+    "provenance_labels": [
+      "{ \"caveats\": [], \"compacted\": false, \"compaction\": [ { \"compacted\": false, \"tool\": \"deltasignal_readiness\" }, { \"compacted\": false, \"tool\": \"deltasignal_top_stressed\" }, { \"compacted\": false, \"tool\": \"deltasignal_risk_distribution\" } ], \"c...",
+      "{ \"compacted\": false, \"elapsed_ms\": 548, \"latest_computed_source_date\": \"2026-06-08\", \"source_date\": \"2026-06-08\" }",
+      "{ \"computed_at_utc\": \"2026-06-08T06:33:48.368837Z\", \"crypto_units_basis\": \"filing_xbrl_context\", \"data_source\": \"linkbase_rollup\", \"debt_coverage_status\": \"resolved_zero\", \"is_linkbase_backed\": true, \"market_regime\": \"bearish_falling_vol\",...",
+      "{ \"data_source\": \"linkbase_rooted_facts\", \"is_linkbase_backed\": true, \"mapping_hit_count\": 0, \"quality_flag\": \"High\", \"root_resolution_method\": \"standard_root_match\" }",
+      "{ \"caveats\": [ \"deltasignal_spectra_field_map failed: spectra_field_map_not_found\" ], \"compacted\": false, \"compaction\": [ { \"compacted\": false, \"tool\": \"deltasignal_readiness\" }, { \"compacted\": false, \"tool\": \"deltasignal_company_fundament...",
+      "{ \"compacted\": false, \"elapsed_ms\": 564, \"latest_computed_source_date\": \"2026-06-08\", \"source_date\": \"2026-06-08\" }",
+      "{ \"compacted\": false, \"elapsed_ms\": 65, \"source_date\": \"2026-06-08\" }"
+    ]
+  },
+  "brief_has_evidence_fidelity_line": true,
+  "disclosures": [
+    "Competition build: existing DeltaSignal systems are treated as authorized integrations or data sources.",
+    "Demo mode uses deterministic fixtures so judges can evaluate the workflow even without private data access.",
+    "Production mode should route Gemini through Vertex AI in project startup-ai-deltasignal.",
+    "Evidence fidelity: provenance-carried; payload_mode=compact; source_date=2026-06-08; computed_at=2026-06-08T06:30:57.517617Z; quality_flags=High, Medium; caveats=deltasignal_spectra_field_map failed: spectra_field_map_not_found; evidence_hashes=sha256:71b3f45be716c038b11f130c4890ec5263d6b0d7cfe17083da3237d8dcb35b4e, sha256:12fe62111ea0767b78f518da888a3dfbf2bce789a1cb029aedec0829759794ea; route=deltasignal_pressure_board, deltasignal_company_report"
+  ],
+  "cost": {
+    "enabled": true,
+    "source": "local-estimate",
+    "currency": "USD",
+    "request_kind": "brief",
+    "request_cost_usd": 0.02,
+    "tracked_spent_usd": 0.02,
+    "budget_usd": 500,
+    "remaining_usd": 499.98,
+    "official_billing": {
+      "available": false,
+      "source": "unavailable",
+      "project_id": "startup-ai-deltasignal",
+      "billing_account_name": "billingAccounts/018530-615AB8-696753",
+      "billing_enabled": true,
+      "note": "Official Google Cloud Billing spend is unavailable unless supplied from Cloud Billing export, Billing console, or another official billing source."
+    },
+    "note": "Local estimate for demo/test requests. Exact Google Cloud account spend and remaining credits require Cloud Billing export or the Billing console."
+  }
+}</pre>
+  </section>
+  <section>
+    <h2>Evidence Files</h2>
+    <ul>
+      <li><code>01-cloudbuild-deploy.log</code></li>
+      <li><code>02-public-invoker-binding.json</code></li>
+      <li><code>03-service-describe.json</code></li>
+      <li><code>04-health-response.json</code></li>
+      <li><code>06-live-brief-request.json</code></li>
+      <li><code>06-live-brief-response.json</code></li>
+      <li><code>07-live-brief-summary.json</code></li>
+      <li><code>08-usage-response.json</code></li>
+    </ul>
+  </section>
+  <script id="strategix-deployment-validation-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="deployed-and-validated" generated="2026-06-08" artifact="DEPLOYMENT_VALIDATION.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Cloud Run Deployment Validation</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <Track>Track 2 Optimize</Track>
+    <DeploymentRun>20260608T192004Z-optimize-brief-line-fix</DeploymentRun>
+  </CanonicalArtifact>
+  <Deployment>
+    <Project>startup-ai-deltasignal</Project>
+    <Region>us-central1</Region>
+    <Service>deltasignal-ai-agent</Service>
+    <Revision>deltasignal-ai-agent-00008-kzh</Revision>
+    <Image>us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T192004Z-optimize-brief-line-fix</Image>
+    <URL>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</URL>
+  </Deployment>
+  <Validation>
+    <Health status="passed">GET /health returned ok=true.</Health>
+    <Brief status="passed">POST /v1/brief returned evidence_fidelity.status provenance-carried.</Brief>
+    <BriefBody status="passed">The synthesized brief body includes an Evidence fidelity line after ensureEvidenceFidelityLine.</BriefBody>
+    <Usage status="passed">GET /v1/usage returned local-estimate tracking with remaining budget.</Usage>
+  </Validation>
+  <CostBoundary>Usage values are local estimates for demo requests. Official Google Cloud Billing spend requires Billing export or Billing console data.</CostBoundary>
+  <EvidenceFiles>
+    <File>01-cloudbuild-deploy.log</File>
+    <File>02-public-invoker-binding.json</File>
+    <File>03-service-describe.json</File>
+    <File>04-health-response.json</File>
+    <File>06-live-brief-request.json</File>
+    <File>06-live-brief-response.json</File>
+    <File>07-live-brief-summary.json</File>
+    <File>08-usage-response.json</File>
+  </EvidenceFiles>
+</StrategiXVisualSpec>
+  </script>
+</main>
+</body>
+</html>

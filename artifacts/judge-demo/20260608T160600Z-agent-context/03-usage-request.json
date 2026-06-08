@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "url": "https://deltasignal-ai-agent-531691677642.us-central1.run.app/v1/usage",
+  "headers": {
+    "X-Demo-Key": "[REDACTED]"
+  },
+  "body": null
+}

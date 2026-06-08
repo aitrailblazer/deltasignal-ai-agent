@@ -123,6 +123,7 @@
       <Detail>Verified POST /resolve with the same session_id returns session-memory mode and preserves the prior HUT River context for follow-up questions.</Detail>
       <Detail>Verified GET /v1/usage returns local-estimate tracking after the judge flow: 0.10 USD spent and 499.90 USD remaining from the configured 500 USD budget.</Detail>
       <Detail>Documented that the public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the Cloud Run service therefore reports live_mcp_error and falls back to the deterministic HUT River fixture for judge-safe Build validation.</Detail>
+      <Detail>Superseded later on 2026-06-08 by the stale-MCP deployment fix and clean live MCP artifact run.</Detail>
     </Entry>
     <Entry date="2026-06-08" type="deployment">
       <Title>Completed live MCP composite Build path</Title>
@@ -143,6 +144,105 @@
       <Detail>Added objective, evaluation criteria, Build pass status, and the reason Optimize is the next phase: evidence-fidelity propagation across every user-facing brief path.</Detail>
       <Detail>Added an Agent Autonomy Boundary explaining that scripts/judge-demo.sh is only the harness, while the Cloud Run Google agent autonomously calls MCP, parses evidence, writes memory, invokes Gemini synthesis, attaches disclosures, and records cost.</Detail>
       <Detail>Kept demo keys redacted and preserved the boundary that official Google Cloud billing still requires Billing export or console data.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="evidence">
+      <Title>Added observable agent reasoning proof mode</Title>
+      <Detail>Added include_agent_context=true to the TripCode request contract so the Cloud Run agent can fetch the public ATLAS-7 operating guides before Gemini synthesis.</Detail>
+      <Detail>The agent records agent_context.sources with URL, HTTP status, byte count, SHA-256 hash, and excerpt for CLAUDE.md and llms-full.txt.</Detail>
+      <Detail>Added execution_trace to TripCode responses so judge evidence shows the observable autonomous steps without exposing hidden chain-of-thought.</Detail>
+      <Detail>Updated scripts/judge-demo.sh and BUILD_PHASE_EXPLANATION.html so future evidence sessions prove the cloud agent performs the TripCode/River runtime workflow autonomously.</Detail>
+      <Detail>Added LEARNING_EVIDENCE.html generation after each judge run so every session records what the run proved, what it exposed, and which code improvements should carry into Optimize.</Detail>
+      <Detail>Preserved the cost boundary: the endpoint is cloud-hosted and reachable on demand, while Cloud Run min-instances=0 may cold-start to protect the 500 USD credit budget.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Updated active submission deadline to June 11</Title>
+      <Detail>Recorded that the current Devpost project state extends the active submission deadline to June 11, 2026.</Detail>
+      <Detail>Preserved the private bundled Rules PDF as stale reference context because it still lists June 5, 2026.</Detail>
+      <Detail>Updated the public landing page and official submission packet so judge-facing materials use June 11 as the active working deadline.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="positioning">
+      <Title>Emphasized runtime research workflow autonomy</Title>
+      <Detail>Added the core positioning line: the submitted agent performs the runtime research workflow autonomously after one TripCode or issuer prompt.</Detail>
+      <Detail>Clarified that DeltaSignal Gemini AI Agent is the submitted runtime Google Cloud product agent.</Detail>
+      <Detail>Updated the landing page, official submission packet, and judge-demo evidence generator with this distinction.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="deployment">
+      <Title>Fixed stale public MCP composite resolver deployment</Title>
+      <Detail>Verified the public MCP endpoint was stale: tools/list returned 41 tools and did not expose deltasignal_resolve_tripcode_research_packet.</Detail>
+      <Detail>Built an isolated Azure Container App deploy context from HEAD plus only the current cmd/search-gateway TripCode resolver changes, avoiding unrelated dirty worker files.</Detail>
+      <Detail>Deployed ca-web-intel-mcp revision ca-web-intel-mcp--0000502 with image acrgniwebintel001.azurecr.io/ca-web-intel-mcp:tripcode-composite-20260608173040.</Detail>
+      <Detail>Verified tools/list now returns 54 tools and includes the TripCode resolver family, including deltasignal_resolve_tripcode_research_packet.</Detail>
+      <Detail>Verified the live MCP composite call for TF-SUB-9DA70A7F98 returns status ready, issuer HUT, 10 River nodes, thesis-map status ready, and zero missing evidence.</Detail>
+      <Detail>Reran scripts/judge-demo.sh against Cloud Run and saved artifacts/judge-demo/20260608T173701Z-live-mcp-clean; the first response now has mode live-mcp-tripcode-gemini and no live_mcp_error.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="audit">
+      <Title>Updated goal achievement audit after clean live MCP proof</Title>
+      <Detail>Updated docs/DeltaSignal_AI_Agent_Goal_Achievement_Audit_2026_06_08.html to remove external model attribution and align the audit with the corrected public MCP deployment.</Detail>
+      <Detail>Raised the Build-scope goal achievement assessment to reflect the clean live proof: public MCP revision ca-web-intel-mcp--0000502 exposes the composite TripCode resolver and returns ready status for TF-SUB-9DA70A7F98.</Detail>
+      <Detail>Linked the audit to artifacts/judge-demo/20260608T173701Z-live-mcp-clean and its saved request/response evidence files: tools/list, composite call, live summary, and MCP_LIVE_CALL_EVIDENCE.html.</Detail>
+      <Detail>Kept the Optimize gap explicit: richer ATLAS-7 provenance still needs to propagate through every brief and synthesis path.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="optimize">
+      <Title>Started Optimize evidence-fidelity hardening</Title>
+      <Detail>Observed the main compression point: SpecialistResult.Evidence only carried source, title, observation, and URL, so richer ATLAS-7 metadata could be lost before fallback brief or Gemini synthesis.</Detail>
+      <Detail>Started extending the evidence model to carry source dates, computed timestamps, filing/filed dates, stale markers, caveats, quality flags, evidence hashes, payload mode, route provenance, and provenance labels.</Detail>
+      <Detail>Added an evidence_fidelity summary concept for every /v1/brief response so user-facing outputs can disclose whether provenance was carried or only minimal metadata was available.</Detail>
+      <Detail>Implementation target: extract provenance from raw live MCP JSON at the tool boundary, preserve it in findings, expose it in the response, and include it in the Gemini prompt context.</Detail>
+      <Detail>Phase boundary: this is Track 2 Optimize work; the already-verified Build demo remains intact while evidence fidelity is strengthened.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="optimize">
+      <Title>Completed first /v1/brief evidence-fidelity pass</Title>
+      <Detail>Added internal/agent/evidence_fidelity.go to extract provenance from raw MCP JSON recursively and summarize carried fields.</Detail>
+      <Detail>Extended Evidence with source_date, computed_at, filing_date, filed_at, stale, caveats, quality_flags, evidence_hashes, payload_mode, route_provenance, and provenance_labels.</Detail>
+      <Detail>Updated AtlasMCPToolClient.callLane so every live stress/company/peer lane enriches evidence before returning SpecialistResult.</Detail>
+      <Detail>Updated Coordinator.BuildBrief to attach evidence_fidelity to BriefResponse and include an evidence-fidelity disclosure in every user-facing brief response.</Detail>
+      <Detail>Updated fallback briefs and Gemini synthesis prompts so provenance carried by ATLAS-7 is visible to deterministic and Gemini-generated outputs.</Detail>
+      <Detail>Added unit tests for provenance extraction, evidence-fidelity summary, live MCP lane preservation, coordinator response propagation, and Gemini prompt inclusion.</Detail>
+      <Detail>First make check iteration failed because the new helper reduced total coverage below the repository's 100.0 percent gate; added targeted branch tests for recursive JSON walking and coercion helpers.</Detail>
+      <Detail>Verified GOWORK=off go test ./... passes after the Optimize patch.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="execplan">
+      <Title>Added Optimize evidence-fidelity ExecPlan</Title>
+      <Detail>Added ExecPlan_DeltaSignal_Optimize_Evidence_Fidelity_2026_06_08.html as the Track 2 Optimize implementation record.</Detail>
+      <Detail>The ExecPlan records the compression problem, implementation scope, changed files, acceptance criteria, verification commands, and remaining Optimize boundaries.</Detail>
+      <Detail>Updated verification after branch-coverage hardening: make check passes with total coverage at 100.0 percent and go vet clean.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="evidence">
+      <Title>Saved Optimize evidence-fidelity response artifact</Title>
+      <Detail>Saved artifacts/optimize-evidence-fidelity/20260608T185801Z-optimize-evidence-fidelity with the protected /v1/brief request, raw response, usage response, summary JSON, server log, and OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html.</Detail>
+      <Detail>The response proves the user-facing brief contract now includes evidence_fidelity and an evidence-fidelity disclosure line.</Detail>
+      <Detail>The deterministic fixture correctly reports evidence_fidelity.status minimal because no richer upstream ATLAS-7 metadata exists in the fixture; live MCP lane enrichment carries richer provenance when upstream packets provide it.</Detail>
+      <Detail>The proof used local deterministic mode without live MCP or Gemini calls; the 0.02 USD value is the app's local-estimate ledger, not official Google Cloud Billing spend.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Versioned official submission packet to 2.0</Title>
+      <Detail>Updated docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html to record the first Track 2 Optimize evidence-fidelity implementation.</Detail>
+      <Detail>Replaced stale language that described /v1/brief provenance propagation as entirely remaining work.</Detail>
+      <Detail>Linked the Optimize proof artifact and kept the next Optimize target explicit: protected live /v1/brief validation with provenance-carried ATLAS-7 metadata.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="deployment">
+      <Title>Deployed Optimize evidence-fidelity build to Cloud Run</Title>
+      <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T191114Z-optimize-cloudrun-deploy through Cloud Build.</Detail>
+      <Detail>Cloud Run revision deltasignal-ai-agent-00007-x65 became ready and served 100 percent of traffic at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Detail>
+      <Detail>Cloud Build reported an IAM warning while setting public invocation, so the allUsers roles/run.invoker binding was explicitly re-applied and saved to artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/02-public-invoker-binding.json.</Detail>
+      <Detail>Saved deployment evidence under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy, including Cloud Build log, service description, health response, and deploy summary.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="evidence">
+      <Title>Validated deployed Build flow and live Optimize evidence fidelity</Title>
+      <Detail>Ran scripts/judge-demo.sh against the deployed Cloud Run service and saved the run under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/20260608T191114Z-optimize-cloudrun-deploy-judge-flow.</Detail>
+      <Detail>The deployed judge flow returned mode live-mcp-tripcode-gemini, reconstructed the 10-node HUT River, fetched public ATLAS-7 guide context, preserved execution_trace, wrote session memory, and reported local-estimate usage.</Detail>
+      <Detail>Ran a protected live /v1/brief request after deployment; the response returned evidence_fidelity.status provenance-carried with payload mode, source date, computed_at, caveats, quality flags, evidence hashes, route provenance, and provenance labels.</Detail>
+      <Detail>The live /v1/brief validation exposed one user-facing gap: Gemini synthesis omitted the evidence-fidelity line from the brief body even though disclosures included it.</Detail>
+      <Detail>Patched Coordinator.BuildBrief with ensureEvidenceFidelityLine so every synthesized brief appends the evidence-fidelity line when Gemini omits it.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="deployment">
+      <Title>Redeployed evidence-fidelity brief-line fix</Title>
+      <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T192004Z-optimize-brief-line-fix through Cloud Build.</Detail>
+      <Detail>Cloud Run revision deltasignal-ai-agent-00008-kzh became ready and served 100 percent of traffic.</Detail>
+      <Detail>Re-applied public invoker IAM after the recurring Cloud Build IAM warning and saved the binding evidence.</Detail>
+      <Detail>Validated GET /health, protected POST /v1/brief, and protected GET /v1/usage against the redeployed service.</Detail>
+      <Detail>The redeployed live /v1/brief response returned evidence_fidelity.status provenance-carried and brief_has_evidence_fidelity_line true.</Detail>
+      <Detail>Saved the final deployment evidence bundle at artifacts/deploy/20260608T192004Z-optimize-brief-line-fix, including DEPLOYMENT_VALIDATION.html.</Detail>
     </Entry>
   </Entries>
   <PublicLinks>
@@ -291,7 +391,8 @@
           'Ran scripts/judge-demo.sh against Cloud Run; /resolve returned the HUT TripCode packet for TF-SUB-9DA70A7F98, reconstructed the 10-node HUT River, preserved evidence boundaries, and produced a Gemini summary.',
           'Verified POST /resolve with the same session_id returns session-memory mode and preserves the prior HUT River context for follow-up questions.',
           'Verified GET /v1/usage returns local-estimate tracking after the judge flow: 0.10 USD spent and 499.90 USD remaining from the configured 500 USD budget.',
-          'Documented that the public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the Cloud Run service therefore reports live_mcp_error and falls back to the deterministic HUT River fixture for judge-safe Build validation.'
+          'Documented that the public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the Cloud Run service therefore reports live_mcp_error and falls back to the deterministic HUT River fixture for judge-safe Build validation.',
+          'Superseded later on 2026-06-08 by the stale-MCP deployment fix and clean live MCP artifact run.'
         ]
       },
       {
@@ -320,6 +421,157 @@
           'Added objective, evaluation criteria, Build pass status, and the reason Optimize is the next phase: evidence-fidelity propagation across every user-facing brief path.',
           'Added an Agent Autonomy Boundary explaining that scripts/judge-demo.sh is only the harness, while the Cloud Run Google agent autonomously calls MCP, parses evidence, writes memory, invokes Gemini synthesis, attaches disclosures, and records cost.',
           'Kept demo keys redacted and preserved the boundary that official Google Cloud billing still requires Billing export or console data.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Evidence',
+        title: 'Added observable agent reasoning proof mode',
+        details: [
+          'Added include_agent_context=true to the TripCode request contract so the Cloud Run agent can fetch the public ATLAS-7 operating guides before Gemini synthesis.',
+          'The agent records agent_context.sources with URL, HTTP status, byte count, SHA-256 hash, and excerpt for CLAUDE.md and llms-full.txt.',
+          'Added execution_trace to TripCode responses so judge evidence shows the observable autonomous steps without exposing hidden chain-of-thought.',
+          'Updated scripts/judge-demo.sh and BUILD_PHASE_EXPLANATION.html so future evidence sessions prove the cloud agent performs the TripCode/River runtime workflow autonomously.',
+          'Added LEARNING_EVIDENCE.html generation after each judge run so every session records what the run proved, what it exposed, and which code improvements should carry into Optimize.',
+          'Preserved the cost boundary: the endpoint is cloud-hosted and reachable on demand, while Cloud Run min-instances=0 may cold-start to protect the $500 credit budget.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission packet',
+        title: 'Updated active submission deadline to June 11',
+        details: [
+          'Recorded that the current Devpost project state extends the active submission deadline to June 11, 2026.',
+          'Preserved the private bundled Rules PDF as stale reference context because it still lists June 5, 2026.',
+          'Updated the public landing page and official submission packet so judge-facing materials use June 11 as the active working deadline.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Positioning',
+        title: 'Emphasized runtime research workflow autonomy',
+        details: [
+          'Added the core positioning line: the submitted agent performs the runtime research workflow autonomously after one TripCode or issuer prompt.',
+          'Clarified that DeltaSignal Gemini AI Agent is the submitted runtime Google Cloud product agent.',
+          'Updated the landing page, official submission packet, and judge-demo evidence generator with this distinction.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Deployment',
+        title: 'Fixed stale public MCP composite resolver deployment',
+        details: [
+          'Verified the public MCP endpoint was stale: tools/list returned 41 tools and did not expose deltasignal_resolve_tripcode_research_packet.',
+          'Built an isolated Azure Container App deploy context from HEAD plus only the current cmd/search-gateway TripCode resolver changes, avoiding unrelated dirty worker files.',
+          'Deployed ca-web-intel-mcp revision ca-web-intel-mcp--0000502 with image acrgniwebintel001.azurecr.io/ca-web-intel-mcp:tripcode-composite-20260608173040.',
+          'Verified tools/list now returns 54 tools and includes the TripCode resolver family, including deltasignal_resolve_tripcode_research_packet.',
+          'Verified the live MCP composite call for TF-SUB-9DA70A7F98 returns status ready, issuer HUT, 10 River nodes, thesis-map status ready, and zero missing evidence.',
+          'Reran scripts/judge-demo.sh against Cloud Run and saved artifacts/judge-demo/20260608T173701Z-live-mcp-clean; the first response now has mode live-mcp-tripcode-gemini and no live_mcp_error.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Audit',
+        title: 'Updated goal achievement audit after clean live MCP proof',
+        details: [
+          'Updated docs/DeltaSignal_AI_Agent_Goal_Achievement_Audit_2026_06_08.html to remove external model attribution and align the audit with the corrected public MCP deployment.',
+          'Raised the Build-scope goal achievement assessment to reflect the clean live proof: public MCP revision ca-web-intel-mcp--0000502 exposes the composite TripCode resolver and returns ready status for TF-SUB-9DA70A7F98.',
+          'Linked the audit to artifacts/judge-demo/20260608T173701Z-live-mcp-clean and its saved request/response evidence files: tools/list, composite call, live summary, and MCP_LIVE_CALL_EVIDENCE.html.',
+          'Kept the Optimize gap explicit: richer ATLAS-7 provenance still needs to propagate through every brief and synthesis path.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Optimize',
+        title: 'Started Optimize evidence-fidelity hardening',
+        details: [
+          'Observed the main compression point: SpecialistResult.Evidence only carried source, title, observation, and URL, so richer ATLAS-7 metadata could be lost before fallback brief or Gemini synthesis.',
+          'Started extending the evidence model to carry source dates, computed timestamps, filing/filed dates, stale markers, caveats, quality flags, evidence hashes, payload mode, route provenance, and provenance labels.',
+          'Added an evidence_fidelity summary concept for every /v1/brief response so user-facing outputs can disclose whether provenance was carried or only minimal metadata was available.',
+          'Implementation target: extract provenance from raw live MCP JSON at the tool boundary, preserve it in findings, expose it in the response, and include it in the Gemini prompt context.',
+          'Phase boundary: this is Track 2 Optimize work; the already-verified Build demo remains intact while evidence fidelity is strengthened.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Optimize',
+        title: 'Completed first /v1/brief evidence-fidelity pass',
+        details: [
+          'Added internal/agent/evidence_fidelity.go to extract provenance from raw MCP JSON recursively and summarize carried fields.',
+          'Extended Evidence with source_date, computed_at, filing_date, filed_at, stale, caveats, quality_flags, evidence_hashes, payload_mode, route_provenance, and provenance_labels.',
+          'Updated AtlasMCPToolClient.callLane so every live stress/company/peer lane enriches evidence before returning SpecialistResult.',
+          'Updated Coordinator.BuildBrief to attach evidence_fidelity to BriefResponse and include an evidence-fidelity disclosure in every user-facing brief response.',
+          'Updated fallback briefs and Gemini synthesis prompts so provenance carried by ATLAS-7 is visible to deterministic and Gemini-generated outputs.',
+          'Added unit tests for provenance extraction, evidence-fidelity summary, live MCP lane preservation, coordinator response propagation, and Gemini prompt inclusion.',
+          'First make check iteration failed because the new helper reduced total coverage below the repository\\'s 100.0 percent gate; added targeted branch tests for recursive JSON walking and coercion helpers.',
+          'Verified GOWORK=off go test ./... passes after the Optimize patch.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'ExecPlan',
+        title: 'Added Optimize evidence-fidelity ExecPlan',
+        details: [
+          'Added ExecPlan_DeltaSignal_Optimize_Evidence_Fidelity_2026_06_08.html as the Track 2 Optimize implementation record.',
+          'The ExecPlan records the compression problem, implementation scope, changed files, acceptance criteria, verification commands, and remaining Optimize boundaries.',
+          'Updated verification after branch-coverage hardening: make check passes with total coverage at 100.0 percent and go vet clean.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Evidence',
+        title: 'Saved Optimize evidence-fidelity response artifact',
+        details: [
+          'Saved artifacts/optimize-evidence-fidelity/20260608T185801Z-optimize-evidence-fidelity with the protected /v1/brief request, raw response, usage response, summary JSON, server log, and OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html.',
+          'The response proves the user-facing brief contract now includes evidence_fidelity and an evidence-fidelity disclosure line.',
+          'The deterministic fixture correctly reports evidence_fidelity.status minimal because no richer upstream ATLAS-7 metadata exists in the fixture; live MCP lane enrichment carries richer provenance when upstream packets provide it.',
+          'The proof used local deterministic mode without live MCP or Gemini calls; the 0.02 USD value is the app\\'s local-estimate ledger, not official Google Cloud Billing spend.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission Packet',
+        title: 'Versioned official submission packet to 2.0',
+        details: [
+          'Updated docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html to record the first Track 2 Optimize evidence-fidelity implementation.',
+          'Replaced stale language that described /v1/brief provenance propagation as entirely remaining work.',
+          'Linked the Optimize proof artifact and kept the next Optimize target explicit: protected live /v1/brief validation with provenance-carried ATLAS-7 metadata.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Deployment',
+        title: 'Deployed Optimize evidence-fidelity build to Cloud Run',
+        details: [
+          'Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T191114Z-optimize-cloudrun-deploy through Cloud Build.',
+          'Cloud Run revision deltasignal-ai-agent-00007-x65 became ready and served 100 percent of traffic at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.',
+          'Cloud Build reported an IAM warning while setting public invocation, so the allUsers roles/run.invoker binding was explicitly re-applied and saved to artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/02-public-invoker-binding.json.',
+          'Saved deployment evidence under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy, including Cloud Build log, service description, health response, and deploy summary.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Evidence',
+        title: 'Validated deployed Build flow and live Optimize evidence fidelity',
+        details: [
+          'Ran scripts/judge-demo.sh against the deployed Cloud Run service and saved the run under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/20260608T191114Z-optimize-cloudrun-deploy-judge-flow.',
+          'The deployed judge flow returned mode live-mcp-tripcode-gemini, reconstructed the 10-node HUT River, fetched public ATLAS-7 guide context, preserved execution_trace, wrote session memory, and reported local-estimate usage.',
+          'Ran a protected live /v1/brief request after deployment; the response returned evidence_fidelity.status provenance-carried with payload mode, source date, computed_at, caveats, quality flags, evidence hashes, route provenance, and provenance labels.',
+          'The live /v1/brief validation exposed one user-facing gap: Gemini synthesis omitted the evidence-fidelity line from the brief body even though disclosures included it.',
+          'Patched Coordinator.BuildBrief with ensureEvidenceFidelityLine so every synthesized brief appends the evidence-fidelity line when Gemini omits it.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Deployment',
+        title: 'Redeployed evidence-fidelity brief-line fix',
+        details: [
+          'Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T192004Z-optimize-brief-line-fix through Cloud Build.',
+          'Cloud Run revision deltasignal-ai-agent-00008-kzh became ready and served 100 percent of traffic.',
+          'Re-applied public invoker IAM after the recurring Cloud Build IAM warning and saved the binding evidence.',
+          'Validated GET /health, protected POST /v1/brief, and protected GET /v1/usage against the redeployed service.',
+          'The redeployed live /v1/brief response returned evidence_fidelity.status provenance-carried and brief_has_evidence_fidelity_line true.',
+          'Saved the final deployment evidence bundle at artifacts/deploy/20260608T192004Z-optimize-brief-line-fix, including DEPLOYMENT_VALIDATION.html.'
         ]
       }
     ];
