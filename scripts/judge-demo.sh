@@ -109,6 +109,17 @@ save_build_phase_explanation() {
     </section>
 
     <section>
+      <h2>Agent Autonomy Boundary</h2>
+      <p>The shell script is only the judge harness. It supplies the input and records evidence. The deployed Google agent performs the internal workflow autonomously after the request reaches Cloud Run.</p>
+      <ol>
+        <li><strong>Human or judge action:</strong> provide one TripCode and session_id, then ask one follow-up question.</li>
+        <li><strong>Agent action:</strong> validate the request, call the TripCode resolver, call the ATLAS-7 MCP tool, parse the structured MCP packet, write session memory, optionally synthesize with Gemini, attach disclosures, and record local-estimate cost.</li>
+        <li><strong>MCP action:</strong> return bounded evidence and provenance. MCP does not decide the workflow, manage memory, or shape the final agent response.</li>
+        <li><strong>Why this qualifies as an AI agent:</strong> the system uses an agent runtime to coordinate tools, memory, synthesis, evidence boundaries, and follow-up behavior from a high-level user goal rather than requiring the user to manually call each evidence source.</li>
+      </ol>
+    </section>
+
+    <section>
       <h2>Why Optimize Comes Next</h2>
       <p>Build proves the working agent. Optimize improves evidence fidelity, operational quality, and judge trust without changing the core demo claim.</p>
       <ol>
@@ -166,6 +177,12 @@ save_build_phase_explanation() {
     &lt;Criterion name="Stateful"&gt;The follow-up uses session memory without rerunning TripCode resolution.&lt;/Criterion&gt;
     &lt;Criterion name="CostAware"&gt;The run exposes tracked local-estimate spend and remaining budget.&lt;/Criterion&gt;
   &lt;/Evaluation&gt;
+  &lt;AutonomyBoundary&gt;
+    &lt;JudgeHarness&gt;scripts/judge-demo.sh supplies input, records requests, records responses, and proves reproducibility.&lt;/JudgeHarness&gt;
+    &lt;AgentAutonomy&gt;Cloud Run Go agent validates the request, calls MCP, parses structured evidence, writes session memory, invokes Gemini synthesis when configured, attaches disclosures, and reports cost without the user manually executing those internal steps.&lt;/AgentAutonomy&gt;
+    &lt;MCPBoundary&gt;ATLAS-7 MCP supplies bounded evidence and provenance but does not own workflow orchestration, memory, or final response shaping.&lt;/MCPBoundary&gt;
+    &lt;AgentJustification&gt;The submitted system qualifies as an AI agent because it coordinates tools, memory, synthesis, evidence boundaries, and follow-up behavior from a high-level user goal.&lt;/AgentJustification&gt;
+  &lt;/AutonomyBoundary&gt;
   &lt;NextPhase name="Optimize"&gt;Improve evidence fidelity by propagating source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels through every user-facing brief path.&lt;/NextPhase&gt;
   &lt;Steps&gt;
     &lt;Step order="1" route="GET /resolve"&gt;Resolve TripCode into structured research_packet.&lt;/Step&gt;
@@ -197,6 +214,12 @@ save_build_phase_explanation() {
     <Criterion name="Stateful">The follow-up uses session memory without rerunning TripCode resolution.</Criterion>
     <Criterion name="CostAware">The run exposes tracked local-estimate spend and remaining budget.</Criterion>
   </Evaluation>
+  <AutonomyBoundary>
+    <JudgeHarness>scripts/judge-demo.sh supplies input, records requests, records responses, and proves reproducibility.</JudgeHarness>
+    <AgentAutonomy>Cloud Run Go agent validates the request, calls MCP, parses structured evidence, writes session memory, invokes Gemini synthesis when configured, attaches disclosures, and reports cost without the user manually executing those internal steps.</AgentAutonomy>
+    <MCPBoundary>ATLAS-7 MCP supplies bounded evidence and provenance but does not own workflow orchestration, memory, or final response shaping.</MCPBoundary>
+    <AgentJustification>The submitted system qualifies as an AI agent because it coordinates tools, memory, synthesis, evidence boundaries, and follow-up behavior from a high-level user goal.</AgentJustification>
+  </AutonomyBoundary>
   <NextPhase name="Optimize">Improve evidence fidelity by propagating source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels through every user-facing brief path.</NextPhase>
   <Steps>
     <Step order="1" route="GET /resolve">Resolve TripCode into structured research_packet.</Step>
