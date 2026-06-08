@@ -42,6 +42,21 @@
     </section>
 
     <section>
+      <h2>Role Split And Justification</h2>
+      <div class="grid">
+        <div class="card">
+          <b>Google Agent Layer</b>
+          <p>The Go-native Cloud Run service is the judge-facing agent runtime. It owns request handling, protected demo access, session memory, cost tracking, route orchestration, and optional Gemini synthesis through Vertex AI.</p>
+        </div>
+        <div class="card">
+          <b>ATLAS-7 MCP Layer</b>
+          <p>The MCP server is the external evidence and tool boundary. It resolves the TripCode into the article object, River context, filing evidence references, caveats, thesis map, and provenance fields.</p>
+        </div>
+      </div>
+      <p><strong>Why this split matters:</strong> the Google agent demonstrates autonomous multi-step execution and production controls, while MCP keeps proprietary evidence retrieval modular, auditable, and replaceable. The agent reasons over returned evidence; the MCP does not become the agent.</p>
+    </section>
+
+    <section>
       <h2>What Happens Step By Step</h2>
       <ol>
         <li><strong>Resolve the TripCode.</strong> The first request calls <code>GET /resolve</code> with <code>TF-SUB-9DA70A7F98</code>, issuer <code>HUT</code>, compact payload mode, filing evidence, prior articles, and thesis map enabled.</li>
@@ -76,6 +91,11 @@
   &lt;Phase&gt;Build&lt;/Phase&gt;
   &lt;BuildClaim&gt;Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.&lt;/BuildClaim&gt;
   &lt;Run id="20260608T093801Z-verified" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" session_id="judge-demo-hut" revision="deltasignal-ai-agent-00004-rz5" /&gt;
+  &lt;RoleSplit&gt;
+    &lt;GoogleAgent role="orchestrator"&gt;Cloud Run Go service handles judge routes, protected demo access, session memory, cost ledger, Gemini synthesis through Vertex AI, and response shaping.&lt;/GoogleAgent&gt;
+    &lt;MCP role="evidence-tool-boundary"&gt;ATLAS-7 MCP resolves TripCode research packets, HUT River nodes, filing evidence refs, caveats, thesis map, and provenance fields.&lt;/MCP&gt;
+    &lt;Justification&gt;The Google agent proves autonomous workflow control; MCP proves secure external context and evidence retrieval without mixing proprietary evidence storage into the agent runtime.&lt;/Justification&gt;
+  &lt;/RoleSplit&gt;
   &lt;Steps&gt;
     &lt;Step order="1" route="GET /resolve"&gt;Resolve TripCode into structured research_packet.&lt;/Step&gt;
     &lt;Step order="2" system="ATLAS-7 MCP"&gt;Recover article object, HUT River nodes, filing evidence refs, caveats, and thesis map.&lt;/Step&gt;
@@ -92,6 +112,11 @@
   <Phase>Build</Phase>
   <BuildClaim>Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.</BuildClaim>
   <Run id="20260608T093801Z-verified" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" session_id="judge-demo-hut" revision="deltasignal-ai-agent-00004-rz5" />
+  <RoleSplit>
+    <GoogleAgent role="orchestrator">Cloud Run Go service handles judge routes, protected demo access, session memory, cost ledger, Gemini synthesis through Vertex AI, and response shaping.</GoogleAgent>
+    <MCP role="evidence-tool-boundary">ATLAS-7 MCP resolves TripCode research packets, HUT River nodes, filing evidence refs, caveats, thesis map, and provenance fields.</MCP>
+    <Justification>The Google agent proves autonomous workflow control; MCP proves secure external context and evidence retrieval without mixing proprietary evidence storage into the agent runtime.</Justification>
+  </RoleSplit>
   <Steps>
     <Step order="1" route="GET /resolve">Resolve TripCode into structured research_packet.</Step>
     <Step order="2" system="ATLAS-7 MCP">Recover article object, HUT River nodes, filing evidence refs, caveats, and thesis map.</Step>
