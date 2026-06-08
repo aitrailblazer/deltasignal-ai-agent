@@ -39,7 +39,7 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="1.9" date="2026-06-08">This version emphasizes the runtime-autonomy product claim: the submitted Google Cloud agent performs TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting after one user request. It preserves the active June 11 submission deadline from the current Devpost state.</VersionSummary>
+  <VersionSummary version="2.1" date="2026-06-08">This version adds explicit Safety And Guardrails plus State And Secrets language: Gemini Enterprise Agent Platform safety settings keep the agent helpful and bounded by the defined evidence/non-advice constraints, while Secret Manager stores partner integration keys for Cloud Run without committing secrets.</VersionSummary>
   <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, and local-estimate cost tracking.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
@@ -52,6 +52,8 @@
     <Feature>Go-native TripCode routes POST /v1/tripcode and judge-friendly GET/POST /resolve call the live MCP composite tool without introducing a separate Python wrapper.</Feature>
     <Feature>When Gemini is enabled, the TripCode route returns a Gemini-generated diligence summary from the resolved MCP packet plus session memory.</Feature>
     <Feature>Go-native session memory stores compact River continuity snapshots by session_id so follow-up turns can preserve the prior TripCode context.</Feature>
+    <Feature>Safety And Guardrails use Gemini Enterprise Agent Platform safety settings plus the agent response contract to keep outputs helpful, non-advisory, evidence-bounded, and explicit about missing data.</Feature>
+    <Feature>State And Secrets use Google Cloud Secret Manager for partner integration keys and protected judge access keys, including MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY.</Feature>
     <Feature>Judge demo script runs one-command TripCode resolution, plain-text follow-up using Memory Bank state, and estimated usage ledger check.</Feature>
     <Feature>Output includes confidence, uncertainty, disclosures, and next action.</Feature>
   </Features>
@@ -61,10 +63,20 @@
     <Technology>Gemini through Vertex AI / Agent Platform</Technology>
     <Technology>Cloud Run</Technology>
     <Technology>Cloud Build</Technology>
+    <Technology>Secret Manager</Technology>
+    <Technology>Gemini Enterprise Agent Platform Safety Settings</Technology>
     <Technology>MCP-compatible tool boundary</Technology>
     <Technology>DeltaSignal ATLAS-7 public MCP/OpenAPI integration surface</Technology>
     <Technology>GitHub Actions CI</Technology>
   </Technologies>
+  <SafetyAndGuardrails>
+    <Capability name="Gemini Enterprise Agent Platform Safety Settings">Configure filters to ensure the agent remains helpful and follows defined constraints, including non-advice posture, evidence boundaries, missing-data disclosure, and no invented sources.</Capability>
+    <Capability name="Prompt And Response Contract">The agent instruction requires bounded financial diligence, provenance preservation, caveat disclosure, and explicit separation of article memory, MCP evidence, inference, and missing evidence.</Capability>
+  </SafetyAndGuardrails>
+  <StateAndSecrets>
+    <Capability name="Secret Manager">Securely store and retrieve API keys for partner integrations and protected judge testing, including MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY.</Capability>
+    <Capability name="Session Memory">Keep compact River continuity state by session_id for multi-turn judge flows without storing private keys, partner credentials, or hidden prompts in the response body.</Capability>
+  </StateAndSecrets>
   <DataSources>
     <DataSource mode="demo">Deterministic competition fixtures for judge-safe reproducibility.</DataSource>
     <DataSource mode="integration">DeltaSignal ATLAS-7 public issuer-intelligence surface, disclosed as an authorized integration and data source.</DataSource>
@@ -219,6 +231,7 @@
     <Version number="1.8" date="2026-06-08">Updated deadline handling: Devpost current state is treated as the active June 11 submission deadline, while the bundled private Rules PDF June 5 date is retained as stale reference context.</Version>
     <Version number="1.9" date="2026-06-08">Emphasized runtime autonomy: DeltaSignal Gemini AI Agent performs TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting after one user request.</Version>
     <Version number="2.0" date="2026-06-08">Recorded the first Track 2 Optimize evidence-fidelity implementation: /v1/brief now returns evidence_fidelity, fallback briefs disclose evidence-fidelity status, Gemini receives provenance context, and a deterministic proof artifact is saved.</Version>
+    <Version number="2.1" date="2026-06-08">Added explicit Gemini Enterprise Agent Platform safety settings and Google Cloud Secret Manager guardrails for helpful bounded outputs, protected partner keys, and judge-safe Cloud Run execution.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -363,6 +376,10 @@
       ['Protected live mode', 'DELTASIGNAL_DEMO_API_KEY protects judge routes; MCP_API_KEY stays in Secret Manager or local shell, never in repo.'],
       ['Local estimate', 'DELTASIGNAL_COST_TRACKING=true adds estimated request cost, tracked spend, budget, and remaining budget to successful calls.'],
       ['Billing boundary', 'The app ledger is rehearsal telemetry. Official spend still comes from Google Cloud Billing.']
+    ];
+    const guardrails = [
+      ['Safety & Guardrails', 'Gemini Enterprise Agent Platform safety settings and the response contract keep outputs helpful, bounded, non-advisory, and explicit about missing evidence.'],
+      ['State & Secrets', 'Google Cloud Secret Manager stores MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY for partner integrations and protected judge testing; secrets are mounted into Cloud Run and never committed.']
     ];
     const boundaries = [
       ['Article memory', 'Article/River memory preserves the research trail, but does not become official evidence.'],
@@ -543,6 +560,12 @@ curl -s "${liveDemoUrl}/v1/usage" -H "X-Demo-Key: $JUDGE_DEMO_KEY"</pre>
               <h2>Cost and Access Controls</h2>
               <p>The project is intentionally cost-conscious because the challenge credit pool is limited. Local verification remains zero-live-call unless live Gemini or live MCP is explicitly enabled.</p>
               <div class="grid">${costControls.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Safety, State, And Secrets</h2>
+              <p>Competition safety is handled at both the model and platform layers: Gemini safety settings constrain the agent's behavior, while Secret Manager keeps partner and judge keys out of source code.</p>
+              <div class="grid">${guardrails.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
             </section>
 
             <section class="panel">
