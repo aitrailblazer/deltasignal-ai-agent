@@ -39,7 +39,7 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="2.1" date="2026-06-08">This version adds explicit Safety And Guardrails plus State And Secrets language: Gemini Enterprise Agent Platform safety settings keep the agent helpful and bounded by the defined evidence/non-advice constraints, while Secret Manager stores partner integration keys for Cloud Run without committing secrets.</VersionSummary>
+  <VersionSummary version="2.2" date="2026-06-08">This version adds official Gemini Enterprise Agent Platform runtime observability references for tracing, logging, and monitoring, tying the Optimize track to concrete Google Cloud reliability surfaces.</VersionSummary>
   <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, and local-estimate cost tracking.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
@@ -77,6 +77,11 @@
     <Capability name="Secret Manager">Securely store and retrieve API keys for partner integrations and protected judge testing, including MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY.</Capability>
     <Capability name="Session Memory">Keep compact River continuity state by session_id for multi-turn judge flows without storing private keys, partner credentials, or hidden prompts in the response body.</Capability>
   </StateAndSecrets>
+  <RuntimeObservabilityReferences>
+    <Reference name="Tracing" url="https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/tracing">Gemini Enterprise Agent Platform runtime tracing for following agent and tool execution across requests.</Reference>
+    <Reference name="Logging" url="https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/logging">Gemini Enterprise Agent Platform runtime logging for request, tool, and production debugging evidence.</Reference>
+    <Reference name="Monitoring" url="https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/monitoring">Gemini Enterprise Agent Platform runtime monitoring for service health, reliability, and operational visibility.</Reference>
+  </RuntimeObservabilityReferences>
   <DataSources>
     <DataSource mode="demo">Deterministic competition fixtures for judge-safe reproducibility.</DataSource>
     <DataSource mode="integration">DeltaSignal ATLAS-7 public issuer-intelligence surface, disclosed as an authorized integration and data source.</DataSource>
@@ -202,7 +207,6 @@
   </RisksAndOpenQuestions>
   <SourceDigest>
     <Source>docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html — local codebase and integration audit, 92 health score, 100 percent coverage gate, secret hygiene, nested git boundary, and provenance follow-up.</Source>
-    <Source>docs/DeltaSignal_AI_Agent_Submission_Packet_Evaluation_2026_06_08.html — packet evaluation, judge-readiness score, missing Risks And Open Questions, and missing Source Digest finding.</Source>
     <Source>CHANGELOG.html — public changelog for cost controls, Go-native TripCode path, deployment posture, audit report, and version 1.2 packet update.</Source>
     <Source>scripts/judge-demo.sh — judge demo command path for TripCode resolve, follow-up memory, and usage ledger.</Source>
     <Source>Go tests and coverage gate — make check, GOWORK=off go test ./..., total coverage 100.0 percent, and go vet clean at audit time.</Source>
@@ -232,6 +236,7 @@
     <Version number="1.9" date="2026-06-08">Emphasized runtime autonomy: DeltaSignal Gemini AI Agent performs TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting after one user request.</Version>
     <Version number="2.0" date="2026-06-08">Recorded the first Track 2 Optimize evidence-fidelity implementation: /v1/brief now returns evidence_fidelity, fallback briefs disclose evidence-fidelity status, Gemini receives provenance context, and a deterministic proof artifact is saved.</Version>
     <Version number="2.1" date="2026-06-08">Added explicit Gemini Enterprise Agent Platform safety settings and Google Cloud Secret Manager guardrails for helpful bounded outputs, protected partner keys, and judge-safe Cloud Run execution.</Version>
+    <Version number="2.2" date="2026-06-08">Added official Gemini Enterprise Agent Platform runtime tracing, logging, and monitoring references to anchor the Optimize track in concrete Google Cloud observability surfaces.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -381,6 +386,11 @@
       ['Safety & Guardrails', 'Gemini Enterprise Agent Platform safety settings and the response contract keep outputs helpful, bounded, non-advisory, and explicit about missing evidence.'],
       ['State & Secrets', 'Google Cloud Secret Manager stores MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY for partner integrations and protected judge testing; secrets are mounted into Cloud Run and never committed.']
     ];
+    const observabilityReferences = [
+      ['Tracing', 'Runtime tracing for following agent and tool execution across requests.', 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/tracing'],
+      ['Logging', 'Runtime logging for request, tool, and production debugging evidence.', 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/logging'],
+      ['Monitoring', 'Runtime monitoring for service health, reliability, and operational visibility.', 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/runtime/monitoring']
+    ];
     const boundaries = [
       ['Article memory', 'Article/River memory preserves the research trail, but does not become official evidence.'],
       ['Evidence identity', 'SEC accessions, CIKs, filing periods, and XBRL concepts remain the source identities.'],
@@ -401,7 +411,6 @@
     ];
     const sourceDigest = [
       ['Codebase audit', 'docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html · 92 health score, coverage gate, secret hygiene, and provenance follow-up.'],
-      ['Packet evaluation', 'docs/DeltaSignal_AI_Agent_Submission_Packet_Evaluation_2026_06_08.html · judge-readiness score and missing section findings.'],
       ['Changelog', 'CHANGELOG.html · public record for cost controls, TripCode path, deployment posture, audit, and version 1.2.'],
       ['Demo script', 'scripts/judge-demo.sh · TripCode resolve, follow-up memory, and usage ledger.'],
       ['Quality gate', 'make check · tests, 100 percent coverage gate, and vet clean at audit time.'],
@@ -566,6 +575,12 @@ curl -s "${liveDemoUrl}/v1/usage" -H "X-Demo-Key: $JUDGE_DEMO_KEY"</pre>
               <h2>Safety, State, And Secrets</h2>
               <p>Competition safety is handled at both the model and platform layers: Gemini safety settings constrain the agent's behavior, while Secret Manager keeps partner and judge keys out of source code.</p>
               <div class="grid">${guardrails.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Runtime Observability References</h2>
+              <p>Track 2 Optimize uses the Gemini Enterprise Agent Platform runtime surfaces as the reliability path: tracing for execution flow, logging for debugging evidence, and monitoring for service health.</p>
+              <div class="grid">${observabilityReferences.map(([k, v, href]) => html`<article class="card"><b>${k}</b><span>${v}</span><a href=${href} target="_blank" rel="noreferrer">Official Google Cloud doc</a></article>`)}</div>
             </section>
 
             <section class="panel">

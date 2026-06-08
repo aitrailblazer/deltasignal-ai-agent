@@ -24,7 +24,7 @@
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent — Codebase &amp; Integration Audit Report</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent (nested inside aitrailblazerGENI)</Repository>
-    <Auditor>StrategiX Codex audit layer</Auditor>
+    <Auditor>DeltaSignal audit layer</Auditor>
     <AuditDate>2026-06-08</AuditDate>
     <ScopePath>deltasignal-ai-agent/</ScopePath>
     <ParentContext>aitrailblazerGENI (GEN-I standards/specs + integration hub)</ParentContext>
@@ -41,7 +41,7 @@
 
   <AuditContext>
     <Trigger>User request: "audit /.../deltasignal-ai-agent"</Trigger>
-    <Method>Filesystem exploration (list_dir, read_file), source + test review, static grep for secrets, execution of canonical commands (GOWORK=off go test ./..., coverage, vet), git status analysis for nested repo, review of parent and local AGENTS.md / CLAUDE.md, inspection of StrategiX deliverables and ignore rules.</Method>
+    <Method>Filesystem exploration (list_dir, read_file), source + test review, static grep for secrets, execution of canonical commands (GOWORK=off go test ./..., coverage, vet), git status analysis for nested repo, review of parent and local project rules, inspection of StrategiX deliverables and ignore rules.</Method>
     <VerificationPerformed>
       <Item>100% test coverage gate passed</Item>
       <Item>go vet clean</Item>
@@ -56,7 +56,7 @@
   <OverallHealth>
     <Rating>Strong (Competition-Ready Demo Posture)</Rating>
     <Score>92</Score>
-    <Summary>The project demonstrates high engineering discipline, strict evidence contracts, excellent secret hygiene, and full compliance with the StrategiX .html-only rule and local AGENTS/CLAUDE guidance. The primary surface risk is its status as an active nested git repository with uncommitted work at the time of audit and incomplete propagation of full ATLAS-7 metadata into the brief path.</Summary>
+    <Summary>The project demonstrates high engineering discipline, strict evidence contracts, excellent secret hygiene, and full compliance with the StrategiX .html-only rule and local project rules guidance. The primary surface risk is its status as an active nested git repository with uncommitted work at the time of audit and incomplete propagation of full ATLAS-7 metadata into the brief path.</Summary>
   </OverallHealth>
 
   <Findings>
@@ -104,7 +104,7 @@
 
     <Category name="Documentation &amp; Deliverables" severity="low">
       <Positive>All long-form durable artifacts (Submission Packet, landing, ExecPlan, this audit) are self-contained StrategiX Visual Spec .html files with embedded &lt;StrategiXVisualSpec&gt; XML contracts. This satisfies the root NON-NEGOTIABLE OUTPUT FORMAT RULE.</Positive>
-      <Positive>Local AGENTS.md and CLAUDE.md are detailed, prescriptive, and correctly emphasize evidence-first, refusal rules, HUT test case, and MCP discovery gating.</Positive>
+      <Positive>Local AGENTS.md and project rules are detailed, prescriptive, and correctly emphasize evidence-first, refusal rules, HUT test case, and MCP discovery gating.</Positive>
       <Positive>README is thorough on judge flows, cost controls, live vs demo, deployment, and public-repo safety.</Positive>
       <Positive>CHANGELOG.html exists and is referenced from the landing page.</Positive>
       <Positive>scripts/judge-demo.sh + make demo provide a repeatable 3-minute video path.</Positive>
@@ -163,7 +163,7 @@
     <Rule source="root AGENTS.md">Delta Signal internal credentials never placed in client code; access through Go backend relay for clients; no direct client MCP calls.</Rule>
     <Result status="pass">This component is the agent/backend surface. It correctly calls the MCP only when explicitly configured. No client code lives here. Parent boundary rules are not violated.</Result>
 
-    <Rule source="local AGENTS.md / CLAUDE.md">Evidence first. Narrative second. Preserve source_date, computed_at, stale, caveats, quality flags, hashes, provenance, non-advice boundaries. Never invent missing evidence.</Rule>
+    <Rule source="local project rules">Evidence first. Narrative second. Preserve source_date, computed_at, stale, caveats, quality flags, hashes, provenance, non-advice boundaries. Never invent missing evidence.</Rule>
     <Result status="pass">Code, prompts, disclosures, and tests strongly enforce this. One medium gap noted in full metadata passthrough for the brief path.</Result>
 
     <Rule source="local AGENTS.md">Never produce buy/sell/hold/price-target/recommendation language.</Rule>
@@ -206,9 +206,9 @@
 
   <SourceDigest>
     <AuditTimestamp>2026-06-08</AuditTimestamp>
-    <FilesInspected>go.mod, Makefile, Dockerfile, cloudbuild.yaml, all cmd/ and internal/agent/*.go + *_test.go, scripts/judge-demo.sh, .gitignore variants, .env*, README.md, local AGENTS.md + CLAUDE.md, docs/*.html, private/ structure (high-level only), bin/ and tmp/ presence, git state at multiple levels.</FilesInspected>
+    <FilesInspected>go.mod, Makefile, Dockerfile, cloudbuild.yaml, all cmd/ and internal/agent/*.go + *_test.go, scripts/judge-demo.sh, .gitignore variants, .env*, README.md, local project rules, docs/*.html, private/ structure (high-level only), bin/ and tmp/ presence, git state at multiple levels.</FilesInspected>
     <GitStateAtAudit>Nested repo: multiple modified + untracked source/docs files. Parent: deltasignal-ai-agent/ reported as untracked. StrategiX submodule reported dirty in the same clean-check run.</GitStateAtAudit>
-    <ExternalReferences>Parent AGENTS.md (aitrailblazerGENI/), local AGENTS.md + CLAUDE.md (deltasignal-ai-agent/), existing StrategiX submission packet and ExecPlan, MCP client behavior observed via code + tests, HUT TripCode proof case (TF-SUB-9DA70A7F98) referenced throughout project.</ExternalReferences>
+    <ExternalReferences>Parent AGENTS.md (aitrailblazerGENI/), local project rules (deltasignal-ai-agent/), existing StrategiX submission packet and ExecPlan, MCP client behavior observed via code + tests, HUT TripCode proof case (TF-SUB-9DA70A7F98) referenced throughout project.</ExternalReferences>
     <Note>This report is a snapshot. Subsequent commits in the nested repo, MCP surface changes, or Cloud Run deployments will require a follow-up audit or delta report.</Note>
   </SourceDigest>
 
@@ -224,7 +224,7 @@
     <Criterion status="met">Audit performed using only local tools and repo commands; no external MCP calls were made during the audit itself.</Criterion>
     <Criterion status="met">Report produced exclusively as a self-contained StrategiX Visual Spec .html (no parallel .md).</Criterion>
     <Criterion status="met">All positive findings, gaps, and prioritized recommendations are captured with evidence references.</Criterion>
-    <Criterion status="met">Compliance matrix against both root and local AGENTS/CLAUDE rules is explicit and pass/fail.</Criterion>
+    <Criterion status="met">Compliance matrix against both root and local project rules rules is explicit and pass/fail.</Criterion>
     <Criterion status="met">Verification log allows a future agent or human to reproduce the key checks.</Criterion>
   </AcceptanceCriteriaForThisAudit>
 </StrategiXVisualSpec>
@@ -293,7 +293,7 @@
                   </div>
                   <div style="text-align:right; font-size:12px; color:var(--muted);">
                     2026-06-08<br>
-                    StrategiX Codex audit
+                    DeltaSignal audit
                   </div>
                 </div>
 

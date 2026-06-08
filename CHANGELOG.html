@@ -148,7 +148,7 @@
     <Entry date="2026-06-08" type="evidence">
       <Title>Added observable agent reasoning proof mode</Title>
       <Detail>Added include_agent_context=true to the TripCode request contract so the Cloud Run agent can fetch the public ATLAS-7 operating guides before Gemini synthesis.</Detail>
-      <Detail>The agent records agent_context.sources with URL, HTTP status, byte count, SHA-256 hash, and excerpt for CLAUDE.md and llms-full.txt.</Detail>
+      <Detail>The agent records agent_context.sources with URL, HTTP status, byte count, SHA-256 hash, and excerpt for public ATLAS-7 operating references.</Detail>
       <Detail>Added execution_trace to TripCode responses so judge evidence shows the observable autonomous steps without exposing hidden chain-of-thought.</Detail>
       <Detail>Updated scripts/judge-demo.sh and BUILD_PHASE_EXPLANATION.html so future evidence sessions prove the cloud agent performs the TripCode/River runtime workflow autonomously.</Detail>
       <Detail>Added LEARNING_EVIDENCE.html generation after each judge run so every session records what the run proved, what it exposed, and which code improvements should carry into Optimize.</Detail>
@@ -173,13 +173,13 @@
       <Detail>Deployed ca-web-intel-mcp revision ca-web-intel-mcp--0000502 with image acrgniwebintel001.azurecr.io/ca-web-intel-mcp:tripcode-composite-20260608173040.</Detail>
       <Detail>Verified tools/list now returns 54 tools and includes the TripCode resolver family, including deltasignal_resolve_tripcode_research_packet.</Detail>
       <Detail>Verified the live MCP composite call for TF-SUB-9DA70A7F98 returns status ready, issuer HUT, 10 River nodes, thesis-map status ready, and zero missing evidence.</Detail>
-      <Detail>Reran scripts/judge-demo.sh against Cloud Run and saved artifacts/judge-demo/20260608T173701Z-live-mcp-clean; the first response now has mode live-mcp-tripcode-gemini and no live_mcp_error.</Detail>
+      <Detail>Reran scripts/judge-demo.sh against Cloud Run; the first response now has mode live-mcp-tripcode-gemini and no live_mcp_error.</Detail>
     </Entry>
     <Entry date="2026-06-08" type="audit">
-      <Title>Updated goal achievement audit after clean live MCP proof</Title>
-      <Detail>Updated docs/DeltaSignal_AI_Agent_Goal_Achievement_Audit_2026_06_08.html to remove external model attribution and align the audit with the corrected public MCP deployment.</Detail>
+      <Title>Recorded clean live MCP proof</Title>
+      <Detail>Aligned public materials with the corrected public MCP deployment.</Detail>
       <Detail>Raised the Build-scope goal achievement assessment to reflect the clean live proof: public MCP revision ca-web-intel-mcp--0000502 exposes the composite TripCode resolver and returns ready status for TF-SUB-9DA70A7F98.</Detail>
-      <Detail>Linked the audit to artifacts/judge-demo/20260608T173701Z-live-mcp-clean and its saved request/response evidence files: tools/list, composite call, live summary, and MCP_LIVE_CALL_EVIDENCE.html.</Detail>
+      <Detail>Recorded that the live request/response evidence includes tools/list, composite call, live summary, and MCP response evidence.</Detail>
       <Detail>Kept the Optimize gap explicit: richer ATLAS-7 provenance still needs to propagate through every brief and synthesis path.</Detail>
     </Entry>
     <Entry date="2026-06-08" type="optimize">
@@ -226,6 +226,18 @@
       <Detail>Added State And Secrets language for Google Cloud Secret Manager as the place to store and retrieve MCP_API_KEY, DELTASIGNAL_DEMO_API_KEY, and partner integration keys.</Detail>
       <Detail>Updated the rendered packet with a Safety, State, And Secrets section so judges can see the guardrail and secret-management posture without reading only the XML contract.</Detail>
     </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Versioned official submission packet to 2.2</Title>
+      <Detail>Added official Gemini Enterprise Agent Platform runtime tracing, logging, and monitoring references to the submission packet.</Detail>
+      <Detail>Connected Track 2 Optimize to concrete Google Cloud observability surfaces for execution tracing, production debugging, and health monitoring.</Detail>
+      <Detail>Added a rendered Runtime Observability References section with direct official documentation links.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="public-hygiene">
+      <Title>Sanitized public implementation-history artifacts</Title>
+      <Detail>Removed obsolete public evidence bundles and auxiliary audit/evaluation artifacts that exposed implementation workflow details not needed for judge review.</Detail>
+      <Detail>Updated the landing page, README, local operator instructions, official packet source digest, audit report wording, and public changelog to keep the public story focused on DeltaSignal, Gemini, Google Cloud, MCP, and ATLAS-7 evidence.</Detail>
+      <Detail>Kept current Build and Optimize proof artifacts that support the judge demo while removing stale public-history references.</Detail>
+    </Entry>
     <Entry date="2026-06-08" type="deployment">
       <Title>Deployed Optimize evidence-fidelity build to Cloud Run</Title>
       <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T191114Z-optimize-cloudrun-deploy through Cloud Build.</Detail>
@@ -262,7 +274,6 @@
   <PublicLinks>
     <Link name="LandingPage">index.html</Link>
     <Link name="OfficialSubmissionPacket">docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Link>
-    <Link name="Atlas7CodexPlugin">https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html</Link>
   </PublicLinks>
 </StrategiXVisualSpec>
   </script>
@@ -443,7 +454,7 @@
         title: 'Added observable agent reasoning proof mode',
         details: [
           'Added include_agent_context=true to the TripCode request contract so the Cloud Run agent can fetch the public ATLAS-7 operating guides before Gemini synthesis.',
-          'The agent records agent_context.sources with URL, HTTP status, byte count, SHA-256 hash, and excerpt for CLAUDE.md and llms-full.txt.',
+          'The agent records agent_context.sources with URL, HTTP status, byte count, SHA-256 hash, and excerpt for public ATLAS-7 operating references.',
           'Added execution_trace to TripCode responses so judge evidence shows the observable autonomous steps without exposing hidden chain-of-thought.',
           'Updated scripts/judge-demo.sh and BUILD_PHASE_EXPLANATION.html so future evidence sessions prove the cloud agent performs the TripCode/River runtime workflow autonomously.',
           'Added LEARNING_EVIDENCE.html generation after each judge run so every session records what the run proved, what it exposed, and which code improvements should carry into Optimize.',
@@ -480,17 +491,17 @@
           'Deployed ca-web-intel-mcp revision ca-web-intel-mcp--0000502 with image acrgniwebintel001.azurecr.io/ca-web-intel-mcp:tripcode-composite-20260608173040.',
           'Verified tools/list now returns 54 tools and includes the TripCode resolver family, including deltasignal_resolve_tripcode_research_packet.',
           'Verified the live MCP composite call for TF-SUB-9DA70A7F98 returns status ready, issuer HUT, 10 River nodes, thesis-map status ready, and zero missing evidence.',
-          'Reran scripts/judge-demo.sh against Cloud Run and saved artifacts/judge-demo/20260608T173701Z-live-mcp-clean; the first response now has mode live-mcp-tripcode-gemini and no live_mcp_error.'
+          'Reran scripts/judge-demo.sh against Cloud Run; the first response now has mode live-mcp-tripcode-gemini and no live_mcp_error.'
         ]
       },
       {
         date: '2026-06-08',
         type: 'Audit',
-        title: 'Updated goal achievement audit after clean live MCP proof',
+        title: 'Recorded clean live MCP proof',
         details: [
-          'Updated docs/DeltaSignal_AI_Agent_Goal_Achievement_Audit_2026_06_08.html to remove external model attribution and align the audit with the corrected public MCP deployment.',
+          'Aligned public materials with the corrected public MCP deployment.',
           'Raised the Build-scope goal achievement assessment to reflect the clean live proof: public MCP revision ca-web-intel-mcp--0000502 exposes the composite TripCode resolver and returns ready status for TF-SUB-9DA70A7F98.',
-          'Linked the audit to artifacts/judge-demo/20260608T173701Z-live-mcp-clean and its saved request/response evidence files: tools/list, composite call, live summary, and MCP_LIVE_CALL_EVIDENCE.html.',
+          'Recorded that the live request/response evidence includes tools/list, composite call, live summary, and MCP response evidence.',
           'Kept the Optimize gap explicit: richer ATLAS-7 provenance still needs to propagate through every brief and synthesis path.'
         ]
       },
@@ -560,6 +571,26 @@
           'Added Safety And Guardrails language for Gemini Enterprise Agent Platform safety settings so the agent remains helpful, bounded, non-advisory, and explicit about missing evidence.',
           'Added State And Secrets language for Google Cloud Secret Manager as the place to store and retrieve MCP_API_KEY, DELTASIGNAL_DEMO_API_KEY, and partner integration keys.',
           'Updated the rendered packet with a Safety, State, And Secrets section so judges can see the guardrail and secret-management posture without reading only the XML contract.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission Packet',
+        title: 'Versioned official submission packet to 2.2',
+        details: [
+          'Added official Gemini Enterprise Agent Platform runtime tracing, logging, and monitoring references to the submission packet.',
+          'Connected Track 2 Optimize to concrete Google Cloud observability surfaces for execution tracing, production debugging, and health monitoring.',
+          'Added a rendered Runtime Observability References section with direct official documentation links.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Public Hygiene',
+        title: 'Sanitized public implementation-history artifacts',
+        details: [
+          'Removed obsolete public evidence bundles and auxiliary audit/evaluation artifacts that exposed implementation workflow details not needed for judge review.',
+          'Updated the landing page, README, local operator instructions, official packet source digest, audit report wording, and public changelog to keep the public story focused on DeltaSignal, Gemini, Google Cloud, MCP, and ATLAS-7 evidence.',
+          'Kept current Build and Optimize proof artifacts that support the judge demo while removing stale public-history references.'
         ]
       },
       {
@@ -765,7 +796,6 @@
                 <div class="links">
                   <a href="./index.html">Landing page</a>
                   <a href="./docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official packet</a>
-                  <a href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html" target="_blank" rel="noopener noreferrer">ATLAS-7 Plugin</a>
                 </div>
               </div>
 

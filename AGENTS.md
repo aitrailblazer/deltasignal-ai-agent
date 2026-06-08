@@ -114,9 +114,9 @@ Known TripCode/HUT public-readiness caveat:
 
 ## Agent Behavior
 
-Codex should make minimal scoped edits, preserve existing user work, run repo-local tests when touching code, and avoid introducing secrets.
+Implementation agents should make minimal scoped edits, preserve existing user work, run repo-local tests when touching code, and avoid introducing secrets.
 
-Claude Code should read this file first, inspect current OpenAPI/MCP discovery before making live claims, and treat all Delta Signal outputs as evidence envelopes rather than free-form financial analysis.
+Project operators should read this file first, inspect current OpenAPI/MCP discovery before making live claims, and treat all Delta Signal outputs as evidence envelopes rather than free-form financial analysis.
 
 Gemini/ADK wrappers should use the same evidence contract: tool calls first, synthesis second, no unsupported market chatter, no personalized advice.
 

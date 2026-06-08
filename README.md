@@ -4,7 +4,7 @@ DeltaSignal Gemini AI Agent is a competition build for the Google for Startups A
 
 The project is a new Google Cloud-native autonomous issuer intelligence agent. It turns fragmented public-company stress signals, SEC-grounded evidence, peer context, and TripCode research memory into a concise B2B action brief for analysts, funds, and startup operators.
 
-The competition idea is simple: TripCodes make financial research portable, inspectable, and executable by agents. A subscriber can give Gemini, Codex, Claude Code, or any MCP-aware agent one TripCode and ask it to resolve the article, reconstruct the thesis River, compare it with filing-backed evidence, and show what changed.
+The competition idea is simple: TripCodes make financial research portable, inspectable, and executable by agents. A subscriber can give the DeltaSignal Gemini AI Agent, or another authorized MCP-aware workflow, one TripCode and ask it to resolve the article, reconstruct the thesis River, compare it with filing-backed evidence, and show what changed.
 
 ## Competition Positioning
 

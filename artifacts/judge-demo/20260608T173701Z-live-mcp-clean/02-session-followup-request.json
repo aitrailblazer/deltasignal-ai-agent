@@ -1,8 +1,0 @@
-{
-  "method": "POST",
-  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/resolve?session_id=judge-demo-hut",
-  "headers": {
-    "X-Demo-Key": "[REDACTED]"
-  },
-  "body": "Using the previous HUT River, what are the top 3 things to monitor next and which assumptions weakened?"
-}
