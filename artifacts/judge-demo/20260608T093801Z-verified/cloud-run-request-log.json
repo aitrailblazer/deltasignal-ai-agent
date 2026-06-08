@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-06-08T09:38:01.882540Z",
+    "revision": "deltasignal-ai-agent-00004-rz5",
+    "method": "GET",
+    "url": "https://deltasignal-ai-agent-531691677642.us-central1.run.app/resolve?tripcode=TF-SUB-9DA70A7F98&session_id=judge-demo-hut&issuer=HUT&payload_mode=compact&include_filing_evidence=true&include_prior_articles=true&include_thesis_map=true",
+    "status": 200,
+    "latency": "7.442350111s"
+  },
+  {
+    "timestamp": "2026-06-08T09:38:09.560665Z",
+    "revision": "deltasignal-ai-agent-00004-rz5",
+    "method": "POST",
+    "url": "https://deltasignal-ai-agent-531691677642.us-central1.run.app/resolve?session_id=judge-demo-hut",
+    "status": 200,
+    "latency": "0.002699120s"
+  },
+  {
+    "timestamp": "2026-06-08T09:38:09.731750Z",
+    "revision": "deltasignal-ai-agent-00004-rz5",
+    "method": "GET",
+    "url": "https://deltasignal-ai-agent-531691677642.us-central1.run.app/v1/usage",
+    "status": 200,
+    "latency": "0.001511340s"
+  }
+]

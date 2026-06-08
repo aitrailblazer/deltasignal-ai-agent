@@ -1,0 +1,15 @@
+{
+  "status": 200,
+  "response_body_type": "validated_summary_not_raw_body",
+  "enabled": true,
+  "source": "local-estimate",
+  "currency": "USD",
+  "tracked_spent_usd": 0.1,
+  "budget_usd": 500,
+  "remaining_usd": 499.9,
+  "official_billing": {
+    "available": false,
+    "source": "not_configured"
+  },
+  "note": "Local estimate for demo/test requests. Exact Google Cloud account spend and remaining credits require Cloud Billing export or the Billing console."
+}

@@ -1,0 +1,67 @@
+{
+  "status": 200,
+  "response_body_type": "validated_summary_not_raw_body",
+  "tripcode": "TF-SUB-9DA70A7F98",
+  "issuer": "HUT",
+  "mode": "live-mcp-tripcode-gemini",
+  "packet": {
+    "status": "ready",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "research_packet_present": true,
+    "research_packet": {
+      "article": {
+        "title": "Hut 8: The Re-Rating Has A Deadline",
+        "canonical_url": "https://substack.com/@deltasignalai/p-201060573",
+        "subtitle_contains_tripcode": true
+      },
+      "river": {
+        "node_count": 10
+      },
+      "filing_evidence_refs": [
+        {
+          "tripcode": "TF-XBRL-HUT-2026Q1-5C9F9A32B2",
+          "form": "10-Q",
+          "period": "2026-Q1",
+          "accession": "0001104659-26-055891"
+        },
+        {
+          "tripcode": "TF-XBRL-HUT-20260605-0B563DB7A0",
+          "form": "8-K",
+          "date": "2026-06-05",
+          "accession": "0001104659-26-070744"
+        },
+        {
+          "tripcode": "TF-XBRL-HUT-20260604-4ABB4CE2B1",
+          "form": "8-K",
+          "date": "2026-06-04",
+          "accession": "0001104659-26-070393"
+        }
+      ]
+    }
+  },
+  "gemini_summary_present": true,
+  "memory": {
+    "session_id": "judge-demo-hut",
+    "available": true,
+    "last_tripcode": "TF-SUB-9DA70A7F98",
+    "last_issuer": "HUT",
+    "live_entry": {
+      "mode": "live-mcp-tripcode",
+      "river_node_count": 10,
+      "packet_keys": [
+        "research_packet",
+        "status",
+        "tripcode",
+        "evidence_hash"
+      ]
+    }
+  },
+  "cost": {
+    "request_kind": "tripcode",
+    "request_cost_usd": 0.05,
+    "tracked_spent_usd": 0.1,
+    "budget_usd": 500,
+    "remaining_usd": 499.9
+  },
+  "boundary_note": "This is a validated response summary from the latest successful run. The raw response body was not persisted before this artifact capture change."
+}

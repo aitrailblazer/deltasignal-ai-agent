@@ -133,6 +133,13 @@
       <Detail>Verified make check still passes with total Go coverage at 100.0 percent after the parser and Memory Bank changes.</Detail>
       <Detail>Verified app usage ledger after live test requests: 0.10 USD tracked spend and 499.90 USD remaining from the configured 500 USD budget; official Google Billing spend still requires Billing export or console access.</Detail>
     </Entry>
+    <Entry date="2026-06-08" type="evidence">
+      <Title>Added judge demo request and response evidence artifacts</Title>
+      <Detail>Added artifacts/judge-demo/20260608T093801Z-verified with redacted request specs, Cloud Run request log evidence, validated response summaries, and cost snapshot for the live MCP Build run.</Detail>
+      <Detail>Marked the prior raw response body status explicitly as not_available_for_prior_run because the first live run printed raw JSON but did not persist it.</Detail>
+      <Detail>Updated scripts/judge-demo.sh so future judge runs write redacted request JSON and full raw response JSON into artifacts/judge-demo/&lt;run_id&gt;/ automatically.</Detail>
+      <Detail>Kept demo keys redacted and preserved the boundary that official Google Cloud billing still requires Billing export or console data.</Detail>
+    </Entry>
   </Entries>
   <PublicLinks>
     <Link name="LandingPage">index.html</Link>
@@ -294,6 +301,17 @@
           'Ran scripts/judge-demo.sh against the live Cloud Run service; /resolve returned mode live-mcp-tripcode-gemini, status ready, the full research_packet, 10 HUT River nodes, filing evidence refs, Gemini synthesis, and session-memory continuity.',
           'Verified make check still passes with total Go coverage at 100.0 percent after the parser and Memory Bank changes.',
           'Verified app usage ledger after live test requests: 0.10 USD tracked spend and 499.90 USD remaining from the configured 500 USD budget; official Google Billing spend still requires Billing export or console access.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Evidence',
+        title: 'Added judge demo request and response evidence artifacts',
+        details: [
+          'Added artifacts/judge-demo/20260608T093801Z-verified with redacted request specs, Cloud Run request log evidence, validated response summaries, and cost snapshot for the live MCP Build run.',
+          'Marked the prior raw response body status explicitly as not_available_for_prior_run because the first live run printed raw JSON but did not persist it.',
+          'Updated scripts/judge-demo.sh so future judge runs write redacted request JSON and full raw response JSON into artifacts/judge-demo/<run_id>/ automatically.',
+          'Kept demo keys redacted and preserved the boundary that official Google Cloud billing still requires Billing export or console data.'
         ]
       }
     ];

@@ -1,0 +1,34 @@
+{
+  "artifact_type": "judge_demo_verified_request_response_bundle",
+  "created_at": "2026-06-08T10:15:00Z",
+  "source": "reconstructed_from_scripts_and_cloud_run_logs_without_rerunning_paid_tripcode_request",
+  "service": {
+    "name": "deltasignal-ai-agent",
+    "project": "startup-ai-deltasignal",
+    "region": "us-central1",
+    "revision": "deltasignal-ai-agent-00004-rz5",
+    "base_url": "https://deltasignal-ai-agent-531691677642.us-central1.run.app"
+  },
+  "tripcode": "TF-SUB-9DA70A7F98",
+  "issuer": "HUT",
+  "session_id": "judge-demo-hut",
+  "cost_policy": {
+    "rerun_avoided": true,
+    "reason": "The paid TripCode/Gemini response body was not previously persisted. This bundle records the exact request shapes, Cloud Run log evidence, and the validated response summary from the successful run.",
+    "tracked_spend_after_run_usd": 0.1,
+    "budget_usd": 500,
+    "estimated_remaining_usd": 499.9,
+    "official_billing_available": false
+  },
+  "files": [
+    "01-resolve-tripcode-request.json",
+    "01-resolve-tripcode-response.summary.json",
+    "02-session-followup-request.json",
+    "02-session-followup-response.summary.json",
+    "03-usage-request.json",
+    "03-usage-response.summary.json",
+    "cloud-run-request-log.json"
+  ],
+  "raw_response_body_status": "not_available_for_prior_run",
+  "future_capture": "scripts/judge-demo.sh now writes full request and raw response JSON into artifacts/judge-demo/<run_id>/ for every future run."
+}

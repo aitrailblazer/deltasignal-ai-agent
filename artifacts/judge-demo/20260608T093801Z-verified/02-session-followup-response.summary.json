@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "response_body_type": "validated_summary_not_raw_body",
+  "mode": "session-memory",
+  "memory": {
+    "session_id": "judge-demo-hut",
+    "available": true,
+    "last_tripcode": "TF-SUB-9DA70A7F98",
+    "last_issuer": "HUT",
+    "entries_include_live_mcp_tripcode": true,
+    "live_entry": {
+      "tripcode": "TF-SUB-9DA70A7F98",
+      "issuer": "HUT",
+      "mode": "live-mcp-tripcode",
+      "article_title": "Hut 8: The Re-Rating Has A Deadline",
+      "river_node_count": 10
+    }
+  },
+  "cost": {
+    "request_kind": "session-memory",
+    "request_cost_usd": 0,
+    "tracked_spent_usd": 0.1,
+    "budget_usd": 500,
+    "remaining_usd": 499.9
+  },
+  "boundary_note": "This is a validated response summary from the latest successful run. The raw response body was not persisted before this artifact capture change."
+}
