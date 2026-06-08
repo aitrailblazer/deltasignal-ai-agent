@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Gemini AI Agent — Codebase &amp; Integration Audit Report</title>
+  <meta name="description" content="Comprehensive audit of the deltasignal-ai-agent codebase, git hygiene, Delta Signal boundaries, evidence contracts, testing posture, and compliance with aitrailblazerGENI root and local AGENTS.md rules.">
+  <style>
+    html {
+      background: #06080d;
+      color: #fff8ed;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    body { margin: 0; min-height: 100vh; }
+    deltasignal-audit-report:not(:defined) { display: block; padding: 32px; }
+  </style>
+</head>
+<body>
+  <deltasignal-audit-report></deltasignal-audit-report>
+
+  <script id="strategix-audit-contract" type="application/xml">
+<StrategiXVisualSpec version="1.1" status="audit-complete" generated="2026-06-08" artifact="docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Gemini AI Agent — Codebase &amp; Integration Audit Report</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent (nested inside aitrailblazerGENI)</Repository>
+    <Auditor>StrategiX Codex audit layer</Auditor>
+    <AuditDate>2026-06-08</AuditDate>
+    <ScopePath>deltasignal-ai-agent/</ScopePath>
+    <ParentContext>aitrailblazerGENI (GEN-I standards/specs + integration hub)</ParentContext>
+    <GcpProject>startup-ai-deltasignal</GcpProject>
+    <RelatedArtifacts>
+      <Artifact>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Artifact>
+      <Artifact>ExecPlan_DeltaSignal_Gemini_AI_Agent_Judge_Demo_2026_06_07.html</Artifact>
+      <Artifact>CHANGELOG.html</Artifact>
+      <Artifact>index.html</Artifact>
+    </RelatedArtifacts>
+  </CanonicalArtifact>
+
+  <Purpose>Provide a durable, machine- and human-readable record of the full codebase, security, boundary, testing, documentation, git, and AGENTS.md compliance audit performed on the DeltaSignal Gemini AI Agent. Deliver prioritized, actionable recommendations while preserving all evidence boundaries and non-advice posture required by the project.</Purpose>
+
+  <AuditContext>
+    <Trigger>User request: "audit /.../deltasignal-ai-agent"</Trigger>
+    <Method>Filesystem exploration (list_dir, read_file), source + test review, static grep for secrets, execution of canonical commands (GOWORK=off go test ./..., coverage, vet), git status analysis for nested repo, review of parent and local AGENTS.md / CLAUDE.md, inspection of StrategiX deliverables and ignore rules.</Method>
+    <VerificationPerformed>
+      <Item>100% test coverage gate passed</Item>
+      <Item>go vet clean</Item>
+      <Item>No secrets or credentials in source, tests, scripts, or committed files</Item>
+      <Item>Live vs demo MCP fallback correctly gated</Item>
+      <Item>StrategiX Visual Spec format used for all durable artifacts</Item>
+      <Item>Delta Signal boundary rules (parent AGENTS) respected for this agent surface</Item>
+      <Item>Local .gitignore, .dockerignore, .gcloudignore correct</Item>
+    </VerificationPerformed>
+  </AuditContext>
+
+  <OverallHealth>
+    <Rating>Strong (Competition-Ready Demo Posture)</Rating>
+    <Score>92</Score>
+    <Summary>The project demonstrates high engineering discipline, strict evidence contracts, excellent secret hygiene, and full compliance with the StrategiX .html-only rule and local AGENTS/CLAUDE guidance. The primary surface risk is its status as an active nested git repository with uncommitted work at the time of audit and incomplete propagation of full ATLAS-7 metadata into the brief path.</Summary>
+  </OverallHealth>
+
+  <Findings>
+    <Category name="Hygiene &amp; Repository Structure" severity="medium">
+      <Positive>The subtree maintains its own .git and is treated as a separate git state (consistent with workspace patterns such as StrategiX).</Positive>
+      <Positive>.gitignore, .dockerignore, and .gcloudignore are comprehensive and correctly exclude .env*, keys, private/, *.pdf, bin/, tmp/, coverage.* and analysis docs.</Positive>
+      <Positive>.env.example and .envrc contain only documentation values and project configuration; no live credentials.</Positive>
+      <Observation>From the parent aitrailblazerGENI repo, the entire deltasignal-ai-agent/ directory appears as untracked (??). This is expected for a nested git repo but must be explicitly managed before any parent-level cleanliness checks or pushes.</Observation>
+      <Observation>At audit time the nested repo had multiple modified files and untracked items (source, tests, new AGENTS.md, CHANGELOG.html, ExecPlan, scripts, etc.). bin/ contained built artifacts (correctly ignored).</Observation>
+      <Observation>private/ directory exists locally with competition PDFs, extracted images, and private strategy specs. These are properly gitignored per the subtree .gitignore.</Observation>
+      <Observation>Root scripts/check-repo-clean.sh (run during audit) correctly surfaced StrategiX submodule dirt and unrelated parent search-gateway deltasignal files; it does not specially track this nested repo.</Observation>
+    </Category>
+
+    <Category name="Security, Secrets &amp; Credential Posture" severity="low">
+      <Positive>No hardcoded API keys, tokens, PEMs, or credentials found via broad grep across all source, tests, scripts, docs, and HTML artifacts.</Positive>
+      <Positive>Live MCP access requires explicit DELTASIGNAL_USE_LIVE_MCP=true + MCP_API_KEY (or DELTASIGNAL_API_KEY). Falls back cleanly to DemoToolClient.</Positive>
+      <Positive>Demo routes protected by optional DELTASIGNAL_DEMO_API_KEY (X-Demo-Key or Bearer). Healthz remains public.</Positive>
+      <Positive>Dockerfile uses distroless/static-debian12:nonroot. Cloud Build + Cloud Run deploy paths do not bake secrets.</Positive>
+      <Positive>Cost tracking is explicitly "local-estimate" only with clear disclaimer; never claims to be authoritative Google billing.</Positive>
+      <Positive>README and local AGENTS.md explicitly instruct use of Secret Manager / Cloud Run config for MCP_API_KEY and demo keys.</Positive>
+      <Observation>Makefile does -include .env + export (standard pattern). This exports variables to child processes when present. Discipline is required; the .gitignore protects .env.</Observation>
+    </Category>
+
+    <Category name="Delta Signal Boundaries &amp; Parent AGENTS.md Compliance" severity="low">
+      <Positive>This component is the authorized agent/orchestration layer. It is correct for it to call the public DeltaSignal ATLAS-7 MCP directly when the key is supplied. Parent rules ("Delta Signal access must go through the Go backend relay", "never from iOS/macOS client") apply to end-user clients, not this service.</Positive>
+      <Positive>Code and documentation consistently preserve the four required boundaries: article_memory, evidence_identity, resolver_identity, non_advice.</Positive>
+      <Positive>Default disclosures, Gemini synthesis prompts, and TripCode responses all carry the required non-advice language and provenance labels.</Positive>
+      <Positive>Demo mode is the safe default; live mode is opt-in and explicitly labeled.</Positive>
+      <Observation>The /v1/brief (coordinator) path summarizes MCP results into compact SpecialistResult. Richer ATLAS-7 fields (source_date, computed_at, stale, caveats, quality_flags, evidence_hash, payload_mode, full provenance) are more completely available in the raw TripCode packet than in the brief findings. This is the largest gap between "evidence contract stated in docs" and "what the brief path actually surfaces today."</Observation>
+    </Category>
+
+    <Category name="Code Quality, Architecture &amp; Testing" severity="low">
+      <Positive>Clear interfaces (ToolClient, TripCodeResolver, Synthesizer, TripCodeSynthesizer) with injectable fakes for tests.</Positive>
+      <Positive>Coordinator is intentionally simple and sequential (appropriate for current scope).</Positive>
+      <Positive>AtlasMCPToolClient implements correct JSON-RPC 2.0 tools/call shape, X-API-Key header, timeout, size limits, and error envelope handling.</Positive>
+      <Positive>TripCodeMemoryStore is bounded, thread-safe, and correctly extracts monitor/weakened items and River node counts from varied packet shapes.</Positive>
+      <Positive>CostTracker is opt-in, mutex-protected, and produces clear snapshots with remaining budget math.</Positive>
+      <Positive>Comprehensive test coverage across env wiring, auth branches, error paths, memory capping, MCP roundtrips, Gemini injection, and cost math. 100% statement coverage gate enforced by Makefile and passes.</Positive>
+      <Positive>go vet clean on audit run.</Positive>
+      <Positive>Gemini path uses Vertex AI / genai SDK via ADC (no direct keys) and supports test injection.</Positive>
+      <Observation>In-memory only session memory is acceptable for demo/Cloud Run (min-instances=0, low concurrency) but would require a note or future persistent backend for production multi-replica use.</Observation>
+      <Observation>No built-in rate limiting or request identity beyond the shared demo key. Cloud Run max-instances=3 + concurrency=80 provides some natural bounding.</Observation>
+      <Observation>Some TripCode resolver paths hard-code include_* flags to true for safety; this is documented behavior but reduces flexibility for certain callers.</Observation>
+    </Category>
+
+    <Category name="Documentation &amp; Deliverables" severity="low">
+      <Positive>All long-form durable artifacts (Submission Packet, landing, ExecPlan, this audit) are self-contained StrategiX Visual Spec .html files with embedded &lt;StrategiXVisualSpec&gt; XML contracts. This satisfies the root NON-NEGOTIABLE OUTPUT FORMAT RULE.</Positive>
+      <Positive>Local AGENTS.md and CLAUDE.md are detailed, prescriptive, and correctly emphasize evidence-first, refusal rules, HUT test case, and MCP discovery gating.</Positive>
+      <Positive>README is thorough on judge flows, cost controls, live vs demo, deployment, and public-repo safety.</Positive>
+      <Positive>CHANGELOG.html exists and is referenced from the landing page.</Positive>
+      <Positive>scripts/judge-demo.sh + make demo provide a repeatable 3-minute video path.</Positive>
+      <Observation>Private/legacy analyses live in private/docs-archive/ and are correctly ignored. The public surface uses only the canonical submission packet.</Observation>
+    </Category>
+
+    <Category name="Deployment &amp; Operations" severity="low">
+      <Positive>Cloud Run settings (min=0, max=3, 512Mi, 1 CPU, concurrency 80) are conservative and cost-aware.</Positive>
+      <Positive>Both cloudbuild.yaml and make deploy-source paths are present and documented.</Positive>
+      <Positive>Healthz is unauthenticated; protected routes require the demo key when configured.</Positive>
+      <Positive>Cost and mode metadata are returned on successful responses when tracking is enabled.</Positive>
+      <Observation>Current readiness depends on external MCP surface (api.aitrailblazer.net) and the presence of River/index blobs for full TripCode features. Code and docs correctly treat these as discovery-gated.</Observation>
+    </Category>
+  </Findings>
+
+  <Recommendations>
+    <Priority level="immediate" category="Hygiene">
+      <Item>Commit or explicitly document the current state of the nested deltasignal-ai-agent git repo before any parent-level push or clean-check. Consider registering it as a tracked nested repo or submodule in the parent if long-term co-location is desired.</Item>
+      <Item>After significant changes, run the subtree's own "make check" + git status inside the nested repo, then re-run root scripts/check-repo-clean.sh from aitrailblazerGENI and address any StrategiX or other submodule dirt first.</Item>
+      <Item>Remove or .gitignore any stray coverage.out and bin/ artifacts that may have been left after local builds (they are already ignored, but disk state should be clean before handoff).</Item>
+    </Priority>
+
+    <Priority level="high" category="Evidence &amp; Contract Fidelity">
+      <Item>Enhance the /v1/brief path (Coordinator + SpecialistResult) to carry forward richer ATLAS-7 metadata fields (source_date, computed_at, stale, caveats, quality_flags, evidence_hash or refs, payload_mode, full tool provenance) instead of only the compact summary text. This closes the gap between the documented evidence contract and what the brief actually returns.</Item>
+      <Item>Consider adding a small "EvidenceEnvelope" or "Provenance" struct that both the brief findings and the TripCode packet can populate so downstream consumers (Gemini, judges, clients) receive consistent fields.</Item>
+    </Priority>
+
+    <Priority level="medium" category="Robustness &amp; Observability">
+      <Item>Add lightweight structured request logging (or at minimum correlation IDs) on the server so Cloud Run logs can be correlated with cost entries and MCP calls.</Item>
+      <Item>Document (in README or a short note in the submission packet) that session memory is in-memory only and will not survive Cloud Run restarts or scale events. If multi-turn judge scenarios become important, evaluate a minimal Redis or Firestore-backed store behind a flag.</Item>
+      <Item>Add a simple health or readiness probe that reports whether live MCP key is configured and whether the last known MCP call succeeded (without exposing the key).</Item>
+    </Priority>
+
+    <Priority level="medium" category="Testing &amp; Hardening">
+      <Item>Add a small boundary-compliance test that asserts the presence of the four required disclosures and non-advice language in both demo and (mocked) live responses.</Item>
+      <Item>Consider a lightweight "golden packet" test for the HUT TripCode path (TF-SUB-9DA70A7F98) that can run without live MCP when the composite is unavailable.</Item>
+      <Item>If the project grows, introduce a minimal evaluation harness that scores tool selection accuracy, citation/grounding rate, and refusal behavior on a small synthetic set.</Item>
+    </Priority>
+
+    <Priority level="low" category="Documentation &amp; Process">
+      <Item>When the current ExecPlan_DeltaSignal_Gemini_AI_Agent_Judge_Demo_2026_06_07.html items are fully landed, create an explicit git commit in the nested repo whose message references the ExecPlan title and lists completed items (per root AGENTS.md guidance).</Item>
+      <Item>Keep the public submission packet and landing page as the single source of judge-facing truth; continue routing private strategy material exclusively through gitignored private/ paths.</Item>
+      <Item>Consider adding a short "Audit History" section or pointer in the submission packet or CHANGELOG.html that links to this report once it is accepted.</Item>
+    </Priority>
+
+    <Priority level="future" category="Platform">
+      <Item>Evaluate whether the Go service should become the canonical "Delta Signal relay" for other GEN-I surfaces (iOS/macOS client, other agents) rather than having multiple direct MCP callers. This would further align with the parent "backend owns routing/credentials" model.</Item>
+      <Item>Once the MCP surface and River blobs are fully rolled out publicly, update the "CurrentReadiness" section of the submission packet and re-record the judge demo with live evidence.</Item>
+    </Priority>
+  </Recommendations>
+
+  <ComplianceMatrix>
+    <Rule source="root AGENTS.md">All durable long-form artifacts produced as self-contained StrategiX .html with Lit surface + embedded XML.</Rule>
+    <Result status="pass">Submission Packet, index.html, ExecPlan, and this audit all follow the format. No .md long-form artifacts created for this class of content.</Result>
+
+    <Rule source="root AGENTS.md">Delta Signal internal credentials never placed in client code; access through Go backend relay for clients; no direct client MCP calls.</Rule>
+    <Result status="pass">This component is the agent/backend surface. It correctly calls the MCP only when explicitly configured. No client code lives here. Parent boundary rules are not violated.</Result>
+
+    <Rule source="local AGENTS.md / CLAUDE.md">Evidence first. Narrative second. Preserve source_date, computed_at, stale, caveats, quality flags, hashes, provenance, non-advice boundaries. Never invent missing evidence.</Rule>
+    <Result status="pass">Code, prompts, disclosures, and tests strongly enforce this. One medium gap noted in full metadata passthrough for the brief path.</Result>
+
+    <Rule source="local AGENTS.md">Never produce buy/sell/hold/price-target/recommendation language.</Rule>
+    <Result status="pass">All paths include explicit non-advice language and refusal posture in docs.</Result>
+
+    <Rule source="Makefile / local policy">100% coverage gate; GOWORK=off for all test/build commands.</Rule>
+    <Result status="pass">Gate enforced and passing on audit. All test invocations used GOWORK=off.</Result>
+
+    <Rule source="root AGENTS.md">Never commit secrets (.env, Key Vault values, tokens). Use .env.example for templates.</Rule>
+    <Result status="pass">No secrets committed. .env.example present and clean. Ignores correct.</Result>
+  </ComplianceMatrix>
+
+  <RisksAndOpenQuestions>
+    <Risk level="medium">Nested git repo state can cause parent cleanliness scripts and submodule tracking surprises if not managed explicitly before pushes.</Risk>
+    <Risk level="medium">Incomplete ATLAS-7 metadata in the /v1/brief SpecialistResult path creates a gap between the project's stated evidence contract and what judges or downstream systems actually receive on the primary brief endpoint.</Risk>
+    <Risk level="low">In-memory session memory + shared demo key model is acceptable for a time-boxed competition demo window but would need hardening for any longer-lived or multi-tenant deployment.</Risk>
+    <Risk level="low">External dependency on the public MCP surface (tool discovery, River blobs, uptime) for the strongest (live) demo path. Deterministic fallback mitigates this for judging.</Risk>
+    <OpenQuestion>Should the deltasignal-ai-agent eventually become (or expose) the official relay that other GEN-I clients (iOS, other agents) must use, rather than allowing direct MCP keys elsewhere?</OpenQuestion>
+    <OpenQuestion>When will the public MCP surface at api.aitrailblazer.net expose the full set of TripCode tools and required HUT River/index blobs so live demos no longer require internal keys or local fallbacks?</OpenQuestion>
+  </RisksAndOpenQuestions>
+
+  <VerificationLog>
+    <Command>GOWORK=off go test ./... (from deltasignal-ai-agent/)</Command>
+    <Result>ok for cmd/server, cmd/tripcode-demo, internal/agent</Result>
+    <Command>GOWORK=off go test ./... -coverprofile=... &amp;&amp; go tool cover -func=... | tail</Command>
+    <Result>total:(statements)100.0%</Result>
+    <Command>GOWORK=off go vet ./...</Command>
+    <Result>clean (no output)</Result>
+    <Command>grep for secrets / credentials / keys across tree</Command>
+    <Result>Only env var names, test placeholders ("test-key"), and policy text. No live values.</Result>
+    <Command>git status --porcelain from parent on deltasignal-ai-agent/</Command>
+    <Result>?? deltasignal-ai-agent/ (expected for nested git)</Result>
+    <Command>ls -la + .gitignore inspection + check-ignore tests</Command>
+    <Result>Private material, .env, bin/, coverage.out, PDFs all correctly ignored</Result>
+    <Command>Inspection of StrategiX XML contracts in existing .html deliverables</Command>
+    <Result>Present and well-formed in Submission Packet, index.html, ExecPlan</Result>
+    <Command>Root scripts/check-repo-clean.sh (partial run)</Command>
+    <Result>Surfaced expected StrategiX submodule dirt + unrelated parent files; exited 1 (non-fatal for this audit)</Result>
+  </VerificationLog>
+
+  <SourceDigest>
+    <AuditTimestamp>2026-06-08</AuditTimestamp>
+    <FilesInspected>go.mod, Makefile, Dockerfile, cloudbuild.yaml, all cmd/ and internal/agent/*.go + *_test.go, scripts/judge-demo.sh, .gitignore variants, .env*, README.md, local AGENTS.md + CLAUDE.md, docs/*.html, private/ structure (high-level only), bin/ and tmp/ presence, git state at multiple levels.</FilesInspected>
+    <GitStateAtAudit>Nested repo: multiple modified + untracked source/docs files. Parent: deltasignal-ai-agent/ reported as untracked. StrategiX submodule reported dirty in the same clean-check run.</GitStateAtAudit>
+    <ExternalReferences>Parent AGENTS.md (aitrailblazerGENI/), local AGENTS.md + CLAUDE.md (deltasignal-ai-agent/), existing StrategiX submission packet and ExecPlan, MCP client behavior observed via code + tests, HUT TripCode proof case (TF-SUB-9DA70A7F98) referenced throughout project.</ExternalReferences>
+    <Note>This report is a snapshot. Subsequent commits in the nested repo, MCP surface changes, or Cloud Run deployments will require a follow-up audit or delta report.</Note>
+  </SourceDigest>
+
+  <NextActions>
+    <Action priority="immediate">Address nested-repo commit hygiene and re-verify root clean check.</Action>
+    <Action priority="high">Propagate fuller ATLAS-7 evidence metadata into BriefResponse.Findings for the coordinator path.</Action>
+    <Action priority="medium">Add boundary-compliance assertions and basic observability hooks.</Action>
+    <Action priority="ongoing">Keep all new durable artifacts in StrategiX .html format only. Update this audit or produce a delta when major changes land.</Action>
+    <Action priority="post-competition">Evaluate relay consolidation and persistent memory options if the service graduates beyond the challenge window.</Action>
+  </NextActions>
+
+  <AcceptanceCriteriaForThisAudit>
+    <Criterion status="met">Audit performed using only local tools and repo commands; no external MCP calls were made during the audit itself.</Criterion>
+    <Criterion status="met">Report produced exclusively as a self-contained StrategiX Visual Spec .html (no parallel .md).</Criterion>
+    <Criterion status="met">All positive findings, gaps, and prioritized recommendations are captured with evidence references.</Criterion>
+    <Criterion status="met">Compliance matrix against both root and local AGENTS/CLAUDE rules is explicit and pass/fail.</Criterion>
+    <Criterion status="met">Verification log allows a future agent or human to reproduce the key checks.</Criterion>
+  </AcceptanceCriteriaForThisAudit>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+
+    const xml = document.getElementById('strategix-audit-contract')?.textContent.trim() ?? '';
+
+    class DeltasignalAuditReport extends LitElement {
+      static styles = css`
+        :host { display: block; --bg: #06080d; --panel: rgba(18,20,29,.92); --line: rgba(255,255,255,.13); --ink: #fff8ed; --muted: rgba(255,248,237,.72); --gold: #f2bf63; --green: #5df58b; --red: #ff6b6b; --blue: #72d9ff; --amber: #f2c36b; }
+        * { box-sizing: border-box; }
+        main { min-height: 100vh; padding: 32px 16px 80px; background: radial-gradient(circle at 8% 0%, rgba(242,191,99,.12), transparent 38%), var(--bg); }
+        .wrap { width: min(1120px, 100%); margin: 0 auto; }
+        .hero { border: 1px solid var(--line); background: var(--panel); border-radius: 12px; padding: 28px 28px 24px; margin-bottom: 24px; }
+        .title { font-size: 28px; font-weight: 600; letter-spacing: -0.4px; margin: 0 0 4px; }
+        .subtitle { color: var(--muted); font-size: 13px; }
+        .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .chip { font-size: 11px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--muted); }
+        .chip.ok { border-color: rgba(93,245,139,.4); color: #5df58b; }
+        .chip.warn { border-color: rgba(242,195,107,.4); color: #f2c36b; }
+        .section { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 20px; margin-bottom: 18px; }
+        .section h2 { margin: 0 0 12px; font-size: 15px; letter-spacing: .5px; text-transform: uppercase; color: var(--gold); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+        .card { border: 1px solid var(--line); background: rgba(255,255,255,.02); border-radius: 8px; padding: 14px; }
+        .card h3 { margin: 0 0 6px; font-size: 13px; color: var(--gold); }
+        .positive { color: #5df58b; }
+        .observation { color: #f2c36b; }
+        .risk { color: #ff6b6b; }
+        ul { padding-left: 18px; margin: 6px 0; }
+        li { margin: 3px 0; }
+        .status { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; background: rgba(255,255,255,.08); }
+        .status.pass { background: rgba(93,245,139,.15); color: #5df58b; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+        th { color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+        .rec { border-left: 3px solid var(--gold); padding-left: 10px; margin: 8px 0; }
+        .rec.immediate { border-color: #ff6b6b; }
+        .rec.high { border-color: #f2c36b; }
+        .rec.medium { border-color: #72d9ff; }
+        .rec.low { border-color: #5df58b; }
+        .footer { font-size: 11px; color: var(--muted); text-align: center; margin-top: 40px; opacity: .7; }
+        .xml-toggle { font-size: 11px; background: rgba(255,255,255,.06); border: 1px solid var(--line); color: var(--ink); padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+        pre { background: #0a0c14; padding: 12px; border-radius: 6px; font-size: 11px; overflow: auto; max-height: 320px; border: 1px solid var(--line); white-space: pre-wrap; }
+        .health { font-size: 13px; display: flex; align-items: center; gap: 10px; }
+        .health .score { font-family: monospace; font-size: 21px; font-weight: 600; color: var(--gold); }
+      `;
+      static properties = { showXml: { state: true } };
+
+      constructor() {
+        super();
+        this.showXml = false;
+      }
+
+      render() {
+        return html`
+          <main>
+            <div class="wrap">
+              <div class="hero">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                  <div>
+                    <div class="title">DeltaSignal Gemini AI Agent</div>
+                    <div style="font-size:17px; color:#f2bf63; font-weight:500;">Codebase &amp; Integration Audit Report</div>
+                  </div>
+                  <div style="text-align:right; font-size:12px; color:var(--muted);">
+                    2026-06-08<br>
+                    StrategiX Codex audit
+                  </div>
+                </div>
+
+                <div class="meta">
+                  <span class="chip">Scope: deltasignal-ai-agent/</span>
+                  <span class="chip">GCP: startup-ai-deltasignal</span>
+                  <span class="chip ok">100% test coverage gate</span>
+                  <span class="chip ok">StrategiX .html only</span>
+                  <span class="chip warn">Nested git repo</span>
+                </div>
+
+                <div class="health" style="margin-top:18px;">
+                  <div>Overall Health</div>
+                  <div class="score">92</div>
+                  <div style="color:#5df58b; font-size:13px;">Strong (Competition-Ready Demo Posture)</div>
+                </div>
+              </div>
+
+              <div class="section">
+                <h2>Purpose &amp; Summary</h2>
+                <p style="max-width:820px; margin:0 0 12px;">
+                  This report records a full static + dynamic audit of the DeltaSignal Gemini AI Agent (the Google for Startups AI Agents Challenge entry).
+                  It covers repository hygiene, secret posture, Delta Signal / parent AGENTS.md boundary compliance, code architecture, evidence contract fidelity,
+                  testing gates, documentation format (StrategiX), and deployment readiness. All findings are evidence-based and accompanied by prioritized recommendations.
+                </p>
+                <div style="font-size:12px; color:var(--muted);">Primary sources: local filesystem, git state, source + tests, canonical make commands, existing StrategiX deliverables, root + nested AGENTS.md files.</div>
+              </div>
+
+              <div class="grid">
+                <div class="card">
+                  <h3>Key Strengths</h3>
+                  <ul style="font-size:13px; line-height:1.45;">
+                    <li class="positive">• Strict evidence-first posture and non-advice boundaries throughout code, prompts, and disclosures</li>
+                    <li class="positive">• Correct live-MCP vs deterministic-demo fallback (key-gated)</li>
+                    <li class="positive">• 100% coverage gate enforced and passing; vet clean</li>
+                    <li class="positive">• Excellent secret hygiene — no credentials in repo, proper ignores, distroless non-root</li>
+                    <li class="positive">• All durable artifacts are StrategiX Visual Spec .html with embedded XML contracts</li>
+                    <li class="positive">• Parent Delta Signal client-relay rules respected (this is the authorized agent surface)</li>
+                  </ul>
+                </div>
+                <div class="card">
+                  <h3>Primary Gaps</h3>
+                  <ul style="font-size:13px; line-height:1.45;">
+                    <li class="observation">• Nested git repo creates parent cleanliness tracking surface (untracked in aitrailblazerGENI)</li>
+                    <li class="observation">• /v1/brief path summarizes rather than forwards rich ATLAS-7 metadata (stale, dates, caveats, hashes)</li>
+                    <li class="observation">• Session memory is in-memory only</li>
+                    <li class="observation">• At audit time: many uncommitted changes in the nested working tree</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="section">
+                <h2>Findings by Area</h2>
+                <div class="grid" style="margin-top:8px;">
+                  <div class="card">
+                    <h3>Hygiene &amp; Repository</h3>
+                    <div style="font-size:12.5px; color:var(--muted);">Separate nested git repo (own .git). Parent sees whole tree as untracked. Excellent .gitignore coverage for secrets, private/, PDFs, build artifacts. private/ material present locally but ignored.</div>
+                  </div>
+                  <div class="card">
+                    <h3>Security &amp; Boundaries</h3>
+                    <div style="font-size:12.5px; color:var(--muted);">No secrets committed. Live MCP strictly opt-in. Demo key protection on sensitive routes. Distroless non-root. Cost tracking is local-estimate only with explicit disclaimer. Parent AGENTS Delta Signal rules satisfied for this agent role.</div>
+                  </div>
+                  <div class="card">
+                    <h3>Evidence Contract</h3>
+                    <div style="font-size:12.5px; color:var(--muted);">Strong on TripCode path and disclosures. Medium gap on /v1/brief: compact summaries instead of full ATLAS-7 provenance fields (source_date, computed_at, stale, caveats, hashes, etc.).</div>
+                  </div>
+                  <div class="card">
+                    <h3>Code, Tests, Architecture</h3>
+                    <div style="font-size:12.5px; color:var(--muted);">Clean interfaces, good injection for tests, solid TripCode memory extraction, correct MCP JSON-RPC client. 100% coverage + vet clean. In-memory memory and lack of rate limiting are acceptable for demo scope.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section">
+                <h2>Prioritized Recommendations</h2>
+                <div class="rec immediate">
+                  <strong style="color:#ff6b6b;">IMMEDIATE — Hygiene</strong>
+                  <ul style="font-size:13px;">
+                    <li>Commit or snapshot the nested repo state before parent pushes. Manage nested git explicitly.</li>
+                    <li>Re-run subtree <code>make check</code> + root <code>scripts/check-repo-clean.sh</code> and clear StrategiX/other submodule dirt first.</li>
+                  </ul>
+                </div>
+                <div class="rec high">
+                  <strong style="color:#f2c36b;">HIGH — Evidence Fidelity</strong>
+                  <ul style="font-size:13px;">
+                    <li>Propagate full ATLAS-7 metadata (source_date, stale, caveats, hashes, provenance, payload_mode) into BriefResponse.Findings / SpecialistResult so the coordinator path meets the project's own evidence contract.</li>
+                    <li>Introduce a small EvidenceEnvelope type shared across paths.</li>
+                  </ul>
+                </div>
+                <div class="rec medium">
+                  <strong style="color:#72d9ff;">MEDIUM — Robustness</strong>
+                  <ul style="font-size:13px;">
+                    <li>Add structured logging / correlation IDs.</li>
+                    <li>Document in-memory session memory limitation; consider a flag for persistent store later.</li>
+                    <li>Add boundary-compliance assertions in tests (four required disclosures + non-advice language).</li>
+                  </ul>
+                </div>
+                <div class="rec low">
+                  <strong style="color:#5df58b;">LOW / PROCESS</strong>
+                  <ul style="font-size:13px;">
+                    <li>When the current ExecPlan is fully implemented, create a commit message that explicitly references the ExecPlan title.</li>
+                    <li>Keep this audit (or a delta) referenced from the submission packet once accepted.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="section">
+                <h2>Compliance Matrix (Root + Local AGENTS)</h2>
+                <table>
+                  <tr><th>Rule</th><th>Result</th></tr>
+                  <tr><td>StrategiX .html-only for durable artifacts (root)</td><td><span class="status pass">PASS</span> — All long-form (packet, landing, ExecPlan, this report) are correct StrategiX HTML + embedded XML. No parallel .md created.</td></tr>
+                  <tr><td>Delta Signal credentials &amp; relay boundaries (root)</td><td><span class="status pass">PASS</span> — This is the agent surface. Direct MCP calls are authorized here. No client code present. Rules satisfied.</td></tr>
+                  <tr><td>Evidence-first, non-advice, preserve metadata (local)</td><td><span class="status pass">PASS</span> — Strong in code, prompts, disclosures, and TripCode path. One documented gap in brief metadata passthrough.</td></tr>
+                  <tr><td>100% coverage gate + GOWORK=off (local)</td><td><span class="status pass">PASS</span> — Gate enforced by Makefile; verified passing on audit.</td></tr>
+                  <tr><td>No secrets committed (root + local)</td><td><span class="status pass">PASS</span> — Clean grep, correct .env.example + ignores, Secret Manager guidance in docs.</td></tr>
+                </table>
+              </div>
+
+              <div class="section">
+                <h2>Verification Performed</h2>
+                <ul style="font-size:13px;">
+                  <li><code>GOWORK=off go test ./...</code> — all packages pass</li>
+                  <li>Coverage: <strong>100.0%</strong> statements</li>
+                  <li><code>GOWORK=off go vet ./...</code> — clean</li>
+                  <li>Secret grep across entire tree — only env names and test placeholders</li>
+                  <li>Git state inspected at parent and nested levels</li>
+                  <li>.gitignore / .dockerignore / .gcloudignore + check-ignore validated</li>
+                  <li>Existing StrategiX contracts in submission packet, index, and ExecPlan confirmed present and well-formed</li>
+                  <li>Parent clean-check script executed (expected StrategiX + unrelated parent noise)</li>
+                </ul>
+              </div>
+
+              <div class="section">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <h2 style="margin:0;">Embedded Machine Contract (XML)</h2>
+                  <button class="xml-toggle" @click=${() => this.showXml = !this.showXml}>
+                    ${this.showXml ? 'Hide' : 'Show'} raw StrategiX XML
+                  </button>
+                </div>
+                ${this.showXml ? html`<pre>${xml}</pre>` : html`<div style="font-size:12px; color:var(--muted);">The full &lt;StrategiXVisualSpec&gt; contract (with CanonicalArtifact, Findings, Recommendations, ComplianceMatrix, Risks, VerificationLog, etc.) is embedded above in the &lt;script id="strategix-audit-contract" type="application/xml"&gt; block for LLM / machine consumption.</div>`}
+              </div>
+
+              <div class="footer">
+                This is a snapshot audit. Future changes to the nested repo, MCP surface, or deployment should trigger a delta report or re-audit.<br>
+                Produced under the aitrailblazerGENI StrategiX .html-only rule. All recommendations respect evidence boundaries and the non-advice posture of the project.
+              </div>
+            </div>
+          </main>
+        `;
+      }
+    }
+
+    customElements.define('deltasignal-audit-report', DeltasignalAuditReport);
+  </script>
+</body>
+</html>

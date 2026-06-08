@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DeltaSignal Gemini AI Agent | Google for Startups AI Agents Challenge</title>
-  <meta name="description" content="DeltaSignal Gemini AI Agent is a Google Cloud-native autonomous B2B issuer-intelligence agent using Gemini, Cloud Run, MCP-compatible tools, and SEC/XBRL-grounded evidence.">
+  <meta name="description" content="DeltaSignal Gemini AI Agent is a Google Cloud-native autonomous B2B issuer-intelligence agent using Gemini, Cloud Run, MCP-compatible tools, SEC/XBRL-grounded evidence, and TripCode research memory.">
   <meta property="og:title" content="DeltaSignal Gemini AI Agent">
   <meta property="og:description" content="Autonomous issuer intelligence for evidence-backed B2B market decisions. Built for the Google for Startups AI Agents Challenge.">
   <meta property="og:image" content="./assets/atlas7-evidence-pipeline.png">
@@ -24,7 +24,7 @@
   <delta-agent-landing></delta-agent-landing>
 
   <script id="strategix-landing-contract" type="application/xml">
-<StrategiXVisualSpec version="1.1" status="public-competition-landing" generated="2026-06-07" artifact="index.html">
+<StrategiXVisualSpec version="1.2" status="public-competition-landing" generated="2026-06-08" artifact="index.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Landing Page</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -37,28 +37,61 @@
   </CanonicalArtifact>
   <Purpose>Present the competition project as a judge-readable landing page with one official spec, runnable code, and clear Google Cloud / Gemini / MCP alignment.</Purpose>
   <ProductContract>
-    <Summary>DeltaSignal Gemini AI Agent is a new autonomous B2B issuer-intelligence agent that converts fragmented public-company risk signals into evidence-backed action briefs.</Summary>
+    <Summary>DeltaSignal Gemini AI Agent is a new autonomous B2B issuer-intelligence agent that converts fragmented public-company risk signals and prior research memory into evidence-backed action briefs.</Summary>
     <Buyer>Analysts, funds, corporate finance teams, startup operators, and business users who need faster issuer-risk triage.</Buyer>
     <CoreWorkflow>User asks an issuer question; the coordinator decomposes the task; specialist lanes retrieve stress, evidence, and peer context; Gemini synthesizes a grounded brief; review output preserves caveats and next actions.</CoreWorkflow>
     <EvidenceBoundary>ATLAS-7 is disclosed as an existing authorized integration and data source. The submitted competition project is the new autonomous agent and orchestration layer.</EvidenceBoundary>
     <ResearchMemoryExtension>TripCodes and Substack Rivers extend the same agent into subscriber research memory: resolve an article, reconstruct the thesis River, compare it with filing evidence, and surface what changed.</ResearchMemoryExtension>
+    <CompetitionThesis>TripCodes are the resolver layer that turns static financial prose into portable, inspectable, executable research memory for Gemini and MCP-aware agents.</CompetitionThesis>
+    <CompositeMCPContract>deltasignal_resolve_tripcode_research_packet is the one-call subscriber resolver contract: TripCode -> article object -> River -> filing-backed evidence refs -> thesis evolution map -> boundaries. The deployed Go service implements this boundary now; the public ATLAS-7 MCP endpoint still needs the composite tool promoted.</CompositeMCPContract>
+    <ProofCase>In the deployed HUT case, one TripCode resolved the current article through Cloud Run, returned a deterministic 10-node HUT River fixture, exposed the live_mcp_error boundary for the missing public MCP composite tool, produced a Gemini summary, preserved session memory, and returned monitor-next items and scenario framing.</ProofCase>
+    <PositioningLock>TripCodes convert financial commentary into structured research memory: the bridge from prose to evidence.</PositioningLock>
   </ProductContract>
+  <CompetitorContrast>
+    <Contrast>Disclosure benchmarking and filing-change agents are strong at document comparison, but usually treat archives as static search indexes.</Contrast>
+    <Contrast>Finrep.ai, V7 Go, and Pathway LiveAI can detect filing changes or run multi-agent RAG, but they do not expose one stable article TripCode that reconstructs prior claims, River memory, current evidence, and monitor-next workflows.</Contrast>
+    <Contrast>Generic deep-research agents add multi-step retrieval, but do not preserve proprietary thesis Rivers or reconcile prior article claims against newer filing evidence.</Contrast>
+    <Contrast>DeltaSignal differentiates with MCP River retrieval, ATLAS-7 evidence boundaries, TripCode provenance anchors, and subscriber-visible monitor-next workflows.</Contrast>
+  </CompetitorContrast>
   <CompetitionFit>
     <ContestSiteAccess>Official Contest Site is Devpost for Teams and requires login; the landing page exposes the competition name and context publicly.</ContestSiteAccess>
     <Fit>Autonomous agent for a concrete B2B business workflow.</Fit>
-    <Fit>Google Cloud-native runtime through Cloud Run, with a future Agent Runtime path.</Fit>
-    <Fit>Gemini synthesis through Vertex AI for production mode.</Fit>
-    <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval.</Fit>
+    <Fit>Google Cloud-native runtime through a validated Cloud Run service, with a future Agent Runtime path.</Fit>
+    <Fit>Gemini synthesis through Vertex AI is verified in the deployed HUT TripCode flow.</Fit>
+    <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval, with explicit fallback when the public MCP composite tool is missing.</Fit>
+    <Fit>TripCode resolver layer makes newsletter research executable by agents rather than leaving it as passive archive content.</Fit>
     <Fit>Deterministic demo mode so judges can run and inspect the workflow without private data access.</Fit>
   </CompetitionFit>
+  <TrackFit>
+    <Track name="Track 1 Build">Working Cloud Run demo: resolve TripCode -> reconstruct River -> compare to evidence -> preserve memory -> show cost.</Track>
+    <Track name="Track 2 Optimize">Simulation, observability, grounding, and memory can harden the already working HUT flow.</Track>
+    <Track name="Track 3 Path">A2A coordination can later connect the issuer diligence agent to enterprise compliance, portfolio, or data-room agents.</Track>
+  </TrackFit>
+  <CurrentReadiness>
+    <Ready>The Cloud Run service is live at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app with public health and protected judge routes.</Ready>
+    <Ready>The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River fixture, produces a Gemini summary, preserves session memory, and updates the usage ledger.</Ready>
+    <Ready>The public ATLAS-7 MCP endpoint does not yet expose the composite TripCode resolver; the response preserves live_mcp_error and uses deterministic HUT fallback for judge-safe Build validation.</Ready>
+    <Next>Record the three-minute judge demo, then promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint after submission.</Next>
+  </CurrentReadiness>
+  <CostDiscipline>
+    <Budget>Google Cloud startup credits are limited to 500 USD for this challenge window.</Budget>
+    <Control>Default mode is deterministic and low-cost; live Gemini and MCP calls are opt-in for judge testing.</Control>
+    <Control>Cloud Run is configured with min-instances=0, max-instances=3, 512Mi memory, 1 CPU, and concurrency 80.</Control>
+    <Control>Every successful test request can include local-estimate cost metadata when DELTASIGNAL_COST_TRACKING=true.</Control>
+    <Boundary>Exact Google account spend and remaining credits require Cloud Billing export or the Billing console; the app estimate is immediate but not an official billing record.</Boundary>
+  </CostDiscipline>
   <Architecture>
     <Component>Cloud Run HTTP service</Component>
     <Component>Go coordinator agent</Component>
+    <Component>Go TripCode MCP wrapper routes: POST /v1/tripcode plus judge-friendly GET/POST /resolve</Component>
+    <Component>Go session memory for compact River continuity snapshots</Component>
+    <Component>Gemini TripCode synthesis over resolver packets and session memory</Component>
     <Component>Stress scanner specialist</Component>
     <Component>SEC/evidence specialist</Component>
     <Component>Peer analyst specialist</Component>
     <Component>Gemini via Vertex AI synthesis hook</Component>
     <Component>ATLAS-7 MCP/OpenAPI integration boundary</Component>
+    <Component>TripCode resolver and Research River memory layer</Component>
     <Component>Structured B2B action brief output</Component>
   </Architecture>
   <PublicSurface>
@@ -67,6 +100,8 @@
     <Link name="Repository">https://github.com/aitrailblazer/deltasignal-ai-agent</Link>
     <Link name="Atlas7CodexPlugin">https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html</Link>
     <Link name="OfficialSpec">docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Link>
+    <Link name="PublicChangelog">CHANGELOG.html</Link>
+    <Link name="ValidatedCloudRunDemo">https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</Link>
   </PublicSurface>
   <AcceptanceCriteria>
     <Criterion>Landing page is static and GitHub Pages-compatible.</Criterion>
@@ -84,8 +119,8 @@
     const xml = document.getElementById('strategix-landing-contract')?.textContent.trim() ?? '';
 
     const proof = [
-      ['Google Cloud Native', 'Cloud Run, Cloud Build, Artifact Registry path, and Vertex AI-ready synthesis.'],
-      ['Gemini Reasoning Path', 'Deterministic demo by default, Gemini via Vertex AI when enabled in Google Cloud.'],
+      ['Google Cloud Native', 'Validated Cloud Run service, Cloud Build, Artifact Registry path, and Vertex AI Gemini synthesis.'],
+      ['Gemini Reasoning Path', 'The deployed HUT TripCode flow produced a Gemini summary through Google Cloud / Vertex AI.'],
       ['MCP Tool Boundary', 'Specialist lanes use agent-readable tool contracts instead of hidden manual workflows.'],
       ['Evidence Grounding', 'Briefs preserve SEC/XBRL source boundaries, caveats, uncertainty, and non-advice framing.']
     ];
@@ -106,17 +141,54 @@
     ];
 
     const judgeChecks = [
-      ['Runnable', 'Go service, tests, Dockerfile, Cloud Build, and Cloud Run deployment template.'],
+      ['Runnable', 'Go service, tests, Dockerfile, Cloud Build, and validated Cloud Run deployment.'],
       ['Inspectable', 'Small source surface with coordinator, specialist interface, demo tools, and Gemini hook.'],
       ['Safe Demo', 'No private credentials or customer data required for the default workflow.'],
       ['Business Fit', 'Built for B2B issuer-risk triage, not consumer chat or generic summarization.'],
       ['Disclosure', 'ATLAS-7 is clearly disclosed as an existing integration/data source.'],
       ['One Spec', 'The public docs folder exposes a single official submission packet.']
     ];
+    const competitionIdea = [
+      ['Composite MCP Contract', 'deltasignal_resolve_tripcode_research_packet turns one TripCode into article, River, evidence, thesis map, caveats, and boundaries.'],
+      ['Prose to agent memory', 'TripCodes turn a published article into a live research object that Gemini can resolve, contextualize, compare, and monitor.'],
+      ['Research continuity', 'The agent reconstructs what DeltaSignal previously believed, then shows what changed after new filings and evidence arrived.'],
+      ['Evidence discipline', 'TripCodes route to SEC/XBRL evidence without replacing CIKs, accessions, filing periods, source documents, or caveats.'],
+      ['Subscriber moat', 'The archive becomes an interactive diligence layer instead of a passive content library.']
+    ];
+    const competitorContrast = [
+      ['Filing tools', 'Strong at disclosure comparison, but archives usually remain static search indexes.'],
+      ['Finrep / V7 / Pathway', 'Useful disclosure and RAG systems, but no one-TripCode composite packet that reconstructs prior claims against current evidence.'],
+      ['Generic deep research', 'Good at retrieval, but weak on proprietary thesis Rivers and prior-claim reconciliation.'],
+      ['DeltaSignal edge', 'TripCodes bind article memory, River continuity, filing evidence, caveats, and monitor-next workflows.']
+    ];
+    const trackFit = [
+      ['Track 1 Build', 'Working Cloud Run demo: resolve TripCode -> reconstruct River -> compare to evidence -> preserve memory -> show cost.'],
+      ['Track 2 Optimize', 'Simulation, observability, grounding, and Memory Bank style continuity for River sessions.'],
+      ['Track 3 Path', 'A2A-ready coordination with portfolio, compliance, data-room, or enterprise research agents.']
+    ];
     const memoryLayer = [
-      ['Article TripCodes', 'Stable identifiers for Substack research objects that subscribers can paste into an agent.'],
+      ['Article TripCodes', 'Stable resolver keys for Substack research objects that subscribers can paste into Codex, Claude Code, Gemini, or any MCP-aware agent.'],
       ['Research Rivers', 'Ordered thesis trails across articles, tickers, filings, and follow-up evidence.'],
-      ['Ask a River', 'A subscriber prompt that reconstructs what changed, what was confirmed, and what remains unresolved.']
+      ['Ask a River', 'Resolve this article, reconstruct the thesis River, compare it with filing-backed evidence, and show what changed.'],
+      ['HUT proof case', 'One TripCode recovered the HUT article, 9 prior HUT nodes, a 10-node River, filing refs, scenarios, risks, and monitor-next items.']
+    ];
+    const hutProof = [
+      ['Resolved article', 'TF-SUB-9DA70A7F98 -> Hut 8: The Re-Rating Has A Deadline.'],
+      ['Recovered River', 'Current article plus 9 prior DeltaSignal HUT research nodes.'],
+      ['Mapped thesis', '4 changed findings, 1 confirmed signal, 3 weakened assumptions, 2 bridge risks, 3 proof milestones.'],
+      ['Preserved boundary', 'TripCodes stay proprietary resolver keys; SEC accessions, CIKs, filing forms, and XBRL concepts remain official evidence IDs.']
+    ];
+    const readiness = [
+      ['Validated service', 'The Cloud Run service is live at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app with public health and protected judge routes.'],
+      ['HUT proof path', 'The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River fixture, produces a Gemini summary, preserves session memory, and updates the usage ledger.'],
+      ['Live MCP boundary', 'The public ATLAS-7 MCP endpoint does not yet expose the composite TripCode resolver; the response preserves live_mcp_error and uses deterministic HUT fallback for judge-safe Build validation.'],
+      ['Next hardening', 'Record the three-minute judge demo, then promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint after submission.']
+    ];
+    const costDiscipline = [
+      ['$500 credit pool', 'Treat Google Cloud credits as scarce. Keep live Gemini and MCP tests intentional, bounded, and visible.'],
+      ['Zero idle burn', 'Cloud Run uses min-instances=0 with bounded max scale, memory, CPU, and concurrency.'],
+      ['Per-request estimate', 'Successful brief and TripCode test responses can include request cost, tracked spend, and estimated remaining budget.'],
+      ['Billing boundary', 'The app ledger is a local estimate. Official account spend must come from Google Cloud Billing export or console.']
     ];
 
     class DeltaAgentLanding extends LitElement {
@@ -470,6 +542,7 @@
                   <a href="#fit" @click=${event => this.scrollToSection(event, 'fit')}>Competition fit</a>
                   <a href="#workflow" @click=${event => this.scrollToSection(event, 'workflow')}>Workflow</a>
                   <a href="#judge" @click=${event => this.scrollToSection(event, 'judge')}>Judge checks</a>
+                  <a href="#cost" @click=${event => this.scrollToSection(event, 'cost')}>Cost</a>
                   <a href="#run" @click=${event => this.scrollToSection(event, 'run')}>Run</a>
                 </div>
               </nav>
@@ -480,11 +553,13 @@
                 <div>
                   <p class="eyebrow">Google for Startups AI Agents Challenge · Track 1 Build</p>
                   <h1>DeltaSignal Gemini AI Agent</h1>
-                  <p class="lede">Evidence-backed issuer intelligence for business decisions. The agent routes issuer-risk questions through specialist lanes, grounds the answer in structured evidence, and returns an analyst-ready B2B action brief.</p>
+                  <p class="lede">Evidence-backed issuer intelligence for business decisions. The agent routes issuer-risk questions through specialist lanes, resolves prior research memory through TripCodes, grounds the answer in structured evidence, and returns an analyst-ready B2B action brief.</p>
                   <div class="actions">
                     <a class="button primary" href="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official Submission Packet</a>
+                    <a class="button" href="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/health" target="_blank" rel="noopener noreferrer">Live Cloud Run Health</a>
                     <a class="button" href="https://devpost.team/google-cloud-for-startups/hackathons/3197" target="_blank" rel="noopener noreferrer">Official Contest Site</a>
                     <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html" target="_blank" rel="noopener noreferrer">ATLAS-7 Codex Plugin</a>
+                    <a class="button" href="./CHANGELOG.html">Public Changelog</a>
                     <a class="button" href="https://github.com/aitrailblazer/deltasignal-ai-agent" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
                     <a class="button" href="#run" @click=${event => this.scrollToSection(event, 'run')}>Run Locally</a>
                   </div>
@@ -500,7 +575,7 @@
               <section id="fit">
                 <div class="section-head">
                   <h2>Built for the Google for Startups AI Agents Challenge.</h2>
-                  <p>A Cloud Run agent that turns issuer signals into evidence-backed B2B action briefs, with Gemini-ready synthesis, MCP-style tool boundaries, and safe ATLAS-7 evidence disclosure.</p>
+                  <p>A deployed Cloud Run agent that turns issuer signals and prior research memory into evidence-backed B2B action briefs, with Gemini synthesis, MCP-style tool boundaries, TripCode resolution, and safe ATLAS-7 evidence disclosure.</p>
                 </div>
                 <div class="grid challenge-facts">
                   ${challengeFacts.map(([title, body]) => html`
@@ -523,7 +598,7 @@
               <section id="workflow">
                 <div class="section-head">
                   <h2>One workflow, end to end.</h2>
-                  <p>The default demo is deterministic so anyone can inspect the orchestration. Production mode swaps the synthesis layer to Gemini through Vertex AI.</p>
+                  <p>The judge demo runs the full path: live ATLAS-7 MCP evidence retrieval, then Gemini synthesis through Vertex AI. The brief endpoint is protected with a temporary demo key.</p>
                 </div>
                 <div class="flow">
                   ${workflow.map(([title, body], index) => html`
@@ -553,11 +628,86 @@
 
               <section>
                 <div class="section-head">
+                  <h2>The competition idea: turn archives into executable diligence.</h2>
+                  <p>Traditional newsletters create searchable archives. DeltaSignal adds a resolver layer so agents can understand article lineage, thesis drift, filing confirmations, missing evidence, and the next proof checks.</p>
+                </div>
+                <div class="grid">
+                  ${competitionIdea.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <div class="section-head">
+                  <h2>Why this is not another filing search agent.</h2>
+                  <p>Most tools can find documents. The harder product is continuity: what did the research say before, which claims survived, which assumptions weakened, and what evidence should be watched next?</p>
+                </div>
+                <div class="grid">
+                  ${competitorContrast.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <div class="section-head">
+                  <h2>Challenge track fit.</h2>
+                  <p>The validated HUT TripCode flow is the Track 1 anchor. Track 2 hardening adds evaluation, traces, and reliability. Track 3 becomes the enterprise coordination path.</p>
+                </div>
+                <div class="grid">
+                  ${trackFit.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <div class="section-head">
                   <h2>Where the agent becomes subscriber memory.</h2>
-                  <p>The same architecture can resolve Substack TripCodes, follow article Rivers, and compare historical thesis claims against current filing evidence.</p>
+                  <p>A subscriber gives the agent one TripCode and asks it to reconstruct the thesis River behind the article, compare it with filing-backed evidence, and show what changed.</p>
                 </div>
                 <div class="grid">
                   ${memoryLayer.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <div class="section-head">
+                  <h2>HUT proves it is more than article lookup.</h2>
+                  <p>The HUT flow demonstrates archive-to-diligence conversion: one TripCode resolved the current article, recovered prior research lineage, connected filing evidence refs, and returned a structured thesis map.</p>
+                </div>
+                <div class="grid">
+                  ${hutProof.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <div class="section-head">
+                  <h2>Current readiness.</h2>
+                  <p>The earlier blocker was operational. It is now resolved for the Build demo: the Cloud Run service is deployed, the HUT TripCode flow passes, session memory works, Gemini synthesis returns, and the usage ledger reports spend.</p>
+                </div>
+                <div class="grid">
+                  ${readiness.map(([title, body]) => html`
                     <article class="card">
                       <b>${title}</b>
                       <p>${body}</p>
@@ -573,18 +723,57 @@
                 </div>
               </section>
 
+              <section id="cost">
+                <div class="section-head">
+                  <h2>Cost discipline is part of the product.</h2>
+                  <p>The challenge credit pool is only $500, so the demo defaults to deterministic local execution, uses bounded Cloud Run settings, and reports estimated test spend when cost tracking is enabled.</p>
+                </div>
+                <div class="grid">
+                  ${costDiscipline.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+                <div class="callout" style="margin-top: 14px;">
+                  <b>Public changelog</b>
+                  <p>Implementation changes, cost controls, testing gates, and deployment posture are recorded in <a href="./CHANGELOG.html">CHANGELOG.html</a>.</p>
+                </div>
+              </section>
+
               <section id="run">
                 <div class="split">
                   <div>
                     <div class="section-head">
                       <h2>Run the demo.</h2>
-                      <p>Use the deterministic path first. Enable Gemini only in an authenticated Google Cloud environment.</p>
+                      <p>Judge mode uses Gemini plus live ATLAS-7 MCP, protected by a temporary demo key.</p>
                     </div>
-                    <div class="codebox"><pre>GOWORK=off go test ./...
-GOWORK=off go run ./cmd/server
+                    <div class="codebox"><pre>make check
+DELTASIGNAL_USE_GEMINI=true \\
+DELTASIGNAL_USE_LIVE_MCP=true \\
+DELTASIGNAL_DEMO_API_KEY="$JUDGE_DEMO_KEY" \\
+MCP_API_KEY="$MCP_API_KEY" \\
+make run
+
+DELTASIGNAL_AGENT_URL=https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app \\
+DELTASIGNAL_DEMO_API_KEY="$JUDGE_DEMO_KEY" \\
+scripts/judge-demo.sh
+
+curl -s "http://localhost:8080/resolve?tripcode=TF-SUB-9DA70A7F98&session_id=demo1&issuer=HUT&payload_mode=compact&include_filing_evidence=true&include_prior_articles=true&include_thesis_map=true" \\
+  -H "X-Demo-Key: $JUDGE_DEMO_KEY"
+
+curl -s -X POST "http://localhost:8080/resolve?session_id=demo1" \\
+  -H "X-Demo-Key: $JUDGE_DEMO_KEY" \\
+  -H "Content-Type: text/plain" \\
+  --data "Using the previous HUT River, what are the top 3 things to monitor next?"
+
+curl -s http://localhost:8080/v1/usage \\
+  -H "X-Demo-Key: $JUDGE_DEMO_KEY"
 
 curl -s http://localhost:8080/v1/brief \\
   -H 'Content-Type: application/json' \\
+  -H "X-Demo-Key: $JUDGE_DEMO_KEY" \\
   -d '{"issuer":"MSTR","question":"What issuer stress or opportunity should an analyst investigate next?"}'</pre></div>
                   </div>
                   <div>

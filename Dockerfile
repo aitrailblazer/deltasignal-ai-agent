@@ -4,7 +4,7 @@ WORKDIR /src
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o /out/deltasignal-ai-agent ./cmd/server
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-w -s" -o /out/deltasignal-ai-agent ./cmd/server
 
 FROM gcr.io/distroless/static-debian12:nonroot
 COPY --from=build /out/deltasignal-ai-agent /deltasignal-ai-agent

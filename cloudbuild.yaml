@@ -22,10 +22,22 @@ steps:
       - --platform
       - managed
       - --allow-unauthenticated
+      - --min-instances
+      - "0"
+      - --max-instances
+      - "3"
+      - --memory
+      - 512Mi
+      - --cpu
+      - "1"
+      - --concurrency
+      - "80"
       - --set-env-vars
-      - GOOGLE_CLOUD_PROJECT=${PROJECT_ID},GOOGLE_CLOUD_LOCATION=global,GOOGLE_GENAI_USE_VERTEXAI=true
+      - GOOGLE_CLOUD_PROJECT=${PROJECT_ID},GOOGLE_CLOUD_LOCATION=global,GOOGLE_GENAI_USE_VERTEXAI=true,DELTASIGNAL_USE_GEMINI=true,GEMINI_MODEL=gemini-2.5-flash,DELTASIGNAL_USE_LIVE_MCP=true,DELTASIGNAL_ENABLE_TRIPCODE_FALLBACK=true,DELTASIGNAL_COST_TRACKING=true,DELTASIGNAL_GOOGLE_CREDIT_BUDGET_USD=500,DELTASIGNAL_ESTIMATED_BRIEF_COST_USD=0.02,DELTASIGNAL_ESTIMATED_TRIPCODE_COST_USD=0.05,DELTASIGNAL_ESTIMATED_SESSION_MEMORY_COST_USD=0.00,DELTASIGNAL_COST_SOURCE=local-estimate,DELTASIGNAL_BILLING_PROJECT_ID=${PROJECT_ID},DELTASIGNAL_BILLING_ENABLED=true,DELTASIGNAL_BILLING_ACCOUNT_NAME=billingAccounts/018530-615AB8-696753
+      - --set-secrets
+      - MCP_API_KEY=deltasignal-mcp-api-key:latest,DELTASIGNAL_DEMO_API_KEY=deltasignal-demo-api-key:latest
 substitutions:
   _REGION: us-central1
-  _IMAGE: us-central1-docker.pkg.dev/$PROJECT_ID/deltasignal-ai-agent/app:$COMMIT_SHA
+  _IMAGE: us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:latest
 images:
   - ${_IMAGE}

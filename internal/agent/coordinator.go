@@ -11,6 +11,10 @@ type Synthesizer interface {
 	Synthesize(ctx context.Context, req BriefRequest, plan []string, findings []SpecialistResult) (string, error)
 }
 
+type TripCodeSynthesizer interface {
+	SynthesizeTripCode(ctx context.Context, req TripCodeResearchRequest, response TripCodeResearchResponse) (string, error)
+}
+
 type Coordinator struct {
 	Tools       ToolClient
 	Synthesizer Synthesizer
@@ -51,7 +55,7 @@ func (c Coordinator) BuildBrief(ctx context.Context, req BriefRequest) (BriefRes
 	}
 
 	brief := fallbackBrief(req, findings)
-	mode := "deterministic-demo"
+	mode := toolMode(findings)
 	if c.Synthesizer != nil {
 		if generated, err := c.Synthesizer.Synthesize(ctx, req, plan, findings); err == nil && strings.TrimSpace(generated) != "" {
 			brief = generated
@@ -90,4 +94,18 @@ func fallbackBrief(req BriefRequest, findings []SpecialistResult) string {
 	}
 	parts = append(parts, "Assessment: investigate the issuer only after refreshing live evidence and comparing the stress signal against peers.")
 	return strings.Join(parts, "\n")
+}
+
+func toolMode(findings []SpecialistResult) string {
+	for _, finding := range findings {
+		if strings.EqualFold(finding.Confidence, "live-mcp") {
+			return "live-mcp"
+		}
+		for _, evidence := range finding.Evidence {
+			if evidence.Source == "deltasignal-atlas-7-mcp" {
+				return "live-mcp"
+			}
+		}
+	}
+	return "deterministic-demo"
 }

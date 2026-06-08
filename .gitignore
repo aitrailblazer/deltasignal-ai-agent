@@ -11,6 +11,8 @@ application_default_credentials.json
 bin/
 dist/
 coverage/
+coverage.out
+coverage.html
 tmp/
 
 # Dependency/cache directories

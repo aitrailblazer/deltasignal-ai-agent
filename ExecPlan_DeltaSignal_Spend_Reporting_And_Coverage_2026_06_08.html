@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExecPlan — DeltaSignal Spend Reporting And Coverage</title>
+  <style>
+    html { background:#070a10; color:#f8efe0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.45; }
+    body { margin:0; min-height:100vh; }
+    spend-execplan:not(:defined) { display:block; padding:32px; }
+  </style>
+</head>
+<body>
+  <spend-execplan></spend-execplan>
+
+  <script id="strategix-execplan-contract" type="application/xml">
+<StrategiXVisualSpec version="1.1" status="implemented-and-verified" generated="2026-06-08" artifact="ExecPlan_DeltaSignal_Spend_Reporting_And_Coverage_2026_06_08.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Gemini AI Agent Spend Reporting And Coverage ExecPlan</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <CloudProject>startup-ai-deltasignal</CloudProject>
+    <Objective>Write the ExecPlan, implement spend reporting, preserve 100 percent Go test coverage, and report current spend state at each validation step.</Objective>
+  </CanonicalArtifact>
+  <CurrentBillingEvidence>
+    <Evidence>gcloud project is startup-ai-deltasignal.</Evidence>
+    <Evidence>gcloud billing projects describe startup-ai-deltasignal reports billingEnabled true and billingAccounts/018530-615AB8-696753.</Evidence>
+    <Evidence>Cloud Billing Budget API is disabled for startup-ai-deltasignal, so budget spend could not be fetched through gcloud budgets without enabling another API.</Evidence>
+    <Evidence>No official Cloud Billing export was discovered in this repo. Exact current Google account spend remains unavailable from local source-of-truth commands.</Evidence>
+  </CurrentBillingEvidence>
+  <ImplementationPlan>
+    <Step order="1" status="completed">Added official_billing metadata to CostSnapshot so every usage and successful cost-tracked response can distinguish local estimate from official billing status.</Step>
+    <Step order="2" status="completed">Loaded billing project, billing account, official spend, credit budget, remaining credits, source, and updated_at from explicit environment variables.</Step>
+    <Step order="3" status="completed">Kept exact spend marked unavailable unless a Billing Export, console copy, or other official value is supplied.</Step>
+    <Step order="4" status="completed">Added tests for configured official billing, unavailable official billing, and existing local estimate behavior.</Step>
+    <Step order="5" status="completed">Ran make check and confirmed total Go coverage remains 100.0 percent.</Step>
+    <Step order="6" status="completed">Reported current spend state after validation: no live Gemini/MCP spend incurred by this implementation turn; official billing linked but exact spend unavailable from local commands.</Step>
+  </ImplementationPlan>
+  <Verification>
+    <Check status="passed">make check</Check>
+    <Check status="passed">GOWORK=off go test ./...</Check>
+    <Check status="passed">GOWORK=off go test ./... -coverprofile=coverage.out -covermode=count</Check>
+    <Check status="passed">total coverage 100.0 percent</Check>
+    <Check status="passed">GOWORK=off go vet ./...</Check>
+    <Check status="passed">sh -n scripts/report-spend.sh</Check>
+  </Verification>
+  <AcceptanceCriteria>
+    <Criterion>GET /v1/usage returns local estimate fields plus official_billing status.</Criterion>
+    <Criterion>Successful /v1/brief, /v1/tripcode, and session-memory responses include the same official_billing block when cost tracking is enabled.</Criterion>
+    <Criterion>Official billing values are never fabricated; unavailable official spend is labeled explicitly.</Criterion>
+    <Criterion>make check passes and coverage gate remains exactly 100.0 percent.</Criterion>
+    <Criterion>Public docs explain the distinction between local estimate and official Google Cloud Billing spend.</Criterion>
+  </AcceptanceCriteria>
+  <CostDiscipline>
+    <Rule>No live Gemini, live MCP, Cloud Run deploy, or paid model call is required for this implementation step.</Rule>
+    <Rule>All spend reporting changes are local code and documentation changes.</Rule>
+    <Rule>Official spend must come from Cloud Billing export, Billing console, or explicitly supplied official billing env vars.</Rule>
+  </CostDiscipline>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+    const xml = document.getElementById('strategix-execplan-contract')?.textContent.trim() ?? '';
+    const cards = [
+      ['Goal', 'Implemented spend reporting without weakening the 100 percent Go coverage gate.'],
+      ['Current bill state', 'Project billing is enabled and linked to billingAccounts/018530-615AB8-696753, but exact spend is unavailable locally because Budgets API is disabled and no Billing Export is configured here.'],
+      ['Implementation', 'Added official_billing to the existing local-estimate CostSnapshot and load official values only from explicit env vars.'],
+      ['Boundary', 'Never present local estimate as official Google Billing. Label unavailable official spend clearly.'],
+      ['Validation', 'make check passed; total Go coverage remains 100.0 percent.']
+    ];
+    class SpendExecPlan extends LitElement {
+      static styles = css`
+        :host { display:block; min-height:100vh; background:radial-gradient(circle at 15% 0%, rgba(255,183,67,.18), transparent 34%), #070a10; }
+        main { width:min(1120px, calc(100vw - 32px)); margin:0 auto; padding:34px 0 60px; }
+        .hero, .panel, .card, details { border:1px solid rgba(255,255,255,.12); background:rgba(18,21,31,.84); border-radius:8px; padding:18px; }
+        .hero { border-color:rgba(255,183,67,.35); background:linear-gradient(135deg, rgba(255,183,67,.12), rgba(99,207,255,.08)), rgba(18,21,31,.88); }
+        .eyebrow { color:#6ef59a; text-transform:uppercase; letter-spacing:.08em; font-weight:900; font-size:12px; }
+        h1 { margin:10px 0 12px; font-size:clamp(34px, 6vw, 70px); line-height:1; letter-spacing:0; }
+        h2 { color:#ffbf63; margin:0 0 12px; font-size:18px; }
+        p, li, .card span { color:rgba(248,239,224,.76); }
+        .grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; margin-top:14px; }
+        .panel, details { margin-top:16px; }
+        .card b { display:block; color:#fff3dc; margin-bottom:6px; }
+        pre { white-space:pre-wrap; max-height:420px; overflow:auto; color:#ead9bd; font-size:12px; }
+        @media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+      `;
+      render() {
+        return html`
+          <main>
+            <section class="hero">
+              <div class="eyebrow">ExecPlan · Spend Reporting · Coverage Gate</div>
+              <h1>Report Spend Clearly, Keep 100% Coverage</h1>
+              <p>The implementation separates immediate local estimate spend from official Google Cloud Billing state, keeps exact billing unfabricated, and preserves the existing 100 percent Go coverage gate.</p>
+            </section>
+            <section class="panel">
+              <h2>Plan Cards</h2>
+              <div class="grid">${cards.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
+            </section>
+            <details>
+              <summary>Embedded XML Contract</summary>
+              <pre>${xml}</pre>
+            </details>
+          </main>
+        `;
+      }
+    }
+    customElements.define('spend-execplan', SpendExecPlan);
+  </script>
+</body>
+</html>

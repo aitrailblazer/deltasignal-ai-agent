@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Gemini AI Agent | Public Changelog</title>
+  <meta name="description" content="Public changelog for DeltaSignal Gemini AI Agent, including cost-conscious Google Cloud credit controls, TripCode MCP work, tests, and deployment readiness.">
+  <style>
+    html {
+      background: #05070b;
+      color: #fff8ef;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    body { margin: 0; min-height: 100vh; }
+    changelog-page:not(:defined) { display: block; padding: 32px; }
+  </style>
+</head>
+<body>
+  <changelog-page></changelog-page>
+
+  <script id="strategix-changelog-contract" type="application/xml">
+<StrategiXVisualSpec version="1.3" status="public-changelog" generated="2026-06-08" artifact="CHANGELOG.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <LandingPage>index.html</LandingPage>
+    <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
+  </CanonicalArtifact>
+  <Purpose>Expose public, judge-readable implementation changes without publishing private competition PDFs, secrets, or internal-only strategy artifacts.</Purpose>
+  <CostPolicy>
+    <Budget>Google Cloud startup credits are limited to 500 USD for the challenge window.</Budget>
+    <Rule>Default to deterministic local/demo mode unless a live Gemini or MCP call is required for the judge demo.</Rule>
+    <Rule>Cloud Run uses min-instances=0, max-instances=3, 512Mi memory, 1 CPU, and concurrency 80 to avoid idle burn.</Rule>
+    <Rule>Live Gemini mode must use Google Cloud / Vertex AI for credit alignment, not Google AI Studio keys.</Rule>
+    <Rule>Every successful brief or TripCode test response can include a local-estimate cost object when DELTASIGNAL_COST_TRACKING=true.</Rule>
+    <Boundary>Exact Google account spend and remaining credits require Google Cloud Billing export or the Billing console; the application estimate is immediate but not an official billing record.</Boundary>
+  </CostPolicy>
+  <Entries>
+    <Entry date="2026-06-07" type="cost-control">
+      <Title>Added public cost-conscious test-spend controls</Title>
+      <Detail>Added DELTASIGNAL_COST_TRACKING, DELTASIGNAL_GOOGLE_CREDIT_BUDGET_USD, and per-request estimate envs.</Detail>
+      <Detail>Added cost metadata to successful /v1/brief and /v1/tripcode responses.</Detail>
+      <Detail>Added GET /v1/usage for the current local estimate ledger.</Detail>
+      <Detail>Updated the demo client to print request cost, tracked spend, and estimated remaining budget.</Detail>
+    </Entry>
+    <Entry date="2026-06-07" type="quality-gate">
+      <Title>Added 100 percent local coverage gate</Title>
+      <Detail>Added make coverage and wired make check to run tests, coverage, and vet.</Detail>
+      <Detail>Current coverage gate reports total 100.0 percent statements.</Detail>
+    </Entry>
+    <Entry date="2026-06-07" type="mcp-tripcode">
+      <Title>Implemented Go-native TripCode MCP path</Title>
+      <Detail>Added live MCP JSON-RPC client for deltasignal_resolve_tripcode_research_packet.</Detail>
+      <Detail>Added POST /v1/tripcode with session memory and optional Gemini synthesis.</Detail>
+      <Detail>Added judge-friendly GET/POST /resolve shortcut that maps one TripCode and session_id into the same resolver and Memory Bank path.</Detail>
+      <Detail>Added scripts/judge-demo.sh to show TripCode resolution, multi-turn memory, and cost ledger checks with curl.</Detail>
+      <Detail>Added two-turn cmd/tripcode-demo for judge video flow.</Detail>
+    </Entry>
+    <Entry date="2026-06-07" type="deployment">
+      <Title>Hardened Cloud Run demo posture</Title>
+      <Detail>Added Makefile, optimized Dockerfile, Cloud Build template, and Secret Manager-safe env guidance.</Detail>
+      <Detail>Public demo can be protected by DELTASIGNAL_DEMO_API_KEY while health remains public.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="audit">
+      <Title>Added codebase and integration audit report</Title>
+      <Detail>Added docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html as a StrategiX Visual Spec audit artifact.</Detail>
+      <Detail>Audit records 92 health score, 100 percent coverage gate, clean secret posture, nested git boundary, and evidence metadata follow-up.</Detail>
+      <Detail>Linked the audit from the official submission packet as supporting evidence, not a replacement for the packet.</Detail>
+      <Detail>Neutralized external model/vendor attribution in the audit report so public judge-facing materials stay focused on DeltaSignal, Google Cloud, Gemini, MCP, and the Go implementation.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Versioned official submission packet to 1.2</Title>
+      <Detail>Updated docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html from version 1.1 to 1.2.</Detail>
+      <Detail>Added judge-scoring priorities for Cloud Run deployment, TripCode-first demo, /v1/brief provenance parity, broader agent framing, and nested repo freeze.</Detail>
+      <Detail>Added explicit Risks And Open Questions plus Source Digest sections to close the packet evaluation gap.</Detail>
+      <Detail>Marked the live demo URL as deployment-pending until the Cloud Run endpoint replaces the placeholder.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Versioned official submission packet to 1.3</Title>
+      <Detail>Added three-track framing for Google for Startups AI Agents Challenge scoring.</Detail>
+      <Detail>Positioned Track 1 Build as the primary submission track around TripCode to River to evidence reconciliation.</Detail>
+      <Detail>Positioned Track 2 Optimize as the reliability, observability, grounding, durable-memory, and provenance-fidelity hardening layer.</Detail>
+      <Detail>Positioned Track 3 as the future interoperability path for portfolio, compliance, data-room, and research agents.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Versioned official submission packet to 1.4</Title>
+      <Detail>Added plain-language Track 1 / Track 2 / Track 3 judge narrative.</Detail>
+      <Detail>Clarified that the submission is a working Go-native Cloud Run agent, not a slideware concept.</Detail>
+      <Detail>Clarified Track 2 as grounded, auditable, cost-controlled optimization with evidence discipline.</Detail>
+      <Detail>Added judge close positioning TripCodes as the bridge from passive research archives to auditable agent-executable diligence workflows.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Versioned official submission packet to 1.5</Title>
+      <Detail>Reframed track fit as Build equals working demo, Optimize equals evidence fidelity, and Path equals agent ecosystem expansion.</Detail>
+      <Detail>Added compact Build / Optimize / Path replacement language for judge scanning.</Detail>
+      <Detail>Added Track Progression: TripCode in, River reconstructed, evidence compared, memory preserved, cost shown.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="cost-control">
+      <Title>Implemented official billing status overlay</Title>
+      <Detail>Added official_billing to CostSnapshot so /v1/usage and successful cost-tracked responses separate local estimates from official Google Cloud Billing status.</Detail>
+      <Detail>Added explicit env vars for billing project, billing account, billing-enabled status, official spend, credit budget, remaining credits, source, and updated_at.</Detail>
+      <Detail>Added scripts/report-spend.sh and make spend to report project billing linkage plus the app usage ledger without making live Gemini or MCP calls.</Detail>
+      <Detail>Verified make check passes with total Go coverage at 100.0 percent.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="deployment">
+      <Title>Started full Cloud Run Build deployment</Title>
+      <Detail>Verified gcloud is targeting project startup-ai-deltasignal in region us-central1.</Detail>
+      <Detail>Enabled the required Google APIs for deployment: Secret Manager, Cloud Build, Cloud Run, Artifact Registry, and Vertex AI.</Detail>
+      <Detail>Created Artifact Registry repository us-central1/deltasignal-ai-agent for Cloud Run images.</Detail>
+      <Detail>Created Secret Manager entries deltasignal-mcp-api-key and deltasignal-demo-api-key without storing secret values in the repository.</Detail>
+      <Detail>Updated cloudbuild.yaml and Makefile deployment paths so Cloud Run mounts MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY from Secret Manager.</Detail>
+      <Detail>Configured the judge deployment for live MCP, Gemini through Vertex AI, local cost tracking, min-instances=0, max-instances=3, 512Mi memory, 1 CPU, and concurrency 80.</Detail>
+      <Detail>First Cloud Build submission failed before build because the default _IMAGE substitution used an unexpanded $PROJECT_ID token; fixed Makefile to pass a concrete Artifact Registry image.</Detail>
+      <Detail>First deployed judge run reached the Go service but exposed a live MCP header issue caused by newline-bearing secret material; patched the MCP client to trim API keys before sending X-API-Key.</Detail>
+      <Detail>Added GET /health as the deployment smoke route because the deployed /healthz path returned a Google front-end 404 while protected application routes reached the service.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="deployment">
+      <Title>Completed Cloud Run Build validation</Title>
+      <Detail>Published the service at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and explicitly granted public Cloud Run invocation while keeping judge routes protected by DELTASIGNAL_DEMO_API_KEY.</Detail>
+      <Detail>Verified GET /health returns ok from the deployed service.</Detail>
+      <Detail>Ran scripts/judge-demo.sh against Cloud Run; /resolve returned the HUT TripCode packet for TF-SUB-9DA70A7F98, reconstructed the 10-node HUT River, preserved evidence boundaries, and produced a Gemini summary.</Detail>
+      <Detail>Verified POST /resolve with the same session_id returns session-memory mode and preserves the prior HUT River context for follow-up questions.</Detail>
+      <Detail>Verified GET /v1/usage returns local-estimate tracking after the judge flow: 0.10 USD spent and 499.90 USD remaining from the configured 500 USD budget.</Detail>
+      <Detail>Documented that the public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the Cloud Run service therefore reports live_mcp_error and falls back to the deterministic HUT River fixture for judge-safe Build validation.</Detail>
+    </Entry>
+  </Entries>
+  <PublicLinks>
+    <Link name="LandingPage">index.html</Link>
+    <Link name="OfficialSubmissionPacket">docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Link>
+    <Link name="Atlas7CodexPlugin">https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html</Link>
+  </PublicLinks>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+
+    const xml = document.getElementById('strategix-changelog-contract')?.textContent.trim() ?? '';
+    const entries = [
+      {
+        date: '2026-06-07',
+        type: 'Cost control',
+        title: 'Added public cost-conscious test-spend controls',
+        details: [
+          'Google Cloud startup credits are limited to $500, so the default path stays deterministic and zero-live-call unless Gemini or live MCP is explicitly enabled.',
+          'Every successful /v1/brief and /v1/tripcode response can now include a local-estimate cost object.',
+          'GET /v1/usage exposes the current local estimate ledger for rehearsals and judge testing.',
+          'The demo client prints request cost, tracked spend, and estimated remaining budget after test calls.'
+        ]
+      },
+      {
+        date: '2026-06-07',
+        type: 'Quality gate',
+        title: 'Added 100 percent local coverage gate',
+        details: [
+          'Added make coverage and wired make check to run tests, coverage, and vet.',
+          'Current coverage gate reports total 100.0 percent statements across the Go service, demo client, and agent package.'
+        ]
+      },
+      {
+        date: '2026-06-07',
+        type: 'MCP and TripCode',
+        title: 'Implemented Go-native TripCode MCP path',
+        details: [
+          'Added live MCP JSON-RPC client for deltasignal_resolve_tripcode_research_packet.',
+          'Added POST /v1/tripcode with compact River session memory and optional Gemini synthesis.',
+          'Added GET/POST /resolve as the judge-friendly URL shape for one-command TripCode demos and plain-text follow-up prompts.',
+          'Added scripts/judge-demo.sh to run the TripCode, Memory Bank, and usage-ledger curl flow.',
+          'Added cmd/tripcode-demo for the two-turn judge video flow.'
+        ]
+      },
+      {
+        date: '2026-06-07',
+        type: 'Deployment',
+        title: 'Hardened Cloud Run demo posture',
+        details: [
+          'Added Makefile, optimized Dockerfile, and Cloud Build template.',
+          'Cloud Run settings use min-instances=0, max-instances=3, 512Mi memory, 1 CPU, and concurrency 80.',
+          'Demo endpoints can be protected by DELTASIGNAL_DEMO_API_KEY; secrets stay out of the repository.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Audit',
+        title: 'Added codebase and integration audit report',
+        details: [
+          'Added docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html as a StrategiX Visual Spec audit artifact.',
+          'Audit records a 92 health score, 100 percent coverage gate, clean secret posture, nested git boundary, and evidence metadata follow-up.',
+          'Linked the audit from the official submission packet as supporting evidence, not as a replacement for the packet.',
+          'Neutralized external model/vendor attribution in the audit report so public judge-facing materials stay focused on DeltaSignal, Google Cloud, Gemini, MCP, and the Go implementation.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission packet',
+        title: 'Versioned official submission packet to 1.2',
+        details: [
+          'Updated docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html from version 1.1 to 1.2.',
+          'Added judge-scoring priorities for Cloud Run deployment, TripCode-first demo, /v1/brief provenance parity, broader agent framing, and nested repo freeze.',
+          'Added explicit Risks And Open Questions plus Source Digest sections to close the packet evaluation gap.',
+          'Marked the live demo URL as deployment-pending until the Cloud Run endpoint replaces the placeholder.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission packet',
+        title: 'Versioned official submission packet to 1.3',
+        details: [
+          'Added three-track framing for Google for Startups AI Agents Challenge scoring.',
+          'Positioned Track 1 Build as the primary submission track around TripCode to River to evidence reconciliation.',
+          'Positioned Track 2 Optimize as the reliability, observability, grounding, durable-memory, and provenance-fidelity hardening layer.',
+          'Positioned Track 3 as the future interoperability path for portfolio, compliance, data-room, and research agents.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission packet',
+        title: 'Versioned official submission packet to 1.4',
+        details: [
+          'Added plain-language Track 1 / Track 2 / Track 3 judge narrative.',
+          'Clarified that the submission is a working Go-native Cloud Run agent, not a slideware concept.',
+          'Clarified Track 2 as grounded, auditable, cost-controlled optimization with evidence discipline.',
+          'Added judge close positioning TripCodes as the bridge from passive research archives to auditable agent-executable diligence workflows.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission packet',
+        title: 'Versioned official submission packet to 1.5',
+        details: [
+          'Reframed track fit as Build equals working demo, Optimize equals evidence fidelity, and Path equals agent ecosystem expansion.',
+          'Added compact Build / Optimize / Path replacement language for judge scanning.',
+          'Added Track Progression: TripCode in, River reconstructed, evidence compared, memory preserved, cost shown.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Cost control',
+        title: 'Implemented official billing status overlay',
+        details: [
+          'Added official_billing to CostSnapshot so /v1/usage and successful cost-tracked responses separate local estimates from official Google Cloud Billing status.',
+          'Added explicit env vars for billing project, billing account, billing-enabled status, official spend, credit budget, remaining credits, source, and updated_at.',
+          'Added scripts/report-spend.sh and make spend to report project billing linkage plus the app usage ledger without making live Gemini or MCP calls.',
+          'Verified make check passes with total Go coverage at 100.0 percent.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Deployment',
+        title: 'Started full Cloud Run Build deployment',
+        details: [
+          'Verified gcloud is targeting project startup-ai-deltasignal in region us-central1.',
+          'Enabled the required Google APIs for deployment: Secret Manager, Cloud Build, Cloud Run, Artifact Registry, and Vertex AI.',
+          'Created Artifact Registry repository us-central1/deltasignal-ai-agent for Cloud Run images.',
+          'Created Secret Manager entries deltasignal-mcp-api-key and deltasignal-demo-api-key without storing secret values in the repository.',
+          'Updated cloudbuild.yaml and Makefile deployment paths so Cloud Run mounts MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY from Secret Manager.',
+          'Configured the judge deployment for live MCP, Gemini through Vertex AI, local cost tracking, min-instances=0, max-instances=3, 512Mi memory, 1 CPU, and concurrency 80.',
+          'First Cloud Build submission failed before build because the default _IMAGE substitution used an unexpanded $PROJECT_ID token; fixed Makefile to pass a concrete Artifact Registry image.',
+          'First deployed judge run reached the Go service but exposed a live MCP header issue caused by newline-bearing secret material; patched the MCP client to trim API keys before sending X-API-Key.',
+          'Added GET /health as the deployment smoke route because the deployed /healthz path returned a Google front-end 404 while protected application routes reached the service.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Deployment',
+        title: 'Completed Cloud Run Build validation',
+        details: [
+          'Published the service at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and explicitly granted public Cloud Run invocation while keeping judge routes protected by DELTASIGNAL_DEMO_API_KEY.',
+          'Verified GET /health returns ok from the deployed service.',
+          'Ran scripts/judge-demo.sh against Cloud Run; /resolve returned the HUT TripCode packet for TF-SUB-9DA70A7F98, reconstructed the 10-node HUT River, preserved evidence boundaries, and produced a Gemini summary.',
+          'Verified POST /resolve with the same session_id returns session-memory mode and preserves the prior HUT River context for follow-up questions.',
+          'Verified GET /v1/usage returns local-estimate tracking after the judge flow: 0.10 USD spent and 499.90 USD remaining from the configured 500 USD budget.',
+          'Documented that the public ATLAS-7 MCP endpoint does not yet expose deltasignal_resolve_tripcode_research_packet; the Cloud Run service therefore reports live_mcp_error and falls back to the deterministic HUT River fixture for judge-safe Build validation.'
+        ]
+      }
+    ];
+
+    class ChangelogPage extends LitElement {
+      static styles = css`
+        :host {
+          display: block;
+          --bg: #05070b;
+          --panel: rgba(16, 18, 25, .88);
+          --line: rgba(255,255,255,.13);
+          --ink: #fff8ef;
+          --muted: rgba(255,248,239,.72);
+          --amber: #ffb743;
+          --green: #5df58b;
+          --cyan: #72d9ff;
+        }
+        * { box-sizing: border-box; }
+        a { color: inherit; }
+        main {
+          min-height: 100vh;
+          background:
+            radial-gradient(circle at 10% 0%, rgba(255,183,67,.18), transparent 34%),
+            radial-gradient(circle at 90% 10%, rgba(114,217,255,.10), transparent 30%),
+            var(--bg);
+          padding: 32px 16px 56px;
+        }
+        .wrap { width: min(1120px, 100%); margin: 0 auto; }
+        .top {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 22px;
+        }
+        .brand {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--amber);
+          font-weight: 900;
+        }
+        .mark {
+          width: 34px;
+          height: 34px;
+          display: grid;
+          place-items: center;
+          border: 1px solid rgba(255,183,67,.4);
+          border-radius: 8px;
+        }
+        .links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        .links a {
+          min-height: 38px;
+          display: inline-flex;
+          align-items: center;
+          padding: 0 13px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          text-decoration: none;
+          color: var(--muted);
+          font-size: 13px;
+          font-weight: 800;
+        }
+        .hero {
+          border: 1px solid rgba(255,183,67,.28);
+          background: linear-gradient(135deg, rgba(255,183,67,.12), rgba(114,217,255,.07)), var(--panel);
+          border-radius: 10px;
+          padding: clamp(22px, 4vw, 38px);
+        }
+        .eyebrow {
+          color: var(--green);
+          font-weight: 900;
+          text-transform: uppercase;
+          font-size: 12px;
+          letter-spacing: .08em;
+        }
+        h1 {
+          max-width: 900px;
+          margin: 10px 0 14px;
+          font-size: clamp(38px, 7vw, 82px);
+          line-height: .98;
+          letter-spacing: 0;
+        }
+        p { color: var(--muted); margin: 0; }
+        .lede { max-width: 850px; font-size: 18px; }
+        .policy, .entry, .xml {
+          margin-top: 16px;
+          border: 1px solid var(--line);
+          background: var(--panel);
+          border-radius: 8px;
+          padding: 18px;
+        }
+        h2 {
+          margin: 0 0 12px;
+          color: var(--amber);
+          font-size: 22px;
+          letter-spacing: 0;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 10px;
+          margin-top: 14px;
+        }
+        .metric {
+          border: 1px solid rgba(255,255,255,.10);
+          background: rgba(255,255,255,.04);
+          border-radius: 8px;
+          padding: 14px;
+        }
+        .metric b { display: block; color: var(--ink); margin-bottom: 6px; }
+        .entry-head {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+        .pill {
+          border-radius: 999px;
+          padding: 5px 9px;
+          color: #041008;
+          background: var(--green);
+          font-size: 12px;
+          font-weight: 900;
+        }
+        .date { color: var(--cyan); font-weight: 900; }
+        h3 { margin: 0; font-size: 20px; letter-spacing: 0; }
+        ul { margin: 0; padding-left: 20px; color: var(--muted); }
+        li { margin: 7px 0; }
+        pre {
+          max-height: 360px;
+          overflow: auto;
+          white-space: pre-wrap;
+          margin: 0;
+          color: #f8d998;
+          font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        }
+        @media (max-width: 860px) {
+          .top { align-items: flex-start; flex-direction: column; }
+          .grid { grid-template-columns: 1fr; }
+        }
+      `;
+
+      render() {
+        return html`
+          <main>
+            <div class="wrap">
+              <div class="top">
+                <div class="brand"><span class="mark">Δ</span><span>DeltaSignal Gemini AI Agent</span></div>
+                <div class="links">
+                  <a href="./index.html">Landing page</a>
+                  <a href="./docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official packet</a>
+                  <a href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html" target="_blank" rel="noopener noreferrer">ATLAS-7 Plugin</a>
+                </div>
+              </div>
+
+              <section class="hero">
+                <div class="eyebrow">Public changelog</div>
+                <h1>Cost-conscious agent work, visible by design.</h1>
+                <p class="lede">This changelog records public implementation changes for the competition build. The budget posture is explicit: protect the $500 Google Cloud credit pool, avoid idle spend, keep live calls intentional, and label estimates honestly.</p>
+              </section>
+
+              <section class="policy">
+                <h2>Credit Discipline</h2>
+                <p>Default operation is deterministic and low-cost. Live Gemini and MCP paths are opt-in for judge testing, protected by demo keys, and tracked with a local estimate ledger.</p>
+                <div class="grid">
+                  <article class="metric"><b>$500 budget</b><p>Challenge credits are treated as scarce production resources.</p></article>
+                  <article class="metric"><b>Zero idle burn</b><p>Cloud Run deploys with min-instances=0 and bounded scale.</p></article>
+                  <article class="metric"><b>Estimate boundary</b><p>App cost objects are immediate local estimates, not official Google billing records.</p></article>
+                </div>
+              </section>
+
+              ${entries.map(entry => html`
+                <article class="entry">
+                  <div class="entry-head">
+                    <span class="date">${entry.date}</span>
+                    <span class="pill">${entry.type}</span>
+                  </div>
+                  <h3>${entry.title}</h3>
+                  <ul>${entry.details.map(item => html`<li>${item}</li>`)}</ul>
+                </article>
+              `)}
+
+              <section class="xml">
+                <h2>Embedded Machine Contract</h2>
+                <pre>${xml}</pre>
+              </section>
+            </div>
+          </main>
+        `;
+      }
+    }
+
+    customElements.define('changelog-page', ChangelogPage);
+  </script>
+</body>
+</html>

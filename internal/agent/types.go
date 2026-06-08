@@ -8,6 +8,52 @@ type BriefRequest struct {
 	Live     bool   `json:"live,omitempty"`
 }
 
+type TripCodeResearchRequest struct {
+	TripCode              string `json:"tripcode"`
+	Issuer                string `json:"issuer,omitempty"`
+	SessionID             string `json:"session_id,omitempty"`
+	Question              string `json:"question,omitempty"`
+	PayloadMode           string `json:"payload_mode,omitempty"`
+	IncludeArticleBody    bool   `json:"include_article_body,omitempty"`
+	IncludeFilingEvidence bool   `json:"include_filing_evidence,omitempty"`
+	IncludePriorArticles  bool   `json:"include_prior_articles,omitempty"`
+	IncludeThesisMap      bool   `json:"include_thesis_map,omitempty"`
+}
+
+type TripCodeResearchResponse struct {
+	TripCode      string                  `json:"tripcode"`
+	Issuer        string                  `json:"issuer,omitempty"`
+	GeneratedAt   time.Time               `json:"generated_at"`
+	Mode          string                  `json:"mode"`
+	Packet        map[string]any          `json:"packet"`
+	GeminiSummary string                  `json:"gemini_summary,omitempty"`
+	Disclosures   []string                `json:"disclosures"`
+	Memory        *TripCodeMemorySnapshot `json:"memory,omitempty"`
+	Cost          *CostSnapshot           `json:"cost,omitempty"`
+}
+
+type TripCodeMemoryEntry struct {
+	TripCode            string    `json:"tripcode"`
+	Issuer              string    `json:"issuer,omitempty"`
+	Mode                string    `json:"mode"`
+	GeneratedAt         time.Time `json:"generated_at"`
+	ArticleTitle        string    `json:"article_title,omitempty"`
+	RiverNodeCount      int       `json:"river_node_count,omitempty"`
+	PacketKeys          []string  `json:"packet_keys,omitempty"`
+	MonitorItems        []string  `json:"monitor_items,omitempty"`
+	WeakenedAssumptions []string  `json:"weakened_assumptions,omitempty"`
+}
+
+type TripCodeMemorySnapshot struct {
+	SessionID     string                `json:"session_id"`
+	Available     bool                  `json:"available"`
+	Turns         int                   `json:"turns"`
+	LastTripCode  string                `json:"last_tripcode,omitempty"`
+	LastIssuer    string                `json:"last_issuer,omitempty"`
+	LastUpdatedAt time.Time             `json:"last_updated_at,omitempty"`
+	Entries       []TripCodeMemoryEntry `json:"entries,omitempty"`
+}
+
 type Evidence struct {
 	Source      string `json:"source"`
 	Title       string `json:"title"`
@@ -32,4 +78,31 @@ type BriefResponse struct {
 	Brief       string             `json:"brief"`
 	NextAction  string             `json:"next_action"`
 	Disclosures []string           `json:"disclosures"`
+	Cost        *CostSnapshot      `json:"cost,omitempty"`
+}
+
+type CostSnapshot struct {
+	Enabled         bool             `json:"enabled"`
+	Source          string           `json:"source"`
+	Currency        string           `json:"currency"`
+	RequestKind     string           `json:"request_kind,omitempty"`
+	RequestCostUSD  float64          `json:"request_cost_usd,omitempty"`
+	TrackedSpentUSD float64          `json:"tracked_spent_usd,omitempty"`
+	BudgetUSD       float64          `json:"budget_usd,omitempty"`
+	RemainingUSD    float64          `json:"remaining_usd,omitempty"`
+	OfficialBilling *BillingSnapshot `json:"official_billing,omitempty"`
+	Note            string           `json:"note,omitempty"`
+}
+
+type BillingSnapshot struct {
+	Available          bool    `json:"available"`
+	Source             string  `json:"source"`
+	ProjectID          string  `json:"project_id,omitempty"`
+	BillingAccountName string  `json:"billing_account_name,omitempty"`
+	BillingEnabled     bool    `json:"billing_enabled,omitempty"`
+	SpentUSD           float64 `json:"spent_usd,omitempty"`
+	CreditBudgetUSD    float64 `json:"credit_budget_usd,omitempty"`
+	RemainingUSD       float64 `json:"remaining_usd,omitempty"`
+	UpdatedAt          string  `json:"updated_at,omitempty"`
+	Note               string  `json:"note,omitempty"`
 }
