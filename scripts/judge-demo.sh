@@ -95,6 +95,30 @@ save_build_phase_explanation() {
     </section>
 
     <section>
+      <h2>Objective And Evaluation</h2>
+      <p><strong>Objective:</strong> prove the Track 1 Build claim with one repeatable session: TripCode in, HUT River reconstructed, evidence packet returned, session memory preserved, and cost ledger shown.</p>
+      <div class="grid">
+        <div class="card"><b>Eval 1: Runnable</b><p>The demo must run from HTTP routes on Cloud Run, not only from local code or slides.</p></div>
+        <div class="card"><b>Eval 2: Agentic</b><p>The Google agent must orchestrate multiple steps: resolve, remember, follow up, and report usage.</p></div>
+        <div class="card"><b>Eval 3: MCP-backed</b><p>The evidence packet must come through the ATLAS-7 MCP boundary rather than being hardcoded into the agent response path.</p></div>
+        <div class="card"><b>Eval 4: Evidence-bound</b><p>The result must keep article memory, filing references, caveats, missing evidence, and non-advice boundaries separate.</p></div>
+        <div class="card"><b>Eval 5: Stateful</b><p>The second request must use the prior session context without rerunning the TripCode resolution.</p></div>
+        <div class="card"><b>Eval 6: Cost-aware</b><p>The run must expose local-estimate spend and remaining challenge budget.</p></div>
+      </div>
+      <p><strong>Build status:</strong> passed for the HUT proof session. The remaining work belongs to Optimize, not Build.</p>
+    </section>
+
+    <section>
+      <h2>Why Optimize Comes Next</h2>
+      <p>Build proves the working agent. Optimize improves evidence fidelity, operational quality, and judge trust without changing the core demo claim.</p>
+      <ol>
+        <li><strong>Proven now:</strong> Cloud Run route, TripCode resolver, live MCP packet, HUT River reconstruction, session memory, Gemini synthesis, and cost ledger.</li>
+        <li><strong>Optimize next:</strong> propagate richer ATLAS-7 metadata through every brief path, including source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels.</li>
+        <li><strong>Reason:</strong> the next risk is not whether the agent works. The next risk is whether every generated answer carries the same provenance strength as the raw TripCode research packet.</li>
+      </ol>
+    </section>
+
+    <section>
       <h2>What Happens Step By Step</h2>
       <ol>
         <li><strong>Resolve the TripCode.</strong> The first request calls <code>GET /resolve</code> with <code>TF-SUB-9DA70A7F98</code>, issuer <code>HUT</code>, compact payload mode, filing evidence, prior articles, and thesis map enabled.</li>
@@ -133,6 +157,16 @@ save_build_phase_explanation() {
     &lt;MCP role="evidence-tool-boundary"&gt;ATLAS-7 MCP resolves TripCode research packets, HUT River nodes, filing evidence refs, caveats, thesis map, and provenance fields.&lt;/MCP&gt;
     &lt;Justification&gt;The Google agent proves autonomous workflow control; MCP proves secure external context and evidence retrieval without mixing proprietary evidence storage into the agent runtime.&lt;/Justification&gt;
   &lt;/RoleSplit&gt;
+  &lt;Objective&gt;Prove the Track 1 Build claim with one repeatable session: TripCode in, HUT River reconstructed, evidence packet returned, session memory preserved, and cost ledger shown.&lt;/Objective&gt;
+  &lt;Evaluation status="passed"&gt;
+    &lt;Criterion name="Runnable"&gt;Cloud Run HTTP routes execute the demo.&lt;/Criterion&gt;
+    &lt;Criterion name="Agentic"&gt;The Google agent orchestrates resolve, memory, follow-up, and usage reporting.&lt;/Criterion&gt;
+    &lt;Criterion name="MCPBacked"&gt;The evidence packet arrives through the ATLAS-7 MCP boundary.&lt;/Criterion&gt;
+    &lt;Criterion name="EvidenceBound"&gt;Article memory, filing refs, caveats, missing evidence, and non-advice boundaries stay separated.&lt;/Criterion&gt;
+    &lt;Criterion name="Stateful"&gt;The follow-up uses session memory without rerunning TripCode resolution.&lt;/Criterion&gt;
+    &lt;Criterion name="CostAware"&gt;The run exposes tracked local-estimate spend and remaining budget.&lt;/Criterion&gt;
+  &lt;/Evaluation&gt;
+  &lt;NextPhase name="Optimize"&gt;Improve evidence fidelity by propagating source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels through every user-facing brief path.&lt;/NextPhase&gt;
   &lt;Steps&gt;
     &lt;Step order="1" route="GET /resolve"&gt;Resolve TripCode into structured research_packet.&lt;/Step&gt;
     &lt;Step order="2" system="ATLAS-7 MCP"&gt;Recover article object, HUT River nodes, filing evidence refs, caveats, and thesis map.&lt;/Step&gt;
@@ -154,6 +188,16 @@ save_build_phase_explanation() {
     <MCP role="evidence-tool-boundary">ATLAS-7 MCP resolves TripCode research packets, HUT River nodes, filing evidence refs, caveats, thesis map, and provenance fields.</MCP>
     <Justification>The Google agent proves autonomous workflow control; MCP proves secure external context and evidence retrieval without mixing proprietary evidence storage into the agent runtime.</Justification>
   </RoleSplit>
+  <Objective>Prove the Track 1 Build claim with one repeatable session: TripCode in, HUT River reconstructed, evidence packet returned, session memory preserved, and cost ledger shown.</Objective>
+  <Evaluation status="passed">
+    <Criterion name="Runnable">Cloud Run HTTP routes execute the demo.</Criterion>
+    <Criterion name="Agentic">The Google agent orchestrates resolve, memory, follow-up, and usage reporting.</Criterion>
+    <Criterion name="MCPBacked">The evidence packet arrives through the ATLAS-7 MCP boundary.</Criterion>
+    <Criterion name="EvidenceBound">Article memory, filing refs, caveats, missing evidence, and non-advice boundaries stay separated.</Criterion>
+    <Criterion name="Stateful">The follow-up uses session memory without rerunning TripCode resolution.</Criterion>
+    <Criterion name="CostAware">The run exposes tracked local-estimate spend and remaining budget.</Criterion>
+  </Evaluation>
+  <NextPhase name="Optimize">Improve evidence fidelity by propagating source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels through every user-facing brief path.</NextPhase>
   <Steps>
     <Step order="1" route="GET /resolve">Resolve TripCode into structured research_packet.</Step>
     <Step order="2" system="ATLAS-7 MCP">Recover article object, HUT River nodes, filing evidence refs, caveats, and thesis map.</Step>
