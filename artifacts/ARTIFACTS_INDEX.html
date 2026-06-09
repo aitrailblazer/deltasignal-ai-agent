@@ -120,9 +120,9 @@
           <div class="meta">
             <div class="metric"><b>Track 1 Build</b><span>Complete and verified</span></div>
             <div class="metric"><b>Track 2 Optimize</b><span>Implemented, rerun validated, 100% coverage gate</span></div>
-            <div class="metric"><b>Track 3 Path</b><span>A2A refactor implemented and locally validated</span></div>
+            <div class="metric"><b>Track 3 Path</b><span>A2A refactor implemented, deployed, and follow-up validated</span></div>
           </div>
-          <p>Latest proof: <a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html">Track 3 A2A Cloud Run deployment proof</a>. Local A2A refactor proof and Track 2 runtime validation remain available in their track folders.</p>
+          <p>Latest proof: <a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/TRACK3_A2A_FOLLOWUP_DEPLOYMENT.html">Track 3 A2A same-session follow-up deployment proof</a>. Earlier A2A deployment proof, local A2A refactor proof, and Track 2 runtime validation remain available in their track folders.</p>
         </article>
 
         <article class="card phase">
@@ -209,11 +209,13 @@
           <div>
             <h2>Deployment Evidence History</h2>
             <p>Earlier deploy folders remain available because they show the development trail from deployment setup to validation fixes and runtime hardening.</p>
-          <ul>
-              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html">Track 2 runtime hardening proof</a></li>
-              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T192004Z-optimize-brief-line-fix/DEPLOYMENT_VALIDATION.html">Brief line deployment validation</a></li>
-              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy/05-deploy-summary.json">Initial Optimize Cloud Run deploy summary</a></li>
-          </ul>
+	          <ul>
+	              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/TRACK3_A2A_FOLLOWUP_DEPLOYMENT.html">Track 3 A2A same-session follow-up deployment proof</a></li>
+	              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html">Track 3 A2A Cloud Run deployment proof</a></li>
+	              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html">Track 2 runtime hardening proof</a></li>
+	              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T192004Z-optimize-brief-line-fix/DEPLOYMENT_VALIDATION.html">Brief line deployment validation</a></li>
+	              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy/05-deploy-summary.json">Initial Optimize Cloud Run deploy summary</a></li>
+	          </ul>
           </div>
         </article>
 
@@ -282,14 +284,14 @@
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Artifact Index</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
-    <LatestRun>20260609T083405Z-track3-a2a-refactor</LatestRun>
-    <LatestProof>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</LatestProof>
+    <LatestRun>20260609T165228Z-track3-a2a-followup-deploy</LatestRun>
+    <LatestProof>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/TRACK3_A2A_FOLLOWUP_DEPLOYMENT.html</LatestProof>
   </CanonicalArtifact>
   <Purpose>Make nested validation artifacts visible from the root artifacts directory and label each bundle by competition track, development phase, and proof status.</Purpose>
   <DevelopmentStatus>
     <Track name="Build" status="complete-and-verified">Working demo: TripCode resolves article memory, reconstructs HUT River, preserves session context, and returns a judge-ready diligence packet.</Track>
     <Track name="Optimize" status="implemented-rerun-validated-coverage-gated">Evidence fidelity and runtime hardening: richer provenance propagation, rate limits, runtime telemetry, structured logs, memory disclosure, spend reporting, and 100.0 percent statement coverage.</Track>
-    <Track name="Path" status="a2a-refactor-implemented">Agent ecosystem expansion now has A2A agent-card discovery and a protected TripCode task endpoint, with Marketplace publication still explicitly not claimed.</Track>
+    <Track name="Path" status="a2a-refactor-deployed-followup-validated">Agent ecosystem expansion now has A2A agent-card discovery, a protected TripCode task endpoint, and deployed same-session follow-up through stored River memory, with Marketplace publication still explicitly not claimed.</Track>
   </DevelopmentStatus>
   <ArtifactMap>
     <Bundle track="Build" phase="working-demo" status="verified" path="artifacts/00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified/BUILD_PHASE_EXPLANATION.html">Track 1 Build proof bundle.</Bundle>
@@ -298,13 +300,14 @@
     <Bundle track="Optimize" phase="testing-evaluation" status="coverage-gate-passed" path="artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html">Track 2 local testing gate proof: make check, 100.0 percent statement coverage, and go vet clean.</Bundle>
     <Bundle track="Path" phase="a2a-readiness" status="implemented-and-validated" path="artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/TRACK3_A2A_REFACTOR_PROOF.html">Track 3 A2A agent-card and task-endpoint proof bundle.</Bundle>
     <Bundle track="Path" phase="a2a-cloud-run-deployment" status="deployed-and-validated" path="artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html">Track 3 Cloud Run deployment proof bundle.</Bundle>
+    <Bundle track="Path" phase="a2a-session-followup" status="deployed-and-validated" path="artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/TRACK3_A2A_FOLLOWUP_DEPLOYMENT.html">Track 3 A2A same-session follow-up deployment proof bundle.</Bundle>
   </ArtifactMap>
   <LatestValidation>
-    <RunId>20260609T083405Z-track3-a2a-refactor</RunId>
-    <ProofFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</ProofFile>
-    <SummaryFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/08-deploy-summary.json</SummaryFile>
-    <LogFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/01-cloud-build.log</LogFile>
-    <Boundary>Latest proof is deployed A2A readiness validation. Marketplace publication is not claimed.</Boundary>
+    <RunId>20260609T165228Z-track3-a2a-followup-deploy</RunId>
+    <ProofFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/TRACK3_A2A_FOLLOWUP_DEPLOYMENT.html</ProofFile>
+    <SummaryFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/10-deploy-summary.json</SummaryFile>
+    <LogFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/01-cloud-build.log</LogFile>
+    <Boundary>Latest proof is deployed A2A same-session follow-up validation. It proves A2A memory continuity; the run explicitly disclosed that the public MCP composite was unavailable during that validation. Marketplace publication is not claimed.</Boundary>
   </LatestValidation>
 </StrategiXVisualSpec>
   </script>

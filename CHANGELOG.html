@@ -20,7 +20,7 @@
   <changelog-page></changelog-page>
 
   <script id="strategix-changelog-contract" type="application/xml">
-	<StrategiXVisualSpec version="2.3" status="track-3-a2a-followup-hardened" generated="2026-06-09" artifact="CHANGELOG.html">
+	<StrategiXVisualSpec version="2.4" status="track-3-a2a-followup-deployed" generated="2026-06-09" artifact="CHANGELOG.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -372,6 +372,16 @@
 	      <Detail>Cleaned the Track 3 A2A spec to avoid public development-tool references and private challenge source filenames.</Detail>
 	      <Detail>Clarified that A2A propagates available resolver provenance and that quality flags / stale markers are preserved when returned by the resolver.</Detail>
 	      <Detail>Clarified that ADK / Agent Engine orchestration remains a future expansion path; the implemented slice is protocol-native A2A on Go Cloud Run.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-09" type="deployment">
+	      <Title>Deployed Track 3 A2A session follow-up hardening</Title>
+	      <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T165228Z-track3-a2a-followup-deploy through Cloud Build.</Detail>
+	      <Detail>Cloud Run revision deltasignal-ai-agent-00011-v2r became ready and served 100 percent of traffic.</Detail>
+	      <Detail>Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected A2A and judge routes behind DELTASIGNAL_DEMO_API_KEY.</Detail>
+	      <Detail>Validated GET /health, GET /.well-known/agent-card.json, protected first-turn POST /a2a with TF-SUB-9DA70A7F98, and protected second-turn POST /a2a with the same session_id and no TripCode.</Detail>
+	      <Detail>The second-turn response returned mode session-memory and proved the deployed A2A adapter can reuse stored TripCode/River memory for follow-up requests.</Detail>
+	      <Detail>Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy, including Cloud Build log, service describe, health, agent card, first-turn request/response, follow-up request/response, deploy summary, manifest, and proof HTML.</Detail>
+	      <Detail>The latest run explicitly preserved live_mcp_error because the public MCP composite returned unsupported tool name during validation; this proof validates A2A/session-follow-up hardening and fallback disclosure, while the earlier 20260609T085553Z deployment remains the clean live-MCP A2A proof.</Detail>
 	    </Entry>
 	  </Entries>
   <PublicLinks>
@@ -894,6 +904,20 @@
           'Cleaned the Track 3 A2A spec to avoid public development-tool references and private challenge source filenames.',
           'Clarified that A2A propagates available resolver provenance and that quality flags / stale markers are preserved when returned by the resolver.',
           'Clarified that ADK / Agent Engine orchestration remains a future expansion path; the implemented slice is protocol-native A2A on Go Cloud Run.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Deployment',
+        title: 'Deployed Track 3 A2A session follow-up hardening',
+        details: [
+          'Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T165228Z-track3-a2a-followup-deploy through Cloud Build.',
+          'Cloud Run revision deltasignal-ai-agent-00011-v2r became ready and served 100 percent of traffic.',
+          'Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected A2A and judge routes behind DELTASIGNAL_DEMO_API_KEY.',
+          'Validated GET /health, GET /.well-known/agent-card.json, first-turn protected POST /a2a with TF-SUB-9DA70A7F98, and second-turn protected POST /a2a with the same session_id and no TripCode.',
+          'The second-turn response returned mode session-memory and proved the deployed A2A adapter can reuse stored TripCode/River memory for follow-up requests.',
+          'Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy.',
+          'The latest run explicitly preserved live_mcp_error because the public MCP composite returned unsupported tool name during validation; this proof validates A2A/session-follow-up hardening and fallback disclosure, while the earlier 20260609T085553Z deployment remains the clean live-MCP A2A proof.'
         ]
       }
     ];

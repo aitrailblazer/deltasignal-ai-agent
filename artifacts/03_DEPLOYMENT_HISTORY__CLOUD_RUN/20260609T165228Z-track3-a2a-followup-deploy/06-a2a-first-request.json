@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":"track3-a2a-followup-first","method":"message/send","params":{"message":{"parts":[{"kind":"text","text":"Resolve TF-SUB-9DA70A7F98 for the HUT River."}]},"metadata":{"session_id":"track3-a2a-followup-live"}}}

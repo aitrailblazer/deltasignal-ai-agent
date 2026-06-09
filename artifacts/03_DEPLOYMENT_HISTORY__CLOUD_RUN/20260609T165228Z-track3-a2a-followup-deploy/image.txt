@@ -1,0 +1,1 @@
+us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T165228Z-track3-a2a-followup-deploy

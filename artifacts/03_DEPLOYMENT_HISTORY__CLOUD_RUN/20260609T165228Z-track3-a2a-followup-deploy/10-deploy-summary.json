@@ -1,0 +1,28 @@
+{
+  "run_id": "20260609T165228Z-track3-a2a-followup-deploy",
+  "status": "deployed-and-validated",
+  "service_url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+  "alternate_service_url": "https://deltasignal-ai-agent-531691677642.us-central1.run.app",
+  "revision": "deltasignal-ai-agent-00011-v2r",
+  "health_ok": true,
+  "agent_card": {
+    "name": "DeltaSignal Gemini AI Agent",
+    "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/a2a",
+    "skill_id": "resolve-tripcode-research-packet",
+    "protocolVersion": "0.3.0"
+  },
+  "first_turn": {
+    "task_state": "completed",
+    "mode": "demo-tripcode-river-gemini",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "turns": 1
+  },
+  "follow_up": {
+    "task_state": "completed",
+    "mode": "session-memory",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "turns": 1,
+    "question": "Using the previous HUT River, what changed and what should we monitor next?"
+  },
+  "boundary": "Marketplace publication is not claimed; this validates Cloud Run-hosted A2A readiness plus same-session follow-up."
+}

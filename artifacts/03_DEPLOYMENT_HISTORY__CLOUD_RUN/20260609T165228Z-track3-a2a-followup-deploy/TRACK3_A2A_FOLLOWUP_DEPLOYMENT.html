@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Gemini AI Agent | Track 3 A2A Follow-up Deployment Proof</title>
+  <style>
+    html{background:#05070b;color:#fff8ef;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}body{margin:0}main{padding:32px 18px 56px}.wrap{max-width:1040px;margin:auto}.hero,section{border:1px solid rgba(255,255,255,.14);background:rgba(18,21,29,.92);border-radius:10px;padding:22px;margin:14px 0}.eyebrow{color:#72d9ff;text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:.08em}h1{font-size:clamp(30px,5vw,52px);line-height:1;margin:8px 0 12px}h2{color:#ffb743}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:8px;padding:14px}.card b{display:block;color:#fff;margin-bottom:6px}code{color:#5df58b}.warn{border-left:4px solid #ffb743;padding-left:12px}.ok{border-left:4px solid #5df58b;padding-left:12px}pre{white-space:pre-wrap;background:#090c14;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:14px;max-height:360px;overflow:auto;font-size:12px}</style>
+</head>
+<body>
+<main><div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Track 3 Path • A2A Follow-up Deployment</div>
+    <h1>Cloud Run A2A Follow-up Proof</h1>
+    <p>Deployment evidence for the Track 3 hardening slice: the live Cloud Run service accepts an A2A first-turn TripCode request, writes session memory, then answers a second-turn A2A follow-up using the same <code>session_id</code> without requiring a new TripCode.</p>
+  </div>
+  <section><h2>Validated Results</h2><div class="grid">
+    <div class="card"><b>Revision</b><span><code>deltasignal-ai-agent-00011-v2r</code></span></div>
+    <div class="card"><b>Agent Card</b><span>Public <code>/.well-known/agent-card.json</code> returned protocol <code>0.3.0</code> and skill <code>resolve-tripcode-research-packet</code>.</span></div>
+    <div class="card"><b>First Turn</b><span><code>POST /a2a</code> resolved <code>TF-SUB-9DA70A7F98</code> and wrote one memory turn.</span></div>
+    <div class="card"><b>Second Turn</b><span><code>POST /a2a</code> without a TripCode returned <code>session-memory</code> for the same session.</span></div>
+  </div></section>
+  <section class="warn"><h2>Evidence Boundary</h2><p>The configured public MCP endpoint returned <code>unsupported tool name: deltasignal_resolve_tripcode_research_packet</code> during this deploy validation. The service therefore used the deterministic HUT TripCode fallback and preserved <code>live_mcp_error</code> in the first-turn packet. This run validates A2A and session-memory behavior, not live MCP composite availability.</p></section>
+  <section class="ok"><h2>Why This Matters</h2><p>This closes the audit finding that the Track 3 spec overstated A2A session continuity. The deployed endpoint now proves same-session A2A follow-up behavior: first call resolves the River, second call can use session memory without re-supplying the TripCode.</p></section>
+  <section><h2>Saved Evidence Files</h2><ul>
+    <li><code>01-cloud-build.log</code></li><li><code>03-service-describe.json</code></li><li><code>05-agent-card-response.json</code></li><li><code>06-a2a-first-request.json</code></li><li><code>07-a2a-first-response.json</code></li><li><code>08-a2a-followup-request.json</code></li><li><code>09-a2a-followup-response.json</code></li><li><code>10-deploy-summary.json</code></li>
+  </ul></section>
+  <section><h2>Machine Summary</h2><pre id="summary"></pre></section>
+</div></main>
+<script id="strategix-track3-followup-proof" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="track-3-a2a-followup-deployed" generated="2026-06-09" artifact="artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/TRACK3_A2A_FOLLOWUP_DEPLOYMENT.html">
+  <CanonicalArtifact><Title>Track 3 A2A Follow-up Deployment Proof</Title><Repository>aitrailblazer/deltasignal-ai-agent</Repository><Track>Track 3 Path</Track></CanonicalArtifact>
+  <Validation><Check status="passed">Cloud Run revision deltasignal-ai-agent-00011-v2r deployed.</Check><Check status="passed">Public agent card responded.</Check><Check status="passed">First-turn A2A TripCode request completed and wrote session memory.</Check><Check status="passed">Second-turn A2A follow-up without TripCode returned session-memory mode.</Check></Validation>
+  <Boundary>Marketplace publication is not claimed. This proof validates Cloud Run-hosted A2A readiness plus same-session follow-up. Live MCP composite was unavailable for this run and fallback was disclosed.</Boundary>
+</StrategiXVisualSpec>
+</script>
+<script type="module">
+  fetch('10-deploy-summary.json').then(r=>r.json()).then(j=>{document.getElementById('summary').textContent=JSON.stringify(j,null,2)}).catch(()=>{});
+</script>
+</body>
+</html>

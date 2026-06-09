@@ -20,7 +20,7 @@
   <track3-spec></track3-spec>
 
   <script id="strategix-track3-spec-contract" type="application/xml">
-<StrategiXVisualSpec version="1.1" status="track-3-spec" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Track3_A2A_Refactor_Spec_2026_06_09.html">
+<StrategiXVisualSpec version="1.2" status="track-3-a2a-followup-deployed" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Track3_A2A_Refactor_Spec_2026_06_09.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent - Track 3 A2A Refactor Spec</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -28,8 +28,9 @@
     <Track>Track 3: Refactor for Google Cloud Marketplace &amp; Gemini Enterprise</Track>
     <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
     <RelatedArtifacts>
-      <Artifact>artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/INDEX.html</Artifact>
-      <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</Artifact>
+	      <Artifact>artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/INDEX.html</Artifact>
+	      <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/TRACK3_A2A_FOLLOWUP_DEPLOYMENT.html</Artifact>
+	      <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</Artifact>
       <Artifact>artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/TRACK3_A2A_REFACTOR_PROOF.html</Artifact>
       <Artifact>cmd/server/a2a.go</Artifact>
     </RelatedArtifacts>
@@ -52,7 +53,7 @@
   <ProjectAdjustments>
     <Adjustment name="Existing Foundation">The agent was built for Track 1 (Build) around Delta Signal ATLAS-7 as authorized B2B data source (SEC/XBRL-grounded issuer intelligence for crypto-exposed public companies). Core primitive: TripCodes (stable resolver keys for articles/claims) + Rivers (ordered thesis trails with prior nodes, evidence refs, weakened assumptions, monitor-next). This already provides a compelling B2B use case for analysts, funds, and research teams needing portable, evidence-bound research memory instead of generic RAG or manual local MCP orchestration.</Adjustment>
     <Adjustment name="B2B Focus">Issuer diligence, stress signals, covenant analysis, peer ranking, alpha opportunities, and TripCode-driven thesis evolution directly solve B2B challenges for portfolio managers, compliance teams, and research desks. Multi-agent extension: Other agents (portfolio monitors, data-room agents, subscriber copilots) discover and coordinate with this agent via A2A to pull grounded research packets without duplicating data pipelines.</Adjustment>
-    <Adjustment name="Cloud-Native Runtime">Already deployed and validated on Cloud Run (multiple revisions, public agent-card, protected A2A endpoint). Matches allowed runtimes. Recent Track 3 Cloud Run deploy (20260609T085553Z) confirms production readiness with live A2A task handling.</Adjustment>
+    <Adjustment name="Cloud-Native Runtime">Already deployed and validated on Cloud Run (multiple revisions, public agent-card, protected A2A endpoint). Matches allowed runtimes. Latest Track 3 Cloud Run deploy (20260609T165228Z) confirms production readiness with A2A task handling plus same-session follow-up.</Adjustment>
     <Adjustment name="Vertex-Powered Intelligence">Gemini synthesis lane (via google.golang.org/genai with Vertex AI config when DELTASIGNAL_USE_GEMINI=true). Production path uses Vertex; demo mode falls back to deterministic fixtures while preserving live_mcp_error disclosure. AI Studio explicitly avoided per rules.</Adjustment>
     <Adjustment name="A2A Interoperability">Implemented in cmd/server/a2a.go:
 - Agent card at /.well-known/agent-card.json (and /a2a/app/...) declaring protocolVersion 0.3.0, skills (e.g., "resolve-tripcode-research-packet"), capabilities, default input/output modes (text/plain, application/json), provider info.
@@ -97,6 +98,7 @@ This makes the TripCode research packet (article memory, River, filing evidence,
     <Criterion status="implemented">Public A2A agent card with protocol version, skills (resolve-tripcode-research-packet), examples, boundaries, and Track 3 metadata.</Criterion>
     <Criterion status="implemented">Protected POST /a2a endpoint that accepts A2A message/send, resolves TripCode (live MCP or fallback), returns completed task with research packet artifact, and supports same-session follow-up from stored TripCode/River memory.</Criterion>
     <Criterion status="implemented">Cloud Run deployment validated (agent card discoverable, A2A tasks executable, live for HUT example).</Criterion>
+    <Criterion status="implemented">Cloud Run redeployment validated same-session A2A follow-up: first-turn A2A request writes TripCode/River memory, second-turn A2A request with the same session_id and no TripCode returns session-memory mode.</Criterion>
     <Criterion status="implemented">B2B use case articulated (issuer diligence / research memory for analysts/funds via multi-agent A2A coordination).</Criterion>
     <Criterion status="implemented">Documentation of A2A intents, deployment architecture, model usage, and boundaries (in agent card metadata, artifacts, and this spec).</Criterion>
     <Criterion status="required">Clear demonstration (in video/artifacts) of multi-agent collaboration: e.g., simulated portfolio agent using A2A to obtain grounded River packet, showing superior result vs single-agent.</Criterion>
@@ -105,7 +107,7 @@ This makes the TripCode research packet (article memory, River, filing evidence,
   </AcceptanceCriteria>
 
   <RisksAndOpenQuestions>
-    <Risk>Public MCP TripCode composite and HUT River/index blobs remain discovery-gated. Service correctly falls back and discloses (per AGENTS.md). A2A layer works regardless.</Risk>
+    <Risk>Public MCP TripCode composite availability can drift. The 20260609T085553Z deployment proved live-mcp-tripcode-gemini mode; the 20260609T165228Z follow-up deployment proved A2A session continuity while explicitly preserving live_mcp_error because the public MCP composite returned unsupported tool name during that validation. Service correctly falls back and discloses (per AGENTS.md). A2A layer works regardless.</Risk>
     <Risk>Full multi-agent demo (beyond single A2A call) needs additional calling-agent simulation in video/artifacts.</Risk>
     <Risk>Marketplace publication requires separate Google evaluations/partnerships — explicitly not claimed here.</Risk>
     <Risk>ADK usage: Current implementation uses direct A2A JSON-RPC over HTTP (protocol-native) on Cloud Run. Future layering of ADK / Agent Engine orchestration is noted as an extension path and is not claimed as implemented in this slice.</Risk>
@@ -114,7 +116,7 @@ This makes the TripCode research packet (article memory, River, filing evidence,
 
   <SourceDigest>
     <Source>Official challenge guidance summarized internally: Track 3 mandates, A2A, B2B, Cloud-Native, Vertex, Marketplace caveat, implementation details, examples, and documentation requirements. Private source filenames and copied guide text are intentionally not published in this public spec.</Source>
-    <Source>Project artifacts: 04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/ (A2A refactor proof, agent card, a2a responses), 03_DEPLOYMENT_HISTORY__CLOUD_RUN/ (Track 3 Cloud Run deploy), a2a.go source.</Source>
+    <Source>Project artifacts: 04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/ (A2A refactor proof, agent card, a2a responses), 03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/ (clean live-MCP A2A deploy proof), 03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/ (same-session A2A follow-up deploy proof), a2a.go source.</Source>
     <Source>Prior specs: Submission packet (core TripCode/River + B2B issuer diligence), AGENTS.md (evidence rules, discovery-gating, A2A caveats), previous Track 3 INDEX and proofs.</Source>
     <Source>DeltaSignal integration: Authorized MCP source for grounding; TripCodes/Rivers as the A2A-exposed memory primitive.</Source>
   </SourceDigest>
@@ -231,7 +233,7 @@ This makes the TripCode research packet (article memory, River, filing evidence,
                 <ol style="color:var(--muted); padding-left:20px;">
                   ${demoSteps.map(s => html`<li>${s}</li>`)}
                 </ol>
-                <p style="margin-top:12px; font-size:13px;">See artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/ and the Track 3 Cloud Run deploy proof for live JSON evidence (agent card + a2a request/response for TF-SUB-9DA70A7F98).</p>
+                <p style="margin-top:12px; font-size:13px;">See artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/ and artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy/ for live JSON evidence: agent card, first-turn A2A request/response for TF-SUB-9DA70A7F98, and same-session follow-up without a new TripCode.</p>
               </section>
 
               <section>
