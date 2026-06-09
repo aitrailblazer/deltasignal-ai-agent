@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Gemini AI Agent | Devpost Submission Copy</title>
+  <meta name="description" content="Copy-ready Devpost fields and judge asset checklist for DeltaSignal Gemini AI Agent.">
+  <style>
+    html {
+      background: #070910;
+      color: #f7efe1;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.48;
+    }
+    body { margin: 0; min-height: 100vh; }
+    devpost-copy:not(:defined) { display: block; padding: 32px; }
+  </style>
+</head>
+<body>
+  <devpost-copy></devpost-copy>
+
+  <script id="strategix-devpost-copy-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="devpost-copy-ready" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Devpost_Submission_Copy_2026_06_09.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Gemini AI Agent Devpost Submission Copy</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <Challenge>Google for Startups AI Agents Challenge</Challenge>
+    <ActiveSubmissionDeadline>2026-06-11</ActiveSubmissionDeadline>
+    <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
+    <PublicLandingPage>index.html</PublicLandingPage>
+    <LiveServiceUrl>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</LiveServiceUrl>
+  </CanonicalArtifact>
+  <Purpose>Provide concise, copy-ready Devpost field text and final judge asset instructions while keeping the official submission packet as the single source of truth.</Purpose>
+  <SubmissionPositioning>
+    <ProjectName>DeltaSignal Gemini AI Agent</ProjectName>
+    <OneLine>One TripCode turns a static financial research archive into agent-executable diligence memory.</OneLine>
+    <CoreClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, evidence boundaries, and usage reporting.</CoreClaim>
+    <TrackFit>Primary: Track 1 Build. Supporting: Track 2 Optimize evidence fidelity and Track 3 A2A path readiness.</TrackFit>
+  </SubmissionPositioning>
+  <RequiredAssets>
+    <Asset name="Video" status="to-record">Record a 3-minute demo using scripts/judge-demo.sh and the live Cloud Run URL.</Asset>
+    <Asset name="Code" status="ready">https://github.com/aitrailblazer/deltasignal-ai-agent</Asset>
+    <Asset name="TestingAccess" status="ready">Use the live Cloud Run service with a privately supplied DELTASIGNAL_DEMO_API_KEY.</Asset>
+    <Asset name="ArchitectureDiagram" status="ready">Use the public landing page architecture section or the official submission packet architecture section.</Asset>
+  </RequiredAssets>
+  <JudgeDemoFlow>
+    <Step order="1">Open public landing page and state the challenge name.</Step>
+    <Step order="2">Call /health to show the deployed Cloud Run service is live.</Step>
+    <Step order="3">Call /resolve with TF-SUB-9DA70A7F98 and a session_id.</Step>
+    <Step order="4">Show mode live-mcp-tripcode-gemini, 10 HUT River nodes, zero missing evidence, research_packet, execution_trace, agent_context.sources, gemini_summary, boundaries, and usage.</Step>
+    <Step order="5">Call POST /resolve with the same session_id and a follow-up question to prove session memory.</Step>
+    <Step order="6">Call /v1/usage to show local-estimate cost tracking and remaining budget.</Step>
+    <Step order="7">Optionally show /.well-known/agent-card.json and protected /a2a to prove Track 3 path readiness.</Step>
+  </JudgeDemoFlow>
+  <Boundaries>
+    <Boundary>TripCodes are proprietary resolver keys, not SEC filing identifiers.</Boundary>
+    <Boundary>Article memory preserves research continuity but does not replace official filing evidence.</Boundary>
+    <Boundary>SEC accessions, CIKs, filing periods, and XBRL concepts remain source identities.</Boundary>
+    <Boundary>Outputs are evidence-routing and diligence triage, not investment advice, recommendations, price targets, or order instructions.</Boundary>
+    <Boundary>Application usage estimates are rehearsal telemetry; official spend comes from Google Cloud Billing.</Boundary>
+  </Boundaries>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+
+    const xml = document.getElementById('strategix-devpost-copy-contract')?.textContent.trim() ?? '';
+    const liveUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
+    const fields = [
+      ['Project title', 'DeltaSignal Gemini AI Agent'],
+      ['Short description', 'DeltaSignal Gemini AI Agent turns one TripCode into an agent-executable financial diligence packet: article memory, thesis River, filing-backed evidence refs, what changed, what weakened, what remains unproven, and what to monitor next.'],
+      ['Problem to solve', `Financial research is often trapped in static articles, PDFs, filings, and archive search. Analysts can find documents, but they still have to manually reconstruct what prior research claimed, which evidence supported it, which assumptions weakened, and what should be monitored next. That manual continuity problem gets worse when research spans newsletters, SEC/XBRL evidence, issuer histories, and follow-up notes. DeltaSignal solves the continuity problem: one stable TripCode lets an agent recover the research object, reconstruct the thesis River, compare claims against evidence, and return a bounded diligence packet.`],
+      ['Our solution', `DeltaSignal Gemini AI Agent is a Go-native Cloud Run agent for issuer intelligence. A user gives one TripCode or issuer prompt. The agent autonomously calls the live DeltaSignal ATLAS-7 MCP composite resolver, reconstructs the research River, separates article memory from filing-backed evidence, writes compact session memory, asks Gemini through Vertex AI to synthesize the result, and returns a judge-ready diligence packet with execution_trace, agent_context.sources, research_packet, session_memory, gemini_summary, usage, and boundaries. The HUT proof case, TF-SUB-9DA70A7F98, resolves into a 10-node HUT River with zero missing evidence in the latest validation run.`],
+      ['Technologies used', `Go, Cloud Run, Cloud Build, Artifact Registry, Secret Manager, Vertex AI / Gemini, Google Gen AI SDK for Go, MCP-compatible tool calls, A2A agent-card discovery, JSON-RPC task endpoint, structured Cloud Run logs, local-estimate usage ledger, and deterministic demo fixtures for judge-safe fallback.`],
+      ['Data sources', `DeltaSignal ATLAS-7 SEC/XBRL-grounded issuer intelligence, DeltaSignal TripCode research objects, thesis River packets, filing evidence refs, article memory objects, deterministic HUT demo fixtures, and public ATLAS-7 operating guides fetched as agent_context sources. ATLAS-7 is disclosed as an existing authorized integration and data source; this competition project is the new Google Cloud agent orchestration layer.`],
+      ['Findings and learnings', `The strongest agent value is not generic filing summarization. It is continuity. TripCodes convert passive financial commentary into structured research memory that an agent can resolve, inspect, compare, and monitor. The HUT proof showed that a single TripCode can recover the current article, prior River nodes, changed findings, weakened assumptions, execution risks, proof milestones, and next monitoring items. We also learned that judges need visible cost discipline, so the service uses Cloud Run min-instances=0, protected judge keys, bounded rate limits, and per-request local cost estimates.`],
+      ['Third-party integrations', `Google Cloud services: Cloud Run, Cloud Build, Artifact Registry, Secret Manager, Vertex AI / Gemini, and Cloud Logging. DeltaSignal ATLAS-7 MCP is an authorized integration/data source used for issuer evidence and TripCode research packets. The agent preserves source boundaries and does not treat TripCodes as official SEC identifiers.`],
+      ['Readiness for launch', `The Build demo is deployed and validated on Cloud Run. The latest proof run returned live-mcp-tripcode-gemini mode with no live_mcp_error, 10 HUT River nodes, zero missing evidence, Gemini summary, session-memory follow-up, A2A first-turn/follow-up validation, and local-estimate usage reporting. Remaining production work is Optimize-layer hardening: managed durable memory, broader simulation/evaluation packs, formal dashboards, and official billing export.`],
+      ['Critical Agent Platform feature', `The most critical capability is secure tool/context integration plus managed runtime execution: the agent has to call bounded evidence tools, preserve provenance, and return a structured packet without exposing secrets. Secret Manager, Cloud Run, Gemini synthesis, and MCP-compatible tool boundaries make the workflow repeatable and judge-testable. The missing future feature that would help most is a first-class Go-native ADK/Agent Runtime path with managed Sessions and Memory Bank equivalent to the Python examples.`],
+      ['API capability that would save 2+ hours', `A native Go Agent Runtime SDK path for registering tools, sessions, memory, tracing, and A2A/Marketplace metadata in one deployable package would save significant integration time. We implemented the runtime in Go directly for consistency, but official Go-first helpers for managed memory, trace correlation, and agent-card publication would accelerate production hardening.`],
+      ['Additional information', `The project is intentionally bounded. It is not an investment-advice bot. It is an evidence-routing and diligence-triage agent. TripCodes are resolver anchors, not official evidence. SEC/XBRL identifiers remain the source identities. The public materials keep private competition PDFs, secrets, and internal-only implementation history out of the judge surface.`]
+    ];
+    const assets = [
+      ['Video', 'Record against the live Cloud Run service. Show /health, /resolve for TF-SUB-9DA70A7F98, same-session follow-up, /v1/usage, and optionally A2A.'],
+      ['Code', 'https://github.com/aitrailblazer/deltasignal-ai-agent'],
+      ['Testing access', `${liveUrl}. Protected judge routes require the privately supplied X-Demo-Key / DELTASIGNAL_DEMO_API_KEY. Do not put the key in public materials.`],
+      ['Architecture diagram', 'Use the architecture section in the official submission packet or landing page: user -> Cloud Run agent -> MCP composite resolver -> ATLAS-7 evidence -> Gemini synthesis -> session memory -> diligence packet.']
+    ];
+    const proof = [
+      ['Live service', `${liveUrl}`],
+      ['TripCode proof', 'TF-SUB-9DA70A7F98'],
+      ['Latest result', 'live-mcp-tripcode-gemini, 10 HUT River nodes, zero missing evidence, Gemini summary, session memory, usage, and boundaries.'],
+      ['Source freeze', 'deltasignal-ai-agent evidence commit 88a9c8f; ATLAS-7 MCP source commit 14686aa6; MCP revision ca-web-intel-mcp--0000510.']
+    ];
+    const commands = `# Health
+curl -s "${liveUrl}/health"
+
+# Resolve HUT TripCode, protected by private judge key
+curl -s "${liveUrl}/resolve?tripcode=TF-SUB-9DA70A7F98&session_id=judge-demo&issuer=HUT&payload_mode=compact&include_filing_evidence=true&include_prior_articles=true&include_thesis_map=true" \\
+  -H "X-Demo-Key: $JUDGE_DEMO_KEY"
+
+# Same-session follow-up, proves session memory
+curl -s -X POST "${liveUrl}/resolve?session_id=judge-demo" \\
+  -H "X-Demo-Key: $JUDGE_DEMO_KEY" \\
+  -H "Content-Type: text/plain" \\
+  --data "Using the previous HUT River, what are the top 3 things to monitor next?"
+
+# Usage ledger
+curl -s "${liveUrl}/v1/usage" -H "X-Demo-Key: $JUDGE_DEMO_KEY"
+
+# A2A discovery
+curl -s "${liveUrl}/.well-known/agent-card.json"`;
+
+    class DevpostCopy extends LitElement {
+      static styles = css`
+        :host {
+          display: block;
+          min-height: 100vh;
+          background:
+            radial-gradient(circle at 18% 0%, rgba(55, 178, 255, .16), transparent 30%),
+            radial-gradient(circle at 82% 4%, rgba(245, 185, 68, .18), transparent 28%),
+            #070910;
+        }
+        main { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; padding: 34px 0 64px; }
+        .hero, .panel, details { border: 1px solid rgba(255,255,255,.12); background: rgba(17, 20, 31, .86); border-radius: 10px; padding: 20px; }
+        .hero { border-color: rgba(245,185,68,.4); background: rgba(31, 27, 19, .84); }
+        .eyebrow { color: #f5b944; font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+        h1 { margin: 8px 0 8px; font-size: clamp(34px, 5vw, 58px); line-height: 1; letter-spacing: 0; }
+        h2 { margin: 0 0 10px; color: #f5b944; font-size: 19px; letter-spacing: 0; }
+        p { color: rgba(247,239,225,.76); margin: 0; }
+        .lede { max-width: 930px; font-size: 18px; color: #fff3d4; margin-top: 12px; }
+        .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+        .field, .card { border: 1px solid rgba(255,255,255,.11); border-radius: 8px; padding: 14px; background: rgba(6, 8, 14, .72); }
+        .field b, .card b { display: block; color: #f7efe1; margin-bottom: 7px; }
+        .field p, .card p { white-space: pre-wrap; }
+        .panel, details { margin-top: 16px; }
+        pre { white-space: pre-wrap; overflow: auto; max-height: 420px; margin: 0; color: #f8d990; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+        code { color: #f8d990; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+        summary { cursor: pointer; color: #f5b944; font-weight: 900; }
+        a { color: #67d5ff; }
+        @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+      `;
+      render() {
+        return html`
+          <main>
+            <section class="hero">
+              <div class="eyebrow">Google for Startups AI Agents Challenge · Devpost copy pack</div>
+              <h1>DeltaSignal Gemini AI Agent</h1>
+              <p class="lede"><strong>One TripCode turns a static financial research archive into agent-executable diligence memory.</strong></p>
+              <p class="lede">Use this page to fill the Devpost project fields. The official source of truth remains <a href="./DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">the submission packet</a>.</p>
+            </section>
+
+            <section class="panel">
+              <h2>Project Assets</h2>
+              <div class="grid">${assets.map(([title, body]) => html`<article class="card"><b>${title}</b><p>${body}</p></article>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Copy-Ready Devpost Fields</h2>
+              <div class="grid">${fields.map(([title, body]) => html`<article class="field"><b>${title}</b><p>${body}</p></article>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Judge Demo Commands</h2>
+              <pre>${commands}</pre>
+            </section>
+
+            <section class="panel">
+              <h2>Proof Snapshot</h2>
+              <div class="grid">${proof.map(([title, body]) => html`<article class="card"><b>${title}</b><p>${body}</p></article>`)}</div>
+            </section>
+
+            <details>
+              <summary>Embedded XML Contract</summary>
+              <pre>${xml}</pre>
+            </details>
+          </main>
+        `;
+      }
+    }
+
+    customElements.define('devpost-copy', DevpostCopy);
+  </script>
+</body>
+</html>

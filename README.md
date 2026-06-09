@@ -36,7 +36,7 @@ The HUT proof path is the current deployed proof for the core resolver flow:
 - A second `/resolve` turn with the same `session_id` returns session-memory mode and preserves HUT River context.
 - Public execution now resolves the live ATLAS-7 composite TripCode packet; fallback remains enabled only for resilience if the MCP endpoint is unavailable.
 
-The composite packet contract is exposed through this Go service at `/v1/tripcode` and `/resolve`. The next competition hardening work is to promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint, add observability traces, add synthetic HUT edge-case simulation, and record the short judge demo video.
+The composite packet contract is exposed through this Go service at `/v1/tripcode` and `/resolve`. The public ATLAS-7 MCP endpoint now exposes the composite TripCode resolver; the remaining competition work is to record the short judge demo video, finish Devpost submission fields, and keep Track 2/Track 3 evidence artifacts linked and readable.
 
 ## Repository Contents
 
@@ -51,6 +51,7 @@ The composite packet contract is exposed through this Go service at `/v1/tripcod
 - `Makefile`: Local test/build/demo/deploy shortcuts.
 - `cloudbuild.yaml`: Cloud Build and Cloud Run deployment template.
 - `docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html`: The single official judge-facing submission packet with architecture, data sources, findings, and demo plan.
+- `docs/DeltaSignal_AI_Agent_Devpost_Submission_Copy_2026_06_09.html`: Supporting copy-ready Devpost field text and judge asset checklist.
 
 ## Local Setup
 

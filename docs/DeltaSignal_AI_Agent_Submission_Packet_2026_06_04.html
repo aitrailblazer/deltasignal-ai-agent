@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="3.0" status="post-mcp-composite-fix-source-frozen" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="3.1" status="devpost-copy-ready-after-mcp-source-freeze" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -32,6 +32,7 @@
     <LiveDemoUrl status="validated">https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</LiveDemoUrl>
     <RelatedArtifacts>
       <Artifact>docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html</Artifact>
+      <Artifact>docs/DeltaSignal_AI_Agent_Devpost_Submission_Copy_2026_06_09.html</Artifact>
       <Artifact>CHANGELOG.html</Artifact>
       <Artifact>ExecPlan_DeltaSignal_Gemini_AI_Agent_Judge_Demo_2026_06_07.html</Artifact>
       <Artifact>artifacts/ARTIFACTS_INDEX.html</Artifact>
@@ -40,7 +41,7 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="3.0" date="2026-06-09">This version records the post-MCP composite resolver repair and source freeze: ATLAS-7 MCP source commit 14686aa6 is clean and pushed, live revision ca-web-intel-mcp--0000510 exposes deltasignal_resolve_tripcode_research_packet, the Cloud Run judge and A2A proof runs return live-mcp-tripcode-gemini with no live_mcp_error, and the latest artifact index points to the clean post-fix evidence bundles.</VersionSummary>
+  <VersionSummary version="3.1" date="2026-06-09">This version keeps the post-MCP composite resolver source freeze and adds a copy-ready Devpost submission pack so the final competition form can be filled from the validated Cloud Run, MCP, A2A, and artifact evidence.</VersionSummary>
   <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, configurable TripCode memory backend status, public A2A agent-card routes, and a protected /a2a task endpoint.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
@@ -182,7 +183,7 @@
     <Ready>Track 3 A2A routes are implemented and covered: GET /.well-known/agent-card.json, GET /a2a/app/.well-known/agent-card.json, and protected POST /a2a.</Ready>
     <Ready>scripts/judge-demo.sh runs the TripCode, Memory Bank, and usage-ledger flow without requiring Python ADK wrapper code.</Ready>
     <Ready>Source freeze is reproducible: deltasignal-ai-agent commit 88a9c8f records post-fix proof artifacts, ATLAS-7 MCP commit 14686aa6 records the composite resolver source, and the parent workspace plus tracked submodules are clean.</Ready>
-    <Next>Record the 3-minute demo using the validated Cloud Run URL and scripts/judge-demo.sh path, then submit the Devpost assets.</Next>
+    <Next>Use docs/DeltaSignal_AI_Agent_Devpost_Submission_Copy_2026_06_09.html to fill the Devpost fields, record the 3-minute demo using the validated Cloud Run URL and scripts/judge-demo.sh path, then submit the assets.</Next>
   </CurrentReadiness>
   <JudgeScoringPriorities>
     <Priority rank="1" impact="critical">Use the validated Cloud Run URL, /health, /resolve, /v1/usage, and scripts/judge-demo.sh flow to record the 3-minute judge demo.</Priority>
@@ -342,6 +343,7 @@
     <Version number="2.8" date="2026-06-09">Recorded fresh Track 2 quality gate evidence: make check passed, all Go packages reported 100.0 percent statement coverage, go vet was clean, and a self-contained coverage proof artifact was saved.</Version>
     <Version number="2.9" date="2026-06-09">Implemented and deployed the first Track 3 A2A refactor slice: agent-card discovery, protected /a2a JSON-RPC task endpoint, Cloud Run revision deltasignal-ai-agent-00010-k2h validation, saved A2A proof artifacts, and maintained 100.0 percent statement coverage.</Version>
     <Version number="3.0" date="2026-06-09">Recorded post-MCP composite resolver repair and source freeze: MCP commit 14686aa6, Cloud Run artifact commit 88a9c8f, live MCP revision ca-web-intel-mcp--0000510, clean /resolve and /a2a proof artifacts with no live_mcp_error, 10 HUT River nodes, zero missing evidence, and clean repo/submodule state.</Version>
+    <Version number="3.1" date="2026-06-09">Added copy-ready Devpost submission pack for project assets, problem, solution, technologies, data sources, learnings, testing access, judge commands, and final competition submission wording.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -394,7 +396,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '3.0';
+    const version = '3.1';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
@@ -519,7 +521,7 @@
     ];
     const sourceDigest = [
       ['Codebase audit', 'docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html · 92 health score, coverage gate, secret hygiene, and provenance follow-up.'],
-      ['Changelog', 'CHANGELOG.html · public record for cost controls, TripCode path, deployment posture, audit, post-fix MCP validation, and version 3.0.'],
+      ['Changelog', 'CHANGELOG.html · public record for cost controls, TripCode path, deployment posture, audit, post-fix MCP validation, and version 3.1.'],
       ['Demo script', 'scripts/judge-demo.sh · TripCode resolve, follow-up memory, and usage ledger.'],
       ['Quality gate', 'make check · tests, 100 percent coverage gate, and vet clean at audit time.'],
       ['Proof case', 'TF-SUB-9DA70A7F98 · HUT article-to-River-to-evidence continuity demo.'],
@@ -571,7 +573,7 @@
             <section class="hero">
               <div class="eyebrow">Google for Startups AI Agents Challenge 2026 · Track 1 Build</div>
               <h1>DeltaSignal Gemini AI Agent</h1>
-              <div class="demo-url">Spec version: ${version} · Status: post-MCP composite fix source frozen</div>
+              <div class="demo-url">Spec version: ${version} · Status: Devpost copy ready after MCP source freeze</div>
               <p class="hook"><strong>One TripCode turns a static newsletter archive into agent-executable financial memory.</strong><br>The agent resolves the article, reconstructs the full thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</p>
               <p class="hook"><strong>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</strong></p>
               <p>This is not another filing summarizer. It is the resolver layer that makes proprietary research memory portable, inspectable, and executable by Gemini and other MCP-aware agents.</p>
@@ -581,6 +583,15 @@
             <section class="panel">
               <h2>Feature Summary</h2>
               <div class="grid">${stack.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Devpost Copy Pack</h2>
+              <p>The final form text is separated from this official packet so the Devpost fields can be filled quickly without treating supporting copy as a second source of truth.</p>
+              <div class="grid">
+                <article class="card"><b>Copy-ready fields</b><span>Problem, solution, technologies, data sources, learnings, third-party integrations, readiness, and submission questions.</span></article>
+                <article class="card"><b>Supporting artifact</b><span><a href="./DeltaSignal_AI_Agent_Devpost_Submission_Copy_2026_06_09.html">Open Devpost submission copy pack</a></span></article>
+              </div>
             </section>
 
             <section class="panel">
