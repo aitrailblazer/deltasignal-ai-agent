@@ -1,0 +1,56 @@
+{
+  "deploy_id": "20260609T085553Z-track3-a2a-cloudrun-deploy",
+  "generated_at": "2026-06-09T09:05:53.315Z",
+  "files": [
+    {
+      "name": "00-deploy-id.txt",
+      "bytes": 44,
+      "sha256": "dbc74f226580a1c05c072dea98af9fdde3d360ffea2808f2052718377dbf7b14"
+    },
+    {
+      "name": "01-cloud-build.log",
+      "bytes": 10887,
+      "sha256": "76c8f982a4ac211e11e66fec2d67b55a3e5f70cdd67b0a617844570e0df1ab06"
+    },
+    {
+      "name": "02-public-invoker-binding.json",
+      "bytes": 159,
+      "sha256": "cd5d53268cc7b82c92aea31c6f571f29298f0a46b1a8c2826856def1ddb13db6"
+    },
+    {
+      "name": "03-service-describe.json",
+      "bytes": 7721,
+      "sha256": "381a04290ddd383f684540b62ca8e0e3e3132f569380a0d9e324918a87402b16"
+    },
+    {
+      "name": "04-health-response.json",
+      "bytes": 648,
+      "sha256": "643012a9a236b813b93bd87e78958c9b6697e437fa3fd405c02aaf570ce78c73"
+    },
+    {
+      "name": "05-agent-card-response.json",
+      "bytes": 959,
+      "sha256": "8aa040087bb35cea641d6d26968c2d8b684f636228a9dcfd1d5990a330ae7c76"
+    },
+    {
+      "name": "06-a2a-request.json",
+      "bytes": 346,
+      "sha256": "72dc9bef7079cf8e7450a209c629d62f7e1256d89f4265cd01c130264aae6a1e"
+    },
+    {
+      "name": "07-a2a-response.json",
+      "bytes": 42176,
+      "sha256": "f19ab3bdb0574b5f64b5daeea86bee498bbb855e0b8246615d28a3b81fefcfdb"
+    },
+    {
+      "name": "08-deploy-summary.json",
+      "bytes": 1059,
+      "sha256": "1bf36fcffb6d87a77eb0675fe1734ba84fbdbbccb3478a868bbf68299bd46b38"
+    },
+    {
+      "name": "TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html",
+      "bytes": 6118,
+      "sha256": "ed7f5f09fba9422d8bc3f9c50467d2f5b6c72ea1341691c12ed5025fd0f4ef57"
+    }
+  ]
+}

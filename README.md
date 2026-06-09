@@ -196,6 +196,53 @@ The route returns the resolved packet plus fixed evidence boundaries: TripCodes 
 
 When `DELTASIGNAL_USE_GEMINI=true`, the same route also returns `gemini_summary`. The summary is generated from the resolved MCP packet plus any `session_id` memory and must preserve the evidence boundaries. If Gemini fails, the route still returns the raw resolver packet.
 
+## Track 3 A2A / Gemini Enterprise Readiness
+
+The first Track 3 refactor slice is implemented as an A2A-ready surface. This does not claim Google Cloud Marketplace publication. It makes the existing TripCode workflow discoverable and callable by Gemini Enterprise / A2A-style runtimes.
+
+Public discovery routes:
+
+```bash
+curl -s http://localhost:8080/.well-known/agent-card.json | jq
+curl -s http://localhost:8080/a2a/app/.well-known/agent-card.json | jq
+```
+
+Callable A2A task route:
+
+```bash
+curl -s -X POST http://localhost:8080/a2a \
+  -H 'Content-Type: application/json' \
+  -H "X-Demo-Key: <temporary judge key>" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": "track3-a2a-proof",
+    "method": "message/send",
+    "params": {
+      "message": {
+        "parts": [
+          {
+            "kind": "text",
+            "text": "Resolve TF-SUB-9DA70A7F98 and show what changed across the HUT River."
+          }
+        ]
+      },
+      "metadata": {
+        "session_id": "track3-a2a-proof"
+      }
+    }
+  }' | jq
+```
+
+The A2A endpoint returns a completed task with one `deltasignal_research_packet` artifact. Internally it reuses the same Go TripCode resolver, memory, synthesis, cost, rate-limit, and runtime telemetry path as `/resolve` and `/v1/tripcode`.
+
+Track 3 environment variables:
+
+```bash
+export DELTASIGNAL_PUBLIC_BASE_URL=https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app
+export DELTASIGNAL_A2A_PROTOCOL_VERSION=0.3.0
+export DELTASIGNAL_AGENT_VERSION=1.0.0
+```
+
 Session memory check:
 
 ```bash

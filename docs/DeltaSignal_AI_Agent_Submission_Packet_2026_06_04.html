@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="2.8" status="track-2-coverage-gate-validated" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="2.9" status="track-3-a2a-refactor-implemented" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -40,8 +40,8 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="2.8" date="2026-06-09">This version records a fresh Track 2 quality gate: make check passed, all Go packages reported 100.0% statement coverage, and go vet was clean. The packet now separates implemented code coverage from the next production hardening layer: broader simulation/evaluation packs, managed durable state, formal observability dashboards, and official billing export.</VersionSummary>
-  <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, and configurable TripCode memory backend status.</CurrentImplementation>
+  <VersionSummary version="2.9" date="2026-06-09">This version records the first Track 3 refactor slice: A2A agent card discovery and an A2A-style JSON-RPC task endpoint that wraps the existing TripCode resolver as a portable agent task. The slice is deployed on Cloud Run revision deltasignal-ai-agent-00010-k2h and preserves the Track 2 100.0% coverage gate.</VersionSummary>
+  <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, configurable TripCode memory backend status, public A2A agent-card routes, and a protected /a2a task endpoint.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
     <Feature>Specialist tool interface supports deterministic demo fixtures and live DeltaSignal ATLAS-7 MCP integrations.</Feature>
@@ -58,6 +58,7 @@
     <Feature>Configurable rate limiting protects judge routes while exposing X-RateLimit headers and response-level snapshots for auditability.</Feature>
     <Feature>Configurable file-backed TripCode memory is available for local and single-instance validation, while Cloud Run keeps the durable production storage boundary explicit.</Feature>
     <Feature>Track 2 quality gate enforces make check: tests, 100.0% statement coverage, and go vet clean across cmd/server, cmd/tripcode-demo, and internal/agent.</Feature>
+    <Feature>Track 3 A2A readiness exposes /.well-known/agent-card.json, /a2a/app/.well-known/agent-card.json, and POST /a2a so Gemini Enterprise or A2A-style clients can discover and invoke the TripCode research-packet skill.</Feature>
     <Feature>Safety And Guardrails use Gemini Enterprise Agent Platform safety settings plus the agent response contract to keep outputs helpful, non-advisory, evidence-bounded, and explicit about missing data.</Feature>
     <Feature>State And Secrets use Google Cloud Secret Manager for partner integration keys and protected judge access keys, including MCP_API_KEY and DELTASIGNAL_DEMO_API_KEY.</Feature>
     <Feature>Judge demo script runs one-command TripCode resolution, plain-text follow-up using Memory Bank state, and estimated usage ledger check.</Feature>
@@ -71,6 +72,7 @@
     <Technology>Cloud Build</Technology>
     <Technology>Secret Manager</Technology>
     <Technology>Gemini Enterprise Agent Platform Safety Settings</Technology>
+    <Technology>A2A agent card and task endpoint readiness</Technology>
     <Technology>MCP-compatible tool boundary</Technology>
     <Technology>DeltaSignal ATLAS-7 public MCP/OpenAPI integration surface</Technology>
     <Technology>GitHub Actions CI</Technology>
@@ -155,9 +157,10 @@
     </Track>
     <Track name="Track 3 - Path" priority="interoperability">
       <Summary>Track 3 is the expansion path: connect the DeltaSignal issuer diligence agent to other enterprise, compliance, portfolio, data-room, or research agents through a stable agent-to-agent interface.</Summary>
-      <CurrentFoundation>TripCodes provide durable research handles. Rivers provide ordered thesis memory. ATLAS-7 provides filing-grounded issuer intelligence. Gemini synthesis provides narrative compression.</CurrentFoundation>
-      <FutureCoordination>In a Track 3 version, the DeltaSignal agent becomes a specialist evidence node. Portfolio agents could request thesis drift, compliance agents could request provenance and non-advice boundaries, data-room agents could request issuer evidence packets, and research agents could ask what changed since the last article in a River.</FutureCoordination>
-      <Position>Track 3 is the interoperability path: it makes DeltaSignal research memory callable by other agents while preserving boundaries between article memory, filing evidence, inference, missing data, and non-advice posture.</Position>
+      <CurrentFoundation>TripCodes provide durable research handles. Rivers provide ordered thesis memory. ATLAS-7 provides filing-grounded issuer intelligence. Gemini synthesis provides narrative compression. The first refactor slice now exposes A2A agent-card discovery and a protected /a2a task endpoint.</CurrentFoundation>
+      <ImplementedCoordination>The implemented A2A surface lets an external agent discover the DeltaSignal Gemini AI Agent, read its TripCode research-packet skill, and invoke the same Go TripCode resolver as a completed task artifact.</ImplementedCoordination>
+      <FutureCoordination>In a full Track 3 version, the DeltaSignal agent becomes a specialist evidence node. Portfolio agents could request thesis drift, compliance agents could request provenance and non-advice boundaries, data-room agents could request issuer evidence packets, and research agents could ask what changed since the last article in a River.</FutureCoordination>
+      <Position>Track 3 is now implemented as a first interoperability slice, while Marketplace publication remains a future submission and partner-review step.</Position>
     </Track>
   </TrackFraming>
   <JudgeNarrative>
@@ -165,7 +168,7 @@
     <RuntimeAutonomy>The submitted agent performs the runtime research workflow autonomously after the user provides one TripCode or issuer prompt. DeltaSignal Gemini AI Agent is the runtime product agent judges can call.</RuntimeAutonomy>
     <TrackOne title="Track 1 - Build: A Working Agent, Not a Slideware Concept">The submitted system is a Go-native Cloud Run agent built for judge-safe reproducibility and live integration. It exposes health, brief-generation, usage, TripCode, and judge shortcut routes; supports deterministic demo fixtures; and runs the live DeltaSignal ATLAS-7 MCP mode when the proper API key is supplied. The core build is an autonomous TripCode workflow: a stable article code becomes an executable research object with article memory, River continuity, filing references, thesis evolution, missing evidence, caveats, and monitor-next items. The agent moves beyond reporting by resolving the handle, calling external tools through MCP, reconstructing state, comparing evidence, preserving session memory, and returning a diligence packet. The HUT proof case demonstrates this workflow concretely through TF-SUB-9DA70A7F98, which resolves the Hut 8 article, reconstructs a 10-node HUT River, and returns changed findings, weakened assumptions, confirmed signals, execution bridge risks, proof milestones, invalidation logic, scenario framing, and a monitoring checklist.</TrackOne>
     <TrackTwo title="Track 2 - Optimize: Grounded, Auditable, Cost-Controlled">The system is optimized around judge trust: deterministic fallback mode, live MCP mode behind explicit configuration, Gemini synthesis through Vertex AI, bounded session memory, protected demo access, local-estimate usage tracking, runtime telemetry, structured logs, and configurable rate limits. The audit reports 100 percent test coverage, clean go vet, no discovered secrets or credentials, correct ignore rules, distroless nonroot deployment posture, and clean separation between demo, live MCP, and Gemini paths. The strongest optimization is evidence discipline: the agent separates article-derived claims, filing-backed claims, MCP evidence, inference, missing data, identity boundaries, and non-advice language. The evidence-fidelity increment surfaces an evidence_fidelity summary through /v1/brief and the Gemini prompt path, while the runtime-hardening increment exposes request_id, trace_id, duration, rate-limit state, and memory backend status through every protected response.</TrackTwo>
-    <TrackThree title="Track 3 - Path: From Research Agent to Agent Network">DeltaSignal's path is larger than a single demo. TripCodes create stable handles for proprietary research memory. Rivers organize articles into evolving thesis trails. ATLAS-7 provides the evidence layer. Gemini supplies synthesis. MCP provides the agent interface. That architecture can extend into A2A workflows: issuer diligence agents, compliance agents, portfolio-monitoring agents, data-room agents, and subscriber-facing research copilots can all resolve the same TripCode-backed memory object while preserving provenance and boundaries.</TrackThree>
+    <TrackThree title="Track 3 - Path: From Research Agent to Agent Network">DeltaSignal's path is larger than a single demo. TripCodes create stable handles for proprietary research memory. Rivers organize articles into evolving thesis trails. ATLAS-7 provides the evidence layer. Gemini supplies synthesis. MCP provides the evidence interface. The first Track 3 slice now exposes A2A agent-card discovery and a protected /a2a task endpoint so other agents can discover and invoke the TripCode research-packet workflow while preserving provenance and boundaries.</TrackThree>
     <WhyThisWins>Generic agents answer questions; DeltaSignal preserves a research lineage. Filing agents compare documents; DeltaSignal reconciles prior thesis claims against newer evidence. Search systems find content; DeltaSignal makes the content executable by agents.</WhyThisWins>
     <JudgeClose>DeltaSignal's competition advantage is simple: one TripCode converts a passive research archive into an auditable, agent-executable diligence workflow. The demo proves build readiness, the audit proves engineering discipline, and the architecture shows a credible path from single-agent resolution to multi-agent financial research infrastructure.</JudgeClose>
     <EvidenceBoundary>This narrative uses the visible audit, submission packet, and evaluation excerpts. The attached items reported zero linked drilldowns; exact omitted deployment details or full styleguide recommendations would require a narrower drilldown into those artifacts.</EvidenceBoundary>
@@ -176,6 +179,7 @@
     <Ready>HUT TripCode proof path resolves through the deployed Go service with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, and deterministic River fallback only as a resilience path.</Ready>
     <Ready>The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.</Ready>
     <Ready>Go judge shortcut routes GET /resolve and POST /resolve are implemented and covered by tests.</Ready>
+    <Ready>Track 3 A2A routes are implemented and covered: GET /.well-known/agent-card.json, GET /a2a/app/.well-known/agent-card.json, and protected POST /a2a.</Ready>
     <Ready>scripts/judge-demo.sh runs the TripCode, Memory Bank, and usage-ledger flow without requiring Python ADK wrapper code.</Ready>
     <Next>Record the 3-minute demo using the validated Cloud Run URL and scripts/judge-demo.sh path.</Next>
   </CurrentReadiness>
@@ -233,6 +237,23 @@
     <Artifact>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html</Artifact>
     <Boundary>Statement coverage and vet cleanliness are implemented. Broader agent simulation and managed evaluation packs remain the next production reliability layer.</Boundary>
   </QualityGateValidation>
+  <TrackThreeA2AValidation date="2026-06-09" run_id="20260609T083405Z-track3-a2a-refactor">
+    <Check status="passed">GET /.well-known/agent-card.json returned the DeltaSignal Gemini AI Agent card with protocol version 0.3.0, deployed /a2a URL, and resolve-tripcode-research-packet skill.</Check>
+    <Check status="passed">POST /a2a accepted a JSON-RPC message/send request containing TF-SUB-9DA70A7F98 and returned a completed task with a deltasignal_research_packet artifact.</Check>
+    <Check status="passed">The A2A task reused the Go TripCode resolver path and returned the HUT article title, 10-node River, thesis map, evidence boundary, execution trace, runtime telemetry, and cost object.</Check>
+    <Check status="passed">make check passed after the A2A implementation, preserving 100.0 percent statement coverage and clean go vet.</Check>
+    <Artifact>artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/TRACK3_A2A_REFACTOR_PROOF.html</Artifact>
+    <Boundary>Marketplace publication is not claimed. This is Gemini Enterprise and Marketplace readiness through A2A agent-card discovery and a callable TripCode task endpoint.</Boundary>
+  </TrackThreeA2AValidation>
+  <DeploymentValidation date="2026-06-09" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00010-k2h" run_id="20260609T085553Z-track3-a2a-cloudrun-deploy">
+    <Check status="passed">Cloud Run revision deltasignal-ai-agent-00010-k2h deployed and serves 100 percent of traffic.</Check>
+    <Check status="passed">Public invoker IAM was re-applied after the recurring Cloud Build IAM warning.</Check>
+    <Check status="passed">GET /health returned ok from the deployed service.</Check>
+    <Check status="passed">GET /.well-known/agent-card.json returned the public A2A agent card with deployed /a2a URL and resolve-tripcode-research-packet skill.</Check>
+    <Check status="passed">Protected POST /a2a returned a completed deltasignal_research_packet task in live-mcp-tripcode-gemini mode for TF-SUB-9DA70A7F98.</Check>
+    <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</Artifact>
+    <Boundary>Marketplace publication is not claimed; this validates Cloud Run-hosted A2A readiness.</Boundary>
+  </DeploymentValidation>
   <ArtifactOrganization status="canonical-track-phase-tree" date="2026-06-09">
     <Index>artifacts/ARTIFACTS_INDEX.html</Index>
     <Folder track="Track 1 Build" phase="Working Demo" status="complete-and-verified">artifacts/00_TRACK_1_BUILD__WORKING_DEMO/</Folder>
@@ -240,7 +261,8 @@
     <Folder track="Track 2 Optimize" phase="Runtime Hardening Current" status="implemented-and-rerun-validated">artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/</Folder>
     <Folder track="Track 2 Optimize" phase="Coverage Gate" status="passed">artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/</Folder>
     <Folder track="Deployment Support" phase="Cloud Run History" status="historical-support-lane">artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/</Folder>
-    <Folder track="Track 3 Path" phase="Architecture Documented" status="future-expansion-path">artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/</Folder>
+    <Folder track="Track 3 Path" phase="A2A Refactor" status="implemented-and-cloud-run-validated">artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/</Folder>
+    <Folder track="Deployment Support" phase="Track 3 A2A Cloud Run" status="deployed-and-validated">artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/</Folder>
     <Boundary>Legacy raw evidence folders were moved into the canonical tree. Existing proof files keep their run IDs and raw evidence contents; the current runtime-hardening manifest was regenerated after the move to record the canonical folder path.</Boundary>
   </ArtifactOrganization>
   <HUTProofCard>
@@ -302,6 +324,7 @@
     <Version number="2.6" date="2026-06-09">Refactored artifacts into canonical track and phase folders with clear development status labels and updated the artifact index, spec links, changelog links, and future judge-demo output path.</Version>
     <Version number="2.7" date="2026-06-09">Enhanced Track 1 Build narrative around complex B2B problem solving, secure MCP external tool access, managed Cloud Run runtime, session memory, Gemini synthesis, and autonomous action beyond static reporting.</Version>
     <Version number="2.8" date="2026-06-09">Recorded fresh Track 2 quality gate evidence: make check passed, all Go packages reported 100.0 percent statement coverage, go vet was clean, and a self-contained coverage proof artifact was saved.</Version>
+    <Version number="2.9" date="2026-06-09">Implemented and deployed the first Track 3 A2A refactor slice: agent-card discovery, protected /a2a JSON-RPC task endpoint, Cloud Run revision deltasignal-ai-agent-00010-k2h validation, saved A2A proof artifacts, and maintained 100.0 percent statement coverage.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -354,7 +377,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '2.8';
+    const version = '2.9';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
@@ -402,24 +425,24 @@
     const trackFit = [
       ['Build', 'Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.'],
       ['Optimize', 'Evidence fidelity: harden the brief and synthesis paths by carrying richer ATLAS-7 provenance, source dates, quality flags, caveats, stale markers, evidence hashes, and payload-mode disclosures through every user-facing result.'],
-      ['Path', 'Agent ecosystem expansion: extend TripCodes and River packets into portable research memory that can interoperate with portfolio, compliance, enterprise diligence, data-room, and subscriber-facing agents.']
+      ['Path', 'A2A refactor implemented: agent-card discovery and protected /a2a task endpoint make TripCodes and River packets callable by Gemini Enterprise or A2A-style agent clients.']
     ];
     const trackProgression = [
       ['Build · Working Demo', 'TripCode in, River reconstructed, evidence compared, memory preserved, cost shown.'],
       ['Optimize · Evidence Fidelity', 'Evidence and runtime hardening implemented: /v1/brief returns evidence_fidelity, fallback and Gemini briefs disclose provenance status, and protected responses carry runtime telemetry.'],
-      ['Path · Agent Ecosystem Expansion', 'Use stable TripCode handles as infrastructure for compliance, portfolio monitoring, diligence, subscriber memory, and enterprise research workflows.']
+      ['Path · A2A Readiness', 'Expose stable TripCode handles through agent-card discovery and a callable A2A task artifact so other agents can request research packets.']
     ];
     const trackFraming = [
       ['Track 1 · Build', 'Primary submission. A Go-native Cloud Run agent resolves one TripCode into article memory, River continuity, SEC/XBRL comparison, changed findings, weakened assumptions, and monitor-next work.'],
       ['Track 2 · Optimize', 'Hardening layer. Evidence fidelity, protected live validation, runtime telemetry, structured logs, configurable rate limits, memory backend disclosure, and 100.0 percent coverage are implemented. Remaining production-scale work is managed durable memory, dashboards, alerts, simulation packs, and official Billing export.'],
-      ['Track 3 · Path', 'Interoperability layer. Make DeltaSignal research memory callable by portfolio, compliance, data-room, and research agents through structured packets instead of loose summaries.']
+      ['Track 3 · Path', 'Interoperability layer. The first A2A slice is implemented and deployed: public agent card plus protected task endpoint wrapping the TripCode research-packet resolver.']
     ];
     const judgeNarrative = [
       ['Opening', 'DeltaSignal is not another filing chatbot or generic deep-research wrapper. One TripCode resolves a published article into a machine-readable research packet, reconstructs the prior thesis River, compares it against SEC/XBRL-backed evidence, and returns what changed, what weakened, what remains unproven, and what to monitor next.'],
       ['Runtime Autonomy', 'The submitted agent performs the runtime research workflow autonomously after one TripCode or issuer prompt.'],
       ['Track 1 · Build', 'A working Go-native Cloud Run agent with health, brief, usage, TripCode, and judge shortcut routes. The HUT proof case resolves TF-SUB-9DA70A7F98 into a 10-node HUT River with changed findings, weakened assumptions, confirmed signals, risks, milestones, invalidation logic, scenarios, and monitor-next items.'],
       ['Track 2 · Optimize', 'Deterministic fallback mode, live MCP mode, Gemini through Vertex AI, bounded session memory, protected demo access, local-estimate usage tracking, 100 percent coverage, clean vet, secret hygiene, explicit evidence boundaries, implemented /v1/brief evidence_fidelity propagation, runtime telemetry, structured logs, configurable rate limits, and memory backend disclosure.'],
-      ['Track 3 · Path', 'TripCodes, Rivers, ATLAS-7, Gemini, and MCP create a path toward A2A workflows for issuer diligence, compliance, portfolio monitoring, data-room work, and subscriber-facing research copilots.'],
+      ['Track 3 · Path', 'TripCodes, Rivers, ATLAS-7, Gemini, and MCP now have a deployed A2A entry point: agent-card discovery plus a protected task route for issuer diligence and subscriber-facing research memory.'],
       ['Judge Close', 'One TripCode converts a passive research archive into an auditable, agent-executable diligence workflow. The demo proves build readiness, the audit proves engineering discipline, and the architecture shows a credible path to multi-agent financial research infrastructure.']
     ];
     const readiness = [
@@ -427,6 +450,7 @@
       ['HUT proof path', 'The deployed service resolves TF-SUB-9DA70A7F98 with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, and deterministic River fallback only as a resilience path.'],
       ['Boundary clarity', 'The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.'],
       ['Judge routes', 'GET /resolve and POST /resolve are implemented, tested, deployed, and documented for the competition demo.'],
+      ['A2A readiness', 'GET /.well-known/agent-card.json and POST /a2a are implemented, tested, deployed on Cloud Run, and saved in the Track 3 proof artifacts.'],
       ['Immediate next step', 'Record the three-minute judge demo against the validated Cloud Run URL, then submit.']
     ];
     const judgePriorities = [
@@ -528,7 +552,7 @@
             <section class="hero">
               <div class="eyebrow">Google for Startups AI Agents Challenge 2026 · Track 1 Build</div>
               <h1>DeltaSignal Gemini AI Agent</h1>
-              <div class="demo-url">Spec version: ${version} · Status: Track 2 runtime hardening deployed and validated</div>
+              <div class="demo-url">Spec version: ${version} · Status: Track 3 A2A refactor implemented</div>
               <p class="hook"><strong>One TripCode turns a static newsletter archive into agent-executable financial memory.</strong><br>The agent resolves the article, reconstructs the full thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</p>
               <p class="hook"><strong>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</strong></p>
               <p>This is not another filing summarizer. It is the resolver layer that makes proprietary research memory portable, inspectable, and executable by Gemini and other MCP-aware agents.</p>
@@ -565,6 +589,14 @@
               <h2>Three-Track Framing</h2>
               <p>Track 1 is the submission center of gravity. Track 2 now proves evidence fidelity plus runtime hardening: protected live validation, telemetry, structured logs, rate limits, memory backend disclosure, and 100.0 percent coverage. Track 3 shows how the same research-memory layer becomes callable by other enterprise agents.</p>
               <div class="grid">${trackFraming.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
+            </section>
+
+            <section class="panel">
+              <h2>Track 3 A2A Readiness</h2>
+              <p>The first Track 3 refactor is implemented and deployed. The agent exposes a public A2A agent card and a protected JSON-RPC task route that returns the TripCode research packet as a completed task artifact. This is Gemini Enterprise and Marketplace readiness, not a Marketplace publication claim.</p>
+              <pre>curl -s "${liveDemoUrl}/.well-known/agent-card.json"
+
+curl -s -X POST "${liveDemoUrl}/a2a" -H "Content-Type: application/json" -H "X-Demo-Key: $JUDGE_DEMO_KEY" --data @artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/03-a2a-request.json</pre>
             </section>
 
             <section class="panel">

@@ -200,6 +200,7 @@ func newMux(
 		writeJSON(w, http.StatusOK, costTracker.Snapshot())
 		rt.Log(logger, http.StatusOK, "usage")
 	})
+	registerA2ARoutes(mux, logger, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rateLimiter)
 	return mux
 }
 

@@ -1,0 +1,31 @@
+{
+  "deploy_id": "20260609T085553Z-track3-a2a-cloudrun-deploy",
+  "status": "deployed-and-validated",
+  "service_url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+  "revision": "deltasignal-ai-agent-00010-k2h",
+  "health": {
+    "ok": true,
+    "track_2_status": "optimize-runtime-hardening",
+    "a2a_public_card": true
+  },
+  "agent_card": {
+    "name": "DeltaSignal Gemini AI Agent",
+    "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/a2a",
+    "skill_id": "resolve-tripcode-research-packet",
+    "protocolVersion": "0.3.0"
+  },
+  "a2a": {
+    "task_state": "completed",
+    "artifact_name": "deltasignal_research_packet",
+    "mode": "live-mcp-tripcode-gemini",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "status": "ready",
+    "article_title": "Hut 8: The Re-Rating Has A Deadline",
+    "river_node_count": 10,
+    "has_thesis_map": true,
+    "has_evidence_boundary": true,
+    "has_runtime": true,
+    "has_cost": true
+  },
+  "boundary": "Marketplace publication is not claimed; this validates Cloud Run-hosted A2A readiness."
+}

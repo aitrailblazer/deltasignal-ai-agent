@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track 3 A2A Refactor Proof | DeltaSignal Gemini AI Agent</title>
+  <style>
+    :root { color-scheme: dark; --bg:#05070b; --panel:rgba(18,21,29,.92); --line:rgba(255,255,255,.14); --ink:#fff8ef; --muted:rgba(255,248,239,.72); --green:#5df58b; --cyan:#72d9ff; --amber:#ffb743; }
+    * { box-sizing: border-box; }
+    html { background: var(--bg); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
+    body { margin: 0; min-height: 100vh; }
+    main { min-height: 100vh; padding: 36px 18px 60px; background: radial-gradient(circle at 15% 0%, rgba(114,217,255,.16), transparent 34%), radial-gradient(circle at 90% 12%, rgba(255,183,67,.12), transparent 28%), var(--bg); }
+    .wrap { width: min(1120px, 100%); margin: 0 auto; }
+    section, article { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; }
+    section { padding: 22px; margin: 14px 0; }
+    .hero { border-color: rgba(114,217,255,.34); background: linear-gradient(135deg, rgba(114,217,255,.11), rgba(255,183,67,.06)), var(--panel); }
+    .eyebrow { color: var(--cyan); font-weight: 900; text-transform: uppercase; font-size: 12px; letter-spacing: .08em; }
+    h1 { margin: 8px 0 12px; max-width: 900px; font-size: clamp(36px, 6vw, 70px); line-height: .98; letter-spacing: 0; }
+    h2 { margin: 0 0 10px; color: var(--amber); font-size: 22px; letter-spacing: 0; }
+    p, li { color: var(--muted); }
+    p { margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+    article { padding: 15px; }
+    article b { display: block; margin-bottom: 6px; color: var(--ink); }
+    article span { color: var(--muted); font-size: 14px; }
+    a { color: var(--cyan); font-weight: 900; text-decoration: none; overflow-wrap: anywhere; }
+    code { color: #f8d998; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    ul { margin: 10px 0 0; padding-left: 20px; }
+    pre { margin: 0; max-height: 360px; overflow: auto; white-space: pre-wrap; color: #f8d998; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    details { margin-top: 14px; border: 1px solid var(--line); border-radius: 10px; padding: 15px; background: rgba(255,255,255,.04); }
+    summary { cursor: pointer; color: var(--amber); font-weight: 900; }
+    @media (max-width: 850px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Track 3 Path / Refactor · A2A readiness</div>
+        <h1>A2A agent card and TripCode task endpoint are implemented.</h1>
+        <p>This proof records the first Track 3 implementation slice: a public agent card discovery route and an A2A-style JSON-RPC endpoint that wraps the DeltaSignal TripCode resolver as a portable agent task. It proves readiness for Gemini Enterprise registration and Marketplace-style agent discovery without claiming Marketplace publication.</p>
+      </section>
+
+      <section>
+        <h2>What Was Implemented</h2>
+        <div class="grid">
+          <article><b>Agent Card</b><span><code>GET /.well-known/agent-card.json</code> and <code>GET /a2a/app/.well-known/agent-card.json</code> describe the DeltaSignal Gemini AI Agent, protocol version, endpoint URL, and TripCode skill.</span></article>
+          <article><b>A2A Task Endpoint</b><span><code>POST /a2a</code> accepts JSON-RPC <code>message/send</code>, <code>tasks/send</code>, and <code>resolve_tripcode</code> requests and returns a completed task artifact.</span></article>
+          <article><b>Resolver Reuse</b><span>The endpoint reuses the existing Go TripCode resolver, memory, synthesis, cost, rate-limit, and runtime telemetry path instead of creating a separate stack.</span></article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Proof Result</h2>
+        <div class="grid">
+          <article><b>Agent Card</b><span><code>DeltaSignal Gemini AI Agent</code> advertised skill <code>resolve-tripcode-research-packet</code> at the deployed Cloud Run A2A URL.</span></article>
+          <article><b>A2A Response</b><span>The saved request returned <code>completed</code> with artifact <code>deltasignal_research_packet</code> and metadata marking Track 3 Path, agent-card readiness, and non-advice boundary.</span></article>
+          <article><b>HUT Packet</b><span>The task resolved <code>TF-SUB-9DA70A7F98</code> to the HUT article, 10 River nodes, thesis map, evidence boundary, execution trace, runtime telemetry, and cost object.</span></article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Saved Evidence</h2>
+        <ul>
+          <li><a href="01-make-check.log">01-make-check.log</a> — tests, 100.0 percent coverage gate, and go vet.</li>
+          <li><a href="02-agent-card-response.json">02-agent-card-response.json</a> — public A2A agent card response.</li>
+          <li><a href="03-a2a-request.json">03-a2a-request.json</a> — saved A2A JSON-RPC proof request.</li>
+          <li><a href="04-a2a-response.json">04-a2a-response.json</a> — saved A2A task response.</li>
+          <li><a href="05-track3-a2a-summary.json">05-track3-a2a-summary.json</a> — compact run summary.</li>
+          <li><a href="06-artifact-manifest.json">06-artifact-manifest.json</a> — SHA-256 and byte-count manifest.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Boundary</h2>
+        <p>This is a Track 3 refactor step, not a claim that the agent has been published to Google Cloud Marketplace. The deliverable is Marketplace and Gemini Enterprise readiness: discoverable agent card, A2A task wrapper, protected runtime path, and proof artifacts. TripCodes remain proprietary resolver keys, while official filing identifiers remain SEC accessions, CIKs, forms, periods, and XBRL concepts.</p>
+      </section>
+
+      <details>
+        <summary>Embedded XML Contract</summary>
+        <pre id="xml-contract-text"></pre>
+      </details>
+    </div>
+  </main>
+
+  <script id="strategix-track3-a2a-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="track-3-a2a-refactor-passed" generated="2026-06-09" artifact="artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/TRACK3_A2A_REFACTOR_PROOF.html">
+  <Track>Track 3 Path / Refactor</Track>
+  <Phase>A2A and Gemini Enterprise readiness</Phase>
+  <RunId>20260609T083405Z-track3-a2a-refactor</RunId>
+  <Implementation>
+    <Route method="GET">/.well-known/agent-card.json</Route>
+    <Route method="GET">/a2a/app/.well-known/agent-card.json</Route>
+    <Route method="POST">/a2a</Route>
+    <Skill>resolve-tripcode-research-packet</Skill>
+    <ProtocolVersion>0.3.0</ProtocolVersion>
+  </Implementation>
+  <Proof>
+    <AgentCard status="validated">02-agent-card-response.json</AgentCard>
+    <A2ARequest status="saved">03-a2a-request.json</A2ARequest>
+    <A2AResponse status="completed">04-a2a-response.json</A2AResponse>
+    <TripCode>TF-SUB-9DA70A7F98</TripCode>
+    <Article>Hut 8: The Re-Rating Has A Deadline</Article>
+    <RiverNodeCount>10</RiverNodeCount>
+    <Coverage status="passed">100.0 percent statements</Coverage>
+    <Vet status="passed">go vet clean</Vet>
+  </Proof>
+  <Boundary>
+    <Statement>Marketplace publication is not claimed.</Statement>
+    <Statement>A2A agent card and endpoint readiness are implemented.</Statement>
+    <Statement>TripCodes are proprietary resolver keys, not official evidence identifiers.</Statement>
+    <Statement>Outputs are financial diligence triage, not investment advice.</Statement>
+  </Boundary>
+</StrategiXVisualSpec>
+  </script>
+  <script>
+    document.getElementById('xml-contract-text').textContent = document.getElementById('strategix-track3-a2a-contract').textContent.trim();
+  </script>
+</body>
+</html>

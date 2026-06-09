@@ -1,0 +1,72 @@
+{
+  "run_id": "20260609T083405Z-track3-a2a-refactor",
+  "track": "Track 3 Path / Refactor",
+  "phase": "A2A and Gemini Enterprise readiness",
+  "status": "passed",
+  "validated_at": "2026-06-09T08:40:43.716Z",
+  "agent_card": {
+    "name": "DeltaSignal Gemini AI Agent",
+    "protocolVersion": "0.3.0",
+    "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/a2a",
+    "skill_id": "resolve-tripcode-research-packet",
+    "default_input_modes": [
+      "text/plain",
+      "application/json"
+    ],
+    "default_output_modes": [
+      "application/json"
+    ]
+  },
+  "a2a_request": {
+    "method": "message/send",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "session_id": "track3-a2a-proof"
+  },
+  "a2a_response": {
+    "jsonrpc": "2.0",
+    "task_state": "completed",
+    "artifact_name": "deltasignal_research_packet",
+    "metadata": {
+      "boundary": "TripCodes are proprietary resolver keys; official filing identifiers remain SEC accessions, CIKs, filing forms, periods, and XBRL concepts.",
+      "gemini_surface": "Gemini Enterprise A2A registration candidate",
+      "marketplace": "agent-card-ready",
+      "non_advice": true,
+      "track": "Track 3 Path"
+    }
+  },
+  "resolved_packet": {
+    "mode": "demo-tripcode-river",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "issuer": "HUT",
+    "article_title": "Hut 8: The Re-Rating Has A Deadline",
+    "river_node_count": 10,
+    "has_thesis_map": true,
+    "has_evidence_boundary": true,
+    "has_execution_trace": true,
+    "has_runtime_telemetry": true,
+    "has_cost": true
+  },
+  "boundaries": [
+    "Marketplace publication is not claimed.",
+    "A2A agent card and endpoint readiness are implemented.",
+    "TripCodes remain proprietary resolver keys, not official evidence identifiers.",
+    "Outputs remain diligence triage, not investment advice."
+  ],
+  "files": [
+    {
+      "name": "02-agent-card-response.json",
+      "sha256": "8aa040087bb35cea641d6d26968c2d8b684f636228a9dcfd1d5990a330ae7c76",
+      "bytes": 959
+    },
+    {
+      "name": "03-a2a-request.json",
+      "sha256": "72dc9bef7079cf8e7450a209c629d62f7e1256d89f4265cd01c130264aae6a1e",
+      "bytes": 346
+    },
+    {
+      "name": "04-a2a-response.json",
+      "sha256": "c1c72238bbc4c47a53e278d3c59f4b1e27a7bc75047a86e895f7b568a5200f82",
+      "bytes": 7305
+    }
+  ]
+}

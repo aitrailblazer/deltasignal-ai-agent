@@ -1,0 +1,18 @@
+{
+  "jsonrpc": "2.0",
+  "id": "track3-a2a-proof",
+  "method": "message/send",
+  "params": {
+    "message": {
+      "parts": [
+        {
+          "kind": "text",
+          "text": "Resolve TF-SUB-9DA70A7F98 and show what changed across the HUT River."
+        }
+      ]
+    },
+    "metadata": {
+      "session_id": "track3-a2a-proof"
+    }
+  }
+}

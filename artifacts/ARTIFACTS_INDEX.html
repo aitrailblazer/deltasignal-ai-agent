@@ -120,9 +120,9 @@
           <div class="meta">
             <div class="metric"><b>Track 1 Build</b><span>Complete and verified</span></div>
             <div class="metric"><b>Track 2 Optimize</b><span>Implemented, rerun validated, 100% coverage gate</span></div>
-            <div class="metric"><b>Track 3 Path</b><span>Architecture path documented, not current build scope</span></div>
+            <div class="metric"><b>Track 3 Path</b><span>A2A refactor implemented and locally validated</span></div>
           </div>
-          <p>Latest proof: <a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html">Track 2 coverage gate proof</a>. Deployed runtime validation remains available in the current Track 2 folder.</p>
+          <p>Latest proof: <a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html">Track 3 A2A Cloud Run deployment proof</a>. Local A2A refactor proof and Track 2 runtime validation remain available in their track folders.</p>
         </article>
 
         <article class="card phase">
@@ -220,12 +220,17 @@
         <article class="card phase path">
           <div>
             <span class="label path">Track 3</span>
-            <p class="status">Path phase<br>Future expansion</p>
+            <p class="status">Path phase<br>A2A readiness</p>
           </div>
           <div>
-            <h2>Path Evidence: Agent Ecosystem Expansion</h2>
-            <p>Track 3 is represented in the official spec, not as a separate runtime proof yet. The current artifact boundary is intentional: Build and Optimize are implemented; Path is the documented next architecture stage.</p>
+            <h2>Path Proof: A2A Agent Card and Task Endpoint</h2>
+            <p>Track 3 now has a first implementation slice: an A2A-compatible agent card and a protected JSON-RPC task route that wraps the TripCode research packet resolver.</p>
             <ul>
+              <li><a href="./04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/TRACK3_A2A_REFACTOR_PROOF.html">Open Track 3 A2A proof</a></li>
+              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html">Open Track 3 Cloud Run deployment proof</a></li>
+              <li><a href="./04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/02-agent-card-response.json">Open saved agent card response</a></li>
+              <li><a href="./04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/04-a2a-response.json">Open saved A2A task response</a></li>
+              <li><a href="./04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/INDEX.html">Open Track 3 folder index</a></li>
               <li><a href="../docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Open official submission packet</a></li>
               <li><a href="../CHANGELOG.html">Open public changelog</a></li>
             </ul>
@@ -250,7 +255,8 @@
             <li><code>01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/</code>: Track 2 evidence-fidelity proof.</li>
             <li><code>02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/</code>: current Track 2 runtime and coverage evidence.</li>
             <li><code>03_DEPLOYMENT_HISTORY__CLOUD_RUN/</code>: earlier Cloud Run deployment support evidence.</li>
-            <li><code>04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/</code>: future agent-ecosystem path documentation.</li>
+            <li><code>03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/</code>: Track 3 A2A Cloud Run deployment validation.</li>
+            <li><code>04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/</code>: Track 3 A2A readiness and future agent-ecosystem path documentation.</li>
           </ul>
         </article>
 
@@ -272,32 +278,33 @@
   </main>
 
   <script id="strategix-artifacts-index-contract" type="application/xml">
-<StrategiXVisualSpec version="1.2" status="track-phase-artifact-map-with-coverage-gate" generated="2026-06-09" artifact="artifacts/ARTIFACTS_INDEX.html">
+<StrategiXVisualSpec version="1.3" status="track-phase-artifact-map-with-a2a-refactor" generated="2026-06-09" artifact="artifacts/ARTIFACTS_INDEX.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Artifact Index</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
-    <LatestRun>20260609T080753Z-track2-coverage-gate</LatestRun>
-    <LatestProof>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html</LatestProof>
+    <LatestRun>20260609T083405Z-track3-a2a-refactor</LatestRun>
+    <LatestProof>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</LatestProof>
   </CanonicalArtifact>
   <Purpose>Make nested validation artifacts visible from the root artifacts directory and label each bundle by competition track, development phase, and proof status.</Purpose>
   <DevelopmentStatus>
     <Track name="Build" status="complete-and-verified">Working demo: TripCode resolves article memory, reconstructs HUT River, preserves session context, and returns a judge-ready diligence packet.</Track>
     <Track name="Optimize" status="implemented-rerun-validated-coverage-gated">Evidence fidelity and runtime hardening: richer provenance propagation, rate limits, runtime telemetry, structured logs, memory disclosure, spend reporting, and 100.0 percent statement coverage.</Track>
-    <Track name="Path" status="architecture-documented">Agent ecosystem expansion path documented in the official submission packet; not a separate runtime proof in the current artifact set.</Track>
+    <Track name="Path" status="a2a-refactor-implemented">Agent ecosystem expansion now has A2A agent-card discovery and a protected TripCode task endpoint, with Marketplace publication still explicitly not claimed.</Track>
   </DevelopmentStatus>
   <ArtifactMap>
     <Bundle track="Build" phase="working-demo" status="verified" path="artifacts/00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified/BUILD_PHASE_EXPLANATION.html">Track 1 Build proof bundle.</Bundle>
     <Bundle track="Optimize" phase="evidence-fidelity" status="implemented" path="artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity/OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html">Track 2 evidence-fidelity proof bundle.</Bundle>
     <Bundle track="Optimize" phase="runtime-hardening" status="rerun-validated" path="artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Latest deployed Track 2 runtime proof bundle.</Bundle>
     <Bundle track="Optimize" phase="testing-evaluation" status="coverage-gate-passed" path="artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html">Track 2 local testing gate proof: make check, 100.0 percent statement coverage, and go vet clean.</Bundle>
-    <Bundle track="Path" phase="agent-ecosystem-expansion" status="documented" path="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Future interoperability architecture path.</Bundle>
+    <Bundle track="Path" phase="a2a-readiness" status="implemented-and-validated" path="artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/TRACK3_A2A_REFACTOR_PROOF.html">Track 3 A2A agent-card and task-endpoint proof bundle.</Bundle>
+    <Bundle track="Path" phase="a2a-cloud-run-deployment" status="deployed-and-validated" path="artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html">Track 3 Cloud Run deployment proof bundle.</Bundle>
   </ArtifactMap>
   <LatestValidation>
-    <RunId>20260609T080753Z-track2-coverage-gate</RunId>
-    <ProofFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html</ProofFile>
-    <SummaryFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/04-coverage-summary.json</SummaryFile>
-    <LogFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/01-make-check.log</LogFile>
-    <Boundary>Latest testing proof is local code coverage and vet. Latest deployed runtime proof remains 20260609T033143Z-track2-rerun-validation.</Boundary>
+    <RunId>20260609T083405Z-track3-a2a-refactor</RunId>
+    <ProofFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</ProofFile>
+    <SummaryFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/08-deploy-summary.json</SummaryFile>
+    <LogFile>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/01-cloud-build.log</LogFile>
+    <Boundary>Latest proof is deployed A2A readiness validation. Marketplace publication is not claimed.</Boundary>
   </LatestValidation>
 </StrategiXVisualSpec>
   </script>
