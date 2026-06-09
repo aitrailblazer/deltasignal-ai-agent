@@ -381,7 +381,23 @@
 	      <Detail>Validated GET /health, GET /.well-known/agent-card.json, protected first-turn POST /a2a with TF-SUB-9DA70A7F98, and protected second-turn POST /a2a with the same session_id and no TripCode.</Detail>
 	      <Detail>The second-turn response returned mode session-memory and proved the deployed A2A adapter can reuse stored TripCode/River memory for follow-up requests.</Detail>
 	      <Detail>Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy, including Cloud Build log, service describe, health, agent card, first-turn request/response, follow-up request/response, deploy summary, manifest, and proof HTML.</Detail>
-	      <Detail>The latest run explicitly preserved live_mcp_error because the public MCP composite returned unsupported tool name during validation; this proof validates A2A/session-follow-up hardening and fallback disclosure, while the earlier 20260609T085553Z deployment remains the clean live-MCP A2A proof.</Detail>
+	      <Detail>That run explicitly preserved live_mcp_error because the public MCP composite returned unsupported tool name during validation; this proof validated A2A/session-follow-up hardening and fallback disclosure. A later 2026-06-09 post-fix validation confirms clean live MCP composite resolution.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-09" type="live-validation">
+	      <Title>Revalidated judge flow after MCP composite resolver repair</Title>
+	      <Detail>Repaired the public ATLAS-7 MCP composite resolver deployment so tools/list again exposes deltasignal_resolve_tripcode_research_packet.</Detail>
+	      <Detail>Reran scripts/judge-demo.sh against the deployed Cloud Run service after the MCP repair.</Detail>
+	      <Detail>The first-turn /resolve response returned mode live-mcp-tripcode-gemini with no live_mcp_error, TripCode TF-SUB-9DA70A7F98, issuer HUT, 10 River nodes, zero missing evidence, execution_trace, agent_context.sources, full research_packet, session_memory, gemini_summary, boundaries, runtime telemetry, and local-estimate usage.</Detail>
+	      <Detail>The second-turn /resolve follow-up returned mode session-memory and reused the prior HUT River session context without rerunning TripCode resolution.</Detail>
+	      <Detail>Saved the clean post-fix validation evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T173000Z-post-mcp-composite-fix-judge-validation.</Detail>
+	      <Detail>Learning evidence scored the run 100/100 using the deterministic post-run evaluator, including full resolver parity after the MCP fix.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-09" type="live-validation">
+	      <Title>Revalidated A2A after MCP composite resolver repair</Title>
+	      <Detail>Reran protected POST /a2a first-turn and same-session follow-up calls against the deployed Cloud Run service after the MCP composite resolver fix.</Detail>
+	      <Detail>The first-turn A2A response returned completed state, mode live-mcp-tripcode-gemini, TripCode TF-SUB-9DA70A7F98, issuer HUT, 10 River nodes, zero missing evidence, Gemini summary, and no live_mcp_error.</Detail>
+	      <Detail>The second-turn A2A response returned completed state, mode session-memory, and reused the prior HUT River session context.</Detail>
+	      <Detail>Saved the clean A2A post-fix validation evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T174000Z-post-mcp-composite-fix-a2a-validation.</Detail>
 	    </Entry>
 	  </Entries>
   <PublicLinks>
@@ -917,7 +933,31 @@
           'Validated GET /health, GET /.well-known/agent-card.json, first-turn protected POST /a2a with TF-SUB-9DA70A7F98, and second-turn protected POST /a2a with the same session_id and no TripCode.',
           'The second-turn response returned mode session-memory and proved the deployed A2A adapter can reuse stored TripCode/River memory for follow-up requests.',
           'Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T165228Z-track3-a2a-followup-deploy.',
-          'The latest run explicitly preserved live_mcp_error because the public MCP composite returned unsupported tool name during validation; this proof validates A2A/session-follow-up hardening and fallback disclosure, while the earlier 20260609T085553Z deployment remains the clean live-MCP A2A proof.'
+          'That run explicitly preserved live_mcp_error because the public MCP composite returned unsupported tool name during validation; this proof validated A2A/session-follow-up hardening and fallback disclosure. A later 2026-06-09 post-fix validation confirms clean live MCP composite resolution.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Live validation',
+        title: 'Revalidated judge flow after MCP composite resolver repair',
+        details: [
+          'Repaired the public ATLAS-7 MCP composite resolver deployment so tools/list again exposes deltasignal_resolve_tripcode_research_packet.',
+          'Reran scripts/judge-demo.sh against the deployed Cloud Run service after the MCP repair.',
+          'The first-turn /resolve response returned mode live-mcp-tripcode-gemini with no live_mcp_error, TripCode TF-SUB-9DA70A7F98, issuer HUT, 10 River nodes, zero missing evidence, execution_trace, agent_context.sources, full research_packet, session_memory, gemini_summary, boundaries, runtime telemetry, and local-estimate usage.',
+          'The second-turn /resolve follow-up returned mode session-memory and reused the prior HUT River session context without rerunning TripCode resolution.',
+          'Saved the clean post-fix validation evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T173000Z-post-mcp-composite-fix-judge-validation.',
+          'Learning evidence scored the run 100/100 using the deterministic post-run evaluator, including full resolver parity after the MCP fix.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Live validation',
+        title: 'Revalidated A2A after MCP composite resolver repair',
+        details: [
+          'Reran protected POST /a2a first-turn and same-session follow-up calls against the deployed Cloud Run service after the MCP composite resolver fix.',
+          'The first-turn A2A response returned completed state, mode live-mcp-tripcode-gemini, TripCode TF-SUB-9DA70A7F98, issuer HUT, 10 River nodes, zero missing evidence, Gemini summary, and no live_mcp_error.',
+          'The second-turn A2A response returned completed state, mode session-memory, and reused the prior HUT River session context.',
+          'Saved the clean A2A post-fix validation evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T174000Z-post-mcp-composite-fix-a2a-validation.'
         ]
       }
     ];

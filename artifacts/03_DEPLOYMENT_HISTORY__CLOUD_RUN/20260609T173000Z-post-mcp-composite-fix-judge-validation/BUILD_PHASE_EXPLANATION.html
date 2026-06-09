@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Judge Demo Evidence | Build Phase</title>
+  <style>
+    html { background: #06080d; color: #fff8ef; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
+    body { margin: 0; padding: 28px; }
+    main { max-width: 980px; margin: 0 auto; }
+    .hero, section { border: 1px solid rgba(255,255,255,.14); background: rgba(18,20,28,.88); border-radius: 10px; padding: 22px; margin: 0 0 16px; }
+    .eyebrow { color: #5df58b; font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 8px 0 12px; font-size: clamp(32px, 6vw, 58px); line-height: 1; letter-spacing: 0; }
+    h2 { margin: 0 0 10px; color: #ffbd5a; font-size: 22px; letter-spacing: 0; }
+    p { margin: 0 0 10px; color: rgba(255,248,239,.78); }
+    ol { margin: 0; padding-left: 22px; color: rgba(255,248,239,.82); }
+    li { margin: 0 0 10px; }
+    code { color: #72d9ff; background: rgba(114,217,255,.09); padding: 2px 5px; border-radius: 5px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-top: 12px; }
+    .card { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); border-radius: 8px; padding: 14px; }
+    .card b { display: block; color: #fff8ef; margin-bottom: 6px; }
+    pre { overflow: auto; border: 1px solid rgba(255,255,255,.12); background: #0b0e15; border-radius: 8px; padding: 14px; color: #d9f7ff; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hero">
+      <div class="eyebrow">Google for Startups AI Agents Challenge 2026 | Track 1 Build</div>
+      <h1>Working Demo Evidence Session</h1>
+      <p><strong>Phase covered:</strong> Build.</p>
+      <p>Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.</p>
+      <p><strong>Runtime autonomy:</strong> the submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</p>
+    </div>
+
+    <section>
+      <h2>Session Identity</h2>
+      <div class="grid">
+        <div class="card"><b>Run ID</b><code>20260609T173000Z-post-mcp-composite-fix-judge-validation</code></div>
+        <div class="card"><b>TripCode</b><code>TF-SUB-9DA70A7F98</code></div>
+        <div class="card"><b>Session</b><code>post-mcp-fix-hut</code></div>
+        <div class="card"><b>Base URL</b><code>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</code></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Role Split And Justification</h2>
+      <div class="grid">
+        <div class="card">
+          <b>Google Agent Layer</b>
+          <p>The Go-native Cloud Run service is the judge-facing agent runtime. It owns request handling, protected demo access, session memory, cost tracking, route orchestration, and optional Gemini synthesis through Vertex AI.</p>
+        </div>
+        <div class="card">
+          <b>ATLAS-7 MCP Layer</b>
+          <p>The MCP server is the external evidence and tool boundary. It resolves the TripCode into the article object, River context, filing evidence references, caveats, thesis map, and provenance fields.</p>
+        </div>
+      </div>
+      <p><strong>Why this split matters:</strong> the Google agent demonstrates autonomous multi-step execution and production controls, while MCP keeps proprietary evidence retrieval modular, auditable, and replaceable. The agent reasons over returned evidence; the MCP does not become the agent.</p>
+    </section>
+
+    <section>
+      <h2>Objective And Evaluation</h2>
+      <p><strong>Objective:</strong> prove the Track 1 Build claim with one repeatable session: TripCode in, HUT River reconstructed, evidence packet returned, session memory preserved, and cost ledger shown.</p>
+      <div class="grid">
+        <div class="card"><b>Eval 1: Runnable</b><p>The demo must run from HTTP routes on Cloud Run, not only from local code or slides.</p></div>
+        <div class="card"><b>Eval 2: Agentic</b><p>The Google agent must orchestrate multiple steps: resolve, remember, follow up, and report usage.</p></div>
+        <div class="card"><b>Eval 3: Resolver-backed</b><p>The agent must call the configured ATLAS-7 MCP resolver when available, and must preserve <code>live_mcp_error</code> plus deterministic fallback disclosure if the live tool is unavailable.</p></div>
+        <div class="card"><b>Eval 4: Evidence-bound</b><p>The result must keep article memory, filing references, caveats, missing evidence, and non-advice boundaries separate.</p></div>
+        <div class="card"><b>Eval 5: Stateful</b><p>The second request must use the prior session context without rerunning the TripCode resolution.</p></div>
+        <div class="card"><b>Eval 6: Cost-aware</b><p>The run must expose local-estimate spend and remaining challenge budget.</p></div>
+      </div>
+      <p><strong>Build status:</strong> passed for the HUT proof session. The remaining work belongs to Optimize, not Build.</p>
+    </section>
+
+    <section>
+      <h2>Agent Autonomy Boundary</h2>
+      <p>The shell script is only the judge harness. It supplies the input and records evidence. The deployed Google agent performs the internal workflow autonomously after the request reaches Cloud Run.</p>
+      <p><strong>Runtime relevance:</strong> DeltaSignal Gemini AI Agent is the runtime Google Cloud product agent. It turns a high-level TripCode request into a hosted, repeatable, evidence-bounded diligence workflow.</p>
+      <ol>
+        <li><strong>Human or judge action:</strong> provide one TripCode and session_id, then ask one follow-up question.</li>
+        <li><strong>Agent action:</strong> validate the request, call the TripCode resolver, call the ATLAS-7 MCP tool, parse the structured MCP packet, write session memory, optionally synthesize with Gemini, attach disclosures, and record local-estimate cost.</li>
+        <li><strong>MCP action:</strong> return bounded evidence and provenance. MCP does not decide the workflow, manage memory, or shape the final agent response.</li>
+        <li><strong>Why this qualifies as an AI agent:</strong> the system uses an agent runtime to coordinate tools, memory, synthesis, evidence boundaries, and follow-up behavior from a high-level user goal rather than requiring the user to manually call each evidence source.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Agent Reasoning Proof</h2>
+      <p>The first request asks the cloud agent to load the public ATLAS-7 operating guides before synthesis. This proves the agent is not only returning a hardcoded packet; it reads the public ATLAS-7 operating instructions, then performs the TripCode workflow from the user goal.</p>
+      <p><strong>Core product claim:</strong> the judge can provide one TripCode instead of manually orchestrating public guide lookup, MCP calls, River reconstruction, memory handling, Gemini synthesis, boundary checks, and cost logging.</p>
+      <div class="grid">
+        <div class="card"><b>Public guide</b><code>https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/CLAUDE.md</code></div>
+        <div class="card"><b>Full agent brief</b><code>https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt</code></div>
+      </div>
+      <ol>
+        <li><strong>What proves it:</strong> the response includes <code>agent_context.sources</code> with URL, HTTP status, byte count, SHA-256 hash, and excerpt for each fetched guide.</li>
+        <li><strong>How the agent uses it:</strong> the Gemini synthesis prompt receives <code>agent_context</code>, <code>execution_trace</code>, the MCP research packet, session memory, and the non-advice boundaries.</li>
+        <li><strong>What we do not expose:</strong> hidden chain-of-thought. The artifact exposes an observable execution trace and source hashes instead.</li>
+        <li><strong>Availability boundary:</strong> the agent is cloud-hosted and reachable on demand. Cloud Run uses <code>min-instances=0</code> for cost control, so it may cold-start rather than stay warm.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Why Optimize Comes Next</h2>
+      <p>Build proves the working agent. Optimize improves evidence fidelity, operational quality, and judge trust without changing the core demo claim.</p>
+      <ol>
+        <li><strong>Proven now:</strong> Cloud Run route, TripCode resolver, live MCP packet, HUT River reconstruction, session memory, Gemini synthesis, and cost ledger.</li>
+        <li><strong>Optimize next:</strong> propagate richer ATLAS-7 metadata through every brief path, including source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels.</li>
+        <li><strong>Reason:</strong> the next risk is not whether the agent works. The next risk is whether every generated answer carries the same provenance strength as the raw TripCode research packet.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>What Happens Step By Step</h2>
+      <ol>
+        <li><strong>Resolve the TripCode.</strong> The first request calls <code>GET /resolve</code> with <code>TF-SUB-9DA70A7F98</code>, issuer <code>HUT</code>, compact payload mode, filing evidence, prior articles, thesis map, and public agent context enabled.</li>
+        <li><strong>Recover the research object.</strong> The Go Cloud Run service calls the configured ATLAS-7 MCP composite resolver. If live MCP is unavailable, the packet must preserve <code>live_mcp_error</code> and use the deterministic HUT fixture only as disclosed fallback.</li>
+        <li><strong>Reconstruct the HUT River.</strong> The response includes the current article plus prior HUT River context so the agent can reason over thesis evolution instead of a single isolated post.</li>
+        <li><strong>Compare memory against evidence.</strong> The packet separates article memory, filing-backed references, caveats, missing evidence, and non-advice boundaries.</li>
+        <li><strong>Preserve session context.</strong> The service writes a Memory Bank entry keyed by <code>session_id</code>, including article title, TripCode, issuer, packet keys, and River node count.</li>
+        <li><strong>Answer a second-turn follow-up.</strong> The second request sends a plain-text follow-up to <code>POST /resolve?session_id=post-mcp-fix-hut</code>, proving the session can recall the previous HUT River without resolving it again.</li>
+        <li><strong>Show cost discipline.</strong> The final request calls <code>GET /v1/usage</code> to expose tracked local-estimate spend and remaining challenge budget.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Files In This Evidence Session</h2>
+      <ol>
+        <li><code>01-resolve-tripcode-request.json</code> and <code>01-resolve-tripcode-response.json</code>: TripCode resolution request and raw response, including <code>agent_context</code> and <code>execution_trace</code> when enabled.</li>
+        <li><code>02-session-followup-request.json</code> and <code>02-session-followup-response.json</code>: session-memory follow-up request and raw response.</li>
+        <li><code>03-usage-request.json</code> and <code>03-usage-response.json</code>: cost ledger request and raw response.</li>
+        <li><code>BUILD_PHASE_EXPLANATION.html</code>: this Build-phase explanation and machine-readable contract.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Evidence Boundary</h2>
+      <p>Demo keys are always redacted from saved request files. These artifacts prove the Build workflow and local-estimate cost tracking. Exact official Google Cloud spend still requires Cloud Billing export or Billing console data.</p>
+    </section>
+
+    <section>
+      <h2>Machine Contract</h2>
+      <pre>&lt;StrategiXVisualSpec id="deltasignal-judge-demo-build-session" version="1.0" status="evidence-session"&gt;
+  &lt;Phase&gt;Build&lt;/Phase&gt;
+  &lt;BuildClaim&gt;Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.&lt;/BuildClaim&gt;
+  &lt;RuntimeAutonomyClaim&gt;The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.&lt;/RuntimeAutonomyClaim&gt;
+  &lt;Run id="20260609T173000Z-post-mcp-composite-fix-judge-validation" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" session_id="post-mcp-fix-hut" /&gt;
+  &lt;RoleSplit&gt;
+    &lt;GoogleAgent role="orchestrator"&gt;Cloud Run Go service handles judge routes, protected demo access, session memory, cost ledger, Gemini synthesis through Vertex AI, and response shaping.&lt;/GoogleAgent&gt;
+    &lt;MCP role="evidence-tool-boundary"&gt;ATLAS-7 MCP resolves TripCode research packets, HUT River nodes, filing evidence refs, caveats, thesis map, and provenance fields.&lt;/MCP&gt;
+    &lt;Justification&gt;The Google agent proves autonomous workflow control; MCP proves secure external context and evidence retrieval without mixing proprietary evidence storage into the agent runtime.&lt;/Justification&gt;
+  &lt;/RoleSplit&gt;
+  &lt;Objective&gt;Prove the Track 1 Build claim with one repeatable session: TripCode in, HUT River reconstructed, evidence packet returned, session memory preserved, and cost ledger shown.&lt;/Objective&gt;
+  &lt;Evaluation status="passed"&gt;
+    &lt;Criterion name="Runnable"&gt;Cloud Run HTTP routes execute the demo.&lt;/Criterion&gt;
+    &lt;Criterion name="Agentic"&gt;The Google agent orchestrates resolve, memory, follow-up, and usage reporting.&lt;/Criterion&gt;
+    &lt;Criterion name="ResolverBacked"&gt;The agent calls the configured ATLAS-7 MCP resolver when available and preserves live_mcp_error plus deterministic fallback disclosure if the live tool is unavailable.&lt;/Criterion&gt;
+    &lt;Criterion name="EvidenceBound"&gt;Article memory, filing refs, caveats, missing evidence, and non-advice boundaries stay separated.&lt;/Criterion&gt;
+    &lt;Criterion name="Stateful"&gt;The follow-up uses session memory without rerunning TripCode resolution.&lt;/Criterion&gt;
+    &lt;Criterion name="CostAware"&gt;The run exposes tracked local-estimate spend and remaining budget.&lt;/Criterion&gt;
+  &lt;/Evaluation&gt;
+  &lt;AutonomyBoundary&gt;
+    &lt;JudgeHarness&gt;scripts/judge-demo.sh supplies input, records requests, records responses, and proves reproducibility.&lt;/JudgeHarness&gt;
+    &lt;AgentAutonomy&gt;Cloud Run Go agent validates the request, calls MCP, parses structured evidence, writes session memory, invokes Gemini synthesis when configured, attaches disclosures, and reports cost without the user manually executing those internal steps.&lt;/AgentAutonomy&gt;
+    &lt;MCPBoundary&gt;ATLAS-7 MCP supplies bounded evidence and provenance but does not own workflow orchestration, memory, or final response shaping.&lt;/MCPBoundary&gt;
+    &lt;AgentJustification&gt;The submitted system qualifies as an AI agent because it coordinates tools, memory, synthesis, evidence boundaries, and follow-up behavior from a high-level user goal.&lt;/AgentJustification&gt;
+  &lt;/AutonomyBoundary&gt;
+  &lt;AgentReasoningProof&gt;
+    &lt;PublicGuide url="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/CLAUDE.md" /&gt;
+    &lt;PublicGuide url="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt" /&gt;
+    &lt;ProofMechanism&gt;The Cloud Run agent fetches public guide context, records status, bytes, SHA-256 hashes, excerpts, and execution_trace steps, then provides that context to Gemini synthesis with the MCP research packet and boundaries.&lt;/ProofMechanism&gt;
+    &lt;ReasoningBoundary&gt;Expose observable execution trace and source hashes, not hidden chain-of-thought.&lt;/ReasoningBoundary&gt;
+    &lt;AvailabilityBoundary&gt;The agent is cloud-hosted and reachable on demand; Cloud Run min-instances=0 may cold-start to preserve Google credits.&lt;/AvailabilityBoundary&gt;
+  &lt;/AgentReasoningProof&gt;
+  &lt;NextPhase name="Optimize"&gt;Improve evidence fidelity by propagating source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels through every user-facing brief path.&lt;/NextPhase&gt;
+  &lt;Steps&gt;
+    &lt;Step order="1" route="GET /resolve"&gt;Resolve TripCode into structured research_packet.&lt;/Step&gt;
+    &lt;Step order="2" system="ATLAS-7 MCP or disclosed fallback"&gt;Recover article object, HUT River nodes, filing evidence refs, caveats, and thesis map; preserve live_mcp_error when fallback is used.&lt;/Step&gt;
+    &lt;Step order="3" system="Memory Bank"&gt;Preserve session context for follow-up turns.&lt;/Step&gt;
+    &lt;Step order="4" route="POST /resolve"&gt;Answer follow-up using prior HUT River session memory.&lt;/Step&gt;
+    &lt;Step order="5" route="GET /v1/usage"&gt;Report local-estimate spend and remaining challenge budget.&lt;/Step&gt;
+  &lt;/Steps&gt;
+  &lt;Boundary&gt;Redacted demo key; no investment advice; official billing requires Billing export or console data.&lt;/Boundary&gt;
+&lt;/StrategiXVisualSpec&gt;</pre>
+    </section>
+  </main>
+  <script id="strategix-build-phase-contract" type="application/xml">
+<StrategiXVisualSpec id="deltasignal-judge-demo-build-session" version="1.0" status="evidence-session">
+  <Phase>Build</Phase>
+  <BuildClaim>Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.</BuildClaim>
+  <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
+  <Run id="20260609T173000Z-post-mcp-composite-fix-judge-validation" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" session_id="post-mcp-fix-hut" />
+  <RoleSplit>
+    <GoogleAgent role="orchestrator">Cloud Run Go service handles judge routes, protected demo access, session memory, cost ledger, Gemini synthesis through Vertex AI, and response shaping.</GoogleAgent>
+    <MCP role="evidence-tool-boundary">ATLAS-7 MCP resolves TripCode research packets, HUT River nodes, filing evidence refs, caveats, thesis map, and provenance fields.</MCP>
+    <Justification>The Google agent proves autonomous workflow control; MCP proves secure external context and evidence retrieval without mixing proprietary evidence storage into the agent runtime.</Justification>
+  </RoleSplit>
+  <Objective>Prove the Track 1 Build claim with one repeatable session: TripCode in, HUT River reconstructed, evidence packet returned, session memory preserved, and cost ledger shown.</Objective>
+  <Evaluation status="passed">
+    <Criterion name="Runnable">Cloud Run HTTP routes execute the demo.</Criterion>
+    <Criterion name="Agentic">The Google agent orchestrates resolve, memory, follow-up, and usage reporting.</Criterion>
+    <Criterion name="ResolverBacked">The agent calls the configured ATLAS-7 MCP resolver when available and preserves live_mcp_error plus deterministic fallback disclosure if the live tool is unavailable.</Criterion>
+    <Criterion name="EvidenceBound">Article memory, filing refs, caveats, missing evidence, and non-advice boundaries stay separated.</Criterion>
+    <Criterion name="Stateful">The follow-up uses session memory without rerunning TripCode resolution.</Criterion>
+    <Criterion name="CostAware">The run exposes tracked local-estimate spend and remaining budget.</Criterion>
+  </Evaluation>
+  <AutonomyBoundary>
+    <JudgeHarness>scripts/judge-demo.sh supplies input, records requests, records responses, and proves reproducibility.</JudgeHarness>
+    <AgentAutonomy>Cloud Run Go agent validates the request, calls MCP, parses structured evidence, writes session memory, invokes Gemini synthesis when configured, attaches disclosures, and reports cost without the user manually executing those internal steps.</AgentAutonomy>
+    <MCPBoundary>ATLAS-7 MCP supplies bounded evidence and provenance but does not own workflow orchestration, memory, or final response shaping.</MCPBoundary>
+    <AgentJustification>The submitted system qualifies as an AI agent because it coordinates tools, memory, synthesis, evidence boundaries, and follow-up behavior from a high-level user goal.</AgentJustification>
+  </AutonomyBoundary>
+  <AgentReasoningProof>
+    <PublicGuide url="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/CLAUDE.md" />
+    <PublicGuide url="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt" />
+    <ProofMechanism>The Cloud Run agent fetches public guide context, records status, bytes, SHA-256 hashes, excerpts, and execution_trace steps, then provides that context to Gemini synthesis with the MCP research packet and boundaries.</ProofMechanism>
+    <ReasoningBoundary>Expose observable execution trace and source hashes, not hidden chain-of-thought.</ReasoningBoundary>
+    <AvailabilityBoundary>The agent is cloud-hosted and reachable on demand; Cloud Run min-instances=0 may cold-start to preserve Google credits.</AvailabilityBoundary>
+  </AgentReasoningProof>
+  <NextPhase name="Optimize">Improve evidence fidelity by propagating source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels through every user-facing brief path.</NextPhase>
+  <Steps>
+    <Step order="1" route="GET /resolve">Resolve TripCode into structured research_packet.</Step>
+    <Step order="2" system="ATLAS-7 MCP or disclosed fallback">Recover article object, HUT River nodes, filing evidence refs, caveats, and thesis map; preserve live_mcp_error when fallback is used.</Step>
+    <Step order="3" system="Memory Bank">Preserve session context for follow-up turns.</Step>
+    <Step order="4" route="POST /resolve">Answer follow-up using prior HUT River session memory.</Step>
+    <Step order="5" route="GET /v1/usage">Report local-estimate spend and remaining challenge budget.</Step>
+  </Steps>
+  <Boundary>Redacted demo key; no investment advice; official billing requires Billing export or console data.</Boundary>
+</StrategiXVisualSpec>
+  </script>
+</body>
+</html>

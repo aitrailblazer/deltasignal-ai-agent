@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal A2A Validation After MCP Composite Fix</title>
+  <style>
+    html{background:#05070b;color:#fff8ef;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}body{margin:0;padding:32px 18px 56px}main{width:min(1020px,100%);margin:0 auto}.hero,section{border:1px solid rgba(255,255,255,.14);background:rgba(18,21,29,.92);border-radius:10px;padding:22px;margin:14px 0}.eyebrow{color:#5df58b;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.08em}h1{margin:8px 0 10px;font-size:clamp(34px,6vw,64px);line-height:1}h2{color:#ffb743;margin:0 0 10px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:8px;padding:14px}.card b{display:block;margin-bottom:6px}p,li{color:rgba(255,248,239,.76)}a{color:#72d9ff;font-weight:900;text-decoration:none;overflow-wrap:anywhere}code{color:#f8d998}pre{overflow:auto;white-space:pre-wrap;border:1px solid rgba(255,255,255,.12);background:#0b0e15;border-radius:8px;padding:14px;color:#d9f7ff}
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="eyebrow">Track 3 Path · A2A live validation</div>
+    <h1>A2A is clean after the MCP composite resolver fix.</h1>
+    <p>The protected A2A route now reaches the live MCP composite TripCode resolver and returns <code>live-mcp-tripcode-gemini</code> with no <code>live_mcp_error</code>. The second turn reuses session memory.</p>
+  </section>
+  <section>
+    <h2>Validation Result</h2>
+    <div class="grid">
+      <div class="card"><b>Run</b><code>20260609T174000Z-post-mcp-composite-fix-a2a-validation</code></div>
+      <div class="card"><b>First turn mode</b><code>live-mcp-tripcode-gemini</code></div>
+      <div class="card"><b>TripCode</b><code>TF-SUB-9DA70A7F98</code></div>
+      <div class="card"><b>Issuer</b><code>HUT</code></div>
+      <div class="card"><b>River nodes</b><code>10</code></div>
+      <div class="card"><b>Missing evidence</b><code>0</code></div>
+      <div class="card"><b>Live MCP error</b><code>null</code></div>
+      <div class="card"><b>Follow-up mode</b><code>session-memory</code></div>
+    </div>
+  </section>
+  <section>
+    <h2>Evidence Files</h2>
+    <ul>
+      <li><a href="01-a2a-first-request.json">01-a2a-first-request.json</a></li>
+      <li><a href="02-a2a-first-response.json">02-a2a-first-response.json</a></li>
+      <li><a href="03-a2a-followup-request.json">03-a2a-followup-request.json</a></li>
+      <li><a href="04-a2a-followup-response.json">04-a2a-followup-response.json</a></li>
+      <li><a href="05-a2a-first-summary.json">05-a2a-first-summary.json</a></li>
+      <li><a href="06-a2a-followup-summary.json">06-a2a-followup-summary.json</a></li>
+      <li><a href="07-a2a-validation-summary.json">07-a2a-validation-summary.json</a></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Why This Matters</h2>
+    <p>The earlier A2A follow-up deployment correctly proved same-session follow-up behavior, but its first turn disclosed that the public MCP composite resolver was unavailable at that moment. This run proves the same deployed A2A adapter now has clean live resolver parity after the MCP fix.</p>
+  </section>
+  <section>
+    <h2>Machine Contract</h2>
+    <pre>&lt;StrategiXVisualSpec id="post-mcp-fix-a2a-validation" version="1.0" status="validated"&gt;
+  &lt;Track&gt;Track 3 Path&lt;/Track&gt;
+  &lt;Run id="20260609T174000Z-post-mcp-composite-fix-a2a-validation" /&gt;
+  &lt;FirstTurn mode="live-mcp-tripcode-gemini" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" river_nodes="10" missing_evidence="0" live_mcp_error="null" /&gt;
+  &lt;Followup mode="session-memory" memory_turns="1" /&gt;
+  &lt;Boundary&gt;Protected route used a redacted demo key. Outputs are diligence triage, not investment advice.&lt;/Boundary&gt;
+&lt;/StrategiXVisualSpec&gt;</pre>
+  </section>
+</main>
+<script id="strategix-contract" type="application/xml"><StrategiXVisualSpec id="post-mcp-fix-a2a-validation" version="1.0" status="validated"><Track>Track 3 Path</Track><Run id="20260609T174000Z-post-mcp-composite-fix-a2a-validation"/><FirstTurn mode="live-mcp-tripcode-gemini" tripcode="TF-SUB-9DA70A7F98" issuer="HUT" river_nodes="10" missing_evidence="0" live_mcp_error="null"/><Followup mode="session-memory" memory_turns="1"/><Boundary>Protected route used a redacted demo key. Outputs are diligence triage, not investment advice.</Boundary></StrategiXVisualSpec></script>
+</body>
+</html>

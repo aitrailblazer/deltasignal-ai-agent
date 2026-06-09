@@ -1,0 +1,18 @@
+{
+  "jsonrpc": "2.0",
+  "id": "post-mcp-fix-a2a-followup",
+  "method": "message/send",
+  "params": {
+    "message": {
+      "parts": [
+        {
+          "kind": "text",
+          "text": "Using the previous HUT River, what changed and what should we monitor next?"
+        }
+      ]
+    },
+    "metadata": {
+      "session_id": "post-mcp-fix-a2a-live"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "jsonrpc": "2.0",
+  "id": "post-mcp-fix-a2a-followup",
+  "has_error": false,
+  "state": "completed",
+  "mode": "session-memory",
+  "trace_steps": 3,
+  "memory_turns": 1
+}

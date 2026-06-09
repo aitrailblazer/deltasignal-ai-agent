@@ -1,0 +1,27 @@
+{
+  "run_id": "20260609T174000Z-post-mcp-composite-fix-a2a-validation",
+  "first": {
+    "jsonrpc": "2.0",
+    "id": "post-mcp-fix-a2a-first",
+    "has_error": false,
+    "state": "completed",
+    "artifact_count": 1,
+    "mode": "live-mcp-tripcode-gemini",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "issuer": "HUT",
+    "live_mcp_error": null,
+    "river_nodes": 10,
+    "missing_count": 0,
+    "trace_steps": 7,
+    "has_gemini_summary": true
+  },
+  "followup": {
+    "jsonrpc": "2.0",
+    "id": "post-mcp-fix-a2a-followup",
+    "has_error": false,
+    "state": "completed",
+    "mode": "session-memory",
+    "trace_steps": 3,
+    "memory_turns": 1
+  }
+}
