@@ -31,5 +31,5 @@
     "BUILD_PHASE_EXPLANATION.html"
   ],
   "raw_response_body_status": "not_available_for_prior_run",
-  "future_capture": "scripts/judge-demo.sh now writes full request and raw response JSON into artifacts/judge-demo/<run_id>/ for every future run."
+  "future_capture": "scripts/judge-demo.sh now writes full request and raw response JSON into artifacts/00_TRACK_1_BUILD__WORKING_DEMO/<run_id>/ for every future run."
 }

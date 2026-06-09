@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="2.5" status="track-2-runtime-hardening-rerun-validated" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="2.6" status="track-phase-artifacts-refactored" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -34,12 +34,13 @@
       <Artifact>docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html</Artifact>
       <Artifact>CHANGELOG.html</Artifact>
       <Artifact>ExecPlan_DeltaSignal_Gemini_AI_Agent_Judge_Demo_2026_06_07.html</Artifact>
+      <Artifact>artifacts/ARTIFACTS_INDEX.html</Artifact>
     </RelatedArtifacts>
   </CanonicalArtifact>
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="2.5" date="2026-06-09">This version records a repeat deployed Track 2 validation run with a fresh artifact bundle: live /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, spend report, sha256 manifest, runtime telemetry, rate limits, memory backend disclosure, live MCP TripCode mode, and 100.0 percent Go coverage.</VersionSummary>
+  <VersionSummary version="2.6" date="2026-06-09">This version records the artifact refactor into canonical track and phase folders: Track 1 Build working demo, Track 2 Optimize evidence fidelity, Track 2 Optimize runtime hardening current, Cloud Run deployment history, and Track 3 Path architecture documented. Raw evidence was moved into clear folders and the top-level artifact index now maps development status to proof bundles.</VersionSummary>
   <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, and configurable TripCode memory backend status.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
@@ -130,7 +131,7 @@
       <Summary>Track 2 extends the working agent by hardening reliability, observability, grounding quality, and evidence propagation.</Summary>
       <AuditReadiness>The audit shows the current system is competition-ready, with strong test coverage, clean secret hygiene, correct demo/live gating, and Cloud Run deployment posture.</AuditReadiness>
       <MainOptimization>The first evidence-fidelity increment is implemented: /v1/brief responses now include an evidence_fidelity object, deterministic fallback briefs include an evidence-fidelity line, and Gemini synthesis receives provenance context so source dates, computed timestamps, stale flags, caveats, quality flags, evidence hashes, payload mode, and provenance labels are not silently compressed away.</MainOptimization>
-      <ProofArtifact>artifacts/optimize-evidence-fidelity/20260608T185801Z-optimize-evidence-fidelity/OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html</ProofArtifact>
+      <ProofArtifact>artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity/OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html</ProofArtifact>
       <RequiredWork>Implemented optimization now includes protected live /v1/brief provenance validation, runtime request telemetry, structured logs, configurable rate limiting, configurable memory backend disclosure, and 100.0 percent coverage. Remaining production-scale work is managed durable memory beyond single-instance file mode, formal Cloud Trace dashboards and alerts, broader simulation packs for live/demo parity, and official Cloud Billing export integration.</RequiredWork>
       <Position>Track 2 is the hardening layer that turns a strong judge demo into a production-grade evidence system.</Position>
     </Track>
@@ -188,7 +189,7 @@
     <Check status="passed">ATLAS-7 MCP revision ca-web-intel-mcp--0000499 exposes deltasignal_resolve_tripcode_research_packet on both the public custom domain and Azure Container App FQDN.</Check>
     <Check status="passed">Track 2 runtime-hardening validation returned /health track_2_status optimize-runtime-hardening, protected /v1/brief evidence_fidelity.status provenance-carried, runtime telemetry, enabled rate-limit snapshot, memory backend disclosure, live /resolve mode live-mcp-tripcode-gemini, session-memory follow-up, and usage ledger 0.07 USD spent with 499.93 USD remaining.</Check>
     <Check status="passed">Cloud Run structured logging query returned recent request completion entries with request_id, trace_id, route, status, mode, and duration_ms.</Check>
-    <Artifact>artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Artifact>
+    <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Artifact>
     <Boundary>Deterministic HUT fallback remains available only for resilience if live MCP is unavailable; the validated judge path now uses the live MCP composite packet.</Boundary>
   </DeploymentValidation>
   <DeploymentValidation date="2026-06-09" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00009-c7s" run_id="20260609T033143Z-track2-rerun-validation">
@@ -198,10 +199,19 @@
     <Check status="passed">Repeat protected POST /resolve returned session-memory mode with one prior HUT River memory turn and runtime telemetry.</Check>
     <Check status="passed">Repeat protected GET /v1/usage returned local-estimate usage enabled with 0.07 USD spent and 499.93 USD remaining; official billing remains unavailable without Billing export or console data.</Check>
     <Check status="passed">Cloud Run structured logs and scripts/report-spend.sh output were saved with the rerun evidence bundle.</Check>
-    <Artifact>artifacts/deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</Artifact>
-    <Artifact>artifacts/deploy/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json</Artifact>
+    <Artifact>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</Artifact>
+    <Artifact>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json</Artifact>
     <Boundary>Request files redact X-Demo-Key values. Public guide excerpts are redacted in saved response artifacts while preserving URL, HTTP status, byte count, and sha256.</Boundary>
   </DeploymentValidation>
+  <ArtifactOrganization status="canonical-track-phase-tree" date="2026-06-09">
+    <Index>artifacts/ARTIFACTS_INDEX.html</Index>
+    <Folder track="Track 1 Build" phase="Working Demo" status="complete-and-verified">artifacts/00_TRACK_1_BUILD__WORKING_DEMO/</Folder>
+    <Folder track="Track 2 Optimize" phase="Evidence Fidelity" status="implemented">artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/</Folder>
+    <Folder track="Track 2 Optimize" phase="Runtime Hardening Current" status="implemented-and-rerun-validated">artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/</Folder>
+    <Folder track="Deployment Support" phase="Cloud Run History" status="historical-support-lane">artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/</Folder>
+    <Folder track="Track 3 Path" phase="Architecture Documented" status="future-expansion-path">artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/</Folder>
+    <Boundary>Legacy raw evidence folders were moved into the canonical tree. Existing proof files keep their run IDs and raw evidence contents; the current runtime-hardening manifest was regenerated after the move to record the canonical folder path.</Boundary>
+  </ArtifactOrganization>
   <HUTProofCard>
     <TripCode>TF-SUB-9DA70A7F98</TripCode>
     <Result>10-node HUT River recovered; 4 what-changed findings; 3 weakened assumptions; 8 monitor-next items; linked 10-Q and 8-K evidence references where available.</Result>
@@ -225,7 +235,7 @@
   </RisksAndOpenQuestions>
   <SourceDigest>
     <Source>docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html — local codebase and integration audit, 92 health score, 100 percent coverage gate, secret hygiene, nested git boundary, and provenance follow-up.</Source>
-    <Source>CHANGELOG.html — public changelog for cost controls, Go-native TripCode path, deployment posture, audit report, version 2.5 packet update, and Track 2 runtime-hardening rerun proof.</Source>
+    <Source>CHANGELOG.html — public changelog for cost controls, Go-native TripCode path, deployment posture, audit report, version 2.6 packet update, Track 2 runtime-hardening rerun proof, and canonical track-phase artifact organization.</Source>
     <Source>scripts/judge-demo.sh — judge demo command path for TripCode resolve, follow-up memory, and usage ledger.</Source>
     <Source>Go tests and coverage gate — make check, GOWORK=off go test ./..., total coverage 100.0 percent, and go vet clean at audit time.</Source>
     <Source>HUT proof TripCode — TF-SUB-9DA70A7F98 as the live demonstration TripCode for article-to-River-to-evidence continuity.</Source>
@@ -258,6 +268,7 @@
     <Version number="2.3" date="2026-06-08">Recorded Track 2 runtime hardening: runtime telemetry, structured request logs, configurable rate limits, configurable TripCode memory backend disclosure, Cloud Run guardrail defaults, and 100.0 percent Go coverage.</Version>
     <Version number="2.4" date="2026-06-09">Recorded deployed Track 2 runtime-hardening validation on Cloud Run revision deltasignal-ai-agent-00009-c7s, including /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, spend report, and proof artifact.</Version>
     <Version number="2.5" date="2026-06-09">Recorded repeat deployed Track 2 validation run 20260609T033143Z-track2-rerun-validation with documented request/response artifacts, proof HTML, sha256 manifest, structured logs, spend report, and redacted public-guide excerpts.</Version>
+    <Version number="2.6" date="2026-06-09">Refactored artifacts into canonical track and phase folders with clear development status labels and updated the artifact index, spec links, changelog links, and future judge-demo output path.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -310,7 +321,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '2.5';
+    const version = '2.6';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],

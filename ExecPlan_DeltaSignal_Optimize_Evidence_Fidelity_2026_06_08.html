@@ -91,7 +91,7 @@
     <Command status="passed">GOWORK=off go test ./...</Command>
     <Command status="passed">make check</Command>
     <Command status="passed">xmllint validation for CHANGELOG.html embedded XML</Command>
-    <Command status="passed">Live Cloud Run validation saved in artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Command>
+    <Command status="passed">Live Cloud Run validation saved in artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Command>
   </Verification>
   <DeploymentValidation date="2026-06-09" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00009-c7s">
     <Check status="passed">/health returned track_2_status optimize-runtime-hardening with runtime telemetry, rate limits, and memory backend status.</Check>
@@ -99,7 +99,7 @@
     <Check status="passed">/resolve returned live-mcp-tripcode-gemini with execution_trace, agent_context, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</Check>
     <Check status="passed">Second-turn /resolve returned session-memory mode with prior HUT River context.</Check>
     <Check status="passed">/v1/usage and scripts/report-spend.sh recorded 0.07 USD spent and 499.93 USD remaining from the local-estimate challenge budget.</Check>
-    <Artifact>artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Artifact>
+    <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Artifact>
   </DeploymentValidation>
   <Boundaries>
     <Boundary>TripCode research packet behavior remains unchanged and already carries raw packet provenance.</Boundary>

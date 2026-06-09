@@ -20,7 +20,7 @@
   <changelog-page></changelog-page>
 
   <script id="strategix-changelog-contract" type="application/xml">
-<StrategiXVisualSpec version="1.7" status="artifact-index-added" generated="2026-06-09" artifact="CHANGELOG.html">
+<StrategiXVisualSpec version="1.9" status="artifact-tree-refactored" generated="2026-06-09" artifact="CHANGELOG.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -136,9 +136,9 @@
     </Entry>
     <Entry date="2026-06-08" type="evidence">
       <Title>Added judge demo request and response evidence artifacts</Title>
-      <Detail>Added artifacts/judge-demo/20260608T093801Z-verified with redacted request specs, Cloud Run request log evidence, validated response summaries, and cost snapshot for the live MCP Build run.</Detail>
+      <Detail>Added artifacts/00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified with redacted request specs, Cloud Run request log evidence, validated response summaries, and cost snapshot for the live MCP Build run.</Detail>
       <Detail>Marked the prior raw response body status explicitly as not_available_for_prior_run because the first live run printed raw JSON but did not persist it.</Detail>
-      <Detail>Updated scripts/judge-demo.sh so future judge runs write redacted request JSON and full raw response JSON into artifacts/judge-demo/&lt;run_id&gt;/ automatically.</Detail>
+      <Detail>Updated scripts/judge-demo.sh so future judge runs write redacted request JSON and full raw response JSON into artifacts/00_TRACK_1_BUILD__WORKING_DEMO/&lt;run_id&gt;/ automatically.</Detail>
       <Detail>Added BUILD_PHASE_EXPLANATION.html to each judge-demo artifact session so the evidence folder explains the Track 1 Build phase step by step.</Detail>
       <Detail>Expanded the Build evidence note with an explicit Google agent versus ATLAS-7 MCP role split and justification for why the agent orchestrates while MCP supplies bounded evidence.</Detail>
       <Detail>Added objective, evaluation criteria, Build pass status, and the reason Optimize is the next phase: evidence-fidelity propagation across every user-facing brief path.</Detail>
@@ -209,7 +209,7 @@
     </Entry>
     <Entry date="2026-06-08" type="evidence">
       <Title>Saved Optimize evidence-fidelity response artifact</Title>
-      <Detail>Saved artifacts/optimize-evidence-fidelity/20260608T185801Z-optimize-evidence-fidelity with the protected /v1/brief request, raw response, usage response, summary JSON, server log, and OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html.</Detail>
+      <Detail>Saved artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity with the protected /v1/brief request, raw response, usage response, summary JSON, server log, and OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html.</Detail>
       <Detail>The response proves the user-facing brief contract now includes evidence_fidelity and an evidence-fidelity disclosure line.</Detail>
       <Detail>The deterministic fixture correctly reports evidence_fidelity.status minimal because no richer upstream ATLAS-7 metadata exists in the fixture; live MCP lane enrichment carries richer provenance when upstream packets provide it.</Detail>
       <Detail>The proof used local deterministic mode without live MCP or Gemini calls; the 0.02 USD value is the app's local-estimate ledger, not official Google Cloud Billing spend.</Detail>
@@ -242,12 +242,12 @@
       <Title>Deployed Optimize evidence-fidelity build to Cloud Run</Title>
       <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T191114Z-optimize-cloudrun-deploy through Cloud Build.</Detail>
       <Detail>Cloud Run revision deltasignal-ai-agent-00007-x65 became ready and served 100 percent of traffic at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Detail>
-      <Detail>Cloud Build reported an IAM warning while setting public invocation, so the allUsers roles/run.invoker binding was explicitly re-applied and saved to artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/02-public-invoker-binding.json.</Detail>
-      <Detail>Saved deployment evidence under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy, including Cloud Build log, service description, health response, and deploy summary.</Detail>
+      <Detail>Cloud Build reported an IAM warning while setting public invocation, so the allUsers roles/run.invoker binding was explicitly re-applied and saved to artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy/02-public-invoker-binding.json.</Detail>
+      <Detail>Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy, including Cloud Build log, service description, health response, and deploy summary.</Detail>
     </Entry>
     <Entry date="2026-06-08" type="evidence">
       <Title>Validated deployed Build flow and live Optimize evidence fidelity</Title>
-      <Detail>Ran scripts/judge-demo.sh against the deployed Cloud Run service and saved the run under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/20260608T191114Z-optimize-cloudrun-deploy-judge-flow.</Detail>
+      <Detail>Ran scripts/judge-demo.sh against the deployed Cloud Run service and saved the run under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy/20260608T191114Z-optimize-cloudrun-deploy-judge-flow.</Detail>
       <Detail>The deployed judge flow returned mode live-mcp-tripcode-gemini, reconstructed the 10-node HUT River, fetched public ATLAS-7 guide context, preserved execution_trace, wrote session memory, and reported local-estimate usage.</Detail>
       <Detail>Ran a protected live /v1/brief request after deployment; the response returned evidence_fidelity.status provenance-carried with payload mode, source date, computed_at, caveats, quality flags, evidence hashes, route provenance, and provenance labels.</Detail>
       <Detail>The live /v1/brief validation exposed one user-facing gap: Gemini synthesis omitted the evidence-fidelity line from the brief body even though disclosures included it.</Detail>
@@ -260,7 +260,7 @@
       <Detail>Re-applied public invoker IAM after the recurring Cloud Build IAM warning and saved the binding evidence.</Detail>
       <Detail>Validated GET /health, protected POST /v1/brief, and protected GET /v1/usage against the redeployed service.</Detail>
       <Detail>The redeployed live /v1/brief response returned evidence_fidelity.status provenance-carried and brief_has_evidence_fidelity_line true.</Detail>
-      <Detail>Saved the final deployment evidence bundle at artifacts/deploy/20260608T192004Z-optimize-brief-line-fix, including DEPLOYMENT_VALIDATION.html.</Detail>
+      <Detail>Saved the final deployment evidence bundle at artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T192004Z-optimize-brief-line-fix, including DEPLOYMENT_VALIDATION.html.</Detail>
     </Entry>
     <Entry date="2026-06-08" type="submission">
       <Title>Updated Devpost judge testing section</Title>
@@ -289,7 +289,7 @@
       <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening through Cloud Build.</Detail>
       <Detail>Cloud Run revision deltasignal-ai-agent-00009-c7s became ready and serves the validated public service URL https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Detail>
       <Detail>Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected judge routes behind DELTASIGNAL_DEMO_API_KEY.</Detail>
-      <Detail>Saved deployment context, Cloud Build log, public invoker binding, service describe output, and service URL under artifacts/deploy/20260609T012327Z-track2-runtime-hardening.</Detail>
+      <Detail>Saved deployment context, Cloud Build log, public invoker binding, service describe output, and service URL under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening.</Detail>
     </Entry>
     <Entry date="2026-06-09" type="validation">
       <Title>Validated Track 2 runtime hardening on Cloud Run</Title>
@@ -299,11 +299,11 @@
       <Detail>/resolve returned mode live-mcp-tripcode-gemini with execution_trace, agent_context, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</Detail>
       <Detail>The second-turn /resolve request returned session-memory mode and preserved prior HUT River context.</Detail>
       <Detail>/v1/usage and scripts/report-spend.sh recorded local-estimate spend of 0.07 USD and 499.93 USD remaining from the 500 USD challenge budget, with official Billing export marked unavailable.</Detail>
-      <Detail>Saved the proof artifact at artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.</Detail>
+      <Detail>Saved the proof artifact at artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.</Detail>
     </Entry>
     <Entry date="2026-06-09" type="validation">
       <Title>Repeated Track 2 validation with documented artifact bundle</Title>
-      <Detail>Ran a fresh live validation against https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and saved the run under artifacts/deploy/20260609T033143Z-track2-rerun-validation.</Detail>
+      <Detail>Ran a fresh live validation against https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and saved the run under artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation.</Detail>
       <Detail>Captured public GET /health, protected POST /v1/brief, protected GET /resolve, protected POST /resolve session follow-up, protected GET /v1/usage, Cloud Run structured logs, and scripts/report-spend.sh output.</Detail>
       <Detail>The repeat /resolve response confirmed live-mcp-tripcode-gemini mode with execution_trace, agent_context.sources, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</Detail>
       <Detail>Added TRACK2_RERUN_VALIDATION_PROOF.html as the self-contained StrategiX proof file and 09-artifact-manifest.json with sha256 hashes and byte counts for the saved evidence files.</Detail>
@@ -314,7 +314,24 @@
       <Title>Added top-level artifacts index</Title>
       <Detail>Added artifacts/ARTIFACTS_INDEX.html so the latest Track 2 proof bundle is visible directly from the root artifacts directory.</Detail>
       <Detail>The index links to the latest self-contained proof HTML, run summary, artifact manifest, TripCode response evidence, official submission packet, public changelog, and landing page.</Detail>
-      <Detail>The actual validation evidence remains organized under artifacts/deploy/20260609T033143Z-track2-rerun-validation.</Detail>
+      <Detail>The actual validation evidence remains organized under artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation.</Detail>
+    </Entry>
+    <Entry date="2026-06-09" type="evidence">
+      <Title>Reorganized artifact index by track and development phase</Title>
+      <Detail>Updated artifacts/ARTIFACTS_INDEX.html from a simple folder index into a track-phase evidence map.</Detail>
+      <Detail>Added clear labels for Track 1 Build, Track 2 Optimize evidence fidelity, Track 2 Optimize runtime hardening, deployment validation history, and Track 3 Path architecture status.</Detail>
+      <Detail>Clarified that Build is complete and verified, Optimize is implemented and rerun validated, and Path is documented as the next ecosystem-expansion architecture stage.</Detail>
+      <Detail>Kept raw evidence under the original run IDs so evidence identity remains stable while parent folders become track-phase labels.</Detail>
+    </Entry>
+    <Entry date="2026-06-09" type="evidence">
+      <Title>Refactored artifact folders into canonical track-phase tree</Title>
+      <Detail>Moved Track 1 Build evidence into artifacts/00_TRACK_1_BUILD__WORKING_DEMO.</Detail>
+      <Detail>Moved Track 2 evidence-fidelity evidence into artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY.</Detail>
+      <Detail>Moved the latest Track 2 runtime-hardening rerun into artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT.</Detail>
+      <Detail>Moved earlier Cloud Run deploy and validation evidence into artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN.</Detail>
+      <Detail>Added artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED for the documented Path architecture stage.</Detail>
+      <Detail>Updated scripts/judge-demo.sh so future judge demo artifacts are written under the Track 1 Build folder by default.</Detail>
+      <Detail>Updated the official submission packet to version 2.6 and regenerated the current runtime-hardening artifact manifest with the canonical folder path.</Detail>
     </Entry>
   </Entries>
   <PublicLinks>
@@ -484,9 +501,9 @@
         type: 'Evidence',
         title: 'Added judge demo request and response evidence artifacts',
         details: [
-          'Added artifacts/judge-demo/20260608T093801Z-verified with redacted request specs, Cloud Run request log evidence, validated response summaries, and cost snapshot for the live MCP Build run.',
+          'Added artifacts/00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified with redacted request specs, Cloud Run request log evidence, validated response summaries, and cost snapshot for the live MCP Build run.',
           'Marked the prior raw response body status explicitly as not_available_for_prior_run because the first live run printed raw JSON but did not persist it.',
-          'Updated scripts/judge-demo.sh so future judge runs write redacted request JSON and full raw response JSON into artifacts/judge-demo/<run_id>/ automatically.',
+          'Updated scripts/judge-demo.sh so future judge runs write redacted request JSON and full raw response JSON into artifacts/00_TRACK_1_BUILD__WORKING_DEMO/<run_id>/ automatically.',
           'Added BUILD_PHASE_EXPLANATION.html to each judge-demo artifact session so the evidence folder explains the Track 1 Build phase step by step.',
           'Expanded the Build evidence note with an explicit Google agent versus ATLAS-7 MCP role split and justification for why the agent orchestrates while MCP supplies bounded evidence.',
           'Added objective, evaluation criteria, Build pass status, and the reason Optimize is the next phase: evidence-fidelity propagation across every user-facing brief path.',
@@ -593,7 +610,7 @@
         type: 'Evidence',
         title: 'Saved Optimize evidence-fidelity response artifact',
         details: [
-          'Saved artifacts/optimize-evidence-fidelity/20260608T185801Z-optimize-evidence-fidelity with the protected /v1/brief request, raw response, usage response, summary JSON, server log, and OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html.',
+          'Saved artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity with the protected /v1/brief request, raw response, usage response, summary JSON, server log, and OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html.',
           'The response proves the user-facing brief contract now includes evidence_fidelity and an evidence-fidelity disclosure line.',
           'The deterministic fixture correctly reports evidence_fidelity.status minimal because no richer upstream ATLAS-7 metadata exists in the fixture; live MCP lane enrichment carries richer provenance when upstream packets provide it.',
           'The proof used local deterministic mode without live MCP or Gemini calls; the 0.02 USD value is the app\\'s local-estimate ledger, not official Google Cloud Billing spend.'
@@ -646,8 +663,8 @@
         details: [
           'Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260608T191114Z-optimize-cloudrun-deploy through Cloud Build.',
           'Cloud Run revision deltasignal-ai-agent-00007-x65 became ready and served 100 percent of traffic at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.',
-          'Cloud Build reported an IAM warning while setting public invocation, so the allUsers roles/run.invoker binding was explicitly re-applied and saved to artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/02-public-invoker-binding.json.',
-          'Saved deployment evidence under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy, including Cloud Build log, service description, health response, and deploy summary.'
+          'Cloud Build reported an IAM warning while setting public invocation, so the allUsers roles/run.invoker binding was explicitly re-applied and saved to artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy/02-public-invoker-binding.json.',
+          'Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy, including Cloud Build log, service description, health response, and deploy summary.'
         ]
       },
       {
@@ -655,7 +672,7 @@
         type: 'Evidence',
         title: 'Validated deployed Build flow and live Optimize evidence fidelity',
         details: [
-          'Ran scripts/judge-demo.sh against the deployed Cloud Run service and saved the run under artifacts/deploy/20260608T191114Z-optimize-cloudrun-deploy/20260608T191114Z-optimize-cloudrun-deploy-judge-flow.',
+          'Ran scripts/judge-demo.sh against the deployed Cloud Run service and saved the run under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy/20260608T191114Z-optimize-cloudrun-deploy-judge-flow.',
           'The deployed judge flow returned mode live-mcp-tripcode-gemini, reconstructed the 10-node HUT River, fetched public ATLAS-7 guide context, preserved execution_trace, wrote session memory, and reported local-estimate usage.',
           'Ran a protected live /v1/brief request after deployment; the response returned evidence_fidelity.status provenance-carried with payload mode, source date, computed_at, caveats, quality flags, evidence hashes, route provenance, and provenance labels.',
           'The live /v1/brief validation exposed one user-facing gap: Gemini synthesis omitted the evidence-fidelity line from the brief body even though disclosures included it.',
@@ -672,7 +689,7 @@
           'Re-applied public invoker IAM after the recurring Cloud Build IAM warning and saved the binding evidence.',
           'Validated GET /health, protected POST /v1/brief, and protected GET /v1/usage against the redeployed service.',
           'The redeployed live /v1/brief response returned evidence_fidelity.status provenance-carried and brief_has_evidence_fidelity_line true.',
-          'Saved the final deployment evidence bundle at artifacts/deploy/20260608T192004Z-optimize-brief-line-fix, including DEPLOYMENT_VALIDATION.html.'
+          'Saved the final deployment evidence bundle at artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T192004Z-optimize-brief-line-fix, including DEPLOYMENT_VALIDATION.html.'
         ]
       },
       {
@@ -717,7 +734,7 @@
           'Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening through Cloud Build.',
           'Cloud Run revision deltasignal-ai-agent-00009-c7s became ready and serves the validated public service URL https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.',
           'Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected judge routes behind DELTASIGNAL_DEMO_API_KEY.',
-          'Saved deployment context, Cloud Build log, public invoker binding, service describe output, and service URL under artifacts/deploy/20260609T012327Z-track2-runtime-hardening.'
+          'Saved deployment context, Cloud Build log, public invoker binding, service describe output, and service URL under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening.'
         ]
       },
       {
@@ -731,7 +748,7 @@
           '/resolve returned mode live-mcp-tripcode-gemini with execution_trace, agent_context, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.',
           'The second-turn /resolve request returned session-memory mode and preserved prior HUT River context.',
           '/v1/usage and scripts/report-spend.sh recorded local-estimate spend of 0.07 USD and 499.93 USD remaining from the 500 USD challenge budget, with official Billing export marked unavailable.',
-          'Saved the proof artifact at artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.'
+          'Saved the proof artifact at artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.'
         ]
       },
       {
@@ -739,7 +756,7 @@
         type: 'Validation',
         title: 'Repeated Track 2 validation with documented artifact bundle',
         details: [
-          'Ran a fresh live validation against https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and saved the run under artifacts/deploy/20260609T033143Z-track2-rerun-validation.',
+          'Ran a fresh live validation against https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and saved the run under artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation.',
           'Captured public GET /health, protected POST /v1/brief, protected GET /resolve, protected POST /resolve session follow-up, protected GET /v1/usage, Cloud Run structured logs, and scripts/report-spend.sh output.',
           'The repeat /resolve response confirmed live-mcp-tripcode-gemini mode with execution_trace, agent_context.sources, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.',
           'Added TRACK2_RERUN_VALIDATION_PROOF.html as the self-contained StrategiX proof file and 09-artifact-manifest.json with sha256 hashes and byte counts for the saved evidence files.',
@@ -754,7 +771,32 @@
         details: [
           'Added artifacts/ARTIFACTS_INDEX.html so the latest Track 2 proof bundle is visible directly from the root artifacts directory.',
           'The index links to the latest self-contained proof HTML, run summary, artifact manifest, TripCode response evidence, official submission packet, public changelog, and landing page.',
-          'The actual validation evidence remains organized under artifacts/deploy/20260609T033143Z-track2-rerun-validation.'
+          'The actual validation evidence remains organized under artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Evidence',
+        title: 'Reorganized artifact index by track and development phase',
+        details: [
+          'Updated artifacts/ARTIFACTS_INDEX.html from a simple folder index into a track-phase evidence map.',
+          'Added clear labels for Track 1 Build, Track 2 Optimize evidence fidelity, Track 2 Optimize runtime hardening, deployment validation history, and Track 3 Path architecture status.',
+          'Clarified that Build is complete and verified, Optimize is implemented and rerun validated, and Path is documented as the next ecosystem-expansion architecture stage.',
+          'Kept raw evidence under the original run IDs so evidence identity remains stable while parent folders become track-phase labels.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Evidence',
+        title: 'Refactored artifact folders into canonical track-phase tree',
+        details: [
+          'Moved Track 1 Build evidence into artifacts/00_TRACK_1_BUILD__WORKING_DEMO.',
+          'Moved Track 2 evidence-fidelity evidence into artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY.',
+          'Moved the latest Track 2 runtime-hardening rerun into artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT.',
+          'Moved earlier Cloud Run deploy and validation evidence into artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN.',
+          'Added artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED for the documented Path architecture stage.',
+          'Updated scripts/judge-demo.sh so future judge demo artifacts are written under the Track 1 Build folder by default.',
+          'Updated the official submission packet to version 2.6 and regenerated the current runtime-hardening artifact manifest with the canonical folder path.'
         ]
       }
     ];

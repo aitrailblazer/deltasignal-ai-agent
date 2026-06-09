@@ -44,11 +44,44 @@
     p { margin: 0; color: var(--muted); }
     .lede { max-width: 880px; font-size: 18px; }
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .full { grid-column: 1 / -1; }
     .card { padding: 18px; }
     h2 { margin: 0 0 10px; color: var(--amber); font-size: 22px; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; color: var(--ink); font-size: 18px; letter-spacing: 0; }
     .meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
     .metric { border: 1px solid rgba(255,255,255,.10); border-radius: 8px; padding: 12px; background: rgba(255,255,255,.04); }
     .metric b { display: block; margin-bottom: 4px; color: var(--ink); }
+    .phase {
+      border-left: 5px solid var(--green);
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .phase.optimize { border-left-color: var(--cyan); }
+    .phase.deploy { border-left-color: var(--amber); }
+    .phase.path { border-left-color: rgba(255,255,255,.45); }
+    .label {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 28px;
+      align-items: center;
+      border-radius: 999px;
+      padding: 0 10px;
+      background: var(--green);
+      color: #041008;
+      font-weight: 900;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .label.optimize { background: var(--cyan); }
+    .label.deploy { background: var(--amber); }
+    .label.path { background: rgba(255,255,255,.68); }
+    .status {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
     a {
       color: var(--cyan);
       text-decoration: none;
@@ -77,28 +110,108 @@
     <div class="wrap">
       <section class="hero">
         <div class="eyebrow">Artifact index</div>
-        <h1>Latest proof bundle is under deploy.</h1>
-        <p class="lede">The root <code>artifacts/</code> directory is organized by evidence lane. The newest Track 2 rerun proof is in <code>artifacts/deploy/20260609T033143Z-track2-rerun-validation/</code>.</p>
+        <h1>Artifact map by track and phase.</h1>
+        <p class="lede">The root <code>artifacts/</code> directory is now organized as a readable evidence map. Files stay in their original run folders for audit stability, while this page labels each bundle by competition track, development phase, current status, and proof value.</p>
       </section>
 
       <section class="grid">
-        <article class="card">
-          <h2>Latest Track 2 Rerun</h2>
+        <article class="card full">
+          <h2>Current Development Status</h2>
           <div class="meta">
-            <div class="metric"><b>Run ID</b><span>20260609T033143Z-track2-rerun-validation</span></div>
-            <div class="metric"><b>Status</b><span>Passed</span></div>
-            <div class="metric"><b>Artifact count</b><span>21 hashed evidence files plus proof HTML</span></div>
+            <div class="metric"><b>Track 1 Build</b><span>Complete and verified</span></div>
+            <div class="metric"><b>Track 2 Optimize</b><span>Implemented, rerun validated</span></div>
+            <div class="metric"><b>Track 3 Path</b><span>Architecture path documented, not current build scope</span></div>
           </div>
-          <p><a href="./deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Open the self-contained proof HTML</a></p>
-          <ul>
-            <li><a href="./deploy/20260609T033143Z-track2-rerun-validation/06-track2-rerun-summary.json">Open run summary JSON</a></li>
-            <li><a href="./deploy/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json">Open artifact manifest with SHA-256 hashes</a></li>
-            <li><a href="./deploy/20260609T033143Z-track2-rerun-validation/03-resolve-response.json">Open saved TripCode response evidence</a></li>
-          </ul>
+          <p>Latest proof: <a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Track 2 rerun validation proof</a>. This is the current best evidence bundle for the deployed service.</p>
         </article>
 
-        <article class="card">
-          <h2>What This Proves</h2>
+        <article class="card phase">
+          <div>
+            <span class="label">Track 1</span>
+            <p class="status">Build phase<br>Working demo</p>
+          </div>
+          <div>
+            <h2>Build Proof: TripCode to River to Diligence Packet</h2>
+            <p>The Build phase proves the core competition workflow: one TripCode resolves a published research object, reconstructs the HUT River, preserves session context, and returns a judge-ready diligence packet.</p>
+            <ul>
+              <li><a href="./00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified/BUILD_PHASE_EXPLANATION.html">Open Build phase explanation</a></li>
+              <li><a href="./00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified/manifest.json">Open Build artifact manifest</a></li>
+              <li><a href="./00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified/01-resolve-tripcode-response.summary.json">Open Build TripCode response summary</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card phase optimize">
+          <div>
+            <span class="label optimize">Track 2</span>
+            <p class="status">Optimize phase<br>Evidence fidelity</p>
+          </div>
+          <div>
+            <h2>Optimize Proof: Evidence-Fidelity Propagation</h2>
+            <p>This phase proves the brief path now carries richer evidence-fidelity metadata into user-facing output instead of compressing provenance away.</p>
+            <ul>
+              <li><a href="./01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity/OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html">Open evidence-fidelity proof</a></li>
+              <li><a href="./01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity/03-optimize-summary.json">Open Optimize summary JSON</a></li>
+              <li><a href="./01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity/01-brief-response.json">Open saved brief response</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card phase optimize full">
+          <div>
+            <span class="label optimize">Track 2</span>
+            <p class="status">Optimize phase<br>Runtime hardening</p>
+          </div>
+          <div>
+            <h2>Latest Runtime Validation: Live Cloud Run Rerun</h2>
+            <p>This is the newest end-to-end deployed validation. It covers health, protected brief generation, live TripCode resolution, session follow-up, usage reporting, structured logs, spend reporting, and hashed artifacts.</p>
+            <div class="meta">
+              <div class="metric"><b>Run ID</b><span>20260609T033143Z-track2-rerun-validation</span></div>
+              <div class="metric"><b>Status</b><span>Passed</span></div>
+              <div class="metric"><b>Artifact count</b><span>21 hashed evidence files plus proof HTML</span></div>
+            </div>
+            <p><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Open the self-contained Track 2 rerun proof</a></p>
+            <ul>
+              <li><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/06-track2-rerun-summary.json">Open run summary JSON</a></li>
+              <li><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json">Open artifact manifest with SHA-256 hashes</a></li>
+              <li><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/03-resolve-response.json">Open saved TripCode response evidence</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card phase deploy">
+          <div>
+            <span class="label deploy">Deploy</span>
+            <p class="status">Cloud Run<br>Validation history</p>
+          </div>
+          <div>
+            <h2>Deployment Evidence History</h2>
+            <p>Earlier deploy folders remain available because they show the development trail from deployment setup to validation fixes and runtime hardening.</p>
+          <ul>
+              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html">Track 2 runtime hardening proof</a></li>
+              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T192004Z-optimize-brief-line-fix/DEPLOYMENT_VALIDATION.html">Brief line deployment validation</a></li>
+              <li><a href="./03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260608T191114Z-optimize-cloudrun-deploy/05-deploy-summary.json">Initial Optimize Cloud Run deploy summary</a></li>
+          </ul>
+          </div>
+        </article>
+
+        <article class="card phase path">
+          <div>
+            <span class="label path">Track 3</span>
+            <p class="status">Path phase<br>Future expansion</p>
+          </div>
+          <div>
+            <h2>Path Evidence: Agent Ecosystem Expansion</h2>
+            <p>Track 3 is represented in the official spec, not as a separate runtime proof yet. The current artifact boundary is intentional: Build and Optimize are implemented; Path is the documented next architecture stage.</p>
+            <ul>
+              <li><a href="../docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Open official submission packet</a></li>
+              <li><a href="../CHANGELOG.html">Open public changelog</a></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card full">
+          <h2>Latest Proof Checklist</h2>
           <ul>
             <li>The deployed Go-native Cloud Run agent is reachable and healthy.</li>
             <li>The protected brief path carries evidence-fidelity metadata into user-facing output.</li>
@@ -109,16 +222,16 @@
         </article>
 
         <article class="card">
-          <h2>Other Artifact Lanes</h2>
+          <h2>Folder Labels</h2>
           <ul>
-            <li><code>deploy/</code> contains deployed Cloud Run validation runs.</li>
-            <li><code>judge-demo/</code> contains judge-flow request/response evidence.</li>
-            <li><code>optimize-evidence-fidelity/</code> contains Track 2 evidence-fidelity implementation proof.</li>
+            <li><code>judge-demo/</code>: Track 1 Build proof.</li>
+            <li><code>optimize-evidence-fidelity/</code>: Track 2 evidence-fidelity proof.</li>
+            <li><code>deploy/</code>: deployed Cloud Run validation and runtime-hardening evidence.</li>
           </ul>
         </article>
 
         <article class="card">
-          <h2>Repository Links</h2>
+          <h2>Public Docs</h2>
           <ul>
             <li><a href="../docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official submission packet</a></li>
             <li><a href="../CHANGELOG.html">Public changelog</a></li>
@@ -135,25 +248,31 @@
   </main>
 
   <script id="strategix-artifacts-index-contract" type="application/xml">
-<StrategiXVisualSpec version="1.0" status="visible-artifact-index" generated="2026-06-09" artifact="artifacts/ARTIFACTS_INDEX.html">
+<StrategiXVisualSpec version="1.1" status="track-phase-artifact-map" generated="2026-06-09" artifact="artifacts/ARTIFACTS_INDEX.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Artifact Index</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
     <LatestRun>20260609T033143Z-track2-rerun-validation</LatestRun>
-    <LatestProof>artifacts/deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</LatestProof>
+    <LatestProof>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</LatestProof>
   </CanonicalArtifact>
-  <Purpose>Make nested validation artifacts visible from the root artifacts directory.</Purpose>
-  <ArtifactLanes>
-    <Lane name="deploy">Deployed Cloud Run validation runs and request/response evidence.</Lane>
-    <Lane name="judge-demo">Judge-flow request/response evidence and Build proof artifacts.</Lane>
-    <Lane name="optimize-evidence-fidelity">Track 2 evidence-fidelity implementation proof artifacts.</Lane>
-  </ArtifactLanes>
+  <Purpose>Make nested validation artifacts visible from the root artifacts directory and label each bundle by competition track, development phase, and proof status.</Purpose>
+  <DevelopmentStatus>
+    <Track name="Build" status="complete-and-verified">Working demo: TripCode resolves article memory, reconstructs HUT River, preserves session context, and returns a judge-ready diligence packet.</Track>
+    <Track name="Optimize" status="implemented-rerun-validated">Evidence fidelity and runtime hardening: richer provenance propagation, rate limits, runtime telemetry, structured logs, memory disclosure, and spend reporting.</Track>
+    <Track name="Path" status="architecture-documented">Agent ecosystem expansion path documented in the official submission packet; not a separate runtime proof in the current artifact set.</Track>
+  </DevelopmentStatus>
+  <ArtifactMap>
+    <Bundle track="Build" phase="working-demo" status="verified" path="artifacts/00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified/BUILD_PHASE_EXPLANATION.html">Track 1 Build proof bundle.</Bundle>
+    <Bundle track="Optimize" phase="evidence-fidelity" status="implemented" path="artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity/OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html">Track 2 evidence-fidelity proof bundle.</Bundle>
+    <Bundle track="Optimize" phase="runtime-hardening" status="rerun-validated" path="artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Latest deployed Track 2 runtime proof bundle.</Bundle>
+    <Bundle track="Path" phase="agent-ecosystem-expansion" status="documented" path="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Future interoperability architecture path.</Bundle>
+  </ArtifactMap>
   <LatestValidation>
     <RunId>20260609T033143Z-track2-rerun-validation</RunId>
     <ServiceUrl>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</ServiceUrl>
-    <ProofFile>artifacts/deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</ProofFile>
-    <SummaryFile>artifacts/deploy/20260609T033143Z-track2-rerun-validation/06-track2-rerun-summary.json</SummaryFile>
-    <ManifestFile>artifacts/deploy/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json</ManifestFile>
+    <ProofFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</ProofFile>
+    <SummaryFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/06-track2-rerun-summary.json</SummaryFile>
+    <ManifestFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json</ManifestFile>
   </LatestValidation>
 </StrategiXVisualSpec>
   </script>

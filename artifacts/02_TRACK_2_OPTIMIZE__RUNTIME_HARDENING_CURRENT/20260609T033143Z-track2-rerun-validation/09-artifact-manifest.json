@@ -1,6 +1,7 @@
 {
-  "generated_at": "2026-06-09T03:37:15Z",
-  "scope": "raw request/response evidence files; proof HTML and manifest excluded to avoid self-referential hash drift",
+  "generated_at": "2026-06-09T04:11:56Z",
+  "scope": "raw request/response evidence files in canonical Track 2 runtime-hardening folder; proof HTML and manifest excluded to avoid self-referential hash drift",
+  "canonical_folder": "artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation",
   "artifact_count": 21,
   "artifacts": [
     {
