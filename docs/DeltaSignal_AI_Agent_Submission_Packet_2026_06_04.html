@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="2.4" status="track-2-runtime-hardening-deployed-and-validated" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="2.5" status="track-2-runtime-hardening-rerun-validated" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -39,7 +39,7 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="2.4" date="2026-06-09">This version records the deployed Track 2 runtime-hardening validation: Cloud Run revision deltasignal-ai-agent-00009-c7s, live /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, spend report, runtime telemetry, rate limits, memory backend disclosure, and 100.0 percent Go coverage.</VersionSummary>
+  <VersionSummary version="2.5" date="2026-06-09">This version records a repeat deployed Track 2 validation run with a fresh artifact bundle: live /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, spend report, sha256 manifest, runtime telemetry, rate limits, memory backend disclosure, live MCP TripCode mode, and 100.0 percent Go coverage.</VersionSummary>
   <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, and configurable TripCode memory backend status.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
@@ -191,6 +191,17 @@
     <Artifact>artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Artifact>
     <Boundary>Deterministic HUT fallback remains available only for resilience if live MCP is unavailable; the validated judge path now uses the live MCP composite packet.</Boundary>
   </DeploymentValidation>
+  <DeploymentValidation date="2026-06-09" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00009-c7s" run_id="20260609T033143Z-track2-rerun-validation">
+    <Check status="passed">Repeat GET /health returned ok=true and track_2_status optimize-runtime-hardening with runtime keys, rate_limits true, and memory_backend memory.</Check>
+    <Check status="passed">Repeat protected POST /v1/brief returned mode vertex-ai-gemini, evidence_fidelity.status provenance-carried, runtime telemetry, enabled rate-limit snapshot, memory backend disclosure, and brief_has_evidence_line true.</Check>
+    <Check status="passed">Repeat protected GET /resolve returned mode live-mcp-tripcode-gemini with execution_trace, agent_context.sources, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</Check>
+    <Check status="passed">Repeat protected POST /resolve returned session-memory mode with one prior HUT River memory turn and runtime telemetry.</Check>
+    <Check status="passed">Repeat protected GET /v1/usage returned local-estimate usage enabled with 0.07 USD spent and 499.93 USD remaining; official billing remains unavailable without Billing export or console data.</Check>
+    <Check status="passed">Cloud Run structured logs and scripts/report-spend.sh output were saved with the rerun evidence bundle.</Check>
+    <Artifact>artifacts/deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</Artifact>
+    <Artifact>artifacts/deploy/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json</Artifact>
+    <Boundary>Request files redact X-Demo-Key values. Public guide excerpts are redacted in saved response artifacts while preserving URL, HTTP status, byte count, and sha256.</Boundary>
+  </DeploymentValidation>
   <HUTProofCard>
     <TripCode>TF-SUB-9DA70A7F98</TripCode>
     <Result>10-node HUT River recovered; 4 what-changed findings; 3 weakened assumptions; 8 monitor-next items; linked 10-Q and 8-K evidence references where available.</Result>
@@ -214,7 +225,7 @@
   </RisksAndOpenQuestions>
   <SourceDigest>
     <Source>docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html — local codebase and integration audit, 92 health score, 100 percent coverage gate, secret hygiene, nested git boundary, and provenance follow-up.</Source>
-    <Source>CHANGELOG.html — public changelog for cost controls, Go-native TripCode path, deployment posture, audit report, version 2.4 packet update, and Track 2 runtime-hardening deployment proof.</Source>
+    <Source>CHANGELOG.html — public changelog for cost controls, Go-native TripCode path, deployment posture, audit report, version 2.5 packet update, and Track 2 runtime-hardening rerun proof.</Source>
     <Source>scripts/judge-demo.sh — judge demo command path for TripCode resolve, follow-up memory, and usage ledger.</Source>
     <Source>Go tests and coverage gate — make check, GOWORK=off go test ./..., total coverage 100.0 percent, and go vet clean at audit time.</Source>
     <Source>HUT proof TripCode — TF-SUB-9DA70A7F98 as the live demonstration TripCode for article-to-River-to-evidence continuity.</Source>
@@ -246,6 +257,7 @@
     <Version number="2.2" date="2026-06-08">Added official Gemini Enterprise Agent Platform runtime tracing, logging, and monitoring references to anchor the Optimize track in concrete Google Cloud observability surfaces.</Version>
     <Version number="2.3" date="2026-06-08">Recorded Track 2 runtime hardening: runtime telemetry, structured request logs, configurable rate limits, configurable TripCode memory backend disclosure, Cloud Run guardrail defaults, and 100.0 percent Go coverage.</Version>
     <Version number="2.4" date="2026-06-09">Recorded deployed Track 2 runtime-hardening validation on Cloud Run revision deltasignal-ai-agent-00009-c7s, including /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, spend report, and proof artifact.</Version>
+    <Version number="2.5" date="2026-06-09">Recorded repeat deployed Track 2 validation run 20260609T033143Z-track2-rerun-validation with documented request/response artifacts, proof HTML, sha256 manifest, structured logs, spend report, and redacted public-guide excerpts.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -298,7 +310,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '2.4';
+    const version = '2.5';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],

@@ -1,0 +1,6 @@
+{
+  "method": "POST",
+  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/v1/brief",
+  "headers": {"Content-Type":"application/json","X-Demo-Key":"[redacted]"},
+  "body": {"issuer":"MSTR","question":"What issuer stress or opportunity should an analyst investigate next?"}
+}

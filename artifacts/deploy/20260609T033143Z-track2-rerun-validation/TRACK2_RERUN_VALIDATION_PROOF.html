@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Track 2 Rerun Validation Proof</title>
+  <style>
+    html { background:#05070b; color:#fff8ef; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.5; }
+    body { margin:0; }
+    main { max-width:1120px; margin:0 auto; padding:32px 16px 64px; }
+    section { border:1px solid rgba(255,255,255,.14); background:rgba(16,18,25,.88); border-radius:10px; padding:20px; margin:14px 0; }
+    h1 { font-size:clamp(34px,5vw,64px); line-height:1; margin:0 0 12px; letter-spacing:0; }
+    h2 { margin:0 0 10px; color:#ffb743; letter-spacing:0; }
+    p, li { color:rgba(255,248,239,.75); }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+    .card { border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); border-radius:8px; padding:14px; }
+    .card b { display:block; margin-bottom:6px; color:#fff8ef; }
+    code { color:#72d9ff; background:rgba(114,217,255,.09); border:1px solid rgba(114,217,255,.18); border-radius:5px; padding:1px 5px; }
+    pre { white-space:pre-wrap; max-height:420px; overflow:auto; color:#e9ddc3; font:12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    @media(max-width:900px){ .grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<script id="strategix-track2-rerun-proof-contract" type="application/xml"><StrategiXVisualSpec version="1.0" status="validated" generated="2026-06-09" artifact="20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Track 2 Rerun Validation Proof</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <RunId>20260609T033143Z-track2-rerun-validation</RunId>
+    <ServiceUrl>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</ServiceUrl>
+    <Phase>Track 2 Optimize</Phase>
+  </CanonicalArtifact>
+  <Objective>Repeat the deployed Track 2 validation and save request/response evidence showing evidence fidelity, runtime telemetry, live MCP TripCode resolution, session memory, usage reporting, and structured logs.</Objective>
+  <ValidationSummary>
+    <Health ok="true" track_2_status="optimize-runtime-hardening" />
+    <Brief mode="vertex-ai-gemini" evidence_fidelity_status="provenance-carried" has_runtime="true" has_evidence_line="true" />
+    <Resolve mode="live-mcp-tripcode-gemini" has_execution_trace="true" has_agent_context="true" has_research_packet="true" has_gemini_summary="true" has_boundaries="true" has_usage="true" has_runtime="true" />
+    <SessionFollowup mode="session-memory" memory_turns="1" has_runtime="true" />
+    <Usage source="local-estimate" spent_usd="0.07" remaining_usd="499.93" official_billing_available="false" />
+  </ValidationSummary>
+  <AgentRole>The Google Cloud agent route orchestrates the runtime workflow: validates the request, chooses the TripCode/River workflow, calls the MCP resolver, writes session memory, invokes Gemini synthesis when enabled, appends boundaries, records usage, and exposes runtime telemetry.</AgentRole>
+  <MCPRole>The ATLAS-7 MCP service is the external evidence and resolver boundary. It resolves the TripCode into article memory, River context, filing evidence references, caveats, thesis map, and provenance fields.</MCPRole>
+  <EvidenceFiles>
+    <File>00-run-context.json</File>
+    <File>01-health-request.json</File>
+    <File>01-health-response.json</File>
+    <File>02-brief-request.json</File>
+    <File>02-brief-response.json</File>
+    <File>03-resolve-request.json</File>
+    <File>03-resolve-response.json</File>
+    <File>04-session-followup-request.txt</File>
+    <File>04-session-followup-response.json</File>
+    <File>05-usage-request.json</File>
+    <File>05-usage-response.json</File>
+    <File>06-track2-rerun-summary.json</File>
+    <File>07-cloud-run-structured-logs.json</File>
+    <File>08-spend-report.txt</File>
+    <File>09-artifact-manifest.json</File>
+  </EvidenceFiles>
+  <Boundaries>
+    <Boundary>Request files redact X-Demo-Key values.</Boundary>
+    <Boundary>Public guide excerpts are redacted in saved response artifacts while URL, status, byte count, and sha256 remain preserved.</Boundary>
+    <Boundary>Usage is local-estimate telemetry. Official Google Cloud Billing spend requires Billing export or console access.</Boundary>
+    <Boundary>Outputs are diligence triage, not investment advice.</Boundary>
+  </Boundaries>
+</StrategiXVisualSpec></script>
+<main>
+  <section>
+    <h1>Track 2 rerun validation passed.</h1>
+    <p>Run <code>20260609T033143Z-track2-rerun-validation</code> repeats the deployed Track 2 Optimize proof against <code>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</code>. It saves request/response evidence, response headers, structured logs, spend report, and a sha256 manifest.</p>
+  </section>
+  <section>
+    <h2>Result Snapshot</h2>
+    <div class="grid">
+      <div class="card"><b>Health</b><code>optimize-runtime-hardening</code></div>
+      <div class="card"><b>Brief</b><code>vertex-ai-gemini</code><p>Evidence fidelity: <code>provenance-carried</code></p></div>
+      <div class="card"><b>Resolve</b><code>live-mcp-tripcode-gemini</code><p>Trace, context, packet, Gemini summary, boundaries, usage, runtime.</p></div>
+      <div class="card"><b>Usage</b><code>$0.07 spent</code><p><code>$499.93</code> remaining, local estimate.</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>Step-By-Step Evidence</h2>
+    <ol>
+      <li><strong>Health:</strong> <code>GET /health</code> confirms Track 2 runtime-hardening status, runtime telemetry keys, rate-limit enablement, and memory backend.</li>
+      <li><strong>Brief:</strong> <code>POST /v1/brief</code> confirms Gemini mode, evidence_fidelity, runtime telemetry, rate-limit snapshot, memory disclosure, and the visible evidence-fidelity line.</li>
+      <li><strong>Resolve:</strong> <code>GET /resolve</code> confirms the live MCP TripCode path, execution_trace, agent_context.sources, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</li>
+      <li><strong>Follow-up:</strong> <code>POST /resolve?session_id=...</code> confirms session-memory mode and prior HUT River continuity.</li>
+      <li><strong>Usage:</strong> <code>GET /v1/usage</code> confirms local-estimate spend and remaining budget.</li>
+      <li><strong>Logs:</strong> Cloud Run structured logs are saved for request completion evidence.</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Machine Summary</h2>
+    <pre>{
+  "run_id": "20260609T033143Z-track2-rerun-validation",
+  "service_url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+  "health_ok": true,
+  "track_2_status": "optimize-runtime-hardening",
+  "health_runtime_keys": [
+    "duration_ms",
+    "method",
+    "observability",
+    "request_id",
+    "route",
+    "runtime",
+    "started_at",
+    "trace_id"
+  ],
+  "health_optimize": {
+    "evidence_fidelity": "implemented",
+    "memory_backend": "memory",
+    "observability": "runtime telemetry, request logs, request ids, trace ids",
+    "rate_limits": true
+  },
+  "brief_mode": "vertex-ai-gemini",
+  "brief_evidence_fidelity_status": "provenance-carried",
+  "brief_has_runtime": true,
+  "brief_rate_limit": {
+    "enabled": true,
+    "allowed": true,
+    "limit": 30,
+    "remaining": 29,
+    "window_seconds": 60,
+    "key_scope": "demo-key"
+  },
+  "brief_memory": {
+    "backend": "memory",
+    "durable": false,
+    "entry_limit": 20
+  },
+  "brief_has_evidence_line": true,
+  "resolve_mode": "live-mcp-tripcode-gemini",
+  "resolve_has_execution_trace": true,
+  "resolve_has_agent_context": true,
+  "resolve_has_research_packet": true,
+  "resolve_has_gemini_summary": true,
+  "resolve_has_boundaries": true,
+  "resolve_has_usage": true,
+  "resolve_has_runtime": true,
+  "resolve_memory_available": true,
+  "followup_mode": "session-memory",
+  "followup_has_runtime": true,
+  "followup_memory_turns": 1,
+  "usage_enabled": true,
+  "usage_spent": 0.07,
+  "usage_remaining": 499.93,
+  "official_billing_available": false
+}</pre>
+  </section>
+  <section>
+    <h2>Artifact Manifest</h2>
+    <pre>{
+  "generated_at": "2026-06-09T03:32:58Z",
+  "artifact_count": 21,
+  "artifacts": [
+    {
+      "file": "00-run-context.json",
+      "sha256": "d8f76db9b98d8112408a1f72648202761f7ad835d1efbf3dd3931675f7449c60",
+      "bytes": 697
+    },
+    {
+      "file": "01-health-headers.txt",
+      "sha256": "68c75811d074581f80c5d9eb2a6e95513f477f48cf22ceb7e910b1be5b5298e7",
+      "bytes": 248
+    },
+    {
+      "file": "01-health-request.json",
+      "sha256": "92cb9b51f3ccdc8b0a710a21742a7b2c141d0bf7a32bebe33b348f7b61d4acd5",
+      "bytes": 99
+    },
+    {
+      "file": "01-health-response.json",
+      "sha256": "f95b0ce9b266c0d69ad81ddf5fa71c0c9818058ac4efed70ce8a5013443b4012",
+      "bytes": 648
+    },
+    {
+      "file": "02-brief-headers.txt",
+      "sha256": "914c0b32d0710114e569cceecb2fd759eced11a5f430909336f25b311f082be1",
+      "bytes": 248
+    },
+    {
+      "file": "02-brief-request.json",
+      "sha256": "4aa210c8eba752fe0aa0adff2c789a6661f3e949b6b882305e8c134fdf6f07e4",
+      "bytes": 285
+    },
+    {
+      "file": "02-brief-response.json",
+      "sha256": "1451f41679c1faf1f53d9714cd3e92ba5e99accf7d164b93f70c8aa2d6313944",
+      "bytes": 13359
+    },
+    {
+      "file": "03-resolve-headers.txt",
+      "sha256": "c894533ac95dcbcd614d5fedaec36b4e78558d039dd9314f14c35e405e9c90a4",
+      "bytes": 248
+    },
+    {
+      "file": "03-resolve-request.json",
+      "sha256": "2b056cbb89efb7e7df9901d3087114a79ea9d00ebd3f45200197eb8eb0884128",
+      "bytes": 369
+    },
+    {
+      "file": "03-resolve-response.json",
+      "sha256": "c2221dc2c734c7b3418bf1049bec79b589b58657173ba97e8adee7906d380e1f",
+      "bytes": 61883
+    },
+    {
+      "file": "04-session-followup-headers.txt",
+      "sha256": "760245114c8f5509de17564f332c3b978c484f59aa5409839f79d85fd87f0458",
+      "bytes": 248
+    },
+    {
+      "file": "04-session-followup-request.txt",
+      "sha256": "063de99918d13d2cd762da87786a5f72d9293bbc1d28fb314423dc86ff796fde",
+      "bytes": 284
+    },
+    {
+      "file": "04-session-followup-response.json",
+      "sha256": "46843c8ca880b70b3cf7369f782e1c73d3de28c724d3834f2c548453dfccd8bf",
+      "bytes": 5211
+    },
+    {
+      "file": "05-usage-headers.txt",
+      "sha256": "0673ec4b6291c177f75097fb35f75ad7d700dbf48e2f9da50589217b8ceece01",
+      "bytes": 326
+    },
+    {
+      "file": "05-usage-request.json",
+      "sha256": "9e1c04bf9abe69f9b330cbdea7de372e6da1b0455bb80fd96ee142b9927befef",
+      "bytes": 125
+    },
+    {
+      "file": "05-usage-response.json",
+      "sha256": "5572da219e8487c30ae7ed2fecb25c887b2017e4eb89de4059b8f0f586ab2c34",
+      "bytes": 622
+    },
+    {
+      "file": "06-track2-rerun-summary.json",
+      "sha256": "f09dcf49e4eb216a48dbcd3f09915701580a332810ba4a70eda11f46eafa7549",
+      "bytes": 1531
+    },
+    {
+      "file": "07-cloud-run-structured-logs.json",
+      "sha256": "e7372631cd168cd17579abb0dd6e777579ffb966348310e10e2277f13dd29e8a",
+      "bytes": 7842
+    },
+    {
+      "file": "08-spend-report.txt",
+      "sha256": "c0c77003bffd0ccac7dbc82a49aaaa3332b016c948307764955dac6614414638",
+      "bytes": 960
+    },
+    {
+      "file": "run-id.txt",
+      "sha256": "61aa23444249fd53af4455bef54e7da782a155d24c917c4ba2cdf77652c3d8e2",
+      "bytes": 41
+    },
+    {
+      "file": "service-url.txt",
+      "sha256": "3f008496cb39cacbaa1a9d48b203bc7b83f5d81410332b21b58054ae5aa948ea",
+      "bytes": 53
+    }
+  ]
+}</pre>
+  </section>
+</main>
+</body>
+</html>

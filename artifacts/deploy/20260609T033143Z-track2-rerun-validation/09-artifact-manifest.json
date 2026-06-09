@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-06-09T03:37:15Z",
+  "scope": "raw request/response evidence files; proof HTML and manifest excluded to avoid self-referential hash drift",
+  "artifact_count": 21,
+  "artifacts": [
+    {
+      "file": "00-run-context.json",
+      "sha256": "d8f76db9b98d8112408a1f72648202761f7ad835d1efbf3dd3931675f7449c60",
+      "bytes": 697
+    },
+    {
+      "file": "01-health-headers.txt",
+      "sha256": "68c75811d074581f80c5d9eb2a6e95513f477f48cf22ceb7e910b1be5b5298e7",
+      "bytes": 248
+    },
+    {
+      "file": "01-health-request.json",
+      "sha256": "92cb9b51f3ccdc8b0a710a21742a7b2c141d0bf7a32bebe33b348f7b61d4acd5",
+      "bytes": 99
+    },
+    {
+      "file": "01-health-response.json",
+      "sha256": "f95b0ce9b266c0d69ad81ddf5fa71c0c9818058ac4efed70ce8a5013443b4012",
+      "bytes": 648
+    },
+    {
+      "file": "02-brief-headers.txt",
+      "sha256": "914c0b32d0710114e569cceecb2fd759eced11a5f430909336f25b311f082be1",
+      "bytes": 248
+    },
+    {
+      "file": "02-brief-request.json",
+      "sha256": "4aa210c8eba752fe0aa0adff2c789a6661f3e949b6b882305e8c134fdf6f07e4",
+      "bytes": 285
+    },
+    {
+      "file": "02-brief-response.json",
+      "sha256": "1451f41679c1faf1f53d9714cd3e92ba5e99accf7d164b93f70c8aa2d6313944",
+      "bytes": 13359
+    },
+    {
+      "file": "03-resolve-headers.txt",
+      "sha256": "c894533ac95dcbcd614d5fedaec36b4e78558d039dd9314f14c35e405e9c90a4",
+      "bytes": 248
+    },
+    {
+      "file": "03-resolve-request.json",
+      "sha256": "2b056cbb89efb7e7df9901d3087114a79ea9d00ebd3f45200197eb8eb0884128",
+      "bytes": 369
+    },
+    {
+      "file": "03-resolve-response.json",
+      "sha256": "c2221dc2c734c7b3418bf1049bec79b589b58657173ba97e8adee7906d380e1f",
+      "bytes": 61883
+    },
+    {
+      "file": "04-session-followup-headers.txt",
+      "sha256": "760245114c8f5509de17564f332c3b978c484f59aa5409839f79d85fd87f0458",
+      "bytes": 248
+    },
+    {
+      "file": "04-session-followup-request.txt",
+      "sha256": "063de99918d13d2cd762da87786a5f72d9293bbc1d28fb314423dc86ff796fde",
+      "bytes": 284
+    },
+    {
+      "file": "04-session-followup-response.json",
+      "sha256": "46843c8ca880b70b3cf7369f782e1c73d3de28c724d3834f2c548453dfccd8bf",
+      "bytes": 5211
+    },
+    {
+      "file": "05-usage-headers.txt",
+      "sha256": "0673ec4b6291c177f75097fb35f75ad7d700dbf48e2f9da50589217b8ceece01",
+      "bytes": 326
+    },
+    {
+      "file": "05-usage-request.json",
+      "sha256": "9e1c04bf9abe69f9b330cbdea7de372e6da1b0455bb80fd96ee142b9927befef",
+      "bytes": 125
+    },
+    {
+      "file": "05-usage-response.json",
+      "sha256": "5572da219e8487c30ae7ed2fecb25c887b2017e4eb89de4059b8f0f586ab2c34",
+      "bytes": 622
+    },
+    {
+      "file": "06-track2-rerun-summary.json",
+      "sha256": "f09dcf49e4eb216a48dbcd3f09915701580a332810ba4a70eda11f46eafa7549",
+      "bytes": 1531
+    },
+    {
+      "file": "07-cloud-run-structured-logs.json",
+      "sha256": "e7372631cd168cd17579abb0dd6e777579ffb966348310e10e2277f13dd29e8a",
+      "bytes": 7842
+    },
+    {
+      "file": "08-spend-report.txt",
+      "sha256": "c0c77003bffd0ccac7dbc82a49aaaa3332b016c948307764955dac6614414638",
+      "bytes": 960
+    },
+    {
+      "file": "run-id.txt",
+      "sha256": "61aa23444249fd53af4455bef54e7da782a155d24c917c4ba2cdf77652c3d8e2",
+      "bytes": 41
+    },
+    {
+      "file": "service-url.txt",
+      "sha256": "3f008496cb39cacbaa1a9d48b203bc7b83f5d81410332b21b58054ae5aa948ea",
+      "bytes": 53
+    }
+  ]
+}

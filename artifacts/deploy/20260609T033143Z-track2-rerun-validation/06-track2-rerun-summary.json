@@ -1,0 +1,55 @@
+{
+  "run_id": "20260609T033143Z-track2-rerun-validation",
+  "service_url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+  "health_ok": true,
+  "track_2_status": "optimize-runtime-hardening",
+  "health_runtime_keys": [
+    "duration_ms",
+    "method",
+    "observability",
+    "request_id",
+    "route",
+    "runtime",
+    "started_at",
+    "trace_id"
+  ],
+  "health_optimize": {
+    "evidence_fidelity": "implemented",
+    "memory_backend": "memory",
+    "observability": "runtime telemetry, request logs, request ids, trace ids",
+    "rate_limits": true
+  },
+  "brief_mode": "vertex-ai-gemini",
+  "brief_evidence_fidelity_status": "provenance-carried",
+  "brief_has_runtime": true,
+  "brief_rate_limit": {
+    "enabled": true,
+    "allowed": true,
+    "limit": 30,
+    "remaining": 29,
+    "window_seconds": 60,
+    "key_scope": "demo-key"
+  },
+  "brief_memory": {
+    "backend": "memory",
+    "durable": false,
+    "entry_limit": 20
+  },
+  "brief_has_evidence_line": true,
+  "resolve_mode": "live-mcp-tripcode-gemini",
+  "resolve_has_execution_trace": true,
+  "resolve_has_agent_context": true,
+  "resolve_has_research_packet": true,
+  "resolve_has_gemini_summary": true,
+  "resolve_has_boundaries": true,
+  "resolve_has_usage": true,
+  "resolve_has_runtime": true,
+  "resolve_memory_available": true,
+  "followup_mode": "session-memory",
+  "followup_has_runtime": true,
+  "followup_memory_turns": 1,
+  "usage_enabled": true,
+  "usage_spent": 0.07,
+  "usage_remaining": 499.93,
+  "official_billing_available": false
+}

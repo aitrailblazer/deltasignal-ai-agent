@@ -1,0 +1,9 @@
+{
+  "run_id": "20260609T033143Z-track2-rerun-validation",
+  "service_url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+  "project": "startup-ai-deltasignal",
+  "session_id": "track2-rerun-20260609T033143Z-track2-rerun-validation",
+  "purpose": "Repeat Track 2 runtime-hardening validation and save request/response evidence without API-key values.",
+  "phase": "Track 2 Optimize",
+  "build_claim": "Evidence fidelity: harden brief and synthesis paths by carrying richer ATLAS-7 provenance, source dates, quality flags, caveats, stale markers, evidence hashes, payload-mode disclosures, runtime telemetry, rate-limit state, and memory backend disclosure through user-facing results."
+}

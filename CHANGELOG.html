@@ -20,7 +20,7 @@
   <changelog-page></changelog-page>
 
   <script id="strategix-changelog-contract" type="application/xml">
-<StrategiXVisualSpec version="1.5" status="track-2-runtime-hardening-deployed" generated="2026-06-09" artifact="CHANGELOG.html">
+<StrategiXVisualSpec version="1.6" status="track-2-rerun-validation-recorded" generated="2026-06-09" artifact="CHANGELOG.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -300,6 +300,15 @@
       <Detail>The second-turn /resolve request returned session-memory mode and preserved prior HUT River context.</Detail>
       <Detail>/v1/usage and scripts/report-spend.sh recorded local-estimate spend of 0.07 USD and 499.93 USD remaining from the 500 USD challenge budget, with official Billing export marked unavailable.</Detail>
       <Detail>Saved the proof artifact at artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.</Detail>
+    </Entry>
+    <Entry date="2026-06-09" type="validation">
+      <Title>Repeated Track 2 validation with documented artifact bundle</Title>
+      <Detail>Ran a fresh live validation against https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and saved the run under artifacts/deploy/20260609T033143Z-track2-rerun-validation.</Detail>
+      <Detail>Captured public GET /health, protected POST /v1/brief, protected GET /resolve, protected POST /resolve session follow-up, protected GET /v1/usage, Cloud Run structured logs, and scripts/report-spend.sh output.</Detail>
+      <Detail>The repeat /resolve response confirmed live-mcp-tripcode-gemini mode with execution_trace, agent_context.sources, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</Detail>
+      <Detail>Added TRACK2_RERUN_VALIDATION_PROOF.html as the self-contained StrategiX proof file and 09-artifact-manifest.json with sha256 hashes and byte counts for the saved evidence files.</Detail>
+      <Detail>Redacted public guide excerpts in saved response artifacts while preserving URL, HTTP status, byte count, and sha256 so the repository evidence remains public-submission clean.</Detail>
+      <Detail>Updated the official submission packet to version 2.5 with the rerun validation and artifact links.</Detail>
     </Entry>
   </Entries>
   <PublicLinks>
@@ -717,6 +726,19 @@
           'The second-turn /resolve request returned session-memory mode and preserved prior HUT River context.',
           '/v1/usage and scripts/report-spend.sh recorded local-estimate spend of 0.07 USD and 499.93 USD remaining from the 500 USD challenge budget, with official Billing export marked unavailable.',
           'Saved the proof artifact at artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Validation',
+        title: 'Repeated Track 2 validation with documented artifact bundle',
+        details: [
+          'Ran a fresh live validation against https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app and saved the run under artifacts/deploy/20260609T033143Z-track2-rerun-validation.',
+          'Captured public GET /health, protected POST /v1/brief, protected GET /resolve, protected POST /resolve session follow-up, protected GET /v1/usage, Cloud Run structured logs, and scripts/report-spend.sh output.',
+          'The repeat /resolve response confirmed live-mcp-tripcode-gemini mode with execution_trace, agent_context.sources, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.',
+          'Added TRACK2_RERUN_VALIDATION_PROOF.html as the self-contained StrategiX proof file and 09-artifact-manifest.json with sha256 hashes and byte counts for the saved evidence files.',
+          'Redacted public guide excerpts in saved response artifacts while preserving URL, HTTP status, byte count, and sha256 so the repository evidence remains public-submission clean.',
+          'Updated the official submission packet to version 2.5 with the rerun validation and artifact links.'
         ]
       }
     ];
