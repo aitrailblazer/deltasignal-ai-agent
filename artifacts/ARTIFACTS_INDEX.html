@@ -119,10 +119,10 @@
           <h2>Current Development Status</h2>
           <div class="meta">
             <div class="metric"><b>Track 1 Build</b><span>Complete and verified</span></div>
-            <div class="metric"><b>Track 2 Optimize</b><span>Implemented, rerun validated</span></div>
+            <div class="metric"><b>Track 2 Optimize</b><span>Implemented, rerun validated, 100% coverage gate</span></div>
             <div class="metric"><b>Track 3 Path</b><span>Architecture path documented, not current build scope</span></div>
           </div>
-          <p>Latest proof: <a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Track 2 rerun validation proof</a>. This is the current best evidence bundle for the deployed service.</p>
+          <p>Latest proof: <a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html">Track 2 coverage gate proof</a>. Deployed runtime validation remains available in the current Track 2 folder.</p>
         </article>
 
         <article class="card phase">
@@ -179,6 +179,28 @@
           </div>
         </article>
 
+        <article class="card phase optimize full">
+          <div>
+            <span class="label optimize">Track 2</span>
+            <p class="status">Optimize phase<br>Testing and evaluation</p>
+          </div>
+          <div>
+            <h2>Coverage Gate: 100% Statement Coverage</h2>
+            <p>This proof records the local quality gate for the Go agent: tests, coverage profile, package coverage function report, total coverage, and go vet. It is not a substitute for broader scenario simulation, but it is the enforced code-quality baseline.</p>
+            <div class="meta">
+              <div class="metric"><b>Run ID</b><span>20260609T080753Z-track2-coverage-gate</span></div>
+              <div class="metric"><b>Status</b><span>Passed</span></div>
+              <div class="metric"><b>Coverage</b><span>100.0% statements</span></div>
+            </div>
+            <p><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html">Open the self-contained Track 2 coverage proof</a></p>
+            <ul>
+              <li><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/01-make-check.log">Open make check log</a></li>
+              <li><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/03-coverage-functions.txt">Open coverage function report</a></li>
+              <li><a href="./02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/04-coverage-summary.json">Open coverage summary JSON</a></li>
+            </ul>
+          </div>
+        </article>
+
         <article class="card phase deploy">
           <div>
             <span class="label deploy">Deploy</span>
@@ -224,9 +246,11 @@
         <article class="card">
           <h2>Folder Labels</h2>
           <ul>
-            <li><code>judge-demo/</code>: Track 1 Build proof.</li>
-            <li><code>optimize-evidence-fidelity/</code>: Track 2 evidence-fidelity proof.</li>
-            <li><code>deploy/</code>: deployed Cloud Run validation and runtime-hardening evidence.</li>
+            <li><code>00_TRACK_1_BUILD__WORKING_DEMO/</code>: Track 1 Build proof.</li>
+            <li><code>01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/</code>: Track 2 evidence-fidelity proof.</li>
+            <li><code>02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/</code>: current Track 2 runtime and coverage evidence.</li>
+            <li><code>03_DEPLOYMENT_HISTORY__CLOUD_RUN/</code>: earlier Cloud Run deployment support evidence.</li>
+            <li><code>04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/</code>: future agent-ecosystem path documentation.</li>
           </ul>
         </article>
 
@@ -248,31 +272,32 @@
   </main>
 
   <script id="strategix-artifacts-index-contract" type="application/xml">
-<StrategiXVisualSpec version="1.1" status="track-phase-artifact-map" generated="2026-06-09" artifact="artifacts/ARTIFACTS_INDEX.html">
+<StrategiXVisualSpec version="1.2" status="track-phase-artifact-map-with-coverage-gate" generated="2026-06-09" artifact="artifacts/ARTIFACTS_INDEX.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Artifact Index</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
-    <LatestRun>20260609T033143Z-track2-rerun-validation</LatestRun>
-    <LatestProof>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</LatestProof>
+    <LatestRun>20260609T080753Z-track2-coverage-gate</LatestRun>
+    <LatestProof>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html</LatestProof>
   </CanonicalArtifact>
   <Purpose>Make nested validation artifacts visible from the root artifacts directory and label each bundle by competition track, development phase, and proof status.</Purpose>
   <DevelopmentStatus>
     <Track name="Build" status="complete-and-verified">Working demo: TripCode resolves article memory, reconstructs HUT River, preserves session context, and returns a judge-ready diligence packet.</Track>
-    <Track name="Optimize" status="implemented-rerun-validated">Evidence fidelity and runtime hardening: richer provenance propagation, rate limits, runtime telemetry, structured logs, memory disclosure, and spend reporting.</Track>
+    <Track name="Optimize" status="implemented-rerun-validated-coverage-gated">Evidence fidelity and runtime hardening: richer provenance propagation, rate limits, runtime telemetry, structured logs, memory disclosure, spend reporting, and 100.0 percent statement coverage.</Track>
     <Track name="Path" status="architecture-documented">Agent ecosystem expansion path documented in the official submission packet; not a separate runtime proof in the current artifact set.</Track>
   </DevelopmentStatus>
   <ArtifactMap>
     <Bundle track="Build" phase="working-demo" status="verified" path="artifacts/00_TRACK_1_BUILD__WORKING_DEMO/20260608T093801Z-verified/BUILD_PHASE_EXPLANATION.html">Track 1 Build proof bundle.</Bundle>
     <Bundle track="Optimize" phase="evidence-fidelity" status="implemented" path="artifacts/01_TRACK_2_OPTIMIZE__EVIDENCE_FIDELITY/20260608T185801Z-optimize-evidence-fidelity/OPTIMIZE_EVIDENCE_FIDELITY_PROOF.html">Track 2 evidence-fidelity proof bundle.</Bundle>
     <Bundle track="Optimize" phase="runtime-hardening" status="rerun-validated" path="artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Latest deployed Track 2 runtime proof bundle.</Bundle>
+    <Bundle track="Optimize" phase="testing-evaluation" status="coverage-gate-passed" path="artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html">Track 2 local testing gate proof: make check, 100.0 percent statement coverage, and go vet clean.</Bundle>
     <Bundle track="Path" phase="agent-ecosystem-expansion" status="documented" path="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Future interoperability architecture path.</Bundle>
   </ArtifactMap>
   <LatestValidation>
-    <RunId>20260609T033143Z-track2-rerun-validation</RunId>
-    <ServiceUrl>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</ServiceUrl>
-    <ProofFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</ProofFile>
-    <SummaryFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/06-track2-rerun-summary.json</SummaryFile>
-    <ManifestFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json</ManifestFile>
+    <RunId>20260609T080753Z-track2-coverage-gate</RunId>
+    <ProofFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html</ProofFile>
+    <SummaryFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/04-coverage-summary.json</SummaryFile>
+    <LogFile>artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/01-make-check.log</LogFile>
+    <Boundary>Latest testing proof is local code coverage and vet. Latest deployed runtime proof remains 20260609T033143Z-track2-rerun-validation.</Boundary>
   </LatestValidation>
 </StrategiXVisualSpec>
   </script>
