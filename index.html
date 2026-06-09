@@ -24,7 +24,7 @@
   <delta-agent-landing></delta-agent-landing>
 
   <script id="strategix-landing-contract" type="application/xml">
-<StrategiXVisualSpec version="1.4" status="public-competition-landing" generated="2026-06-08" artifact="index.html">
+<StrategiXVisualSpec version="1.5" status="public-competition-landing-track2-validated" generated="2026-06-09" artifact="index.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Landing Page</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -62,21 +62,22 @@
     <Fit>Autonomous agent for a concrete B2B business workflow.</Fit>
     <Fit>Google Cloud-native runtime through a validated Cloud Run service, with a future Agent Runtime path.</Fit>
     <Fit>Gemini synthesis through Vertex AI is verified in the deployed HUT TripCode flow.</Fit>
-    <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval, with explicit fallback if the public MCP composite tool is unavailable.</Fit>
+    <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval, with deterministic fallback only as a resilience path.</Fit>
     <Fit>TripCode resolver layer makes newsletter research executable by agents rather than leaving it as passive archive content.</Fit>
     <Fit>The submitted agent performs the runtime research workflow autonomously after the user provides one TripCode or issuer prompt.</Fit>
     <Fit>Deterministic demo mode so judges can run and inspect the workflow without private data access.</Fit>
   </CompetitionFit>
   <TrackFit>
     <Track name="Track 1 Build">Working Cloud Run demo: resolve TripCode -> reconstruct River -> compare to evidence -> preserve memory -> show cost.</Track>
-    <Track name="Track 2 Optimize">Simulation, observability, grounding, and memory can harden the already working HUT flow.</Track>
+    <Track name="Track 2 Optimize">Evidence fidelity and runtime hardening are deployed: provenance-carrying brief responses, runtime telemetry, structured logs, protected-route rate limits, memory backend disclosure, and 100.0 percent coverage.</Track>
     <Track name="Track 3 Path">A2A coordination can later connect the issuer diligence agent to enterprise compliance, portfolio, or data-room agents.</Track>
   </TrackFit>
   <CurrentReadiness>
     <Ready>The Cloud Run service is live at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app with public health and protected judge routes.</Ready>
-    <Ready>The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River fixture, produces a Gemini summary, preserves session memory, and updates the usage ledger.</Ready>
-    <Ready>The public ATLAS-7 MCP endpoint exposes the composite TripCode resolver; the response preserves structured research_packet data and keeps deterministic HUT fallback for resilience.</Ready>
-    <Next>Record the three-minute judge demo, then promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint after submission.</Next>
+    <Ready>The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River research packet, produces a Gemini summary, preserves session memory, and updates the usage ledger.</Ready>
+    <Ready>The public ATLAS-7 MCP endpoint exposes the composite TripCode resolver; the response preserves structured research_packet data and keeps deterministic HUT fallback for resilience only.</Ready>
+    <Ready>Track 2 runtime-hardening validation is saved at artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.</Ready>
+    <Next>Record the three-minute judge demo using the deployed Track 2 service and saved request/response evidence.</Next>
   </CurrentReadiness>
   <CostDiscipline>
     <Budget>Google Cloud startup credits are limited to 500 USD for this challenge window.</Budget>
@@ -169,7 +170,7 @@
     ];
     const trackFit = [
       ['Track 1 Build', 'Working Cloud Run demo: resolve TripCode -> reconstruct River -> compare to evidence -> preserve memory -> show cost.'],
-      ['Track 2 Optimize', 'Simulation, observability, grounding, and Memory Bank style continuity for River sessions.'],
+      ['Track 2 Optimize', 'Evidence fidelity and runtime hardening are deployed: provenance-carrying brief responses, runtime telemetry, structured logs, protected-route rate limits, memory backend disclosure, and 100.0 percent coverage.'],
       ['Track 3 Path', 'A2A-ready coordination with portfolio, compliance, data-room, or enterprise research agents.']
     ];
     const memoryLayer = [
@@ -186,9 +187,9 @@
     ];
     const readiness = [
       ['Validated service', 'The Cloud Run service is live at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app with public health and protected judge routes.'],
-      ['HUT proof path', 'The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River fixture, produces a Gemini summary, preserves session memory, and updates the usage ledger.'],
-      ['Live MCP boundary', 'The public ATLAS-7 MCP endpoint exposes the composite TripCode resolver; the response carries structured research_packet data and keeps deterministic HUT fallback for resilience.'],
-      ['Next hardening', 'Record the three-minute judge demo, then promote the composite TripCode resolver into the public ATLAS-7 MCP endpoint after submission.']
+      ['HUT proof path', 'The deployed judge script resolves TF-SUB-9DA70A7F98, returns the 10-node HUT River research packet, produces a Gemini summary, preserves session memory, and updates the usage ledger.'],
+      ['Live MCP boundary', 'The public ATLAS-7 MCP endpoint exposes the composite TripCode resolver; the response carries structured research_packet data and keeps deterministic HUT fallback for resilience only.'],
+      ['Track 2 proof', 'artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html records /health, /v1/brief, /resolve, session follow-up, /v1/usage, and structured log validation.']
     ];
     const costDiscipline = [
       ['$500 credit pool', 'Treat Google Cloud credits as scarce. Keep live Gemini and MCP tests intentional, bounded, and visible.'],
@@ -665,7 +666,7 @@
               <section>
                 <div class="section-head">
                   <h2>Challenge track fit.</h2>
-                  <p>The validated HUT TripCode flow is the Track 1 anchor. Track 2 hardening adds evaluation, traces, and reliability. Track 3 becomes the enterprise coordination path.</p>
+                  <p>The validated HUT TripCode flow is the Track 1 anchor. Track 2 evidence fidelity and runtime hardening are now deployed and verified. Track 3 becomes the enterprise coordination path.</p>
                 </div>
                 <div class="grid">
                   ${trackFit.map(([title, body]) => html`

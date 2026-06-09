@@ -31,8 +31,9 @@ func run() int {
 		Tools: ToolClientFromEnv(),
 	}
 	tripcodeResolver := TripCodeResolverFromEnv()
-	tripcodeMemory := agent.NewTripCodeMemoryStore(20)
+	tripcodeMemory := TripCodeMemoryFromEnv()
 	costTracker := CostTrackerFromEnv()
+	rateLimiter := RateLimiterFromEnv()
 	var tripcodeSynthesizer agent.TripCodeSynthesizer
 	if strings.EqualFold(os.Getenv("DELTASIGNAL_USE_GEMINI"), "true") {
 		gemini := agent.GeminiSynthesizer{Model: os.Getenv("GEMINI_MODEL")}
@@ -40,7 +41,7 @@ func run() int {
 		tripcodeSynthesizer = gemini
 	}
 
-	mux := newMux(logger, coordinator, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker)
+	mux := newMux(logger, coordinator, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rateLimiter)
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -60,74 +61,144 @@ func newMux(
 	tripcodeMemory *agent.TripCodeMemoryStore,
 	tripcodeSynthesizer agent.TripCodeSynthesizer,
 	costTracker *agent.CostTracker,
+	rateLimiter *RateLimiter,
 ) *http.ServeMux {
 	mux := http.NewServeMux()
 	healthHandler := func(w http.ResponseWriter, r *http.Request) {
+		rt := beginRequest(r, "/health")
 		writeJSON(w, http.StatusOK, map[string]any{
-			"ok":      true,
-			"service": "deltasignal-ai-agent",
-			"time":    time.Now().UTC(),
+			"ok":             true,
+			"service":        "deltasignal-ai-agent",
+			"time":           time.Now().UTC(),
+			"track_2_status": "optimize-runtime-hardening",
+			"runtime":        rt.Telemetry(nil, nil),
+			"optimize": map[string]any{
+				"evidence_fidelity": "implemented",
+				"observability":     "runtime telemetry, request logs, request ids, trace ids",
+				"rate_limits":       rateLimiter != nil && rateLimiter.enabled,
+				"memory_backend":    tripcodeMemory.Status("").Backend,
+			},
 		})
+		rt.Log(logger, http.StatusOK, "health")
 	}
 	mux.HandleFunc("GET /health", healthHandler)
 	mux.HandleFunc("GET /healthz", healthHandler)
 	mux.HandleFunc("POST /v1/brief", func(w http.ResponseWriter, r *http.Request) {
+		rt := beginRequest(r, "/v1/brief")
 		if !authorizedDemoRequest(r) {
 			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "missing or invalid demo key"})
+			rt.Log(logger, http.StatusUnauthorized, "unauthorized")
+			return
+		}
+		rate := rateLimiter.Allow(r)
+		writeRateLimitHeaders(w, rate)
+		if !rate.Allowed {
+			writeJSON(w, http.StatusTooManyRequests, map[string]any{"error": "rate limit exceeded", "rate_limit": rate})
+			rt.Log(logger, http.StatusTooManyRequests, "rate-limited")
 			return
 		}
 		var req agent.BriefRequest
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON request"})
+			rt.Log(logger, http.StatusBadRequest, "bad-json")
 			return
 		}
 		resp, err := coordinator.BuildBrief(r.Context(), req)
 		if err != nil {
 			logger.Error("build brief failed", "error", err)
 			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "failed to build brief"})
+			rt.Log(logger, http.StatusInternalServerError, "brief-error")
 			return
 		}
 		resp.Cost = costTracker.Record("brief")
+		memStatus := tripcodeMemory.Status("")
+		resp.Runtime = rt.Telemetry(&rate, &memStatus)
 		writeJSON(w, http.StatusOK, resp)
+		rt.Log(logger, http.StatusOK, resp.Mode)
 	})
 	mux.HandleFunc("POST /v1/tripcode", func(w http.ResponseWriter, r *http.Request) {
+		rt := beginRequest(r, "/v1/tripcode")
 		if !authorizedDemoRequest(r) {
 			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "missing or invalid demo key"})
+			rt.Log(logger, http.StatusUnauthorized, "unauthorized")
+			return
+		}
+		rate := rateLimiter.Allow(r)
+		writeRateLimitHeaders(w, rate)
+		if !rate.Allowed {
+			writeJSON(w, http.StatusTooManyRequests, map[string]any{"error": "rate limit exceeded", "rate_limit": rate})
+			rt.Log(logger, http.StatusTooManyRequests, "rate-limited")
 			return
 		}
 		var req agent.TripCodeResearchRequest
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON request"})
+			rt.Log(logger, http.StatusBadRequest, "bad-json")
 			return
 		}
-		writeTripCodeHTTPResult(w, resolveTripCodeHTTP(r.Context(), logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker))
+		result := resolveTripCodeHTTP(r.Context(), logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rt, &rate)
+		writeTripCodeHTTPResult(w, result)
+		rt.Log(logger, result.status, tripCodeResultMode(result.body))
 	})
 	mux.HandleFunc("GET /resolve", func(w http.ResponseWriter, r *http.Request) {
+		rt := beginRequest(r, "/resolve")
 		if !authorizedDemoRequest(r) {
 			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "missing or invalid demo key"})
+			rt.Log(logger, http.StatusUnauthorized, "unauthorized")
+			return
+		}
+		rate := rateLimiter.Allow(r)
+		writeRateLimitHeaders(w, rate)
+		if !rate.Allowed {
+			writeJSON(w, http.StatusTooManyRequests, map[string]any{"error": "rate limit exceeded", "rate_limit": rate})
+			rt.Log(logger, http.StatusTooManyRequests, "rate-limited")
 			return
 		}
 		req := tripCodeRequestFromQuery(r.URL.Query())
-		writeTripCodeHTTPResult(w, resolveTripCodeHTTP(r.Context(), logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker))
+		result := resolveTripCodeHTTP(r.Context(), logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rt, &rate)
+		writeTripCodeHTTPResult(w, result)
+		rt.Log(logger, result.status, tripCodeResultMode(result.body))
 	})
 	mux.HandleFunc("POST /resolve", func(w http.ResponseWriter, r *http.Request) {
+		rt := beginRequest(r, "/resolve")
 		if !authorizedDemoRequest(r) {
 			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "missing or invalid demo key"})
+			rt.Log(logger, http.StatusUnauthorized, "unauthorized")
+			return
+		}
+		rate := rateLimiter.Allow(r)
+		writeRateLimitHeaders(w, rate)
+		if !rate.Allowed {
+			writeJSON(w, http.StatusTooManyRequests, map[string]any{"error": "rate limit exceeded", "rate_limit": rate})
+			rt.Log(logger, http.StatusTooManyRequests, "rate-limited")
 			return
 		}
 		req, err := tripCodeRequestFromResolvePost(r)
 		if err != nil {
 			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid resolve request"})
+			rt.Log(logger, http.StatusBadRequest, "bad-request")
 			return
 		}
-		writeTripCodeHTTPResult(w, resolveTripCodeHTTP(r.Context(), logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker))
+		result := resolveTripCodeHTTP(r.Context(), logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rt, &rate)
+		writeTripCodeHTTPResult(w, result)
+		rt.Log(logger, result.status, tripCodeResultMode(result.body))
 	})
 	mux.HandleFunc("GET /v1/usage", func(w http.ResponseWriter, r *http.Request) {
+		rt := beginRequest(r, "/v1/usage")
 		if !authorizedDemoRequest(r) {
 			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "missing or invalid demo key"})
+			rt.Log(logger, http.StatusUnauthorized, "unauthorized")
+			return
+		}
+		rate := rateLimiter.Allow(r)
+		writeRateLimitHeaders(w, rate)
+		if !rate.Allowed {
+			writeJSON(w, http.StatusTooManyRequests, map[string]any{"error": "rate limit exceeded", "rate_limit": rate})
+			rt.Log(logger, http.StatusTooManyRequests, "rate-limited")
 			return
 		}
 		writeJSON(w, http.StatusOK, costTracker.Snapshot())
+		rt.Log(logger, http.StatusOK, "usage")
 	})
 	return mux
 }
@@ -145,6 +216,8 @@ func resolveTripCodeHTTP(
 	tripcodeMemory *agent.TripCodeMemoryStore,
 	tripcodeSynthesizer agent.TripCodeSynthesizer,
 	costTracker *agent.CostTracker,
+	rt requestRuntime,
+	rate *agent.RateLimitSnapshot,
 ) tripCodeHTTPResult {
 	if strings.TrimSpace(req.TripCode) == "" {
 		if strings.TrimSpace(req.SessionID) == "" {
@@ -157,10 +230,12 @@ func resolveTripCodeHTTP(
 		resp := agent.NewSessionMemoryResponse(req, snapshot)
 		resp.ExecutionTrace = []agent.ExecutionTraceStep{
 			traceStep(1, "judge-harness", "Submitted a session-memory follow-up request.", "session_id="+req.SessionID),
-			traceStep(2, "google-agent", "Loaded prior TripCode/River context from the in-memory session store.", "turns="+strconv.Itoa(snapshot.Turns)),
+			traceStep(2, "google-agent", "Loaded prior TripCode/River context from the configured session memory store.", "turns="+strconv.Itoa(snapshot.Turns)),
 			traceStep(3, "google-agent", "Returned the stateful follow-up packet without rerunning the TripCode resolver.", "mode=session-memory"),
 		}
 		resp.Cost = costTracker.Record("session-memory")
+		memStatus := tripcodeMemory.Status(req.SessionID)
+		resp.Runtime = rt.Telemetry(rate, &memStatus)
 		return tripCodeHTTPResult{status: http.StatusOK, body: resp}
 	}
 	if tripcodeResolver == nil {
@@ -209,11 +284,20 @@ func resolveTripCodeHTTP(
 	}
 	resp.Cost = costTracker.Record("tripcode")
 	resp.ExecutionTrace = append(resp.ExecutionTrace, traceStep(nextTraceOrder(resp.ExecutionTrace), "google-agent", "Recorded local-estimate Google credit usage for this request.", "request_kind=tripcode"))
+	memStatus := tripcodeMemory.Status(req.SessionID)
+	resp.Runtime = rt.Telemetry(rate, &memStatus)
 	return tripCodeHTTPResult{status: http.StatusOK, body: resp}
 }
 
 func writeTripCodeHTTPResult(w http.ResponseWriter, result tripCodeHTTPResult) {
 	writeJSON(w, result.status, result.body)
+}
+
+func tripCodeResultMode(body any) string {
+	if resp, ok := body.(agent.TripCodeResearchResponse); ok {
+		return resp.Mode
+	}
+	return ""
 }
 
 func tripCodeRequestFromResolvePost(r *http.Request) (agent.TripCodeResearchRequest, error) {
@@ -399,6 +483,16 @@ func TripCodeResolverFromEnv() agent.TripCodeResolver {
 		return agent.FallbackTripCodeResolver{Primary: live, Fallback: fallback}
 	}
 	return live
+}
+
+func TripCodeMemoryFromEnv() *agent.TripCodeMemoryStore {
+	store := agent.NewTripCodeMemoryStore(envInt("DELTASIGNAL_MEMORY_MAX_ENTRIES", 20))
+	if path := strings.TrimSpace(os.Getenv("DELTASIGNAL_MEMORY_FILE")); path != "" {
+		if err := store.EnableFilePersistence(path); err != nil {
+			_, _ = os.Stderr.WriteString("DeltaSignal memory persistence unavailable: " + err.Error() + "\n")
+		}
+	}
+	return store
 }
 
 func CostTrackerFromEnv() *agent.CostTracker {

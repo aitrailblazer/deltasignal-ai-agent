@@ -1,0 +1,1 @@
+{"run_id":"20260609T012327Z-track2-runtime-hardening","image":"us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening","project":"startup-ai-deltasignal","region":"us-central1","track":"Track 2 Optimize","purpose":"runtime telemetry, structured logs, rate limits, memory backend disclosure"}

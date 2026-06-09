@@ -26,7 +26,7 @@ var FetchDefaultAgentContext = func(ctx context.Context) (AgentContextSnapshot, 
 func LoadAgentContext(ctx context.Context, urls []string) (AgentContextSnapshot, error) {
 	snapshot := AgentContextSnapshot{
 		Enabled: true,
-		Purpose: "Public ATLAS-7 operating guides used by the cloud agent to select the TripCode/River/MCP evidence workflow without requiring local Codex or Claude Code.",
+		Purpose: "Public ATLAS-7 operating guides used by the cloud agent to select the TripCode/River/MCP evidence workflow inside the hosted runtime.",
 		Sources: make([]AgentContextSource, 0, len(urls)),
 	}
 	client := &http.Client{Timeout: 6 * time.Second}

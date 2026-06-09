@@ -33,6 +33,7 @@ type TripCodeResearchResponse struct {
 	AgentContext   *AgentContextSnapshot   `json:"agent_context,omitempty"`
 	ExecutionTrace []ExecutionTraceStep    `json:"execution_trace,omitempty"`
 	Cost           *CostSnapshot           `json:"cost,omitempty"`
+	Runtime        *RuntimeTelemetry       `json:"runtime,omitempty"`
 }
 
 type AgentContextSnapshot struct {
@@ -117,6 +118,7 @@ type BriefResponse struct {
 	NextAction       string                  `json:"next_action"`
 	Disclosures      []string                `json:"disclosures"`
 	Cost             *CostSnapshot           `json:"cost,omitempty"`
+	Runtime          *RuntimeTelemetry       `json:"runtime,omitempty"`
 }
 
 type EvidenceFidelitySummary struct {
@@ -158,4 +160,37 @@ type BillingSnapshot struct {
 	RemainingUSD       float64 `json:"remaining_usd,omitempty"`
 	UpdatedAt          string  `json:"updated_at,omitempty"`
 	Note               string  `json:"note,omitempty"`
+}
+
+type RuntimeTelemetry struct {
+	RequestID     string             `json:"request_id"`
+	TraceID       string             `json:"trace_id,omitempty"`
+	Route         string             `json:"route"`
+	Method        string             `json:"method"`
+	StartedAt     time.Time          `json:"started_at"`
+	DurationMS    int64              `json:"duration_ms"`
+	Runtime       string             `json:"runtime"`
+	Observability []string           `json:"observability,omitempty"`
+	RateLimit     *RateLimitSnapshot `json:"rate_limit,omitempty"`
+	Memory        *MemoryStoreStatus `json:"memory,omitempty"`
+}
+
+type RateLimitSnapshot struct {
+	Enabled           bool   `json:"enabled"`
+	Allowed           bool   `json:"allowed"`
+	Limit             int    `json:"limit,omitempty"`
+	Remaining         int    `json:"remaining,omitempty"`
+	WindowSeconds     int    `json:"window_seconds,omitempty"`
+	RetryAfterSeconds int    `json:"retry_after_seconds,omitempty"`
+	KeyScope          string `json:"key_scope,omitempty"`
+}
+
+type MemoryStoreStatus struct {
+	Backend    string `json:"backend"`
+	Durable    bool   `json:"durable"`
+	SessionID  string `json:"session_id,omitempty"`
+	EntryLimit int    `json:"entry_limit,omitempty"`
+	Loaded     bool   `json:"loaded,omitempty"`
+	Persisted  bool   `json:"persisted,omitempty"`
+	LastError  string `json:"last_error,omitempty"`
 }

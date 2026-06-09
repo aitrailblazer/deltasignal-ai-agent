@@ -20,7 +20,7 @@
   <changelog-page></changelog-page>
 
   <script id="strategix-changelog-contract" type="application/xml">
-<StrategiXVisualSpec version="1.3" status="public-changelog" generated="2026-06-08" artifact="CHANGELOG.html">
+<StrategiXVisualSpec version="1.5" status="track-2-runtime-hardening-deployed" generated="2026-06-09" artifact="CHANGELOG.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -269,6 +269,37 @@
       <Detail>Added the Optimize evidence-fidelity validation result: evidence_fidelity.status provenance-carried and the final brief includes a provenance disclosure.</Detail>
       <Detail>Recorded cost discipline for judges: Cloud Run min-instances=0 and final validation local estimate of 0.02 USD spent with 499.98 USD remaining from the 500 USD credit budget.</Detail>
       <Detail>Referenced validated revision deltasignal-ai-agent-00008-kzh and clarified Build versus Optimize proof paths.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="optimize">
+      <Title>Implemented Track 2 runtime hardening</Title>
+      <Detail>Added user-facing runtime telemetry to protected brief, TripCode, resolve, and session-memory responses: request_id, trace_id, route, method, started_at, duration_ms, runtime, observability labels, rate-limit snapshot, and memory backend status.</Detail>
+      <Detail>Added structured JSON request completion logs with request_id, trace_id, route, method, status, mode, and duration_ms for Cloud Run logging and trace correlation.</Detail>
+      <Detail>Added configurable protected-route rate limiting with X-RateLimit headers, Retry-After on throttled requests, demo-key/bearer/IP scoping, and response-level snapshots.</Detail>
+      <Detail>Added configurable file-backed TripCode session memory for local and single-instance validation, plus explicit runtime.memory disclosure of backend, entry limit, loaded/persisted state, and file persistence errors.</Detail>
+      <Detail>Updated Cloud Build, Makefile deployment, and .env.example with Track 2 guardrail defaults: DELTASIGNAL_RATE_LIMIT_ENABLED, DELTASIGNAL_RATE_LIMIT_PER_WINDOW, DELTASIGNAL_RATE_LIMIT_WINDOW_SECONDS, and DELTASIGNAL_MEMORY_MAX_ENTRIES.</Detail>
+    </Entry>
+    <Entry date="2026-06-08" type="submission-packet">
+      <Title>Versioned official submission packet to 2.4</Title>
+      <Detail>Updated docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html to version 2.4 so Track 2 no longer lists observability, rate limits, and memory backend disclosure as unimplemented future work.</Detail>
+      <Detail>Recorded the runtime-hardening contract and narrowed remaining production Optimize work to managed durable memory, formal dashboards and alerts, broader simulation packs, and official Cloud Billing export integration.</Detail>
+      <Detail>Updated ExecPlan_DeltaSignal_Optimize_Evidence_Fidelity_2026_06_08.html to version 1.1 with runtime telemetry, rate limiting, memory backend status, deployment defaults, and post-submission production boundaries.</Detail>
+    </Entry>
+    <Entry date="2026-06-09" type="deployment">
+      <Title>Deployed Track 2 runtime-hardening build</Title>
+      <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening through Cloud Build.</Detail>
+      <Detail>Cloud Run revision deltasignal-ai-agent-00009-c7s became ready and serves the validated public service URL https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Detail>
+      <Detail>Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected judge routes behind DELTASIGNAL_DEMO_API_KEY.</Detail>
+      <Detail>Saved deployment context, Cloud Build log, public invoker binding, service describe output, and service URL under artifacts/deploy/20260609T012327Z-track2-runtime-hardening.</Detail>
+    </Entry>
+    <Entry date="2026-06-09" type="validation">
+      <Title>Validated Track 2 runtime hardening on Cloud Run</Title>
+      <Detail>Validated GET /health, protected POST /v1/brief, protected GET /resolve, protected POST /resolve session follow-up, protected GET /v1/usage, structured Cloud Run logs, and spend reporting against the deployed service.</Detail>
+      <Detail>/health returned track_2_status optimize-runtime-hardening with runtime telemetry, rate_limits true, and memory backend memory.</Detail>
+      <Detail>/v1/brief returned mode vertex-ai-gemini, evidence_fidelity.status provenance-carried, runtime telemetry, enabled rate-limit snapshot, memory backend disclosure, and a visible evidence-fidelity line.</Detail>
+      <Detail>/resolve returned mode live-mcp-tripcode-gemini with execution_trace, agent_context, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</Detail>
+      <Detail>The second-turn /resolve request returned session-memory mode and preserved prior HUT River context.</Detail>
+      <Detail>/v1/usage and scripts/report-spend.sh recorded local-estimate spend of 0.07 USD and 499.93 USD remaining from the 500 USD challenge budget, with official Billing export marked unavailable.</Detail>
+      <Detail>Saved the proof artifact at artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.</Detail>
     </Entry>
   </Entries>
   <PublicLinks>
@@ -639,6 +670,53 @@
           'Added the Optimize evidence-fidelity validation result: evidence_fidelity.status provenance-carried and the final brief includes a provenance disclosure.',
           'Recorded cost discipline for judges: Cloud Run min-instances=0 and final validation local estimate of 0.02 USD spent with 499.98 USD remaining from the 500 USD credit budget.',
           'Referenced validated revision deltasignal-ai-agent-00008-kzh and clarified Build versus Optimize proof paths.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Optimize',
+        title: 'Implemented Track 2 runtime hardening',
+        details: [
+          'Added user-facing runtime telemetry to protected brief, TripCode, resolve, and session-memory responses: request_id, trace_id, route, method, started_at, duration_ms, runtime, observability labels, rate-limit snapshot, and memory backend status.',
+          'Added structured JSON request completion logs with request_id, trace_id, route, method, status, mode, and duration_ms for Cloud Run logging and trace correlation.',
+          'Added configurable protected-route rate limiting with X-RateLimit headers, Retry-After on throttled requests, demo-key/bearer/IP scoping, and response-level snapshots.',
+          'Added configurable file-backed TripCode session memory for local and single-instance validation, plus explicit runtime.memory disclosure of backend, entry limit, loaded/persisted state, and file persistence errors.',
+          'Updated Cloud Build, Makefile deployment, and .env.example with Track 2 guardrail defaults: DELTASIGNAL_RATE_LIMIT_ENABLED, DELTASIGNAL_RATE_LIMIT_PER_WINDOW, DELTASIGNAL_RATE_LIMIT_WINDOW_SECONDS, and DELTASIGNAL_MEMORY_MAX_ENTRIES.'
+        ]
+      },
+      {
+        date: '2026-06-08',
+        type: 'Submission Packet',
+        title: 'Versioned official submission packet to 2.4',
+        details: [
+          'Updated docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html to version 2.4 so Track 2 no longer lists observability, rate limits, and memory backend disclosure as unimplemented future work.',
+          'Recorded the runtime-hardening contract and narrowed remaining production Optimize work to managed durable memory, formal dashboards and alerts, broader simulation packs, and official Cloud Billing export integration.',
+          'Updated ExecPlan_DeltaSignal_Optimize_Evidence_Fidelity_2026_06_08.html to version 1.1 with runtime telemetry, rate limiting, memory backend status, deployment defaults, and post-submission production boundaries.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Deployment',
+        title: 'Deployed Track 2 runtime-hardening build',
+        details: [
+          'Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening through Cloud Build.',
+          'Cloud Run revision deltasignal-ai-agent-00009-c7s became ready and serves the validated public service URL https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.',
+          'Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected judge routes behind DELTASIGNAL_DEMO_API_KEY.',
+          'Saved deployment context, Cloud Build log, public invoker binding, service describe output, and service URL under artifacts/deploy/20260609T012327Z-track2-runtime-hardening.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Validation',
+        title: 'Validated Track 2 runtime hardening on Cloud Run',
+        details: [
+          'Validated GET /health, protected POST /v1/brief, protected GET /resolve, protected POST /resolve session follow-up, protected GET /v1/usage, structured Cloud Run logs, and spend reporting against the deployed service.',
+          '/health returned track_2_status optimize-runtime-hardening with runtime telemetry, rate_limits true, and memory backend memory.',
+          '/v1/brief returned mode vertex-ai-gemini, evidence_fidelity.status provenance-carried, runtime telemetry, enabled rate-limit snapshot, memory backend disclosure, and a visible evidence-fidelity line.',
+          '/resolve returned mode live-mcp-tripcode-gemini with execution_trace, agent_context, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.',
+          'The second-turn /resolve request returned session-memory mode and preserved prior HUT River context.',
+          '/v1/usage and scripts/report-spend.sh recorded local-estimate spend of 0.07 USD and 499.93 USD remaining from the 500 USD challenge budget, with official Billing export marked unavailable.',
+          'Saved the proof artifact at artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html.'
         ]
       }
     ];

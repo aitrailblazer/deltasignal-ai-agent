@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 	"time"
@@ -323,6 +325,7 @@ func TestMuxHealthAndBriefRoutes(t *testing.T) {
 		agent.NewTripCodeMemoryStore(1),
 		nil,
 		agent.NewCostTracker(agent.CostTrackerConfig{Enabled: true, BudgetUSD: 1, BriefCostUSD: 0.05}),
+		nil,
 	)
 
 	rr := httptest.NewRecorder()
@@ -363,6 +366,7 @@ func TestMuxBriefToolFailure(t *testing.T) {
 		agent.NewTripCodeMemoryStore(1),
 		nil,
 		nil,
+		nil,
 	)
 	rr := httptest.NewRecorder()
 	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/brief", strings.NewReader(`{"issuer":"HUT"}`)))
@@ -385,6 +389,7 @@ func TestMuxTripCodeRoutes(t *testing.T) {
 			TripCodeCostUSD:      0.10,
 			SessionMemoryCostUSD: 0.01,
 		}),
+		nil,
 	)
 	t.Setenv("DELTASIGNAL_DEMO_API_KEY", "key")
 
@@ -478,6 +483,7 @@ func TestMuxResolveJudgeRoutes(t *testing.T) {
 			TripCodeCostUSD:      0.10,
 			SessionMemoryCostUSD: 0.01,
 		}),
+		nil,
 	)
 	t.Setenv("DELTASIGNAL_DEMO_API_KEY", "judge-key")
 
@@ -532,21 +538,21 @@ func TestMuxTripCodeResolverMissingAndErrors(t *testing.T) {
 	logger := slog.New(slog.NewTextHandler(io.Discard, nil))
 	coordinator := agent.Coordinator{Tools: agent.DemoToolClient{}}
 
-	mux := newMux(logger, coordinator, nil, agent.NewTripCodeMemoryStore(1), nil, nil)
+	mux := newMux(logger, coordinator, nil, agent.NewTripCodeMemoryStore(1), nil, nil, nil)
 	rr := httptest.NewRecorder()
 	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/tripcode", strings.NewReader(`{"tripcode":"TF-SUB-X"}`)))
 	if rr.Code != http.StatusServiceUnavailable {
 		t.Fatalf("missing resolver code = %d", rr.Code)
 	}
 
-	mux = newMux(logger, coordinator, fakeTripCodeResolver{err: errors.New("resolver failed")}, agent.NewTripCodeMemoryStore(1), nil, nil)
+	mux = newMux(logger, coordinator, fakeTripCodeResolver{err: errors.New("resolver failed")}, agent.NewTripCodeMemoryStore(1), nil, nil, nil)
 	rr = httptest.NewRecorder()
 	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/tripcode", strings.NewReader(`{"tripcode":"TF-SUB-X"}`)))
 	if rr.Code != http.StatusBadGateway {
 		t.Fatalf("resolver error code = %d", rr.Code)
 	}
 
-	mux = newMux(logger, coordinator, fakeTripCodeResolver{}, agent.NewTripCodeMemoryStore(1), fakeTripCodeSynthesizer{err: errors.New("gemini failed")}, nil)
+	mux = newMux(logger, coordinator, fakeTripCodeResolver{}, agent.NewTripCodeMemoryStore(1), fakeTripCodeSynthesizer{err: errors.New("gemini failed")}, nil, nil)
 	rr = httptest.NewRecorder()
 	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/tripcode", strings.NewReader(`{"tripcode":"TF-SUB-X"}`)))
 	if rr.Code != http.StatusOK || strings.Contains(rr.Body.String(), "gemini_summary") {
@@ -558,11 +564,81 @@ func TestMuxTripCodeResolverMissingAndErrors(t *testing.T) {
 	agent.FetchDefaultAgentContext = func(context.Context) (agent.AgentContextSnapshot, error) {
 		return agent.AgentContextSnapshot{}, errors.New("context failed")
 	}
-	mux = newMux(logger, coordinator, fakeTripCodeResolver{}, agent.NewTripCodeMemoryStore(1), nil, nil)
+	mux = newMux(logger, coordinator, fakeTripCodeResolver{}, agent.NewTripCodeMemoryStore(1), nil, nil, nil)
 	rr = httptest.NewRecorder()
 	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/tripcode", strings.NewReader(`{"tripcode":"TF-SUB-X","include_agent_context":true}`)))
 	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"agent_context"`) || !strings.Contains(rr.Body.String(), "context failed") {
 		t.Fatalf("context error response = %d %s", rr.Code, rr.Body.String())
+	}
+}
+
+func TestMuxRateLimitsProtectedRoutes(t *testing.T) {
+	t.Setenv("DELTASIGNAL_DEMO_API_KEY", "key")
+	newLimitedMux := func() *http.ServeMux {
+		return newMux(
+			slog.New(slog.NewTextHandler(io.Discard, nil)),
+			agent.Coordinator{Tools: agent.DemoToolClient{}},
+			fakeTripCodeResolver{},
+			agent.NewTripCodeMemoryStore(1),
+			nil,
+			agent.NewCostTracker(agent.CostTrackerConfig{Enabled: true, BudgetUSD: 1, BriefCostUSD: 0.01, TripCodeCostUSD: 0.01}),
+			NewRateLimiter(true, 1, time.Minute),
+		)
+	}
+	routes := []struct {
+		method string
+		path   string
+		body   string
+	}{
+		{http.MethodPost, "/v1/brief", `{"issuer":"HUT"}`},
+		{http.MethodPost, "/v1/tripcode", `{"tripcode":"TF-SUB-X"}`},
+		{http.MethodGet, "/resolve?tripcode=TF-SUB-X", ""},
+		{http.MethodPost, "/resolve", `{"tripcode":"TF-SUB-X"}`},
+		{http.MethodGet, "/v1/usage", ""},
+	}
+	for _, route := range routes {
+		mux := newLimitedMux()
+		req := httptest.NewRequest(route.method, route.path, strings.NewReader(route.body))
+		req.Header.Set("X-Demo-Key", "key")
+		if strings.HasPrefix(strings.TrimSpace(route.body), "{") {
+			req.Header.Set("Content-Type", "application/json")
+		}
+		rr := httptest.NewRecorder()
+		mux.ServeHTTP(rr, req)
+		if rr.Code < 200 || rr.Code >= 300 {
+			t.Fatalf("%s %s first request code = %d body=%s", route.method, route.path, rr.Code, rr.Body.String())
+		}
+
+		req = httptest.NewRequest(route.method, route.path, strings.NewReader(route.body))
+		req.Header.Set("X-Demo-Key", "key")
+		if strings.HasPrefix(strings.TrimSpace(route.body), "{") {
+			req.Header.Set("Content-Type", "application/json")
+		}
+		rr = httptest.NewRecorder()
+		mux.ServeHTTP(rr, req)
+		if rr.Code != http.StatusTooManyRequests || !strings.Contains(rr.Body.String(), "rate limit exceeded") || rr.Header().Get("Retry-After") == "" {
+			t.Fatalf("%s %s limited response = %d headers=%#v body=%s", route.method, route.path, rr.Code, rr.Header(), rr.Body.String())
+		}
+	}
+}
+
+func TestTripCodeMemoryFromEnv(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "sessions.json")
+	t.Setenv("DELTASIGNAL_MEMORY_MAX_ENTRIES", "3")
+	t.Setenv("DELTASIGNAL_MEMORY_FILE", path)
+	store := TripCodeMemoryFromEnv()
+	if status := store.Status("session"); status.Backend != "file" || !status.Durable || status.EntryLimit != 3 {
+		t.Fatalf("memory from env status = %#v", status)
+	}
+
+	blocker := filepath.Join(t.TempDir(), "blocker")
+	if err := os.WriteFile(blocker, []byte("not a directory"), 0o600); err != nil {
+		t.Fatalf("write blocker: %v", err)
+	}
+	t.Setenv("DELTASIGNAL_MEMORY_FILE", filepath.Join(blocker, "sessions.json"))
+	store = TripCodeMemoryFromEnv()
+	if status := store.Status("session"); status.Backend != "file" || status.LastError == "" {
+		t.Fatalf("memory from env missing file status = %#v", status)
 	}
 }
 

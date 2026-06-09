@@ -1,6 +1,8 @@
 package agent
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
 )
@@ -181,5 +183,130 @@ func TestTripCodeMemoryStoreEdgeBranches(t *testing.T) {
 	}
 	if stringList("not-list") != nil || arrayLikeLen("not-list") != 0 {
 		t.Fatal("non-list helpers should return empty")
+	}
+}
+
+func TestTripCodeMemoryStoreFilePersistence(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "memory", "sessions.json")
+	store := NewTripCodeMemoryStore(2)
+	if err := store.EnableFilePersistence(path); err != nil {
+		t.Fatalf("EnableFilePersistence returned error: %v", err)
+	}
+	if status := store.Status("hut"); status.Backend != "file" || !status.Durable || !status.Loaded || status.Persisted {
+		t.Fatalf("initial status = %#v", status)
+	}
+	store.Remember("hut", TripCodeResearchResponse{
+		TripCode:    "TF-SUB-9DA70A7F98",
+		Issuer:      "HUT",
+		GeneratedAt: time.Date(2026, 6, 8, 12, 0, 0, 0, time.UTC),
+		Mode:        "test",
+		Packet:      map[string]any{"article": map[string]any{"title": "Hut 8"}},
+	})
+	if status := store.Status("hut"); !status.Persisted || status.LastError != "" || status.EntryLimit != 2 || status.SessionID != "hut" {
+		t.Fatalf("persisted status = %#v", status)
+	}
+	raw, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatalf("memory file not written: %v", err)
+	}
+	if len(raw) == 0 {
+		t.Fatal("memory file was empty")
+	}
+
+	reloaded := NewTripCodeMemoryStore(2)
+	if err := reloaded.EnableFilePersistence(path); err != nil {
+		t.Fatalf("reload persistence returned error: %v", err)
+	}
+	snapshot := reloaded.Snapshot("hut")
+	if !snapshot.Available || snapshot.LastTripCode != "TF-SUB-9DA70A7F98" {
+		t.Fatalf("reloaded snapshot = %#v", snapshot)
+	}
+}
+
+func TestTripCodeMemoryStorePersistenceErrors(t *testing.T) {
+	var nilStore *TripCodeMemoryStore
+	if err := nilStore.EnableFilePersistence("x"); err != nil {
+		t.Fatalf("nil EnableFilePersistence returned error: %v", err)
+	}
+	if status := nilStore.Status("x"); status.Backend != "not-configured" {
+		t.Fatalf("nil status = %#v", status)
+	}
+	store := NewTripCodeMemoryStore(1)
+	if err := store.EnableFilePersistence(" "); err != nil {
+		t.Fatalf("blank EnableFilePersistence returned error: %v", err)
+	}
+	if status := store.Status("memory"); status.Backend != "memory" || status.Durable {
+		t.Fatalf("memory status = %#v", status)
+	}
+	store.backend = ""
+	if status := store.Status("memory"); status.Backend != "memory" {
+		t.Fatalf("empty backend status = %#v", status)
+	}
+	badPath := filepath.Join(t.TempDir(), "bad.json")
+	if err := os.WriteFile(badPath, []byte("{bad"), 0o600); err != nil {
+		t.Fatalf("write bad file: %v", err)
+	}
+	if err := store.EnableFilePersistence(badPath); err == nil {
+		t.Fatal("expected bad JSON persistence load error")
+	}
+	if status := store.Status("bad"); status.LastError == "" || status.Backend != "file" {
+		t.Fatalf("bad status = %#v", status)
+	}
+
+	dirPath := t.TempDir()
+	if err := store.EnableFilePersistence(dirPath); err == nil {
+		t.Fatal("expected directory read persistence error")
+	}
+
+	blocker := filepath.Join(t.TempDir(), "blocker")
+	if err := os.WriteFile(blocker, []byte("not a directory"), 0o600); err != nil {
+		t.Fatalf("write blocker: %v", err)
+	}
+	store = NewTripCodeMemoryStore(1)
+	store.backend = "file"
+	store.path = filepath.Join(blocker, "sessions.json")
+	store.Remember("hut", TripCodeResearchResponse{TripCode: "TF-SUB-X", GeneratedAt: time.Now().UTC(), Packet: map[string]any{"title": "x"}})
+	if status := store.Status("hut"); status.LastError == "" || status.Persisted {
+		t.Fatalf("mkdir error status = %#v", status)
+	}
+
+	store = NewTripCodeMemoryStore(1)
+	store.backend = "file"
+	store.path = t.TempDir()
+	store.Remember("hut", TripCodeResearchResponse{TripCode: "TF-SUB-X", GeneratedAt: time.Now().UTC(), Packet: map[string]any{"title": "x"}})
+	if status := store.Status("hut"); status.LastError == "" || status.Persisted {
+		t.Fatalf("write error status = %#v", status)
+	}
+}
+
+func TestTripCodeMemoryStoreLoadCapsPersistedEntries(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "sessions.json")
+	raw := `{"hut":[
+	  {"tripcode":"TF-SUB-1","generated_at":"2026-06-08T12:00:00Z","mode":"test"},
+	  {"tripcode":"TF-SUB-2","generated_at":"2026-06-08T12:01:00Z","mode":"test"},
+	  {"tripcode":"TF-SUB-3","generated_at":"2026-06-08T12:02:00Z","mode":"test"}
+	]}`
+	if err := os.WriteFile(path, []byte(raw), 0o600); err != nil {
+		t.Fatalf("write persisted sessions: %v", err)
+	}
+	store := NewTripCodeMemoryStore(2)
+	if err := store.EnableFilePersistence(path); err != nil {
+		t.Fatalf("EnableFilePersistence returned error: %v", err)
+	}
+	snapshot := store.Snapshot("hut")
+	if snapshot.Turns != 2 || snapshot.Entries[0].TripCode != "TF-SUB-2" || snapshot.LastTripCode != "TF-SUB-3" {
+		t.Fatalf("capped persisted snapshot = %#v", snapshot)
+	}
+
+	nullPath := filepath.Join(t.TempDir(), "null-sessions.json")
+	if err := os.WriteFile(nullPath, []byte("null"), 0o600); err != nil {
+		t.Fatalf("write null sessions: %v", err)
+	}
+	nullStore := NewTripCodeMemoryStore(2)
+	if err := nullStore.EnableFilePersistence(nullPath); err != nil {
+		t.Fatalf("EnableFilePersistence null returned error: %v", err)
+	}
+	if snapshot := nullStore.Snapshot("hut"); snapshot.Available {
+		t.Fatalf("null snapshot should not be available: %#v", snapshot)
 	}
 }

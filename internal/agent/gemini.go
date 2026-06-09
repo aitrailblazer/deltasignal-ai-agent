@@ -88,19 +88,41 @@ var generateGeminiContent = func(ctx context.Context, model string, prompt strin
 	if err != nil {
 		return "", err
 	}
-	resp, err := client.Models.GenerateContent(ctx, model, genai.Text(prompt), nil)
+	text, err := client.GenerateContentText(ctx, model, prompt)
 	if err != nil {
 		return "", fmt.Errorf("%s: %w", operation, err)
+	}
+	return text, nil
+}
+
+type geminiContentClient interface {
+	GenerateContentText(ctx context.Context, model string, prompt string) (string, error)
+}
+
+type googleGenAIClient struct {
+	client *genai.Client
+}
+
+func (c googleGenAIClient) GenerateContentText(ctx context.Context, model string, prompt string) (string, error) {
+	return googleGenerateContent(ctx, c.client, model, prompt)
+}
+
+var googleGenerateContent = func(ctx context.Context, client *genai.Client, model string, prompt string) (string, error) {
+	resp, err := client.Models.GenerateContent(ctx, model, genai.Text(prompt), nil)
+	if err != nil {
+		return "", err
 	}
 	return resp.Text(), nil
 }
 
-var newGeminiClient = func(ctx context.Context) (*genai.Client, error) {
-	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+var genaiNewClient = genai.NewClient
+
+var newGeminiClient = func(ctx context.Context) (geminiContentClient, error) {
+	client, err := genaiNewClient(ctx, &genai.ClientConfig{
 		HTTPOptions: genai.HTTPOptions{APIVersion: "v1"},
 	})
 	if err != nil {
 		return nil, fmt.Errorf("create Gemini client: %w", err)
 	}
-	return client, nil
+	return googleGenAIClient{client: client}, nil
 }

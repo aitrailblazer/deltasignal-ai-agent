@@ -3,8 +3,12 @@ package agent
 import (
 	"context"
 	"errors"
+	"net/http"
+	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"google.golang.org/genai"
 )
 
 func TestGeminiSynthesizerSynthesizeUsesInjectedGenerator(t *testing.T) {
@@ -116,4 +120,113 @@ func TestGeminiSynthesizerDefaultGeneratorError(t *testing.T) {
 	if _, err := (GeminiSynthesizer{}).Synthesize(context.Background(), BriefRequest{}, nil, nil); err == nil || !strings.Contains(err.Error(), "default failed") {
 		t.Fatalf("expected default generator error, got %v", err)
 	}
+}
+
+func TestGenerateGeminiContentUsesClientFactory(t *testing.T) {
+	oldNew := newGeminiClient
+	t.Cleanup(func() { newGeminiClient = oldNew })
+	newGeminiClient = func(context.Context) (geminiContentClient, error) {
+		return fakeGeminiClient{text: "live text"}, nil
+	}
+	text, err := generateGeminiContent(context.Background(), "model", "prompt", "op")
+	if err != nil || text != "live text" {
+		t.Fatalf("generateGeminiContent text=%q err=%v", text, err)
+	}
+	newGeminiClient = func(context.Context) (geminiContentClient, error) {
+		return nil, errors.New("client failed")
+	}
+	if _, err := generateGeminiContent(context.Background(), "model", "prompt", "op"); err == nil || !strings.Contains(err.Error(), "client failed") {
+		t.Fatalf("expected client error, got %v", err)
+	}
+	newGeminiClient = func(context.Context) (geminiContentClient, error) {
+		return fakeGeminiClient{err: errors.New("generate failed")}, nil
+	}
+	if _, err := generateGeminiContent(context.Background(), "model", "prompt", "op"); err == nil || !strings.Contains(err.Error(), "op") {
+		t.Fatalf("expected operation error, got %v", err)
+	}
+}
+
+func TestGoogleGenAIClientAndFactory(t *testing.T) {
+	oldGenerate := googleGenerateContent
+	oldNew := genaiNewClient
+	t.Cleanup(func() {
+		googleGenerateContent = oldGenerate
+		genaiNewClient = oldNew
+	})
+	var gotModel string
+	var gotPrompt string
+	googleGenerateContent = func(_ context.Context, _ *genai.Client, model string, prompt string) (string, error) {
+		gotModel = model
+		gotPrompt = prompt
+		return "google text", nil
+	}
+	text, err := (googleGenAIClient{client: &genai.Client{}}).GenerateContentText(context.Background(), "gemini", "hello")
+	if err != nil || text != "google text" || gotModel != "gemini" || gotPrompt != "hello" {
+		t.Fatalf("google client text=%q model=%q prompt=%q err=%v", text, gotModel, gotPrompt, err)
+	}
+	googleGenerateContent = func(context.Context, *genai.Client, string, string) (string, error) {
+		return "", errors.New("google failed")
+	}
+	if _, err := (googleGenAIClient{client: &genai.Client{}}).GenerateContentText(context.Background(), "gemini", "hello"); err == nil {
+		t.Fatal("expected google generate error")
+	}
+
+	genaiNewClient = func(context.Context, *genai.ClientConfig) (*genai.Client, error) {
+		return &genai.Client{}, nil
+	}
+	if client, err := newGeminiClient(context.Background()); err != nil || client == nil {
+		t.Fatalf("newGeminiClient success client=%#v err=%v", client, err)
+	}
+	genaiNewClient = func(context.Context, *genai.ClientConfig) (*genai.Client, error) {
+		return nil, errors.New("new failed")
+	}
+	if _, err := newGeminiClient(context.Background()); err == nil || !strings.Contains(err.Error(), "create Gemini client") {
+		t.Fatalf("expected newGeminiClient error, got %v", err)
+	}
+}
+
+func TestDefaultGoogleGenerateContent(t *testing.T) {
+	t.Setenv("GOOGLE_API_KEY", "test-api-key")
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !strings.Contains(r.URL.Path, "generateContent") {
+			t.Fatalf("unexpected path: %s", r.URL.Path)
+		}
+		w.Header().Set("Content-Type", "application/json")
+		_, _ = w.Write([]byte(`{"candidates":[{"content":{"parts":[{"text":"server text"}],"role":"model"}}]}`))
+	}))
+	defer server.Close()
+	client, err := genai.NewClient(context.Background(), &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{BaseURL: server.URL, APIVersion: "v1"},
+	})
+	if err != nil {
+		t.Fatalf("NewClient returned error: %v", err)
+	}
+	text, err := googleGenerateContent(context.Background(), client, "gemini-test", "prompt")
+	if err != nil || text != "server text" {
+		t.Fatalf("googleGenerateContent text=%q err=%v", text, err)
+	}
+
+	errorServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusInternalServerError)
+		_, _ = w.Write([]byte(`{"error":{"message":"server failed"}}`))
+	}))
+	defer errorServer.Close()
+	errorClient, err := genai.NewClient(context.Background(), &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{BaseURL: errorServer.URL, APIVersion: "v1"},
+	})
+	if err != nil {
+		t.Fatalf("NewClient error client returned error: %v", err)
+	}
+	if _, err := googleGenerateContent(context.Background(), errorClient, "gemini-test", "prompt"); err == nil {
+		t.Fatal("expected googleGenerateContent server error")
+	}
+}
+
+type fakeGeminiClient struct {
+	text string
+	err  error
+}
+
+func (c fakeGeminiClient) GenerateContentText(context.Context, string, string) (string, error) {
+	return c.text, c.err
 }

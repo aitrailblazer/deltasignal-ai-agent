@@ -1,0 +1,12 @@
+== DeltaSignal spend report ==
+project: startup-ai-deltasignal
+agent_url: https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app
+
+-- gcloud billing project link --
+True	billingAccounts/018530-615AB8-696753
+
+-- app usage ledger --
+{"enabled":true,"source":"local-estimate","currency":"USD","tracked_spent_usd":0.07,"budget_usd":500,"remaining_usd":499.93,"official_billing":{"available":false,"source":"unavailable","project_id":"startup-ai-deltasignal","billing_account_name":"billingAccounts/018530-615AB8-696753","billing_enabled":true,"note":"Official Google Cloud Billing spend is unavailable unless supplied from Cloud Billing export, Billing console, or another official billing source."},"note":"Local estimate for demo/test requests. Exact Google Cloud account spend and remaining credits require Cloud Billing export or the Billing console."}
+
+
+note: app usage is local-estimate. Exact Google spend requires Cloud Billing export or the Billing console.

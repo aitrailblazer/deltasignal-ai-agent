@@ -20,7 +20,7 @@
   <optimize-exec-plan></optimize-exec-plan>
 
   <script id="strategix-execplan-contract" type="application/xml">
-<StrategiXVisualSpec version="1.0" status="implemented" generated="2026-06-08" artifact="ExecPlan_DeltaSignal_Optimize_Evidence_Fidelity_2026_06_08.html">
+<StrategiXVisualSpec version="1.2" status="runtime-hardening-deployed-and-validated" generated="2026-06-09" artifact="ExecPlan_DeltaSignal_Optimize_Evidence_Fidelity_2026_06_08.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Optimize Evidence Fidelity ExecPlan</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -28,13 +28,14 @@
     <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
     <PublicChangelog>CHANGELOG.html</PublicChangelog>
   </CanonicalArtifact>
-  <Objective>Harden the brief and synthesis paths by carrying richer ATLAS-7 provenance, source dates, quality flags, caveats, stale markers, evidence hashes, payload-mode disclosures, and route provenance through every user-facing brief result.</Objective>
+  <Objective>Harden the brief and synthesis paths by carrying richer ATLAS-7 provenance, source dates, quality flags, caveats, stale markers, evidence hashes, payload-mode disclosures, route provenance, runtime telemetry, rate-limit state, and memory backend disclosure through user-facing results.</Objective>
   <ProblemStatement>The Build demo was working, but the general /v1/brief path compressed live MCP evidence into source, title, observation, and URL. That meant richer ATLAS-7 metadata could be lost before fallback brief generation, response serialization, or Gemini synthesis.</ProblemStatement>
   <Scope>
     <Item>Extend the typed Evidence contract without breaking existing response fields.</Item>
     <Item>Extract provenance from live MCP JSON at the tool boundary.</Item>
     <Item>Expose a compact evidence_fidelity summary in BriefResponse.</Item>
     <Item>Include evidence fidelity in deterministic fallback briefs and Gemini prompt payloads.</Item>
+    <Item>Add runtime telemetry, structured request logs, configurable rate limits, and memory backend disclosure to protected routes.</Item>
     <Item>Preserve the Build demo behavior and judge artifact path.</Item>
     <Item>Keep 100 percent repository coverage and vet passing.</Item>
   </Scope>
@@ -45,6 +46,11 @@
     <Step status="completed">Update AtlasMCPToolClient.callLane so stress, company, and peer MCP lane outputs are enriched before becoming SpecialistResult values.</Step>
     <Step status="completed">Update Coordinator.BuildBrief so deterministic fallback and disclosures include evidence-fidelity status.</Step>
     <Step status="completed">Update GeminiSynthesizer.Synthesize so Gemini receives the evidence_fidelity summary and is instructed not to invent missing provenance.</Step>
+    <Step status="completed">Add RuntimeTelemetry, RateLimitSnapshot, and MemoryStoreStatus response contracts for protected user-facing results.</Step>
+    <Step status="completed">Add structured JSON request completion logs with request_id, trace_id, route, status, mode, and duration_ms.</Step>
+    <Step status="completed">Add configurable protected-route rate limiting with X-RateLimit headers and response snapshots.</Step>
+    <Step status="completed">Add configurable file-backed TripCode memory for local and single-instance validation while keeping Cloud Run production durability boundaries explicit.</Step>
+    <Step status="completed">Enable rate-limit and memory guardrail defaults in Cloud Build and Makefile deployment paths.</Step>
     <Step status="completed">Add targeted tests for extraction, summarization, live MCP preservation, coordinator propagation, and Gemini prompt inclusion.</Step>
     <Step status="completed">Update CHANGELOG.html with observations, implementation details, and verification results.</Step>
   </ImplementationPlan>
@@ -53,6 +59,9 @@
     <Criterion status="passed">/v1/brief responses include evidence_fidelity with status minimal or provenance-carried.</Criterion>
     <Criterion status="passed">Fallback brief text includes an evidence-fidelity line.</Criterion>
     <Criterion status="passed">Gemini brief synthesis receives evidence_fidelity in the prompt payload and is instructed to preserve it.</Criterion>
+    <Criterion status="passed">Protected /v1/brief, /v1/tripcode, /resolve, and /v1/usage routes apply demo-key authorization, configurable rate limiting, rate-limit headers, runtime logs, and request telemetry.</Criterion>
+    <Criterion status="passed">TripCode session memory reports backend, entry limit, loaded/persisted state, and any file persistence error through runtime.memory.</Criterion>
+    <Criterion status="passed">Cloud Run revision deltasignal-ai-agent-00009-c7s validates /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, and spend reporting with Track 2 runtime telemetry.</Criterion>
     <Criterion status="passed">GOWORK=off go test ./... passes.</Criterion>
     <Criterion status="passed">make check passes with total coverage at 100.0 percent and go vet clean.</Criterion>
     <Criterion status="passed">CHANGELOG.html remains valid StrategiX XML after the new entries.</Criterion>
@@ -63,27 +72,45 @@
     <File>internal/agent/atlas_mcp.go</File>
     <File>internal/agent/coordinator.go</File>
     <File>internal/agent/gemini.go</File>
+    <File>internal/agent/tripcode_memory.go</File>
+    <File>cmd/server/main.go</File>
+    <File>cmd/server/runtime.go</File>
+    <File>Makefile</File>
+    <File>cloudbuild.yaml</File>
+    <File>.env.example</File>
     <File>internal/agent/evidence_fidelity_test.go</File>
     <File>internal/agent/atlas_mcp_test.go</File>
     <File>internal/agent/coordinator_test.go</File>
     <File>internal/agent/gemini_test.go</File>
+    <File>internal/agent/tripcode_memory_test.go</File>
+    <File>cmd/server/main_test.go</File>
+    <File>cmd/server/runtime_test.go</File>
     <File>CHANGELOG.html</File>
   </FilesChanged>
   <Verification>
     <Command status="passed">GOWORK=off go test ./...</Command>
     <Command status="passed">make check</Command>
     <Command status="passed">xmllint validation for CHANGELOG.html embedded XML</Command>
+    <Command status="passed">Live Cloud Run validation saved in artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Command>
   </Verification>
+  <DeploymentValidation date="2026-06-09" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" revision="deltasignal-ai-agent-00009-c7s">
+    <Check status="passed">/health returned track_2_status optimize-runtime-hardening with runtime telemetry, rate limits, and memory backend status.</Check>
+    <Check status="passed">/v1/brief returned evidence_fidelity.status provenance-carried, runtime telemetry, enabled rate-limit snapshot, memory backend disclosure, and a visible evidence-fidelity line.</Check>
+    <Check status="passed">/resolve returned live-mcp-tripcode-gemini with execution_trace, agent_context, research_packet, session_memory, gemini_summary, usage, boundaries, and runtime telemetry.</Check>
+    <Check status="passed">Second-turn /resolve returned session-memory mode with prior HUT River context.</Check>
+    <Check status="passed">/v1/usage and scripts/report-spend.sh recorded 0.07 USD spent and 499.93 USD remaining from the local-estimate challenge budget.</Check>
+    <Artifact>artifacts/deploy/20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html</Artifact>
+  </DeploymentValidation>
   <Boundaries>
     <Boundary>TripCode research packet behavior remains unchanged and already carries raw packet provenance.</Boundary>
-    <Boundary>This pass does not add durable production memory or external observability; those remain later Optimize tasks.</Boundary>
+    <Boundary>This pass adds runtime telemetry, structured logs, rate limiting, and file-backed local or single-instance memory. Managed durable memory, formal dashboards, alerts, and broader simulation packs remain post-submission production work.</Boundary>
     <Boundary>Evidence fields are carried when upstream ATLAS-7/MCP returns them. Missing provenance stays missing and is not invented.</Boundary>
     <Boundary>Outputs remain diligence triage only, not investment advice or recommendations.</Boundary>
   </Boundaries>
   <NextPhase>
-    <Item>Run a protected live /v1/brief request after deployment to capture real evidence_fidelity response artifacts.</Item>
-    <Item>Consider adding evidence_fidelity to generated judge-demo learning evidence once live brief artifacts are captured.</Item>
-    <Item>Evaluate whether durable session memory or Cloud Trace spans should be the next Optimize increment.</Item>
+    <Item>After submission, promote session memory to managed durable storage if multi-replica continuity is required.</Item>
+    <Item>After submission, add formal Google Cloud dashboards, alerts, and broader simulation packs.</Item>
+    <Item>After submission, connect official Cloud Billing export so usage reporting can include account-authoritative spend rather than only local estimates.</Item>
   </NextPhase>
 </StrategiXVisualSpec>
   </script>
@@ -97,6 +124,10 @@
       ['Tool boundary', 'Live MCP stress, company, and peer lanes now enrich evidence from raw JSON before returning SpecialistResult.', 'completed'],
       ['Brief response', 'BriefResponse now includes evidence_fidelity so user-facing results disclose provenance strength.', 'completed'],
       ['Synthesis', 'Gemini prompt payload now includes evidence_fidelity and instructions to preserve it without invention.', 'completed'],
+      ['Runtime telemetry', 'Protected responses now carry request id, trace id, route, duration, rate-limit state, and memory backend status.', 'completed'],
+      ['Rate limits', 'Protected judge routes now support configurable rate limits plus X-RateLimit headers and response snapshots.', 'completed'],
+      ['Memory backend', 'TripCode session memory now supports in-memory and file-backed validation modes with explicit backend disclosure.', 'completed'],
+      ['Live validation', 'Cloud Run revision deltasignal-ai-agent-00009-c7s validates /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, and spend reporting.', 'completed'],
       ['Verification', 'make check passes with total coverage at 100.0 percent and go vet clean.', 'completed']
     ];
 
@@ -235,7 +266,7 @@
                     <li>No invented metadata.</li>
                     <li>No investment advice language.</li>
                     <li>No change to the Build TripCode proof path.</li>
-                    <li>Durable memory and tracing remain future Optimize work.</li>
+                    <li>Managed durable memory, dashboards, alerts, broad simulation packs, and official Billing export remain post-submission production work.</li>
                   </ul>
                 </div>
               </section>

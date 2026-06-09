@@ -1,0 +1,152 @@
+[
+  {
+    "insertId": "6a276c290005be7cadebc7b6",
+    "jsonPayload": {
+      "duration_ms": 0,
+      "level": "INFO",
+      "method": "GET",
+      "mode": "usage",
+      "msg": "deltasignal request completed",
+      "request_id": "174a6b1bb073f230ee3e9087",
+      "route": "/v1/usage",
+      "status": 200,
+      "trace_id": "be1542a8521542c5fb6fd6a884eb69e6"
+    },
+    "labels": {
+      "instanceId": "002f8ffd47d3e5888c3e8360bfbe9a91c3456912f9796a372046d03248ec1fd6c1477eabe9dc9bde9ba27f4d3e0ec01331033d16f0efaa6a79fe6613318e25a10ed595ec980e817dbacef63c5632f3f0361d"
+    },
+    "logName": "projects/startup-ai-deltasignal/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-06-09T01:28:09.551267729Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "deltasignal-ai-agent",
+        "location": "us-central1",
+        "project_id": "startup-ai-deltasignal",
+        "revision_name": "deltasignal-ai-agent-00009-c7s",
+        "service_name": "deltasignal-ai-agent"
+      },
+      "type": "cloud_run_revision"
+    },
+    "timestamp": "2026-06-09T01:28:09.377107990Z"
+  },
+  {
+    "insertId": "6a276c2900016745270cfae3",
+    "jsonPayload": {
+      "duration_ms": 0,
+      "level": "INFO",
+      "method": "POST",
+      "mode": "session-memory",
+      "msg": "deltasignal request completed",
+      "request_id": "f76a9e5039113a8275e0a1f2",
+      "route": "/resolve",
+      "status": 200,
+      "trace_id": "4aa01a910d832de755fb93013808daee"
+    },
+    "labels": {
+      "instanceId": "002f8ffd47d3e5888c3e8360bfbe9a91c3456912f9796a372046d03248ec1fd6c1477eabe9dc9bde9ba27f4d3e0ec01331033d16f0efaa6a79fe6613318e25a10ed595ec980e817dbacef63c5632f3f0361d"
+    },
+    "logName": "projects/startup-ai-deltasignal/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-06-09T01:28:09.216436758Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "deltasignal-ai-agent",
+        "location": "us-central1",
+        "project_id": "startup-ai-deltasignal",
+        "revision_name": "deltasignal-ai-agent-00009-c7s",
+        "service_name": "deltasignal-ai-agent"
+      },
+      "type": "cloud_run_revision"
+    },
+    "timestamp": "2026-06-09T01:28:09.092360638Z"
+  },
+  {
+    "insertId": "6a276c28000bc67d5e778f28",
+    "jsonPayload": {
+      "duration_ms": 4885,
+      "level": "INFO",
+      "method": "POST",
+      "mode": "live-mcp-tripcode-gemini",
+      "msg": "deltasignal request completed",
+      "request_id": "35942b5cd7854350ac9ba396",
+      "route": "/resolve",
+      "status": 200,
+      "trace_id": "374b20020cf9f4341d8aef66e12330cd"
+    },
+    "labels": {
+      "instanceId": "002f8ffd47d3e5888c3e8360bfbe9a91c3456912f9796a372046d03248ec1fd6c1477eabe9dc9bde9ba27f4d3e0ec01331033d16f0efaa6a79fe6613318e25a10ed595ec980e817dbacef63c5632f3f0361d"
+    },
+    "logName": "projects/startup-ai-deltasignal/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-06-09T01:28:08.883530310Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "deltasignal-ai-agent",
+        "location": "us-central1",
+        "project_id": "startup-ai-deltasignal",
+        "revision_name": "deltasignal-ai-agent-00009-c7s",
+        "service_name": "deltasignal-ai-agent"
+      },
+      "type": "cloud_run_revision"
+    },
+    "timestamp": "2026-06-09T01:28:08.771974206Z"
+  },
+  {
+    "insertId": "6a276c2300085cf3018ba2f6",
+    "jsonPayload": {
+      "duration_ms": 14833,
+      "level": "INFO",
+      "method": "POST",
+      "mode": "vertex-ai-gemini",
+      "msg": "deltasignal request completed",
+      "request_id": "cd0f1e1e9eff586799c913ba",
+      "route": "/v1/brief",
+      "status": 200,
+      "trace_id": "8d76e900743aa054e86d3f8e2d3623e2"
+    },
+    "labels": {
+      "instanceId": "002f8ffd47d3e5888c3e8360bfbe9a91c3456912f9796a372046d03248ec1fd6c1477eabe9dc9bde9ba27f4d3e0ec01331033d16f0efaa6a79fe6613318e25a10ed595ec980e817dbacef63c5632f3f0361d"
+    },
+    "logName": "projects/startup-ai-deltasignal/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-06-09T01:28:03.558708817Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "deltasignal-ai-agent",
+        "location": "us-central1",
+        "project_id": "startup-ai-deltasignal",
+        "revision_name": "deltasignal-ai-agent-00009-c7s",
+        "service_name": "deltasignal-ai-agent"
+      },
+      "type": "cloud_run_revision"
+    },
+    "timestamp": "2026-06-09T01:28:03.548437711Z"
+  },
+  {
+    "insertId": "6a276c1400033d7eff22b521",
+    "jsonPayload": {
+      "duration_ms": 0,
+      "level": "INFO",
+      "method": "GET",
+      "mode": "health",
+      "msg": "deltasignal request completed",
+      "request_id": "6d3f0d22364d28126e7920f3",
+      "route": "/health",
+      "status": 200,
+      "trace_id": "568d7b2c41d3493594f3c1c8bfd860e5"
+    },
+    "labels": {
+      "instanceId": "002f8ffd47d3e5888c3e8360bfbe9a91c3456912f9796a372046d03248ec1fd6c1477eabe9dc9bde9ba27f4d3e0ec01331033d16f0efaa6a79fe6613318e25a10ed595ec980e817dbacef63c5632f3f0361d"
+    },
+    "logName": "projects/startup-ai-deltasignal/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-06-09T01:27:48.218545752Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "deltasignal-ai-agent",
+        "location": "us-central1",
+        "project_id": "startup-ai-deltasignal",
+        "revision_name": "deltasignal-ai-agent-00009-c7s",
+        "service_name": "deltasignal-ai-agent"
+      },
+      "type": "cloud_run_revision"
+    },
+    "timestamp": "2026-06-09T01:27:48.212639397Z"
+  }
+]

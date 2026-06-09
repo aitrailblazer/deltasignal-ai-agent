@@ -1,0 +1,1 @@
+us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening

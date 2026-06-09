@@ -1,6 +1,9 @@
 package agent
 
 import (
+	"encoding/json"
+	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -13,6 +16,11 @@ type TripCodeMemoryStore struct {
 	mu         sync.Mutex
 	maxEntries int
 	sessions   map[string][]TripCodeMemoryEntry
+	backend    string
+	path       string
+	loaded     bool
+	persisted  bool
+	lastError  string
 }
 
 func NewTripCodeMemoryStore(maxEntries int) *TripCodeMemoryStore {
@@ -22,6 +30,7 @@ func NewTripCodeMemoryStore(maxEntries int) *TripCodeMemoryStore {
 	return &TripCodeMemoryStore{
 		maxEntries: maxEntries,
 		sessions:   make(map[string][]TripCodeMemoryEntry),
+		backend:    "memory",
 	}
 }
 
@@ -43,6 +52,7 @@ func (s *TripCodeMemoryStore) Remember(sessionID string, response TripCodeResear
 		entries = entries[len(entries)-s.maxEntries:]
 	}
 	s.sessions[sessionID] = entries
+	s.persistLocked()
 	return snapshotForEntries(sessionID, entries)
 }
 
@@ -56,6 +66,93 @@ func (s *TripCodeMemoryStore) Snapshot(sessionID string) TripCodeMemorySnapshot 
 
 	entries := append([]TripCodeMemoryEntry(nil), s.sessions[sessionID]...)
 	return snapshotForEntries(sessionID, entries)
+}
+
+func (s *TripCodeMemoryStore) EnableFilePersistence(path string) error {
+	if s == nil {
+		return nil
+	}
+	path = strings.TrimSpace(path)
+	if path == "" {
+		return nil
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	s.backend = "file"
+	s.path = path
+	s.loaded = false
+	s.persisted = false
+	s.lastError = ""
+	if err := s.loadLocked(); err != nil {
+		s.lastError = err.Error()
+		return err
+	}
+	s.loaded = true
+	return nil
+}
+
+func (s *TripCodeMemoryStore) Status(sessionID string) MemoryStoreStatus {
+	if s == nil {
+		return MemoryStoreStatus{Backend: "not-configured"}
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	backend := s.backend
+	if backend == "" {
+		backend = "memory"
+	}
+	return MemoryStoreStatus{
+		Backend:    backend,
+		Durable:    backend != "memory",
+		SessionID:  strings.TrimSpace(sessionID),
+		EntryLimit: s.maxEntries,
+		Loaded:     s.loaded,
+		Persisted:  s.persisted,
+		LastError:  s.lastError,
+	}
+}
+
+func (s *TripCodeMemoryStore) loadLocked() error {
+	raw, err := os.ReadFile(s.path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			s.sessions = make(map[string][]TripCodeMemoryEntry)
+			return nil
+		}
+		return err
+	}
+	var sessions map[string][]TripCodeMemoryEntry
+	if err := json.Unmarshal(raw, &sessions); err != nil {
+		return err
+	}
+	if sessions == nil {
+		sessions = make(map[string][]TripCodeMemoryEntry)
+	}
+	for sessionID, entries := range sessions {
+		if len(entries) > s.maxEntries {
+			sessions[sessionID] = entries[len(entries)-s.maxEntries:]
+		}
+	}
+	s.sessions = sessions
+	return nil
+}
+
+func (s *TripCodeMemoryStore) persistLocked() {
+	if s.backend != "file" || s.path == "" {
+		return
+	}
+	if err := os.MkdirAll(filepath.Dir(s.path), 0o755); err != nil {
+		s.lastError = err.Error()
+		return
+	}
+	raw, _ := json.MarshalIndent(s.sessions, "", "  ")
+	if err := os.WriteFile(s.path, raw, 0o600); err != nil {
+		s.lastError = err.Error()
+		return
+	}
+	s.persisted = true
+	s.lastError = ""
 }
 
 func newTripCodeMemoryEntry(response TripCodeResearchResponse) TripCodeMemoryEntry {

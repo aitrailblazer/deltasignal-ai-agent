@@ -1,0 +1,216 @@
+gcloud builds submit \
+		--project=startup-ai-deltasignal \
+		--config=cloudbuild.yaml \
+		--substitutions=_REGION=us-central1,_IMAGE=us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening
+Creating temporary archive of 95 file(s) totalling 2.5 MiB before compression.
+Uploading tarball of [.] to [gs://startup-ai-deltasignal_cloudbuild/source/1780968209.747795-8af8e9b7398c4b4e87800d6807eeb9cc.tgz]
+Created [https://cloudbuild.googleapis.com/v1/projects/startup-ai-deltasignal/locations/global/builds/ef477f7f-75f0-478c-a78b-b28254650402].
+Logs are available at [ https://console.cloud.google.com/cloud-build/builds/ef477f7f-75f0-478c-a78b-b28254650402?project=531691677642 ].
+Waiting for build to complete. Polling interval: 1 second(s).
+----------------------------- REMOTE BUILD OUTPUT ------------------------------
+starting build "ef477f7f-75f0-478c-a78b-b28254650402"
+
+FETCHSOURCE
+Fetching storage object: gs://startup-ai-deltasignal_cloudbuild/source/1780968209.747795-8af8e9b7398c4b4e87800d6807eeb9cc.tgz#1780968211320116
+Copying gs://startup-ai-deltasignal_cloudbuild/source/1780968209.747795-8af8e9b7398c4b4e87800d6807eeb9cc.tgz#1780968211320116...
+/ [0 files][    0.0 B/  2.0 MiB]                                                / [1 files][  2.0 MiB/  2.0 MiB]                                                
+Operation completed over 1 objects/2.0 MiB.
+BUILD
+Starting Step #0
+Step #0: Already have image (with digest): gcr.io/cloud-builders/docker
+Step #0: Sending build context to Docker daemon  2.703MB
+Step #0: Step 1/12 : FROM golang:1.24-bookworm AS build
+Step #0: 1.24-bookworm: Pulling from library/golang
+Step #0: 6bc9f599b3ef: Pulling fs layer
+Step #0: 89edcaae7ec4: Pulling fs layer
+Step #0: bbceb0035429: Pulling fs layer
+Step #0: d1ae0a59862a: Pulling fs layer
+Step #0: f7bdfd728ac2: Pulling fs layer
+Step #0: ee9e6246b78f: Pulling fs layer
+Step #0: 4f4fb700ef54: Pulling fs layer
+Step #0: 4f4fb700ef54: Waiting
+Step #0: ee9e6246b78f: Verifying Checksum
+Step #0: ee9e6246b78f: Download complete
+Step #0: 4f4fb700ef54: Verifying Checksum
+Step #0: 4f4fb700ef54: Download complete
+Step #0: 89edcaae7ec4: Verifying Checksum
+Step #0: 89edcaae7ec4: Download complete
+Step #0: 6bc9f599b3ef: Verifying Checksum
+Step #0: 6bc9f599b3ef: Download complete
+Step #0: f7bdfd728ac2: Verifying Checksum
+Step #0: f7bdfd728ac2: Download complete
+Step #0: bbceb0035429: Verifying Checksum
+Step #0: bbceb0035429: Download complete
+Step #0: d1ae0a59862a: Verifying Checksum
+Step #0: d1ae0a59862a: Download complete
+Step #0: 6bc9f599b3ef: Pull complete
+Step #0: 89edcaae7ec4: Pull complete
+Step #0: bbceb0035429: Pull complete
+Step #0: d1ae0a59862a: Pull complete
+Step #0: f7bdfd728ac2: Pull complete
+Step #0: ee9e6246b78f: Pull complete
+Step #0: 4f4fb700ef54: Pull complete
+Step #0: Digest: sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac
+Step #0: Status: Downloaded newer image for golang:1.24-bookworm
+Step #0:  ---> e0cffc405270
+Step #0: Step 2/12 : WORKDIR /src
+Step #0:  ---> Running in 5c12c8333fd2
+Step #0: Removing intermediate container 5c12c8333fd2
+Step #0:  ---> 490b8f4d2f6b
+Step #0: Step 3/12 : COPY go.mod go.sum ./
+Step #0:  ---> 454567dc8b9d
+Step #0: Step 4/12 : RUN go mod download
+Step #0:  ---> Running in e34e9a1e286f
+Step #0: Removing intermediate container e34e9a1e286f
+Step #0:  ---> 3b03fd7cf757
+Step #0: Step 5/12 : COPY . .
+Step #0:  ---> 7eaf3678f9e9
+Step #0: Step 6/12 : RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-w -s" -o /out/deltasignal-ai-agent ./cmd/server
+Step #0:  ---> Running in f03ab8ab7229
+Step #0: Removing intermediate container f03ab8ab7229
+Step #0:  ---> 6e4f141913d7
+Step #0: Step 7/12 : FROM gcr.io/distroless/static-debian12:nonroot
+Step #0: nonroot: Pulling from distroless/static-debian12
+Step #0: 875ea9878944: Already exists
+Step #0: 990a9c434e5e: Already exists
+Step #0: 39dc083afc39: Already exists
+Step #0: bf7a4185f015: Already exists
+Step #0: 2780920e5dbf: Already exists
+Step #0: 7c12895b777b: Already exists
+Step #0: 3214acf345c0: Already exists
+Step #0: 52630fc75a18: Already exists
+Step #0: dd64bf2dd177: Already exists
+Step #0: b839dfae01f6: Already exists
+Step #0: dcaa5a89b0cc: Already exists
+Step #0: 069d1e267530: Already exists
+Step #0: Digest: sha256:d093aa3e30dbadd3efe1310db061a14da60299baff8450a17fe0ccc514a16639
+Step #0: Status: Downloaded newer image for gcr.io/distroless/static-debian12:nonroot
+Step #0:  ---> 8457fe6a812e
+Step #0: Step 8/12 : COPY --from=build /out/deltasignal-ai-agent /deltasignal-ai-agent
+Step #0:  ---> dbafab1e4eb2
+Step #0: Step 9/12 : ENV PORT=8080
+Step #0:  ---> Running in 4003d80fba96
+Step #0: Removing intermediate container 4003d80fba96
+Step #0:  ---> 16c74676923a
+Step #0: Step 10/12 : EXPOSE 8080
+Step #0:  ---> Running in 3eb288cdd1a8
+Step #0: Removing intermediate container 3eb288cdd1a8
+Step #0:  ---> 01a0cb5e0c05
+Step #0: Step 11/12 : USER nonroot:nonroot
+Step #0:  ---> Running in 80f3bee62c09
+Step #0: Removing intermediate container 80f3bee62c09
+Step #0:  ---> 0c6683b9b45a
+Step #0: Step 12/12 : ENTRYPOINT ["/deltasignal-ai-agent"]
+Step #0:  ---> Running in b1782a1c345a
+Step #0: Removing intermediate container b1782a1c345a
+Step #0:  ---> 175bf48870c0
+Step #0: Successfully built 175bf48870c0
+Step #0: Successfully tagged us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening
+Finished Step #0
+Starting Step #1
+Step #1: Already have image (with digest): gcr.io/cloud-builders/docker
+Step #1: The push refers to repository [us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app]
+Step #1: 69fc5db7c5a7: Preparing
+Step #1: 33b37ab0b090: Preparing
+Step #1: 6e7fbcf090d0: Preparing
+Step #1: ad51d0769d16: Preparing
+Step #1: 4cde6b0bb6f5: Preparing
+Step #1: bd3cdfae1d3f: Preparing
+Step #1: 6f1cdceb6a31: Preparing
+Step #1: af5aa97ebe6c: Preparing
+Step #1: 4d049f83d9cf: Preparing
+Step #1: 114dde0fefeb: Preparing
+Step #1: 35b5ba6e08cd: Preparing
+Step #1: 8fa10c0194df: Preparing
+Step #1: 9ac0db7cd6b3: Preparing
+Step #1: 35b5ba6e08cd: Waiting
+Step #1: 8fa10c0194df: Waiting
+Step #1: 9ac0db7cd6b3: Waiting
+Step #1: af5aa97ebe6c: Pushed
+Step #1: 114dde0fefeb: Pushed
+Step #1: 4d049f83d9cf: Pushed
+Step #1: bd3cdfae1d3f: Pushed
+Step #1: 6e7fbcf090d0: Pushed
+Step #1: ad51d0769d16: Pushed
+Step #1: 33b37ab0b090: Pushed
+Step #1: 6f1cdceb6a31: Pushed
+Step #1: 4cde6b0bb6f5: Pushed
+Step #1: 69fc5db7c5a7: Pushed
+Step #1: 8fa10c0194df: Pushed
+Step #1: 9ac0db7cd6b3: Pushed
+Step #1: 35b5ba6e08cd: Pushed
+Step #1: 20260609T012327Z-track2-runtime-hardening: digest: sha256:3ebeaf0bcd10a45062896b2db0afa8db54e485e30eb1574343767c08e478c2e0 size: 3022
+Finished Step #1
+Starting Step #2
+Step #2: Pulling image: gcr.io/google.com/cloudsdktool/cloud-sdk
+Step #2: Using default tag: latest
+Step #2: latest: Pulling from google.com/cloudsdktool/cloud-sdk
+Step #2: 5b4d6ff92fc4: Already exists
+Step #2: a364003af86f: Pulling fs layer
+Step #2: d76345147f7a: Pulling fs layer
+Step #2: 62779cb46d7f: Pulling fs layer
+Step #2: 1684689c2ff5: Pulling fs layer
+Step #2: 94c8bd5a58c6: Pulling fs layer
+Step #2: 1684689c2ff5: Verifying Checksum
+Step #2: 1684689c2ff5: Download complete
+Step #2: 94c8bd5a58c6: Download complete
+Step #2: a364003af86f: Download complete
+Step #2: a364003af86f: Pull complete
+Step #2: 62779cb46d7f: Verifying Checksum
+Step #2: 62779cb46d7f: Download complete
+Step #2: d76345147f7a: Verifying Checksum
+Step #2: d76345147f7a: Download complete
+Step #2: d76345147f7a: Pull complete
+Step #2: 62779cb46d7f: Pull complete
+Step #2: 1684689c2ff5: Pull complete
+Step #2: 94c8bd5a58c6: Pull complete
+Step #2: Digest: sha256:246f1d97dd5a73dbdecb547a75e8c552403c926762e2044df2f833b44d1fc9c1
+Step #2: Status: Downloaded newer image for gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+Step #2: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+Step #2: Deploying container to Cloud Run service [deltasignal-ai-agent] in project [startup-ai-deltasignal] region [us-central1]
+Step #2: Deploying...
+Step #2: Setting IAM Policy............warning
+Step #2: Creating Revision....................................................................................................................................................................................................................done
+Step #2: Routing traffic.....done
+Step #2: Completed with warnings:
+Step #2:   Setting IAM policy failed, try "gcloud beta run services add-iam-policy-binding --region=us-central1 --member=allUsers --role=roles/run.invoker deltasignal-ai-agent"
+Step #2: Service [deltasignal-ai-agent] revision [deltasignal-ai-agent-00009-c7s] has been deployed and is serving 100 percent of traffic.
+Step #2: Service URL: https://deltasignal-ai-agent-531691677642.us-central1.run.app
+Finished Step #2
+PUSH
+Pushing us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening
+The push refers to repository [us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app]
+69fc5db7c5a7: Preparing
+33b37ab0b090: Preparing
+6e7fbcf090d0: Preparing
+ad51d0769d16: Preparing
+4cde6b0bb6f5: Preparing
+bd3cdfae1d3f: Preparing
+6f1cdceb6a31: Preparing
+af5aa97ebe6c: Preparing
+4d049f83d9cf: Preparing
+114dde0fefeb: Preparing
+35b5ba6e08cd: Preparing
+8fa10c0194df: Preparing
+9ac0db7cd6b3: Preparing
+35b5ba6e08cd: Waiting
+8fa10c0194df: Waiting
+9ac0db7cd6b3: Waiting
+69fc5db7c5a7: Layer already exists
+bd3cdfae1d3f: Layer already exists
+33b37ab0b090: Layer already exists
+4cde6b0bb6f5: Layer already exists
+af5aa97ebe6c: Layer already exists
+6e7fbcf090d0: Layer already exists
+4d049f83d9cf: Layer already exists
+114dde0fefeb: Layer already exists
+ad51d0769d16: Layer already exists
+6f1cdceb6a31: Layer already exists
+9ac0db7cd6b3: Layer already exists
+35b5ba6e08cd: Layer already exists
+8fa10c0194df: Layer already exists
+20260609T012327Z-track2-runtime-hardening: digest: sha256:3ebeaf0bcd10a45062896b2db0afa8db54e485e30eb1574343767c08e478c2e0 size: 3022
+DONE
+--------------------------------------------------------------------------------
+ID                                    CREATE_TIME                DURATION  SOURCE                                                                                                IMAGES                                                                                                                STATUS
+ef477f7f-75f0-478c-a78b-b28254650402  2026-06-09T01:23:31+00:00  3M23S     gs://startup-ai-deltasignal_cloudbuild/source/1780968209.747795-8af8e9b7398c4b4e87800d6807eeb9cc.tgz  us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T012327Z-track2-runtime-hardening  SUCCESS

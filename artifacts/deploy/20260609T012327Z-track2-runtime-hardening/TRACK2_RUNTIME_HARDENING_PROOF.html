@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DeltaSignal Track 2 Runtime Hardening Proof</title>
+<style>html{background:#05070b;color:#fff8ef;font-family:Inter,system-ui,sans-serif;line-height:1.5}body{margin:0;padding:32px}main{max-width:1040px;margin:auto}section{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px;margin:16px 0;background:rgba(16,18,25,.88)}code,pre{background:#0d1118;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px;display:block;white-space:pre-wrap}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.card{border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px;background:rgba(255,255,255,.04)}b{color:#72d9ff}</style></head>
+<body><script id="strategix-track2-proof-contract" type="application/xml"><StrategiXVisualSpec version="1.0" status="validated" generated="2026-06-09" artifact="20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Track 2 Runtime Hardening Proof</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <Track>Track 2 Optimize</Track>
+    <RunId>20260609T012327Z-track2-runtime-hardening</RunId>
+    <ServiceUrl>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</ServiceUrl>
+    <Revision>deltasignal-ai-agent-00009-c7s</Revision>
+  </CanonicalArtifact>
+  <Objective>Prove evidence fidelity plus runtime hardening on the deployed Cloud Run service.</Objective>
+  <ValidatedResults>
+    <Result name="health" status="passed">GET /health returned ok and track_2_status optimize-runtime-hardening.</Result>
+    <Result name="brief" status="passed">Protected /v1/brief returned evidence_fidelity.status provenance-carried, runtime telemetry, rate-limit snapshot, memory backend status, and an evidence-fidelity line in the brief body.</Result>
+    <Result name="tripcode" status="passed">Protected /resolve returned live-mcp-tripcode-gemini with execution_trace, agent_context, runtime telemetry, and session memory.</Result>
+    <Result name="followup" status="passed">Protected second-turn /resolve returned session-memory mode with prior River continuity.</Result>
+    <Result name="usage" status="passed">Protected /v1/usage returned local-estimate cost tracking with 0.07 USD spent and 499.93 USD remaining.</Result>
+    <Result name="logs" status="passed">Cloud Run structured log query returned 5 recent request completion entries.</Result>
+  </ValidatedResults>
+  <EvidenceFiles>
+    <File>00-deploy-context.json</File>
+    <File>01-cloudbuild-deploy.log</File>
+    <File>02-public-invoker-binding.json</File>
+    <File>03-service-describe.json</File>
+    <File>04-health-response.json</File>
+    <File>05-brief-response.json</File>
+    <File>06-resolve-response.json</File>
+    <File>07-session-followup-response.json</File>
+    <File>08-usage-response.json</File>
+    <File>09-track2-runtime-summary.json</File>
+    <File>10-cloud-run-structured-logs.json</File>
+    <File>11-spend-report.txt</File>
+  </EvidenceFiles>
+  <Boundaries>
+    <Boundary>Local-estimate usage is not official Google Cloud Billing spend.</Boundary>
+    <Boundary>File-backed memory is a local or single-instance validation option; managed durable storage remains the production scale path.</Boundary>
+    <Boundary>Outputs remain evidence-routing and diligence triage only, not investment advice.</Boundary>
+  </Boundaries>
+</StrategiXVisualSpec></script><main>
+<section><p>Track 2 Optimize Proof</p><h1>Runtime hardening is deployed and validated.</h1><p>Cloud Run revision <b>deltasignal-ai-agent-00009-c7s</b> served the Track 2 runtime-hardening image. The validation run saved request and response evidence without secrets.</p></section>
+<section><h2>Validation Summary</h2><div class="grid">
+<div class="card"><b>Health</b><p>optimize-runtime-hardening</p></div>
+<div class="card"><b>Brief fidelity</b><p>provenance-carried</p></div>
+<div class="card"><b>Rate limit</b><p>{'enabled': True, 'allowed': True, 'limit': 30, 'remaining': 29, 'window_seconds': 60, 'key_scope': 'demo-key'}</p></div>
+<div class="card"><b>Memory</b><p>{'backend': 'memory', 'durable': False, 'entry_limit': 20}</p></div>
+<div class="card"><b>TripCode mode</b><p>live-mcp-tripcode-gemini</p></div>
+<div class="card"><b>Usage</b><p>0.07 spent, 499.93 remaining</p></div>
+</div></section>
+<section><h2>Saved Evidence</h2><pre>{
+  &quot;service_url&quot;: &quot;https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app&quot;,
+  &quot;health_ok&quot;: true,
+  &quot;track_2_status&quot;: &quot;optimize-runtime-hardening&quot;,
+  &quot;health_runtime_keys&quot;: [
+    &quot;duration_ms&quot;,
+    &quot;method&quot;,
+    &quot;observability&quot;,
+    &quot;request_id&quot;,
+    &quot;route&quot;,
+    &quot;runtime&quot;,
+    &quot;started_at&quot;,
+    &quot;trace_id&quot;
+  ],
+  &quot;health_optimize&quot;: {
+    &quot;evidence_fidelity&quot;: &quot;implemented&quot;,
+    &quot;memory_backend&quot;: &quot;memory&quot;,
+    &quot;observability&quot;: &quot;runtime telemetry, request logs, request ids, trace ids&quot;,
+    &quot;rate_limits&quot;: true
+  },
+  &quot;brief_mode&quot;: &quot;vertex-ai-gemini&quot;,
+  &quot;brief_evidence_fidelity_status&quot;: &quot;provenance-carried&quot;,
+  &quot;brief_has_runtime&quot;: true,
+  &quot;brief_rate_limit&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;allowed&quot;: true,
+    &quot;limit&quot;: 30,
+    &quot;remaining&quot;: 29,
+    &quot;window_seconds&quot;: 60,
+    &quot;key_scope&quot;: &quot;demo-key&quot;
+  },
+  &quot;brief_memory&quot;: {
+    &quot;backend&quot;: &quot;memory&quot;,
+    &quot;durable&quot;: false,
+    &quot;entry_limit&quot;: 20
+  },
+  &quot;brief_has_evidence_line&quot;: true,
+  &quot;resolve_mode&quot;: &quot;live-mcp-tripcode-gemini&quot;,
+  &quot;resolve_has_execution_trace&quot;: true,
+  &quot;resolve_has_agent_context&quot;: true,
+  &quot;resolve_has_runtime&quot;: true,
+  &quot;resolve_memory_available&quot;: true,
+  &quot;followup_mode&quot;: &quot;session-memory&quot;,
+  &quot;followup_has_runtime&quot;: true,
+  &quot;followup_memory_turns&quot;: 1,
+  &quot;usage_enabled&quot;: true,
+  &quot;usage_spent&quot;: 0.07,
+  &quot;usage_remaining&quot;: 499.93,
+  &quot;official_billing_available&quot;: false
+}</pre></section>
+<section><h2>Embedded XML</h2><pre>&lt;StrategiXVisualSpec version=&quot;1.0&quot; status=&quot;validated&quot; generated=&quot;2026-06-09&quot; artifact=&quot;20260609T012327Z-track2-runtime-hardening/TRACK2_RUNTIME_HARDENING_PROOF.html&quot;&gt;
+  &lt;CanonicalArtifact&gt;
+    &lt;Title&gt;DeltaSignal Track 2 Runtime Hardening Proof&lt;/Title&gt;
+    &lt;Repository&gt;aitrailblazer/deltasignal-ai-agent&lt;/Repository&gt;
+    &lt;Track&gt;Track 2 Optimize&lt;/Track&gt;
+    &lt;RunId&gt;20260609T012327Z-track2-runtime-hardening&lt;/RunId&gt;
+    &lt;ServiceUrl&gt;https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app&lt;/ServiceUrl&gt;
+    &lt;Revision&gt;deltasignal-ai-agent-00009-c7s&lt;/Revision&gt;
+  &lt;/CanonicalArtifact&gt;
+  &lt;Objective&gt;Prove evidence fidelity plus runtime hardening on the deployed Cloud Run service.&lt;/Objective&gt;
+  &lt;ValidatedResults&gt;
+    &lt;Result name=&quot;health&quot; status=&quot;passed&quot;&gt;GET /health returned ok and track_2_status optimize-runtime-hardening.&lt;/Result&gt;
+    &lt;Result name=&quot;brief&quot; status=&quot;passed&quot;&gt;Protected /v1/brief returned evidence_fidelity.status provenance-carried, runtime telemetry, rate-limit snapshot, memory backend status, and an evidence-fidelity line in the brief body.&lt;/Result&gt;
+    &lt;Result name=&quot;tripcode&quot; status=&quot;passed&quot;&gt;Protected /resolve returned live-mcp-tripcode-gemini with execution_trace, agent_context, runtime telemetry, and session memory.&lt;/Result&gt;
+    &lt;Result name=&quot;followup&quot; status=&quot;passed&quot;&gt;Protected second-turn /resolve returned session-memory mode with prior River continuity.&lt;/Result&gt;
+    &lt;Result name=&quot;usage&quot; status=&quot;passed&quot;&gt;Protected /v1/usage returned local-estimate cost tracking with 0.07 USD spent and 499.93 USD remaining.&lt;/Result&gt;
+    &lt;Result name=&quot;logs&quot; status=&quot;passed&quot;&gt;Cloud Run structured log query returned 5 recent request completion entries.&lt;/Result&gt;
+  &lt;/ValidatedResults&gt;
+  &lt;EvidenceFiles&gt;
+    &lt;File&gt;00-deploy-context.json&lt;/File&gt;
+    &lt;File&gt;01-cloudbuild-deploy.log&lt;/File&gt;
+    &lt;File&gt;02-public-invoker-binding.json&lt;/File&gt;
+    &lt;File&gt;03-service-describe.json&lt;/File&gt;
+    &lt;File&gt;04-health-response.json&lt;/File&gt;
+    &lt;File&gt;05-brief-response.json&lt;/File&gt;
+    &lt;File&gt;06-resolve-response.json&lt;/File&gt;
+    &lt;File&gt;07-session-followup-response.json&lt;/File&gt;
+    &lt;File&gt;08-usage-response.json&lt;/File&gt;
+    &lt;File&gt;09-track2-runtime-summary.json&lt;/File&gt;
+    &lt;File&gt;10-cloud-run-structured-logs.json&lt;/File&gt;
+    &lt;File&gt;11-spend-report.txt&lt;/File&gt;
+  &lt;/EvidenceFiles&gt;
+  &lt;Boundaries&gt;
+    &lt;Boundary&gt;Local-estimate usage is not official Google Cloud Billing spend.&lt;/Boundary&gt;
+    &lt;Boundary&gt;File-backed memory is a local or single-instance validation option; managed durable storage remains the production scale path.&lt;/Boundary&gt;
+    &lt;Boundary&gt;Outputs remain evidence-routing and diligence triage only, not investment advice.&lt;/Boundary&gt;
+  &lt;/Boundaries&gt;
+&lt;/StrategiXVisualSpec&gt;</pre></section>
+</main></body></html>
