@@ -20,7 +20,7 @@
   <changelog-page></changelog-page>
 
   <script id="strategix-changelog-contract" type="application/xml">
-<StrategiXVisualSpec version="2.2" status="track-3-a2a-refactor-recorded" generated="2026-06-09" artifact="CHANGELOG.html">
+	<StrategiXVisualSpec version="2.3" status="track-3-a2a-followup-hardened" generated="2026-06-09" artifact="CHANGELOG.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -356,16 +356,24 @@
       <Detail>Verified make check after the Track 3 implementation: tests passed, total statement coverage stayed at 100.0 percent, and go vet was clean.</Detail>
       <Detail>Updated the official submission packet to version 2.9 and the landing page to version 1.8. Marketplace publication is not claimed; the implemented scope is Gemini Enterprise and Marketplace readiness through agent-card discovery and callable task artifacts.</Detail>
     </Entry>
-    <Entry date="2026-06-09" type="deployment">
-      <Title>Deployed Track 3 A2A refactor to Cloud Run</Title>
+	    <Entry date="2026-06-09" type="deployment">
+	      <Title>Deployed Track 3 A2A refactor to Cloud Run</Title>
       <Detail>Built and deployed image us-central1-docker.pkg.dev/startup-ai-deltasignal/deltasignal-ai-agent/app:20260609T085553Z-track3-a2a-cloudrun-deploy through Cloud Build.</Detail>
       <Detail>Cloud Run revision deltasignal-ai-agent-00010-k2h became ready and serves 100 percent of traffic at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Detail>
       <Detail>Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected A2A and judge routes behind DELTASIGNAL_DEMO_API_KEY.</Detail>
       <Detail>Validated GET /health, GET /.well-known/agent-card.json, and protected POST /a2a against the live Cloud Run service.</Detail>
       <Detail>The deployed /a2a response returned completed task state, deltasignal_research_packet artifact, live-mcp-tripcode-gemini mode, TF-SUB-9DA70A7F98, ready status, 10 HUT River nodes, thesis map, evidence boundary, runtime telemetry, and cost object.</Detail>
-      <Detail>Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy, including Cloud Build log, service describe, health, agent card, A2A response, summary, manifest, and proof HTML.</Detail>
-    </Entry>
-  </Entries>
+	      <Detail>Saved deployment evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy, including Cloud Build log, service describe, health, agent card, A2A response, summary, manifest, and proof HTML.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-09" type="track-3-hardening">
+	      <Title>Hardened Track 3 A2A session follow-up and public spec</Title>
+	      <Detail>Updated POST /a2a so a same-session follow-up can use stored TripCode/River memory when the request supplies session_id but no new TripCode.</Detail>
+	      <Detail>Added regression coverage for A2A first-turn TripCode resolution followed by a second-turn session-memory response.</Detail>
+	      <Detail>Cleaned the Track 3 A2A spec to avoid public development-tool references and private challenge source filenames.</Detail>
+	      <Detail>Clarified that A2A propagates available resolver provenance and that quality flags / stale markers are preserved when returned by the resolver.</Detail>
+	      <Detail>Clarified that ADK / Agent Engine orchestration remains a future expansion path; the implemented slice is protocol-native A2A on Go Cloud Run.</Detail>
+	    </Entry>
+	  </Entries>
   <PublicLinks>
     <Link name="LandingPage">index.html</Link>
     <Link name="OfficialSubmissionPacket">docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</Link>
@@ -852,6 +860,40 @@
           'Confirmed cmd/server, cmd/tripcode-demo, internal/agent, and total coverage all report 100.0 percent statements.',
           'Saved the self-contained proof artifact at artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260609T080753Z-track2-coverage-gate/TRACK2_COVERAGE_GATE_PROOF.html.',
           'Updated the official submission packet to version 2.8 so the Track 2 boundary is explicit: statement coverage is enforced, while broader scenario simulation and managed evaluation packs remain the next production-hardening layer.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Track 3 refactor',
+        title: 'Implemented Track 3 A2A refactor slice',
+        details: [
+          'Added public A2A agent-card discovery routes: GET /.well-known/agent-card.json and GET /a2a/app/.well-known/agent-card.json.',
+          'Added protected POST /a2a JSON-RPC task endpoint that accepts message/send, tasks/send, and resolve_tripcode and wraps the existing TripCode research-packet resolver.',
+          'Saved Track 3 proof artifacts under artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor.',
+          'Verified make check after the Track 3 implementation: tests passed, total statement coverage stayed at 100.0 percent, and go vet was clean.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Deployment',
+        title: 'Deployed Track 3 A2A refactor to Cloud Run',
+        details: [
+          'Cloud Run revision deltasignal-ai-agent-00010-k2h became ready and serves 100 percent of traffic at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.',
+          'Re-applied public invoker IAM after the recurring Cloud Build IAM warning while keeping protected A2A and judge routes behind DELTASIGNAL_DEMO_API_KEY.',
+          'Validated GET /health, GET /.well-known/agent-card.json, and protected POST /a2a against the live Cloud Run service.',
+          'The deployed /a2a response returned completed task state, deltasignal_research_packet artifact, live-mcp-tripcode-gemini mode, TF-SUB-9DA70A7F98, ready status, 10 HUT River nodes, thesis map, evidence boundary, runtime telemetry, and cost object.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Track 3 hardening',
+        title: 'Hardened Track 3 A2A session follow-up and public spec',
+        details: [
+          'Updated POST /a2a so a same-session follow-up can use stored TripCode/River memory when the request supplies session_id but no new TripCode.',
+          'Added regression coverage for A2A first-turn TripCode resolution followed by a second-turn session-memory response.',
+          'Cleaned the Track 3 A2A spec to avoid public development-tool references and private challenge source filenames.',
+          'Clarified that A2A propagates available resolver provenance and that quality flags / stale markers are preserved when returned by the resolver.',
+          'Clarified that ADK / Agent Engine orchestration remains a future expansion path; the implemented slice is protocol-native A2A on Go Cloud Run.'
         ]
       }
     ];

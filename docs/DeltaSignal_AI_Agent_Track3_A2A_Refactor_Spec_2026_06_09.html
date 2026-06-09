@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Gemini AI Agent | Track 3 A2A Refactor Spec</title>
+  <meta name="description" content="Track 3 spec for refactoring the DeltaSignal Gemini AI Agent for Google Cloud Marketplace & Gemini Enterprise readiness, with A2A interoperability, Cloud Run deployment, and TripCode research memory as the portable primitive.">
+  <style>
+    html {
+      background: #05070b;
+      color: #fff8ef;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    body { margin: 0; min-height: 100vh; }
+    track3-spec:not(:defined) { display: block; padding: 32px; }
+  </style>
+</head>
+<body>
+  <track3-spec></track3-spec>
+
+  <script id="strategix-track3-spec-contract" type="application/xml">
+<StrategiXVisualSpec version="1.1" status="track-3-spec" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Track3_A2A_Refactor_Spec_2026_06_09.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Gemini AI Agent - Track 3 A2A Refactor Spec</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <Challenge>Google for Startups AI Agents Challenge</Challenge>
+    <Track>Track 3: Refactor for Google Cloud Marketplace &amp; Gemini Enterprise</Track>
+    <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
+    <RelatedArtifacts>
+      <Artifact>artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/INDEX.html</Artifact>
+      <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</Artifact>
+      <Artifact>artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/TRACK3_A2A_REFACTOR_PROOF.html</Artifact>
+      <Artifact>cmd/server/a2a.go</Artifact>
+    </RelatedArtifacts>
+  </CanonicalArtifact>
+
+  <Purpose>Define the adjusted Track 3 strategy for the existing DeltaSignal Gemini AI Agent. Refactor the agent (originally built for Track 1 Build with TripCode/River research memory over Delta Signal ATLAS-7) to meet Track 3 mandates: B2B focus, Cloud-Native runtime (Cloud Run), Vertex-powered Gemini, and A2A interoperability. Position TripCodes + Rivers as the portable, agent-discoverable memory primitive that enables multi-agent coordination for issuer diligence, portfolio monitoring, compliance, and research workflows. This spec maps internally summarized official Track 3 guidance to the project's current architecture and artifacts, while preserving all evidence boundaries and non-advice posture.</Purpose>
+
+  <Track3Requirements>
+    <Requirement name="B2B Focus">Agent core must solve a clear business-to-business challenge.</Requirement>
+    <Requirement name="Cloud-Native Runtime">Migrate runtime natively to Google Cloud (Cloud Run, GKE, or Agent Engine).</Requirement>
+    <Requirement name="Vertex-Powered Intelligence">Reasoning engine must use Gemini or third-party LLM exclusively via Vertex AI (AI Studio not permitted for credits).</Requirement>
+    <Requirement name="A2A Interoperability">Communication layer must use Agent-to-Agent (A2A) protocol for seamless discovery and coordination with other enterprise agents.</Requirement>
+    <Requirement name="Multi-Agent Orchestration">Focus on design and orchestration of interactions between multiple agents. Current implemented slice is protocol-native A2A over Go Cloud Run; ADK / Agent Engine orchestration is a future registration and expansion path, not yet claimed as implemented.</Requirement>
+    <Requirement name="Business Use Case">Clearly articulate compelling B2B use case for the multi-agent solution.</Requirement>
+    <Requirement name="Grounding &amp; RAG">Employ Grounding (Vertex AI Search, Google Search, private data) and RAG to enhance reliability. Demonstrate how agent collaboration + grounding produces superior results to a single agent.</Requirement>
+    <Requirement name="Mandatory Technologies">Built on Google agent platform: Intelligence (Gemini/Vertex), Orchestration (ADK or supported frameworks like LangChain managed on platform), Infrastructure (Agent Engine, Cloud Run, GKE).</Requirement>
+    <Requirement name="Marketplace Readiness">Meet foundational technical criteria for Gemini Enterprise and Google Cloud Marketplace. Note: Challenge completion does not guarantee listing; requires further evaluations and partnerships.</Requirement>
+  </Track3Requirements>
+
+  <ProjectAdjustments>
+    <Adjustment name="Existing Foundation">The agent was built for Track 1 (Build) around Delta Signal ATLAS-7 as authorized B2B data source (SEC/XBRL-grounded issuer intelligence for crypto-exposed public companies). Core primitive: TripCodes (stable resolver keys for articles/claims) + Rivers (ordered thesis trails with prior nodes, evidence refs, weakened assumptions, monitor-next). This already provides a compelling B2B use case for analysts, funds, and research teams needing portable, evidence-bound research memory instead of generic RAG or manual local MCP orchestration.</Adjustment>
+    <Adjustment name="B2B Focus">Issuer diligence, stress signals, covenant analysis, peer ranking, alpha opportunities, and TripCode-driven thesis evolution directly solve B2B challenges for portfolio managers, compliance teams, and research desks. Multi-agent extension: Other agents (portfolio monitors, data-room agents, subscriber copilots) discover and coordinate with this agent via A2A to pull grounded research packets without duplicating data pipelines.</Adjustment>
+    <Adjustment name="Cloud-Native Runtime">Already deployed and validated on Cloud Run (multiple revisions, public agent-card, protected A2A endpoint). Matches allowed runtimes. Recent Track 3 Cloud Run deploy (20260609T085553Z) confirms production readiness with live A2A task handling.</Adjustment>
+    <Adjustment name="Vertex-Powered Intelligence">Gemini synthesis lane (via google.golang.org/genai with Vertex AI config when DELTASIGNAL_USE_GEMINI=true). Production path uses Vertex; demo mode falls back to deterministic fixtures while preserving live_mcp_error disclosure. AI Studio explicitly avoided per rules.</Adjustment>
+    <Adjustment name="A2A Interoperability">Implemented in cmd/server/a2a.go:
+- Agent card at /.well-known/agent-card.json (and /a2a/app/...) declaring protocolVersion 0.3.0, skills (e.g., "resolve-tripcode-research-packet"), capabilities, default input/output modes (text/plain, application/json), provider info.
+- POST /a2a endpoint handling message/send and tasks/send (or resolve_tripcode).
+- Parses TripCode from text/metadata, calls existing TripCode resolver + memory + synthesizer.
+- Returns A2A task with artifacts (deltasignal_research_packet as data part), metadata tagging track, marketplace readiness, boundaries, non_advice.
+- Supports session_id in metadata for River continuity across A2A calls, including stateful follow-up when the session already has TripCode memory.
+This makes the TripCode research packet (article memory, River, filing evidence, thesis deltas, monitor items) callable and discoverable by other A2A agents.</Adjustment>
+    <Adjustment name="Multi-Agent Orchestration &amp; Grounding">The existing coordinator + TripCode resolver already orchestrates bounded tools (stress, evidence, peer via ATLAS-7 MCP composites or specialists) with rich grounding from SEC/XBRL + SPECTRA. A2A layer exposes this as a reusable skill. Collaboration demo: Portfolio agent A2A-calls this agent for HUT research packet; this agent returns evidence-bound River + monitor-next; calling agent incorporates without re-fetching raw data. Grounding is native via DeltaSignal MCP (not generic search). ADK patterns can be layered on top for future multi-agent flows.</Adjustment>
+    <Adjustment name="Documentation &amp; Marketplace Prep">Agent card + metadata explicitly document the skill, A2A intents (resolve TripCode research packet), boundaries ("TripCodes are proprietary resolver keys; official filing identifiers remain SEC..."), and non-advice. Cloud Run deployment architecture documented in artifacts. Note in all Track 3 materials: "Marketplace publication is not claimed" — only A2A readiness and foundational criteria met. Full Marketplace listing requires additional Google evaluations/partnerships per rules.</Adjustment>
+  </ProjectAdjustments>
+
+  <Architecture>
+    <Component name="Core Agent (existing)">Go Cloud Run service with Coordinator (stress/evidence/peer lanes), TripCode resolver + in-memory River/session memory, Gemini synthesizer (Vertex), cost/rate tracking, evidence fidelity enrichment.</Component>
+    <Component name="A2A Layer (Track 3 addition)">a2a.go registers GET agent-card and POST /a2a. Handles A2A JSON-RPC message/send, extracts TripCode, reuses existing resolver/memory path, returns A2A task artifact with research packet + metadata.</Component>
+    <Component name="Data Source">Delta Signal ATLAS-7 MCP (authorized integration) for grounded evidence; TripCodes/Rivers as the portable memory abstraction.</Component>
+    <Component name="Deployment">Cloud Run (validated in Track 3 deploy artifact). Agent card publicly discoverable.</Component>
+    <Component name="Multi-Agent Extension">Other agents (e.g., portfolio, compliance, data-room) discover via A2A card, call the skill, receive evidence-bound packet with River continuity for follow-ups.</Component>
+  </Architecture>
+
+  <DemoFlow>
+    <Step order="1">Other A2A agent discovers DeltaSignal agent via GET /.well-known/agent-card.json (or /a2a/app/...). Card shows skill "resolve-tripcode-research-packet", tags (finance, issuer-diligence, research-memory), examples, boundaries.</Step>
+    <Step order="2">Calling agent sends A2A message/send with text containing TF-SUB-9DA70A7F98 + session metadata.</Step>
+    <Step order="3">DeltaSignal A2A endpoint resolves via live MCP (or resilient fallback), builds/uses River memory, returns completed task with artifact "deltasignal_research_packet" (full article + River + evidence + thesis map + monitor-next + metadata).</Step>
+    <Step order="4">Calling agent incorporates the packet (grounded, with provenance and non-advice). Follow-up A2A call uses same session_id for River continuity.</Step>
+    <Step order="5">Demo shows: agent card, A2A request/response for HUT TripCode, resulting research packet, evidence boundaries, and how this enables multi-agent workflows (e.g., portfolio agent pulling diligence without duplicating ATLAS-7 access).</Step>
+  </DemoFlow>
+
+  <B2BUseCase>
+    <UseCase>Portfolio &amp; compliance teams need reliable, up-to-date issuer research memory across filings, prior analysis (TripCodes), and evidence. A single agent (this one) maintains the River graph over DeltaSignal data. Other agents in the enterprise ecosystem (risk models, report generators, data rooms) discover it via A2A and pull precise, evidence-bound packets instead of raw scraping or generic search. Collaboration produces superior results: one agent owns the memory layer; others focus on their domain, all with shared provenance and boundaries.</UseCase>
+    <Value>Turns static research archives into a live, agent-coordinated memory service. Directly solves B2B challenges in finance/research where hallucinated or ungrounded agent output is unacceptable.</Value>
+  </B2BUseCase>
+
+  <ComplianceAndBoundaries>
+    <Boundary name="Marketplace">A2A agent-card and endpoint readiness implemented. Full Google Cloud Marketplace listing and Gemini Enterprise publication not claimed (requires additional evaluations per rules).</Boundary>
+    <Boundary name="Evidence">A2A artifacts propagate the available resolver provenance envelope: source dates, computed timestamps, caveats, evidence hashes, payload mode, non-advice language, and explicit distinction between TripCode resolver metadata and official SEC/XBRL identifiers. Quality flags and stale markers are preserved when returned by the upstream resolver and remain an Optimize hardening target when absent.</Boundary>
+    <Boundary name="Tooling">Gemini path uses Vertex AI (production). Demo uses deterministic fixtures with live_mcp_error disclosure. No AI Studio for credits. A2A is the interoperability layer on top of existing MCP/ATLAS-7 (authorized integration).</Boundary>
+    <Boundary name="New Project Framing">The core (TripCode/River over ATLAS-7) originated in Track 1. Track 3 work is explicit refactoring: adding A2A layer, agent card, multi-agent coordination points, Cloud Run A2A deployment, and documentation of intents/architecture.</Boundary>
+  </ComplianceAndBoundaries>
+
+  <AcceptanceCriteria>
+    <Criterion status="implemented">Public A2A agent card with protocol version, skills (resolve-tripcode-research-packet), examples, boundaries, and Track 3 metadata.</Criterion>
+    <Criterion status="implemented">Protected POST /a2a endpoint that accepts A2A message/send, resolves TripCode (live MCP or fallback), returns completed task with research packet artifact, and supports same-session follow-up from stored TripCode/River memory.</Criterion>
+    <Criterion status="implemented">Cloud Run deployment validated (agent card discoverable, A2A tasks executable, live for HUT example).</Criterion>
+    <Criterion status="implemented">B2B use case articulated (issuer diligence / research memory for analysts/funds via multi-agent A2A coordination).</Criterion>
+    <Criterion status="implemented">Documentation of A2A intents, deployment architecture, model usage, and boundaries (in agent card metadata, artifacts, and this spec).</Criterion>
+    <Criterion status="required">Clear demonstration (in video/artifacts) of multi-agent collaboration: e.g., simulated portfolio agent using A2A to obtain grounded River packet, showing superior result vs single-agent.</Criterion>
+    <Criterion status="required">Grounding/RAG via native ATLAS-7 MCP + SPECTRA (not generic search alone); evidence of collaboration benefit.</Criterion>
+    <Criterion status="note">Marketplace listing itself is out of scope for this challenge submission (per rules caveat).</Criterion>
+  </AcceptanceCriteria>
+
+  <RisksAndOpenQuestions>
+    <Risk>Public MCP TripCode composite and HUT River/index blobs remain discovery-gated. Service correctly falls back and discloses (per AGENTS.md). A2A layer works regardless.</Risk>
+    <Risk>Full multi-agent demo (beyond single A2A call) needs additional calling-agent simulation in video/artifacts.</Risk>
+    <Risk>Marketplace publication requires separate Google evaluations/partnerships — explicitly not claimed here.</Risk>
+    <Risk>ADK usage: Current implementation uses direct A2A JSON-RPC over HTTP (protocol-native) on Cloud Run. Future layering of ADK / Agent Engine orchestration is noted as an extension path and is not claimed as implemented in this slice.</Risk>
+    <OpenQuestion>Exact A2A protocol version and full intent schema for Gemini Enterprise registration (current uses 0.3.0 with message/send; align with latest Agent Garden guidance before any registration attempt).</OpenQuestion>
+  </RisksAndOpenQuestions>
+
+  <SourceDigest>
+    <Source>Official challenge guidance summarized internally: Track 3 mandates, A2A, B2B, Cloud-Native, Vertex, Marketplace caveat, implementation details, examples, and documentation requirements. Private source filenames and copied guide text are intentionally not published in this public spec.</Source>
+    <Source>Project artifacts: 04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/ (A2A refactor proof, agent card, a2a responses), 03_DEPLOYMENT_HISTORY__CLOUD_RUN/ (Track 3 Cloud Run deploy), a2a.go source.</Source>
+    <Source>Prior specs: Submission packet (core TripCode/River + B2B issuer diligence), AGENTS.md (evidence rules, discovery-gating, A2A caveats), previous Track 3 INDEX and proofs.</Source>
+    <Source>DeltaSignal integration: Authorized MCP source for grounding; TripCodes/Rivers as the A2A-exposed memory primitive.</Source>
+  </SourceDigest>
+
+  <ImplementationNotes>
+    <Note>The A2A layer is a thin, protocol-compliant adapter over the existing robust TripCode resolver + memory + evidence fidelity stack. No changes to core B2B logic or DeltaSignal integration were needed. This is true "refactor for A2A" while preserving all prior Track 1/2 work and evidence boundaries.</Note>
+    <Note>Future ADK integration can wrap the A2A skill for higher-level multi-agent orchestration if required for full Agent Engine demos.</Note>
+  </ImplementationNotes>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+
+    const xml = document.getElementById('strategix-track3-spec-contract')?.textContent.trim() ?? '';
+
+    const requirements = [
+      ['B2B Focus', 'Issuer diligence & research memory for analysts/funds (clear B2B).'],
+      ['Cloud-Native', 'Cloud Run (validated in Track 3 deploy).'],
+      ['Vertex Intelligence', 'Gemini via Vertex (production path); demo with disclosure.'],
+      ['A2A Interoperability', 'Agent card + POST /a2a with TripCode skill (implemented & deployed).'],
+      ['Multi-Agent', 'Other agents discover & call for River packets (A2A-native).'],
+      ['Grounding + RAG', 'Native ATLAS-7 MCP + SPECTRA (evidence-bound collaboration).'],
+    ];
+
+    const adjustments = [
+      ['Existing Foundation', 'Track 1 TripCode/River over DeltaSignal ATLAS-7 (B2B proof case).'],
+      ['A2A Addition', 'a2a.go: agent-card, /a2a endpoint, message/send handling, task artifacts.'],
+      ['Metadata', 'Track 3 tags, marketplace-ready, boundaries, non-advice in every response.'],
+      ['Deployment', 'Cloud Run with public card + protected A2A (multiple validated deploys).'],
+    ];
+
+    const demoSteps = [
+      'Discover via agent-card (skill: resolve-tripcode-research-packet).',
+      'A2A message/send with TF-SUB + session.',
+      'Return completed task with deltasignal_research_packet artifact.',
+      'Follow-up via same session for River continuity.',
+      'Multi-agent value: portfolio agent gets grounded diligence without raw MCP access.',
+    ];
+
+    class Track3Spec extends LitElement {
+      static styles = css`
+        :host { display: block; --bg: #05070b; --panel: rgba(18,21,29,.92); --line: rgba(255,255,255,.14); --ink: #fff8ef; --muted: rgba(255,248,239,.72); --gold: #ffb743; --green: #5df58b; --cyan: #72d9ff; }
+        * { box-sizing: border-box; }
+        main { min-height: 100vh; padding: 32px 18px 60px; background: radial-gradient(circle at 10% 0%, rgba(255,183,67,.12), transparent 30%), var(--bg); }
+        .wrap { width: min(1080px, 100%); margin: 0 auto; }
+        .hero, section, article { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; }
+        .hero { padding: 28px; margin-bottom: 20px; }
+        .eyebrow { color: var(--cyan); font-weight: 900; text-transform: uppercase; font-size: 12px; letter-spacing: .08em; }
+        h1 { margin: 8px 0 12px; font-size: clamp(32px, 5.5vw, 58px); line-height: .98; }
+        h2 { color: var(--gold); margin: 0 0 10px; font-size: 20px; }
+        p, li { color: var(--muted); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 14px; }
+        article { padding: 16px; }
+        article b { display: block; color: var(--ink); margin-bottom: 4px; }
+        ul { margin: 8px 0 0; padding-left: 18px; }
+        .chip { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid var(--line); margin: 2px; }
+        .boundary { border-left: 4px solid var(--green); padding-left: 12px; margin: 10px 0; }
+        .xml { margin-top: 20px; }
+        pre { max-height: 320px; overflow: auto; white-space: pre-wrap; background: #0a0c14; padding: 12px; border-radius: 6px; font-size: 11px; border: 1px solid var(--line); }
+        a { color: var(--cyan); font-weight: 700; text-decoration: none; }
+        .footer { font-size: 11px; color: var(--muted); text-align: center; margin-top: 40px; opacity: .7; }
+      `;
+
+      static properties = { showXml: { state: true } };
+
+      constructor() {
+        super();
+        this.showXml = false;
+      }
+
+      render() {
+        return html`
+          <main>
+            <div class="wrap">
+              <div class="hero">
+                <div class="eyebrow">Track 3 Path • A2A Refactor</div>
+                <h1>DeltaSignal Gemini AI Agent<br>Track 3 Spec</h1>
+                <p>Refactored for Google Cloud Marketplace &amp; Gemini Enterprise readiness. TripCodes + Rivers as the A2A-discoverable research memory primitive for multi-agent B2B workflows.</p>
+                <div style="margin-top:12px;">
+                  <span class="chip">B2B: Issuer diligence &amp; research memory</span>
+                  <span class="chip">Cloud Run (validated)</span>
+                  <span class="chip">Gemini via Vertex</span>
+                  <span class="chip">A2A agent-card + /a2a endpoint</span>
+                </div>
+              </div>
+
+              <section>
+                <h2>Track 3 Requirements (Mapped to Project)</h2>
+                <div class="grid">
+                  ${requirements.map(([name, fit]) => html`
+                    <article>
+                      <b>${name}</b>
+                      <span>${fit}</span>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <h2>Project Adjustments</h2>
+                <div class="grid">
+                  ${adjustments.map(([title, desc]) => html`
+                    <article>
+                      <b>${title}</b>
+                      <span>${desc}</span>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <h2>Demo Flow (A2A + TripCode)</h2>
+                <ol style="color:var(--muted); padding-left:20px;">
+                  ${demoSteps.map(s => html`<li>${s}</li>`)}
+                </ol>
+                <p style="margin-top:12px; font-size:13px;">See artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/ and the Track 3 Cloud Run deploy proof for live JSON evidence (agent card + a2a request/response for TF-SUB-9DA70A7F98).</p>
+              </section>
+
+              <section>
+                <h2>Boundaries &amp; Notes</h2>
+                <div class="boundary">
+                  <p><strong>Marketplace:</strong> A2A readiness and agent-card implemented. Full Google Cloud Marketplace listing / Gemini Enterprise publication <em>not claimed</em> (requires additional evaluations per rules).</p>
+                </div>
+                <div class="boundary">
+                  <p><strong>Evidence:</strong> A2A artifacts propagate available resolver provenance: source dates, computed timestamps, caveats, evidence hashes, payload mode, non-advice language, and SEC/XBRL identity boundaries. Quality flags and stale markers are preserved when the resolver returns them.</p>
+                </div>
+              </section>
+
+              <section class="xml">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <h2 style="margin:0;">Embedded Machine Contract</h2>
+                  <button class="xml-toggle" @click=${() => this.showXml = !this.showXml} style="font-size:11px; padding:4px 10px; border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--ink); border-radius:6px; cursor:pointer;">
+                    ${this.showXml ? 'Hide' : 'Show'} raw XML
+                  </button>
+                </div>
+                ${this.showXml ? html`<pre>${xml}</pre>` : html`<p style="font-size:12px; color:var(--muted);">Full &lt;StrategiXVisualSpec&gt; (requirements mapping, adjustments, architecture, demo flow, compliance, acceptance criteria, risks) is in the script#strategix-track3-spec-contract above.</p>`}
+              </section>
+
+              <div class="footer">
+                Adjusted Track 3 spec for the DeltaSignal Gemini AI Agent. Built on existing TripCode/River + ATLAS-7 foundation. A2A layer added for interoperability. References live artifacts and code (a2a.go). Marketplace publication explicitly not claimed.
+              </div>
+            </div>
+          </main>
+        `;
+      }
+    }
+
+    customElements.define('track3-spec', Track3Spec);
+  </script>
+</body>
+</html>

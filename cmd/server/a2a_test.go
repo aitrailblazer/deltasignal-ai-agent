@@ -74,6 +74,13 @@ func TestA2AMessageRouteSuccessAndSessionMemory(t *testing.T) {
 	if snap := memory.Snapshot("a2a-session"); !snap.Available || snap.Turns != 1 {
 		t.Fatalf("memory snapshot = %#v", snap)
 	}
+	followup := `{"jsonrpc":"2.0","id":"a2a-2","method":"message/send","params":{"message":{"parts":[{"kind":"text","text":"Using the previous River, what changed?"}]},"metadata":{"session_id":"a2a-session"}}}`
+	req = httptest.NewRequest(http.MethodPost, "/a2a", strings.NewReader(followup))
+	rr = httptest.NewRecorder()
+	mux.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"state":"completed"`) || !strings.Contains(rr.Body.String(), `"mode":"session-memory"`) || !strings.Contains(rr.Body.String(), `"last_tripcode":"TF-SUB-9DA70A7F98"`) {
+		t.Fatalf("a2a follow-up = %d %s", rr.Code, rr.Body.String())
+	}
 }
 
 func TestA2AMessageRouteErrorsAndRateLimit(t *testing.T) {
@@ -128,6 +135,7 @@ func TestA2AMessageRouteErrorsAndRateLimit(t *testing.T) {
 		{`{bad`, http.StatusBadRequest},
 		{`{"jsonrpc":"2.0","id":"x","method":"unknown"}`, http.StatusBadRequest},
 		{`{"jsonrpc":"2.0","id":"x","method":"message/send","params":{"text":"No code here"}}`, http.StatusOK},
+		{`{"jsonrpc":"2.0","id":"x","method":"message/send","params":{"text":"Follow up without prior memory","session_id":"missing"}}`, http.StatusNotFound},
 		{`{"jsonrpc":"2.0","id":"x","method":"resolve_tripcode","params":{"text":"Resolve TF-SUB-9DA70A7F98"}}`, http.StatusBadGateway},
 	} {
 		rr = httptest.NewRecorder()

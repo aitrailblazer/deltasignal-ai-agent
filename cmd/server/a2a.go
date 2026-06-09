@@ -176,7 +176,18 @@ func handleA2AMessage(
 	text, sessionID := a2aTextAndSession(rpc.Params)
 	tripcode := firstTripCode(text)
 	if tripcode == "" {
-		return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aInputRequiredTask(rpc.ID, "Send a TF-SUB TripCode, for example TF-SUB-9DA70A7F98.")}, http.StatusOK, "a2a-input-required"
+		if strings.TrimSpace(sessionID) == "" {
+			return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aInputRequiredTask(rpc.ID, "Send a TF-SUB TripCode, for example TF-SUB-9DA70A7F98.")}, http.StatusOK, "a2a-input-required"
+		}
+		req := agent.TripCodeResearchRequest{
+			SessionID: sessionID,
+			Question:  text,
+		}
+		result := resolveTripCodeHTTP(ctx, logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rt, rate)
+		if result.status < 200 || result.status > 299 {
+			return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Error: &a2aRPCError{Code: -32000, Message: "TripCode session follow-up failed"}}, result.status, "a2a-session-memory-error"
+		}
+		return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aCompletedTask(rpc.ID, "session memory", result.body)}, http.StatusOK, "a2a-session-memory"
 	}
 	req := agent.TripCodeResearchRequest{
 		TripCode:              tripcode,
