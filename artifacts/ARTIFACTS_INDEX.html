@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Gemini AI Agent | Artifact Index</title>
+  <meta name="description" content="Top-level index for DeltaSignal Gemini AI Agent validation artifacts.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #05070b;
+      --panel: rgba(18, 21, 29, .92);
+      --line: rgba(255,255,255,.14);
+      --ink: #fff8ef;
+      --muted: rgba(255,248,239,.72);
+      --green: #5df58b;
+      --cyan: #72d9ff;
+      --amber: #ffb743;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--bg); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; }
+    body { margin: 0; min-height: 100vh; }
+    main {
+      min-height: 100vh;
+      padding: 36px 18px 60px;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(255,183,67,.16), transparent 32%),
+        radial-gradient(circle at 88% 8%, rgba(114,217,255,.12), transparent 30%),
+        var(--bg);
+    }
+    .wrap { width: min(1100px, 100%); margin: 0 auto; }
+    .hero, .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 10px;
+    }
+    .hero {
+      padding: clamp(24px, 4vw, 40px);
+      border-color: rgba(255,183,67,.32);
+      background: linear-gradient(135deg, rgba(255,183,67,.12), rgba(114,217,255,.06)), var(--panel);
+    }
+    .eyebrow { color: var(--green); font-weight: 900; text-transform: uppercase; font-size: 12px; letter-spacing: .08em; }
+    h1 { margin: 8px 0 12px; max-width: 880px; font-size: clamp(38px, 6vw, 72px); line-height: .98; letter-spacing: 0; }
+    p { margin: 0; color: var(--muted); }
+    .lede { max-width: 880px; font-size: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .card { padding: 18px; }
+    h2 { margin: 0 0 10px; color: var(--amber); font-size: 22px; letter-spacing: 0; }
+    .meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+    .metric { border: 1px solid rgba(255,255,255,.10); border-radius: 8px; padding: 12px; background: rgba(255,255,255,.04); }
+    .metric b { display: block; margin-bottom: 4px; color: var(--ink); }
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+    ul { margin: 10px 0 0; padding-left: 20px; color: var(--muted); }
+    li { margin: 7px 0; }
+    code { color: #f8d998; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .xml { margin-top: 18px; }
+    pre {
+      max-height: 340px;
+      overflow: auto;
+      white-space: pre-wrap;
+      margin: 0;
+      color: #f8d998;
+      font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (max-width: 850px) {
+      .grid, .meta { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Artifact index</div>
+        <h1>Latest proof bundle is under deploy.</h1>
+        <p class="lede">The root <code>artifacts/</code> directory is organized by evidence lane. The newest Track 2 rerun proof is in <code>artifacts/deploy/20260609T033143Z-track2-rerun-validation/</code>.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Latest Track 2 Rerun</h2>
+          <div class="meta">
+            <div class="metric"><b>Run ID</b><span>20260609T033143Z-track2-rerun-validation</span></div>
+            <div class="metric"><b>Status</b><span>Passed</span></div>
+            <div class="metric"><b>Artifact count</b><span>21 hashed evidence files plus proof HTML</span></div>
+          </div>
+          <p><a href="./deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html">Open the self-contained proof HTML</a></p>
+          <ul>
+            <li><a href="./deploy/20260609T033143Z-track2-rerun-validation/06-track2-rerun-summary.json">Open run summary JSON</a></li>
+            <li><a href="./deploy/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json">Open artifact manifest with SHA-256 hashes</a></li>
+            <li><a href="./deploy/20260609T033143Z-track2-rerun-validation/03-resolve-response.json">Open saved TripCode response evidence</a></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>What This Proves</h2>
+          <ul>
+            <li>The deployed Go-native Cloud Run agent is reachable and healthy.</li>
+            <li>The protected brief path carries evidence-fidelity metadata into user-facing output.</li>
+            <li>The TripCode resolver path returns execution trace, agent context, research packet, memory, Gemini summary, usage, boundaries, and runtime telemetry.</li>
+            <li>The session follow-up path preserves prior HUT River context.</li>
+            <li>The usage ledger shows local-estimate spend and remaining challenge credits.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Other Artifact Lanes</h2>
+          <ul>
+            <li><code>deploy/</code> contains deployed Cloud Run validation runs.</li>
+            <li><code>judge-demo/</code> contains judge-flow request/response evidence.</li>
+            <li><code>optimize-evidence-fidelity/</code> contains Track 2 evidence-fidelity implementation proof.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Repository Links</h2>
+          <ul>
+            <li><a href="../docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official submission packet</a></li>
+            <li><a href="../CHANGELOG.html">Public changelog</a></li>
+            <li><a href="../index.html">Landing page</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="card xml">
+        <h2>Embedded XML Contract</h2>
+        <pre id="xmlContractText"></pre>
+      </section>
+    </div>
+  </main>
+
+  <script id="strategix-artifacts-index-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="visible-artifact-index" generated="2026-06-09" artifact="artifacts/ARTIFACTS_INDEX.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Gemini AI Agent Artifact Index</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <LatestRun>20260609T033143Z-track2-rerun-validation</LatestRun>
+    <LatestProof>artifacts/deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</LatestProof>
+  </CanonicalArtifact>
+  <Purpose>Make nested validation artifacts visible from the root artifacts directory.</Purpose>
+  <ArtifactLanes>
+    <Lane name="deploy">Deployed Cloud Run validation runs and request/response evidence.</Lane>
+    <Lane name="judge-demo">Judge-flow request/response evidence and Build proof artifacts.</Lane>
+    <Lane name="optimize-evidence-fidelity">Track 2 evidence-fidelity implementation proof artifacts.</Lane>
+  </ArtifactLanes>
+  <LatestValidation>
+    <RunId>20260609T033143Z-track2-rerun-validation</RunId>
+    <ServiceUrl>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</ServiceUrl>
+    <ProofFile>artifacts/deploy/20260609T033143Z-track2-rerun-validation/TRACK2_RERUN_VALIDATION_PROOF.html</ProofFile>
+    <SummaryFile>artifacts/deploy/20260609T033143Z-track2-rerun-validation/06-track2-rerun-summary.json</SummaryFile>
+    <ManifestFile>artifacts/deploy/20260609T033143Z-track2-rerun-validation/09-artifact-manifest.json</ManifestFile>
+  </LatestValidation>
+</StrategiXVisualSpec>
+  </script>
+  <script>
+    const xml = document.getElementById('strategix-artifacts-index-contract').textContent.trim();
+    document.getElementById('xmlContractText').textContent = xml;
+  </script>
+</body>
+</html>
