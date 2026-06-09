@@ -399,6 +399,12 @@
 	      <Detail>The second-turn A2A response returned completed state, mode session-memory, and reused the prior HUT River session context.</Detail>
 	      <Detail>Saved the clean A2A post-fix validation evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T174000Z-post-mcp-composite-fix-a2a-validation.</Detail>
 	    </Entry>
+	    <Entry date="2026-06-09" type="spec-update">
+	      <Title>Versioned submission packet after MCP source freeze</Title>
+	      <Detail>Updated the official submission packet to version 3.0 after cleaning and pushing the ATLAS-7 MCP source tree.</Detail>
+	      <Detail>Recorded MCP source commit 14686aa6, Cloud Run artifact commit 88a9c8f, live MCP revision ca-web-intel-mcp--0000510, clean post-fix /resolve and /a2a evidence, 10 HUT River nodes, zero missing evidence, and clean parent/submodule state.</Detail>
+	      <Detail>Clarified that the primary judge path is now live MCP composite resolution, with deterministic HUT fallback retained only as a resilience path.</Detail>
+	    </Entry>
 	  </Entries>
   <PublicLinks>
     <Link name="LandingPage">index.html</Link>
@@ -958,6 +964,16 @@
           'The first-turn A2A response returned completed state, mode live-mcp-tripcode-gemini, TripCode TF-SUB-9DA70A7F98, issuer HUT, 10 River nodes, zero missing evidence, Gemini summary, and no live_mcp_error.',
           'The second-turn A2A response returned completed state, mode session-memory, and reused the prior HUT River session context.',
           'Saved the clean A2A post-fix validation evidence under artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T174000Z-post-mcp-composite-fix-a2a-validation.'
+        ]
+      },
+      {
+        date: '2026-06-09',
+        type: 'Spec update',
+        title: 'Versioned submission packet after MCP source freeze',
+        details: [
+          'Updated the official submission packet to version 3.0 after cleaning and pushing the ATLAS-7 MCP source tree.',
+          'Recorded MCP source commit 14686aa6, Cloud Run artifact commit 88a9c8f, live MCP revision ca-web-intel-mcp--0000510, clean post-fix /resolve and /a2a evidence, 10 HUT River nodes, zero missing evidence, and clean parent/submodule state.',
+          'Clarified that the primary judge path is now live MCP composite resolution, with deterministic HUT fallback retained only as a resilience path.'
         ]
       }
     ];

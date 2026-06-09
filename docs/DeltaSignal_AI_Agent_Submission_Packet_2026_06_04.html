@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="2.9" status="track-3-a2a-refactor-implemented" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="3.0" status="post-mcp-composite-fix-source-frozen" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -40,7 +40,7 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="2.9" date="2026-06-09">This version records the first Track 3 refactor slice: A2A agent card discovery and an A2A-style JSON-RPC task endpoint that wraps the existing TripCode resolver as a portable agent task. The slice is deployed on Cloud Run revision deltasignal-ai-agent-00010-k2h and preserves the Track 2 100.0% coverage gate.</VersionSummary>
+  <VersionSummary version="3.0" date="2026-06-09">This version records the post-MCP composite resolver repair and source freeze: ATLAS-7 MCP source commit 14686aa6 is clean and pushed, live revision ca-web-intel-mcp--0000510 exposes deltasignal_resolve_tripcode_research_packet, the Cloud Run judge and A2A proof runs return live-mcp-tripcode-gemini with no live_mcp_error, and the latest artifact index points to the clean post-fix evidence bundles.</VersionSummary>
   <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, configurable TripCode memory backend status, public A2A agent-card routes, and a protected /a2a task endpoint.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
@@ -176,12 +176,13 @@
   <CurrentReadiness>
     <Ready>Active submission deadline is June 11, 2026 based on the current Devpost project state; older local reference material listed June 5 and is superseded by the current Devpost project state.</Ready>
     <Ready>Cloud Run service is deployed and validated at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Ready>
-    <Ready>HUT TripCode proof path resolves through the deployed Go service with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, and deterministic River fallback only as a resilience path.</Ready>
+    <Ready>HUT TripCode proof path resolves through the deployed Go service with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, 10 River nodes, zero missing evidence, and deterministic River fallback only as a resilience path.</Ready>
     <Ready>The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.</Ready>
     <Ready>Go judge shortcut routes GET /resolve and POST /resolve are implemented and covered by tests.</Ready>
     <Ready>Track 3 A2A routes are implemented and covered: GET /.well-known/agent-card.json, GET /a2a/app/.well-known/agent-card.json, and protected POST /a2a.</Ready>
     <Ready>scripts/judge-demo.sh runs the TripCode, Memory Bank, and usage-ledger flow without requiring Python ADK wrapper code.</Ready>
-    <Next>Record the 3-minute demo using the validated Cloud Run URL and scripts/judge-demo.sh path.</Next>
+    <Ready>Source freeze is reproducible: deltasignal-ai-agent commit 88a9c8f records post-fix proof artifacts, ATLAS-7 MCP commit 14686aa6 records the composite resolver source, and the parent workspace plus tracked submodules are clean.</Ready>
+    <Next>Record the 3-minute demo using the validated Cloud Run URL and scripts/judge-demo.sh path, then submit the Devpost assets.</Next>
   </CurrentReadiness>
   <JudgeScoringPriorities>
     <Priority rank="1" impact="critical">Use the validated Cloud Run URL, /health, /resolve, /v1/usage, and scripts/judge-demo.sh flow to record the 3-minute judge demo.</Priority>
@@ -254,6 +255,19 @@
     <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/TRACK3_A2A_CLOUD_RUN_DEPLOYMENT.html</Artifact>
     <Boundary>Marketplace publication is not claimed; this validates Cloud Run-hosted A2A readiness.</Boundary>
   </DeploymentValidation>
+  <DeploymentValidation date="2026-06-09" service_url="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app" mcp_revision="ca-web-intel-mcp--0000510" run_id="20260609T174000Z-post-mcp-composite-fix-a2a-validation">
+    <Check status="passed">ATLAS-7 MCP source is clean and pushed at commit 14686aa6 Add DeltaSignal tripcode and direct writer support.</Check>
+    <Check status="passed">Live MCP tools/list exposes deltasignal_resolve_tripcode_research_packet and the full article TripCode family.</Check>
+    <Check status="passed">Protected MCP composite call for TF-SUB-9DA70A7F98 returned status ready, issuer HUT, 10 River nodes, zero missing evidence, and evidence_hash sha256:e66c42421062db04a09cd6bd224d5128e8da0c434cb81c6128ba6dcaac634941.</Check>
+    <Check status="passed">Protected Cloud Run /resolve returned mode live-mcp-tripcode-gemini, no live_mcp_error, execution_trace, agent_context.sources, full research_packet, session_memory, gemini_summary, boundaries, runtime telemetry, and local-estimate usage.</Check>
+    <Check status="passed">Protected Cloud Run /a2a first turn returned completed state, mode live-mcp-tripcode-gemini, 10 HUT River nodes, zero missing evidence, Gemini summary, and no live_mcp_error.</Check>
+    <Check status="passed">Protected Cloud Run /a2a follow-up returned completed state, mode session-memory, and reused the prior HUT River session context.</Check>
+    <Check status="passed">Local-estimate usage ledger reported 0.05 USD spent and 499.95 USD remaining after the post-fix judge run; official billing still requires Google Cloud Billing export or console data.</Check>
+    <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T173000Z-post-mcp-composite-fix-judge-validation/BUILD_PHASE_EXPLANATION.html</Artifact>
+    <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T173000Z-post-mcp-composite-fix-judge-validation/LEARNING_EVIDENCE.html</Artifact>
+    <Artifact>artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T174000Z-post-mcp-composite-fix-a2a-validation/POST_MCP_FIX_A2A_VALIDATION.html</Artifact>
+    <Boundary>The primary judge path is live MCP composite resolution. Deterministic HUT fallback remains a resilience path only.</Boundary>
+  </DeploymentValidation>
   <ArtifactOrganization status="canonical-track-phase-tree" date="2026-06-09">
     <Index>artifacts/ARTIFACTS_INDEX.html</Index>
     <Folder track="Track 1 Build" phase="Working Demo" status="complete-and-verified">artifacts/00_TRACK_1_BUILD__WORKING_DEMO/</Folder>
@@ -263,6 +277,8 @@
     <Folder track="Deployment Support" phase="Cloud Run History" status="historical-support-lane">artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/</Folder>
     <Folder track="Track 3 Path" phase="A2A Refactor" status="implemented-and-cloud-run-validated">artifacts/04_TRACK_3_PATH__ARCHITECTURE_DOCUMENTED/20260609T083405Z-track3-a2a-refactor/</Folder>
     <Folder track="Deployment Support" phase="Track 3 A2A Cloud Run" status="deployed-and-validated">artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T085553Z-track3-a2a-cloudrun-deploy/</Folder>
+    <Folder track="Deployment Support" phase="Post-MCP Composite Fix Judge Validation" status="live-mcp-validated">artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T173000Z-post-mcp-composite-fix-judge-validation/</Folder>
+    <Folder track="Deployment Support" phase="Post-MCP Composite Fix A2A Validation" status="live-mcp-validated">artifacts/03_DEPLOYMENT_HISTORY__CLOUD_RUN/20260609T174000Z-post-mcp-composite-fix-a2a-validation/</Folder>
     <Boundary>Legacy raw evidence folders were moved into the canonical tree. Existing proof files keep their run IDs and raw evidence contents; the current runtime-hardening manifest was regenerated after the move to record the canonical folder path.</Boundary>
   </ArtifactOrganization>
   <HUTProofCard>
@@ -279,7 +295,7 @@
     <Boundary>Application cost tracking is immediate rehearsal telemetry, not the official Google Cloud Billing balance.</Boundary>
   </CostAndAccessPolicy>
   <RisksAndOpenQuestions>
-    <Risk level="low">The live public ATLAS-7 MCP endpoint now exposes deltasignal_resolve_tripcode_research_packet. Deterministic HUT fallback remains enabled for resilience, so judges should treat fallback entries as safety-path evidence rather than the primary live path.</Risk>
+    <Risk level="low">The live public ATLAS-7 MCP endpoint now exposes deltasignal_resolve_tripcode_research_packet from a clean pushed source commit. Deterministic HUT fallback remains enabled for resilience, so judges should treat fallback entries as safety-path evidence rather than the primary live path.</Risk>
     <Risk level="medium">The TripCode path remains the strongest provenance story; /v1/brief now carries evidence_fidelity and runtime telemetry, but production dashboards and broader simulation packs should still be added after submission.</Risk>
     <Risk level="medium">Session memory supports in-memory and file-backed modes. It proves continuity in a controlled session, but managed durable storage is still the right production option for multi-replica Cloud Run.</Risk>
     <Risk level="low">Shared demo-key access is appropriate for judges and now has configurable rate limiting, but it should still evolve into product-grade identity before broad public launch.</Risk>
@@ -300,9 +316,9 @@
     <Boundary name="non_advice">Outputs are evidence-routing and diligence triage, not investment advice, price targets, or order instructions.</Boundary>
   </RequiredBoundaries>
   <ImmediateNextSteps>
-    <Step order="1">Record the 3-minute judge demo using the validated Cloud Run URL and scripts/judge-demo.sh flow.</Step>
+    <Step order="1">Record the 3-minute judge demo using the validated Cloud Run URL, live MCP composite TripCode path, same-session memory follow-up, A2A proof, and usage ledger after each request.</Step>
     <Step order="2">Submit the public landing page, GitHub repository, demo video, architecture diagram, and this packet.</Step>
-    <Step order="3">Record the 3-minute judge demo using the live MCP composite TripCode path and the usage ledger after each request.</Step>
+    <Step order="3">Use the clean proof artifacts as evidence: post-fix judge validation, post-fix A2A validation, artifact index, public changelog, and MCP continuity log.</Step>
   </ImmediateNextSteps>
   <VersionHistory>
     <Version number="1.0" date="2026-06-07">Initial judge-facing submission packet.</Version>
@@ -325,6 +341,7 @@
     <Version number="2.7" date="2026-06-09">Enhanced Track 1 Build narrative around complex B2B problem solving, secure MCP external tool access, managed Cloud Run runtime, session memory, Gemini synthesis, and autonomous action beyond static reporting.</Version>
     <Version number="2.8" date="2026-06-09">Recorded fresh Track 2 quality gate evidence: make check passed, all Go packages reported 100.0 percent statement coverage, go vet was clean, and a self-contained coverage proof artifact was saved.</Version>
     <Version number="2.9" date="2026-06-09">Implemented and deployed the first Track 3 A2A refactor slice: agent-card discovery, protected /a2a JSON-RPC task endpoint, Cloud Run revision deltasignal-ai-agent-00010-k2h validation, saved A2A proof artifacts, and maintained 100.0 percent statement coverage.</Version>
+    <Version number="3.0" date="2026-06-09">Recorded post-MCP composite resolver repair and source freeze: MCP commit 14686aa6, Cloud Run artifact commit 88a9c8f, live MCP revision ca-web-intel-mcp--0000510, clean /resolve and /a2a proof artifacts with no live_mcp_error, 10 HUT River nodes, zero missing evidence, and clean repo/submodule state.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -377,7 +394,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '2.9';
+    const version = '3.0';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
@@ -447,10 +464,11 @@
     ];
     const readiness = [
       ['Live service', 'Cloud Run is deployed and validated at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.'],
-      ['HUT proof path', 'The deployed service resolves TF-SUB-9DA70A7F98 with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, and deterministic River fallback only as a resilience path.'],
+      ['HUT proof path', 'The deployed service resolves TF-SUB-9DA70A7F98 with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, 10 River nodes, zero missing evidence, and deterministic River fallback only as a resilience path.'],
       ['Boundary clarity', 'The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.'],
       ['Judge routes', 'GET /resolve and POST /resolve are implemented, tested, deployed, and documented for the competition demo.'],
       ['A2A readiness', 'GET /.well-known/agent-card.json and POST /a2a are implemented, tested, deployed on Cloud Run, and saved in the Track 3 proof artifacts.'],
+      ['Source freeze', 'deltasignal-ai-agent commit 88a9c8f records post-fix proof artifacts, ATLAS-7 MCP commit 14686aa6 records the composite resolver source, and the parent workspace plus tracked submodules are clean.'],
       ['Immediate next step', 'Record the three-minute judge demo against the validated Cloud Run URL, then submit.']
     ];
     const judgePriorities = [
@@ -458,7 +476,7 @@
       ['2 · Hero Path', 'Show the TripCode packet first because it carries the strongest River, evidence, caveat, and monitor-next provenance.'],
       ['3 · Optimize Evidence', 'The /v1/brief evidence_fidelity contract and runtime telemetry are implemented, tested, and ready for protected live validation after the runtime-hardening deployment.'],
       ['4 · Agent Story', 'Frame the demo as memory resolution, bounded tool calls, evidence comparison, Gemini synthesis, and session continuity, not just lookup.'],
-      ['5 · Repo Freeze', 'Freeze or document the nested repo state before final public submission so the review is reproducible.']
+      ['5 · Repo Freeze', 'Repo freeze is complete for the validated path: agent evidence is pushed at 88a9c8f and MCP source is pushed at 14686aa6.']
     ];
     const provenanceAlignment = [
       ['Primary demo', 'TripCode /resolve path returns the full research packet, River context, thesis map, caveats, missing evidence, and required boundaries.'],
@@ -488,12 +506,12 @@
       ['Non-advice', 'The output is diligence triage and evidence routing, not investment advice.']
     ];
     const nextSteps = [
-      ['Record', 'Record the three-minute judge demo using the validated Cloud Run URL and the exact Judge Demo Path below.'],
+      ['Record', 'Record the three-minute judge demo using the validated Cloud Run URL, live MCP composite TripCode path, same-session memory follow-up, A2A proof, and usage ledger.'],
       ['Submit', 'Submit the public landing page, GitHub repo, demo video, architecture diagram, and this packet.'],
-      ['Demo packet', 'The live judge response includes status ready, research_packet, 10 HUT River nodes, filing evidence refs, Gemini synthesis, and session-memory continuity.']
+      ['Demo packet', 'The live judge response includes status ready, research_packet, 10 HUT River nodes, zero missing evidence, filing evidence refs, Gemini synthesis, and session-memory continuity.']
     ];
     const risks = [
-      ['Low', 'The live public ATLAS-7 MCP endpoint now exposes the composite TripCode resolver. Deterministic HUT fallback remains enabled for resilience if MCP is unavailable.'],
+      ['Low', 'The live public ATLAS-7 MCP endpoint now exposes the composite TripCode resolver from clean pushed MCP source commit 14686aa6. Deterministic HUT fallback remains enabled for resilience if MCP is unavailable.'],
       ['Medium', 'The TripCode path remains the strongest provenance story; /v1/brief now carries evidence_fidelity and runtime telemetry, but production dashboards and broader simulation packs should still be added after submission.'],
       ['Medium', 'Session memory supports in-memory and file-backed modes for validation, but managed durable storage is still needed for multi-replica production.'],
       ['Low', 'Shared demo-key access is judge-safe and now has configurable rate limiting, but should still evolve into product-grade identity before broad public launch.'],
@@ -501,10 +519,11 @@
     ];
     const sourceDigest = [
       ['Codebase audit', 'docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html · 92 health score, coverage gate, secret hygiene, and provenance follow-up.'],
-      ['Changelog', 'CHANGELOG.html · public record for cost controls, TripCode path, deployment posture, audit, and version 1.2.'],
+      ['Changelog', 'CHANGELOG.html · public record for cost controls, TripCode path, deployment posture, audit, post-fix MCP validation, and version 3.0.'],
       ['Demo script', 'scripts/judge-demo.sh · TripCode resolve, follow-up memory, and usage ledger.'],
       ['Quality gate', 'make check · tests, 100 percent coverage gate, and vet clean at audit time.'],
-      ['Proof case', 'TF-SUB-9DA70A7F98 · HUT article-to-River-to-evidence continuity demo.']
+      ['Proof case', 'TF-SUB-9DA70A7F98 · HUT article-to-River-to-evidence continuity demo.'],
+      ['Source freeze', 'deltasignal-ai-agent 88a9c8f and ATLAS-7 MCP 14686aa6 are pushed and clean for the validated path.']
     ];
     const audit = [
       ['Audit Score', '92 · Strong competition-ready demo posture.'],
@@ -552,7 +571,7 @@
             <section class="hero">
               <div class="eyebrow">Google for Startups AI Agents Challenge 2026 · Track 1 Build</div>
               <h1>DeltaSignal Gemini AI Agent</h1>
-              <div class="demo-url">Spec version: ${version} · Status: Track 3 A2A refactor implemented</div>
+              <div class="demo-url">Spec version: ${version} · Status: post-MCP composite fix source frozen</div>
               <p class="hook"><strong>One TripCode turns a static newsletter archive into agent-executable financial memory.</strong><br>The agent resolves the article, reconstructs the full thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</p>
               <p class="hook"><strong>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</strong></p>
               <p>This is not another filing summarizer. It is the resolver layer that makes proprietary research memory portable, inspectable, and executable by Gemini and other MCP-aware agents.</p>
