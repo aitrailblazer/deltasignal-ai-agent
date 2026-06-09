@@ -24,7 +24,7 @@
   <delta-agent-landing></delta-agent-landing>
 
   <script id="strategix-landing-contract" type="application/xml">
-<StrategiXVisualSpec version="1.5" status="public-competition-landing-track2-validated" generated="2026-06-09" artifact="index.html">
+<StrategiXVisualSpec version="1.6" status="public-competition-landing-track1-enhanced" generated="2026-06-09" artifact="index.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Landing Page</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -32,7 +32,7 @@
     <ChallengeUrl>https://devpost.team/google-cloud-for-startups/hackathons/3197</ChallengeUrl>
     <ChallengeAccess>Devpost for Teams login required</ChallengeAccess>
     <ActiveSubmissionDeadline source="Devpost current state">2026-06-11</ActiveSubmissionDeadline>
-    <LocalPdfBoundary>The bundled Rules PDF in private/competition-pdfs lists June 5, 2026; the active working deadline has been updated from the current Devpost state to June 11, 2026.</LocalPdfBoundary>
+    <LocalPdfBoundary>A local stale reference lists June 5, 2026; the active working deadline has been updated from the current Devpost state to June 11, 2026. Source reference files are not linked from the public landing page.</LocalPdfBoundary>
     <Track>Track 1 Build</Track>
     <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
     <HeroImage>assets/atlas7-evidence-pipeline.png</HeroImage>
@@ -48,6 +48,7 @@
     <CompositeMCPContract>deltasignal_resolve_tripcode_research_packet is the one-call subscriber resolver contract: TripCode -> article object -> River -> filing-backed evidence refs -> thesis evolution map -> boundaries. The deployed Go service implements this boundary now, and the public ATLAS-7 MCP endpoint exposes the composite tool.</CompositeMCPContract>
     <ProofCase>In the deployed HUT case, one TripCode resolved the current article through Cloud Run, called the live ATLAS-7 MCP composite resolver, returned a structured 10-node HUT River research packet with filing evidence refs, produced a Gemini summary, preserved session memory, and returned monitor-next items and scenario framing.</ProofCase>
     <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
+    <TrackOneBuildClaim>Track 1 Build is shown as an autonomous business workflow: a user gives one TripCode or issuer prompt, the Cloud Run agent securely calls MCP tools, reconstructs research memory, compares evidence, preserves session state, synthesizes with Gemini, and returns a diligence packet with next actions.</TrackOneBuildClaim>
     <PositioningLock>TripCodes convert financial commentary into structured research memory: the bridge from prose to evidence.</PositioningLock>
   </ProductContract>
   <CompetitorContrast>
@@ -58,15 +59,24 @@
   </CompetitorContrast>
   <CompetitionFit>
     <ContestSiteAccess>Official Contest Site is Devpost for Teams and requires login; the landing page exposes the competition name and context publicly.</ContestSiteAccess>
-    <Deadline>Active submission deadline: June 11, 2026. The private local Rules PDF is retained as a stale reference because it lists June 5.</Deadline>
+    <Deadline>Active submission deadline: June 11, 2026. Older local reference material listed June 5 and is superseded by the current Devpost project state.</Deadline>
     <Fit>Autonomous agent for a concrete B2B business workflow.</Fit>
     <Fit>Google Cloud-native runtime through a validated Cloud Run service, with a future Agent Runtime path.</Fit>
     <Fit>Gemini synthesis through Vertex AI is verified in the deployed HUT TripCode flow.</Fit>
     <Fit>MCP-compatible tool boundary for secure external context and evidence retrieval, with deterministic fallback only as a resilience path.</Fit>
     <Fit>TripCode resolver layer makes newsletter research executable by agents rather than leaving it as passive archive content.</Fit>
     <Fit>The submitted agent performs the runtime research workflow autonomously after the user provides one TripCode or issuer prompt.</Fit>
+    <Fit>The agent moves beyond reporting by executing a multi-step diligence process: resolve, retrieve, reconstruct, compare, synthesize, remember, and disclose.</Fit>
     <Fit>Deterministic demo mode so judges can run and inspect the workflow without private data access.</Fit>
   </CompetitionFit>
+  <TrackOneChecklist>
+    <Item status="implemented">Complex business problem: issuer diligence across prior research, filings, caveats, and monitor-next workflows.</Item>
+    <Item status="implemented">Autonomous agent workflow: one prompt triggers tool calls, River reconstruction, evidence comparison, synthesis, session memory, and usage reporting.</Item>
+    <Item status="implemented">Secure external tool connection: MCP-compatible ATLAS-7 composite resolver with protected API key and bounded response contract.</Item>
+    <Item status="implemented">Managed Google Cloud runtime: Cloud Run service with health route, protected judge routes, bounded scale, and validation artifacts.</Item>
+    <Item status="implemented">State and memory: session_id stores compact River continuity for second-turn follow-ups.</Item>
+    <Item status="implemented">Gemini path: Vertex AI synthesis over resolved research packets and memory context.</Item>
+  </TrackOneChecklist>
   <TrackFit>
     <Track name="Track 1 Build">Working Cloud Run demo: resolve TripCode -> reconstruct River -> compare to evidence -> preserve memory -> show cost.</Track>
     <Track name="Track 2 Optimize">Evidence fidelity and runtime hardening are deployed: provenance-carrying brief responses, runtime telemetry, structured logs, protected-route rate limits, memory backend disclosure, and 100.0 percent coverage.</Track>
@@ -128,6 +138,14 @@
       ['Gemini Reasoning Path', 'The deployed HUT TripCode flow produced a Gemini summary through Google Cloud / Vertex AI.'],
       ['MCP Tool Boundary', 'Specialist lanes use agent-readable tool contracts instead of hidden manual workflows.'],
       ['Evidence Grounding', 'Briefs preserve SEC/XBRL source boundaries, caveats, uncertainty, and non-advice framing.']
+    ];
+    const trackOneChecklist = [
+      ['Complex B2B problem', 'Issuer diligence is spread across prior research, filings, caveats, and follow-up proof checks.'],
+      ['Autonomous workflow', 'One prompt triggers resolve, retrieve, reconstruct, compare, synthesize, remember, and disclose.'],
+      ['Secure MCP tools', 'The agent reaches ATLAS-7 through a bounded MCP-compatible resolver, protected by server-side credentials.'],
+      ['Managed runtime', 'Cloud Run hosts the agent with public health, protected judge routes, bounded scale, and validation artifacts.'],
+      ['State and memory', 'Session IDs preserve compact River continuity so the second turn uses the prior HUT context.'],
+      ['Gemini synthesis', 'Vertex AI / Gemini turns the resolved packet and memory into a concise diligence summary.']
     ];
 
     const challengeFacts = [
@@ -594,6 +612,21 @@
                 </div>
                 <div class="grid two">
                   ${proof.map(([title, body]) => html`
+                    <article class="card">
+                      <b>${title}</b>
+                      <p>${body}</p>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section id="track-one">
+                <div class="section-head">
+                  <h2>Track 1 Build: one prompt becomes an autonomous diligence workflow.</h2>
+                  <p>The agent is not a static report viewer. It takes a TripCode or issuer prompt, calls bounded external tools, reconstructs research memory, compares evidence, preserves session state, synthesizes through Gemini, and returns next actions with boundaries.</p>
+                </div>
+                <div class="grid two">
+                  ${trackOneChecklist.map(([title, body]) => html`
                     <article class="card">
                       <b>${title}</b>
                       <p>${body}</p>

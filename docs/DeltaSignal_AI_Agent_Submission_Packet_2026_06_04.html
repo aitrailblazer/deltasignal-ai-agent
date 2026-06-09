@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="2.6" status="track-phase-artifacts-refactored" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="2.7" status="track-1-build-enhanced" generated="2026-06-09" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -28,7 +28,7 @@
     <Challenge>Google for Startups AI Agents Challenge</Challenge>
     <Track>Build</Track>
     <ActiveSubmissionDeadline source="Devpost current state">2026-06-11</ActiveSubmissionDeadline>
-    <RulesPdfBoundary>The bundled private Rules PDF lists June 5, 2026, but the active working deadline is June 11, 2026 based on the current Devpost state visible to the author.</RulesPdfBoundary>
+    <RulesPdfBoundary>An older local reference lists June 5, 2026, but the active working deadline is June 11, 2026 based on the current Devpost state visible to the author.</RulesPdfBoundary>
     <LiveDemoUrl status="validated">https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</LiveDemoUrl>
     <RelatedArtifacts>
       <Artifact>docs/DeltaSignal_AI_Agent_Audit_Report_2026_06_08.html</Artifact>
@@ -40,7 +40,7 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>One TripCode turns a static newsletter archive into agent-executable financial memory: the agent resolves the article, reconstructs the thesis River, compares it against SEC/XBRL evidence, and returns what changed, what weakened, and what to monitor next with full provenance and boundaries.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="2.6" date="2026-06-09">This version records the artifact refactor into canonical track and phase folders: Track 1 Build working demo, Track 2 Optimize evidence fidelity, Track 2 Optimize runtime hardening current, Cloud Run deployment history, and Track 3 Path architecture documented. Raw evidence was moved into clear folders and the top-level artifact index now maps development status to proof bundles.</VersionSummary>
+  <VersionSummary version="2.7" date="2026-06-09">This version sharpens Track 1 Build positioning: the submitted agent starts from a complex B2B business problem, uses a secure MCP tool boundary to connect external evidence, runs on managed Google Cloud infrastructure, preserves state across turns, uses Gemini for synthesis, and takes autonomous diligence actions beyond static reporting.</VersionSummary>
   <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, and configurable TripCode memory backend status.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
@@ -50,6 +50,7 @@
     <Feature>MCP composite contract deltasignal_resolve_tripcode_research_packet wraps article resolution, River discovery, filing-backed evidence, thesis map, and required boundaries behind one stable TripCode handle.</Feature>
     <Feature>Gemini synthesis hook uses Vertex AI / Gemini Enterprise Agent Platform in startup-ai-deltasignal.</Feature>
     <Feature>Cloud Run-ready HTTP service provides health, brief-generation, usage, and TripCode resolver endpoints.</Feature>
+    <Feature>Track 1 Build workflow moves from declarative user intent to autonomous execution: resolve the research handle, call bounded tools, reconstruct memory, compare evidence, synthesize a diligence packet, preserve state, and expose cost.</Feature>
     <Feature>Go-native TripCode routes POST /v1/tripcode and judge-friendly GET/POST /resolve call the live MCP composite tool without introducing a separate Python wrapper.</Feature>
     <Feature>When Gemini is enabled, the TripCode route returns a Gemini-generated diligence summary from the resolved MCP packet plus session memory.</Feature>
     <Feature>Go-native session memory stores compact River continuity snapshots by session_id so follow-up turns can preserve the prior TripCode context.</Feature>
@@ -115,6 +116,14 @@
     <Track name="Optimize">Evidence fidelity: harden the brief and synthesis paths by carrying richer ATLAS-7 provenance, source dates, quality flags, caveats, stale markers, evidence hashes, and payload-mode disclosures through every user-facing result.</Track>
     <Track name="Path">Agent ecosystem expansion: extend TripCodes and River packets into portable research memory that can interoperate with portfolio, compliance, enterprise diligence, data-room, and subscriber-facing agents.</Track>
   </TrackFit>
+  <TrackOneBuildEnhancement source="competition-guide-inspired-public-summary">
+    <BusinessProblem>Financial research is trapped across articles, PDFs, filings, and tool-specific archives. Analysts need an agent that can turn one durable research handle into an evidence-backed state of the thesis.</BusinessProblem>
+    <AutonomousAgentAction>The agent does not only report stored data. It executes the workflow: resolves a TripCode, calls the MCP evidence surface, reconstructs the River, compares claims against evidence, writes session memory, invokes Gemini synthesis, returns monitor-next actions, and records usage.</AutonomousAgentAction>
+    <SecureExternalTools>MCP is the secure tool/context boundary. The Go service calls the ATLAS-7 composite resolver with protected keys, keeps credentials in Secret Manager, and returns only bounded research packets, caveats, and disclosures.</SecureExternalTools>
+    <ManagedRuntime>Cloud Run provides the managed Google Cloud runtime, public health route, protected judge routes, bounded scale, min-instances zero, and validated request/response evidence.</ManagedRuntime>
+    <StateAndGrounding>Session memory preserves River context across turns; TripCode packets preserve article and evidence provenance; Gemini synthesis is grounded in the packet and explicit evidence boundaries.</StateAndGrounding>
+    <BuildProof>TF-SUB-9DA70A7F98 is the proof case: one user input produces the HUT article object, 10-node River, thesis map, changed findings, weakened assumptions, evidence refs, monitor-next items, session memory, usage, and boundaries.</BuildProof>
+  </TrackOneBuildEnhancement>
   <TrackProgression>
     <Build>Prove the working demo. The current win condition is a clean, repeatable judge flow: TripCode in, River reconstructed, evidence compared, memory preserved, cost shown.</Build>
     <Optimize>Improve evidence fidelity. The main hardening path is not more features; it is making every generated answer carry the same provenance strength as the raw ATLAS-7 and TripCode packet.</Optimize>
@@ -123,7 +132,7 @@
   <TrackFraming>
     <Track name="Track 1 - Build" priority="primary">
       <Summary>DeltaSignal Gemini AI Agent is built around one core idea: financial research should not remain trapped inside static articles, PDFs, filings, or archive search. A single TripCode lets an agent recover the research object, reconstruct the thesis River around it, compare prior claims against current SEC/XBRL evidence, and return what changed, what weakened, and what to monitor next.</Summary>
-      <Implementation>The current build delivers this workflow as a Go-native Cloud Run service with deterministic demo mode, live DeltaSignal ATLAS-7 MCP integration, optional Gemini synthesis through Vertex AI, TripCode resolver routes, session memory, protected judge access, and local-estimate usage tracking.</Implementation>
+      <Implementation>The current build delivers this workflow as a Go-native Cloud Run service with deterministic demo mode, live DeltaSignal ATLAS-7 MCP integration, Gemini synthesis through Vertex AI, TripCode resolver routes, session memory, protected judge access, local-estimate usage tracking, and bounded autonomous execution from one user intent.</Implementation>
       <Proof>The strongest proof path is the HUT TripCode flow. The agent resolves TF-SUB-9DA70A7F98, reconstructs the HUT research River, surfaces prior article nodes, identifies changed findings and weakened assumptions, preserves evidence boundaries, and supports a second-turn follow-up using session memory.</Proof>
       <Position>Track 1 is the primary submission track because the system is implemented, test-covered, judge-demo ready, and differentiated by a working TripCode to River to evidence reconciliation workflow.</Position>
     </Track>
@@ -145,7 +154,7 @@
   <JudgeNarrative>
     <Opening>DeltaSignal is not another filing chatbot or generic deep-research wrapper. It turns proprietary financial research into executable agent memory. One TripCode resolves a published article into a machine-readable research packet, reconstructs the prior thesis River, compares that thesis against SEC/XBRL-backed evidence, and returns what changed, what weakened, what remains unproven, and what to monitor next with provenance, uncertainty, and non-advice boundaries preserved.</Opening>
     <RuntimeAutonomy>The submitted agent performs the runtime research workflow autonomously after the user provides one TripCode or issuer prompt. DeltaSignal Gemini AI Agent is the runtime product agent judges can call.</RuntimeAutonomy>
-    <TrackOne title="Track 1 - Build: A Working Agent, Not a Slideware Concept">The submitted system is a Go-native Cloud Run agent built for judge-safe reproducibility and live integration. It exposes health, brief-generation, usage, TripCode, and judge shortcut routes; supports deterministic demo fixtures; and can switch into live DeltaSignal ATLAS-7 MCP mode when the proper API key is supplied. The core build is the TripCode resolver: a stable article code becomes an executable research object with article memory, River continuity, filing references, thesis evolution, missing evidence, caveats, and monitor-next items. The HUT proof case demonstrates this workflow concretely through TF-SUB-9DA70A7F98, which resolves the Hut 8 article, reconstructs a 10-node HUT River, and returns changed findings, weakened assumptions, confirmed signals, execution bridge risks, proof milestones, invalidation logic, scenario framing, and a monitoring checklist.</TrackOne>
+    <TrackOne title="Track 1 - Build: A Working Agent, Not a Slideware Concept">The submitted system is a Go-native Cloud Run agent built for judge-safe reproducibility and live integration. It exposes health, brief-generation, usage, TripCode, and judge shortcut routes; supports deterministic demo fixtures; and runs the live DeltaSignal ATLAS-7 MCP mode when the proper API key is supplied. The core build is an autonomous TripCode workflow: a stable article code becomes an executable research object with article memory, River continuity, filing references, thesis evolution, missing evidence, caveats, and monitor-next items. The agent moves beyond reporting by resolving the handle, calling external tools through MCP, reconstructing state, comparing evidence, preserving session memory, and returning a diligence packet. The HUT proof case demonstrates this workflow concretely through TF-SUB-9DA70A7F98, which resolves the Hut 8 article, reconstructs a 10-node HUT River, and returns changed findings, weakened assumptions, confirmed signals, execution bridge risks, proof milestones, invalidation logic, scenario framing, and a monitoring checklist.</TrackOne>
     <TrackTwo title="Track 2 - Optimize: Grounded, Auditable, Cost-Controlled">The system is optimized around judge trust: deterministic fallback mode, live MCP mode behind explicit configuration, Gemini synthesis through Vertex AI, bounded session memory, protected demo access, local-estimate usage tracking, runtime telemetry, structured logs, and configurable rate limits. The audit reports 100 percent test coverage, clean go vet, no discovered secrets or credentials, correct ignore rules, distroless nonroot deployment posture, and clean separation between demo, live MCP, and Gemini paths. The strongest optimization is evidence discipline: the agent separates article-derived claims, filing-backed claims, MCP evidence, inference, missing data, identity boundaries, and non-advice language. The evidence-fidelity increment surfaces an evidence_fidelity summary through /v1/brief and the Gemini prompt path, while the runtime-hardening increment exposes request_id, trace_id, duration, rate-limit state, and memory backend status through every protected response.</TrackTwo>
     <TrackThree title="Track 3 - Path: From Research Agent to Agent Network">DeltaSignal's path is larger than a single demo. TripCodes create stable handles for proprietary research memory. Rivers organize articles into evolving thesis trails. ATLAS-7 provides the evidence layer. Gemini supplies synthesis. MCP provides the agent interface. That architecture can extend into A2A workflows: issuer diligence agents, compliance agents, portfolio-monitoring agents, data-room agents, and subscriber-facing research copilots can all resolve the same TripCode-backed memory object while preserving provenance and boundaries.</TrackThree>
     <WhyThisWins>Generic agents answer questions; DeltaSignal preserves a research lineage. Filing agents compare documents; DeltaSignal reconciles prior thesis claims against newer evidence. Search systems find content; DeltaSignal makes the content executable by agents.</WhyThisWins>
@@ -153,7 +162,7 @@
     <EvidenceBoundary>This narrative uses the visible audit, submission packet, and evaluation excerpts. The attached items reported zero linked drilldowns; exact omitted deployment details or full styleguide recommendations would require a narrower drilldown into those artifacts.</EvidenceBoundary>
   </JudgeNarrative>
   <CurrentReadiness>
-    <Ready>Active submission deadline is June 11, 2026 based on the current Devpost project state; the private Rules PDF still says June 5 and is retained only as stale reference evidence.</Ready>
+    <Ready>Active submission deadline is June 11, 2026 based on the current Devpost project state; older local reference material listed June 5 and is superseded by the current Devpost project state.</Ready>
     <Ready>Cloud Run service is deployed and validated at https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app.</Ready>
     <Ready>HUT TripCode proof path resolves through the deployed Go service with judge API-key verification, live ATLAS-7 MCP composite data, Gemini summary, and deterministic River fallback only as a resilience path.</Ready>
     <Ready>The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.</Ready>
@@ -260,7 +269,7 @@
     <Version number="1.5" date="2026-06-08">Reframed track fit as Build equals working demo, Optimize equals evidence fidelity, and Path equals agent ecosystem expansion.</Version>
     <Version number="1.6" date="2026-06-08">Recorded live Cloud Run Build validation, replaced the demo URL placeholder, and documented the deterministic HUT fallback boundary for the missing public MCP composite tool.</Version>
     <Version number="1.7" date="2026-06-08">Recorded live MCP composite Build validation: ATLAS-7 exposes the TripCode research packet tool, Cloud Run propagates structured research_packet data, and the judge flow returns 10 HUT River nodes with filing evidence refs and session memory.</Version>
-    <Version number="1.8" date="2026-06-08">Updated deadline handling: Devpost current state is treated as the active June 11 submission deadline, while the bundled private Rules PDF June 5 date is retained as stale reference context.</Version>
+    <Version number="1.8" date="2026-06-08">Updated deadline handling: Devpost current state is treated as the active June 11 submission deadline, while the older June 5 reference is retained only as stale internal context.</Version>
     <Version number="1.9" date="2026-06-08">Emphasized runtime autonomy: DeltaSignal Gemini AI Agent performs TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting after one user request.</Version>
     <Version number="2.0" date="2026-06-08">Recorded the first Track 2 Optimize evidence-fidelity implementation: /v1/brief now returns evidence_fidelity, fallback briefs disclose evidence-fidelity status, Gemini receives provenance context, and a deterministic proof artifact is saved.</Version>
     <Version number="2.1" date="2026-06-08">Added explicit Gemini Enterprise Agent Platform safety settings and Google Cloud Secret Manager guardrails for helpful bounded outputs, protected partner keys, and judge-safe Cloud Run execution.</Version>
@@ -269,6 +278,7 @@
     <Version number="2.4" date="2026-06-09">Recorded deployed Track 2 runtime-hardening validation on Cloud Run revision deltasignal-ai-agent-00009-c7s, including /health, /v1/brief, /resolve, session follow-up, /v1/usage, structured logs, spend report, and proof artifact.</Version>
     <Version number="2.5" date="2026-06-09">Recorded repeat deployed Track 2 validation run 20260609T033143Z-track2-rerun-validation with documented request/response artifacts, proof HTML, sha256 manifest, structured logs, spend report, and redacted public-guide excerpts.</Version>
     <Version number="2.6" date="2026-06-09">Refactored artifacts into canonical track and phase folders with clear development status labels and updated the artifact index, spec links, changelog links, and future judge-demo output path.</Version>
+    <Version number="2.7" date="2026-06-09">Enhanced Track 1 Build narrative around complex B2B problem solving, secure MCP external tool access, managed Cloud Run runtime, session memory, Gemini synthesis, and autonomous action beyond static reporting.</Version>
   </VersionHistory>
   <Architecture>
     <Node>User demo UI or curl client</Node>
@@ -321,7 +331,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '2.6';
+    const version = '2.7';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
