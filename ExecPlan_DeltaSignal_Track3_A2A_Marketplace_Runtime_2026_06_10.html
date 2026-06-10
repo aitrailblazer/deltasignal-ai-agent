@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExecPlan | DeltaSignal Track 3 A2A Marketplace Runtime</title>
+  <meta name="description" content="Execution plan for completing the DeltaSignal Gemini AI Agent Track 3 A2A Marketplace runtime slice: Agent Card skill contract, monitor-tripcode-thesis task execution, monitor baseline artifact, tests, and changelog updates.">
+  <style>
+    html { background:#05070b; color:#fff8ef; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.5; }
+    body { margin:0; min-height:100vh; }
+    execplan-track3-runtime:not(:defined) { display:block; padding:32px; }
+  </style>
+</head>
+<body>
+  <execplan-track3-runtime></execplan-track3-runtime>
+
+  <script id="strategix-execplan-track3-runtime-contract" type="application/xml">
+<StrategiXVisualSpec version="1.2" status="implemented-deployed-validated" generated="2026-06-10" artifact="ExecPlan_DeltaSignal_Track3_A2A_Marketplace_Runtime_2026_06_10.html">
+  <CanonicalArtifact>
+    <Title>ExecPlan - DeltaSignal Track 3 A2A Marketplace Runtime</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <RelatedSpec>docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html</RelatedSpec>
+    <Track>Track 3 Path: A2A Marketplace Functionality</Track>
+  </CanonicalArtifact>
+  <Objective>Implement the concrete runtime slice needed by the finalized Track 3 A2A Marketplace spec: the agent must publicly advertise both TripCode resolution and post-publication monitoring, accept monitor tasks over the protected A2A JSON-RPC surface, and return a structured monitor-baseline artifact that preserves evidence boundaries and session continuity.</Objective>
+  <Context>
+    <Fact>The Go Cloud Run service already exposes Agent Card routes, protected /a2a JSON-RPC task execution, TripCode resolution, session memory, usage telemetry, and verifier-style boundaries.</Fact>
+    <Fact>The finalized Track 3 spec defines a second marketplace skill, monitor-tripcode-thesis, but the current Agent Card advertises only resolve-tripcode-research-packet.</Fact>
+    <Fact>The narrowest implementation that completes the public contract is to add monitor-tripcode-thesis to discovery and execution without introducing a new framework or bypassing existing TripCode resolver and memory paths.</Fact>
+  </Context>
+  <AllowedChanges>
+    <Path>cmd/server/a2a.go</Path>
+    <Path>cmd/server/a2a_test.go</Path>
+    <Path>CHANGELOG.html</Path>
+    <Path>ExecPlan_DeltaSignal_Track3_A2A_Marketplace_Runtime_2026_06_10.html</Path>
+  </AllowedChanges>
+  <ForbiddenChanges>
+    <Rule>Do not expose secrets, API keys, private competition PDFs, hidden prompts, or internal-only judge artifacts.</Rule>
+    <Rule>Do not replace the Go service with an ADK/Python wrapper during this runtime completion.</Rule>
+    <Rule>Do not claim official Marketplace publication, Producer Portal approval, Gemini Enterprise registration, or Agent Runtime migration from this change alone.</Rule>
+    <Rule>Do not convert TripCodes into official SEC/XBRL identifiers. TripCodes remain resolver memory keys.</Rule>
+  </ForbiddenChanges>
+  <ImplementationSteps>
+    <Step order="1" status="completed">Advertise monitor-tripcode-thesis in the public Agent Card with examples and tags aligned to Track 3 monitoring.</Step>
+    <Step order="2" status="completed">Support monitor_tripcode_thesis as a JSON-RPC method on /a2a and allow natural-language monitor intent to route to the same baseline path.</Step>
+    <Step order="3" status="completed">Reuse the existing TripCode resolver and session memory logic so monitor requests preserve the same evidence, cost, runtime, and boundary envelope as resolve requests.</Step>
+    <Step order="4" status="completed">Wrap monitor responses in a dedicated deltasignal_thesis_monitor_baseline artifact with explicit checks for confirmed signals, weakened assumptions, stale or missing evidence, invalidation criteria, and monitor-next actions.</Step>
+    <Step order="5" status="completed">Add focused tests for Agent Card discovery, monitor method success, monitor artifact shape, and helper behavior.</Step>
+    <Step order="6" status="completed">Run the repo-local quality gate and update the public changelog.</Step>
+    <Step order="7" status="completed">Deploy the current Go service to Cloud Run, verify the live Agent Card and A2A runtime, and save redacted request/response evidence.</Step>
+  </ImplementationSteps>
+  <AcceptanceCriteria>
+    <Criterion>GET /.well-known/agent-card.json returns both resolve-tripcode-research-packet and monitor-tripcode-thesis skills.</Criterion>
+    <Criterion>POST /a2a with method monitor_tripcode_thesis and a TF-SUB TripCode returns a completed task.</Criterion>
+    <Criterion>The monitor task artifact is named deltasignal_thesis_monitor_baseline and contains a monitor_baseline object plus the underlying research_packet.</Criterion>
+    <Criterion>Session-memory monitoring works without inventing evidence when a prior TripCode is available in the session.</Criterion>
+    <Criterion>Live Cloud Run Agent Card advertises both skills and live A2A resolve, monitor, monitor follow-up, product-loop, and usage scenarios pass.</Criterion>
+    <Criterion>GOWORK=off go test ./... passes.</Criterion>
+  </AcceptanceCriteria>
+  <EvidenceBoundary>Monitor baseline output is a structured operational artifact. It identifies what to check next and preserves the underlying research packet; it does not create investment advice or upgrade memory into filing evidence.</EvidenceBoundary>
+  <ImplementationResult>
+    <ChangedFile>cmd/server/a2a.go</ChangedFile>
+    <ChangedFile>cmd/server/a2a_test.go</ChangedFile>
+    <ChangedFile>CHANGELOG.html</ChangedFile>
+    <Result>Track 3 A2A monitor runtime is implemented and deployed: Agent Card discovery now includes monitor-tripcode-thesis, /a2a accepts monitor_tripcode_thesis, monitor intent returns a deltasignal_thesis_monitor_baseline artifact, same-session monitor follow-up uses prior River memory without inventing evidence, and live Cloud Run revision deltasignal-ai-agent-00013-6rh passed the saved runtime scenarios.</Result>
+  </ImplementationResult>
+  <Validation>
+    <Command status="passed">GOWORK=off go test ./...</Command>
+    <Command status="passed">make check</Command>
+    <Command status="passed">make deploy-source</Command>
+    <Command status="passed">Live Cloud Run validation run 20260610T085358Z-track3-a2a-monitor-runtime</Command>
+    <Coverage status="passed">total 100.0 percent statements</Coverage>
+    <Artifact>artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T085358Z-track3-a2a-monitor-runtime/TRACK3_A2A_MONITOR_RUNTIME_PROOF.html</Artifact>
+  </Validation>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+    const xml = document.getElementById('strategix-execplan-track3-runtime-contract')?.textContent.trim() ?? '';
+    const steps = [
+      ['1', 'Advertise', 'Add monitor-tripcode-thesis to the public Agent Card.'],
+      ['2', 'Route', 'Accept monitor_tripcode_thesis and monitor language over /a2a.'],
+      ['3', 'Reuse', 'Call the existing TripCode resolver and session memory path.'],
+      ['4', 'Wrap', 'Return a dedicated monitor-baseline artifact.'],
+      ['5', 'Test', 'Cover discovery, execution, artifact shape, and helper behavior.'],
+      ['6', 'Record', 'Update changelog and run the Go quality gate.']
+    ];
+    class ExecPlanTrack3Runtime extends LitElement {
+      static styles = css`
+        :host { display:block; --panel:rgba(20,24,35,.9); --line:rgba(255,255,255,.14); --gold:#ffbd4a; --cyan:#62d8ff; --muted:rgba(255,248,239,.72); }
+        main { min-height:100vh; padding:34px 18px 64px; background:radial-gradient(circle at 10% 0%, rgba(255,189,74,.16), transparent 30%), #05070b; }
+        .wrap { width:min(1120px, 100%); margin:0 auto; }
+        .hero, section, article { border:1px solid var(--line); background:var(--panel); border-radius:10px; }
+        .hero { padding:30px; border-color:rgba(255,189,74,.35); }
+        .eyebrow { color:var(--cyan); font-size:12px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
+        h1 { margin:8px 0 12px; font-size:clamp(34px, 6vw, 64px); line-height:.98; }
+        h2 { margin:0 0 10px; color:var(--gold); font-size:21px; }
+        h3 { margin:0 0 6px; }
+        p, span, li { color:var(--muted); }
+        section { padding:18px; margin-top:14px; }
+        .grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; }
+        article { padding:14px; }
+        .num { display:inline-grid; place-items:center; width:25px; height:25px; border-radius:999px; background:var(--gold); color:#05070b; font-weight:900; margin-bottom:8px; }
+        pre { max-height:380px; overflow:auto; white-space:pre-wrap; background:#080b13; border:1px solid var(--line); border-radius:8px; padding:12px; color:#eadfc7; font-size:11px; }
+        @media (max-width: 860px) { .grid { grid-template-columns:1fr; } }
+      `;
+      render() {
+        return html`
+          <main>
+            <div class="wrap">
+              <div class="hero">
+                <div class="eyebrow">ExecPlan • Track 3 Runtime</div>
+                <h1>A2A Marketplace monitor skill</h1>
+                <p><strong>Status: implemented, deployed, and validated.</strong> Other agents can discover DeltaSignal, invoke TripCode monitoring, and receive a bounded monitor-baseline artifact.</p>
+              </div>
+              <section>
+                <h2>Implementation Steps</h2>
+                <div class="grid">
+                  ${steps.map(([num, title, body]) => html`
+                    <article>
+                      <div class="num">${num}</div>
+                      <h3>${title}</h3>
+                      <span>${body}</span>
+                    </article>
+                  `)}
+                </div>
+              </section>
+              <section>
+                <h2>Acceptance</h2>
+                <ul>
+                  <li>Agent Card advertises resolve and monitor skills.</li>
+                  <li>/a2a monitor calls return a completed task.</li>
+                  <li>The monitor artifact preserves research packet, boundaries, telemetry, and session context.</li>
+                  <li><code>make check</code> passes with total 100.0 percent statement coverage.</li>
+                  <li>Cloud Run revision <code>deltasignal-ai-agent-00013-6rh</code> passes the saved live A2A monitor runtime scenario.</li>
+                </ul>
+              </section>
+              <section>
+                <h2>Embedded XML Contract</h2>
+                <pre>${xml}</pre>
+              </section>
+            </div>
+          </main>
+        `;
+      }
+    }
+    customElements.define('execplan-track3-runtime', ExecPlanTrack3Runtime);
+  </script>
+</body>
+</html>

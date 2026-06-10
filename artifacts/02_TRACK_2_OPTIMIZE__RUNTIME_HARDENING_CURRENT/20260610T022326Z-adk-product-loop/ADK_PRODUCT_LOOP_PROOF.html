@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track 2 Optimize | ADK Product Loop Proof</title>
+  <style>
+    :root { color-scheme: dark; --bg:#05070b; --panel:#121722; --line:rgba(255,255,255,.14); --ink:#fff8ef; --muted:rgba(255,248,239,.72); --green:#5df58b; --cyan:#72d9ff; --amber:#ffb743; }
+    * { box-sizing:border-box; }
+    html { background:var(--bg); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+    body { margin:0; min-height:100vh; background:linear-gradient(135deg, rgba(93,245,139,.11), transparent 34%), radial-gradient(circle at 88% 0%, rgba(114,217,255,.14), transparent 30%), var(--bg); }
+    main { width:min(1080px,100%); margin:0 auto; padding:36px 18px 64px; }
+    section, article { border:1px solid var(--line); background:rgba(18,23,34,.92); border-radius:10px; padding:22px; margin:14px 0; }
+    .hero { border-color:rgba(93,245,139,.36); }
+    .eyebrow { color:var(--green); font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
+    h1 { margin:8px 0 12px; max-width:900px; font-size:clamp(38px,6vw,72px); line-height:.98; letter-spacing:0; }
+    h2 { margin:0 0 10px; color:var(--amber); font-size:22px; letter-spacing:0; }
+    p, li { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .card b { display:block; margin-bottom:8px; color:var(--ink); }
+    .card span { color:var(--muted); }
+    code, pre { color:#f8d998; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    pre { margin:0; white-space:pre-wrap; overflow:auto; max-height:280px; font-size:12px; }
+    a { color:var(--cyan); font-weight:900; text-decoration:none; overflow-wrap:anywhere; }
+    @media (max-width:850px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Track 2 Optimize · ADK product loop · Verified</div>
+      <h1>Product-loop route implemented with 100% Go coverage.</h1>
+      <p>The first executable ADK product-loop contract is now available in the Go service as protected <code>POST /v1/product-loop</code>. It returns the root orchestrator, specialist agents, tool classes, memory layers, grounding layers, deployment phases, verifier gates, stop conditions, cost snapshot, runtime telemetry, and boundaries.</p>
+    </section>
+
+    <section>
+      <h2>Implemented Surface</h2>
+      <div class="grid">
+        <article class="card"><b>Loop model</b><span><code>internal/agent/product_loop.go</code> defines Product Loop Orchestrator, Discovery, Triage, Planner, Builder, Verifier, Publisher, memory, grounding, deployment, and gates.</span></article>
+        <article class="card"><b>Protected route</b><span><code>cmd/server/main.go</code> exposes <code>POST /v1/product-loop</code> behind demo authorization, rate limiting, cost tracking, memory status, and runtime telemetry.</span></article>
+        <article class="card"><b>Coverage gate</b><span><code>make check</code> passed with <code>100.0%</code> total statement coverage and <code>go vet</code> clean.</span></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why This Covers Optimize</h2>
+      <p>This work moves Track 2 from evidence-fidelity-only hardening toward an explicit agent operating loop. It documents how the service should discover work, triage it, plan scoped implementation, execute in isolation, verify with maker/checker separation, publish only after gates pass, and record durable memory. The current implementation is intentionally a protected contract route rather than an unsupervised autonomous deployer.</p>
+    </section>
+
+    <section>
+      <h2>Proof Files</h2>
+      <ul>
+        <li><a href="./01-make-check.log">make check log</a></li>
+        <li><a href="./03-coverage-functions.txt">coverage function report</a></li>
+        <li><a href="./04-coverage-summary.json">coverage summary JSON</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Acceptance Result</h2>
+      <pre>GOWORK=off go test ./...
+GOWORK=off go test ./... -coverprofile=coverage.out -covermode=count
+GOWORK=off go tool cover -func=coverage.out
+total: (statements) 100.0%
+GOWORK=off go vet ./...</pre>
+    </section>
+
+    <script id="strategix-artifact-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="adk-product-loop-implemented" generated="2026-06-10" artifact="artifacts/02_TRACK_2_OPTIMIZE__RUNTIME_HARDENING_CURRENT/20260610T022326Z-adk-product-loop/ADK_PRODUCT_LOOP_PROOF.html">
+  <Track>Track 2 Optimize</Track>
+  <Phase>ADK Product Loop Implementation</Phase>
+  <RunId>20260610T022326Z-adk-product-loop</RunId>
+  <Implemented>
+    <Item>internal/agent/product_loop.go</Item>
+    <Item>POST /v1/product-loop</Item>
+    <Item>internal/agent/product_loop_test.go</Item>
+    <Item>cmd/server route tests</Item>
+  </Implemented>
+  <Coverage>Total Go statement coverage is 100.0 percent.</Coverage>
+  <Vet>Passed</Vet>
+  <Boundary>The route exposes the governed product-loop contract. It does not grant builder agents merge, deploy, publish, or self-verification authority.</Boundary>
+</StrategiXVisualSpec>
+    </script>
+  </main>
+</body>
+</html>

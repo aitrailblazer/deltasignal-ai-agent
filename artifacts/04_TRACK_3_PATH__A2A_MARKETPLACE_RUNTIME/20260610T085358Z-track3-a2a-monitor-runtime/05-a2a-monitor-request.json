@@ -1,0 +1,26 @@
+{
+  "method": "POST",
+  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/a2a",
+  "headers": {
+    "X-Demo-Key": "[REDACTED]",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "jsonrpc": "2.0",
+    "id": "monitor-1",
+    "method": "monitor_tripcode_thesis",
+    "params": {
+      "message": {
+        "parts": [
+          {
+            "kind": "text",
+            "text": "Monitor TF-SUB-9DA70A7F98 for confirmed signals, weakened assumptions, stale evidence, invalidation checks, and monitor-next actions"
+          }
+        ]
+      },
+      "metadata": {
+        "session_id": "track3-monitor-20260610T085358Z-track3-a2a-monitor-runtime"
+      }
+    }
+  }
+}

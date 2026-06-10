@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/health",
+  "headers": {
+    "X-Demo-Key": "[REDACTED]",
+    "Content-Type": "application/json"
+  },
+  "body": "null"
+}

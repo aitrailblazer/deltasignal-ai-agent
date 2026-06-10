@@ -375,6 +375,42 @@ func TestMuxBriefToolFailure(t *testing.T) {
 	}
 }
 
+func TestMuxProductLoopRoute(t *testing.T) {
+	mux := newMux(
+		slog.New(slog.NewTextHandler(io.Discard, nil)),
+		agent.Coordinator{Tools: agent.DemoToolClient{}},
+		nil,
+		agent.NewTripCodeMemoryStore(1),
+		nil,
+		agent.NewCostTracker(agent.CostTrackerConfig{Enabled: true, BudgetUSD: 1}),
+		nil,
+	)
+	t.Setenv("DELTASIGNAL_DEMO_API_KEY", "key")
+
+	rr := httptest.NewRecorder()
+	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodPost, "/v1/product-loop", strings.NewReader(`{}`)))
+	if rr.Code != http.StatusUnauthorized {
+		t.Fatalf("product-loop unauthorized code = %d", rr.Code)
+	}
+
+	req := httptest.NewRequest(http.MethodPost, "/v1/product-loop", strings.NewReader(`{bad`))
+	req.Header.Set("X-Demo-Key", "key")
+	rr = httptest.NewRecorder()
+	mux.ServeHTTP(rr, req)
+	if rr.Code != http.StatusBadRequest {
+		t.Fatalf("product-loop bad JSON code = %d", rr.Code)
+	}
+
+	req = httptest.NewRequest(http.MethodPost, "/v1/product-loop", strings.NewReader(`{"objective":"Ship ADK loop","workflow_type":"TripCode Monitor","risk_level":"high","allow_parallel_builders":true}`))
+	req.Header.Set("X-Demo-Key", "key")
+	rr = httptest.NewRecorder()
+	mux.ServeHTTP(rr, req)
+	body := rr.Body.String()
+	if rr.Code != http.StatusOK || !strings.Contains(body, `"objective":"Ship ADK loop"`) || !strings.Contains(body, `"workflow_type":"tripcode_monitor"`) || !strings.Contains(body, `"human_approval_required":true`) || !strings.Contains(body, `"parallel-builders-with-one-worktree-per-task"`) || !strings.Contains(body, `"request_kind":"product-loop"`) {
+		t.Fatalf("product-loop success response = %d %s", rr.Code, body)
+	}
+}
+
 func TestMuxTripCodeRoutes(t *testing.T) {
 	memory := agent.NewTripCodeMemoryStore(2)
 	mux := newMux(
@@ -595,6 +631,7 @@ func TestMuxRateLimitsProtectedRoutes(t *testing.T) {
 		{http.MethodGet, "/resolve?tripcode=TF-SUB-X", ""},
 		{http.MethodPost, "/resolve", `{"tripcode":"TF-SUB-X"}`},
 		{http.MethodGet, "/v1/usage", ""},
+		{http.MethodPost, "/v1/product-loop", `{"objective":"test"}`},
 	}
 	for _, route := range routes {
 		mux := newLimitedMux()

@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/v1/product-loop",
+  "headers": {
+    "X-Demo-Key": "[REDACTED]",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "objective": "Run the production loop for post-publication TripCode thesis monitoring",
+    "workflow_type": "TripCode Monitor",
+    "risk_level": "high",
+    "requires_human_approval": true
+  }
+}

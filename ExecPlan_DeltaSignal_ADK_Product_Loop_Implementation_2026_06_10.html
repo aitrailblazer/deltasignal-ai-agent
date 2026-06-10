@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExecPlan: DeltaSignal ADK Product Loop Implementation</title>
+  <style>
+    html {
+      background: #070910;
+      color: #fff8ef;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    body { margin: 0; min-height: 100vh; }
+    adk-loop-execplan:not(:defined) { display: block; padding: 32px; }
+  </style>
+</head>
+<body>
+  <adk-loop-execplan></adk-loop-execplan>
+
+  <script id="strategix-execplan-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="implemented" generated="2026-06-10" artifact="ExecPlan_DeltaSignal_ADK_Product_Loop_Implementation_2026_06_10.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal ADK Product Loop Implementation ExecPlan</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
+    <Track>Track 2 Optimize -> Track 3 Path</Track>
+  </CanonicalArtifact>
+  <Objective>Implement the first executable ADK product-loop contract in Go while preserving the validated Cloud Run / MCP evidence runtime and maintaining the repository's 100 percent coverage gate.</Objective>
+  <Scope>
+    <Item>Expose a deterministic Product Loop response model that maps the ADK architecture into root orchestrator, specialist agents, tool classes, memory layers, grounding layers, deployment phases, verifier gates, and stop conditions.</Item>
+    <Item>Add a protected HTTP route so judges can inspect the ADK loop architecture as a live product endpoint, not only as static prose.</Item>
+    <Item>Document the change in README and public changelog.</Item>
+    <Item>Run the existing 100 percent coverage gate.</Item>
+  </Scope>
+  <Implementation>
+    <File path="internal/agent/product_loop.go">New executable ADK product-loop model and planner.</File>
+    <File path="internal/agent/product_loop_test.go">Branch tests for defaults, overrides, approval forcing, parallelism, and normalization.</File>
+    <File path="cmd/server/main.go">New protected POST /v1/product-loop route with rate-limit, cost, memory-status, and runtime telemetry.</File>
+    <File path="cmd/server/main_test.go">Route tests for authorization, invalid JSON, success, and rate-limit coverage.</File>
+    <File path="README.md">Usage and positioning update.</File>
+    <File path="CHANGELOG.html">Public implementation record.</File>
+  </Implementation>
+  <AcceptanceCriteria>
+    <Criterion status="done">POST /v1/product-loop returns Product Loop Orchestrator, Discovery, Triage, Planner, Builder, Verifier, Publisher, tools, memory, grounding, deployment phases, gates, and boundaries.</Criterion>
+    <Criterion status="done">Route is protected by the same demo-key and rate-limit controls as judge routes.</Criterion>
+    <Criterion status="done">Response includes runtime telemetry and local-estimate cost snapshot when configured.</Criterion>
+    <Criterion status="done">Go tests cover every branch added by this implementation.</Criterion>
+    <Criterion status="done">make check passed with total coverage at exactly 100.0 percent.</Criterion>
+  </AcceptanceCriteria>
+  <Boundary>ADK is represented as the production orchestration contract and live endpoint shape. This implementation does not claim a managed Agent Runtime deployment has already replaced the validated Go Cloud Run service.</Boundary>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import { LitElement, html, css } from 'https://unpkg.com/lit@3/index.js?module';
+
+    const cards = [
+      ['Objective', 'Make the ADK product loop executable and testable, not just narrative.'],
+      ['Route', 'POST /v1/product-loop returns the live loop contract.'],
+      ['Core agents', 'Product Loop Orchestrator, Discovery, Triage, Planner, Builder, Verifier, Publisher.'],
+      ['Trust model', 'Builder cannot self-verify; Publisher cannot act without verifier pass.'],
+      ['Memory', 'Session state, durable loop memory, product knowledge memory.'],
+      ['Grounding', 'Controlled source-of-truth first, memory second, external grounding only when needed.'],
+      ['Coverage', 'New code is branch-tested to preserve the 100 percent gate.'],
+      ['Boundary', 'Go Cloud Run remains validated runtime; ADK is the production orchestration target.']
+    ];
+
+    class ADKLoopExecPlan extends LitElement {
+      static styles = css`
+        :host { display: block; }
+        main { max-width: 1180px; margin: 0 auto; padding: 48px 24px; }
+        .hero {
+          border: 1px solid rgba(255, 214, 102, .35);
+          background: linear-gradient(135deg, rgba(255, 214, 102, .14), rgba(91, 190, 255, .08));
+          border-radius: 18px;
+          padding: 28px;
+        }
+        .eyebrow { color: #ffd666; text-transform: uppercase; font-weight: 800; font-size: 12px; letter-spacing: .08em; }
+        h1 { margin: 10px 0 8px; font-size: clamp(32px, 5vw, 62px); line-height: 1; }
+        p { color: #d8d4ca; max-width: 880px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 18px; }
+        .card {
+          border: 1px solid rgba(255,255,255,.12);
+          background: rgba(255,255,255,.055);
+          border-radius: 12px;
+          padding: 16px;
+        }
+        b { display: block; color: #8ee6a5; margin-bottom: 8px; }
+        code {
+          display: block;
+          margin-top: 18px;
+          padding: 14px;
+          border-radius: 10px;
+          background: #10141d;
+          color: #c9f1ff;
+          overflow-x: auto;
+        }
+      `;
+      render() {
+        return html`
+          <main>
+            <section class="hero">
+              <div class="eyebrow">ExecPlan · Track 2 Optimize</div>
+              <h1>ADK Product Loop Implementation</h1>
+              <p>This plan converts the ADK loop architecture into a live, protected Go route with test coverage: the agent can expose how it discovers, triages, plans, executes, verifies, publishes, remembers, grounds, and escalates work.</p>
+              <code>curl -s "$DELTASIGNAL_AGENT_URL/v1/product-loop" -H "X-Demo-Key: $DELTASIGNAL_DEMO_API_KEY" -H "Content-Type: application/json" -d '{"objective":"Run the ADK product loop for TripCode monitoring","workflow_type":"TripCode Monitor","risk_level":"high"}' | jq</code>
+            </section>
+            <section class="grid">
+              ${cards.map(([title, body]) => html`<article class="card"><b>${title}</b><span>${body}</span></article>`)}
+            </section>
+          </main>
+        `;
+      }
+    }
+
+    customElements.define('adk-loop-execplan', ADKLoopExecPlan);
+  </script>
+</body>
+</html>

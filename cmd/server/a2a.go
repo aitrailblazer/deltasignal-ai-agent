@@ -123,13 +123,22 @@ func buildA2AAgentCard(r *http.Request) a2aAgentCard {
 			"streaming":         false,
 			"pushNotifications": false,
 		},
-		Skills: []a2aSkill{{
-			ID:          "resolve-tripcode-research-packet",
-			Name:        "Resolve TripCode research packet",
-			Description: "Resolve a TF-SUB TripCode into article memory, River continuity, filing evidence references, thesis evolution, caveats, and monitor-next items.",
-			Tags:        []string{"finance", "issuer-diligence", "tripcode", "research-memory", "sec-xbrl"},
-			Examples:    []string{"Resolve TF-SUB-9DA70A7F98 and show what changed across the HUT River."},
-		}},
+		Skills: []a2aSkill{
+			{
+				ID:          "resolve-tripcode-research-packet",
+				Name:        "Resolve TripCode research packet",
+				Description: "Resolve a TF-SUB TripCode into article memory, River continuity, filing evidence references, thesis evolution, caveats, and monitor-next items.",
+				Tags:        []string{"finance", "issuer-diligence", "tripcode", "research-memory", "sec-xbrl"},
+				Examples:    []string{"Resolve TF-SUB-9DA70A7F98 and show what changed across the HUT River."},
+			},
+			{
+				ID:          "monitor-tripcode-thesis",
+				Name:        "Monitor TripCode thesis",
+				Description: "Use a TF-SUB TripCode as a post-publication thesis-monitor baseline for confirmed signals, weakened assumptions, stale evidence, invalidation checks, and monitor-next actions.",
+				Tags:        []string{"finance", "issuer-monitoring", "tripcode", "river-memory", "evidence-boundary"},
+				Examples:    []string{"Monitor TF-SUB-9DA70A7F98 for weakened assumptions and next evidence checks."},
+			},
+		},
 		DefaultInputModes:  []string{"text/plain", "application/json"},
 		DefaultOutputModes: []string{"application/json"},
 		Provider: map[string]string{
@@ -170,11 +179,12 @@ func handleA2AMessage(
 	if rpc.JSONRPC == "" {
 		rpc.JSONRPC = "2.0"
 	}
-	if rpc.Method != "message/send" && rpc.Method != "tasks/send" && rpc.Method != "resolve_tripcode" {
+	if rpc.Method != "message/send" && rpc.Method != "tasks/send" && rpc.Method != "resolve_tripcode" && rpc.Method != "monitor_tripcode_thesis" {
 		return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Error: &a2aRPCError{Code: -32601, Message: "unsupported A2A method"}}, http.StatusBadRequest, "a2a-unsupported-method"
 	}
 	text, sessionID := a2aTextAndSession(rpc.Params)
 	tripcode := firstTripCode(text)
+	monitor := rpc.Method == "monitor_tripcode_thesis" || containsMonitorIntent(text)
 	if tripcode == "" {
 		if strings.TrimSpace(sessionID) == "" {
 			return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aInputRequiredTask(rpc.ID, "Send a TF-SUB TripCode, for example TF-SUB-9DA70A7F98.")}, http.StatusOK, "a2a-input-required"
@@ -186,6 +196,9 @@ func handleA2AMessage(
 		result := resolveTripCodeHTTP(ctx, logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rt, rate)
 		if result.status < 200 || result.status > 299 {
 			return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Error: &a2aRPCError{Code: -32000, Message: "TripCode session follow-up failed"}}, result.status, "a2a-session-memory-error"
+		}
+		if monitor {
+			return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aMonitorTask(rpc.ID, "session memory", result.body)}, http.StatusOK, "a2a-monitor-session-memory"
 		}
 		return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aCompletedTask(rpc.ID, "session memory", result.body)}, http.StatusOK, "a2a-session-memory"
 	}
@@ -201,6 +214,9 @@ func handleA2AMessage(
 	result := resolveTripCodeHTTP(ctx, logger, req, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rt, rate)
 	if result.status < 200 || result.status > 299 {
 		return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Error: &a2aRPCError{Code: -32000, Message: "TripCode resolution failed"}}, result.status, "a2a-resolve-error"
+	}
+	if monitor {
+		return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aMonitorTask(rpc.ID, tripcode, result.body)}, http.StatusOK, "a2a-monitor-tripcode"
 	}
 	return a2aRPCResponse{JSONRPC: "2.0", ID: rpc.ID, Result: a2aCompletedTask(rpc.ID, tripcode, result.body)}, http.StatusOK, "a2a-tripcode"
 }
@@ -238,6 +254,16 @@ func firstTripCode(text string) string {
 	return strings.ToUpper(strings.TrimSpace(found))
 }
 
+func containsMonitorIntent(text string) bool {
+	lower := strings.ToLower(text)
+	for _, needle := range []string{"monitor", "watch", "recheck", "post-publication", "stale evidence", "invalidation"} {
+		if strings.Contains(lower, needle) {
+			return true
+		}
+	}
+	return false
+}
+
 func a2aInputRequiredTask(id any, message string) map[string]any {
 	return map[string]any{
 		"id": taskID(id),
@@ -253,17 +279,56 @@ func a2aInputRequiredTask(id any, message string) map[string]any {
 }
 
 func a2aCompletedTask(id any, tripcode string, body any) map[string]any {
+	return a2aTaskWithArtifact(
+		id,
+		"deltasignal_research_packet",
+		"Resolved DeltaSignal TripCode research packet for "+tripcode+".",
+		body,
+	)
+}
+
+func a2aMonitorTask(id any, label string, body any) map[string]any {
+	return a2aTaskWithArtifact(
+		id,
+		"deltasignal_thesis_monitor_baseline",
+		"Post-publication DeltaSignal thesis monitor baseline for "+label+".",
+		a2aMonitorBaseline(label, body),
+	)
+}
+
+func a2aTaskWithArtifact(id any, name, description string, body any) map[string]any {
 	return map[string]any{
 		"id": taskID(id),
 		"status": map[string]any{
 			"state": "completed",
 		},
 		"artifacts": []map[string]any{{
-			"name":        "deltasignal_research_packet",
-			"description": "Resolved DeltaSignal TripCode research packet for " + tripcode + ".",
+			"name":        name,
+			"description": description,
 			"parts":       []map[string]any{{"kind": "data", "data": body}},
 		}},
 		"metadata": a2aMetadata(),
+	}
+}
+
+func a2aMonitorBaseline(label string, body any) map[string]any {
+	return map[string]any{
+		"monitor_baseline": map[string]any{
+			"status": "ready",
+			"skill":  "monitor-tripcode-thesis",
+			"input":  strings.TrimSpace(label),
+			"scope":  "post-publication thesis monitoring",
+			"required_checks": []string{
+				"confirmed signals",
+				"weakened assumptions",
+				"stale or missing evidence",
+				"invalidation criteria",
+				"monitor-next actions",
+			},
+			"evidence_boundary": "Monitor output preserves the underlying research packet and does not upgrade TripCode/River memory into SEC/XBRL evidence.",
+			"non_advice":        true,
+		},
+		"research_packet": body,
 	}
 }
 

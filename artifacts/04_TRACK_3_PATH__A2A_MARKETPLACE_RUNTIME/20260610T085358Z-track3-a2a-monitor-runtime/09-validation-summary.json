@@ -1,0 +1,62 @@
+{
+  "context": {
+    "run_id": "20260610T085358Z-track3-a2a-monitor-runtime",
+    "service_url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+    "revision": "deltasignal-ai-agent-00013-6rh",
+    "session_id": "track3-monitor-20260610T085358Z-track3-a2a-monitor-runtime",
+    "tripcode": "TF-SUB-9DA70A7F98",
+    "track": "Track 3 Path",
+    "phase": "A2A Marketplace runtime",
+    "objective": "deployed real examples and real scenarios for monitor-tripcode-thesis"
+  },
+  "checks": {
+    "health_ok": true,
+    "agent_card_has_resolve": true,
+    "agent_card_has_monitor": true,
+    "a2a_resolve_completed": true,
+    "a2a_monitor_completed": true,
+    "a2a_monitor_artifact": true,
+    "a2a_monitor_has_required_checks": true,
+    "a2a_followup_completed": true,
+    "a2a_followup_monitor_artifact": true,
+    "product_loop_contract_returned": true,
+    "product_loop_has_verifier_gates": true,
+    "usage_has_cost_tracking": true
+  },
+  "evidence": {
+    "service_revision": "deltasignal-ai-agent-00013-6rh",
+    "service_url": "https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app",
+    "skills": [
+      "resolve-tripcode-research-packet",
+      "monitor-tripcode-thesis"
+    ],
+    "monitor_required_checks": [
+      "confirmed signals",
+      "weakened assumptions",
+      "stale or missing evidence",
+      "invalidation criteria",
+      "monitor-next actions"
+    ],
+    "a2a_resolve_mode": "live-mcp-tripcode-gemini",
+    "a2a_followup_mode": "session-memory",
+    "product_loop_status": "planned",
+    "product_loop_workflow_type": "tripcode_monitor",
+    "usage": {
+      "enabled": true,
+      "source": "local-estimate",
+      "currency": "USD",
+      "tracked_spent_usd": 0.1,
+      "budget_usd": 500,
+      "remaining_usd": 499.9,
+      "official_billing": {
+        "available": false,
+        "source": "unavailable",
+        "project_id": "startup-ai-deltasignal",
+        "billing_account_name": "billingAccounts/018530-615AB8-696753",
+        "billing_enabled": true,
+        "note": "Official Google Cloud Billing spend is unavailable unless supplied from Cloud Billing export, Billing console, or another official billing source."
+      },
+      "note": "Local estimate for demo/test requests. Exact Google Cloud account spend and remaining credits require Cloud Billing export or the Billing console."
+    }
+  }
+}

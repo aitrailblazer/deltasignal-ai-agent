@@ -1,0 +1,17 @@
+{
+  "snapshot_id": "20260610T034958Z-google-cloud-console",
+  "captured_from": "Google Cloud Billing console screenshots supplied by user",
+  "billing_account_label": "My Billing Account",
+  "project": "startup-ai-deltasignal",
+  "credit_name": "Marketing- AI Agents Challenge- jesshuang- 499056416",
+  "credit_status": "Available",
+  "credit_percent_remaining": "100%",
+  "credit_remaining_value_usd": 499.68,
+  "cost_period_visible": "June 1-9, 2026",
+  "current_month_total_cost_usd": 0.27,
+  "current_month_savings_usd": 0.26,
+  "current_month_net_total_cost_usd": 0.01,
+  "forecasted_total_cost_usd": 0.33,
+  "source_boundary": "Manual billing-console snapshot. This is official console evidence copied from screenshots, not app-computed telemetry.",
+  "app_ledger_boundary": "The DeltaSignal /v1/usage route remains a local estimate. Official credit values should come from Google Cloud Billing console or billing export."
+}

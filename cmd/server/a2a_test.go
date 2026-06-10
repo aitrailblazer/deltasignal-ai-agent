@@ -31,7 +31,7 @@ func TestA2AAgentCardRoutes(t *testing.T) {
 	for _, path := range []string{"/.well-known/agent-card.json", "/a2a/app/.well-known/agent-card.json"} {
 		rr := httptest.NewRecorder()
 		mux.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, path, nil))
-		if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"protocolVersion":"0.3.0"`) || !strings.Contains(rr.Body.String(), `"url":"https://demo.example/a2a"`) || !strings.Contains(rr.Body.String(), `"resolve-tripcode-research-packet"`) {
+		if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"protocolVersion":"0.3.0"`) || !strings.Contains(rr.Body.String(), `"url":"https://demo.example/a2a"`) || !strings.Contains(rr.Body.String(), `"resolve-tripcode-research-packet"`) || !strings.Contains(rr.Body.String(), `"monitor-tripcode-thesis"`) {
 			t.Fatalf("agent card %s = %d %s", path, rr.Code, rr.Body.String())
 		}
 	}
@@ -43,7 +43,7 @@ func TestBuildA2AAgentCardFallbackBaseURL(t *testing.T) {
 	req.Host = "agent.example"
 	req.Header.Set("X-Forwarded-Proto", "https")
 	card := buildA2AAgentCard(req)
-	if card.URL != "https://agent.example/a2a" || card.Name == "" || len(card.Skills) != 1 || card.Capabilities["streaming"] {
+	if card.URL != "https://agent.example/a2a" || card.Name == "" || len(card.Skills) != 2 || card.Capabilities["streaming"] {
 		t.Fatalf("card = %#v", card)
 	}
 	req.Host = ""
@@ -80,6 +80,38 @@ func TestA2AMessageRouteSuccessAndSessionMemory(t *testing.T) {
 	mux.ServeHTTP(rr, req)
 	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"state":"completed"`) || !strings.Contains(rr.Body.String(), `"mode":"session-memory"`) || !strings.Contains(rr.Body.String(), `"last_tripcode":"TF-SUB-9DA70A7F98"`) {
 		t.Fatalf("a2a follow-up = %d %s", rr.Code, rr.Body.String())
+	}
+}
+
+func TestA2AMonitorTripCodeMethodAndSession(t *testing.T) {
+	memory := agent.NewTripCodeMemoryStore(2)
+	mux := newMux(
+		slog.New(slog.NewTextHandler(io.Discard, nil)),
+		agent.Coordinator{Tools: agent.DemoToolClient{}},
+		fakeTripCodeResolver{},
+		memory,
+		nil,
+		agent.NewCostTracker(agent.CostTrackerConfig{Enabled: true, BudgetUSD: 1, TripCodeCostUSD: 0.05, SessionMemoryCostUSD: 0.01}),
+		nil,
+	)
+
+	body := `{"jsonrpc":"2.0","id":"monitor-1","method":"monitor_tripcode_thesis","params":{"message":{"parts":[{"kind":"text","text":"Monitor TF-SUB-9DA70A7F98 for stale evidence and invalidation checks"}]},"metadata":{"session_id":"monitor-session"}}}`
+	req := httptest.NewRequest(http.MethodPost, "/a2a", strings.NewReader(body))
+	rr := httptest.NewRecorder()
+	mux.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"state":"completed"`) || !strings.Contains(rr.Body.String(), `"deltasignal_thesis_monitor_baseline"`) || !strings.Contains(rr.Body.String(), `"monitor_baseline"`) || !strings.Contains(rr.Body.String(), `"required_checks"`) || !strings.Contains(rr.Body.String(), `"research_packet"`) {
+		t.Fatalf("monitor tripcode = %d %s", rr.Code, rr.Body.String())
+	}
+	if snap := memory.Snapshot("monitor-session"); !snap.Available || snap.LastTripCode != "TF-SUB-9DA70A7F98" {
+		t.Fatalf("monitor memory snapshot = %#v", snap)
+	}
+
+	followup := `{"jsonrpc":"2.0","id":"monitor-2","method":"message/send","params":{"message":{"parts":[{"kind":"text","text":"Monitor the prior River for weakened assumptions"}]},"metadata":{"session_id":"monitor-session"}}}`
+	req = httptest.NewRequest(http.MethodPost, "/a2a", strings.NewReader(followup))
+	rr = httptest.NewRecorder()
+	mux.ServeHTTP(rr, req)
+	if rr.Code != http.StatusOK || !strings.Contains(rr.Body.String(), `"deltasignal_thesis_monitor_baseline"`) || !strings.Contains(rr.Body.String(), `"mode":"session-memory"`) || !strings.Contains(rr.Body.String(), `"scope":"post-publication thesis monitoring"`) {
+		t.Fatalf("monitor session follow-up = %d %s", rr.Code, rr.Body.String())
 	}
 }
 
@@ -180,6 +212,13 @@ func TestA2AHelpers(t *testing.T) {
 	}
 	if got := firstTripCode("no code"); got != "" {
 		t.Fatalf("missing tripcode = %q", got)
+	}
+	if !containsMonitorIntent("recheck stale evidence") || containsMonitorIntent("resolve normally") {
+		t.Fatal("monitor intent helper returned unexpected result")
+	}
+	baseline := a2aMonitorBaseline("TF-SUB-ABC123", map[string]any{"tripcode": "TF-SUB-ABC123"})
+	if baseline["research_packet"] == nil || !strings.Contains(baseline["monitor_baseline"].(map[string]any)["evidence_boundary"].(string), "SEC/XBRL evidence") {
+		t.Fatalf("monitor baseline = %#v", baseline)
 	}
 	if taskID(nil) == taskID("missing-id") {
 		t.Fatal("nil task id should hash a sentinel JSON value")

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Cloud Billing Credit Snapshot | DeltaSignal Gemini AI Agent</title>
+  <style>
+    :root { color-scheme: dark; --bg:#05070b; --panel:#121722; --line:rgba(255,255,255,.14); --ink:#fff8ef; --muted:rgba(255,248,239,.72); --green:#5df58b; --cyan:#72d9ff; --amber:#ffb743; }
+    * { box-sizing:border-box; }
+    html { background:var(--bg); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at 12% 0%, rgba(93,245,139,.13), transparent 32%), radial-gradient(circle at 90% 8%, rgba(255,183,67,.12), transparent 30%), var(--bg); }
+    main { width:min(1080px,100%); margin:0 auto; padding:36px 18px 64px; }
+    section, article { border:1px solid var(--line); background:rgba(18,23,34,.92); border-radius:10px; padding:22px; margin:14px 0; }
+    .hero { border-color:rgba(93,245,139,.38); }
+    .eyebrow { color:var(--green); font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
+    h1 { margin:8px 0 12px; max-width:900px; font-size:clamp(38px,6vw,72px); line-height:.98; letter-spacing:0; }
+    h2 { margin:0 0 10px; color:var(--amber); font-size:22px; letter-spacing:0; }
+    p, li { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .metric b { display:block; color:var(--ink); font-size:24px; line-height:1; margin-bottom:8px; }
+    .metric span { color:var(--muted); }
+    code { color:#f8d998; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    a { color:var(--cyan); font-weight:900; text-decoration:none; overflow-wrap:anywhere; }
+    @media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Cost discipline · Google Cloud Billing console snapshot</div>
+      <h1>Credits remain effectively intact after testing.</h1>
+      <p>This artifact records the user-supplied Google Cloud Billing screenshots for the DeltaSignal Gemini AI Agent project. It preserves the official-console boundary separately from the app's local-estimate usage ledger.</p>
+    </section>
+
+    <section>
+      <h2>Visible Billing Values</h2>
+      <div class="grid">
+        <article class="metric"><b>$499.68</b><span>Remaining issued credit value visible in Credits.</span></article>
+        <article class="metric"><b>100%</b><span>Percent remaining visible in Credits.</span></article>
+        <article class="metric"><b>$0.01</b><span>Net current-month total cost visible in Overview.</span></article>
+        <article class="metric"><b>$0.33</b><span>Forecasted total cost visible in Overview.</span></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cost Summary</h2>
+      <ul>
+        <li>Credit name: <code>Marketing- AI Agents Challenge- jesshuang- 499056416</code></li>
+        <li>Status: <code>Available</code></li>
+        <li>Visible period: <code>June 1-9, 2026</code></li>
+        <li>Current-month total cost: <code>$0.27</code></li>
+        <li>Savings: <code>$0.26</code></li>
+        <li>Net total cost: <code>$0.01</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Boundary</h2>
+      <p>This is a manual billing-console snapshot from screenshots. It is stronger evidence than the app's local estimate, but it is not an automated billing export. The app's <code>/v1/usage</code> route remains useful for immediate per-request test telemetry, while Google Cloud Billing remains the source of truth for official credit consumption.</p>
+      <p><a href="./00-billing-snapshot.json">Open machine-readable billing snapshot JSON</a></p>
+    </section>
+
+    <script id="strategix-billing-snapshot-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="billing-credit-snapshot-recorded" generated="2026-06-10" artifact="artifacts/05_COST_AND_BILLING__CREDIT_SNAPSHOTS/20260610T034958Z-google-cloud-console/BILLING_CREDIT_SNAPSHOT.html">
+  <Track>Cost And Billing</Track>
+  <Source>Google Cloud Billing console screenshots supplied by user</Source>
+  <Project>startup-ai-deltasignal</Project>
+  <CreditName>Marketing- AI Agents Challenge- jesshuang- 499056416</CreditName>
+  <CreditRemainingValueUSD>499.68</CreditRemainingValueUSD>
+  <CreditPercentRemaining>100%</CreditPercentRemaining>
+  <CurrentMonthTotalCostUSD>0.27</CurrentMonthTotalCostUSD>
+  <CurrentMonthSavingsUSD>0.26</CurrentMonthSavingsUSD>
+  <CurrentMonthNetCostUSD>0.01</CurrentMonthNetCostUSD>
+  <ForecastedTotalCostUSD>0.33</ForecastedTotalCostUSD>
+  <Boundary>Official spend and credit remaining come from Billing console or export. App usage ledger values are local estimates only.</Boundary>
+</StrategiXVisualSpec>
+    </script>
+  </main>
+</body>
+</html>

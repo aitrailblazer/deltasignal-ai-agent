@@ -200,6 +200,33 @@ func newMux(
 		writeJSON(w, http.StatusOK, costTracker.Snapshot())
 		rt.Log(logger, http.StatusOK, "usage")
 	})
+	mux.HandleFunc("POST /v1/product-loop", func(w http.ResponseWriter, r *http.Request) {
+		rt := beginRequest(r, "/v1/product-loop")
+		if !authorizedDemoRequest(r) {
+			writeJSON(w, http.StatusUnauthorized, map[string]string{"error": "missing or invalid demo key"})
+			rt.Log(logger, http.StatusUnauthorized, "unauthorized")
+			return
+		}
+		rate := rateLimiter.Allow(r)
+		writeRateLimitHeaders(w, rate)
+		if !rate.Allowed {
+			writeJSON(w, http.StatusTooManyRequests, map[string]any{"error": "rate limit exceeded", "rate_limit": rate})
+			rt.Log(logger, http.StatusTooManyRequests, "rate-limited")
+			return
+		}
+		var req agent.ProductLoopRequest
+		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+			writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid JSON request"})
+			rt.Log(logger, http.StatusBadRequest, "bad-json")
+			return
+		}
+		resp := agent.BuildProductLoop(req, time.Now().UTC())
+		resp.Cost = costTracker.Record("product-loop")
+		memStatus := tripcodeMemory.Status("")
+		resp.Runtime = rt.Telemetry(&rate, &memStatus)
+		writeJSON(w, http.StatusOK, resp)
+		rt.Log(logger, http.StatusOK, "product-loop")
+	})
 	registerA2ARoutes(mux, logger, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rateLimiter)
 	return mux
 }

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Track 3 A2A Monitor Runtime Proof</title>
+  <style>
+    html{background:#07090f;color:#f8fbff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}body{margin:0;padding:30px}main{max-width:1080px;margin:0 auto}.hero,section{border:1px solid rgba(255,255,255,.14);background:rgba(18,22,33,.88);border-radius:10px;padding:22px;margin:0 0 16px}.eyebrow{color:#58e6ff;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}h1{font-size:clamp(34px,6vw,64px);line-height:1;margin:8px 0 12px;letter-spacing:0}h2{font-size:22px;color:#7cff9b;margin:0 0 10px;letter-spacing:0}p{color:rgba(248,251,255,.78);margin:0 0 10px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);border-radius:8px;padding:14px}.card b{display:block;margin-bottom:5px;color:#fff}code{color:#92d7ff;background:rgba(146,215,255,.1);padding:2px 5px;border-radius:5px}li{margin:0 0 8px}pre{white-space:pre-wrap;overflow:auto;background:#0b0f18;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:14px;color:#dff6ff}.pass{color:#7cff9b;font-weight:900}
+  </style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <div class="eyebrow">Google for Startups AI Agents Challenge 2026 | Track 3 Path</div>
+    <h1>A2A Marketplace Runtime Proof</h1>
+    <p><strong>Objective:</strong> prove the deployed Go Cloud Run agent can be discovered by other agents, resolve a TripCode research packet, execute post-publication thesis monitoring, preserve session continuity, expose a product-loop contract, and report usage/cost telemetry.</p>
+    <p><strong>Run:</strong> <code>20260610T085358Z-track3-a2a-monitor-runtime</code></p>
+    <p><strong>Service:</strong> <code>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</code></p>
+    <p><strong>Revision:</strong> <code>deltasignal-ai-agent-00013-6rh</code></p>
+  </div>
+
+  <section>
+    <h2>Scenario Results</h2>
+    <div class="grid">
+      <div class="card"><b>Discovery</b><p class="pass">PASS</p><p>Agent Card exposes <code>resolve-tripcode-research-packet</code> and <code>monitor-tripcode-thesis</code>.</p></div>
+      <div class="card"><b>A2A Resolve</b><p class="pass">PASS</p><p><code>/a2a</code> completed a TripCode research-packet task.</p></div>
+      <div class="card"><b>A2A Monitor</b><p class="pass">PASS</p><p><code>monitor_tripcode_thesis</code> returned <code>deltasignal_thesis_monitor_baseline</code>.</p></div>
+      <div class="card"><b>Session Follow-up</b><p class="pass">PASS</p><p>Monitor follow-up reused prior session/River context without resending the TripCode.</p></div>
+      <div class="card"><b>Product Loop</b><p class="pass">PASS</p><p><code>/v1/product-loop</code> returned the production loop contract for TripCode monitoring.</p></div>
+      <div class="card"><b>Usage</b><p class="pass">PASS</p><p><code>/v1/usage</code> returned local-estimate cost telemetry.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Real Scenario</h2>
+    <ol>
+      <li>External agent discovers DeltaSignal through <code>/.well-known/agent-card.json</code>.</li>
+      <li>External agent asks for a HUT TripCode research packet through <code>/a2a</code>.</li>
+      <li>External agent asks DeltaSignal to monitor the same thesis for stale evidence, weakened assumptions, invalidation checks, and monitor-next actions.</li>
+      <li>External agent follows up in the same session without resending the TripCode.</li>
+      <li>The runtime returns structured artifacts, not loose prose, preserving the non-advice/evidence boundary.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Saved Evidence</h2>
+    <ol>
+      <li><code>02-health-response.json</code></li>
+      <li><code>03-agent-card-response.json</code></li>
+      <li><code>04-a2a-resolve-request.json</code> / <code>04-a2a-resolve-response.json</code></li>
+      <li><code>05-a2a-monitor-request.json</code> / <code>05-a2a-monitor-response.json</code></li>
+      <li><code>06-a2a-monitor-followup-request.json</code> / <code>06-a2a-monitor-followup-response.json</code></li>
+      <li><code>07-product-loop-request.json</code> / <code>07-product-loop-response.json</code></li>
+      <li><code>08-usage-response.json</code></li>
+      <li><code>09-validation-summary.json</code></li>
+      <li><code>10-sha256-manifest.txt</code></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Evidence Boundary</h2>
+    <p>Saved request files redact the demo key. Cost data from <code>/v1/usage</code> is local-estimate telemetry, not an official Google Billing export. TripCode and River memory remain resolver memory; SEC/XBRL accessions, source dates, evidence hashes, and filing references remain the evidence anchors when available.</p>
+  </section>
+
+  <section>
+    <h2>Validation Summary</h2>
+    <pre>{
+  &quot;context&quot;: {
+    &quot;run_id&quot;: &quot;20260610T085358Z-track3-a2a-monitor-runtime&quot;,
+    &quot;service_url&quot;: &quot;https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app&quot;,
+    &quot;revision&quot;: &quot;deltasignal-ai-agent-00013-6rh&quot;,
+    &quot;session_id&quot;: &quot;track3-monitor-20260610T085358Z-track3-a2a-monitor-runtime&quot;,
+    &quot;tripcode&quot;: &quot;TF-SUB-9DA70A7F98&quot;,
+    &quot;track&quot;: &quot;Track 3 Path&quot;,
+    &quot;phase&quot;: &quot;A2A Marketplace runtime&quot;,
+    &quot;objective&quot;: &quot;deployed real examples and real scenarios for monitor-tripcode-thesis&quot;
+  },
+  &quot;checks&quot;: {
+    &quot;health_ok&quot;: true,
+    &quot;agent_card_has_resolve&quot;: true,
+    &quot;agent_card_has_monitor&quot;: true,
+    &quot;a2a_resolve_completed&quot;: true,
+    &quot;a2a_monitor_completed&quot;: true,
+    &quot;a2a_monitor_artifact&quot;: true,
+    &quot;a2a_monitor_has_required_checks&quot;: true,
+    &quot;a2a_followup_completed&quot;: true,
+    &quot;a2a_followup_monitor_artifact&quot;: true,
+    &quot;product_loop_contract_returned&quot;: true,
+    &quot;product_loop_has_verifier_gates&quot;: true,
+    &quot;usage_has_cost_tracking&quot;: true
+  },
+  &quot;evidence&quot;: {
+    &quot;service_revision&quot;: &quot;deltasignal-ai-agent-00013-6rh&quot;,
+    &quot;service_url&quot;: &quot;https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app&quot;,
+    &quot;skills&quot;: [
+      &quot;resolve-tripcode-research-packet&quot;,
+      &quot;monitor-tripcode-thesis&quot;
+    ],
+    &quot;monitor_required_checks&quot;: [
+      &quot;confirmed signals&quot;,
+      &quot;weakened assumptions&quot;,
+      &quot;stale or missing evidence&quot;,
+      &quot;invalidation criteria&quot;,
+      &quot;monitor-next actions&quot;
+    ],
+    &quot;a2a_resolve_mode&quot;: &quot;live-mcp-tripcode-gemini&quot;,
+    &quot;a2a_followup_mode&quot;: &quot;session-memory&quot;,
+    &quot;product_loop_status&quot;: &quot;planned&quot;,
+    &quot;product_loop_workflow_type&quot;: &quot;tripcode_monitor&quot;,
+    &quot;usage&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;source&quot;: &quot;local-estimate&quot;,
+      &quot;currency&quot;: &quot;USD&quot;,
+      &quot;tracked_spent_usd&quot;: 0.1,
+      &quot;budget_usd&quot;: 500,
+      &quot;remaining_usd&quot;: 499.9,
+      &quot;official_billing&quot;: {
+        &quot;available&quot;: false,
+        &quot;source&quot;: &quot;unavailable&quot;,
+        &quot;project_id&quot;: &quot;startup-ai-deltasignal&quot;,
+        &quot;billing_account_name&quot;: &quot;billingAccounts/018530-615AB8-696753&quot;,
+        &quot;billing_enabled&quot;: true,
+        &quot;note&quot;: &quot;Official Google Cloud Billing spend is unavailable unless supplied from Cloud Billing export, Billing console, or another official billing source.&quot;
+      },
+      &quot;note&quot;: &quot;Local estimate for demo/test requests. Exact Google Cloud account spend and remaining credits require Cloud Billing export or the Billing console.&quot;
+    }
+  }
+}</pre>
+  </section>
+</main>
+<script type="application/xml" id="strategix-contract">
+<StrategiXVisualSpec version="1.0" status="track3-runtime-proof" generated="2026-06-10" artifact="TRACK3_A2A_MONITOR_RUNTIME_PROOF.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Track 3 A2A Monitor Runtime Proof</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <Track>Track 3 Path</Track>
+    <Phase>A2A Marketplace Runtime</Phase>
+    <RunId>20260610T085358Z-track3-a2a-monitor-runtime</RunId>
+    <ServiceUrl>https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app</ServiceUrl>
+    <Revision>deltasignal-ai-agent-00013-6rh</Revision>
+  </CanonicalArtifact>
+  <Objective>Prove deployed discovery, A2A TripCode resolution, A2A thesis monitoring, session continuity, product loop contract, and usage telemetry.</Objective>
+  <EvidenceFiles>
+    <File>02-health-response.json</File>
+    <File>03-agent-card-response.json</File>
+    <File>04-a2a-resolve-response.json</File>
+    <File>05-a2a-monitor-response.json</File>
+    <File>06-a2a-monitor-followup-response.json</File>
+    <File>07-product-loop-response.json</File>
+    <File>08-usage-response.json</File>
+    <File>09-validation-summary.json</File>
+    <File>10-sha256-manifest.txt</File>
+  </EvidenceFiles>
+  <Result>All validation summary checks passed for the deployed Cloud Run revision.</Result>
+  <Boundary>Demo key is redacted. Usage is local-estimate. TripCode/River memory is resolver memory, not official SEC/XBRL evidence identity.</Boundary>
+</StrategiXVisualSpec>
+</script>
+</body>
+</html>

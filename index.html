@@ -24,7 +24,7 @@
   <delta-agent-landing></delta-agent-landing>
 
   <script id="strategix-landing-contract" type="application/xml">
-<StrategiXVisualSpec version="1.9" status="public-competition-landing-devpost-copy-linked" generated="2026-06-09" artifact="index.html">
+<StrategiXVisualSpec version="3.1" status="public-competition-landing-billing-snapshot-added" generated="2026-06-10" artifact="index.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Landing Page</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -35,7 +35,7 @@
     <LocalPdfBoundary>A local stale reference lists June 5, 2026; the active working deadline has been updated from the current Devpost state to June 11, 2026. Source reference files are not linked from the public landing page.</LocalPdfBoundary>
     <Track>Track 1 Build</Track>
     <OfficialSpec>docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</OfficialSpec>
-    <DevpostCopy>docs/DeltaSignal_AI_Agent_Devpost_Submission_Copy_2026_06_09.html</DevpostCopy>
+    <Track3ReadinessSpec>docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Readiness_Spec_2026_06_10.html</Track3ReadinessSpec>
     <HeroImage>assets/atlas7-evidence-pipeline.png</HeroImage>
   </CanonicalArtifact>
   <Purpose>Present the competition project as a judge-readable landing page with one official spec, runnable code, and clear Google Cloud / Gemini / MCP alignment.</Purpose>
@@ -45,10 +45,20 @@
     <CoreWorkflow>User asks an issuer question; the coordinator decomposes the task; specialist lanes retrieve stress, evidence, and peer context; Gemini synthesizes a grounded brief; review output preserves caveats and next actions.</CoreWorkflow>
     <EvidenceBoundary>ATLAS-7 is disclosed as an existing authorized integration and data source. The submitted competition project is the new autonomous agent and orchestration layer.</EvidenceBoundary>
     <ResearchMemoryExtension>TripCodes and Substack Rivers extend the same agent into subscriber research memory: resolve an article, reconstruct the thesis River, compare it with filing evidence, and surface what changed.</ResearchMemoryExtension>
-    <CompetitionThesis>TripCodes are the resolver layer that turns static financial prose into portable, inspectable, executable research memory for Gemini and MCP-aware agents.</CompetitionThesis>
+    <CompetitionThesis>DeltaSignal turns one TripCode into an agent-executable financial research memory loop with evidence comparison, session continuity, provenance, and cost visibility.</CompetitionThesis>
     <CompositeMCPContract>deltasignal_resolve_tripcode_research_packet is the one-call subscriber resolver contract: TripCode -> article object -> River -> filing-backed evidence refs -> thesis evolution map -> boundaries. The deployed Go service implements this boundary now, and the public ATLAS-7 MCP endpoint exposes the composite tool.</CompositeMCPContract>
     <ProofCase>In the deployed HUT case, one TripCode resolved the current article through Cloud Run, called the live ATLAS-7 MCP composite resolver, returned a structured 10-node HUT River research packet with filing evidence refs, produced a Gemini summary, preserved session memory, and returned monitor-next items and scenario framing.</ProofCase>
     <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
+    <LoopEngineeringClaim>DeltaSignal is a hosted research loop: one TripCode or issuer objective starts a recurring process of evidence discovery, River memory update, boundary verification, artifact recording, cost accounting, and monitor-next triage.</LoopEngineeringClaim>
+    <MCPCompetitionProof>DeltaSignal uses MCP as the competition proof layer: agents can discover bounded workflows, run Morning Brief and Company Report routes, resolve TripCode research memory, preserve evidence boundaries, and use OpenAPI, Arazzo, and x402 metadata for production planning and payment-aware public access.</MCPCompetitionProof>
+    <MCPControlPlaneClaim>DeltaSignal MCP is the loop-engineering control plane: it routes intent into recurring issuer research jobs, gathers evidence, verifies boundaries, remembers TripCode/River state, escalates unresolved claims, and governs cost and access.</MCPControlPlaneClaim>
+    <TripCodeRiverMemorySpine>A TripCode is the portable handle. A River is the evolving thesis memory. The diligence loop repeatedly resolves, checks, updates, and routes that memory against new filing-backed evidence.</TripCodeRiverMemorySpine>
+    <AutonomousLoopInvariant>The autonomous loop may not mark itself complete unless a verifier separate from the maker checks evidence binding, source metadata, missing-data disclosure, memory integrity, budget, stop conditions, and non-advice boundaries.</AutonomousLoopInvariant>
+    <PurposeDrivenAgentLoop>DeltaSignal is a bounded research loop, not a one-shot prompt wrapper: user intent becomes memory resolution, evidence selection, thesis comparison, Gemini synthesis, session continuity, telemetry, and guardrail reporting.</PurposeDrivenAgentLoop>
+    <ADKOrchestrationCore>Google ADK is the intended production orchestration core: runner/session logic, tool selection, MCP/OpenAPI calls, grounding, Memory Bank continuity, Agent Runtime deployment, and Gemini Enterprise/A2A readiness, while the deployed Go Cloud Run service remains the validated evidence runtime.</ADKOrchestrationCore>
+    <ADKProductLoopOperatingSystem>ADK scales the product into a governed loop operating system: scheduled discovery, triage, constrained planning, isolated builder execution, separate verifier checks, publisher actions, durable memory, grounding layers, and human approval for high-risk work.</ADKProductLoopOperatingSystem>
+    <ADKProductLoopEndpoint>Protected POST /v1/product-loop now exposes the ADK product-loop contract with root orchestrator, specialist agents, tool classes, memory layers, grounding layers, deployment phases, verifier gates, stop conditions, cost, and runtime telemetry.</ADKProductLoopEndpoint>
+    <DemoCompression>Judge demo path: submit TripCode, resolve article/River/evidence packet, return what changed/weakened/monitor-next, ask a same-session follow-up, then show usage and telemetry.</DemoCompression>
     <TrackOneBuildClaim>Track 1 Build is shown as an autonomous business workflow: a user gives one TripCode or issuer prompt, the Cloud Run agent securely calls MCP tools, reconstructs research memory, compares evidence, preserves session state, synthesizes with Gemini, and returns a diligence packet with next actions.</TrackOneBuildClaim>
     <PositioningLock>TripCodes convert financial commentary into structured research memory: the bridge from prose to evidence.</PositioningLock>
   </ProductContract>
@@ -77,6 +87,7 @@
     <Item status="implemented">Managed Google Cloud runtime: Cloud Run service with health route, protected judge routes, bounded scale, and validation artifacts.</Item>
     <Item status="implemented">State and memory: session_id stores compact River continuity for second-turn follow-ups.</Item>
     <Item status="implemented">Gemini path: Vertex AI synthesis over resolved research packets and memory context.</Item>
+    <Item status="next">Loop heartbeat: scheduled thesis-monitor runs will recheck active TripCodes/Rivers and create triage artifacts when evidence changes.</Item>
   </TrackOneChecklist>
   <TrackFit>
     <Track name="Track 1 Build">Working Cloud Run demo: resolve TripCode -> reconstruct River -> compare to evidence -> preserve memory -> show cost.</Track>
@@ -97,6 +108,7 @@
     <Control>Default mode is deterministic and low-cost; live Gemini and MCP calls are opt-in for judge testing.</Control>
     <Control>Cloud Run is configured with min-instances=0, max-instances=3, 512Mi memory, 1 CPU, and concurrency 80.</Control>
     <Control>Every successful test request can include local-estimate cost metadata when DELTASIGNAL_COST_TRACKING=true.</Control>
+    <OfficialSnapshot>Latest user-supplied Google Cloud Billing console snapshot shows 499.68 USD remaining credit value, 100 percent remaining, 0.01 USD net current-month cost, and 0.33 USD forecasted total cost for the visible June 1-9, 2026 period.</OfficialSnapshot>
     <Boundary>Exact Google account spend and remaining credits require Cloud Billing export or the Billing console; the app estimate is immediate but not an official billing record.</Boundary>
   </CostDiscipline>
   <Architecture>
@@ -148,7 +160,8 @@
       ['Secure MCP tools', 'The agent reaches ATLAS-7 through a bounded MCP-compatible resolver, protected by server-side credentials.'],
       ['Managed runtime', 'Cloud Run hosts the agent with public health, protected judge routes, bounded scale, and validation artifacts.'],
       ['State and memory', 'Session IDs preserve compact River continuity so the second turn uses the prior HUT context.'],
-      ['Gemini synthesis', 'Vertex AI / Gemini turns the resolved packet and memory into a concise diligence summary.']
+      ['Gemini synthesis', 'Vertex AI / Gemini turns the resolved packet and memory into a concise diligence summary.'],
+      ['Loop heartbeat', 'Next implementation: scheduled thesis-monitor runs that recheck active TripCodes and issuer Rivers, then create triage artifacts when evidence changes.']
     ];
 
     const challengeFacts = [
@@ -173,11 +186,21 @@
       ['Safe Demo', 'No private credentials or customer data required for the default workflow.'],
       ['Business Fit', 'Built for B2B issuer-risk triage, not consumer chat or generic summarization.'],
       ['Disclosure', 'ATLAS-7 is clearly disclosed as an existing integration/data source.'],
-      ['One Spec', 'The public docs folder exposes a single official submission packet.']
+      ['Primary Packet + Track 3 Drilldown', 'The official packet stays primary; the dedicated Track 3 spec explains A2A and Marketplace readiness.']
     ];
     const competitionIdea = [
       ['Composite MCP Contract', 'deltasignal_resolve_tripcode_research_packet turns one TripCode into article, River, evidence, thesis map, caveats, and boundaries.'],
       ['Runtime autonomy', 'The submitted agent performs TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting after one user request.'],
+      ['MCP proof layer', 'Agents can discover bounded DeltaSignal workflows, run them through MCP, verify evidence boundaries, and use OpenAPI, Arazzo, and x402 metadata for planning and paid public access.'],
+      ['Loop control plane', 'MCP routes intent into recurring research jobs with heartbeat, workflow selection, evidence execution, verifier boundaries, memory spine, escalation, and cost/access governance.'],
+      ['TripCode/River memory spine', 'TripCode is the handle, River is the thesis state, and the loop tests that state against fresh filing-backed evidence instead of cold-starting every run.'],
+      ['Maker/checker invariant', 'The agent that drafts the diligence packet cannot be the verifier that marks it complete. Completion requires separate evidence, boundary, memory, budget, and non-advice checks.'],
+      ['Purpose-driven loop', 'User intent becomes a repeatable architecture: resolve memory, select evidence tools, compare thesis claims, synthesize with Gemini, preserve session state, and report boundaries.'],
+      ['ADK orchestration core', 'Google ADK should own the production agent runner, sessions, tool orchestration, grounding, Memory Bank, Agent Runtime path, and Gemini Enterprise/A2A readiness over the validated Go/MCP evidence runtime.'],
+      ['ADK loop operating system', 'ADK should coordinate scheduled discovery, triage, planning, isolated execution, verifier checks, publisher actions, durable memory, grounding, and human approval gates.'],
+      ['Executable loop endpoint', 'POST /v1/product-loop exposes the ADK loop contract live with agents, tools, memory, grounding, deployment phases, verifier gates, cost, and runtime telemetry.'],
+      ['Demo sequence', 'Discover the MCP surface, run Morning Brief, run a RIOT Company Report, resolve the HUT TripCode memory packet, then show usage and payment-aware metadata.'],
+      ['Research loop', 'The product direction is a hosted loop: purpose, heartbeat, memory spine, MCP connectors, verifier/evaluation pass, artifacts, and cost controls.'],
       ['Prose to agent memory', 'TripCodes turn a published article into a live research object that Gemini can resolve, contextualize, compare, and monitor.'],
       ['Research continuity', 'The agent reconstructs what DeltaSignal previously believed, then shows what changed after new filings and evidence arrived.'],
       ['Evidence discipline', 'TripCodes route to SEC/XBRL evidence without replacing CIKs, accessions, filing periods, source documents, or caveats.'],
@@ -216,6 +239,7 @@
     ];
     const costDiscipline = [
       ['$500 credit pool', 'Treat Google Cloud credits as scarce. Keep live Gemini and MCP tests intentional, bounded, and visible.'],
+      ['Billing snapshot', 'The latest console snapshot shows $499.68 remaining credit value, 100% remaining, $0.01 net current-month cost, and $0.33 forecasted total cost.'],
       ['Zero idle burn', 'Cloud Run uses min-instances=0 with bounded max scale, memory, CPU, and concurrency.'],
       ['Per-request estimate', 'Successful brief and TripCode test responses can include request cost, tracked spend, and estimated remaining budget.'],
       ['Billing boundary', 'The app ledger is a local estimate. Official account spend must come from Google Cloud Billing export or console.']
@@ -583,11 +607,11 @@
                 <div>
                   <p class="eyebrow">Google for Startups AI Agents Challenge · Track 1 Build</p>
                   <h1>DeltaSignal Gemini AI Agent</h1>
-                  <p class="lede">Evidence-backed issuer intelligence for business decisions. The agent routes issuer-risk questions through specialist lanes, resolves prior research memory through TripCodes, grounds the answer in structured evidence, and returns an analyst-ready B2B action brief.</p>
+                  <p class="lede">DeltaSignal turns one TripCode into an agent-executable financial research memory loop with evidence comparison, session continuity, provenance, and cost visibility.</p>
                   <p class="lede"><strong>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</strong></p>
                   <div class="actions">
                     <a class="button primary" href="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Official Submission Packet</a>
-                    <a class="button" href="docs/DeltaSignal_AI_Agent_Devpost_Submission_Copy_2026_06_09.html">Devpost Copy Pack</a>
+                    <a class="button" href="docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Readiness_Spec_2026_06_10.html">Track 3 A2A Spec</a>
                     <a class="button" href="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/health" target="_blank" rel="noopener noreferrer">Live Cloud Run Health</a>
                     <a class="button" href="https://devpost.team/google-cloud-for-startups/hackathons/3197" target="_blank" rel="noopener noreferrer">Official Contest Site</a>
                     <a class="button" href="./CHANGELOG.html">Public Changelog</a>
@@ -629,7 +653,7 @@
               <section id="track-one">
                 <div class="section-head">
                   <h2>Track 1 Build: one prompt becomes an autonomous diligence workflow.</h2>
-                  <p>The agent is not a static report viewer. It takes a TripCode or issuer prompt, calls bounded external tools, reconstructs research memory, compares evidence, preserves session state, synthesizes through Gemini, and returns next actions with boundaries.</p>
+                  <p>The agent is not a static report viewer. The judge demo is intentionally simple: submit TripCode, resolve article/River/evidence packet, return what changed and what to monitor, ask a same-session follow-up, then show usage and telemetry.</p>
                 </div>
                 <div class="grid two">
                   ${trackOneChecklist.map(([title, body]) => html`
@@ -765,7 +789,7 @@
               <section>
                 <div class="callout">
                   <b>Official document policy</b>
-                  <p>The official judge-facing source of truth is <code>DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</code>. The Devpost copy pack is a supporting field-entry aid, not a second official spec. Supporting diligence and private strategy files are kept out of the public surface.</p>
+                  <p>The official judge-facing source of truth is <code>DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html</code>. The dedicated Track 3 A2A Marketplace readiness spec is a supporting drilldown for the Path strategy; archived source docs remain under <code>docs/_archive</code>.</p>
                 </div>
               </section>
 
