@@ -20,7 +20,7 @@
   <track3-marketplace-spec></track3-marketplace-spec>
 
   <script id="strategix-track3-marketplace-contract" type="application/xml">
-<StrategiXVisualSpec version="1.9" status="judge-facing-atlas7-marketplace-evidence-loop" generated="2026-06-10" artifact="docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html">
+<StrategiXVisualSpec version="2.0" status="judge-facing-real-scenarios-integrated" generated="2026-06-10" artifact="docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent - Track 3 A2A Marketplace Functionality</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -225,6 +225,71 @@
     <UseCase name="Enterprise diligence orchestrator">Uses DeltaSignal as the specialist evidence node while other agents handle portfolio policy, client reporting, or escalation workflows.</UseCase>
   </MultiAgentUseCases>
 
+  <RealWorldScenarios>
+    <Scenario order="1" actor="Portfolio agent" name="Morning risk scan">
+      <Intent>Check today's crypto-public-company pressure before the investment committee meeting.</Intent>
+      <Workflow>Discover DeltaSignal through Agent Card, MCP, or A2A metadata; invoke Morning Brief or market readiness workflow; return readiness, daily changes, risk distribution, top-stressed issuers, alpha opportunities, caveats, and source metadata; route only high-pressure names into human review.</Workflow>
+      <Output>Market-wide risk board; top-stressed issuer list; alpha opportunity screen; caveats; stale flags; non-advice boundary.</Output>
+      <Value>Portfolio agents get filing-grounded triage instead of generic crypto sentiment.</Value>
+    </Scenario>
+    <Scenario order="2" actor="Compliance agent" name="Evidence-bound brief check">
+      <Intent>Can this DeltaSignal output be used in a diligence memo?</Intent>
+      <Workflow>Inspect source dates, caveats, quality flags, evidence hashes, route provenance, non-advice language, and the separation between memory, TripCodes, River continuity, and source evidence.</Workflow>
+      <Output>Evidence-bound status; missing-data disclosures; freshness or stale flags; non-advice confirmation; escalation when source proof is missing.</Output>
+      <Value>Enterprise workflows can reuse the packet because provenance is inspectable.</Value>
+    </Scenario>
+    <Scenario order="3" actor="Data-room agent" name="Issuer diligence packet">
+      <Intent>Prepare an issuer diligence summary for RIOT.</Intent>
+      <Workflow>Invoke Company Report or single-issuer diligence; retrieve fundamentals, covenant stress, peer ranking, alpha signals, and source metadata; separate SEC/XBRL evidence from model synthesis; store the result as a diligence-room artifact.</Workflow>
+      <Output>Issuer fundamentals; covenant stress; peer comparison; alpha signal pressure; source dates; caveats; explicit missing evidence.</Output>
+      <Value>Diligence rooms get repeatable issuer packets without manual filing, peer, and stress assembly.</Value>
+    </Scenario>
+    <Scenario order="4" actor="Subscriber copilot" name="Article TripCode resolution">
+      <Intent>Load this TripCode and show how the thesis has changed.</Intent>
+      <Workflow>Resolve the article memory node, load issuer River continuity, preserve prior thesis nodes and evidence references where available, and return confirmed signals, weakened assumptions, bridge risks, milestones, and invalidation rules.</Workflow>
+      <Output>Article memory summary; River continuity map; thesis deltas; filing-linked evidence references; monitor-next checklist.</Output>
+      <Value>Published research becomes executable memory, not static content.</Value>
+      <Boundary>TripCode and River output must preserve the discovery and evidence boundaries of the live resolver surface; missing River or issuer index data remains missing.</Boundary>
+    </Scenario>
+    <Scenario order="5" actor="External agent or marketplace reviewer" name="x402 paid-access validation">
+      <Intent>Validate that DeltaSignal can be discovered, challenged, paid, retried, and return evidence.</Intent>
+      <Workflow>Inspect free discovery metadata; call a protected paid route without proof; receive an x402 challenge when configured; retry with payment proof through a compatible client; return structured JSON or evidence-preserving Markdown.</Workflow>
+      <Output>Discovery proof; expected 402 challenge; paid retry result; route price metadata; returned evidence packet.</Output>
+      <Value>Shows marketplace functionality: discoverable service, protected execution, payment-aware access, and inspectable output.</Value>
+      <Boundary>x402 settlement proof must be shown only when a live x402 run has been executed and artifacted.</Boundary>
+    </Scenario>
+    <Scenario order="6" actor="Analyst assistant" name="Quick ticker check">
+      <Intent>Quick check MARA before deciding whether to run a full report.</Intent>
+      <Workflow>Invoke Quick Ticker Check; return compact issuer snapshot, stress signal, peer context, and next drilldown options; analyst decides whether to run Company Report, SPECTRA field map, peer ranking, or daily-change evidence.</Workflow>
+      <Output>Compact issuer status; stress pressure; peer context; suggested drilldowns; evidence caveats.</Output>
+      <Value>Saves cost and time by avoiding full diligence until a ticker shows enough signal.</Value>
+    </Scenario>
+    <Scenario order="7" actor="Daily monitoring agent" name="Filing-change detection">
+      <Intent>Tell me what changed for ARKB.</Intent>
+      <Workflow>Start with compact daily changes; identify whether the issuer has changed facts; fetch raw issuer evidence only when explicitly requested; return changed XBRL tags, source references, filing metadata, caveats, and hashes.</Workflow>
+      <Output>Changed-company status; changed facts; filing evidence references; caveats; source dates.</Output>
+      <Value>Avoids unnecessary raw-evidence pulls while preserving a path to proof.</Value>
+    </Scenario>
+    <Scenario order="8" actor="Portfolio, compliance, data-room, and DeltaSignal agents" name="Multi-agent B2B diligence workflow">
+      <Intent>Prepare a crypto-public-company diligence packet for internal review.</Intent>
+      <Workflow>Portfolio agent asks for market pressure and candidate issuers; DeltaSignal returns top-stressed and alpha opportunity candidates; data-room agent requests company reports; compliance agent checks provenance, stale flags, caveats, and non-advice boundary; final packet goes to human analysts.</Workflow>
+      <Output>Market scan; issuer packets; evidence metadata; compliance check; human-review queue.</Output>
+      <Value>DeltaSignal acts as infrastructure inside a larger enterprise agent system, not only a standalone chatbot.</Value>
+    </Scenario>
+    <Scenario order="9" actor="Verifier agent" name="Unsupported-claim block">
+      <Intent>Confirm whether this output can say the company improved its risk position.</Intent>
+      <Workflow>Check whether returned evidence supports the improvement claim; block the claim if evidence is stale, missing, or only inferred; rewrite into safer evidence-bound language.</Workflow>
+      <Output>Claim status; evidence anchors; missing evidence list; safer rewritten claim.</Output>
+      <Value>Prevents model synthesis from upgrading weak inference into evidence.</Value>
+    </Scenario>
+    <Scenario order="10" actor="Enterprise agent runtime" name="Graceful failure">
+      <Intent>Run company diligence now.</Intent>
+      <Workflow>Invoke a protected DeltaSignal task; if API key, MCP access, evidence source, or rate limit blocks live work, return degraded status, missing route, retry condition, suggested fallback, and no unsupported diligence conclusion.</Workflow>
+      <Output>Execution failed or degraded; blocked dependency; evidence not fetched; retry or escalation path; no unsupported conclusion.</Output>
+      <Value>Production trust increases because failure is explicit instead of hidden behind fluent prose.</Value>
+    </Scenario>
+  </RealWorldScenarios>
+
   <RuntimeFlow>
     <Step order="1" name="Discover">External agent fetches the public agent card and sees DeltaSignal identity, A2A URL, skills, examples, input modes, output modes, and boundaries.</Step>
     <Step order="2" name="Invoke">External agent sends an A2A JSON-RPC request to /a2a with TripCode and session metadata.</Step>
@@ -317,6 +382,7 @@
     <Source>Official Google Cloud documentation via Google developer documentation MCP: Agents overview, https://docs.cloud.google.com/gemini-enterprise-agent-platform/agents.</Source>
     <Source>ATLAS-7 Codex Plugin public evidence surface: https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html.</Source>
     <Source>User-supplied one-page Track 3 drilldown excerpt on 2026-06-10, integrated as OnePageJudgeDrilldown while refocusing this file on A2A/Marketplace functionality.</Source>
+    <Source>User-supplied real-world Track 3 scenario pack on 2026-06-10, integrated as RealWorldScenarios and visible scenario cards.</Source>
   </SourceDigest>
 </StrategiXVisualSpec>
   </script>
@@ -430,6 +496,18 @@
       ['Compliance agent', 'Provenance, caveats, and non-advice checks'],
       ['Data-room agent', 'Issuer evidence packets and diligence summaries'],
       ['Subscriber copilot', 'Article-to-River continuity from a TripCode']
+    ];
+    const realScenarios = [
+      ['Portfolio Morning Risk Scan', 'Portfolio agent checks crypto-public-company pressure before committee, then routes only high-pressure names to human review.', 'Risk board, stressed issuers, alpha screen, caveats, stale flags, non-advice boundary.'],
+      ['Compliance Evidence Check', 'Compliance agent inspects source dates, caveats, hashes, route provenance, quality flags, and memory/evidence separation.', 'Evidence-bound status, missing-data disclosures, freshness flags, escalation path.'],
+      ['Data-Room Issuer Packet', 'Data-room agent asks for RIOT diligence and receives fundamentals, covenant stress, peer ranking, alpha signals, and source metadata.', 'Repeatable issuer packet with SEC/XBRL evidence separated from synthesis.'],
+      ['Subscriber TripCode Copilot', 'Subscriber pastes a TripCode to recover article memory, River continuity, thesis deltas, filing-linked references, and monitor-next items.', 'Published research becomes executable memory.'],
+      ['x402 Paid-Access Validation', 'External agent inspects discovery metadata, receives an expected 402 challenge when configured, retries with proof, and receives evidence.', 'Marketplace proof for protected, payment-aware access.'],
+      ['Quick Ticker Check', 'Analyst assistant checks MARA before full diligence, returning compact issuer status, stress pressure, peer context, and drilldowns.', 'Cost-aware triage before deeper reports.'],
+      ['Daily Filing Change Monitor', 'Monitoring agent asks what changed for ARKB, starts compact, and fetches raw issuer proof only when requested.', 'Changed facts, filing references, caveats, and dates.'],
+      ['Multi-Agent B2B Diligence', 'Portfolio, data-room, compliance, and DeltaSignal agents coordinate a crypto-public-company diligence packet.', 'Market scan, issuer packets, compliance check, human-review queue.'],
+      ['Verifier Blocks Unsupported Claim', 'Verifier checks whether evidence supports a risk-improvement claim and rewrites if it is inferred or unsupported.', 'Supported/inferred/unsupported status plus safer language.'],
+      ['Graceful Failure', 'Enterprise runtime receives degraded status when API key, MCP access, source, or rate limit blocks live evidence.', 'No hallucinated diligence packet; explicit retry or escalation path.']
     ];
     const capabilityPoints = [
       'Public A2A agent-card routes',
@@ -741,6 +819,20 @@
                     <article>
                       <h3>${title}</h3>
                       <span>${body}</span>
+                    </article>
+                  `)}
+                </div>
+              </section>
+
+              <section>
+                <h2>Real Scenarios</h2>
+                <p>The Track 3 proof should be framed as DeltaSignal operating inside other agents' workflows. The calling agent asks for bounded issuer evidence, not market opinion.</p>
+                <div class="grid">
+                  ${realScenarios.map(([title, workflow, output]) => html`
+                    <article>
+                      <h3>${title}</h3>
+                      <span>${workflow}</span>
+                      <p><strong>Output:</strong> ${output}</p>
                     </article>
                   `)}
                 </div>

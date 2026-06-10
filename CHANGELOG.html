@@ -20,7 +20,7 @@
   <changelog-page></changelog-page>
 
   <script id="strategix-changelog-contract" type="application/xml">
-	<StrategiXVisualSpec version="4.8" status="track3-a2a-monitor-runtime-published" generated="2026-06-10" artifact="CHANGELOG.html">
+	<StrategiXVisualSpec version="4.9" status="track3-real-scenarios-integrated" generated="2026-06-10" artifact="CHANGELOG.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -38,6 +38,12 @@
     <Boundary>Exact Google account spend and remaining credits require Google Cloud Billing export or the Billing console; the application estimate is immediate but not an official billing record.</Boundary>
   </CostPolicy>
   <Entries>
+    <Entry date="2026-06-10" type="track-3-scenarios">
+      <Title>Integrated real-world Track 3 A2A Marketplace scenarios</Title>
+      <Detail>Updated docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html to version 2.0 and docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html to version 2.1.</Detail>
+      <Detail>Added RealWorldScenarios covering portfolio morning risk scans, compliance evidence checks, data-room issuer diligence, subscriber TripCode resolution, x402 paid-access validation, quick ticker checks, daily filing-change monitoring, multi-agent B2B diligence, verifier claim blocking, and graceful failure.</Detail>
+      <Detail>Kept the evidence boundary explicit: callers ask DeltaSignal for bounded issuer evidence, not market opinion; TripCode/River output preserves resolver boundaries and missing data remains missing.</Detail>
+    </Entry>
     <Entry date="2026-06-10" type="github-publication">
       <Title>Published finalized Track 3 runtime implementation to GitHub</Title>
       <Detail>Committed and pushed the completed Track 3 A2A monitor runtime implementation and proof bundle to origin/main at commit 6d4a77e.</Detail>
@@ -620,6 +626,16 @@
 
     const xml = document.getElementById('strategix-changelog-contract')?.textContent.trim() ?? '';
     const entries = [
+      {
+        date: '2026-06-10',
+        type: 'Track 3 scenarios',
+        title: 'Integrated real-world Track 3 A2A Marketplace scenarios',
+        details: [
+          'Updated docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html to version 2.0 and docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html to version 2.1.',
+          'Added RealWorldScenarios covering portfolio morning risk scans, compliance evidence checks, data-room issuer diligence, subscriber TripCode resolution, x402 paid-access validation, quick ticker checks, daily filing-change monitoring, multi-agent B2B diligence, verifier claim blocking, and graceful failure.',
+          'Kept the evidence boundary explicit: callers ask DeltaSignal for bounded issuer evidence, not market opinion; TripCode/River output preserves resolver boundaries and missing data remains missing.'
+        ]
+      },
       {
         date: '2026-06-10',
         type: 'GitHub publication',
