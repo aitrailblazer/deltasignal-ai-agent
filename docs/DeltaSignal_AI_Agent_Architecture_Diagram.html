@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeltaSignal Gemini AI Agent | Architecture Diagram</title>
+  <meta name="description" content="Architecture diagram for DeltaSignal Gemini AI Agent, a Track 3 A2A issuer-intelligence system for TripCode, River, ATLAS-7, SEC/XBRL, Gemini, and Cloud Run workflows.">
+  <style>
+    :root {
+      --bg: #05070b;
+      --panel: #0d1420;
+      --panel2: #111c2b;
+      --line: rgba(255,255,255,.14);
+      --text: #f7fbff;
+      --muted: rgba(247,251,255,.72);
+      --green: #6df58d;
+      --cyan: #72d9ff;
+      --gold: #f4cf73;
+    }
+    * { box-sizing: border-box; }
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(109,245,141,.13), transparent 28%),
+        radial-gradient(circle at 84% 14%, rgba(114,217,255,.13), transparent 30%),
+        linear-gradient(180deg, #05070b 0%, #08111a 55%, #05070b 100%);
+    }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100vw - 36px)); margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(5,7,11,.84);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-weight: 900;
+    }
+    nav a { color: var(--muted); text-decoration: none; font-size: 13px; }
+    nav a:hover { color: var(--green); }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    main { padding: 58px 0 72px; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr .82fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(17,28,43,.92), rgba(8,14,22,.92));
+      box-shadow: 0 24px 80px rgba(0,0,0,.24);
+      overflow: hidden;
+    }
+    .copy { padding: 28px; }
+    .eyebrow {
+      display: inline-flex;
+      border: 1px solid rgba(244,207,115,.36);
+      color: var(--gold);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin: 0; letter-spacing: 0; }
+    h1 {
+      margin-top: 18px;
+      max-width: 760px;
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: .96;
+    }
+    .lead {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      max-width: 760px;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 14px;
+      background: rgba(255,255,255,.055);
+    }
+    .button.primary { background: linear-gradient(135deg, var(--green), var(--cyan)); color: #06100a; border-color: transparent; }
+    .diagramPanel { padding: 20px; display: grid; place-items: center; }
+    .diagram {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border: 1px solid rgba(114,217,255,.18);
+      border-radius: 14px;
+      background: #071018;
+      overflow: hidden;
+    }
+    .diagram svg { width: 100%; height: 100%; display: block; }
+    .node { fill: #121b29; stroke-width: 2.4; rx: 16; }
+    .node.green { stroke: var(--green); filter: drop-shadow(0 0 14px rgba(109,245,141,.25)); }
+    .node.blue { stroke: var(--cyan); filter: drop-shadow(0 0 14px rgba(114,217,255,.2)); }
+    .node.gold { stroke: var(--gold); filter: drop-shadow(0 0 14px rgba(244,207,115,.18)); }
+    .edge { stroke: rgba(114,217,255,.82); stroke-width: 3; stroke-dasharray: 8 8; fill: none; animation: dash 1.8s linear infinite; }
+    .edge.green { stroke: rgba(109,245,141,.9); }
+    .edge.gold { stroke: rgba(244,207,115,.9); }
+    @keyframes dash { to { stroke-dashoffset: -32; } }
+    .labelMain { fill: #f7fbff; font-weight: 950; font-size: 20px; }
+    .labelSub { fill: rgba(247,251,255,.68); font-weight: 800; font-size: 13px; }
+    .packet {
+      fill: var(--green);
+      opacity: .9;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: .35; transform: scale(1); } 50% { opacity: .95; transform: scale(1.06); } }
+    .section { margin-top: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,.045);
+      min-height: 142px;
+    }
+    .card b { display: block; font-size: 18px; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 14px; }
+    .imageFrame { padding: 14px; }
+    .imageFrame img {
+      display: block;
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: #fff;
+    }
+    .devpost {
+      margin-top: 24px;
+      border: 1px solid rgba(244,207,115,.32);
+      border-radius: 12px;
+      background: rgba(244,207,115,.07);
+      padding: 16px;
+    }
+    code {
+      display: block;
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 8px;
+      color: #dfffe8;
+      background: rgba(0,0,0,.26);
+      overflow-wrap: anywhere;
+    }
+    footer { color: var(--muted); padding: 24px 0 42px; font-size: 13px; }
+    @media (max-width: 920px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <script id="strategix-architecture-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="devpost-architecture-link" generated="2026-06-11" artifact="docs/DeltaSignal_AI_Agent_Architecture_Diagram.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Gemini AI Agent Architecture Diagram</Title>
+    <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
+    <Challenge>Google for Startups AI Agents Challenge 2026</Challenge>
+    <Track>Track 3</Track>
+    <PublicURL>https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html</PublicURL>
+    <DirectImage>https://aitrailblazer.github.io/deltasignal-ai-agent/img/Financial_Research_Infrastructure_Overview.png</DirectImage>
+  </CanonicalArtifact>
+  <Architecture>
+    <Step>Substack research exposes a TripCode.</Step>
+    <Step>Cloud Run receives a protected user or agent request.</Step>
+    <Step>ATLAS-7 MCP resolves issuer evidence and workflow metadata.</Step>
+    <Step>TripCode/River memory reconstructs research continuity.</Step>
+    <Step>Gemini synthesizes the bounded diligence packet.</Step>
+    <Step>A2A/Marketplace clients reuse the returned packet.</Step>
+  </Architecture>
+</StrategiXVisualSpec>
+  </script>
+
+  <header>
+    <nav class="wrap">
+      <div class="brand"><img src="../assets/deltasignal-app-icon.png" alt="Delta Signal icon"><span>DeltaSignal Architecture</span></div>
+      <div class="actions">
+        <a href="../index.html">Landing</a>
+        <a href="./DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">Submission Packet</a>
+        <a href="./DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html">Track 3 Spec</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <article class="panel copy">
+        <span class="eyebrow">Architecture diagram · Track 3</span>
+        <h1>One TripCode becomes a reusable agent packet.</h1>
+        <p class="lead">DeltaSignal converts published research into agent-executable diligence. A Cloud Run agent accepts a ticker, issuer request, or TripCode; calls ATLAS-7 and River memory; synthesizes through Gemini; and returns a bounded A2A-ready research packet.</p>
+        <div class="actions">
+          <a class="button primary" href="https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html">Public Diagram URL</a>
+          <a class="button" href="https://aitrailblazer.github.io/deltasignal-ai-agent/img/Financial_Research_Infrastructure_Overview.png">Direct Image URL</a>
+        </div>
+      </article>
+
+      <article class="panel diagramPanel">
+        <div class="diagram" aria-label="Animated architecture diagram">
+          <svg viewBox="0 0 900 560" role="img">
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#72d9ff"></path>
+              </marker>
+              <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#6df58d"></path>
+              </marker>
+            </defs>
+            <path class="edge" marker-end="url(#arrow)" d="M150 156 H330"></path>
+            <path class="edge" marker-end="url(#arrow)" d="M530 156 H720"></path>
+            <path class="edge green" marker-end="url(#arrowGreen)" d="M440 220 C425 286 310 302 270 362"></path>
+            <path class="edge green" marker-end="url(#arrowGreen)" d="M482 220 C515 286 620 302 650 362"></path>
+            <path class="edge gold" marker-end="url(#arrow)" d="M450 242 V312"></path>
+            <rect class="node green" x="54" y="96" width="128" height="120" rx="18"></rect>
+            <text class="labelMain" x="88" y="154">User</text>
+            <text class="labelSub" x="82" y="182">intent</text>
+            <rect class="node green" x="342" y="84" width="190" height="144" rx="18"></rect>
+            <text class="labelMain" x="385" y="146">Cloud Run</text>
+            <text class="labelSub" x="386" y="176">A2A agent</text>
+            <rect class="node blue" x="734" y="96" width="126" height="120" rx="18"></rect>
+            <text class="labelMain" x="779" y="154">MCP</text>
+            <text class="labelSub" x="769" y="182">ATLAS-7</text>
+            <rect class="node blue" x="166" y="374" width="210" height="94" rx="16"></rect>
+            <text class="labelMain" x="222" y="426">HUT River</text>
+            <text class="labelSub" x="219" y="452">TripCode memory</text>
+            <rect class="node blue" x="562" y="374" width="210" height="94" rx="16"></rect>
+            <text class="labelMain" x="628" y="426">Evidence</text>
+            <text class="labelSub" x="615" y="452">SEC/XBRL refs</text>
+            <rect class="node gold" x="330" y="330" width="240" height="82" rx="16"></rect>
+            <text class="labelMain" x="392" y="377">Output</text>
+            <text class="labelSub" x="389" y="402">research packet</text>
+            <circle class="packet" cx="450" cy="280" r="17"></circle>
+          </svg>
+        </div>
+      </article>
+    </section>
+
+    <section class="section grid">
+      <article class="card"><b>Discover</b><p>External clients inspect the Agent Card, OpenAPI/MCP surface, workflow metadata, and protected access requirements before execution.</p></article>
+      <article class="card"><b>Invoke</b><p>A user or agent submits a bounded HUT TripCode or issuer-diligence request to the Cloud Run service.</p></article>
+      <article class="card"><b>Verify</b><p>The returned packet separates article memory, evidence identity, missing data, inference, usage telemetry, and non-advice boundaries.</p></article>
+    </section>
+
+    <section class="section panel imageFrame">
+      <img src="../img/Financial_Research_Infrastructure_Overview.png" alt="Financial research infrastructure overview">
+    </section>
+
+    <section class="devpost">
+      <h2>Devpost Architecture Diagram Link</h2>
+      <p class="lead">Use this public URL for the Devpost architecture diagram field:</p>
+      <code>https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html</code>
+      <p class="lead">If Devpost prefers a direct image URL, use:</p>
+      <code>https://aitrailblazer.github.io/deltasignal-ai-agent/img/Financial_Research_Infrastructure_Overview.png</code>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    DeltaSignal outputs are evidence-routing alerts and diligence triage only, not investment advice, recommendations, price targets, or order instructions.
+  </footer>
+</body>
+</html>

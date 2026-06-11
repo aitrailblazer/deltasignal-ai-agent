@@ -20,7 +20,7 @@
   <changelog-page></changelog-page>
 
   <script id="strategix-changelog-contract" type="application/xml">
-	<StrategiXVisualSpec version="4.9" status="track3-real-scenarios-integrated" generated="2026-06-10" artifact="CHANGELOG.html">
+		<StrategiXVisualSpec version="8.31" status="latest-step10-user-scenario-proof-saved" generated="2026-06-11" artifact="CHANGELOG.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Public Changelog</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -37,12 +37,488 @@
     <Rule>Latest user-supplied Billing console snapshot shows 499.68 USD remaining credit value, 100 percent remaining, 0.01 USD current-month net cost, and 0.33 USD forecasted total cost.</Rule>
     <Boundary>Exact Google account spend and remaining credits require Google Cloud Billing export or the Billing console; the application estimate is immediate but not an official billing record.</Boundary>
   </CostPolicy>
-  <Entries>
+	  <Entries>
+	    <Entry date="2026-06-11" type="github-and-devpost-polish">
+	      <Title>Polished public GitHub view and added Devpost architecture diagram link</Title>
+	      <Detail>Rewrote README.md as a concise public project page with live links, Track 3 positioning, architecture overview, demo flow, protected access notes, verification commands, and evidence boundary language.</Detail>
+	      <Detail>Added docs/DeltaSignal_AI_Agent_Architecture_Diagram.html as the dedicated public architecture diagram page for Devpost and judge review.</Detail>
+	      <Detail>Updated index.html with an Architecture Diagram call-to-action and updated the official submission packet with the new diagram link and version 5.2 note.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-11" type="demo-finish-pass">
+	      <Title>Finished local HUT browser demo verification pass</Title>
+	      <Detail>Returned focus to the DeltaSignal Gemini AI Agent repo after the publishing-agent demo work and applied the reusable demo lessons: compact landing page, browser proof UI, raw JSON proof first, rich rendered evidence page second, button-driven flow, captions, and repeatable autoplay route.</Detail>
+	      <Detail>Fixed stale route-auth test assumptions for protected /a2a, /v1/brief, and /v1/tripcode success/error cases by supplying the configured demo key in tests that intentionally exercise protected routes.</Detail>
+	      <Detail>Verified GOWORK=off go test ./... and npm run check:playwright.</Detail>
+	      <Detail>Started the local server with DELTASIGNAL_ENABLE_TRIPCODE_FALLBACK=true and DELTASIGNAL_DEMO_API_KEY=local-demo-key for fast local iteration without live MCP dependency.</Detail>
+	      <Detail>Verified /demo and /demo/run locally, then confirmed the Resolve action returns HTTP 200, execution_trace, agent_context.sources, HUT TripCode, and evidence boundaries. Verified the Render button converts the same JSON response into a human-readable evidence page.</Detail>
+	      <Detail>Saved current browser verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/DELTASIGNAL_DEMO_FINISH_CHECK_20260611.png.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-11" type="track3-proof-page">
+	      <Title>Saved latest user-run Step 10 Track 3 scenario proof</Title>
+	      <Detail>Archived the latest protected /v1/scenarios/run terminal capture under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T071242Z-user-track3-scenario-success/RAW_TERMINAL_CAPTURE.txt.</Detail>
+	      <Detail>Updated STEP10_TRACK3_SCENARIO_TEST.html to version 1.1 with generated_at 2026-06-11T07:12:42.154978436Z, request_id 0fd6c0bd2a53bc0972275a83, trace_id d8b93033b6551739a88f346c0fadcd4b, 0.15 USD tracked spend, and 499.85 USD estimated remaining credits.</Detail>
+	      <Detail>Mirrored the proof page into the latest artifact folder as TRACK3_SCENARIO_SUCCESS_PROOF.html and updated the artifact indexes to point at the newest user-run scenario capture.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-11" type="track3-proof-page">
+	      <Title>Added Step 09 A2A monitor proof page</Title>
+	      <Detail>Archived the latest protected /a2a monitor terminal capture under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T070538Z-user-a2a-monitor-success/RAW_TERMINAL_CAPTURE.txt.</Detail>
+	      <Detail>Added STEP09_A2A_MONITOR_TEST.html as a root-level proof page showing the completed deltasignal_thesis_monitor_baseline artifact for TF-SUB-9DA70A7F98, mode live-mcp-tripcode-gemini, three session-memory turns, 5.644 second runtime, 0.15 USD tracked spend, and 499.85 USD estimated remaining credits.</Detail>
+	      <Detail>The page records the Step 09 architecture: TripCode monitor request -> Cloud Run A2A task -> ATLAS-7 MCP research packet -> session memory continuity -> Gemini monitor synthesis -> bounded thesis monitor artifact.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-11" type="track3-proof-page">
+	      <Title>Added Step 10 Track 3 scenario proof page</Title>
+	      <Detail>Archived the protected /v1/scenarios/run terminal capture under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T065613Z-user-track3-scenario-success/RAW_TERMINAL_CAPTURE.txt.</Detail>
+	      <Detail>Added STEP10_TRACK3_SCENARIO_TEST.html as a root-level proof page for the subscriber_tripcode_copilot scenario, status ready_hut_evidence_bound, artifact subscriber_research_memory, HUT River node count 10, 0.05 USD tracked spend, and 499.95 USD estimated remaining credits.</Detail>
+	      <Detail>The page records scenario boundaries: TripCodes and River nodes remain resolver memory, SEC accessions/CIKs/filing forms/XBRL concepts/source documents/evidence hashes remain evidence anchors, and the output is diligence triage rather than investment advice.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-11" type="landing-page-proof-link">
+	      <Title>Linked Step 09 and Step 10 proof pages from landing page</Title>
+	      <Detail>Updated index.html to version 5.5 with Step09A2AMonitorTest and Step10Track3ScenarioTest in the embedded CanonicalArtifact contract.</Detail>
+	      <Detail>Added hero action buttons for the monitor and scenario proof pages.</Detail>
+	      <Detail>Added Proof Cards entries explaining the remember-and-monitor proof and the Track 3 scenario / marketplace proof.</Detail>
+	    </Entry>
+	    <Entry date="2026-06-11" type="step08-visual-asset">
+      <Title>Added financial mapping visual to Step 08 A2A proof page</Title>
+      <Detail>Updated STEP08_A2A_RESOLVE_TEST.html to version 1.3 with img/FinancialMapping.png listed as a financial-mapping visual asset in the embedded CanonicalArtifact contract.</Detail>
+      <Detail>Added a Financial Mapping Visual section after Architecture Reading to explain how TripCode/River output becomes issuer evidence, risk fields, thesis deltas, monitor-next logic, and bounded A2A packet output.</Detail>
+      <Detail>Added reusable visual figure styling for large proof images inside the Step 08 page.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="landing-page-visual-asset">
+      <Title>Added research-to-logic pipeline visual to landing page</Title>
+      <Detail>Updated index.html to version 5.4 with img/RESEARCH-TO-LOGIC-PIPELINE.png listed as a research-to-logic-pipeline visual asset in the embedded CanonicalArtifact contract.</Detail>
+      <Detail>Added a dedicated Research To Logic Pipeline section between the visual workflow and the Delta Signal Gemini AI Agent visual.</Detail>
+      <Detail>The new section explains how a public Substack thesis becomes a TripCode, River memory, ATLAS-7 evidence path, Gemini synthesis input, and reusable A2A agent output.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="landing-page-proof-link">
+      <Title>Linked Step 08 A2A resolve proof from landing page</Title>
+      <Detail>Updated index.html to version 5.3 with Step08A2AResolveTest in the embedded CanonicalArtifact contract.</Detail>
+      <Detail>Added visible navigation and hero-action links to STEP08_A2A_RESOLVE_TEST.html.</Detail>
+      <Detail>Added a Proof Cards entry explaining that Step 08 proves protected /a2a can return a completed reusable deltasignal_research_packet with HUT River, evidence, Gemini summary, session memory, cost, runtime, and boundaries.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-proof-page">
+      <Title>Added animated A2A runtime diagram to Step 08 proof page</Title>
+      <Detail>Updated STEP08_A2A_RESOLVE_TEST.html to version 1.2 with an AnimatedDiagram contract field.</Detail>
+      <Detail>Added a three-column animated runtime diagram showing Agent Card discovery, JSON-RPC task invocation, protected Cloud Run /a2a orchestration, ATLAS-7 MCP evidence resolution, session memory, Gemini synthesis, and completed A2A artifact return.</Detail>
+      <Detail>The animation emphasizes that Step 08 is an external-agent interoperability proof, not a one-off curl response.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-proof-page">
+      <Title>Expanded Step 08 proof with technical architecture and justification</Title>
+      <Detail>Updated STEP08_A2A_RESOLVE_TEST.html to version 1.1 with a TechnicalArchitecture contract block.</Detail>
+      <Detail>Added Architecture Reading cards for interface contract, runtime boundary, evidence boundary, and A2A artifact return contract.</Detail>
+      <Detail>Added Architectural Justification and Boundary Of The Proof sections explaining why A2A, TripCode, ATLAS-7, and session memory matter for Track 3 interoperability.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-proof-page">
+      <Title>Added root Step 08 A2A resolve proof page</Title>
+      <Detail>Added STEP08_A2A_RESOLVE_TEST.html as the root-level companion to STEP07_GEMINI_SYNTHESIS_TEST.html.</Detail>
+      <Detail>The page labels the run as Step 08, explains its sequence position after Agent Card discovery and Step 07 autonomous trace, and links to the raw terminal capture plus mirrored artifact bundle.</Detail>
+      <Detail>The proof page summarizes the completed protected /a2a JSON-RPC call, deltasignal_research_packet artifact, HUT River, SEC/XBRL filing evidence nodes, Gemini summary, session memory, runtime telemetry, usage estimate, and evidence boundaries.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-proof-artifact">
+      <Title>Saved user-run A2A resolve success proof</Title>
+      <Detail>Archived the user terminal capture for a protected /a2a TripCode resolve run under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T062611Z-user-a2a-resolve-success.</Detail>
+      <Detail>Added A2A_RESOLVE_SUCCESS_PROOF.html summarizing the completed JSON-RPC result, deltasignal_research_packet artifact, HUT River, SEC/XBRL filing evidence nodes, Gemini summary, session memory, execution trace, usage estimate, runtime observability, and boundaries.</Detail>
+      <Detail>The saved proof records the Track 3 architecture: Substack research article -> TripCode -> Cloud Run A2A agent -> ATLAS-7 MCP evidence resolver -> HUT River packet -> session memory -> Gemini synthesis -> bounded A2A artifact.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="demo-command-fix">
+      <Title>Fixed A2A demo commands to post JSON-RPC body from audit wrappers</Title>
+      <Detail>Diagnosed the Step 08 /a2a error: the command posted the full audit request wrapper, so the server received method POST instead of the JSON-RPC method resolve_tripcode.</Detail>
+      <Detail>Updated scripts/hut-video/build-judge-mini-demo.mjs so Step 08 and Step 09 keep audit-friendly request files but send jq '.body // .' to Cloud Run.</Detail>
+      <Detail>Changed generated DEMO/requests/04-a2a-resolve-request.json and DEMO/requests/05-a2a-monitor-request.json to raw JSON-RPC payloads so the simple direct --data-binary "@$REQUEST_FILE" command also works during manual testing.</Detail>
+      <Detail>Regenerated START_HERE.html, DEMO/commands/08-a2a-resolve.sh, DEMO/commands/09-a2a-monitor.sh, and DEMO/commands/commands.json.</Detail>
+      <Detail>Verified Step 08 against the protected Cloud Run /a2a route; the response returned jsonrpc 2.0, state completed, one artifact, and first artifact deltasignal_research_packet. Audit saved under DEMO/audit/20260611T054644Z-manual/08-a2a-resolve.</Detail>
+      <Detail>Verified the old direct command shape from DEMO with --data-binary "@requests/04-a2a-resolve-request.json"; it returned jsonrpc 2.0, state completed, and first artifact deltasignal_research_packet.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="step07-visual-asset">
+      <Title>Added financial research infrastructure visual to Step 07 proof page</Title>
+      <Detail>Embedded img/Financial_Research_Infrastructure_Overview.png into STEP07_GEMINI_SYNTHESIS_TEST.html before the operational risk framework section.</Detail>
+      <Detail>Added a caption explaining how Substack research, TripCode/River memory, ATLAS-7 evidence, Gemini synthesis, A2A/MCP-style surfaces, and downstream reuse fit around the HUT proof.</Detail>
+      <Detail>Updated the embedded Step 07 page contract to version 1.8 with both visual assets listed.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="step07-visual-asset">
+      <Title>Added operational risk monitoring framework visual to Step 07 proof page</Title>
+      <Detail>Embedded img/Operational_Risk_Monitoring_Framework.png into STEP07_GEMINI_SYNTHESIS_TEST.html as a dedicated visual section connecting the HUT TripCode/River proof to post-publication risk monitoring.</Detail>
+      <Detail>Added a caption explaining that operational monitoring extends Step 07 from one-time synthesis into evidence intake, execution-risk detection, thesis-state updates, and bounded output for downstream agents.</Detail>
+      <Detail>Updated the embedded Step 07 page contract to version 1.7 with a VisualAssets block.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="demo-command-fix">
+      <Title>Fixed A2A demo request-file paths for manual copy/paste runs</Title>
+      <Detail>Updated scripts/hut-video/build-judge-mini-demo.mjs so copied Step 08 and Step 09 commands can locate request JSON files from the repository root, DEMO, or DEMO/commands.</Detail>
+      <Detail>Regenerated START_HERE.html, DEMO/commands/08-a2a-resolve.sh, DEMO/commands/09-a2a-monitor.sh, and DEMO/commands/commands.json.</Detail>
+      <Detail>Changed visible curl calls from --data @../requests/... to a REQUEST_FILE preflight plus --data-binary "@$REQUEST_FILE", with a clear error if the file is missing.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="step07-proof-ledger">
+      <Title>Expanded Step 07 page with HUT proof ledger and research-memory context</Title>
+      <Detail>Added Delta Signal Research Memory Stack content explaining Substack research, ATLAS-7 TripCode, HUT River, ATLAS-7 evidence engine, Gemini synthesis, and reusable agent packet responsibilities.</Detail>
+      <Detail>Added a compact Proof Ledger with TripCode TF-SUB-9DA70A7F98, issuer HUT, mode live-mcp-tripcode-gemini, 8.839 second runtime, 10 HUT River nodes, 9 prior HUT nodes, 4 changed findings, 3 weakened assumptions, 8 monitor-next items, and app-local usage estimate.</Detail>
+      <Detail>Added Proven Now vs. Designed For, Compact Packet vs. Deep Packet, and Known Diligence Gap sections to separate runtime proof from production expansion and future numeric XBRL drilldown work.</Detail>
+      <Detail>Updated the embedded Step 07 page contract to version 1.6 with a ProofLedger block.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="step07-animation-visibility">
+      <Title>Made the Step 07 animated diagram visible at first glance</Title>
+      <Detail>Added a compact animated hero flow to STEP07_GEMINI_SYNTHESIS_TEST.html so users immediately see TripCode -> Cloud Run -> ATLAS-7 MCP -> Gemini -> Bounded Return without scrolling.</Detail>
+      <Detail>Fixed the packet animation to move across the diagram container instead of using viewport-width translation, making the motion easier to see and less dependent on screen size.</Detail>
+      <Detail>Updated the embedded page contract to version 1.4.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="google-agent-terminology">
+      <Title>Aligned Step 07 test page with official Google agent architecture terms</Title>
+      <Detail>Used the Google developer documentation MCP corpus to align STEP07_GEMINI_SYNTHESIS_TEST.html with official terminology: Agent Runtime, Agent Platform Sessions, Memory Bank, Agent Card, A2A protocol, Agent Registry, Cloud Marketplace AI Agents as a Service, Observability, Cloud Trace, Cloud Monitoring, Cloud Logging, OpenTelemetry, Agent Identity, and Agent Gateway.</Detail>
+      <Detail>Added a Google Architecture Terms Used section explaining how the Step 07 Cloud Run proof maps to the Agent Runtime production path, Sessions, Memory Bank, A2A Agent Card discovery, and observability vocabulary without claiming Marketplace publication.</Detail>
+      <Detail>Updated the embedded page contract to version 1.3 with a GoogleTerms field.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-test-rationale">
+      <Title>Expanded Step 07 test page with complete production-agent rationale</Title>
+      <Detail>Updated STEP07_GEMINI_SYNTHESIS_TEST.html to explain what the protected Cloud Run test proves, what each technology layer did, and why the Google Cloud agent path is stronger than direct local MCP client use for the competition submission.</Detail>
+      <Detail>The new rationale avoids development-tool attribution and focuses on the submitted runtime system: Go Cloud Run agent orchestration, ATLAS-7 MCP evidence resolution, Gemini synthesis, session memory, usage tracking, and bounded return.</Detail>
+      <Detail>Updated the embedded page contract to version 1.2 with a CompetitionRationale field.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-test-visualization">
+      <Title>Added animated runtime flow to Step 07 Gemini synthesis test page</Title>
+      <Detail>Enhanced STEP07_GEMINI_SYNTHESIS_TEST.html with an animated runtime diagram showing the competition proof sequence: User Goal, Cloud Run Agent, ATLAS-7 MCP, HUT River Packet, Session Memory, Gemini Synthesis, and Bounded Return.</Detail>
+      <Detail>Added legend cards that separate orchestration, evidence, synthesis, and audit responsibilities so first-time users can understand which part was handled by Google Cloud agent runtime, ATLAS-7 MCP, and Gemini.</Detail>
+      <Detail>Updated the embedded page contract to version 1.1 with an AnimatedDiagram field.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-test-documentation">
+      <Title>Added public Step 07 Gemini synthesis test page</Title>
+      <Detail>Added STEP07_GEMINI_SYNTHESIS_TEST.html as a separate root-level test page describing the protected HUT TripCode Cloud Run request, autonomous execution trace, Gemini synthesis response, usage object, evidence boundaries, and internal evaluation.</Detail>
+      <Detail>Linked the page from index.html as View Step 07 Test so first-time users can inspect the exact request/response proof without digging through artifacts.</Detail>
+      <Detail>The page links back to the raw terminal capture, STEP07_AUTONOMOUS_TRACE_EVIDENCE.html, GEMINI_SYNTHESIS_EVAL.html, START_HERE.html, and the main landing page.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-demo-distillation">
+      <Title>Added 1-minute Track 3 proof path and deployed-service browser UI</Title>
+      <Detail>Added ONE_MINUTE_DEMO.html as the shortest HUT proof structure: Substack TripCode, Agent Card discovery, protected Cloud Run resolve, A2A packet, thesis monitor, scenario runtime, and usage ledger.</Detail>
+      <Detail>Updated START_HERE.html and the DEMO command generator with a practical fast path: ./run-step.sh 00, 06, 07, 08, 09, 11, and 12.</Detail>
+      <Detail>Added per-step operator notes explaining what to run, which Track 3 surface is being tested, what real data to inspect, and the next decision.</Detail>
+      <Detail>Added a Cloud Run /demo browser UI so users can paste the private demo key and run Health, Agent Card, Resolve, A2A Resolve, Monitor, and Usage from the hosted service.</Detail>
+      <Detail>Updated the landing page with a direct Try Cloud Run UI call-to-action.</Detail>
+      <Detail>Deployed Cloud Run revision deltasignal-ai-agent-00015-7mw and verified /demo on both the canonical service URL and the existing public alias.</Detail>
+      <Detail>Saved deployment smoke-test request/response evidence under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T042215Z-one-minute-demo-ui-deploy-smoke.</Detail>
+      <Detail>Verified the new /demo route with a focused Go test and regenerated START_HERE.html, ONE_MINUTE_DEMO.html, DEMO commands, and the demo manifest from the source generator.</Detail>
+      <Detail>Removed the public ATLAS readiness/x402 detour from the main START_HERE and DEMO command path so the competition walkthrough stays focused on private API-key Cloud Run agent execution.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="track3-evidence-capture">
+      <Title>Saved successful protected Step 07 autonomous trace capture</Title>
+      <Detail>Archived the user-run Step 07 terminal request/response under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T043124Z-step07-autonomous-trace-user-capture.</Detail>
+      <Detail>The captured response shows mode=live-mcp-tripcode-gemini, tripcode=TF-SUB-9DA70A7F98, issuer=HUT, two fetched public ATLAS-7 operating guide sources, eight execution-trace steps, Gemini synthesis, local-estimate usage, and four explicit boundaries.</Detail>
+      <Detail>Added STEP07_AUTONOMOUS_TRACE_EVIDENCE.html to summarize the proof without persisting the private demo key.</Detail>
+      <Detail>Added GEMINI_SYNTHESIS_EVAL.html with an internal 8.7/10 evaluation of the returned Gemini HUT summary, including grounding, boundary discipline, workflow fit, actionability, and Optimize-phase gaps.</Detail>
+    </Entry>
+    <Entry date="2026-06-11" type="demo-access-clarification">
+      <Title>Reframed all public demo examples around private API-key competition access</Title>
+      <Detail>Updated START_HERE.html, VIDEO_SLIDES.html, README.md, the Track 3 marketplace specs, DEMO commands, and the HUT video generator so competition execution is described as private demo API-key access.</Detail>
+      <Detail>Removed public readiness/x402 examples from the main START_HERE and DEMO flow; the protected HUT proof path now runs only through DELTASIGNAL_DEMO_KEY on the deployed Cloud Run agent.</Detail>
+      <Detail>Replaced legacy access-route demo language with Google Marketplace and enterprise access language for future distribution.</Detail>
+      <Detail>Verified the visible demo/spec files no longer contain old access-route examples.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo-fix">
+      <Title>Added visible wait state and bounded curl timeouts to protected demo steps</Title>
+      <Detail>Protected commands 07-12 now print the route being called and expected wait window before invoking Cloud Run, so the terminal does not look frozen while Gemini/MCP work is running.</Detail>
+      <Detail>Protected Cloud Run calls now use curl connect and max-time limits, with fail-with-body enabled so auth or route errors return visible response bodies where possible.</Detail>
+      <Detail>Regenerated START_HERE.html and DEMO/commands from the source generator.</Detail>
+      <Detail>Verified ./DEMO/run-step.sh 07 completed successfully in 9.467 seconds and saved audit evidence at DEMO/audit/20260611T030958Z-manual/07-autonomous-trace.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo-fix">
+      <Title>Fixed protected HUT demo commands after copied /resolve command returned 401</Title>
+      <Detail>Confirmed the deployed Go service authorizes protected routes with the X-Demo-Key header against server-side DELTASIGNAL_DEMO_API_KEY.</Detail>
+      <Detail>Regenerated START_HERE.html so protected copy commands 07-12 now source $HOME/.deltasignal-shell-env, alias DELTASIGNAL_DEMO_API_KEY or JUDGE_DEMO_KEY into DELTASIGNAL_DEMO_KEY when needed, and fail locally with a clear preflight message before calling Cloud Run.</Detail>
+      <Detail>Regenerated DEMO/commands so manual runs and recording runs use the same compatibility aliases and audit behavior.</Detail>
+      <Detail>Verified ./DEMO/run-step.sh 07 succeeds through the protected /resolve path when the local shell env provides a compatible demo key alias, returning live-mcp-tripcode-gemini with agent_context, execution_trace, gemini_summary, usage, and boundaries.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo-fix">
+      <Title>Fixed ATLAS-7 readiness command for zsh and Ghostty</Title>
+      <Detail>Renamed the step 05 shell variable from status to http_status because zsh treats status as a read-only special variable.</Detail>
+      <Detail>Regenerated START_HERE.html, VIDEO_SLIDES.html, and DEMO/commands/05-atlas-readiness.sh from the source generator.</Detail>
+      <Detail>Verified ./DEMO/run-step.sh 05 exits successfully and records audit evidence under DEMO/audit/zsh-status-fix-*/05-atlas-readiness.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="demo-access-clarification">
+      <Title>Clarified that the recorded HUT demo uses private demo API keys</Title>
+      <Detail>Updated START_HERE.html, VIDEO_SLIDES.html, index.html, and the demo generator so the execution path is described as protected API-key demo access.</Detail>
+      <Detail>Removed old access-route language from the visible demo command filters and kept the HUT workflow framed as private demo API-key execution.</Detail>
+      <Detail>Kept public access boundary behavior accurate: unauthenticated ATLAS-7 readiness may still return public access boundary, but the HUT demo itself runs through DELTASIGNAL_DEMO_KEY.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo-hardening">
+      <Title>Hardened START_HERE commands and recorder key handling</Title>
+      <Detail>Moved the runnable slide navigator and editable command panel to the top of START_HERE.html so a first-time user can start with step 00 immediately and recreate the video sequence 1:1.</Detail>
+      <Detail>Standardized protected demo calls on DELTASIGNAL_DEMO_KEY while preserving backwards-compatible JUDGE_DEMO_KEY and DELTASIGNAL_DEMO_API_KEY aliases for live evidence capture.</Detail>
+      <Detail>Updated DEMO/record-after-review.sh and scripts/hut-video/03-render-video.sh to source $HOME/.deltasignal-shell-env before recording so the automated recorder can use the same private key path as manual Ghostty runs.</Detail>
+      <Detail>Added explicit protected-step preflight guards to generated DEMO commands 07-12. If the key is missing, the command exits with code 64, records the failure in DEMO/audit, and explains how to load DELTASIGNAL_DEMO_KEY without exposing the key value.</Detail>
+      <Detail>Verified public manual steps 00-06 pass from ./DEMO/run-step.sh and verified protected step 07 produces the expected missing-key audit failure when the key is not loaded.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slide-enhancement">
+      <Title>Enhanced Video Slide 04 with evidence metadata proof</Title>
+      <Detail>Locked Slide 04 to the Evidence First, Synthesis Second story: SEC/XBRL, ATLAS-7, SPECTRA, then Gemini.</Detail>
+      <Detail>Added a structured response metadata panel showing execution_trace, agent_context.sources, research_packet, boundaries, source dates, payload mode, and an evidence hash example.</Detail>
+      <Detail>Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_EVIDENCE_METADATA_SLIDE04_VERIFICATION.png.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slide-enhancement">
+      <Title>Enhanced Video Slide 03 with replayable HUT issuer command</Title>
+      <Detail>Locked Slide 03 to the bounded HUT issuer diligence story: user asks for a company report, not generic market chat.</Detail>
+      <Detail>Added a visible user request, replayable command panel, DEMO/commands source label, and proof labels for Ticker: HUT, Company Report, Evidence-bounded, and Replayable.</Detail>
+      <Detail>Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_HUT_ISSUER_COMMAND_SLIDE03_VERIFICATION.png.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slide-enhancement">
+      <Title>Enhanced Video Slide 02 with discovery contract proof</Title>
+      <Detail>Locked Slide 02 to the Discover Before Execution story: Open API, MCP, Arazzo workflows, Agent Card, and protected API-key demo access.</Detail>
+      <Detail>Added a visible discovery command and route-contract cards for OpenAPI, /mcp, Arazzo, Agent Card, API key, and readiness so the slide proves clients can inspect capabilities before choosing a workflow.</Detail>
+      <Detail>Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_DISCOVERY_CONTRACT_SLIDE02_VERIFICATION.png.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slide-enhancement">
+      <Title>Added command-line plus HUT article frame to Video Slide 01</Title>
+      <Detail>Enhanced the opening HUT slide so the left side shows the operator command flow and the right side shows the framed Substack article screenshot.</Detail>
+      <Detail>The slide now makes the TripCode extraction explicit: open the HUT article, identify ATLAS-7 TripCode TF-SUB-9DA70A7F98, then use it as the resolver handle for the Cloud Run agent.</Detail>
+      <Detail>Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_HUT_SUBSTACK_CLI_FRAME_SLIDE01_VERIFICATION.png.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slide-correction">
+      <Title>Corrected Video Slide 01 to start from the HUT Substack article</Title>
+      <Detail>Kept the competition demo anchored on https://deltasignal.substack.com/p/hut-8-the-re-rating-has-a-deadline instead of a separate market-signal slide.</Detail>
+      <Detail>Slide 01 now shows the HUT article as the research object that starts the loop: Substack article, thesis frame, ATLAS-7 TripCode TF-SUB-9DA70A7F98, HUT River, ATLAS-7 evidence, and Gemini synthesis.</Detail>
+      <Detail>Removed the rejected standalone JGB slide artifact from the public demo surface.</Detail>
+      <Detail>Saved corrected Slide 01 verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_HUT_SUBSTACK_SLIDE01_VERIFICATION.png.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo-enhancement">
+      <Title>Added OpenAPI result preview and explanation to START_HERE</Title>
+      <Detail>Enhanced step 03 of the guided demo with a visible OpenAPI JSON result preview showing DeltaSignal ATLAS title, version, MCP route, company report routes, readiness route, SPECTRA route, and atlas-history routes.</Detail>
+      <Detail>Added "What To Highlight" guidance explaining that the OpenAPI result proves machine-readable workflow discovery, not hidden endpoint guessing.</Detail>
+      <Detail>Verified ./DEMO/run-step.sh 03 against the live API and saved audit proof under DEMO/audit/openapi-result-preview-check/03-openapi.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo-fix">
+      <Title>Made START_HERE copied commands self-contained</Title>
+      <Detail>Updated scripts/hut-video/build-judge-mini-demo.mjs so visible copied commands use inline defaults for the Cloud Run agent URL, ATLAS-7 docs URL, and ATLAS-7 API URL.</Detail>
+      <Detail>Regenerated START_HERE.html and DEMO/commands so the ATLAS-7 llms-full.txt discovery command works even when copied into a fresh shell before step 00 has exported variables.</Detail>
+      <Detail>Verified the failing command with an unset DELTASIGNAL_ATLAS_DOCS_URL and confirmed ./DEMO/run-step.sh 02 saves an audit bundle under DEMO/audit/quick-url-fix-check/02-atlas-llms.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="demo-recording">
+      <Title>Recorded real HUT Track 3 demo video from live Cloud Run evidence</Title>
+      <Detail>Deployed Cloud Run revision deltasignal-ai-agent-00014-j4z so the live service exposes the Track 3 scenario runtime used by the recording.</Detail>
+      <Detail>Captured fresh live request/response evidence under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T223844Z-hut-cli-ui-video-live-real.</Detail>
+      <Detail>Rendered DeltaSignal_HUT_CLI_UI_Demo_ThreePane.mp4 from the saved evidence bundle; final verified duration is 96.04 seconds, H.264, 1280x720, 25 fps, with SHA-256 ec0d5b723aed3273b3ec25592d33fead80368e08c5147d00201fada2c1229465.</Detail>
+      <Detail>Added on-screen voiceover captions for all nine video slides so first-time viewers understand the TripCode, Cloud Run, Agent Card, MCP evidence, session memory, thesis monitor, scenario runtime, and usage boundary flow without needing separate narration.</Detail>
+      <Detail>Saved nine high-resolution slide audit screenshots at 2560x1440 under slide-audit-shots/ and wrote SLIDE_AUDIT_SHOTS.json with slide labels, timing, voiceover text, and screenshot paths.</Detail>
+      <Detail>Saved REQUEST_RESPONSE_VALIDATION.html/json confirming the live responses passed health, Agent Card, A2A resolve, A2A monitor, scenario catalog, subscriber copilot scenario, usage, HUT TripCode, HUT River, and SEC/XBRL evidence checks.</Detail>
+      <Detail>Reworked the recording stage so each slide shows one distinct active command instead of cumulative repeated command history.</Detail>
+      <Detail>The evidence bundle records health, Agent Card discovery, protected A2A TripCode resolve, protected A2A thesis monitor, Track 3 scenario list, subscriber TripCode copilot scenario, usage ledger, proof HTML, manifest, and SHA-256 sums with demo keys redacted.</Detail>
+      <Detail>The real data summary includes TF-SUB-9DA70A7F98, TF-RIVER-HUT, 10 River nodes, live MCP/Gemini packet mode, ATLAS-7 atomic tools, evidence hash, SEC/XBRL filing refs, monitor-next items, and proof milestones.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo">
+      <Title>Updated START_HERE to show both Gemini demo visuals</Title>
+      <Detail>Changed the guided demo generator to render both img/DeltaSignalAIGeminiDEMO.png and img/DeltaSignalAIGeminiDEMO_02.png.</Detail>
+      <Detail>Labeled the first image as the concept visual and the second as the detailed runtime visual for the Gemini, ATLAS-7, and A2A/MCP workflow.</Detail>
+      <Detail>Regenerated START_HERE.html so users see both visual anchors before running manual commands.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo">
+      <Title>Swapped START_HERE visual demo anchor to v2 image</Title>
+      <Detail>Updated the guided demo generator to use img/DeltaSignalAIGeminiDEMO_02.png.</Detail>
+      <Detail>Regenerated START_HERE.html so the larger v2 visual appears in the Delta Signal AI + Gemini Runtime View section.</Detail>
+      <Detail>Kept the public landing page image unchanged; this update applies only to the guided demo.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="public-landing">
+      <Title>Swapped landing visual to Delta Signal Gemini AI Agent image</Title>
+      <Detail>Replaced the landing-page overview image with img/DELTA_SIGNAL_GEMINI_AI_AGENT.png.</Detail>
+      <Detail>Retitled the visual band to Delta Signal Gemini AI Agent and kept the command walkthrough in START_HERE.html.</Detail>
+      <Detail>Preserved the caption that Substack research starts the loop, ATLAS-7 is the evidence engine, and Gemini is the orchestrator and synthesis layer.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo">
+      <Title>Added Delta Signal AI Gemini demo visual to START_HERE</Title>
+      <Detail>Embedded img/DeltaSignalAIGeminiDEMO.png into START_HERE.html through the reproducible demo generator.</Detail>
+      <Detail>Placed the image as a visual anchor before the manual command guide so users understand the TripCode, ATLAS-7, Gemini, and A2A/MCP flow before running commands.</Detail>
+      <Detail>Kept the manual command section intact and separate from the public landing page.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="public-landing">
+      <Title>Added financial research infrastructure overview to landing page</Title>
+      <Detail>Embedded img/Financial_Research_Infrastructure_Overview.png into index.html as a dedicated visual proof band between the workflow and CTA sections.</Detail>
+      <Detail>Captioned the visual with the product loop: Substack research starts the loop, ATLAS-7 is the evidence engine, and Gemini is the orchestrator and synthesis layer.</Detail>
+      <Detail>Kept command-by-command instructions out of the landing page; START_HERE.html remains the separate guided command demo.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Finalized HUT video slides as a 2-minute recording storyboard</Title>
+      <Detail>Enhanced VIDEO_SLIDES.html with runtime badges, seven-slide structure, core message, per-slide footer proof fields, recording checklist, and final timeline.</Detail>
+      <Detail>Aligned all seven slides to the finalized HUT demo storyboard: landing proof, discovery, bounded HUT request, protected evidence execution, Gemini packet, production loop, and evidence-package close.</Detail>
+      <Detail>Kept video slides separate from START_HERE.html so the video storyboard does not duplicate the hands-on command demo.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="public-landing">
+      <Title>Separated public landing from guided demo instructions</Title>
+      <Detail>Kept index.html as the product-facing first page and START_HERE.html as the separate hands-on command demo.</Detail>
+      <Detail>Updated the landing CTA language from command-running copy to guided-demo routing, so the landing no longer repeats the manual operator flow.</Detail>
+      <Detail>Preserved the Track 3 one-page message: evidence-bounded issuer intelligence, HUT proof numbers, A2A reuse, and evidence-package boundaries.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="public-landing">
+      <Title>Rebuilt landing page from one-page Track 3 landing spec</Title>
+      <Detail>Replaced the ultra-minimal landing with a visual one-page landing page: hero, hero cards, proof cards, workflow strip, CTA blocks, architecture cards, comparison strip, final message, and footer boundary.</Detail>
+      <Detail>Centered the page on the Track 3 claim: evidence-bounded issuer intelligence for agent-to-agent financial workflows.</Detail>
+      <Detail>Added the judge skim line Discover → Invoke → Verify → Remember → Return and explicit CTAs for HUT demo, agent surface, Track 3 A2A spec, and evidence boundary.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Applied tight seven-slide visual layout</Title>
+      <Detail>Added a consistent slide frame with Delta Signal Gemini AI Agent at top-left, HUT Issuer Diligence at top-right, and a bottom evidence strip naming execution_trace, sources, research_packet, session_memory, gemini_summary, usage, and boundaries.</Detail>
+      <Detail>Changed slide labels to Screenshot Target and Proof Target, with amber-highlighted proof boxes and electric-blue evidence-line styling.</Detail>
+      <Detail>Aligned slide titles with the tighter visual spec: Delta Signal Gemini AI Agent, Discover Before Execution, Bounded HUT Issuer Diligence, Evidence Pipeline Runs / evidence-first flow, Gemini HUT Packet, reusable artifact framing, and evidence-package close.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Compressed video slides into judge-facing Track 3 narrative</Title>
+      <Detail>Reworked VIDEO_SLIDES.html around seven concise jobs: opening proof, discoverable surface, HUT request, protected evidence execution, Gemini output, A2A / Marketplace functionality, and closing claim.</Detail>
+      <Detail>Reduced repeated TripCode/River text across slides and replaced dense packet repetition with slide-specific proof fields.</Detail>
+      <Detail>Updated slide titles and voiceover to emphasize real platform proof, evidence boundaries, and Track 3 marketplace reuse.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="public-landing">
+      <Title>Optimized public landing page around Track 3 submission</Title>
+      <Detail>Rebuilt index.html as a shorter, number-driven landing page focused on the final submission position: started with Track 1, hardened through Track 2, finished Track 3, and will submit Track 3.</Detail>
+      <Detail>Reduced the page to one hero, one metrics strip, one workflow, and one proof section so the first read is quick and decisive.</Detail>
+      <Detail>Promoted concrete proof numbers: 10-node HUT River, 9 prior research nodes, 4 changed findings, 3 weakened assumptions, 8 monitor-next items, 100 percent coverage gate, and latest visible 499.68 USD credit snapshot.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Refined final closing video slide</Title>
+      <Detail>Updated the 1:45-2:00 closing slide to show the final HUT report screen and evidence metadata.</Detail>
+      <Detail>Kept the on-screen closing line: Evidence packages, not unconstrained AI opinions.</Detail>
+      <Detail>Updated the voiceover to name the intended platforms: web, API, MCP-compatible agents, and API-key protected demo routes, with source metadata, caveats, and non-advice boundary.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Refined A2A / Marketplace Framing video slide</Title>
+      <Detail>Updated the 1:25-1:45 slide to frame Track 3 as a reusable production loop for portfolio, compliance, data-room, and subscriber-copilot agents.</Detail>
+      <Detail>Changed the footage guidance to show A2A task artifacts, Agent Card, workflow diagram, or returned structured packet.</Detail>
+      <Detail>Kept the on-screen sequence Discover → Invoke → Verify → Remember → Return while emphasizing provenance inspection, caveat verification, and packet reuse.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Expanded Gemini Output for HUT video slide</Title>
+      <Detail>Updated the 1:05-1:25 slide to capture the generated HUT report / Markdown brief instead of a generic output summary.</Detail>
+      <Detail>Added explicit capture targets: HUT ticker header, fundamentals, stress/risk, peer comparison, SPECTRA metadata, caveats, missing evidence, non-advice disclaimer, source date, computed time, and payload mode.</Detail>
+      <Detail>Updated the voiceover to emphasize that Gemini separates evidence from interpretation and surfaces missing or stale fields instead of filling gaps.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="demo-copy">
+      <Title>Separated public positioning from START_HERE operator instructions</Title>
+      <Detail>Changed START_HERE.html hero copy from proof-oriented positioning to a hands-on operator-guide description.</Detail>
+      <Detail>Moved the broader product claim about MCP-accessible ATLAS-7 discovery, bounded issuer workflows, provenance verification, and reusable artifacts into index.html.</Detail>
+      <Detail>Updated the Protected Evidence Execution video slide with the requested API/MCP execution, evidence pipeline, and ATLAS-7 boundary voiceover wording.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="demo-structure">
+      <Title>Separated video storyboard from manual START_HERE guide</Title>
+      <Detail>Moved detailed video timing, shot-list, on-screen text, and voiceover material into VIDEO_SLIDES.html.</Detail>
+      <Detail>Reduced START_HERE.html to instructions, system description, editable command steps, and request/response audit guidance.</Detail>
+      <Detail>Added a concise START_HERE link card pointing users to VIDEO_SLIDES.html when they want the recording storyboard.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Updated HUT Workflow Selection video slide wording</Title>
+      <Detail>Changed the HUT Workflow Selection slide to show app, terminal, browser, or agent-client prompt entry for a Delta Signal company report for HUT.</Detail>
+      <Detail>Embedded the exact on-screen text and voiceover explaining that the workflow is bounded issuer diligence rather than generic chatbot output.</Detail>
+      <Detail>Updated the slide path to route from user prompt to HUT ticker to company report to evidence routes.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="branding">
+      <Title>Applied DeltaSignal macOS app icon to public demo surfaces</Title>
+      <Detail>Copied the DeltaSignal macOS AppIcon asset into the web demo assets as assets/deltasignal-app-icon.png and DEMO/assets/deltasignal-app-icon.png.</Detail>
+      <Detail>Updated index.html to use the real DeltaSignal app icon in the public landing navigation instead of the placeholder delta mark.</Detail>
+      <Detail>Updated the generated VIDEO_SLIDES.html and START_HERE.html branding to use the real app icon in the slide header and demo product screen mockup.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Updated Platform Discovery video slide wording</Title>
+      <Detail>Changed the Platform Discovery slide to use Open API / MCP discovery language and the exact voiceover for discoverable workflow contracts, bounded route metadata, and agent-readable surfaces.</Detail>
+      <Detail>Updated the slide proof to show the public service page, Open API contract, MCP-facing docs, Arazzo workflow, readiness boundary, and Agent Card before protected execution.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="video-slides">
+      <Title>Split HUT video storyboard into dedicated slide deck</Title>
+      <Detail>Added generated VIDEO_SLIDES.html as a separate slide-based recording storyboard for the 1-2 minute HUT demo video.</Detail>
+      <Detail>Kept START_HERE.html focused on the manual command demo while linking to the dedicated video slide deck.</Detail>
+      <Detail>The video slides cover opening, platform discovery, HUT workflow selection, protected evidence execution, Gemini output, A2A/marketplace reuse, and closing boundary.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo">
+      <Title>Expanded START_HERE into a full 1-2 minute HUT recording board</Title>
+      <Detail>Added a shot board for platform discovery, HUT workflow selection, protected evidence execution, Gemini HUT output, and A2A/marketplace framing.</Detail>
+      <Detail>Added on-screen text for each recording beat, including the evidence pipeline and Discover → Invoke → Verify → Remember → Return loop.</Detail>
+      <Detail>Added a capture checklist covering hosted product proof, discovery proof, HUT request proof, evidence proof, output proof, and boundary proof.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo">
+      <Title>Added HUT demo video opening sequence to START_HERE</Title>
+      <Detail>Added a dedicated 0:00-0:10 opening-shot block to START_HERE.html that starts with the Delta Signal landing page / dashboard concept.</Detail>
+      <Detail>Embedded the exact on-screen title: Delta Signal Gemini AI Agent — SEC-grounded issuer intelligence for crypto-exposed public companies.</Detail>
+      <Detail>Embedded the voiceover that explains the HUT issuer diligence workflow across REST, MCP, A2A, and API-key protected demo clients.</Detail>
+      <Detail>Added a 1-2 minute video timeline that moves from landing-page proof to platform discovery, HUT workflow selection, protected evidence execution, Gemini output, A2A reuse, and usage/cost boundary.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="public-landing">
+      <Title>Made index landing user-facing with animated research loop</Title>
+      <Detail>Removed judge-specific wording from index.html so the first public page speaks to users instead of internal evaluation context.</Detail>
+      <Detail>Added animated evidence-packet flow, node motion, and pulse effects to the HUT hero loop diagram.</Detail>
+      <Detail>Renamed visible proof sections and demo commands to user-facing language and standardized examples on DELTASIGNAL_DEMO_KEY.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="guided-demo">
+      <Title>Added animated user-facing Substack / ATLAS-7 / Gemini loop</Title>
+      <Detail>Updated the root START_HERE.html generator so the research-loop section now includes animated evidence-packet flow across Substack Research Article, TripCode Resolver, HUT River, ATLAS-7 Evidence, Gemini Synthesis, and Reusable Agent Packet.</Detail>
+      <Detail>Changed the guided demo language from judge-facing to user-facing throughout the page and generated commands.</Detail>
+      <Detail>Standardized manual demo commands on DELTASIGNAL_DEMO_KEY so the visible walkthrough no longer references judge-specific environment naming.</Detail>
+      <Detail>Regenerated START_HERE.html and DEMO/commands from scripts/hut-video/build-judge-mini-demo.mjs after clearing stale command files.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="public-landing">
+      <Title>Updated first public landing viewport around HUT TripCode loop</Title>
+      <Detail>Updated index.html so the first visitor view starts from the public HUT Substack article, TripCode TF-SUB-9DA70A7F98, HUT River reconstruction, ATLAS-7 evidence, Gemini synthesis, and reusable A2A/MCP packet.</Detail>
+      <Detail>Made START_HERE.html the primary hero action so judges can immediately enter the guided HUT command demo.</Detail>
+      <Detail>Replaced the old generic hero image card with a six-stage research-loop visualization and links to the Substack article and guided demo.</Detail>
+      <Detail>Updated the visible workflow cards to match the current proof path: Substack article, TripCode resolver, HUT River, ATLAS-7 evidence, Gemini synthesis, and reusable packet.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="judge-mini-demo">
+      <Title>Added Substack-to-Gemini research loop diagram</Title>
+      <Detail>Added a visual six-stage diagram to START_HERE.html showing Substack research article, TripCode resolver, HUT River, ATLAS-7 evidence, Gemini synthesis, and reusable agent packet.</Detail>
+      <Detail>The diagram makes the judge-facing flow explicit: research memory, evidence boundary, agent autonomy, and marketplace reuse are separate but connected parts of the production loop.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="judge-mini-demo">
+      <Title>Added Substack research article layer to HUT agent flow</Title>
+      <Detail>Updated the START_HERE.html generator so the Gemini/ATLAS-7 section now starts with published Delta Signal Substack articles as TripCode-bearing research objects before ATLAS-7 evidence resolution and Gemini synthesis.</Detail>
+      <Detail>Expanded the flow from research article to user intent to Gemini planning to ATLAS-7 resolution to Gemini synthesis to auditable packet return, making TripCodes and Rivers the bridge from public research to agent-executable diligence.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="judge-mini-demo">
+      <Title>Added per-step request and response audit capture to HUT demo</Title>
+      <Detail>Updated every generated DEMO command script so each manual run saves an audit folder containing the exact request command, response stdout, response stderr, metadata, exit code, timestamps, and SHA-256 hashes.</Detail>
+      <Detail>Updated START_HERE.html to show the audit output path for every slide and to instruct judges to set DELTASIGNAL_DEMO_AUDIT_SESSION when they want all steps grouped in one reproducible audit session.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="judge-mini-demo">
+      <Title>Converted HUT mini demo navigator into slide walkthrough</Title>
+      <Detail>Converted the root START_HERE.html step navigator into a slide-based judge walkthrough with per-slide visuals for setup, health, ATLAS-7 discovery, OpenAPI, Arazzo, readiness, Agent Card discovery, autonomous trace, TripCode resolve, session monitor, scenarios, HUT runtime, and usage.</Detail>
+      <Detail>Each slide now maps objective to agent/tool path to proof returned, while preserving the editable command textarea, copy animation, manual run command, and recorder playback model.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="judge-mini-demo">
+      <Title>Enhanced HUT demo with visible MCP and ATLAS-7 execution layer</Title>
+      <Detail>Updated the root START_HERE.html generator so the first impression now frames the demo as HUT issuer diligence through MCP, ATLAS-7, A2A, and evidence-bounded Gemini synthesis.</Detail>
+      <Detail>Added an MCP + ATLAS-7 execution section showing discoverable tools, OpenAPI, Arazzo workflows, API-key protected demo access, protected evidence calls, Gemini rendering, and reusable A2A artifacts.</Detail>
+      <Detail>Added a dedicated "How ATLAS-7 Powers The Gemini AI Agent" section that separates ATLAS-7 as the evidence substrate, Gemini as the orchestration and synthesis layer, and the Go Cloud Run agent as the runtime control plane.</Detail>
+      <Detail>The demo now states that Gemini receives a bounded ATLAS-7 research packet, reasons over returned evidence, and preserves provenance, missing-evidence, quality, caveat, usage, and non-advice boundaries.</Detail>
+      <Detail>Added a new "Autonomous Discovery Proof" section and run step 07 to show real observable agent execution through agent_context.sources, execution_trace, research_packet, session memory, gemini_summary, usage, and boundaries without exposing hidden chain-of-thought.</Detail>
+      <Detail>Saved a fresh live proof artifact under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T175523Z-autonomous-discovery-trace with redacted request, raw response, summary JSON, and AUTONOMOUS_DISCOVERY_TRACE_PROOF.html.</Detail>
+      <Detail>Expanded the manual command flow from 8 to 13 steps: Cloud Run health, ATLAS-7 LLM guide, OpenAPI route contract, Arazzo workflow plan, public readiness boundary, Agent Card discovery, autonomous discovery trace, A2A TripCode resolve, session monitor, scenarios, HUT scenario runtime, and usage ledger.</Detail>
+      <Detail>Verified public ATLAS-7 discovery commands against llms-full.txt, openapi.json, Arazzo YAML, and the readiness route; readiness currently returns an explicit 402 public access boundary response, which is now shown as a valid evidence-access proof rather than hidden.</Detail>
+      <Detail>Regenerated DEMO/commands, commands.json, README.txt, MINI_DEMO_MANIFEST.json, and root START_HERE.html without embedding secrets.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="judge-mini-demo">
+      <Title>Added judge-ready HUT mini demo environment</Title>
+      <Detail>Added scripts/hut-video/06-build-judge-mini-demo.sh and scripts/hut-video/build-judge-mini-demo.mjs to package the HUT evidence into a self-contained root DEMO folder.</Detail>
+      <Detail>The generated START_HERE.html explains the project for a judge who knows nothing about DeltaSignal, shows editable commands, supports next/back/free navigation, and maps each command to the proof it should return.</Detail>
+      <Detail>The generated command files under DEMO/commands can be run manually through ./run-step.sh 00 through ./run-step.sh 07, while record-after-review.sh replays commands/commands.json through the existing Playwright video renderer.</Detail>
+      <Detail>Updated the recorder to accept DELTASIGNAL_VIDEO_COMMANDS_JSON, so reviewed or edited command text can drive the final recorded stage.</Detail>
+      <Detail>Added root START_HERE.html as the simplest entrypoint and linked it from README.md.</Detail>
+      <Detail>Added Make and npm aliases: make demo-video-mini-demo and npm run demo-video:mini-demo.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="submission-video-automation">
+      <Title>Added repeatable three-step HUT demo video recreation scripts</Title>
+      <Detail>Added scripts/hut-video/01-setup.sh to verify Node, npm, curl, jq, ffmpeg, Playwright, the redacted demo key environment, and the Cloud Run health route.</Detail>
+      <Detail>Added scripts/hut-video/02-capture-live-evidence.sh to capture fresh HUT request/response evidence for health, Agent Card discovery, A2A TripCode resolve, A2A thesis monitor, scenario runtime, usage telemetry, generated summaries, and SHA-256 manifests.</Detail>
+      <Detail>Added scripts/hut-video/03-render-video.sh to render the 1-2 minute HUT command-line/UI MP4 from a captured evidence folder and generate VIDEO_SUBMISSION_REQUIREMENT_PROOF.html.</Detail>
+      <Detail>Added scripts/hut-video/extract-video-summary.mjs and scripts/hut-video/README.html so the video can be recreated with stable bash, Make, or npm commands without embedding demo keys in artifacts.</Detail>
+      <Detail>Updated the Playwright recorder to accept DELTASIGNAL_VIDEO_OUT_DIR, DELTASIGNAL_VIDEO_PRIOR_DIR, DELTASIGNAL_VIDEO_MONITOR_DIR, and DELTASIGNAL_VIDEO_SCENARIO_DIR so fresh captures can drive the rendered video.</Detail>
+      <Detail>Added a reusable three-pane manual testing console: left pane streams command-line curl commands, right-top pane shows the agent state machine, and right-bottom pane streams JSON/result cards from captured HUT evidence.</Detail>
+      <Detail>Added scripts/hut-video/04-build-manual-stage.sh and scripts/hut-video/record-three-pane-video.mjs so manual testing and rendered videos use the same visual model.</Detail>
+      <Detail>Added scripts/hut-video/05-build-request-response-diagram.sh and scripts/hut-video/build-request-response-diagram.mjs to generate REQUEST_RESPONSE_DIAGRAM.html directly from saved request/response JSON.</Detail>
+    </Entry>
+    <Entry date="2026-06-10" type="submission-video">
+      <Title>Added 1:54 HUT command-line/UI demo video requirement proof</Title>
+      <Detail>Added artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T134441Z-hut-cli-ui-video-playwright/VIDEO_SUBMISSION_REQUIREMENT_PROOF.html.</Detail>
+      <Detail>Recorded that DeltaSignal_HUT_CLI_UI_Demo_1m53s.mp4 is 114.84 seconds, satisfying the required 1 to 2 minute demonstration window.</Detail>
+      <Detail>Linked the video proof from the official submission packet, root artifact map, and Track 3 runtime folder index.</Detail>
+      <Detail>Mapped the footage to visible command-line usage and real HUT runtime evidence: TripCode TF-SUB-9DA70A7F98, TF-RIVER-HUT, 10 River nodes, Agent Card discovery, A2A resolve, A2A monitor, scenario runtime, and usage telemetry.</Detail>
+    </Entry>
     <Entry date="2026-06-10" type="track-3-scenarios">
       <Title>Integrated real-world Track 3 A2A Marketplace scenarios</Title>
       <Detail>Updated docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html to version 2.0 and docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html to version 2.1.</Detail>
-      <Detail>Added RealWorldScenarios covering portfolio morning risk scans, compliance evidence checks, data-room issuer diligence, subscriber TripCode resolution, x402 paid-access validation, quick ticker checks, daily filing-change monitoring, multi-agent B2B diligence, verifier claim blocking, and graceful failure.</Detail>
+      <Detail>Added RealWorldScenarios covering portfolio morning risk scans, compliance evidence checks, data-room issuer diligence, subscriber TripCode resolution, Marketplace enterprise-access validation, quick ticker checks, daily filing-change monitoring, multi-agent B2B diligence, verifier claim blocking, and graceful failure.</Detail>
       <Detail>Kept the evidence boundary explicit: callers ask DeltaSignal for bounded issuer evidence, not market opinion; TripCode/River output preserves resolver boundaries and missing data remains missing.</Detail>
+      <Detail>Implemented the protected scenario runtime with GET /v1/scenarios and POST /v1/scenarios/run, both covered by authorization, rate-limit, error, runtime telemetry, and cost-tracking tests.</Detail>
+      <Detail>Added ExecPlan_DeltaSignal_Track3_Scenario_Runtime_2026_06_10.html and marked the implementation status passed.</Detail>
+      <Detail>Added docs/DeltaSignal_AI_Agent_Track3_Scenario_Runtime_Spec_2026_06_10.html as the per-scenario spec and execplan artifact.</Detail>
+      <Detail>Saved request/response proof for all ten HUT-centered scenarios under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T104300Z-track3-scenario-runtime.</Detail>
+      <Detail>Reran make coverage and make vet; coverage reports total 100.0 percent statements and vet passes.</Detail>
     </Entry>
     <Entry date="2026-06-10" type="github-publication">
       <Title>Published finalized Track 3 runtime implementation to GitHub</Title>
@@ -83,7 +559,7 @@
       <Detail>Updated docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html to version 2.0.</Detail>
       <Detail>Integrated the Google Cloud Marketplace judge narrative directly into the dated Track 3 spec as FinalJudgeNarrative.</Detail>
       <Detail>Added Build, Scale, Govern, and Optimize framing to show the agent as a discoverable, callable, evidence-bounded financial intelligence surface.</Detail>
-      <Detail>Added the visible Marketplace Capability Surface section so judges can quickly see Agent Card, A2A, MCP-style tools, OpenAPI, Arazzo, bounded workflows, TripCode/River memory, and x402-aware access.</Detail>
+      <Detail>Added the visible Marketplace Capability Surface section so judges can quickly see Agent Card, A2A, MCP-style tools, OpenAPI, Arazzo, bounded workflows, TripCode/River memory, and API-key protected demo access.</Detail>
     </Entry>
     <Entry date="2026-06-10" type="track-3-judge-facing">
       <Title>Added Google Cloud Marketplace judge narrative</Title>
@@ -544,8 +1020,8 @@
 	    <Entry date="2026-06-10" type="judge-feedback">
 	      <Title>Added MCP-first competition proof</Title>
 	      <Detail>Versioned the official submission packet to 3.7 and the landing page to 2.3.</Detail>
-	      <Detail>Reframed MCP as the executable loop layer for tool discovery, workflow execution, evidence-boundary enforcement, agent interoperability, payment-aware public access, and repeatable judge validation.</Detail>
-	      <Detail>Added the recommended demo sequence: discover MCP surface, run Morning Brief, run RIOT company report, resolve the HUT TripCode memory packet, then show OpenAPI/Arazzo/x402 metadata and usage controls.</Detail>
+	      <Detail>Reframed MCP as the executable loop layer for tool discovery, workflow execution, evidence-boundary enforcement, agent interoperability, API-key protected demo access, and repeatable judge validation.</Detail>
+	      <Detail>Added the recommended demo sequence: discover MCP surface, run Morning Brief, run RIOT company report, resolve the HUT TripCode memory packet, then show OpenAPI/Arazzo/Agent Card metadata and usage controls.</Detail>
 	      <Detail>Updated README with the MCP-first proof path so the public repository explains why the project is not a chatbot over filings.</Detail>
 	    </Entry>
 	    <Entry date="2026-06-10" type="judge-feedback">
@@ -627,13 +1103,682 @@
     const xml = document.getElementById('strategix-changelog-contract')?.textContent.trim() ?? '';
     const entries = [
       {
+        date: '2026-06-11',
+        type: 'Track 3 proof page',
+        title: 'Saved latest user-run Step 10 Track 3 scenario proof',
+        details: [
+          'Archived the latest protected /v1/scenarios/run terminal capture under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T071242Z-user-track3-scenario-success/RAW_TERMINAL_CAPTURE.txt.',
+          'Updated STEP10_TRACK3_SCENARIO_TEST.html to version 1.1 with generated_at 2026-06-11T07:12:42.154978436Z, request_id 0fd6c0bd2a53bc0972275a83, trace_id d8b93033b6551739a88f346c0fadcd4b, 0.15 USD tracked spend, and 499.85 USD estimated remaining credits.',
+          'Mirrored the proof page into the latest artifact folder as TRACK3_SCENARIO_SUCCESS_PROOF.html and updated the artifact indexes to point at the newest user-run scenario capture.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 proof page',
+        title: 'Added Step 09 A2A monitor proof page',
+        details: [
+          'Archived the latest protected /a2a monitor terminal capture under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T070538Z-user-a2a-monitor-success/RAW_TERMINAL_CAPTURE.txt.',
+          'Added STEP09_A2A_MONITOR_TEST.html as a root-level proof page showing the completed deltasignal_thesis_monitor_baseline artifact for TF-SUB-9DA70A7F98, mode live-mcp-tripcode-gemini, three session-memory turns, 5.644 second runtime, 0.15 USD tracked spend, and 499.85 USD estimated remaining credits.',
+          'The page records the Step 09 architecture: TripCode monitor request -> Cloud Run A2A task -> ATLAS-7 MCP research packet -> session memory continuity -> Gemini monitor synthesis -> bounded thesis monitor artifact.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 proof page',
+        title: 'Added Step 10 Track 3 scenario proof page',
+        details: [
+          'Archived the protected /v1/scenarios/run terminal capture under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T065613Z-user-track3-scenario-success/RAW_TERMINAL_CAPTURE.txt.',
+          'Added STEP10_TRACK3_SCENARIO_TEST.html as a root-level proof page for the subscriber_tripcode_copilot scenario, status ready_hut_evidence_bound, artifact subscriber_research_memory, HUT River node count 10, 0.05 USD tracked spend, and 499.95 USD estimated remaining credits.',
+          'The page records scenario boundaries: TripCodes and River nodes remain resolver memory, SEC accessions/CIKs/filing forms/XBRL concepts/source documents/evidence hashes remain evidence anchors, and the output is diligence triage rather than investment advice.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Landing page proof link',
+        title: 'Linked Step 09 and Step 10 proof pages from landing page',
+        details: [
+          'Updated index.html to version 5.5 with Step09A2AMonitorTest and Step10Track3ScenarioTest in the embedded CanonicalArtifact contract.',
+          'Added hero action buttons for the monitor and scenario proof pages.',
+          'Added Proof Cards entries explaining the remember-and-monitor proof and the Track 3 scenario / marketplace proof.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Step 08 visual asset',
+        title: 'Added financial mapping visual to Step 08 A2A proof page',
+        details: [
+          'Updated STEP08_A2A_RESOLVE_TEST.html to version 1.3 with img/FinancialMapping.png listed as a financial-mapping visual asset in the embedded CanonicalArtifact contract.',
+          'Added a Financial Mapping Visual section after Architecture Reading to explain how TripCode/River output becomes issuer evidence, risk fields, thesis deltas, monitor-next logic, and bounded A2A packet output.',
+          'Added reusable visual figure styling for large proof images inside the Step 08 page.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Landing page visual asset',
+        title: 'Added research-to-logic pipeline visual to landing page',
+        details: [
+          'Updated index.html to version 5.4 with img/RESEARCH-TO-LOGIC-PIPELINE.png listed as a research-to-logic-pipeline visual asset in the embedded CanonicalArtifact contract.',
+          'Added a dedicated Research To Logic Pipeline section between the visual workflow and the Delta Signal Gemini AI Agent visual.',
+          'The new section explains how a public Substack thesis becomes a TripCode, River memory, ATLAS-7 evidence path, Gemini synthesis input, and reusable A2A agent output.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Landing page proof link',
+        title: 'Linked Step 08 A2A resolve proof from landing page',
+        details: [
+          'Updated index.html to version 5.3 with Step08A2AResolveTest in the embedded CanonicalArtifact contract.',
+          'Added visible navigation and hero-action links to STEP08_A2A_RESOLVE_TEST.html.',
+          'Added a Proof Cards entry explaining that Step 08 proves protected /a2a can return a completed reusable deltasignal_research_packet with HUT River, evidence, Gemini summary, session memory, cost, runtime, and boundaries.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 proof page',
+        title: 'Added animated A2A runtime diagram to Step 08 proof page',
+        details: [
+          'Updated STEP08_A2A_RESOLVE_TEST.html to version 1.2 with an AnimatedDiagram contract field.',
+          'Added a three-column animated runtime diagram showing Agent Card discovery, JSON-RPC task invocation, protected Cloud Run /a2a orchestration, ATLAS-7 MCP evidence resolution, session memory, Gemini synthesis, and completed A2A artifact return.',
+          'The animation emphasizes that Step 08 is an external-agent interoperability proof, not a one-off curl response.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 proof page',
+        title: 'Expanded Step 08 proof with technical architecture and justification',
+        details: [
+          'Updated STEP08_A2A_RESOLVE_TEST.html to version 1.1 with a TechnicalArchitecture contract block.',
+          'Added Architecture Reading cards for interface contract, runtime boundary, evidence boundary, and A2A artifact return contract.',
+          'Added Architectural Justification and Boundary Of The Proof sections explaining why A2A, TripCode, ATLAS-7, and session memory matter for Track 3 interoperability.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 proof page',
+        title: 'Added root Step 08 A2A resolve proof page',
+        details: [
+          'Added STEP08_A2A_RESOLVE_TEST.html as the root-level companion to STEP07_GEMINI_SYNTHESIS_TEST.html.',
+          'The page labels the run as Step 08, explains its sequence position after Agent Card discovery and Step 07 autonomous trace, and links to the raw terminal capture plus mirrored artifact bundle.',
+          'The proof page summarizes the completed protected /a2a JSON-RPC call, deltasignal_research_packet artifact, HUT River, SEC/XBRL filing evidence nodes, Gemini summary, session memory, runtime telemetry, usage estimate, and evidence boundaries.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 proof artifact',
+        title: 'Saved user-run A2A resolve success proof',
+        details: [
+          'Archived the user terminal capture for a protected /a2a TripCode resolve run under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T062611Z-user-a2a-resolve-success.',
+          'Added A2A_RESOLVE_SUCCESS_PROOF.html summarizing the completed JSON-RPC result, deltasignal_research_packet artifact, HUT River, SEC/XBRL filing evidence nodes, Gemini summary, session memory, execution trace, usage estimate, runtime observability, and boundaries.',
+          'The saved proof records the Track 3 architecture: Substack research article -> TripCode -> Cloud Run A2A agent -> ATLAS-7 MCP evidence resolver -> HUT River packet -> session memory -> Gemini synthesis -> bounded A2A artifact.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Demo command fix',
+        title: 'Fixed A2A demo commands to post JSON-RPC body from audit wrappers',
+        details: [
+          'Diagnosed the Step 08 /a2a error: the command posted the full audit request wrapper, so the server received method POST instead of the JSON-RPC method resolve_tripcode.',
+          'Updated scripts/hut-video/build-judge-mini-demo.mjs so Step 08 and Step 09 keep audit-friendly request files but send jq \'.body // .\' to Cloud Run.',
+          'Changed generated DEMO/requests/04-a2a-resolve-request.json and DEMO/requests/05-a2a-monitor-request.json to raw JSON-RPC payloads so the simple direct --data-binary "@$REQUEST_FILE" command also works during manual testing.',
+          'Regenerated START_HERE.html, DEMO/commands/08-a2a-resolve.sh, DEMO/commands/09-a2a-monitor.sh, and DEMO/commands/commands.json.',
+          'Verified Step 08 against the protected Cloud Run /a2a route; the response returned jsonrpc 2.0, state completed, one artifact, and first artifact deltasignal_research_packet. Audit saved under DEMO/audit/20260611T054644Z-manual/08-a2a-resolve.',
+          'Verified the old direct command shape from DEMO with --data-binary "@requests/04-a2a-resolve-request.json"; it returned jsonrpc 2.0, state completed, and first artifact deltasignal_research_packet.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Step 07 visual asset',
+        title: 'Added financial research infrastructure visual to Step 07 proof page',
+        details: [
+          'Embedded img/Financial_Research_Infrastructure_Overview.png into STEP07_GEMINI_SYNTHESIS_TEST.html before the operational risk framework section.',
+          'Added a caption explaining how Substack research, TripCode/River memory, ATLAS-7 evidence, Gemini synthesis, A2A/MCP-style surfaces, and downstream reuse fit around the HUT proof.',
+          'Updated the embedded Step 07 page contract to version 1.8 with both visual assets listed.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Step 07 visual asset',
+        title: 'Added operational risk monitoring framework visual to Step 07 proof page',
+        details: [
+          'Embedded img/Operational_Risk_Monitoring_Framework.png into STEP07_GEMINI_SYNTHESIS_TEST.html as a dedicated visual section connecting the HUT TripCode/River proof to post-publication risk monitoring.',
+          'Added a caption explaining that operational monitoring extends Step 07 from one-time synthesis into evidence intake, execution-risk detection, thesis-state updates, and bounded output for downstream agents.',
+          'Updated the embedded Step 07 page contract to version 1.7 with a VisualAssets block.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Demo command fix',
+        title: 'Fixed A2A demo request-file paths for manual copy/paste runs',
+        details: [
+          'Updated scripts/hut-video/build-judge-mini-demo.mjs so copied Step 08 and Step 09 commands can locate request JSON files from the repository root, DEMO, or DEMO/commands.',
+          'Regenerated START_HERE.html, DEMO/commands/08-a2a-resolve.sh, DEMO/commands/09-a2a-monitor.sh, and DEMO/commands/commands.json.',
+          'Changed visible curl calls from --data @../requests/... to a REQUEST_FILE preflight plus --data-binary "@$REQUEST_FILE", with a clear error if the file is missing.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Step 07 proof ledger',
+        title: 'Expanded Step 07 page with HUT proof ledger and research-memory context',
+        details: [
+          'Added Delta Signal Research Memory Stack content explaining Substack research, ATLAS-7 TripCode, HUT River, ATLAS-7 evidence engine, Gemini synthesis, and reusable agent packet responsibilities.',
+          'Added a compact Proof Ledger with TripCode TF-SUB-9DA70A7F98, issuer HUT, mode live-mcp-tripcode-gemini, 8.839 second runtime, 10 HUT River nodes, 9 prior HUT nodes, 4 changed findings, 3 weakened assumptions, 8 monitor-next items, and app-local usage estimate.',
+          'Added Proven Now vs. Designed For, Compact Packet vs. Deep Packet, and Known Diligence Gap sections to separate runtime proof from production expansion and future numeric XBRL drilldown work.',
+          'Updated the embedded Step 07 page contract to version 1.6 with a ProofLedger block.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Step 07 animation visibility',
+        title: 'Made the Step 07 animated diagram visible at first glance',
+        details: [
+          'Added a compact animated hero flow to STEP07_GEMINI_SYNTHESIS_TEST.html so users immediately see TripCode -> Cloud Run -> ATLAS-7 MCP -> Gemini -> Bounded Return without scrolling.',
+          'Fixed the packet animation to move across the diagram container instead of using viewport-width translation, making the motion easier to see and less dependent on screen size.',
+          'Updated the embedded page contract to version 1.4.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Google agent terminology',
+        title: 'Aligned Step 07 test page with official Google agent architecture terms',
+        details: [
+          'Used the Google developer documentation MCP corpus to align STEP07_GEMINI_SYNTHESIS_TEST.html with official terminology: Agent Runtime, Agent Platform Sessions, Memory Bank, Agent Card, A2A protocol, Agent Registry, Cloud Marketplace AI Agents as a Service, Observability, Cloud Trace, Cloud Monitoring, Cloud Logging, OpenTelemetry, Agent Identity, and Agent Gateway.',
+          'Added a Google Architecture Terms Used section explaining how the Step 07 Cloud Run proof maps to the Agent Runtime production path, Sessions, Memory Bank, A2A Agent Card discovery, and observability vocabulary without claiming Marketplace publication.',
+          'Updated the embedded page contract to version 1.3 with a GoogleTerms field.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 test rationale',
+        title: 'Expanded Step 07 test page with complete production-agent rationale',
+        details: [
+          'Updated STEP07_GEMINI_SYNTHESIS_TEST.html to explain what the protected Cloud Run test proves, what each technology layer did, and why the Google Cloud agent path is stronger than direct local MCP client use for the competition submission.',
+          'The new rationale avoids development-tool attribution and focuses on the submitted runtime system: Go Cloud Run agent orchestration, ATLAS-7 MCP evidence resolution, Gemini synthesis, session memory, usage tracking, and bounded return.',
+          'Updated the embedded page contract to version 1.2 with a CompetitionRationale field.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 test visualization',
+        title: 'Added animated runtime flow to Step 07 Gemini synthesis test page',
+        details: [
+          'Enhanced STEP07_GEMINI_SYNTHESIS_TEST.html with an animated runtime diagram showing the competition proof sequence: User Goal, Cloud Run Agent, ATLAS-7 MCP, HUT River Packet, Session Memory, Gemini Synthesis, and Bounded Return.',
+          'Added legend cards that separate orchestration, evidence, synthesis, and audit responsibilities so first-time users can understand which part was handled by Google Cloud agent runtime, ATLAS-7 MCP, and Gemini.',
+          'Updated the embedded page contract to version 1.1 with an AnimatedDiagram field.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 test documentation',
+        title: 'Added public Step 07 Gemini synthesis test page',
+        details: [
+          'Added STEP07_GEMINI_SYNTHESIS_TEST.html as a separate root-level test page describing the protected HUT TripCode Cloud Run request, autonomous execution trace, Gemini synthesis response, usage object, evidence boundaries, and internal evaluation.',
+          'Linked the page from index.html as View Step 07 Test so first-time users can inspect the exact request/response proof without digging through artifacts.',
+          'The page links back to the raw terminal capture, STEP07_AUTONOMOUS_TRACE_EVIDENCE.html, GEMINI_SYNTHESIS_EVAL.html, START_HERE.html, and the main landing page.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 demo distillation',
+        title: 'Added 1-minute Track 3 proof path and deployed-service browser UI',
+        details: [
+          'Added ONE_MINUTE_DEMO.html as the shortest HUT proof structure: Substack TripCode, Agent Card discovery, protected Cloud Run resolve, A2A packet, thesis monitor, scenario runtime, and usage ledger.',
+          'Updated START_HERE.html and the DEMO command generator with a practical fast path: ./run-step.sh 00, 06, 07, 08, 09, 11, and 12.',
+          'Added per-step operator notes explaining what to run, which Track 3 surface is being tested, what real data to inspect, and the next decision.',
+          'Added a Cloud Run /demo browser UI so users can paste the private demo key and run Health, Agent Card, Resolve, A2A Resolve, Monitor, and Usage from the hosted service.',
+          'Updated the landing page with a direct Try Cloud Run UI call-to-action.',
+          'Deployed Cloud Run revision deltasignal-ai-agent-00015-7mw and verified /demo on both the canonical service URL and the existing public alias.',
+          'Saved deployment smoke-test request/response evidence under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T042215Z-one-minute-demo-ui-deploy-smoke.',
+          'Verified the new /demo route with a focused Go test and regenerated START_HERE.html, ONE_MINUTE_DEMO.html, DEMO commands, and the demo manifest from the source generator.',
+          'Removed the public ATLAS readiness/x402 detour from the main START_HERE and DEMO command path so the competition walkthrough stays focused on private API-key Cloud Run agent execution.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Track 3 evidence capture',
+        title: 'Saved successful protected Step 07 autonomous trace capture',
+        details: [
+          'Archived the user-run Step 07 terminal request/response under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260611T043124Z-step07-autonomous-trace-user-capture.',
+          'The captured response shows mode=live-mcp-tripcode-gemini, tripcode=TF-SUB-9DA70A7F98, issuer=HUT, two fetched public ATLAS-7 operating guide sources, eight execution-trace steps, Gemini synthesis, local-estimate usage, and four explicit boundaries.',
+          'Added STEP07_AUTONOMOUS_TRACE_EVIDENCE.html to summarize the proof without persisting the private demo key.',
+          'Added GEMINI_SYNTHESIS_EVAL.html with an internal 8.7/10 evaluation of the returned Gemini HUT summary, including grounding, boundary discipline, workflow fit, actionability, and Optimize-phase gaps.'
+        ]
+      },
+      {
+        date: '2026-06-11',
+        type: 'Demo access clarification',
+        title: 'Reframed all public demo examples around private API-key competition access',
+        details: [
+          'Updated START_HERE.html, VIDEO_SLIDES.html, README.md, the Track 3 marketplace specs, DEMO commands, and the HUT video generator so competition execution is described as private demo API-key access.',
+          'Removed public readiness/x402 examples from the main START_HERE and DEMO flow; the protected HUT proof path now runs only through DELTASIGNAL_DEMO_KEY on the deployed Cloud Run agent.',
+          'Replaced legacy access-route demo language with Google Marketplace and enterprise access language for future distribution.',
+          'Verified the visible demo/spec files no longer contain old access-route examples.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slide enhancement',
+        title: 'Enhanced Video Slide 04 with evidence metadata proof',
+        details: [
+          'Locked Slide 04 to the Evidence First, Synthesis Second story: SEC/XBRL, ATLAS-7, SPECTRA, then Gemini.',
+          'Added a structured response metadata panel showing execution_trace, agent_context.sources, research_packet, boundaries, source dates, payload mode, and an evidence hash example.',
+          'Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_EVIDENCE_METADATA_SLIDE04_VERIFICATION.png.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slide enhancement',
+        title: 'Enhanced Video Slide 03 with replayable HUT issuer command',
+        details: [
+          'Locked Slide 03 to the bounded HUT issuer diligence story: user asks for a company report, not generic market chat.',
+          'Added a visible user request, replayable command panel, DEMO/commands source label, and proof labels for Ticker: HUT, Company Report, Evidence-bounded, and Replayable.',
+          'Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_HUT_ISSUER_COMMAND_SLIDE03_VERIFICATION.png.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slide enhancement',
+        title: 'Enhanced Video Slide 02 with discovery contract proof',
+        details: [
+          'Locked Slide 02 to the Discover Before Execution story: Open API, MCP, Arazzo workflows, Agent Card, and protected API-key demo access.',
+          'Added a visible discovery command and route-contract cards for OpenAPI, /mcp, Arazzo, Agent Card, API key, and readiness so the slide proves clients can inspect capabilities before choosing a workflow.',
+          'Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_DISCOVERY_CONTRACT_SLIDE02_VERIFICATION.png.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slide enhancement',
+        title: 'Added command-line plus HUT article frame to Video Slide 01',
+        details: [
+          'Enhanced the opening HUT slide so the left side shows the operator command flow and the right side shows the framed Substack article screenshot.',
+          'The slide now makes the TripCode extraction explicit: open the HUT article, identify ATLAS-7 TripCode TF-SUB-9DA70A7F98, then use it as the resolver handle for the Cloud Run agent.',
+          'Saved verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_HUT_SUBSTACK_CLI_FRAME_SLIDE01_VERIFICATION.png.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slide correction',
+        title: 'Corrected Video Slide 01 to start from the HUT Substack article',
+        details: [
+          'Kept the competition demo anchored on https://deltasignal.substack.com/p/hut-8-the-re-rating-has-a-deadline instead of a separate market-signal slide.',
+          'Slide 01 now shows the HUT article as the research object that starts the loop: Substack article, thesis frame, ATLAS-7 TripCode TF-SUB-9DA70A7F98, HUT River, ATLAS-7 evidence, and Gemini synthesis.',
+          'Removed the rejected standalone JGB slide artifact from the public demo surface.',
+          'Saved corrected Slide 01 verification screenshot at artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/VIDEO_SLIDES_HUT_SUBSTACK_SLIDE01_VERIFICATION.png.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo enhancement',
+        title: 'Added OpenAPI result preview and explanation to START_HERE',
+        details: [
+          'Enhanced step 03 of the guided demo with a visible OpenAPI JSON result preview showing DeltaSignal ATLAS title, version, MCP route, company report routes, readiness route, SPECTRA route, and atlas-history routes.',
+          'Added "What To Highlight" guidance explaining that the OpenAPI result proves machine-readable workflow discovery, not hidden endpoint guessing.',
+          'Verified ./DEMO/run-step.sh 03 against the live API and saved audit proof under DEMO/audit/openapi-result-preview-check/03-openapi.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo fix',
+        title: 'Made START_HERE copied commands self-contained',
+        details: [
+          'Updated scripts/hut-video/build-judge-mini-demo.mjs so visible copied commands use inline defaults for the Cloud Run agent URL, ATLAS-7 docs URL, and ATLAS-7 API URL.',
+          'Regenerated START_HERE.html and DEMO/commands so the ATLAS-7 llms-full.txt discovery command works even when copied into a fresh shell before step 00 has exported variables.',
+          'Verified the failing command with an unset DELTASIGNAL_ATLAS_DOCS_URL and confirmed ./DEMO/run-step.sh 02 saves an audit bundle under DEMO/audit/quick-url-fix-check/02-atlas-llms.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Demo recording',
+        title: 'Recorded real HUT Track 3 demo video from live Cloud Run evidence',
+        details: [
+          'Deployed Cloud Run revision deltasignal-ai-agent-00014-j4z so the live service exposes the Track 3 scenario runtime used by the recording.',
+          'Captured fresh live request/response evidence under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T223844Z-hut-cli-ui-video-live-real.',
+          'Rendered DeltaSignal_HUT_CLI_UI_Demo_ThreePane.mp4 from the saved evidence bundle; final verified duration is 96.04 seconds, H.264, 1280x720, 25 fps, with SHA-256 ec0d5b723aed3273b3ec25592d33fead80368e08c5147d00201fada2c1229465.',
+          'Added on-screen voiceover captions for all nine video slides so first-time viewers understand the TripCode, Cloud Run, Agent Card, MCP evidence, session memory, thesis monitor, scenario runtime, and usage boundary flow without needing separate narration.',
+          'Saved nine high-resolution slide audit screenshots at 2560x1440 under slide-audit-shots/ and wrote SLIDE_AUDIT_SHOTS.json with slide labels, timing, voiceover text, and screenshot paths.',
+          'Saved REQUEST_RESPONSE_VALIDATION.html/json confirming the live responses passed health, Agent Card, A2A resolve, A2A monitor, scenario catalog, subscriber copilot scenario, usage, HUT TripCode, HUT River, and SEC/XBRL evidence checks.',
+          'Reworked the recording stage so each slide shows one distinct active command instead of cumulative repeated command history.',
+          'The evidence bundle records health, Agent Card discovery, protected A2A TripCode resolve, protected A2A thesis monitor, Track 3 scenario list, subscriber TripCode copilot scenario, usage ledger, proof HTML, manifest, and SHA-256 sums with demo keys redacted.',
+          'The real data summary includes TF-SUB-9DA70A7F98, TF-RIVER-HUT, 10 River nodes, live MCP/Gemini packet mode, ATLAS-7 atomic tools, evidence hash, SEC/XBRL filing refs, monitor-next items, and proof milestones.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo',
+        title: 'Updated START_HERE to show both Gemini demo visuals',
+        details: [
+          'Changed the guided demo generator to render both img/DeltaSignalAIGeminiDEMO.png and img/DeltaSignalAIGeminiDEMO_02.png.',
+          'Labeled the first image as the concept visual and the second as the detailed runtime visual for the Gemini, ATLAS-7, and A2A/MCP workflow.',
+          'Regenerated START_HERE.html so users see both visual anchors before running manual commands.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo',
+        title: 'Swapped START_HERE visual demo anchor to v2 image',
+        details: [
+          'Updated the guided demo generator to use img/DeltaSignalAIGeminiDEMO_02.png.',
+          'Regenerated START_HERE.html so the larger v2 visual appears in the Delta Signal AI + Gemini Runtime View section.',
+          'Kept the public landing page image unchanged; this update applies only to the guided demo.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Public landing',
+        title: 'Swapped landing visual to Delta Signal Gemini AI Agent image',
+        details: [
+          'Replaced the landing-page overview image with img/DELTA_SIGNAL_GEMINI_AI_AGENT.png.',
+          'Retitled the visual band to Delta Signal Gemini AI Agent and kept the command walkthrough in START_HERE.html.',
+          'Preserved the caption that Substack research starts the loop, ATLAS-7 is the evidence engine, and Gemini is the orchestrator and synthesis layer.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo',
+        title: 'Added Delta Signal AI Gemini demo visual to START_HERE',
+        details: [
+          'Embedded img/DeltaSignalAIGeminiDEMO.png into START_HERE.html through the reproducible demo generator.',
+          'Placed the image as a visual anchor before the manual command guide so users understand the TripCode, ATLAS-7, Gemini, and A2A/MCP flow before running commands.',
+          'Kept the manual command section intact and separate from the public landing page.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Public landing',
+        title: 'Added financial research infrastructure overview to landing page',
+        details: [
+          'Embedded img/Financial_Research_Infrastructure_Overview.png into index.html as a dedicated visual proof band between the workflow and CTA sections.',
+          'Captioned the visual with the product loop: Substack research starts the loop, ATLAS-7 is the evidence engine, and Gemini is the orchestrator and synthesis layer.',
+          'Kept command-by-command instructions out of the landing page; START_HERE.html remains the separate guided command demo.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Finalized HUT video slides as a 2-minute recording storyboard',
+        details: [
+          'Enhanced VIDEO_SLIDES.html with runtime badges, seven-slide structure, core message, per-slide footer proof fields, recording checklist, and final timeline.',
+          'Aligned all seven slides to the finalized HUT demo storyboard: landing proof, discovery, bounded HUT request, protected evidence execution, Gemini packet, production loop, and evidence-package close.',
+          'Kept video slides separate from START_HERE.html so the video storyboard does not duplicate the hands-on command demo.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Public landing',
+        title: 'Separated public landing from guided demo instructions',
+        details: [
+          'Kept index.html as the product-facing first page and START_HERE.html as the separate hands-on command demo.',
+          'Updated the landing CTA language from command-running copy to guided-demo routing, so the landing no longer repeats the manual operator flow.',
+          'Preserved the Track 3 one-page message: evidence-bounded issuer intelligence, HUT proof numbers, A2A reuse, and evidence-package boundaries.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Public landing',
+        title: 'Rebuilt landing page from one-page Track 3 landing spec',
+        details: [
+          'Replaced the ultra-minimal landing with a visual one-page landing page: hero, hero cards, proof cards, workflow strip, CTA blocks, architecture cards, comparison strip, final message, and footer boundary.',
+          'Centered the page on the Track 3 claim: evidence-bounded issuer intelligence for agent-to-agent financial workflows.',
+          'Added the judge skim line Discover → Invoke → Verify → Remember → Return and explicit CTAs for HUT demo, agent surface, Track 3 A2A spec, and evidence boundary.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Applied tight seven-slide visual layout',
+        details: [
+          'Added a consistent slide frame with Delta Signal Gemini AI Agent at top-left, HUT Issuer Diligence at top-right, and a bottom evidence strip naming execution_trace, sources, research_packet, session_memory, gemini_summary, usage, and boundaries.',
+          'Changed slide labels to Screenshot Target and Proof Target, with amber-highlighted proof boxes and electric-blue evidence-line styling.',
+          'Aligned slide titles with the tighter visual spec: Delta Signal Gemini AI Agent, Discover Before Execution, Bounded HUT Issuer Diligence, Evidence Pipeline Runs / evidence-first flow, Gemini HUT Packet, reusable artifact framing, and evidence-package close.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Compressed video slides into judge-facing Track 3 narrative',
+        details: [
+          'Reworked VIDEO_SLIDES.html around seven concise jobs: opening proof, discoverable surface, HUT request, protected evidence execution, Gemini output, A2A / Marketplace functionality, and closing claim.',
+          'Reduced repeated TripCode/River text across slides and replaced dense packet repetition with slide-specific proof fields.',
+          'Updated slide titles and voiceover to emphasize real platform proof, evidence boundaries, and Track 3 marketplace reuse.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Public landing',
+        title: 'Optimized public landing page around Track 3 submission',
+        details: [
+          'Rebuilt index.html as a shorter, number-driven landing page focused on the final submission position: started with Track 1, hardened through Track 2, finished Track 3, and will submit Track 3.',
+          'Reduced the page to one hero, one metrics strip, one workflow, and one proof section so the first read is quick and decisive.',
+          'Promoted concrete proof numbers: 10-node HUT River, 9 prior research nodes, 4 changed findings, 3 weakened assumptions, 8 monitor-next items, 100 percent coverage gate, and latest visible 499.68 USD credit snapshot.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Refined final closing video slide',
+        details: [
+          'Updated the 1:45-2:00 closing slide to show the final HUT report screen and evidence metadata.',
+          'Kept the on-screen closing line: Evidence packages, not unconstrained AI opinions.',
+          'Updated the voiceover to name the intended platforms: web, API, MCP-compatible agents, and API-key protected demo routes, with source metadata, caveats, and non-advice boundary.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Refined A2A / Marketplace Framing video slide',
+        details: [
+          'Updated the 1:25-1:45 slide to frame Track 3 as a reusable production loop for portfolio, compliance, data-room, and subscriber-copilot agents.',
+          'Changed the footage guidance to show A2A task artifacts, Agent Card, workflow diagram, or returned structured packet.',
+          'Kept the on-screen sequence Discover → Invoke → Verify → Remember → Return while emphasizing provenance inspection, caveat verification, and packet reuse.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Expanded Gemini Output for HUT video slide',
+        details: [
+          'Updated the 1:05-1:25 slide to capture the generated HUT report / Markdown brief instead of a generic output summary.',
+          'Added explicit capture targets: HUT ticker header, fundamentals, stress/risk, peer comparison, SPECTRA metadata, caveats, missing evidence, non-advice disclaimer, source date, computed time, and payload mode.',
+          'Updated the voiceover to emphasize that Gemini separates evidence from interpretation and surfaces missing or stale fields instead of filling gaps.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Demo copy',
+        title: 'Separated public positioning from START_HERE operator instructions',
+        details: [
+          'Changed START_HERE.html hero copy from proof-oriented positioning to a hands-on operator-guide description.',
+          'Moved the broader product claim about MCP-accessible ATLAS-7 discovery, bounded issuer workflows, provenance verification, and reusable artifacts into index.html.',
+          'Updated the Protected Evidence Execution video slide with the requested API/MCP execution, evidence pipeline, and ATLAS-7 boundary voiceover wording.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Demo structure',
+        title: 'Separated video storyboard from manual START_HERE guide',
+        details: [
+          'Moved detailed video timing, shot-list, on-screen text, and voiceover material into VIDEO_SLIDES.html.',
+          'Reduced START_HERE.html to instructions, system description, editable command steps, and request/response audit guidance.',
+          'Added a concise START_HERE link card pointing users to VIDEO_SLIDES.html when they want the recording storyboard.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Updated HUT Workflow Selection video slide wording',
+        details: [
+          'Changed the HUT Workflow Selection slide to show app, terminal, browser, or agent-client prompt entry for a Delta Signal company report for HUT.',
+          'Embedded the exact on-screen text and voiceover explaining that the workflow is bounded issuer diligence rather than generic chatbot output.',
+          'Updated the slide path to route from user prompt to HUT ticker to company report to evidence routes.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Branding',
+        title: 'Applied DeltaSignal macOS app icon to public demo surfaces',
+        details: [
+          'Copied the DeltaSignal macOS AppIcon asset into the web demo assets as assets/deltasignal-app-icon.png and DEMO/assets/deltasignal-app-icon.png.',
+          'Updated index.html to use the real DeltaSignal app icon in the public landing navigation instead of the placeholder delta mark.',
+          'Updated the generated VIDEO_SLIDES.html and START_HERE.html branding to use the real app icon in the slide header and demo product screen mockup.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Updated Platform Discovery video slide wording',
+        details: [
+          'Changed the Platform Discovery slide to use Open API / MCP discovery language and the exact voiceover for discoverable workflow contracts, bounded route metadata, and agent-readable surfaces.',
+          'Updated the slide proof to show the public service page, Open API contract, MCP-facing docs, Arazzo workflow, readiness boundary, and Agent Card before protected execution.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Video slides',
+        title: 'Split HUT video storyboard into dedicated slide deck',
+        details: [
+          'Added generated VIDEO_SLIDES.html as a separate slide-based recording storyboard for the 1-2 minute HUT demo video.',
+          'Kept START_HERE.html focused on the manual command demo while linking to the dedicated video slide deck.',
+          'The video slides cover opening, platform discovery, HUT workflow selection, protected evidence execution, Gemini output, A2A/marketplace reuse, and closing boundary.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo',
+        title: 'Expanded START_HERE into a full 1-2 minute HUT recording board',
+        details: [
+          'Added a shot board for platform discovery, HUT workflow selection, protected evidence execution, Gemini HUT output, and A2A/marketplace framing.',
+          'Added on-screen text for each recording beat, including the evidence pipeline and Discover → Invoke → Verify → Remember → Return loop.',
+          'Added a capture checklist covering hosted product proof, discovery proof, HUT request proof, evidence proof, output proof, and boundary proof.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo',
+        title: 'Added HUT demo video opening sequence to START_HERE',
+        details: [
+          'Added a dedicated 0:00-0:10 opening-shot block to START_HERE.html that starts with the Delta Signal landing page / dashboard concept.',
+          'Embedded the exact on-screen title: Delta Signal Gemini AI Agent — SEC-grounded issuer intelligence for crypto-exposed public companies.',
+          'Embedded the voiceover that explains the HUT issuer diligence workflow across REST, MCP, A2A, and API-key protected demo clients.',
+          'Added a 1-2 minute video timeline that moves from landing-page proof to platform discovery, HUT workflow selection, protected evidence execution, Gemini output, A2A reuse, and usage/cost boundary.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Public landing',
+        title: 'Made index landing user-facing with animated research loop',
+        details: [
+          'Removed judge-specific wording from index.html so the first public page speaks to users instead of internal evaluation context.',
+          'Added animated evidence-packet flow, node motion, and pulse effects to the HUT hero loop diagram.',
+          'Renamed visible proof sections and demo commands to user-facing language and standardized examples on DELTASIGNAL_DEMO_KEY.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Guided demo',
+        title: 'Added animated user-facing Substack / ATLAS-7 / Gemini loop',
+        details: [
+          'Updated the root START_HERE.html generator so the research-loop section now includes animated evidence-packet flow across Substack Research Article, TripCode Resolver, HUT River, ATLAS-7 Evidence, Gemini Synthesis, and Reusable Agent Packet.',
+          'Changed the guided demo language from judge-facing to user-facing throughout the page and generated commands.',
+          'Standardized manual demo commands on DELTASIGNAL_DEMO_KEY so the visible walkthrough no longer references judge-specific environment naming.',
+          'Regenerated START_HERE.html and DEMO/commands from scripts/hut-video/build-judge-mini-demo.mjs after clearing stale command files.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Public landing',
+        title: 'Updated first public landing viewport around HUT TripCode loop',
+        details: [
+          'Updated index.html so the first visitor view starts from the public HUT Substack article, TripCode TF-SUB-9DA70A7F98, HUT River reconstruction, ATLAS-7 evidence, Gemini synthesis, and reusable A2A/MCP packet.',
+          'Made START_HERE.html the primary hero action so judges can immediately enter the guided HUT command demo.',
+          'Replaced the old generic hero image card with a six-stage research-loop visualization and links to the Substack article and guided demo.',
+          'Updated the visible workflow cards to match the current proof path: Substack article, TripCode resolver, HUT River, ATLAS-7 evidence, Gemini synthesis, and reusable packet.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Judge mini demo',
+        title: 'Added Substack-to-Gemini research loop diagram',
+        details: [
+          'Added a visual six-stage diagram to START_HERE.html showing Substack research article, TripCode resolver, HUT River, ATLAS-7 evidence, Gemini synthesis, and reusable agent packet.',
+          'The diagram makes the judge-facing flow explicit: research memory, evidence boundary, agent autonomy, and marketplace reuse are separate but connected parts of the production loop.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Judge mini demo',
+        title: 'Added Substack research article layer to HUT agent flow',
+        details: [
+          'Updated the START_HERE.html generator so the Gemini/ATLAS-7 section now starts with published Delta Signal Substack articles as TripCode-bearing research objects before ATLAS-7 evidence resolution and Gemini synthesis.',
+          'Expanded the flow from research article to user intent to Gemini planning to ATLAS-7 resolution to Gemini synthesis to auditable packet return, making TripCodes and Rivers the bridge from public research to agent-executable diligence.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Judge mini demo',
+        title: 'Added per-step request and response audit capture to HUT demo',
+        details: [
+          'Updated every generated DEMO command script so each manual run saves an audit folder containing the exact request command, response stdout, response stderr, metadata, exit code, timestamps, and SHA-256 hashes.',
+          'Updated START_HERE.html to show the audit output path for every slide and to instruct judges to set DELTASIGNAL_DEMO_AUDIT_SESSION when they want all steps grouped in one reproducible audit session.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Judge mini demo',
+        title: 'Converted HUT mini demo navigator into slide walkthrough',
+        details: [
+          'Converted the root START_HERE.html step navigator into a slide-based judge walkthrough with per-slide visuals for setup, health, ATLAS-7 discovery, OpenAPI, Arazzo, readiness, Agent Card discovery, autonomous trace, TripCode resolve, session monitor, scenarios, HUT runtime, and usage.',
+          'Each slide now maps objective to agent/tool path to proof returned, while preserving the editable command textarea, copy animation, manual run command, and recorder playback model.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Judge mini demo',
+        title: 'Added judge-ready HUT mini demo environment',
+        details: [
+          'Added scripts/hut-video/06-build-judge-mini-demo.sh and scripts/hut-video/build-judge-mini-demo.mjs to package the HUT evidence into a self-contained root DEMO folder.',
+          'The generated START_HERE.html explains the project for a judge who knows nothing about DeltaSignal, shows editable commands, supports next/back/free navigation, and maps each command to the proof it should return.',
+          'The generated command files under DEMO/commands can be run manually through ./run-step.sh 00 through ./run-step.sh 07, while record-after-review.sh replays commands/commands.json through the existing Playwright video renderer.',
+          'Updated the recorder to accept DELTASIGNAL_VIDEO_COMMANDS_JSON, so reviewed or edited command text can drive the final recorded stage.',
+          'Added root START_HERE.html as the simplest entrypoint and linked it from README.md.',
+          'Added Make and npm aliases: make demo-video-mini-demo and npm run demo-video:mini-demo.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Submission video automation',
+        title: 'Added repeatable three-step HUT demo video recreation scripts',
+        details: [
+          'Added scripts/hut-video/01-setup.sh to verify local tools, Playwright, the redacted demo key environment, and Cloud Run health.',
+          'Added scripts/hut-video/02-capture-live-evidence.sh to capture fresh HUT request/response evidence for health, Agent Card, A2A resolve, A2A monitor, scenario runtime, usage telemetry, summaries, and SHA-256 manifests.',
+          'Added scripts/hut-video/03-render-video.sh to render the 1-2 minute HUT command-line/UI MP4 from a captured evidence folder.',
+          'Added scripts/hut-video/04-build-manual-stage.sh for manual testing with a three-pane console: command stream, agent state machine, and streamed JSON/result cards.',
+          'Added scripts/hut-video/three-pane-stage.mjs and scripts/hut-video/record-three-pane-video.mjs so manual testing and rendered videos share the same visual model.',
+          'Added scripts/hut-video/05-build-request-response-diagram.sh to generate a request/response diagram from real saved request/response JSON.'
+        ]
+      },
+      {
+        date: '2026-06-10',
+        type: 'Submission video',
+        title: 'Added 1:54 HUT command-line/UI demo video requirement proof',
+        details: [
+          'Added artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T134441Z-hut-cli-ui-video-playwright/VIDEO_SUBMISSION_REQUIREMENT_PROOF.html.',
+          'Recorded that DeltaSignal_HUT_CLI_UI_Demo_1m53s.mp4 is 114.84 seconds, satisfying the required 1 to 2 minute demonstration window.',
+          'Linked the video proof from the official submission packet, root artifact map, and Track 3 runtime folder index.',
+          'Mapped the footage to visible command-line usage and real HUT runtime evidence: TripCode TF-SUB-9DA70A7F98, TF-RIVER-HUT, 10 River nodes, Agent Card discovery, A2A resolve, A2A monitor, scenario runtime, and usage telemetry.'
+        ]
+      },
+      {
         date: '2026-06-10',
         type: 'Track 3 scenarios',
         title: 'Integrated real-world Track 3 A2A Marketplace scenarios',
         details: [
           'Updated docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html to version 2.0 and docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html to version 2.1.',
-          'Added RealWorldScenarios covering portfolio morning risk scans, compliance evidence checks, data-room issuer diligence, subscriber TripCode resolution, x402 paid-access validation, quick ticker checks, daily filing-change monitoring, multi-agent B2B diligence, verifier claim blocking, and graceful failure.',
-          'Kept the evidence boundary explicit: callers ask DeltaSignal for bounded issuer evidence, not market opinion; TripCode/River output preserves resolver boundaries and missing data remains missing.'
+          'Added RealWorldScenarios covering portfolio morning risk scans, compliance evidence checks, data-room issuer diligence, subscriber TripCode resolution, Marketplace enterprise-access validation, quick ticker checks, daily filing-change monitoring, multi-agent B2B diligence, verifier claim blocking, and graceful failure.',
+          'Kept the evidence boundary explicit: callers ask DeltaSignal for bounded issuer evidence, not market opinion; TripCode/River output preserves resolver boundaries and missing data remains missing.',
+          'Implemented the protected scenario runtime with GET /v1/scenarios and POST /v1/scenarios/run, both covered by authorization, rate-limit, error, runtime telemetry, and cost-tracking tests.',
+          'Added ExecPlan_DeltaSignal_Track3_Scenario_Runtime_2026_06_10.html and marked the implementation status passed.',
+          'Added docs/DeltaSignal_AI_Agent_Track3_Scenario_Runtime_Spec_2026_06_10.html as the per-scenario spec and execplan artifact.',
+          'Saved request/response proof for all ten HUT-centered scenarios under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T104300Z-track3-scenario-runtime.',
+          'Reran make coverage and make vet; coverage reports total 100.0 percent statements and vet passes.'
         ]
       },
       {
@@ -698,7 +1843,7 @@
           'Updated docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html to version 2.0.',
           'Integrated the Google Cloud Marketplace judge narrative directly into the dated Track 3 spec as FinalJudgeNarrative.',
           'Added Build, Scale, Govern, and Optimize framing to show the agent as a discoverable, callable, evidence-bounded financial intelligence surface.',
-          'Added the visible Marketplace Capability Surface section so judges can quickly see Agent Card, A2A, MCP-style tools, OpenAPI, Arazzo, bounded workflows, TripCode/River memory, and x402-aware access.'
+          'Added the visible Marketplace Capability Surface section so judges can quickly see Agent Card, A2A, MCP-style tools, OpenAPI, Arazzo, bounded workflows, TripCode/River memory, and API-key protected demo access.'
         ]
       },
       {
@@ -1355,8 +2500,8 @@
         title: 'Added MCP-first competition proof',
         details: [
           'Versioned the official submission packet to 3.7 and the landing page to 2.3.',
-          'Reframed MCP as the executable loop layer for tool discovery, workflow execution, evidence-boundary enforcement, agent interoperability, payment-aware public access, and repeatable judge validation.',
-          'Added the recommended demo sequence: discover MCP surface, run Morning Brief, run RIOT company report, resolve the HUT TripCode memory packet, then show OpenAPI/Arazzo/x402 metadata and usage controls.',
+          'Reframed MCP as the executable loop layer for tool discovery, workflow execution, evidence-boundary enforcement, agent interoperability, API-key protected demo access, and repeatable judge validation.',
+          'Added the recommended demo sequence: discover MCP surface, run Morning Brief, run RIOT company report, resolve the HUT TripCode memory packet, then show OpenAPI/Arazzo/Agent Card metadata and usage controls.',
           'Updated README with the MCP-first proof path so the public repository explains why the project is not a chatbot over filings.'
         ]
       },

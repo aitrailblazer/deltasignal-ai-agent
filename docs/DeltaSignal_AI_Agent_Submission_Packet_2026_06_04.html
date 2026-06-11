@@ -20,7 +20,7 @@
   <submission-packet></submission-packet>
 
   <script id="strategix-submission-contract" type="application/xml">
-<StrategiXVisualSpec version="4.9" status="track3-a2a-monitor-runtime-deployed" generated="2026-06-10" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
+<StrategiXVisualSpec version="5.1" status="track3-video-requirement-artifacted" generated="2026-06-10" artifact="docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Gemini AI Agent Submission Packet</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
@@ -34,6 +34,8 @@
     <RelatedArtifacts>
       <Artifact>CHANGELOG.html</Artifact>
       <Artifact>docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace_Spec_2026_06_10.html</Artifact>
+      <Artifact>docs/DeltaSignal_AI_Agent_Track3_Scenario_Runtime_Spec_2026_06_10.html</Artifact>
+      <Artifact>ExecPlan_DeltaSignal_Track3_Scenario_Runtime_2026_06_10.html</Artifact>
       <Artifact>ExecPlan_DeltaSignal_Gemini_AI_Agent_Judge_Demo_2026_06_07.html</Artifact>
       <Artifact>artifacts/ARTIFACTS_INDEX.html</Artifact>
     </RelatedArtifacts>
@@ -47,12 +49,13 @@
   <WhyThisWins>DeltaSignal wins by making proprietary research memory portable and executable for agents, something generic filing tools and deep-research agents cannot do.</WhyThisWins>
   <Summary>DeltaSignal turns one TripCode into an agent-executable financial research memory loop with evidence comparison, session continuity, provenance, and cost visibility.</Summary>
   <RuntimeAutonomyClaim>The submitted agent performs the runtime research workflow autonomously: TripCode resolution, River reconstruction, evidence comparison, session memory, Gemini synthesis, boundaries, and usage reporting.</RuntimeAutonomyClaim>
-  <VersionSummary version="4.9" date="2026-06-10">This version records the deployed Track 3 A2A monitor runtime: Cloud Run revision deltasignal-ai-agent-00013-6rh, Agent Card discovery for resolve and monitor skills, A2A TripCode resolution, A2A thesis monitoring, same-session monitor follow-up, product-loop contract, usage telemetry, and saved redacted request/response artifacts.</VersionSummary>
-  <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, configurable TripCode memory backend status, protected POST /v1/product-loop, public A2A agent-card routes, and a protected /a2a task endpoint that supports both resolve-tripcode-research-packet and monitor-tripcode-thesis.</CurrentImplementation>
+  <VersionSummary version="5.1" date="2026-06-10">This version records the required 1 to 2 minute HUT command-line/UI demonstration video and maps it to the saved Track 3 runtime evidence: final 114.84-second MP4, visible curl usage, returned UI evidence, video manifest, real-data summary, Agent Card response, A2A resolve, A2A monitor, scenario runtime proof, and usage telemetry.</VersionSummary>
+  <CurrentImplementation>Deployed Go Cloud Run service with live ATLAS-7 MCP composite TripCode resolution, deterministic fallback safety mode, Gemini synthesis, structured TripCode research packet propagation, session memory, protected judge access, local-estimate cost tracking, runtime telemetry, structured request logs, configurable rate limiting, configurable TripCode memory backend status, protected POST /v1/product-loop, public A2A agent-card routes, a protected /a2a task endpoint that supports both resolve-tripcode-research-packet and monitor-tripcode-thesis, and a protected Track 3 scenario runtime that lists and executes ten HUT-centered Marketplace scenarios.</CurrentImplementation>
   <Features>
     <Feature>Coordinator agent decomposes a business question into stress, evidence, peer, and review tasks.</Feature>
     <Feature>Google ADK is the intended production orchestration core: it defines agent logic, sessions, runners, tool use, memory callbacks, multi-agent patterns, and the bridge to Agent Runtime.</Feature>
     <Feature>Protected POST /v1/product-loop exposes the first executable ADK product-loop contract: root orchestrator, Discovery, Triage, Planner, Builder, Verifier, Publisher, tool classes, memory layers, grounding layers, deployment phases, verifier gates, stop conditions, cost, and runtime telemetry.</Feature>
+    <Feature>Protected GET /v1/scenarios and POST /v1/scenarios/run expose the Track 3 scenario runtime for portfolio, compliance, data-room, subscriber, x402, ticker, filing-monitor, multi-agent diligence, verifier, and graceful-failure workflows.</Feature>
     <Feature>Specialist tool interface supports deterministic demo fixtures and live DeltaSignal ATLAS-7 MCP integrations.</Feature>
     <Feature>DeltaSignal ATLAS-7 integration path provides SEC/XBRL-grounded issuer intelligence through MCP, OpenAPI/REST, Arazzo workflows, and x402-compatible public routes.</Feature>
     <Feature>TripCode resolver layer turns published DeltaSignal research into agent-readable memory: article object, prior River nodes, thesis evolution, filing refs, caveats, and monitor-next queue.</Feature>
@@ -637,8 +640,23 @@
     <Version number="4.7" date="2026-06-10">Added Track 3 production-loop framing: DeltaSignal applies loop engineering at runtime for financial diligence, replacing repeated manual research reconstruction with TripCode/River memory, bounded MCP evidence, Gemini synthesis, verifier boundaries, telemetry, and monitor-next routing.</Version>
     <Version number="4.8" date="2026-06-10">Grounded Track 3 readiness claims in official Google developer documentation from the Google documentation MCP: Marketplace A2A agent onboarding, Gemini Enterprise A2A registration, Agent Runtime, Agent Platform, Sessions, Memory Bank, observability, governance, Agent Identity, and the boundary that Marketplace publication and Gemini Enterprise registration remain future proof steps.</Version>
     <Version number="4.9" date="2026-06-10">Deployed and validated the Track 3 A2A monitor runtime on Cloud Run revision deltasignal-ai-agent-00013-6rh: Agent Card exposes resolve-tripcode-research-packet and monitor-tripcode-thesis, /a2a resolves the HUT TripCode, /a2a monitors the thesis, same-session monitor follow-up works, /v1/product-loop exposes the tripcode_monitor contract, and redacted request/response artifacts are saved under artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME.</Version>
+    <Version number="5.0" date="2026-06-10">Implemented and validated the Track 3 scenario runtime: protected /v1/scenarios catalog, protected /v1/scenarios/run execution, ten HUT-centered Marketplace scenarios, run-track3-scenario Agent Card skill, saved request/response proof bundle, per-scenario StrategiX spec/execplan, make coverage at 100.0 percent, and make vet clean.</Version>
+    <Version number="5.1" date="2026-06-10">Added the competition video requirement proof: a 114.84-second HUT command-line/UI MP4 that shows the project functioning through visible curl usage, returned UI evidence, A2A discovery, TripCode resolution, thesis monitoring, scenario runtime evidence, and usage telemetry, with a self-contained proof artifact linked from the submission packet and artifact indexes.</Version>
+    <Version number="5.2" date="2026-06-11">Added a dedicated public architecture diagram page for Devpost and judge review: docs/DeltaSignal_AI_Agent_Architecture_Diagram.html. The page includes the Track 3 flow, component responsibilities, and direct image fallback URL.</Version>
   </VersionHistory>
+  <DemoVideoSubmission status="requirement-passed">
+    <VideoFile>artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T134441Z-hut-cli-ui-video-playwright/DeltaSignal_HUT_CLI_UI_Demo_1m53s.mp4</VideoFile>
+    <RequirementProof>artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T134441Z-hut-cli-ui-video-playwright/VIDEO_SUBMISSION_REQUIREMENT_PROOF.html</RequirementProof>
+    <DurationSeconds>114.84</DurationSeconds>
+    <Issuer>HUT</Issuer>
+    <TripCode>TF-SUB-9DA70A7F98</TripCode>
+    <RiverTripCode>TF-RIVER-HUT</RiverTripCode>
+    <Requirement name="one-to-two-minute-video" status="passed">The final MP4 is 1 minute 54 seconds.</Requirement>
+    <Requirement name="project-functioning-on-built-platform" status="passed">The footage shows command-line curl usage and returned UI evidence from the Go-native Cloud Run A2A runtime backed by saved Agent Card, A2A resolve, A2A monitor, scenario runtime, and usage artifacts.</Requirement>
+  </DemoVideoSubmission>
   <Architecture>
+    <DiagramPage>docs/DeltaSignal_AI_Agent_Architecture_Diagram.html</DiagramPage>
+    <PublicDiagramURL>https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html</PublicDiagramURL>
     <Node>User demo UI or curl client</Node>
     <Node>cmd/tripcode-demo two-turn TripCode demo client</Node>
     <Node>scripts/judge-demo.sh curl script for /resolve and /v1/usage</Node>
@@ -689,7 +707,7 @@
 
     const xml = document.getElementById('strategix-submission-contract')?.textContent.trim() ?? '';
     const liveDemoUrl = 'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app';
-    const version = '4.5';
+    const version = '5.1';
     const stack = [
       ['Runtime', 'Cloud Run service with health, brief, usage, and TripCode endpoints.'],
       ['Reasoning', 'Gemini through Vertex AI / Agent Platform.'],
@@ -710,6 +728,13 @@
       ['Packet', 'The response shows article memory, River continuity, evidence refs, thesis map, boundaries, and optional Gemini summary.'],
       ['Follow up', 'POST /resolve accepts a plain-text question with the same session_id, proving session memory.'],
       ['Usage', 'GET /v1/usage shows the local-estimate ledger after test requests.']
+    ];
+    const demoVideo = [
+      ['Submission MP4', 'DeltaSignal_HUT_CLI_UI_Demo_1m53s.mp4'],
+      ['Duration', '114.84 seconds, which satisfies the required 1 to 2 minute demonstration window.'],
+      ['Platform footage', 'Shows command-line curl usage and returned UI evidence from the Go-native Cloud Run A2A runtime using saved Agent Card, A2A resolve, A2A monitor, scenario runtime, and usage evidence.'],
+      ['Real HUT proof', 'Uses TripCode TF-SUB-9DA70A7F98, River TF-RIVER-HUT, 10 HUT River nodes, SEC/XBRL references, live-mcp-tripcode-gemini mode, and usage telemetry.'],
+      ['Proof artifact', 'artifacts/04_TRACK_3_PATH__A2A_MARKETPLACE_RUNTIME/20260610T134441Z-hut-cli-ui-video-playwright/VIDEO_SUBMISSION_REQUIREMENT_PROOF.html']
     ];
     const hutProof = [
       ['TripCode', 'TF-SUB-9DA70A7F98'],
@@ -882,17 +907,17 @@
     const trackFit = [
       ['Build', 'Working demo: a Go-native Cloud Run agent resolves a TripCode, reconstructs the HUT River, compares article memory against evidence, preserves session context, and returns a judge-ready diligence packet.'],
       ['Optimize', 'Evidence fidelity: harden the brief and synthesis paths by carrying richer ATLAS-7 provenance, source dates, quality flags, caveats, stale markers, evidence hashes, and payload-mode disclosures through every user-facing result.'],
-      ['Path', 'A2A monitor runtime deployed: Agent Card discovery plus protected /a2a resolve and monitor tasks make TripCodes, Rivers, and thesis-monitor packets callable by Gemini Enterprise or A2A-style agent clients.']
+      ['Path', 'A2A monitor and scenario runtime: Agent Card discovery plus protected /a2a and /v1/scenarios routes make TripCodes, Rivers, thesis-monitor packets, and ten HUT-centered Marketplace scenarios callable by Gemini Enterprise or A2A-style agent clients.']
     ];
     const trackProgression = [
       ['Build · Working Demo', 'TripCode in, River reconstructed, evidence compared, memory preserved, cost shown.'],
       ['Optimize · Evidence Fidelity', 'Evidence and runtime hardening implemented: /v1/brief returns evidence_fidelity, fallback and Gemini briefs disclose provenance status, and protected responses carry runtime telemetry.'],
-      ['Path · A2A Runtime', 'Expose stable TripCode handles through Agent Card discovery and callable A2A artifacts so other agents can request research packets, thesis monitoring, same-session follow-up, and product-loop contracts.']
+      ['Path · A2A Runtime', 'Expose stable TripCode handles through Agent Card discovery and callable artifacts so other agents can request research packets, thesis monitoring, same-session follow-up, product-loop contracts, and ten HUT-centered scenario packets.']
     ];
     const trackFraming = [
       ['Track 1 · Build', 'Primary submission. A Go-native Cloud Run agent resolves one TripCode into article memory, River continuity, SEC/XBRL comparison, changed findings, weakened assumptions, and monitor-next work.'],
       ['Track 2 · Optimize', 'Hardening layer. Evidence fidelity, protected live validation, runtime telemetry, structured logs, configurable rate limits, memory backend disclosure, and 100.0 percent coverage are implemented. Remaining production-scale work is managed durable memory, dashboards, alerts, simulation packs, and official Billing export.'],
-      ['Track 3 · Path', 'Interoperability layer. The A2A monitor runtime is implemented and deployed: public Agent Card plus protected resolve and monitor task endpoints wrapping the TripCode research-packet and thesis-monitor workflows.']
+      ['Track 3 · Path', 'Interoperability layer. The A2A monitor runtime and scenario runtime are implemented: public Agent Card plus protected resolve, monitor, and scenario endpoints wrapping the TripCode research-packet, thesis-monitor, and Marketplace scenario workflows.']
     ];
     const track3Requirements = [
       ['Discoverable agent identity', 'Public A2A agent cards expose identity, protocol version, skill, examples, tags, and boundaries.'],
@@ -902,14 +927,14 @@
       ['Enterprise boundary', 'Protected routes use the judge API key; MCP keys stay in Secret Manager; public discovery exposes no secrets.'],
       ['Multi-agent use case', 'Portfolio, compliance, diligence, data-room, and subscriber agents can call DeltaSignal as the research-memory node.'],
       ['Marketplace boundary', 'The claim is deployed A2A runtime capability through discovery, Cloud Run, and callable task artifacts, not a published Marketplace listing.'],
-      ['Latest proof', 'Live run 20260610T085358Z-track3-a2a-monitor-runtime proves discovery, A2A resolve, A2A monitor, same-session monitor follow-up, product-loop contract, and usage telemetry.']
+      ['Latest proof', 'Scenario run 20260610T104300Z-track3-scenario-runtime proves catalog discovery and all ten HUT-centered Marketplace scenarios. Live run 20260610T085358Z-track3-a2a-monitor-runtime proves deployed A2A resolve, monitor, follow-up, product-loop contract, and usage telemetry.']
     ];
     const judgeNarrative = [
       ['Opening', 'DeltaSignal is not another filing chatbot or generic deep-research wrapper. One TripCode resolves a published article into a machine-readable research packet, reconstructs the prior thesis River, compares it against SEC/XBRL-backed evidence, and returns what changed, what weakened, what remains unproven, and what to monitor next.'],
       ['Runtime Autonomy', 'The submitted agent performs the runtime research workflow autonomously after one TripCode or issuer prompt.'],
       ['Track 1 · Build', 'A working Go-native Cloud Run agent with health, brief, usage, TripCode, and judge shortcut routes. The HUT proof case resolves TF-SUB-9DA70A7F98 into a 10-node HUT River with changed findings, weakened assumptions, confirmed signals, risks, milestones, invalidation logic, scenarios, and monitor-next items.'],
       ['Track 2 · Optimize', 'Deterministic fallback mode, live MCP mode, Gemini through Vertex AI, bounded session memory, protected demo access, local-estimate usage tracking, 100 percent coverage, clean vet, secret hygiene, explicit evidence boundaries, implemented /v1/brief evidence_fidelity propagation, runtime telemetry, structured logs, configurable rate limits, and memory backend disclosure.'],
-      ['Track 3 · Path', 'TripCodes, Rivers, ATLAS-7, Gemini, and MCP now have a deployed A2A monitor runtime: Agent Card discovery plus protected resolve and monitor task routes for issuer diligence and subscriber-facing research memory.'],
+      ['Track 3 · Path', 'TripCodes, Rivers, ATLAS-7, Gemini, and MCP now have a deployed A2A monitor runtime plus a protected ten-scenario runtime for issuer diligence, subscriber-facing research memory, compliance, data-room, portfolio, verifier, and graceful-failure workflows.'],
       ['Judge Close', 'One TripCode converts a passive research archive into an auditable, agent-executable diligence workflow. The demo proves build readiness, the audit proves engineering discipline, and the architecture shows a credible path to multi-agent financial research infrastructure.']
     ];
     const readiness = [
@@ -918,6 +943,7 @@
       ['Boundary clarity', 'The response preserves the structured MCP research_packet so judges can inspect article memory, River continuity, filing-backed evidence refs, thesis evolution, provenance, boundaries, and monitor-next items.'],
       ['Judge routes', 'GET /resolve and POST /resolve are implemented, tested, deployed, and documented for the competition demo.'],
       ['A2A runtime', 'GET /.well-known/agent-card.json and POST /a2a are implemented, tested, deployed on Cloud Run, and saved in the Track 3 proof artifacts with both resolve and monitor skills.'],
+      ['Scenario runtime', 'GET /v1/scenarios and POST /v1/scenarios/run are implemented, tested, and artifacted with all ten HUT-centered Track 3 scenarios.'],
       ['Source freeze', 'deltasignal-ai-agent commit 88a9c8f records post-fix proof artifacts, ATLAS-7 MCP commit 14686aa6 records the composite resolver source, and the parent workspace plus tracked submodules are clean.'],
       ['Immediate next step', 'Record the three-minute judge demo against the validated Cloud Run URL, then submit.']
     ];
@@ -1204,6 +1230,7 @@ curl -s -X POST "${liveDemoUrl}/a2a" -H "Content-Type: application/json" -H "X-D
 
             <section class="panel">
               <h2>Architecture Flow</h2>
+              <p>Public diagram for Devpost and judge review: <a href="./DeltaSignal_AI_Agent_Architecture_Diagram.html">DeltaSignal AI Agent Architecture Diagram</a>.</p>
               <div class="flow">${flow.map(([k, v]) => html`<div class="step"><b>${k}</b><span>${v}</span></div>`)}</div>
             </section>
 
@@ -1216,6 +1243,12 @@ curl -s -X POST "${liveDemoUrl}/a2a" -H "Content-Type: application/json" -H "X-D
 curl -s -X POST "${liveDemoUrl}/resolve?session_id=demo1" -H "X-Demo-Key: $JUDGE_DEMO_KEY" -H "Content-Type: text/plain" --data "Using the previous HUT River, what are the top 3 things to monitor next?"
 
 curl -s "${liveDemoUrl}/v1/usage" -H "X-Demo-Key: $JUDGE_DEMO_KEY"</pre>
+            </section>
+
+            <section class="panel">
+              <h2>Submission Video</h2>
+              <p>The final demo video meets the competition requirement for a one to two minute project demonstration and is tied to saved HUT runtime evidence.</p>
+              <div class="grid">${demoVideo.map(([k, v]) => html`<article class="card"><b>${k}</b><span>${v}</span></article>`)}</div>
             </section>
 
             <section class="panel">
