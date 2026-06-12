@@ -14,6 +14,8 @@ The entry is submitted for **Track 3** because the product is not only a working
 | Official submission packet | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html |
 | Architecture diagram | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html |
 | Track 3 A2A / Marketplace spec | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html |
+| Official submission demo video | https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh |
+| Enhanced demo video | https://youtu.be/YegCr4gFDII |
 | Guided HUT demo | https://aitrailblazer.github.io/deltasignal-ai-agent/START_HERE.html |
 | Cloud Run demo UI | https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo |
 | ATLAS-7 evidence surface | https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html |
@@ -84,6 +86,14 @@ The Agent Card advertises three skills:
 This makes DeltaSignal a specialist issuer-intelligence agent that portfolio, compliance, data-room, subscriber, or research copilots can call as part of a larger enterprise workflow.
 
 ## Demo Flow
+
+Watch the official submission demo:
+
+[![DeltaSignal Gemini AI Agent official submission demo](https://img.youtube.com/vi/_D3q5qKF5k4/maxresdefault.jpg)](https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh)
+
+Watch the enhanced demo version:
+
+[![DeltaSignal Gemini AI Agent demo](https://img.youtube.com/vi/YegCr4gFDII/maxresdefault.jpg)](https://youtu.be/YegCr4gFDII)
 
 The short demonstration shows:
 

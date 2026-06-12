@@ -250,7 +250,8 @@
     <Step08A2AResolveTest>STEP08_A2A_RESOLVE_TEST.html</Step08A2AResolveTest>
     <Step09A2AMonitorTest>STEP09_A2A_MONITOR_TEST.html</Step09A2AMonitorTest>
     <Step10Track3ScenarioTest>STEP10_TRACK3_SCENARIO_TEST.html</Step10Track3ScenarioTest>
-    <DemoVideo>https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh</DemoVideo>
+    <DemoVideo role="official-submission">https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh</DemoVideo>
+    <DemoVideo role="enhanced-version">https://youtu.be/YegCr4gFDII</DemoVideo>
     <ArchitectureDiagram>docs/DeltaSignal_AI_Agent_Architecture_Diagram.html</ArchitectureDiagram>
     <Track3Spec>docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html</Track3Spec>
     <AgentSurface>https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html</AgentSurface>
@@ -288,7 +289,8 @@
           <p class="lede">Delta Signal turns ticker, TripCode, or issuer requests into reusable SEC/XBRL-grounded diligence packets with ATLAS-7 evidence, Gemini synthesis, source metadata, caveats, session memory, usage visibility, and non-advice boundaries.</p>
           <p class="skim">Discover → Invoke → Verify → Remember → Return</p>
           <div class="actions">
-            <a class="button primary" href="./VIDEO_SLIDES.html">Watch the HUT Demo</a>
+            <a class="button primary" href="https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh">Watch Official Demo</a>
+            <a class="button primary" href="https://youtu.be/YegCr4gFDII">Watch Enhanced Demo</a>
             <a class="button primary" href="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo">Try Cloud Run UI</a>
             <a class="button primary" href="./STEP07_GEMINI_SYNTHESIS_TEST.html">View Step 07 Test</a>
             <a class="button primary" href="./STEP08_A2A_RESOLVE_TEST.html">View Step 08 A2A Proof</a>
@@ -317,18 +319,31 @@
     </section>
 
     <section class="wrap">
-      <div class="sectionHead"><h2>Demo Video</h2><p>Two-minute product walkthrough showing Delta Signal functioning as a Cloud Run-hosted agent surface for HUT issuer diligence.</p></div>
+      <div class="sectionHead"><h2>Demo Videos</h2><p>The official submission video stays preserved. The enhanced version is provided as the newer walkthrough with the same HUT issuer-diligence story.</p></div>
       <figure class="videoFrame">
         <iframe
           src="https://www.youtube.com/embed/_D3q5qKF5k4"
-          title="Delta Signal Gemini AI Agent HUT demo video"
+          title="Delta Signal Gemini AI Agent official HUT demo video"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen></iframe>
         <figcaption class="overviewCaption">
-          <b>Video proof</b>
-          <span>Shows the live application flow: Substack TripCode context, agent discovery, protected HUT workflow execution, evidence-bounded Gemini synthesis, and reusable A2A/Marketplace packet framing. <a href="https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh">Open on YouTube</a>.</span>
+          <b>Official submission video</b>
+          <span>Preserved as the official submitted walkthrough. Shows the live application flow: Substack TripCode context, agent discovery, protected HUT workflow execution, evidence-bounded Gemini synthesis, and reusable A2A/Marketplace packet framing. <a href="https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh">Open official video on YouTube</a>.</span>
+        </figcaption>
+      </figure>
+      <figure class="videoFrame">
+        <iframe
+          src="https://www.youtube.com/embed/YegCr4gFDII"
+          title="Delta Signal Gemini AI Agent enhanced HUT demo video"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+        <figcaption class="overviewCaption">
+          <b>Enhanced demo version</b>
+          <span>Updated walkthrough with the same HUT proof path and improved presentation. <a href="https://youtu.be/YegCr4gFDII">Open enhanced video on YouTube</a>.</span>
         </figcaption>
       </figure>
     </section>
@@ -395,7 +410,8 @@
     <section id="cta" class="wrap">
       <div class="sectionHead"><h2>Try It</h2><p>The landing page stays product-focused. The separate guided demo contains the editable commands, request/response audit flow, and recording path.</p></div>
       <div class="ctaGrid">
-        <article class="card cta"><span class="label">CTA 1</span><b>Watch the 2-minute HUT demo</b><p>See Delta Signal move from public discovery to protected evidence execution to Gemini-generated HUT diligence output.</p><a class="button primary" href="./VIDEO_SLIDES.html">Watch Demo</a><span class="signal">HUT issuer diligence through A2A, ATLAS-7, and evidence-bounded Gemini synthesis.</span></article>
+        <article class="card cta"><span class="label">CTA 1</span><b>Watch the official HUT demo</b><p>See Delta Signal move from public discovery to protected evidence execution to Gemini-generated HUT diligence output.</p><a class="button primary" href="https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh">Watch Official Demo</a><span class="signal">Preserved as the official submission video.</span></article>
+        <article class="card cta"><span class="label">CTA 1B</span><b>Watch the enhanced demo</b><p>Use the newer video as the improved walkthrough of the same HUT TripCode / River / A2A proof.</p><a class="button primary" href="https://youtu.be/YegCr4gFDII">Watch Enhanced Demo</a><span class="signal">Enhanced presentation, same evidence-bounded architecture.</span></article>
         <article class="card cta"><span class="label">CTA 2</span><b>Try the deployed Cloud Run UI</b><p>Paste the private demo key and run Health, Agent Card, Resolve, A2A Resolve, Monitor, and Usage from the hosted service.</p><a class="button primary" href="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo">Open Cloud Run UI</a><span class="signal">The browser UI exercises the same deployed routes as the terminal demo.</span></article>
         <article class="card cta"><span class="label">CTA 3</span><b>Inspect the Agent Surface</b><p>Review the discoverable workflow layer, route metadata, MCP-compatible interface, and Arazzo workflow planning materials.</p><a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html">Open Agent Surface</a><span class="signal">Discover before execution. Call only bounded workflows.</span></article>
         <article class="card cta"><span class="label">CTA 4</span><b>Run the guided demo</b><p>Open the separate operator page for editable commands, audit capture, replayable request/response evidence, and the recording-ready HUT flow.</p><a class="button" href="./START_HERE.html">Open Guided Demo</a><span class="signal">Kept separate from the landing page so the first read stays concise.</span></article>
