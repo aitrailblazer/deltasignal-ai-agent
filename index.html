@@ -216,8 +216,30 @@
     .clientDemoProof div { border: 1px solid rgba(255,255,255,.1); border-radius: 9px; padding: 11px; background: rgba(255,255,255,.035); }
     .clientDemoProof b { display: block; color: var(--green); font-size: 13px; }
     .clientDemoProof span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
-    .clientDemoVisual { position: relative; min-height: 440px; border-left: 1px solid rgba(255,255,255,.1); background: #07101b; }
-    .clientDemoVisual img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; opacity: .96; }
+    .clientDemoVisual {
+      position: relative;
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 22px 18px 68px;
+      border-left: 1px solid rgba(255,255,255,.1);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(97,216,255,.08), transparent 46%),
+        #07101b;
+    }
+    .clientDemoVisual img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      opacity: .98;
+      border: 1px solid rgba(97,216,255,.16);
+      border-radius: 10px;
+      box-shadow: 0 18px 48px rgba(0,0,0,.28);
+    }
     .clientDemoVisual::after {
       content: "SEC/XBRL → DAILY DATA PLANE → MCP → GOOGLE AGENTS";
       position: absolute;
@@ -272,7 +294,12 @@
       .metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .overviewCaption { display: block; }
       .overviewCaption span { display: block; margin-top: 6px; }
-      .clientDemoVisual { min-height: 360px; border-left: 0; border-top: 1px solid rgba(255,255,255,.1); }
+      .clientDemoVisual {
+        min-height: 0;
+        padding: 18px 14px 66px;
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,.1);
+      }
     }
   </style>
 </head>
