@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DeltaSignal Daily Backend → Google AI Agents</title>
-  <meta name="description" content="Architecture diagram showing daily evidence collection, governed materialization, DeltaSignal MCP, and Google Cloud agent use.">
+  <title>DeltaSignal Evidence Fabric → Google AI Agents</title>
+  <meta name="description" content="Professional reference architecture for DeltaSignal daily evidence materialization, MCP delivery, and bounded Google Cloud agents.">
   <style>
-    :root{color-scheme:dark;--bg:#050813;--panel:#091323;--line:#203857;--text:#f6faff;--muted:#aabbd1;--source:#58c9ff;--data:#59e0bc;--mcp:#b78cff;--ai:#f6ca65;--client:#eaf1fa;--bad:#ff7b85}
-    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#193763 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{width:min(1480px,calc(100% - 30px));margin:auto}.head{display:flex;gap:14px;align-items:center;padding:22px 4px}.head img{width:44px;height:44px;border-radius:12px}.head b{font-size:18px}.head small{display:block;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}.hero{text-align:center;padding:34px 0 25px}.hero h1{margin:0;font-size:clamp(38px,5.6vw,76px);line-height:.96;letter-spacing:-.045em}.hero p{margin:18px auto 0;color:var(--muted);font-size:19px;max-width:900px}.frame{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#0b172a,#060c17);box-shadow:0 35px 100px #0008;overflow:hidden;padding:14px}.frame svg{width:100%;height:auto;display:block}.legend{display:flex;flex-wrap:wrap;gap:14px;padding:18px 5px 6px;color:var(--muted);font-size:13px}.legend span{display:flex;align-items:center;gap:7px}.dot{width:11px;height:11px;border-radius:50%}.notes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:26px 0}.note{border:1px solid var(--line);border-radius:15px;padding:17px;background:#0a1424}.note b{display:block;margin-bottom:7px}.note p{color:var(--muted);font-size:13px;margin:0}.sources{margin:4px 0 50px;border:1px solid var(--line);border-radius:15px;padding:18px;color:var(--muted);font-size:13px}.sources b{color:var(--text)}.sources code{color:var(--data)}@media(max-width:900px){.notes{grid-template-columns:1fr 1fr}}@media(max-width:560px){.notes{grid-template-columns:1fr}}
+    :root{color-scheme:dark;--bg:#030712;--text:#f5f8ff;--muted:#9aaac0;--cyan:#51c8ff;--teal:#50e0b4;--violet:#a986ff;--gold:#ffc95c;--red:#ff7080}
+    *{box-sizing:border-box}html,body{margin:0;background:#030712;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.page{width:min(1660px,100%);margin:auto;padding:28px}.diagram{width:100%;aspect-ratio:16/10;border:1px solid #1c3453;border-radius:26px;overflow:hidden;background:#050b16;box-shadow:0 42px 120px #000b}.diagram svg{width:100%;height:100%;display:block}.notes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:22px 0}.note{padding:16px;border:1px solid #1c3453;border-radius:14px;background:#081221}.note b{display:block;margin-bottom:6px;font-size:14px}.note p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}.source{padding:17px;border:1px solid #1c3453;border-radius:14px;color:var(--muted);font-size:12px}.source b{color:var(--text)}@media(max-width:850px){.page{padding:10px}.diagram{overflow:auto;aspect-ratio:auto}.diagram svg{width:1280px;height:800px}.notes{grid-template-columns:1fr 1fr}}@media(max-width:520px){.notes{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <script id="strategix-contract" type="application/xml">
-    <visual-spec id="deltasignal-daily-backend-google-agents" version="1.0.0" date="2026-08-06">
-      <purpose>Explain how daily evidence becomes governed DeltaSignal MCP data and how Google Cloud agents consume it.</purpose>
+    <visual-spec id="deltasignal-evidence-fabric-google-agents" version="2.0.0" date="2026-08-06">
+      <purpose>Show how daily public evidence becomes governed DeltaSignal MCP products consumed by bounded Google Cloud agents.</purpose>
       <visual-semantics>
-        <color name="blue">public source evidence</color>
-        <color name="teal">governed ingestion, validation, and materialization</color>
-        <color name="purple">DeltaSignal MCP access and evidence routing</color>
-        <color name="gold">Google Cloud agent orchestration and Gemini synthesis</color>
-        <color name="red-outline">missing, partial, stale, or access-blocked state</color>
-        <edge style="solid">evidence data movement</edge>
-        <edge style="dashed">schedule, authorization, or control</edge>
+        <color name="cyan">external evidence sources</color>
+        <color name="teal">daily governed ingestion and materialization</color>
+        <color name="violet">DeltaSignal MCP trust boundary</color>
+        <color name="gold">Google Cloud agent runtime</color>
+        <color name="red">explicit missing, partial, stale, or access-blocked state</color>
+        <edge style="solid">evidence movement</edge>
+        <edge style="dashed">schedule or authorization control</edge>
       </visual-semantics>
       <source-digest>
         <source path="aitrailblazer-web-intel-mcp/cmd/edgar-process-changes-worker/main.go" lines="364-425">Latest and nightly ATLAS-7 refresh orchestration.</source>
@@ -29,84 +29,196 @@
         <source path="aitrailblazer-web-intel-mcp/docs/API_CONTRACT.md" lines="881-897">Four-level applicability contract.</source>
         <source url="https://api.aitrailblazer.net/mcp">Public MCP endpoint.</source>
       </source-digest>
-      <boundary>The public client consumes bounded evidence products. It does not perform or replicate DeltaSignal proprietary materialization.</boundary>
+      <boundary>Google Cloud agents consume bounded evidence products. They do not recreate DeltaSignal materialization, infer missing levels, or convert payment status into evidence.</boundary>
     </visual-spec>
   </script>
-  <div class="wrap">
-    <header class="head"><img src="../assets/deltasignal-app-icon.png" alt="DeltaSignal logo"><div><b>DeltaSignal architecture</b><small>Daily evidence plane → MCP → Google AI agents</small></div></header>
-    <section class="hero"><h1>From daily filings to an agent-ready evidence system</h1><p>The diagram separates source evidence, governed calculations, access control, agent reasoning, and the client answer—so provenance survives the entire path.</p></section>
-    <div class="frame">
-      <svg viewBox="0 0 1440 930" role="img" aria-labelledby="title desc">
-        <title id="title">DeltaSignal daily backend and Google AI agent architecture</title>
-        <desc id="desc">Five horizontal bands show public sources, daily governed ingestion, data stores, DeltaSignal MCP, Google Cloud agents, and evidence-preserving client outputs.</desc>
+  <main class="page">
+    <div class="diagram" id="architecture-diagram">
+      <svg viewBox="0 0 1600 1000" role="img" aria-labelledby="svgTitle svgDesc">
+        <title id="svgTitle">DeltaSignal Evidence Fabric connected to Google Cloud agents</title>
+        <desc id="svgDesc">Public filing and market sources enter a daily governed materialization pipeline, persist in evidence stores, pass through DeltaSignal MCP, and are consumed by bounded Google Cloud specialist agents that return a provenance-rich client packet.</desc>
         <defs>
-          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#050a12"/></linearGradient>
-          <filter id="glowB"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#91a9c9"/></marker>
+          <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071322"/><stop offset=".48" stop-color="#050b16"/><stop offset="1" stop-color="#090817"/></linearGradient>
+          <linearGradient id="mcpCore" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#24194a"/><stop offset="1" stop-color="#10182d"/></linearGradient>
+          <linearGradient id="agentCore" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#332613"/><stop offset="1" stop-color="#151626"/></linearGradient>
+          <radialGradient id="halo"><stop stop-color="#a986ff" stop-opacity=".24"/><stop offset="1" stop-color="#a986ff" stop-opacity="0"/></radialGradient>
+          <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#7ba3cf" stroke-opacity=".055"/></pattern>
+          <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="13" flood-color="#000" flood-opacity=".45"/></filter>
+          <filter id="glowV"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10z" fill="#7895b8"/></marker>
+          <marker id="arrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10z" fill="#ffc95c"/></marker>
           <style>
-            .band{fill:#091422;stroke:#203857;stroke-width:1.5}.label{font:800 13px Inter,system-ui;letter-spacing:2px}.node{fill:#0d192a;stroke-width:2;rx:15}.t{fill:#f6faff;font:800 17px Inter,system-ui}.s{fill:#aabbd1;font:600 12px Inter,system-ui}.tiny{fill:#8295ad;font:600 10.5px Inter,system-ui}.edge{fill:none;stroke:#91a9c9;stroke-width:3;marker-end:url(#arr)}.control{fill:none;stroke:#f6ca65;stroke-width:2.3;stroke-dasharray:8 7;marker-end:url(#arr)}.source{stroke:#58c9ff}.data{stroke:#59e0bc}.mcp{stroke:#b78cff}.ai{stroke:#f6ca65}.client{stroke:#eaf1fa}.warn{stroke:#ff7b85;stroke-dasharray:7 5}.pill{rx:9;fill:#101f35;stroke:#2b4669}.pt{font:800 10px Inter,system-ui}
+            .eyebrow{font:800 12px Inter,system-ui;letter-spacing:2.4px}.title{font:850 43px Inter,system-ui;letter-spacing:-1.8px}.subtitle{font:550 15px Inter,system-ui}.lane{fill:#081321;stroke:#203752;stroke-width:1.4}.laneTitle{font:800 11px Inter,system-ui;letter-spacing:2px}.card{fill:#0b1828;stroke-width:1.8}.cardTitle{fill:#f5f8ff;font:750 15px Inter,system-ui}.cardSub{fill:#93a4ba;font:550 10.5px Inter,system-ui}.micro{fill:#8194ae;font:600 9px Inter,system-ui}.sourceCard{stroke:#51c8ff}.dataCard{stroke:#50e0b4}.mcpCard{stroke:#a986ff}.agentCard{stroke:#ffc95c}.warnCard{stroke:#ff7080;stroke-dasharray:6 5}.edge{fill:none;stroke:#7895b8;stroke-width:2.4;marker-end:url(#arrow)}.edgeTeal{fill:none;stroke:#50e0b4;stroke-width:2.5;marker-end:url(#arrow)}.edgeViolet{fill:none;stroke:#a986ff;stroke-width:2.7;marker-end:url(#arrow)}.control{fill:none;stroke:#ffc95c;stroke-width:2;stroke-dasharray:7 7;marker-end:url(#arrowGold)}.pill{fill:#0c1a2c;stroke:#294663}.pillText{font:750 9px Inter,system-ui;letter-spacing:.6px}.num{font:850 12px Inter,system-ui}.icon{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
           </style>
         </defs>
-        <rect width="1440" height="930" rx="20" fill="url(#bg)"/>
 
-        <rect class="band" x="25" y="35" width="1390" height="135" rx="18"/><text class="label" x="48" y="61" fill="#58c9ff">1 · PUBLIC EVIDENCE SOURCES</text>
-        <rect class="node source" x="55" y="80" width="245" height="65"/><text class="t" x="78" y="108">SEC EDGAR</text><text class="s" x="78" y="130">submissions · filings · accession IDs</text>
-        <rect class="node source" x="330" y="80" width="245" height="65"/><text class="t" x="353" y="108">CompanyFacts / XBRL</text><text class="s" x="353" y="130">tags · units · periods · filed dates</text>
-        <rect class="node source" x="605" y="80" width="245" height="65"/><text class="t" x="628" y="108">Public equity history</text><text class="s" x="628" y="130">licensed bars · timestamped observations</text>
-        <rect class="node source" x="880" y="80" width="245" height="65"/><text class="t" x="903" y="108">Governed registries</text><text class="s" x="903" y="130">issuer · basket · instrument identity</text>
-        <rect class="node source" x="1155" y="80" width="225" height="65"/><text class="t" x="1178" y="108">Market recorders</text><text class="s" x="1178" y="130">persisted venue factors when available</text>
+        <rect width="1600" height="1000" fill="url(#canvas)"/>
+        <rect width="1600" height="1000" fill="url(#grid)"/>
+        <circle cx="910" cy="560" r="310" fill="url(#halo)"/>
 
-        <rect class="band" x="25" y="195" width="1390" height="185" rx="18"/><text class="label" x="48" y="221" fill="#59e0bc">2 · DAILY GOVERNED INGESTION AND MATERIALIZATION</text>
-        <rect class="node data" x="55" y="250" width="190" height="90"/><text class="t" x="78" y="280">Daily scheduler</text><text class="s" x="78" y="302">invoke bounded refresh</text><text class="tiny" x="78" y="321">control plane, not evidence</text>
-        <rect class="node data" x="280" y="250" width="200" height="90"/><text class="t" x="303" y="280">Acquire + snapshot</text><text class="s" x="303" y="302">retain source identity</text><text class="tiny" x="303" y="321">retrieval time · hashes</text>
-        <rect class="node data" x="515" y="250" width="200" height="90"/><text class="t" x="538" y="280">Normalize identity</text><text class="s" x="538" y="302">ticker · CIK · concept</text><text class="tiny" x="538" y="321">preserve original tags</text>
-        <rect class="node data" x="750" y="250" width="200" height="90"/><text class="t" x="773" y="280">Point-in-time build</text><text class="s" x="773" y="302">filed ≤ as-of date</text><text class="tiny" x="773" y="321">look-ahead checks</text>
-        <rect class="node data" x="985" y="250" width="190" height="90"/><text class="t" x="1008" y="280">Validate quality</text><text class="s" x="1008" y="302">units · duplicates · stale</text><text class="tiny" x="1008" y="321">soft-miss over invention</text>
-        <rect class="node data" x="1210" y="250" width="170" height="90"/><text class="t" x="1233" y="280">Publish slice</text><text class="s" x="1233" y="302">dated materialization</text><text class="tiny" x="1233" y="321">provenance attached</text>
-        <path class="edge" d="M245 295H280"/><path class="edge" d="M480 295H515"/><path class="edge" d="M715 295H750"/><path class="edge" d="M950 295H985"/><path class="edge" d="M1175 295H1210"/>
-        <path class="control" d="M145 170V250"/>
+        <!-- Header -->
+        <g transform="translate(56 48)">
+          <circle cx="22" cy="22" r="22" fill="#07101c" stroke="#ff6a32" stroke-width="2"/>
+          <path d="M15 10l18 12-18 12zM18 16l10 6-10 6z" fill="none" stroke="#ff6a32" stroke-width="2"/>
+          <text x="58" y="19" fill="#f5f8ff" font-size="17" font-weight="800">DeltaSignal</text>
+          <text x="58" y="38" fill="#7f93ad" font-size="10" font-weight="700" letter-spacing="2">REFERENCE ARCHITECTURE · AAPL CLIENT DEMO</text>
+        </g>
+        <rect x="1262" y="55" width="280" height="34" rx="17" fill="#0a1728" stroke="#2b4768"/>
+        <circle cx="1283" cy="72" r="5" fill="#50e0b4"/>
+        <text x="1297" y="77" fill="#b7c7db" font-size="11" font-weight="750">DAILY · READ ONLY · PROVENANCE FIRST</text>
+        <text class="title" x="56" y="140" fill="#f5f8ff">Daily evidence → bounded agent intelligence</text>
+        <text class="subtitle" x="57" y="170" fill="#97a8be">A governed data plane separates what sources report, what ATLAS-7 interprets, and what Google agents explain.</text>
 
-        <rect class="band" x="25" y="405" width="1390" height="120" rx="18"/><text class="label" x="48" y="431" fill="#59e0bc">3 · GOVERNED DATA PLANE</text>
-        <rect class="node data" x="70" y="455" width="300" height="45"/><text class="t" x="93" y="484">Immutable raw snapshots</text>
-        <rect class="node data" x="405" y="455" width="300" height="45"/><text class="t" x="428" y="484">PostgreSQL materializations</text>
-        <rect class="node data" x="740" y="455" width="300" height="45"/><text class="t" x="763" y="484">Evidence hashes + manifests</text>
-        <rect class="node warn" x="1075" y="455" width="300" height="45"/><text class="t" x="1098" y="484">Missing / partial / stale states</text>
-        <path class="edge" d="M1295 340V455"/>
+        <!-- Sources -->
+        <rect class="lane" x="44" y="208" width="282" height="610" rx="22"/>
+        <text class="laneTitle" x="67" y="238" fill="#51c8ff">01 · EVIDENCE SOURCES</text>
+        <g filter="url(#shadow)">
+          <rect class="card sourceCard" x="66" y="266" width="238" height="94" rx="15"/>
+          <circle cx="96" cy="313" r="17" fill="#0c2840" stroke="#51c8ff"/>
+          <path class="icon" d="M88 319h16M91 315v-11h10v11M89 307l7-6 7 6" stroke="#51c8ff"/>
+          <text class="cardTitle" x="124" y="304">SEC EDGAR</text><text class="cardSub" x="124" y="324">filings · accession · filed date</text><text class="micro" x="124" y="341">issuer truth anchor</text>
 
-        <rect class="band" x="25" y="550" width="1390" height="135" rx="18"/><text class="label" x="48" y="576" fill="#b78cff">4 · DELTASIGNAL MCP EVIDENCE ROUTER</text>
-        <rect class="node mcp" x="60" y="605" width="245" height="55"/><text class="t" x="83" y="638">Discovery + contracts</text>
-        <rect class="node mcp" x="340" y="605" width="245" height="55"/><text class="t" x="363" y="638">Access status</text>
-        <rect class="node mcp" x="620" y="605" width="245" height="55"/><text class="t" x="643" y="638">Read-only tool router</text>
-        <rect class="node mcp" x="900" y="605" width="245" height="55"/><text class="t" x="923" y="638">Evidence envelope</text>
-        <rect class="node warn" x="1180" y="605" width="200" height="55"/><text class="t" x="1203" y="630">402 / unavailable</text><text class="tiny" x="1203" y="648">never promoted to evidence</text>
-        <path class="edge" d="M705 525V605"/><path class="edge" d="M305 632H340"/><path class="edge" d="M585 632H620"/><path class="edge" d="M865 632H900"/><path class="edge" d="M1145 632H1180"/>
+          <rect class="card sourceCard" x="66" y="380" width="238" height="94" rx="15"/>
+          <circle cx="96" cy="427" r="17" fill="#0c2840" stroke="#51c8ff"/>
+          <path class="icon" d="M88 417h16v20H88zM92 422h8M92 427h8M92 432h5" stroke="#51c8ff"/>
+          <text class="cardTitle" x="124" y="418">CompanyFacts / XBRL</text><text class="cardSub" x="124" y="438">concepts · units · periods</text><text class="micro" x="124" y="455">structured filing evidence</text>
 
-        <rect class="band" x="25" y="710" width="1390" height="175" rx="18"/><text class="label" x="48" y="736" fill="#f6ca65">5 · GOOGLE CLOUD AGENTS → CLIENT ANSWER</text>
-        <rect class="node ai" x="60" y="765" width="205" height="82"/><text class="t" x="83" y="793">Cloud Run</text><text class="s" x="83" y="815">coordinator + IAM</text><text class="tiny" x="83" y="833">Secret Manager in live mode</text>
-        <rect class="node ai" x="300" y="765" width="210" height="82"/><text class="t" x="323" y="793">4 specialists</text><text class="s" x="323" y="815">facts · history · PIT · levels</text><text class="tiny" x="323" y="833">bounded tools only</text>
-        <rect class="node ai" x="545" y="765" width="210" height="82"/><text class="t" x="568" y="793">Review agent</text><text class="s" x="568" y="815">classify + check missingness</text><text class="tiny" x="568" y="833">no hidden evidence substitution</text>
-        <rect class="node ai" x="790" y="765" width="195" height="82"/><text class="t" x="813" y="793">Gemini</text><text class="s" x="813" y="815">bounded synthesis</text><text class="tiny" x="813" y="833">fallback if unavailable</text>
-        <rect class="node client" x="1020" y="755" width="360" height="102"/><text class="t" x="1043" y="785">Client evidence answer</text><text class="s" x="1043" y="808">facts · interpretations · unresolved</text><text class="s" x="1043" y="829">source dates · accession · quality · receipts</text><text class="tiny" x="1043" y="847">non-advice · rerunnable after next filing</text>
-        <path class="edge" d="M620 685Q620 730 162 765"/><path class="edge" d="M265 806H300"/><path class="edge" d="M510 806H545"/><path class="edge" d="M755 806H790"/><path class="edge" d="M985 806H1020"/>
-        <path class="control" d="M462 605Q462 575 162 575Q162 720 162 765"/>
+          <rect class="card sourceCard" x="66" y="494" width="238" height="94" rx="15"/>
+          <circle cx="96" cy="541" r="17" fill="#0c2840" stroke="#51c8ff"/>
+          <path class="icon" d="M87 548l6-8 5 4 8-13M87 552h19" stroke="#51c8ff"/>
+          <text class="cardTitle" x="124" y="532">Public market history</text><text class="cardSub" x="124" y="552">dated equity observations</text><text class="micro" x="124" y="569">only when licensed + fresh</text>
 
-        <rect class="pill" x="60" y="890" width="460" height="26"/><text class="pt" x="75" y="908" fill="#59e0bc">SOLID = evidence movement · DASHED GOLD = schedule / authorization</text>
-        <rect class="pill" x="540" y="890" width="410" height="26"/><text class="pt" x="555" y="908" fill="#ff7b85">RED OUTLINE = missing, partial, stale, or access-blocked</text>
-        <rect class="pill" x="970" y="890" width="410" height="26"/><text class="pt" x="985" y="908" fill="#f6ca65">PAYMENT CHANGES ACCESS — NEVER EVIDENCE EXISTENCE</text>
+          <rect class="card sourceCard" x="66" y="608" width="238" height="94" rx="15"/>
+          <circle cx="96" cy="655" r="17" fill="#0c2840" stroke="#51c8ff"/>
+          <path class="icon" d="M87 647h18M87 655h18M87 663h18M92 643v24M101 643v24" stroke="#51c8ff"/>
+          <text class="cardTitle" x="124" y="646">Governed registries</text><text class="cardSub" x="124" y="666">issuer · basket · instrument</text><text class="micro" x="124" y="683">identity + relationship context</text>
+        </g>
+        <rect class="pill" x="66" y="730" width="238" height="54" rx="12"/>
+        <text class="pillText" x="84" y="752" fill="#51c8ff">SOURCE RULE</text>
+        <text class="cardSub" x="84" y="770">Preserve tags, dates, units, identity.</text>
+
+        <!-- Governed backend -->
+        <rect class="lane" x="350" y="208" width="760" height="610" rx="22"/>
+        <text class="laneTitle" x="374" y="238" fill="#50e0b4">02 · DELTASIGNAL GOVERNED DATA PLANE</text>
+        <rect x="941" y="220" width="142" height="25" rx="12" fill="#0a211d" stroke="#2c6d5b"/>
+        <circle cx="958" cy="232" r="4" fill="#50e0b4"/><text x="970" y="236" fill="#84f2d1" font-size="9" font-weight="800">NIGHTLY REFRESH</text>
+
+        <!-- pipeline -->
+        <g filter="url(#shadow)">
+          <rect class="card dataCard" x="374" y="268" width="125" height="92" rx="14"/>
+          <circle cx="398" cy="292" r="12" fill="#0c2c27"/><text class="num" x="394" y="297" fill="#50e0b4">1</text>
+          <text class="cardTitle" x="390" y="325">Acquire</text><text class="cardSub" x="390" y="344">snapshot + hash</text>
+          <rect class="card dataCard" x="518" y="268" width="125" height="92" rx="14"/>
+          <circle cx="542" cy="292" r="12" fill="#0c2c27"/><text class="num" x="538" y="297" fill="#50e0b4">2</text>
+          <text class="cardTitle" x="534" y="325">Normalize</text><text class="cardSub" x="534" y="344">ticker · CIK · tag</text>
+          <rect class="card dataCard" x="662" y="268" width="125" height="92" rx="14"/>
+          <circle cx="686" cy="292" r="12" fill="#0c2c27"/><text class="num" x="682" y="297" fill="#50e0b4">3</text>
+          <text class="cardTitle" x="678" y="325">Materialize</text><text class="cardSub" x="678" y="344">point-in-time rows</text>
+          <rect class="card dataCard" x="806" y="268" width="125" height="92" rx="14"/>
+          <circle cx="830" cy="292" r="12" fill="#0c2c27"/><text class="num" x="826" y="297" fill="#50e0b4">4</text>
+          <text class="cardTitle" x="822" y="325">Validate</text><text class="cardSub" x="822" y="344">quality · stale · unit</text>
+          <rect class="card dataCard" x="950" y="268" width="136" height="92" rx="14"/>
+          <circle cx="974" cy="292" r="12" fill="#0c2c27"/><text class="num" x="970" y="297" fill="#50e0b4">5</text>
+          <text class="cardTitle" x="966" y="325">Publish</text><text class="cardSub" x="966" y="344">dated evidence slice</text>
+        </g>
+        <path class="edgeTeal" d="M499 314h19M643 314h19M787 314h19M931 314h19"/>
+        <path class="control" d="M326 286C344 286 350 286 374 286"/>
+
+        <!-- stores -->
+        <text class="laneTitle" x="374" y="404" fill="#7e92aa">GOVERNED STORES</text>
+        <g filter="url(#shadow)">
+          <rect class="card dataCard" x="374" y="428" width="218" height="90" rx="15"/>
+          <ellipse cx="406" cy="455" rx="16" ry="7" fill="none" stroke="#50e0b4" stroke-width="2"/>
+          <path class="icon" d="M390 455v25c0 4 7 7 16 7s16-3 16-7v-25M390 468c0 4 7 7 16 7s16-3 16-7" stroke="#50e0b4"/>
+          <text class="cardTitle" x="444" y="458">Raw evidence archive</text><text class="cardSub" x="444" y="478">immutable source snapshots</text><text class="micro" x="444" y="496">retrieval time + source hash</text>
+          <rect class="card dataCard" x="610" y="428" width="218" height="90" rx="15"/>
+          <ellipse cx="642" cy="455" rx="16" ry="7" fill="none" stroke="#50e0b4" stroke-width="2"/>
+          <path class="icon" d="M626 455v25c0 4 7 7 16 7s16-3 16-7v-25M626 468c0 4 7 7 16 7s16-3 16-7" stroke="#50e0b4"/>
+          <text class="cardTitle" x="680" y="458">PostgreSQL</text><text class="cardSub" x="680" y="478">governed materializations</text><text class="micro" x="680" y="496">CompanyFacts + PIT + levels</text>
+          <rect class="card dataCard" x="846" y="428" width="240" height="90" rx="15"/>
+          <path class="icon" d="M872 449h22v29h-22zM877 455h12M877 461h12M877 467h8" stroke="#50e0b4"/>
+          <text class="cardTitle" x="910" y="458">Provenance ledger</text><text class="cardSub" x="910" y="478">hashes · manifests · quality</text><text class="micro" x="910" y="496">missingness stays first-class</text>
+        </g>
+        <path class="edge" d="M730 360v42M483 402v26M719 402v26M966 402v26"/>
+
+        <!-- MCP trust core -->
+        <rect x="374" y="556" width="712" height="196" rx="22" fill="url(#mcpCore)" stroke="#a986ff" stroke-width="2.4" filter="url(#shadow)"/>
+        <rect x="395" y="576" width="188" height="24" rx="12" fill="#291e50" stroke="#6d54b7"/>
+        <text class="pillText" x="413" y="592" fill="#cbbcff">TRUST + DELIVERY BOUNDARY</text>
+        <text x="396" y="638" fill="#f5f8ff" font-size="30" font-weight="850">DeltaSignal MCP Evidence Fabric</text>
+        <text class="cardSub" x="397" y="662">Discovery · authorization · read-only routing · evidence envelopes</text>
+        <g>
+          <rect class="pill" x="396" y="686" width="142" height="38" rx="10"/><text class="pillText" x="417" y="710" fill="#cbbcff">DISCOVER CONTRACT</text>
+          <rect class="pill" x="552" y="686" width="142" height="38" rx="10"/><text class="pillText" x="575" y="710" fill="#cbbcff">CHECK ACCESS</text>
+          <rect class="pill" x="708" y="686" width="166" height="38" rx="10"/><text class="pillText" x="730" y="710" fill="#cbbcff">CALL BOUNDED TOOL</text>
+          <rect class="pill" x="888" y="686" width="176" height="38" rx="10"/><text class="pillText" x="910" y="710" fill="#cbbcff">RETURN PROVENANCE</text>
+        </g>
+        <path class="edgeViolet" d="M538 705h14M694 705h14M874 705h14"/>
+        <path class="edgeViolet" d="M730 518v38"/>
+
+        <!-- Google agent runtime -->
+        <rect class="lane" x="1134" y="208" width="422" height="610" rx="22"/>
+        <text class="laneTitle" x="1158" y="238" fill="#ffc95c">03 · GOOGLE CLOUD AGENT RUNTIME</text>
+        <rect x="1158" y="266" width="374" height="526" rx="20" fill="url(#agentCore)" stroke="#6d572a" stroke-width="1.5"/>
+        <rect x="1182" y="288" width="326" height="94" rx="16" fill="#171b29" stroke="#ffc95c" stroke-width="2" filter="url(#shadow)"/>
+        <circle cx="1220" cy="335" r="22" fill="#382b14" stroke="#ffc95c"/>
+        <path class="icon" d="M1209 337l7 7 15-17M1209 327h22v20h-22z" stroke="#ffc95c"/>
+        <text class="cardTitle" x="1254" y="323">Cloud Run coordinator</text><text class="cardSub" x="1254" y="344">plan · delegate · preserve order</text><text class="micro" x="1254" y="361">IAM + Secret Manager in live mode</text>
+
+        <text class="laneTitle" x="1182" y="420" fill="#8f9cb0">BOUNDED SPECIALISTS</text>
+        <g>
+          <rect class="card agentCard" x="1182" y="440" width="150" height="82" rx="14"/><text class="cardTitle" x="1200" y="470">Filing facts</text><text class="cardSub" x="1200" y="491">fundamentals</text><text class="micro" x="1200" y="507">form · period · accession</text>
+          <rect class="card agentCard" x="1358" y="440" width="150" height="82" rx="14"/><text class="cardTitle" x="1376" y="470">History</text><text class="cardSub" x="1376" y="491">CompanyFacts</text><text class="micro" x="1376" y="507">inventory · hashes</text>
+          <rect class="card agentCard" x="1182" y="540" width="150" height="82" rx="14"/><text class="cardTitle" x="1200" y="570">Point-in-time</text><text class="cardSub" x="1200" y="591">look-ahead safe</text><text class="micro" x="1200" y="607">filed ≤ as-of</text>
+          <rect class="card agentCard" x="1358" y="540" width="150" height="82" rx="14"/><text class="cardTitle" x="1376" y="570">Applicability</text><text class="cardSub" x="1376" y="591">Levels 1–4</text><text class="micro" x="1376" y="607">available · partial · missing</text>
+        </g>
+        <path class="control" d="M1345 382v34M1345 416H1257v24M1345 416h88v24M1345 416v100M1345 516h88v24"/>
+
+        <rect class="card agentCard" x="1182" y="656" width="326" height="106" rx="16"/>
+        <circle cx="1220" cy="709" r="22" fill="#382b14" stroke="#ffc95c"/>
+        <path class="icon" d="M1210 715c4-12 16-12 20 0M1214 702a6 6 0 1012 0 6 6 0 00-12 0z" stroke="#ffc95c"/>
+        <text class="cardTitle" x="1254" y="691">Review agent + Gemini</text><text class="cardSub" x="1254" y="713">classify facts · check missingness</text><text class="micro" x="1254" y="731">bounded synthesis · deterministic fallback</text><text class="micro" x="1254" y="747">never substitutes unsupported evidence</text>
+        <path class="edgeViolet" d="M1086 653C1110 653 1110 335 1158 335"/>
+
+        <!-- Output -->
+        <rect x="44" y="850" width="1512" height="108" rx="22" fill="#091522" stroke="#dfe8f5" stroke-opacity=".4" filter="url(#shadow)"/>
+        <rect x="67" y="870" width="190" height="24" rx="12" fill="#122337" stroke="#35506f"/>
+        <text class="pillText" x="87" y="886" fill="#dce8f6">CLIENT EVIDENCE PACKET</text>
+        <text x="68" y="925" fill="#f5f8ff" font-size="22" font-weight="820">Facts remain facts. Interpretation stays labeled. Missing evidence stays missing.</text>
+        <g>
+          <rect class="pill" x="950" y="875" width="120" height="34" rx="10"/><circle cx="970" cy="892" r="4" fill="#51c8ff"/><text class="pillText" x="982" y="896" fill="#b9c9dd">FILING FACTS</text>
+          <rect class="pill" x="1082" y="875" width="138" height="34" rx="10"/><circle cx="1102" cy="892" r="4" fill="#a986ff"/><text class="pillText" x="1114" y="896" fill="#b9c9dd">INTERPRETATION</text>
+          <rect class="pill" x="1232" y="875" width="132" height="34" rx="10"/><circle cx="1252" cy="892" r="4" fill="#ff7080"/><text class="pillText" x="1264" y="896" fill="#b9c9dd">UNRESOLVED</text>
+          <rect class="pill" x="1376" y="875" width="156" height="34" rx="10"/><circle cx="1396" cy="892" r="4" fill="#50e0b4"/><text class="pillText" x="1408" y="896" fill="#b9c9dd">PROVENANCE</text>
+          <text class="micro" x="952" y="932">source date · accession · quality · hashes · access status · non-advice</text>
+        </g>
+        <path class="edge" d="M1345 792v38C1345 840 1315 850 1315 850"/>
+
+        <!-- boundary notes -->
+        <rect class="warnCard" x="940" y="770" width="170" height="48" rx="12" fill="#1a111b"/>
+        <text class="pillText" x="958" y="790" fill="#ff9aa4">EXPLICIT SOFT MISS</text>
+        <text class="micro" x="958" y="807">402 ≠ evidence · null ≠ zero</text>
+
+        <text x="56" y="982" fill="#6f829a" font-size="9.5" font-weight="650">SOLID = EVIDENCE MOVEMENT</text>
+        <line x1="214" y1="978" x2="252" y2="978" stroke="#7895b8" stroke-width="2"/>
+        <text x="277" y="982" fill="#6f829a" font-size="9.5" font-weight="650">DASHED GOLD = SCHEDULE / AUTHORIZATION</text>
+        <line x1="535" y1="978" x2="573" y2="978" stroke="#ffc95c" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="598" y="982" fill="#ff8f9b" font-size="9.5" font-weight="700">PAYMENT CHANGES ACCESS — NEVER EVIDENCE EXISTENCE</text>
+        <text x="1518" y="982" text-anchor="end" fill="#6f829a" font-size="9.5" font-weight="650">© 2026 DeltaSignal</text>
       </svg>
-      <div class="legend"><span><i class="dot" style="background:var(--source)"></i>Public sources</span><span><i class="dot" style="background:var(--data)"></i>Governed data</span><span><i class="dot" style="background:var(--mcp)"></i>DeltaSignal MCP</span><span><i class="dot" style="background:var(--ai)"></i>Google Cloud agents</span><span><i class="dot" style="background:var(--bad)"></i>Explicit limitation</span></div>
     </div>
+
     <section class="notes">
-      <article class="note"><b>Daily does not mean “new filing every day.”</b><p>The scheduler refreshes snapshots, deltas, materializations, quality, and history. The answer must retain both filing dates and computation dates.</p></article>
-      <article class="note"><b>Point-in-time is a separate contract.</b><p>Historical analysis filters facts by filed date. Later amendments cannot silently rewrite what an agent could have known earlier.</p></article>
-      <article class="note"><b>Levels are independent.</b><p>Level 1 can be available while Levels 2–4 are partial or missing. The agent reports each state rather than manufacturing one aggregate certainty.</p></article>
-      <article class="note"><b>Google Cloud does not own the evidence.</b><p>Cloud Run coordinates bounded tools and Gemini explains them. DeltaSignal remains the evidence and provenance authority.</p></article>
+      <article class="note"><b>Daily is a governed refresh.</b><p>Snapshots, deltas, materializations, quality, and history refresh even when no new filing appears.</p></article>
+      <article class="note"><b>Point-in-time is explicit.</b><p>Historical rows apply filed-date cutoffs so later amendments cannot rewrite earlier knowledge.</p></article>
+      <article class="note"><b>ATLAS-7 levels stay independent.</b><p>Level 1 may be available while market, basket, or depth layers remain partial or missing.</p></article>
+      <article class="note"><b>Gemini explains; it does not own truth.</b><p>DeltaSignal remains the evidence authority. Google agents coordinate and synthesize bounded results.</p></article>
     </section>
-    <div class="sources"><b>Verified implementation references:</b> <code>runAtlas7LatestSignalRefresh</code> performs process changes, CompanyFacts materialization, and point-in-time materialization; the nightly worker optionally adds public-equity, constituent, market-factor, and four-level steps. The public API contract makes missing applicability states first-class outputs.</div>
-  </div>
+    <div class="source"><b>Verified implementation references:</b> nightly refresh orchestration, CompanyFacts materialization, point-in-time history, daily-change publication, and four-level applicability contracts in the DeltaSignal backend. Evidence routing and diligence triage only—not investment advice.</div>
+  </main>
   <script type="module">
     import {LitElement,html} from 'https://unpkg.com/lit@3/index.js?module';
-    class ArchitectureReceipt extends LitElement{createRenderRoot(){return this}render(){return html`<span hidden>StrategiX architecture contract active</span>`}}
+    class ArchitectureReceipt extends LitElement{createRenderRoot(){return this}render(){return html`<span hidden>StrategiX architecture contract v2 active</span>`}}
     customElements.define('architecture-receipt',ArchitectureReceipt);
   </script>
   <architecture-receipt></architecture-receipt>
