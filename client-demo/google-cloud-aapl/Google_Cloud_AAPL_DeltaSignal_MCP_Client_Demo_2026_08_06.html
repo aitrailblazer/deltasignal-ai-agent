@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Google Cloud AAPL Client Demo · DeltaSignal MCP</title>
+  <meta name="description" content="Public reference client showing bounded Google Cloud agents retrieving filing-backed AAPL evidence from DeltaSignal MCP.">
+  <style>
+    :root{color-scheme:dark;--bg:#050914;--panel:#0b1425;--line:#233759;--text:#f7fbff;--muted:#aebbd0;--blue:#56c8ff;--green:#65e6ae;--gold:#f7c969;--red:#ff7f83;--purple:#b990ff}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#142748 0,transparent 34%),radial-gradient(circle at 5% 20%,#142c2c 0,transparent 27%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:var(--blue)}code,pre{font-family:"SFMono-Regular",Consolas,monospace}.wrap{width:min(1180px,calc(100% - 34px));margin:auto}.top{display:flex;align-items:center;gap:13px;padding:22px 0;border-bottom:1px solid var(--line)}.top img{width:44px;height:44px;border-radius:12px}.top b{font-size:18px}.top span{color:var(--muted);display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .hero{padding:72px 0 38px;display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:end}.kicker{color:var(--green);font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:13px}.hero h1{font-size:clamp(48px,7vw,84px);line-height:.92;margin:16px 0 23px;letter-spacing:-.055em}.hero p{font-size:20px;color:var(--muted);max-width:760px;margin:0}.mode{border:1px solid var(--line);border-radius:20px;padding:22px;background:linear-gradient(145deg,#111d34,#08101e)}.mode b{font-size:26px}.mode p{font-size:14px;margin-top:9px}.badge{display:inline-block;border:1px solid #4d7e6c;border-radius:999px;color:var(--green);padding:5px 10px;font-size:11px;font-weight:900;margin-bottom:12px}
+    .section{padding:34px 0}.section h2{font-size:34px;margin:0 0 10px}.section>.lead{color:var(--muted);max-width:820px;margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.card{background:linear-gradient(160deg,rgba(17,30,53,.96),rgba(7,14,26,.96));border:1px solid var(--line);border-radius:17px;padding:19px;min-height:190px}.card .n{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#15395b;color:var(--blue);font-weight:950}.card h3{font-size:18px;margin:16px 0 8px}.card p{font-size:14px;color:var(--muted);margin:0}.card code{font-size:11px;color:var(--gold);word-break:break-word}
+    .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:stretch}.step{position:relative;border:1px solid var(--line);border-radius:14px;padding:16px;background:#0a1322}.step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:45%;z-index:2;color:var(--gold);font-weight:950}.step b{display:block;color:var(--gold);font-size:13px;text-transform:uppercase}.step span{display:block;color:var(--muted);font-size:13px;margin-top:7px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}.box{border:1px solid var(--line);border-radius:18px;padding:22px;background:rgba(9,18,33,.88)}.box h3{margin:0 0 10px}.box ul{margin:0;padding-left:20px;color:var(--muted)}.box li{margin:8px 0}.good{border-color:#356d5c}.warn{border-color:#725d33}.terminal{border:1px solid #2b4163;border-radius:16px;background:#02060d;overflow:hidden}.terminal .bar{padding:10px 14px;background:#111b2c;color:var(--muted);font-size:12px}.terminal pre{white-space:pre-wrap;margin:0;padding:18px;color:#d9f7ff;font-size:13px;overflow:auto}
+    .truth{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.truth b{color:var(--green)}.truth .red b{color:var(--red)}.links{display:flex;flex-wrap:wrap;gap:10px}.button{display:inline-flex;align-items:center;padding:12px 15px;border-radius:11px;border:1px solid var(--line);text-decoration:none;font-weight:850;background:#101d32}.button.primary{background:linear-gradient(135deg,var(--green),var(--blue));color:#041016;border:0}
+    footer{border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted);font-size:13px}@media(max-width:900px){.hero,.split{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr 1fr}.truth{grid-template-columns:1fr}}@media(max-width:560px){.grid,.flow{grid-template-columns:1fr}.step:after{display:none}}
+  </style>
+</head>
+<body>
+  <script id="strategix-contract" type="application/xml">
+    <visual-spec id="deltasignal-google-cloud-aapl-client-demo" version="1.0.0" date="2026-08-06">
+      <purpose>Show clients how bounded Google Cloud agents retrieve, classify, and explain AAPL evidence through DeltaSignal MCP.</purpose>
+      <modes>
+        <mode id="fixture" network="forbidden" payment="forbidden" default="true"/>
+        <mode id="live" network="required" payment="never-automatic" credential-location="Google Secret Manager"/>
+      </modes>
+      <tool-plan>
+        <tool agent="filing-facts-agent">deltasignal_company_fundamentals</tool>
+        <tool agent="companyfacts-history-agent">deltasignal_atlas7_companyfacts_history</tool>
+        <tool agent="point-in-time-agent">deltasignal_atlas7_point_in_time_history</tool>
+        <tool agent="applicability-agent">deltasignal_atlas7_four_level_applicability</tool>
+      </tool-plan>
+      <evidence-classes>filing_fact calculation atlas7_interpretation scenario unresolved access_status</evidence-classes>
+      <acceptance>
+        <criterion>Fixture mode is deterministic and makes no network or model calls.</criterion>
+        <criterion>HTTP 402 is exposed as access_required and never causes silent payment.</criterion>
+        <criterion>Raw MCP result envelopes remain available beside synthesis.</criterion>
+        <criterion>Unsupported ATLAS-7 levels remain missing or partial.</criterion>
+      </acceptance>
+    </visual-spec>
+  </script>
+  <div class="wrap">
+    <div class="top">
+      <img src="../../assets/deltasignal-app-icon.png" alt="DeltaSignal logo">
+      <div><b>DeltaSignal MCP × Google Cloud</b><span>Public client reference · AAPL evidence workflow</span></div>
+    </div>
+    <main>
+      <section class="hero">
+        <div>
+          <div class="kicker">From an analyst question to inspectable evidence</div>
+          <h1>Google agents use DeltaSignal MCP—without hiding the proof.</h1>
+          <p>This client demo recreates the useful evidence categories in the AAPL Vault: filing fundamentals, CompanyFacts inventory, point-in-time history, and honest ATLAS-7 level coverage.</p>
+        </div>
+        <aside class="mode">
+          <span class="badge">SAFE DEFAULT</span><br>
+          <b>Fixture first. Live by choice.</b>
+          <p>The public fixture makes zero network, Gemini, or payment calls. Live Cloud Run mode uses protected server credentials. A 402 is reported; it is never silently settled.</p>
+        </aside>
+      </section>
+
+      <section class="section">
+        <h2>The four specialist agents</h2>
+        <p class="lead">Each specialist has one bounded MCP tool. The coordinator preserves the raw response and stable call order before any Gemini synthesis occurs.</p>
+        <div class="grid">
+          <article class="card"><div class="n">1</div><h3>Filing facts</h3><code>deltasignal_company_fundamentals</code><p>Revenue, income, cash flow, balance-sheet values, form, period, CIK, accession, source date, and provenance.</p></article>
+          <article class="card"><div class="n">2</div><h3>CompanyFacts inventory</h3><code>deltasignal_atlas7_companyfacts_history</code><p>Materialized issuer inventory, tag coverage, taxonomies, quality, evidence hashes, and source pointers.</p></article>
+          <article class="card"><div class="n">3</div><h3>Point-in-time history</h3><code>deltasignal_atlas7_point_in_time_history</code><p>What could have been known by a cutoff date, including filed-date filtering and look-ahead safety flags.</p></article>
+          <article class="card"><div class="n">4</div><h3>Level applicability</h3><code>deltasignal_atlas7_four_level_applicability</code><p>Independent readiness for issuer truth, market behavior, basket pressure, and depth/reference dislocation.</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What happens when a client asks a question</h2>
+        <div class="flow">
+          <div class="step"><b>1 · Intent</b><span>AAPL question plus optional as-of date.</span></div>
+          <div class="step"><b>2 · Plan</b><span>Coordinator selects the four fixed evidence lanes.</span></div>
+          <div class="step"><b>3 · Retrieve</b><span>Specialists call read-only MCP tools in parallel.</span></div>
+          <div class="step"><b>4 · Classify</b><span>Fact, calculation, interpretation, scenario, unresolved, access.</span></div>
+          <div class="step"><b>5 · Review</b><span>Missingness and contradictions are checked.</span></div>
+          <div class="step"><b>6 · Explain</b><span>Gemini produces a bounded brief with raw evidence attached.</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Run it locally</h2>
+        <p class="lead">The deterministic command is the quickest proof that the orchestration and evidence contracts work.</p>
+        <div class="terminal">
+          <div class="bar">Terminal · repository root</div>
+          <pre>GOWORK=off go test ./internal/aapldemo ./cmd/aapl-client-demo
+
+GOWORK=off go run ./cmd/aapl-client-demo \
+  -mode fixture \
+  -as-of 2026-03-28 \
+  -question "What can filings establish about Apple, and which ATLAS-7 levels remain unsupported?"</pre>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Deploy the client to Cloud Run</h2>
+        <div class="split">
+          <div class="box good">
+            <h3>Fixture deployment</h3>
+            <ul><li>Build from the repository root with the supplied Dockerfile.</li><li>Set <code>AAPL_DEMO_MODE=fixture</code>.</li><li>No DeltaSignal credential. No Gemini call. No payment capability.</li><li>Use this for public evaluation and repeatable demonstrations.</li></ul>
+          </div>
+          <div class="box warn">
+            <h3>Live deployment</h3>
+            <ul><li>Set <code>AAPL_DEMO_MODE=live</code> and optionally <code>AAPL_DEMO_SYNTHESIS=gemini</code>.</li><li>Mount the MCP credential from Secret Manager into the private Cloud Run service.</li><li>Keep the browser and public repository credential-free.</li><li>Use service-to-service IAM; log status and tool names, not secrets or full paid payloads.</li></ul>
+          </div>
+        </div>
+        <div class="terminal" style="margin-top:14px">
+          <div class="bar">Build and deploy · adapt PROJECT_ID and REGION</div>
+          <pre>gcloud builds submit \
+  --tag REGION-docker.pkg.dev/PROJECT_ID/deltasignal/aapl-client-demo \
+  --file client-demo/google-cloud-aapl/Dockerfile .
+
+gcloud run deploy deltasignal-aapl-client-demo \
+  --image REGION-docker.pkg.dev/PROJECT_ID/deltasignal/aapl-client-demo \
+  --region REGION \
+  --set-env-vars AAPL_DEMO_MODE=fixture,AAPL_DEMO_SYNTHESIS=deterministic</pre>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>The trust contract</h2>
+        <div class="truth">
+          <div class="box"><b>Evidence can establish</b><p>What a filing reports, what was available by a date, which data surfaces exist, and which provenance accompanies a result.</p></div>
+          <div class="box"><b>ATLAS-7 can interpret</b><p>How supported evidence fits a consistent structural framework—while keeping the interpretation distinct from reported facts.</p></div>
+          <div class="box red"><b>The agent cannot invent</b><p>Apple Intelligence revenue attribution, missing market layers, direct equity depth, unsupported calculations, or confidence not returned by evidence.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Continue the demo</h2>
+        <div class="links">
+          <a class="button primary" href="../../docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html">Open the architecture diagram</a>
+          <a class="button" href="../../docs/Google_Cloud_AAPL_MCP_Three_Minute_Video_Scenario_2026_08_06.html">Open the 3-minute video scenario</a>
+          <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt">Read the live MCP operator contract</a>
+        </div>
+      </section>
+    </main>
+    <footer>DeltaSignal · Filing-backed evidence, bounded Google Cloud agents, inspectable provenance. Evidence routing and diligence triage only—not investment advice.</footer>
+  </div>
+  <script type="module">
+    import {LitElement, html} from 'https://unpkg.com/lit@3/index.js?module';
+    class DemoReceipt extends LitElement {
+      createRenderRoot(){return this}
+      render(){return html`<span hidden>StrategiX Lit surface active · contract ${this.dataset.version || '1.0.0'}</span>`}
+    }
+    customElements.define('demo-receipt', DemoReceipt);
+  </script>
+  <demo-receipt data-version="1.0.0"></demo-receipt>
+</body>
+</html>

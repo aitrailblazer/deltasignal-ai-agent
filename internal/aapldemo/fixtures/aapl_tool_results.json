@@ -1,0 +1,38 @@
+{
+  "deltasignal_company_fundamentals": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ticker\":\"AAPL\",\"entity_name\":\"Apple Inc.\",\"cik\":\"0000320193\",\"filing_form\":\"10-Q\",\"period\":\"2026-03-28\",\"accession\":\"0000320193-26-000013\",\"fundamentals\":{\"revenue\":254940000000,\"operating_income\":86737000000,\"net_income\":71675000000,\"cash_flow_from_operations\":82627000000,\"cash_and_equivalents\":45572000000,\"current_assets\":144114000000,\"total_assets\":371082000000,\"total_liabilities\":264591000000,\"total_equity\":106491000000},\"provenance\":{\"quality_flag\":\"High\",\"mapping_hit_count\":9,\"fixture\":true},\"source_date\":\"2026-07-30\"}"
+      }
+    ],
+    "fixture_notice": "Frozen demonstration fixture derived from the AAPL Vault snapshot; query live MCP for current evidence."
+  },
+  "deltasignal_atlas7_companyfacts_history": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ticker\":\"AAPL\",\"cik\":\"0000320193\",\"source_date\":\"2026-07-30\",\"tag_count\":842,\"taxonomies\":[\"us-gaap\",\"dei\",\"aapl\"],\"quality_flag\":\"High\",\"fact_source_pointer\":\"fixture://aapl/companyfacts/2026-07-30\",\"evidence_hash\":\"fixture:aapl-companyfacts-20260730\",\"fixture\":true}"
+      }
+    ],
+    "fixture_notice": "Inventory metadata only; raw CompanyFacts payload is not embedded."
+  },
+  "deltasignal_atlas7_point_in_time_history": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ticker\":\"AAPL\",\"source_date\":\"2026-07-30\",\"as_of_date\":\"2026-03-28\",\"lookahead_safe\":true,\"available_fact_count\":394,\"quality_flags\":[\"retrospective_recomputation\",\"filed_date_filter_applied\"],\"fixture\":true}"
+      }
+    ],
+    "fixture_notice": "Illustrates the point-in-time contract; it is not a live backtest result."
+  },
+  "deltasignal_atlas7_four_level_applicability": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"ticker\":\"AAPL\",\"source_date\":\"2026-07-30\",\"levels\":{\"level_1\":{\"status\":\"available\",\"meaning\":\"filing-backed issuer truth\"},\"level_2\":{\"status\":\"missing\",\"meaning\":\"market behavior\",\"reason\":\"market data stale or unavailable at fixture slice\"},\"level_3\":{\"status\":\"partial\",\"meaning\":\"point-in-time basket pressure\",\"reason\":\"registry membership present; governed pressure not established\"},\"level_4\":{\"status\":\"partial\",\"meaning\":\"depth/reference dislocation\",\"reason\":\"linked venue context is not direct AAPL equity depth\"}},\"fixture\":true}"
+      }
+    ],
+    "fixture_notice": "Applicability is an evidence-coverage statement, not an investment signal."
+  }
+}

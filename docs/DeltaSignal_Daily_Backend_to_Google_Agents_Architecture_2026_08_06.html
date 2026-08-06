@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DeltaSignal Daily Backend → Google AI Agents</title>
+  <meta name="description" content="Architecture diagram showing daily evidence collection, governed materialization, DeltaSignal MCP, and Google Cloud agent use.">
+  <style>
+    :root{color-scheme:dark;--bg:#050813;--panel:#091323;--line:#203857;--text:#f6faff;--muted:#aabbd1;--source:#58c9ff;--data:#59e0bc;--mcp:#b78cff;--ai:#f6ca65;--client:#eaf1fa;--bad:#ff7b85}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#193763 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{width:min(1480px,calc(100% - 30px));margin:auto}.head{display:flex;gap:14px;align-items:center;padding:22px 4px}.head img{width:44px;height:44px;border-radius:12px}.head b{font-size:18px}.head small{display:block;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}.hero{text-align:center;padding:34px 0 25px}.hero h1{margin:0;font-size:clamp(38px,5.6vw,76px);line-height:.96;letter-spacing:-.045em}.hero p{margin:18px auto 0;color:var(--muted);font-size:19px;max-width:900px}.frame{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#0b172a,#060c17);box-shadow:0 35px 100px #0008;overflow:hidden;padding:14px}.frame svg{width:100%;height:auto;display:block}.legend{display:flex;flex-wrap:wrap;gap:14px;padding:18px 5px 6px;color:var(--muted);font-size:13px}.legend span{display:flex;align-items:center;gap:7px}.dot{width:11px;height:11px;border-radius:50%}.notes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:26px 0}.note{border:1px solid var(--line);border-radius:15px;padding:17px;background:#0a1424}.note b{display:block;margin-bottom:7px}.note p{color:var(--muted);font-size:13px;margin:0}.sources{margin:4px 0 50px;border:1px solid var(--line);border-radius:15px;padding:18px;color:var(--muted);font-size:13px}.sources b{color:var(--text)}.sources code{color:var(--data)}@media(max-width:900px){.notes{grid-template-columns:1fr 1fr}}@media(max-width:560px){.notes{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <script id="strategix-contract" type="application/xml">
+    <visual-spec id="deltasignal-daily-backend-google-agents" version="1.0.0" date="2026-08-06">
+      <purpose>Explain how daily evidence becomes governed DeltaSignal MCP data and how Google Cloud agents consume it.</purpose>
+      <visual-semantics>
+        <color name="blue">public source evidence</color>
+        <color name="teal">governed ingestion, validation, and materialization</color>
+        <color name="purple">DeltaSignal MCP access and evidence routing</color>
+        <color name="gold">Google Cloud agent orchestration and Gemini synthesis</color>
+        <color name="red-outline">missing, partial, stale, or access-blocked state</color>
+        <edge style="solid">evidence data movement</edge>
+        <edge style="dashed">schedule, authorization, or control</edge>
+      </visual-semantics>
+      <source-digest>
+        <source path="aitrailblazer-web-intel-mcp/cmd/edgar-process-changes-worker/main.go" lines="364-425">Latest and nightly ATLAS-7 refresh orchestration.</source>
+        <source path="aitrailblazer-web-intel-mcp/docs/API_CONTRACT.md" lines="758-817">Daily change publication contract.</source>
+        <source path="aitrailblazer-web-intel-mcp/docs/API_CONTRACT.md" lines="881-897">Four-level applicability contract.</source>
+        <source url="https://api.aitrailblazer.net/mcp">Public MCP endpoint.</source>
+      </source-digest>
+      <boundary>The public client consumes bounded evidence products. It does not perform or replicate DeltaSignal proprietary materialization.</boundary>
+    </visual-spec>
+  </script>
+  <div class="wrap">
+    <header class="head"><img src="../assets/deltasignal-app-icon.png" alt="DeltaSignal logo"><div><b>DeltaSignal architecture</b><small>Daily evidence plane → MCP → Google AI agents</small></div></header>
+    <section class="hero"><h1>From daily filings to an agent-ready evidence system</h1><p>The diagram separates source evidence, governed calculations, access control, agent reasoning, and the client answer—so provenance survives the entire path.</p></section>
+    <div class="frame">
+      <svg viewBox="0 0 1440 930" role="img" aria-labelledby="title desc">
+        <title id="title">DeltaSignal daily backend and Google AI agent architecture</title>
+        <desc id="desc">Five horizontal bands show public sources, daily governed ingestion, data stores, DeltaSignal MCP, Google Cloud agents, and evidence-preserving client outputs.</desc>
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#050a12"/></linearGradient>
+          <filter id="glowB"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#91a9c9"/></marker>
+          <style>
+            .band{fill:#091422;stroke:#203857;stroke-width:1.5}.label{font:800 13px Inter,system-ui;letter-spacing:2px}.node{fill:#0d192a;stroke-width:2;rx:15}.t{fill:#f6faff;font:800 17px Inter,system-ui}.s{fill:#aabbd1;font:600 12px Inter,system-ui}.tiny{fill:#8295ad;font:600 10.5px Inter,system-ui}.edge{fill:none;stroke:#91a9c9;stroke-width:3;marker-end:url(#arr)}.control{fill:none;stroke:#f6ca65;stroke-width:2.3;stroke-dasharray:8 7;marker-end:url(#arr)}.source{stroke:#58c9ff}.data{stroke:#59e0bc}.mcp{stroke:#b78cff}.ai{stroke:#f6ca65}.client{stroke:#eaf1fa}.warn{stroke:#ff7b85;stroke-dasharray:7 5}.pill{rx:9;fill:#101f35;stroke:#2b4669}.pt{font:800 10px Inter,system-ui}
+          </style>
+        </defs>
+        <rect width="1440" height="930" rx="20" fill="url(#bg)"/>
+
+        <rect class="band" x="25" y="35" width="1390" height="135" rx="18"/><text class="label" x="48" y="61" fill="#58c9ff">1 · PUBLIC EVIDENCE SOURCES</text>
+        <rect class="node source" x="55" y="80" width="245" height="65"/><text class="t" x="78" y="108">SEC EDGAR</text><text class="s" x="78" y="130">submissions · filings · accession IDs</text>
+        <rect class="node source" x="330" y="80" width="245" height="65"/><text class="t" x="353" y="108">CompanyFacts / XBRL</text><text class="s" x="353" y="130">tags · units · periods · filed dates</text>
+        <rect class="node source" x="605" y="80" width="245" height="65"/><text class="t" x="628" y="108">Public equity history</text><text class="s" x="628" y="130">licensed bars · timestamped observations</text>
+        <rect class="node source" x="880" y="80" width="245" height="65"/><text class="t" x="903" y="108">Governed registries</text><text class="s" x="903" y="130">issuer · basket · instrument identity</text>
+        <rect class="node source" x="1155" y="80" width="225" height="65"/><text class="t" x="1178" y="108">Market recorders</text><text class="s" x="1178" y="130">persisted venue factors when available</text>
+
+        <rect class="band" x="25" y="195" width="1390" height="185" rx="18"/><text class="label" x="48" y="221" fill="#59e0bc">2 · DAILY GOVERNED INGESTION AND MATERIALIZATION</text>
+        <rect class="node data" x="55" y="250" width="190" height="90"/><text class="t" x="78" y="280">Daily scheduler</text><text class="s" x="78" y="302">invoke bounded refresh</text><text class="tiny" x="78" y="321">control plane, not evidence</text>
+        <rect class="node data" x="280" y="250" width="200" height="90"/><text class="t" x="303" y="280">Acquire + snapshot</text><text class="s" x="303" y="302">retain source identity</text><text class="tiny" x="303" y="321">retrieval time · hashes</text>
+        <rect class="node data" x="515" y="250" width="200" height="90"/><text class="t" x="538" y="280">Normalize identity</text><text class="s" x="538" y="302">ticker · CIK · concept</text><text class="tiny" x="538" y="321">preserve original tags</text>
+        <rect class="node data" x="750" y="250" width="200" height="90"/><text class="t" x="773" y="280">Point-in-time build</text><text class="s" x="773" y="302">filed ≤ as-of date</text><text class="tiny" x="773" y="321">look-ahead checks</text>
+        <rect class="node data" x="985" y="250" width="190" height="90"/><text class="t" x="1008" y="280">Validate quality</text><text class="s" x="1008" y="302">units · duplicates · stale</text><text class="tiny" x="1008" y="321">soft-miss over invention</text>
+        <rect class="node data" x="1210" y="250" width="170" height="90"/><text class="t" x="1233" y="280">Publish slice</text><text class="s" x="1233" y="302">dated materialization</text><text class="tiny" x="1233" y="321">provenance attached</text>
+        <path class="edge" d="M245 295H280"/><path class="edge" d="M480 295H515"/><path class="edge" d="M715 295H750"/><path class="edge" d="M950 295H985"/><path class="edge" d="M1175 295H1210"/>
+        <path class="control" d="M145 170V250"/>
+
+        <rect class="band" x="25" y="405" width="1390" height="120" rx="18"/><text class="label" x="48" y="431" fill="#59e0bc">3 · GOVERNED DATA PLANE</text>
+        <rect class="node data" x="70" y="455" width="300" height="45"/><text class="t" x="93" y="484">Immutable raw snapshots</text>
+        <rect class="node data" x="405" y="455" width="300" height="45"/><text class="t" x="428" y="484">PostgreSQL materializations</text>
+        <rect class="node data" x="740" y="455" width="300" height="45"/><text class="t" x="763" y="484">Evidence hashes + manifests</text>
+        <rect class="node warn" x="1075" y="455" width="300" height="45"/><text class="t" x="1098" y="484">Missing / partial / stale states</text>
+        <path class="edge" d="M1295 340V455"/>
+
+        <rect class="band" x="25" y="550" width="1390" height="135" rx="18"/><text class="label" x="48" y="576" fill="#b78cff">4 · DELTASIGNAL MCP EVIDENCE ROUTER</text>
+        <rect class="node mcp" x="60" y="605" width="245" height="55"/><text class="t" x="83" y="638">Discovery + contracts</text>
+        <rect class="node mcp" x="340" y="605" width="245" height="55"/><text class="t" x="363" y="638">Access status</text>
+        <rect class="node mcp" x="620" y="605" width="245" height="55"/><text class="t" x="643" y="638">Read-only tool router</text>
+        <rect class="node mcp" x="900" y="605" width="245" height="55"/><text class="t" x="923" y="638">Evidence envelope</text>
+        <rect class="node warn" x="1180" y="605" width="200" height="55"/><text class="t" x="1203" y="630">402 / unavailable</text><text class="tiny" x="1203" y="648">never promoted to evidence</text>
+        <path class="edge" d="M705 525V605"/><path class="edge" d="M305 632H340"/><path class="edge" d="M585 632H620"/><path class="edge" d="M865 632H900"/><path class="edge" d="M1145 632H1180"/>
+
+        <rect class="band" x="25" y="710" width="1390" height="175" rx="18"/><text class="label" x="48" y="736" fill="#f6ca65">5 · GOOGLE CLOUD AGENTS → CLIENT ANSWER</text>
+        <rect class="node ai" x="60" y="765" width="205" height="82"/><text class="t" x="83" y="793">Cloud Run</text><text class="s" x="83" y="815">coordinator + IAM</text><text class="tiny" x="83" y="833">Secret Manager in live mode</text>
+        <rect class="node ai" x="300" y="765" width="210" height="82"/><text class="t" x="323" y="793">4 specialists</text><text class="s" x="323" y="815">facts · history · PIT · levels</text><text class="tiny" x="323" y="833">bounded tools only</text>
+        <rect class="node ai" x="545" y="765" width="210" height="82"/><text class="t" x="568" y="793">Review agent</text><text class="s" x="568" y="815">classify + check missingness</text><text class="tiny" x="568" y="833">no hidden evidence substitution</text>
+        <rect class="node ai" x="790" y="765" width="195" height="82"/><text class="t" x="813" y="793">Gemini</text><text class="s" x="813" y="815">bounded synthesis</text><text class="tiny" x="813" y="833">fallback if unavailable</text>
+        <rect class="node client" x="1020" y="755" width="360" height="102"/><text class="t" x="1043" y="785">Client evidence answer</text><text class="s" x="1043" y="808">facts · interpretations · unresolved</text><text class="s" x="1043" y="829">source dates · accession · quality · receipts</text><text class="tiny" x="1043" y="847">non-advice · rerunnable after next filing</text>
+        <path class="edge" d="M620 685Q620 730 162 765"/><path class="edge" d="M265 806H300"/><path class="edge" d="M510 806H545"/><path class="edge" d="M755 806H790"/><path class="edge" d="M985 806H1020"/>
+        <path class="control" d="M462 605Q462 575 162 575Q162 720 162 765"/>
+
+        <rect class="pill" x="60" y="890" width="460" height="26"/><text class="pt" x="75" y="908" fill="#59e0bc">SOLID = evidence movement · DASHED GOLD = schedule / authorization</text>
+        <rect class="pill" x="540" y="890" width="410" height="26"/><text class="pt" x="555" y="908" fill="#ff7b85">RED OUTLINE = missing, partial, stale, or access-blocked</text>
+        <rect class="pill" x="970" y="890" width="410" height="26"/><text class="pt" x="985" y="908" fill="#f6ca65">PAYMENT CHANGES ACCESS — NEVER EVIDENCE EXISTENCE</text>
+      </svg>
+      <div class="legend"><span><i class="dot" style="background:var(--source)"></i>Public sources</span><span><i class="dot" style="background:var(--data)"></i>Governed data</span><span><i class="dot" style="background:var(--mcp)"></i>DeltaSignal MCP</span><span><i class="dot" style="background:var(--ai)"></i>Google Cloud agents</span><span><i class="dot" style="background:var(--bad)"></i>Explicit limitation</span></div>
+    </div>
+    <section class="notes">
+      <article class="note"><b>Daily does not mean “new filing every day.”</b><p>The scheduler refreshes snapshots, deltas, materializations, quality, and history. The answer must retain both filing dates and computation dates.</p></article>
+      <article class="note"><b>Point-in-time is a separate contract.</b><p>Historical analysis filters facts by filed date. Later amendments cannot silently rewrite what an agent could have known earlier.</p></article>
+      <article class="note"><b>Levels are independent.</b><p>Level 1 can be available while Levels 2–4 are partial or missing. The agent reports each state rather than manufacturing one aggregate certainty.</p></article>
+      <article class="note"><b>Google Cloud does not own the evidence.</b><p>Cloud Run coordinates bounded tools and Gemini explains them. DeltaSignal remains the evidence and provenance authority.</p></article>
+    </section>
+    <div class="sources"><b>Verified implementation references:</b> <code>runAtlas7LatestSignalRefresh</code> performs process changes, CompanyFacts materialization, and point-in-time materialization; the nightly worker optionally adds public-equity, constituent, market-factor, and four-level steps. The public API contract makes missing applicability states first-class outputs.</div>
+  </div>
+  <script type="module">
+    import {LitElement,html} from 'https://unpkg.com/lit@3/index.js?module';
+    class ArchitectureReceipt extends LitElement{createRenderRoot(){return this}render(){return html`<span hidden>StrategiX architecture contract active</span>`}}
+    customElements.define('architecture-receipt',ArchitectureReceipt);
+  </script>
+  <architecture-receipt></architecture-receipt>
+</body>
+</html>

@@ -10,6 +10,9 @@ The entry is submitted for **Track 3** because the product is not only a working
 
 | Asset | Link |
 | --- | --- |
+| Google Cloud AAPL client demo | https://aitrailblazer.github.io/deltasignal-ai-agent/client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html |
+| Daily backend → Google agents architecture | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html |
+| AAPL three-minute video scenario | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/Google_Cloud_AAPL_MCP_Three_Minute_Video_Scenario_2026_08_06.html |
 | Public landing page | https://aitrailblazer.github.io/deltasignal-ai-agent/ |
 | Official submission packet | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html |
 | Architecture diagram | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html |
