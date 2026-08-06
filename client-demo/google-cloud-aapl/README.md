@@ -1,5 +1,11 @@
 # Google Cloud AAPL × DeltaSignal MCP client demo
 
+**[Open the professional public demo](https://aitrailblazer.github.io/deltasignal-ai-agent/client-demo/google-cloud-aapl/)**
+
+This reference implementation shows how a client can run bounded Google Cloud
+agents over DeltaSignal MCP while preserving filing provenance, point-in-time
+boundaries, ATLAS-7 applicability, missing evidence, and access status.
+
 Start with the visual guide:
 
 - [Client process and runnable demo](Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html)

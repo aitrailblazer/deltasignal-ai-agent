@@ -89,6 +89,7 @@
       font-weight: 850;
     }
     .button.primary { border-color: rgba(93,245,139,.44); background: linear-gradient(135deg,var(--green),var(--cyan)); color: #06100a; box-shadow: 0 20px 52px rgba(93,245,139,.18); }
+    .button.apple { border-color: rgba(97,216,255,.42); background: rgba(97,216,255,.1); color: #dff8ff; }
     .heroPanel {
       position: relative;
       overflow: hidden;
@@ -195,6 +196,45 @@
       background: rgba(5,7,11,.72);
     }
     .overviewCaption b { color: var(--green); }
+    .clientDemo {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid rgba(97,216,255,.34);
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(97,216,255,.12), transparent 36%),
+        linear-gradient(145deg, rgba(10,22,39,.98), rgba(6,12,20,.98));
+      box-shadow: 0 34px 100px rgba(0,0,0,.34);
+    }
+    .clientDemoCopy { padding: clamp(25px, 4vw, 44px); }
+    .clientDemoCopy .label { color: var(--cyan); font-size: 12px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+    .clientDemoCopy h2 { margin-top: 14px; max-width: 690px; }
+    .clientDemoCopy > p { margin-top: 17px; max-width: 690px; color: var(--muted); font-size: 17px; }
+    .clientDemoProof { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; margin-top: 22px; }
+    .clientDemoProof div { border: 1px solid rgba(255,255,255,.1); border-radius: 9px; padding: 11px; background: rgba(255,255,255,.035); }
+    .clientDemoProof b { display: block; color: var(--green); font-size: 13px; }
+    .clientDemoProof span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .clientDemoVisual { position: relative; min-height: 440px; border-left: 1px solid rgba(255,255,255,.1); background: #07101b; }
+    .clientDemoVisual img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; opacity: .96; }
+    .clientDemoVisual::after {
+      content: "SEC/XBRL → DAILY DATA PLANE → MCP → GOOGLE AGENTS";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 12px 14px;
+      border: 1px solid rgba(97,216,255,.28);
+      border-radius: 9px;
+      color: #dff8ff;
+      background: rgba(5,10,18,.88);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-align: center;
+    }
     .videoFrame {
       position: relative;
       overflow: hidden;
@@ -225,13 +265,14 @@
     .boundary { color: var(--amber); font-weight: 950; }
     footer { padding: 48px 0 36px; color: rgba(248,251,255,.55); font-size: 13px; }
     @media (max-width: 1020px) {
-      .heroGrid, .grid.two, .grid.three, .grid.four, .workflow, .ctaGrid, .comparison { grid-template-columns: 1fr; }
+      .heroGrid, .grid.two, .grid.three, .grid.four, .workflow, .ctaGrid, .comparison, .clientDemo { grid-template-columns: 1fr; }
       .navlinks { display: none; }
       .sectionHead { display: block; }
       .sectionHead p { margin-top: 10px; }
       .metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .overviewCaption { display: block; }
       .overviewCaption span { display: block; margin-top: 6px; }
+      .clientDemoVisual { min-height: 360px; border-left: 0; border-top: 1px solid rgba(255,255,255,.1); }
     }
   </style>
 </head>
@@ -253,6 +294,8 @@
     <DemoVideo role="official-submission">https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh</DemoVideo>
     <DemoVideo role="enhanced-version">https://youtu.be/YegCr4gFDII</DemoVideo>
     <ArchitectureDiagram>docs/DeltaSignal_AI_Agent_Architecture_Diagram.html</ArchitectureDiagram>
+    <GoogleCloudAAPLClientDemo>client-demo/google-cloud-aapl/</GoogleCloudAAPLClientDemo>
+    <GoogleCloudAAPLArchitecture>docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html</GoogleCloudAAPLArchitecture>
     <Track3Spec>docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html</Track3Spec>
     <AgentSurface>https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html</AgentSurface>
     <VisualAsset role="research-to-logic-pipeline">img/RESEARCH-TO-LOGIC-PIPELINE.png</VisualAsset>
@@ -272,6 +315,7 @@
         <a href="#proof">Proof</a>
         <a href="#workflow">Workflow</a>
         <a href="#architecture">Architecture</a>
+        <a href="#aapl-client-demo">AAPL Client Demo</a>
         <a href="./STEP07_GEMINI_SYNTHESIS_TEST.html">Step 07 Test</a>
         <a href="./STEP08_A2A_RESOLVE_TEST.html">Step 08 Test</a>
         <a href="#cta">Start</a>
@@ -290,6 +334,7 @@
           <p class="skim">Discover → Invoke → Verify → Remember → Return</p>
           <div class="actions">
             <a class="button primary" href="https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh">Watch Official Demo</a>
+            <a class="button apple" href="./client-demo/google-cloud-aapl/">Open AAPL × Google Cloud Demo</a>
             <a class="button primary" href="https://youtu.be/YegCr4gFDII">Watch Enhanced Demo</a>
             <a class="button primary" href="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo">Try Cloud Run UI</a>
             <a class="button primary" href="./STEP07_GEMINI_SYNTHESIS_TEST.html">View Step 07 Test</a>
@@ -315,6 +360,30 @@
             <div class="metric"><strong>100%</strong><span>coverage gate</span></div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section id="aapl-client-demo" class="wrap">
+      <div class="clientDemo">
+        <div class="clientDemoCopy">
+          <span class="label">Featured client reference · Apple</span>
+          <h2>See Google Cloud agents use DeltaSignal MCP in practice.</h2>
+          <p>A professional, runnable AAPL reference client shows how a Cloud Run coordinator delegates to four bounded evidence specialists, preserves raw MCP envelopes, handles missing ATLAS-7 levels, and lets Gemini explain the result without replacing the proof.</p>
+          <div class="clientDemoProof">
+            <div><b>Deterministic fixture</b><span>No network, model, credential, or payment call.</span></div>
+            <div><b>Live Cloud Run mode</b><span>Secret Manager, IAM, and explicit access status.</span></div>
+            <div><b>Four evidence agents</b><span>Filing, CompanyFacts, point-in-time, applicability.</span></div>
+            <div><b>Inspectable boundaries</b><span>Facts, interpretation, missingness, provenance.</span></div>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="./client-demo/google-cloud-aapl/">Open the Client Demo</a>
+            <a class="button" href="./docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html">View System Architecture</a>
+            <a class="button" href="https://github.com/aitrailblazer/deltasignal-ai-agent/tree/main/client-demo/google-cloud-aapl">Inspect Source on GitHub</a>
+          </div>
+        </div>
+        <a class="clientDemoVisual" href="./client-demo/google-cloud-aapl/" aria-label="Open the Google Cloud AAPL client demo">
+          <img src="./client-demo/google-cloud-aapl/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.png" alt="DeltaSignal daily evidence backend connected through MCP to bounded Google Cloud agents" loading="eager">
+        </a>
       </div>
     </section>
 
