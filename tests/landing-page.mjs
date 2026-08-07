@@ -146,9 +146,10 @@ try {
   const projectDescription = (await desktop.locator(".project-description").textContent()) ?? "";
   for (const phrase of [
     "governed financial-evidence operating system",
-    "dated filings and market data",
-    "provenance-rich research packets",
-    "AI agents and human analysts",
+    "Every day it collects public SEC filing information",
+    "CompanyFacts and XBRL concepts",
+    "evidence database",
+    "DeltaSignal MCP",
   ]) {
     if (!projectDescription.includes(phrase)) {
       throw new Error(`Top-level project description is missing: ${phrase}`);
@@ -156,6 +157,27 @@ try {
   }
   if (!(await desktop.locator(".project-description").isVisible())) {
     throw new Error("Top-level project description is not visible.");
+  }
+  const dailyOperation = desktop.locator(".daily-operation");
+  if (!(await dailyOperation.isVisible())) {
+    throw new Error("Daily SEC-to-agent workflow is not visible.");
+  }
+  if ((await dailyOperation.locator(".daily-step").count()) !== 4) {
+    throw new Error("Daily SEC-to-agent workflow must show exactly four stages.");
+  }
+  const dailyOperationText = (await dailyOperation.textContent()) ?? "";
+  for (const phrase of [
+    "Public SEC evidence",
+    "Governed evidence database",
+    "DeltaSignal MCP",
+    "Apple × Google Cloud agents",
+    "Cloud Run coordinator",
+    "four bounded specialists",
+    "Gemini explanation never replace the source evidence",
+  ]) {
+    if (!dailyOperationText.includes(phrase)) {
+      throw new Error(`Daily SEC-to-agent workflow is missing: ${phrase}`);
+    }
   }
   if ((await desktop.getByRole("link", {name: /Run a sample AAPL evidence report/}).count()) !== 1) {
     throw new Error("Primary Apple workflow action is missing.");

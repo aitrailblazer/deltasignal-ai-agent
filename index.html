@@ -260,10 +260,19 @@
         .menu{display:none;margin-left:auto;border:1px solid var(--line);border-radius:9px;background:#0b1728;color:var(--ink);padding:8px 10px}
         .hero{position:relative;min-height:720px;padding:132px 0 64px;display:flex;align-items:center}
         .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(81,204,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(81,204,255,.12) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
-        .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center}
-        .project-description{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;max-width:720px;margin-bottom:20px;padding:14px 16px;border:1px solid rgba(85,229,176,.28);border-radius:13px;background:linear-gradient(115deg,rgba(85,229,176,.10),rgba(81,204,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
+        .hero-content{position:relative}
+        .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center}
+        .project-description{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin-bottom:12px;padding:14px 16px;border:1px solid rgba(85,229,176,.28);border-radius:13px;background:linear-gradient(115deg,rgba(85,229,176,.10),rgba(81,204,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
         .project-description strong{color:var(--green);font:900 9px/1.3 "SFMono-Regular",monospace;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
         .project-description span{color:#e5f1fb;font-size:14px;line-height:1.5;font-weight:720}
+        .daily-operation{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:32px}
+        .daily-step{position:relative;min-height:96px;padding:12px 13px;border:1px solid #1e3653;border-radius:12px;background:rgba(7,18,33,.82)}
+        .daily-step:not(:last-child)::after{content:"→";position:absolute;z-index:2;right:-9px;top:37px;color:var(--cyan);font-weight:900;text-shadow:0 0 12px var(--cyan)}
+        .daily-step .step-top{display:flex;align-items:center;gap:8px;color:var(--cyan);font:900 8px/1.2 "SFMono-Regular",monospace;letter-spacing:.12em;text-transform:uppercase}
+        .daily-step:nth-child(2) .step-top{color:var(--green)}.daily-step:nth-child(3) .step-top{color:var(--violet)}.daily-step:nth-child(4) .step-top{color:var(--gold)}
+        .daily-step .step-glyph{display:grid;place-items:center;width:25px;height:25px;border:1px solid currentColor;border-radius:7px;font-size:12px}
+        .daily-step b{display:block;margin-top:8px;color:#f4f9ff;font-size:12px;line-height:1.25}
+        .daily-step small{display:block;margin-top:4px;color:#8fa1b9;font-size:9px;line-height:1.35}
         .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cyan);font:800 10px/1 "SFMono-Regular",monospace;letter-spacing:.16em;text-transform:uppercase}
         .eyebrow::before{content:"";width:22px;height:1px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
         h1{max-width:760px;margin-top:22px;font-size:clamp(54px,6vw,82px);line-height:.9;letter-spacing:-.058em}
@@ -329,9 +338,9 @@
         .competition-bottom{position:absolute;z-index:5;left:0;right:0;bottom:0;height:86px;display:flex;align-items:center;gap:16px;padding:0 4vw;border-top:1px solid rgba(255,255,255,.08);background:#050c18}.competition-controls{display:flex;gap:8px}.competition-controls button{min-width:44px;height:42px;border:1px solid #294665;border-radius:9px;background:#0b192b;color:#e9f4ff;font-weight:900;cursor:pointer}.competition-controls button:hover{border-color:var(--cyan)}.competition-controls button:disabled{opacity:.32;cursor:not-allowed}.competition-controls .play{min-width:110px;border:0;color:#041018;background:linear-gradient(135deg,var(--green),var(--cyan))}
         .competition-progress{flex:1;display:flex;align-items:center;gap:12px}.competition-progress span{color:#7890ad;font:800 9px "SFMono-Regular",monospace}.competition-trackline{height:4px;flex:1;max-width:370px;border-radius:999px;background:#172a43;overflow:hidden}.competition-trackline i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--green),var(--gold));transition:width .3s}.competition-exit{margin-left:auto;border:1px solid #314d6f;border-radius:9px;padding:10px 13px;color:#b4c4d7;background:#091527;font-size:11px;font-weight:900;cursor:pointer}
         .record-safe{color:#61758f;font:700 8px "SFMono-Regular",monospace;letter-spacing:.09em}
-        @media(max-width:980px){.hero-grid,.section-head,.capability-layout,.demo-shell{grid-template-columns:1fr}.hero{padding-top:120px}.system-card{max-width:670px}.workflow{grid-template-columns:repeat(3,1fr)}.proof-grid,.competition-proof-grid{grid-template-columns:1fr 1fr}.architecture-overview{grid-template-columns:1fr 1fr}.overview-node:not(:last-child)::after{display:none}.agent-grid{grid-template-columns:1fr 1fr}.arch-delivery{grid-template-columns:1fr}.arch-converge{display:none}.demo-visual{min-height:0}.trust-grid{grid-template-columns:1fr 1fr}.trust:nth-child(2){border-right:0}.trust:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.07)}}
+        @media(max-width:980px){.hero-grid,.section-head,.capability-layout,.demo-shell{grid-template-columns:1fr}.hero{padding-top:120px}.daily-operation{grid-template-columns:1fr 1fr}.daily-step:nth-child(2)::after{display:none}.system-card{max-width:670px}.workflow{grid-template-columns:repeat(3,1fr)}.proof-grid,.competition-proof-grid{grid-template-columns:1fr 1fr}.architecture-overview{grid-template-columns:1fr 1fr}.overview-node:not(:last-child)::after{display:none}.agent-grid{grid-template-columns:1fr 1fr}.arch-delivery{grid-template-columns:1fr}.arch-converge{display:none}.demo-visual{min-height:0}.trust-grid{grid-template-columns:1fr 1fr}.trust:nth-child(2){border-right:0}.trust:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.07)}}
         @media(max-width:700px){.shell{width:min(100% - 26px,1240px)}.challenge-chip{display:none}.navlinks{position:absolute;top:64px;left:13px;right:13px;display:none;align-items:stretch;flex-direction:column;gap:0;padding:9px;border:1px solid #253c5a;border-radius:12px;background:#081426;box-shadow:0 25px 70px #0008}.navlinks.open{display:flex}.navlinks a{padding:12px}.menu{display:block}.hero{min-height:auto;padding-bottom:56px}.hero-grid{gap:35px}h1{font-size:clamp(51px,16vw,76px)}.trust-grid,.proof-grid,.competition-proof-grid,.cap-panel ul,.demo-points,.agent-grid,.architecture-overview{grid-template-columns:1fr}.trust{border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}.trust:last-child{border-bottom:0}.arch-entry{grid-template-columns:1fr}.arch-arrow{width:1px;height:28px;margin:auto;background:linear-gradient(var(--cyan),var(--green))}.arch-arrow::after{right:-4px;top:auto;bottom:-1px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:7px solid var(--green)}.agent-architecture{padding:15px}.workflow{grid-template-columns:1fr 1fr}.work-step:not(:last-child)::after{display:none}.cap-panel{padding:23px}.demo-copy{padding:28px 22px}.demo-visual{padding:15px}.visual-badge{position:static;margin:0 15px 17px;text-align:center}.footer-grid{align-items:flex-start;flex-wrap:wrap}.footer-links{width:100%;margin-left:46px;flex-wrap:wrap}}
-        @media(max-width:430px){.workflow{grid-template-columns:1fr}.brand-name{font-size:13px}.hero{padding-top:105px}.actions .button{width:100%}.project-description{grid-template-columns:1fr;gap:6px;padding:12px 13px}.project-description strong{white-space:normal}}
+        @media(max-width:430px){.workflow,.daily-operation{grid-template-columns:1fr}.daily-step::after{display:none!important}.brand-name{font-size:13px}.hero{padding-top:105px}.actions .button{width:100%}.project-description{grid-template-columns:1fr;gap:6px;padding:12px 13px}.project-description strong{white-space:normal}}
         @media(max-width:1000px){.competition-stage{grid-template-columns:1fr;padding-top:5vh;overflow:auto}.competition-visual{display:none}.competition-copy h1{font-size:clamp(46px,9vw,78px)}.record-safe{display:none}}
         @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.arch-arrow::before,.arch-down::before,.agent-id i{animation:none!important}}
       `;
@@ -363,12 +372,35 @@
 
           <main id="top">
             <section class="hero">
-              <div class="shell hero-grid">
-                <div>
-                  <div class="project-description" aria-label="Project description">
-                    <strong>What DeltaSignal is</strong>
-                    <span>A governed financial-evidence operating system that turns dated filings and market data into inspectable, provenance-rich research packets for AI agents and human analysts.</span>
-                  </div>
+              <div class="shell hero-content">
+                <div class="project-description" aria-label="Project description">
+                  <strong>What DeltaSignal is</strong>
+                  <span>A governed financial-evidence operating system. Every day it collects public SEC filing information, normalizes CompanyFacts and XBRL concepts, validates quality and dates, and stores governed materializations in its evidence database for controlled, read-only delivery through DeltaSignal MCP.</span>
+                </div>
+                <div class="daily-operation" aria-label="How DeltaSignal works every day and how Google agents use it">
+                  <article class="daily-step">
+                    <div class="step-top"><span class="step-glyph">§</span>01 · Collect</div>
+                    <b>Public SEC evidence</b>
+                    <small>EDGAR filings, CompanyFacts, XBRL concepts, units, periods, and accession identity.</small>
+                  </article>
+                  <article class="daily-step">
+                    <div class="step-top"><span class="step-glyph">≋</span>02 · Build</div>
+                    <b>Governed evidence database</b>
+                    <small>Normalize, date, quality-check, hash, materialize, and preserve missing-data state.</small>
+                  </article>
+                  <article class="daily-step">
+                    <div class="step-top"><span class="step-glyph">◇</span>03 · Deliver</div>
+                    <b>DeltaSignal MCP</b>
+                    <small>Named read-only tools return bounded evidence envelopes with provenance and explicit limits.</small>
+                  </article>
+                  <article class="daily-step">
+                    <div class="step-top"><span class="step-glyph">◎</span>04 · Use</div>
+                    <b>Apple × Google Cloud agents</b>
+                    <small>A Cloud Run coordinator delegates AAPL questions to four bounded specialists; review and Gemini explanation never replace the source evidence.</small>
+                  </article>
+                </div>
+                <div class="hero-grid">
+                  <div>
                   <div class="eyebrow">Apple · public reference case · reusable workflow</div>
                   <h1>Apple is the proof. <span>Financial agents need an evidence system.</span></h1>
                   <p class="lede">Ask a real AAPL research question. DeltaSignal retrieves dated SEC filing facts, delivers them through controlled read-only tools, reviews the interpretation, and returns an inspectable evidence packet.</p>
@@ -379,7 +411,7 @@
                     <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/">See how evidence reaches agents</a>
                   </div>
                 </div>
-                <div class="system-card" aria-label="DeltaSignal evidence system summary">
+                  <div class="system-card" aria-label="DeltaSignal evidence system summary">
                   <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot live"></span><span>READ ONLY · PROVENANCE FIRST</span></div>
                   <div class="system-title">Evidence run · AAPL</div>
                   <div class="system-sub mono">QUESTION → BOUNDED TOOLS → REVIEW → CLIENT PACKET</div>
@@ -393,6 +425,7 @@
                     <div class="packet-head"><span>INSPECTABLE RESEARCH PACKET</span><span>READY</span></div>
                     <p class="packet-copy">Sample deliverable: dated filing facts, sourced interpretation, unresolved questions, provenance, and explicit limits—not a trade or buy/sell recommendation.</p>
                     <div class="tags"><span class="tag">filing facts</span><span class="tag">labeled analysis · ATLAS-7 framework</span><span class="tag">unresolved</span><span class="tag">provenance</span><span class="tag">non-advice</span></div>
+                  </div>
                   </div>
                 </div>
               </div>
