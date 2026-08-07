@@ -36,8 +36,21 @@ try {
   if (!((await desktop.locator("#agent-architecture").textContent()) ?? "").includes("Evidence-boundary reviewer")) {
     throw new Error("Agent architecture is missing its review gate.");
   }
-  if ((await desktop.locator("#agent-architecture .arch-glyph, #agent-architecture .agent-glyph").count()) < 9) {
+  if ((await desktop.locator("#agent-architecture .arch-glyph, #agent-architecture .agent-glyph, #agent-architecture .google-glyph").count()) < 9) {
     throw new Error("Agent architecture is missing recognizable stage glyphs.");
+  }
+  if ((await desktop.locator("#agent-architecture .agent-type").count()) !== 4) {
+    throw new Error("Every bounded specialist must be explicitly identified as an AI agent.");
+  }
+  if ((await desktop.locator("#agent-architecture .google-cloud-mark").count()) !== 1) {
+    throw new Error("Cloud Run coordinator is missing its Google Cloud glyph.");
+  }
+  if ((await desktop.locator("#agent-architecture .gemini-mark").count()) !== 1) {
+    throw new Error("Gemini synthesis is missing its Google technology glyph.");
+  }
+  const architectureText = (await desktop.locator("#agent-architecture").textContent()) ?? "";
+  if (!architectureText.includes("GCP RUNTIME · NOT AN AGENT") || !architectureText.includes("GOOGLE AI MODEL · NOT AN AGENT")) {
+    throw new Error("Technology and AI-agent roles are not explicitly distinguished.");
   }
   const flowAnimation = await desktop.locator(".arch-arrow").evaluate(
     (element) => getComputedStyle(element, "::before").animationName,
