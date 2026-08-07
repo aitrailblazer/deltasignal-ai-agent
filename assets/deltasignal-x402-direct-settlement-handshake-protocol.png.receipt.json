@@ -1,0 +1,19 @@
+{
+  "schema": "strategix.image.provenance.v1",
+  "owner": "AITrailblazer / DeltaSignal",
+  "copyright": "(c) 2026 AITrailblazer / DeltaSignal",
+  "notice": "User-supplied protocol artifact. Prices, accepts indexes, and settlement-rail availability are snapshot annotations; live discovery, pricing, and HTTP 402 responses are authoritative.",
+  "model": "user-supplied",
+  "backend": "Codex attachment",
+  "receipt_id": "deltasignal-ai-agent-x402-protocol-20260807",
+  "prompt_sha256": "dc72b516087ea67437dfebd06a9cca5806b11b95af1d4d85765a7fb3070232c8",
+  "input_sha256": "e8d019cba4a690392eed8ea5b3741e446d7ba301b69e2003299d4b4343d99926",
+  "output_sha256": "5d103fd63254a8fc90c315d8df1410bf643a38d95380db05329b2d8ecaa75795",
+  "created_at": "2026-08-07T19:06:01Z",
+  "source_image": "/var/folders/ys/51stpkg918s_87622n6hhmm40000gn/T/codex-clipboard-0a541bbe-f89b-447c-90fe-be87534862e7.png",
+  "output_image": "assets/deltasignal-x402-direct-settlement-handshake-protocol.png",
+  "visible_branding": "DeltaSignal title in supplied artwork",
+  "artifact_title": "DeltaSignal x402 Direct Settlement & Handshake Protocol",
+  "focus": "Explain the six-step x402 settle-and-retry loop, standard Base USDC, Circle Gateway GatewayWalletBatched, Hedera ProofPay preview, EIP-191 wallet authentication, and receipt reconciliation for protected DeltaSignal MCP and A2A execution.",
+  "verification_boundary": "Base USDC, Circle Gateway, and Hedera ProofPay are separate settlement paths. EIP-191 signing authenticates eligible wallet grant sessions and is not a payment rail. Live discovery, pricing, and the route HTTP 402 challenge are authoritative."
+}

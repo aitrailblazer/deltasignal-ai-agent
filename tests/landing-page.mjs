@@ -208,6 +208,36 @@ try {
     throw new Error(`Invalid evidence-fabric infographic: ${JSON.stringify(evidenceFabricState)}`);
   }
 
+  const settlementProtocol = desktop.locator("#settlement-protocol");
+  if ((await settlementProtocol.count()) !== 1) {
+    throw new Error("Expected one x402 settlement-protocol section.");
+  }
+  const settlementImage = settlementProtocol.locator("img");
+  await settlementImage.scrollIntoViewIfNeeded();
+  await desktop.waitForFunction(
+    (image) => image.complete && image.naturalWidth > 0,
+    await settlementImage.elementHandle(),
+  );
+  const settlementState = await settlementImage.evaluate((image) => ({
+    src: image.getAttribute("src"),
+    complete: image.complete,
+    naturalWidth: image.naturalWidth,
+    naturalHeight: image.naturalHeight,
+    alt: image.getAttribute("alt"),
+  }));
+  const settlementText = (await settlementProtocol.textContent()) ?? "";
+  if (
+    settlementState.src !== "./assets/deltasignal-x402-direct-settlement-handshake-protocol.png" ||
+    !settlementState.complete ||
+    settlementState.naturalWidth < 1200 ||
+    settlementState.naturalHeight < 800 ||
+    !settlementState.alt?.includes("HTTP 402") ||
+    !settlementText.includes("GatewayWalletBatched") ||
+    !settlementText.includes("Payment changes access—not provenance")
+  ) {
+    throw new Error(`Invalid x402 settlement section: ${JSON.stringify(settlementState)}`);
+  }
+
   const theater = await browser.newPage({viewport: {width: 1920, height: 1080}});
   await theater.goto(`http://127.0.0.1:${port}/?tour=1`, {
     waitUntil: "networkidle",
