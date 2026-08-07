@@ -52,6 +52,14 @@ try {
   if (!architectureText.includes("GCP RUNTIME · NOT AN AGENT") || !architectureText.includes("GOOGLE AI MODEL · NOT AN AGENT")) {
     throw new Error("Technology and AI-agent roles are not explicitly distinguished.");
   }
+  const architectureType = await desktop.locator("#agent-architecture .agent-card").first().evaluate((card) => ({
+    title: Number.parseFloat(getComputedStyle(card.querySelector("b")).fontSize),
+    body: Number.parseFloat(getComputedStyle(card.querySelector("p")).fontSize),
+    badge: Number.parseFloat(getComputedStyle(card.querySelector(".agent-type")).fontSize),
+  }));
+  if (architectureType.title < 17 || architectureType.body < 12 || architectureType.badge < 8) {
+    throw new Error(`Agent architecture typography is too small: ${JSON.stringify(architectureType)}`);
+  }
   const flowAnimation = await desktop.locator(".arch-arrow").evaluate(
     (element) => getComputedStyle(element, "::before").animationName,
   );
