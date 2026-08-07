@@ -6,7 +6,7 @@ const baseURL =
   process.env.DELTASIGNAL_SITE_URL ??
   "https://aitrailblazer.github.io/deltasignal-ai-agent/";
 const outputDirectory = resolve(
-  process.env.DELTASIGNAL_VIDEO_OUTPUT ?? "artifacts/competition-theater",
+  process.env.DELTASIGNAL_VIDEO_OUTPUT ?? "artifacts/product-tour",
 );
 await mkdir(outputDirectory, {recursive: true});
 
@@ -22,7 +22,7 @@ const context = await browser.newContext({
 const page = await context.newPage();
 try {
   const target = new URL(baseURL);
-  target.searchParams.set("competition", "1");
+  target.searchParams.set("tour", "1");
   await page.goto(target.toString(), {waitUntil: "networkidle"});
   await page.locator(".competition-theater").waitFor();
   await page.waitForTimeout(1800);
@@ -36,7 +36,7 @@ try {
   const video = page.video();
   await page.close();
   const recordedPath = await video.path();
-  const finalPath = resolve(outputDirectory, "DeltaSignal_Competition_Theater.webm");
+  const finalPath = resolve(outputDirectory, "DeltaSignal_Product_Tour.webm");
   await rename(recordedPath, finalPath);
   console.log(finalPath);
 } finally {

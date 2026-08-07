@@ -1,10 +1,12 @@
-# DeltaSignal Gemini AI Agent
+# DeltaSignal · Evidence Infrastructure for Financial Agents
 
-**Google for Startups AI Agents Challenge 2026 · Track 3**
+DeltaSignal is an agent-native issuer-intelligence system. It turns a ticker, issuer request, or DeltaSignal TripCode into a reusable research packet with article memory, River continuity, SEC/XBRL evidence boundaries, ATLAS-7 interpretation, agent synthesis, session memory, and usage visibility.
 
-DeltaSignal Gemini AI Agent is an agent-native issuer-intelligence system for crypto-exposed public companies. It turns a ticker, issuer request, or DeltaSignal TripCode into a reusable research packet with article memory, River continuity, SEC/XBRL evidence boundaries, Gemini synthesis, session memory, and usage visibility.
+The product serves three connected audiences:
 
-The entry is submitted for **Track 3** because the product is not only a working demo. It is a callable agent surface that other enterprise agents can discover, invoke, verify, remember, and reuse.
+- **Researchers and subscribers** who want differentiated, filing-backed issuer analysis.
+- **Agent builders** who need discoverable, bounded financial-evidence tools.
+- **Teams and clients** building diligence, compliance, portfolio, and research-copilot workflows.
 
 ## Live Links
 
@@ -14,21 +16,20 @@ The entry is submitted for **Track 3** because the product is not only a working
 | Daily backend → Google agents architecture | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html |
 | AAPL three-minute video scenario | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/Google_Cloud_AAPL_MCP_Three_Minute_Video_Scenario_2026_08_06.html |
 | Public landing page | https://aitrailblazer.github.io/deltasignal-ai-agent/ |
-| Competition recording theater | https://aitrailblazer.github.io/deltasignal-ai-agent/?competition=1 |
-| Official submission packet | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html |
+| Product presentation | https://aitrailblazer.github.io/deltasignal-ai-agent/?tour=1 |
 | Architecture diagram | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html |
-| Track 3 A2A / Marketplace spec | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html |
-| Official submission demo video | https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh |
+| A2A / Marketplace spec | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html |
 | Enhanced demo video | https://youtu.be/YegCr4gFDII |
 | Guided HUT demo | https://aitrailblazer.github.io/deltasignal-ai-agent/START_HERE.html |
 | Cloud Run demo UI | https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo |
 | ATLAS-7 evidence surface | https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html |
+| DeltaSignal research | https://deltasignal.substack.com/ |
 
-Record the deterministic six-slide competition theater at 1920×1080:
+Record the deterministic six-slide product presentation at 1920×1080:
 
 ```bash
 npx playwright install ffmpeg
-node scripts/record-competition-theater.mjs
+node scripts/record-product-tour.mjs
 ```
 
 Set `DELTASIGNAL_SITE_URL` to record a local preview instead of the deployed page.
@@ -79,7 +80,7 @@ Component roles:
 - **Cloud Run** hosts the deployed Go service and protected demo routes.
 - **A2A Agent Card** exposes skills for external agent discovery and invocation.
 
-## Track 3 Proof
+## Agent-Native Proof
 
 The submitted system exposes:
 

@@ -17,20 +17,20 @@
 </head>
 <body>
   <script id="strategix-landing-contract" type="application/xml">
-<StrategiXVisualSpec version="6.1" status="lit-production-landing-and-competition-theater" generated="2026-08-06" artifact="index.html">
+<StrategiXVisualSpec version="7.0" status="lit-commercial-product-surface" generated="2026-08-06" artifact="index.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Evidence Infrastructure</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
     <PublicSurface>https://aitrailblazer.github.io/deltasignal-ai-agent/</PublicSurface>
     <PrimaryDemo>client-demo/google-cloud-aapl/</PrimaryDemo>
     <PresentationDemo>client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html?presentation=1</PresentationDemo>
-    <CompetitionTheater>?competition=1</CompetitionTheater>
+    <ProductTour>?tour=1</ProductTour>
     <Architecture>docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html</Architecture>
   </CanonicalArtifact>
   <Purpose>Present DeltaSignal as professional evidence infrastructure for financial agents: governed source materialization, bounded MCP delivery, Google Cloud orchestration, ATLAS-7 interpretation, and provenance-rich output.</Purpose>
   <ProductContract>
     <Promise>Facts remain facts. Interpretation stays labeled. Missing evidence stays missing.</Promise>
-    <Audience>Financial researchers, agent builders, quant engineers, compliance teams, and enterprise diligence operators.</Audience>
+    <Audience>Financial researchers, paid subscribers, agent builders, quant engineers, compliance teams, and enterprise diligence operators.</Audience>
     <Boundary>Evidence routing and diligence triage only; not investment advice, a price target, or an order instruction.</Boundary>
   </ProductContract>
   <Workflow>
@@ -46,7 +46,8 @@
     <Criterion>Primary demo, presentation, architecture, source, agent surface, and Cloud Run routes remain reachable.</Criterion>
     <Criterion>The page never claims that payment, model output, or missing data establishes evidence.</Criterion>
     <Criterion>Interactive controls work with mouse and keyboard and respect reduced-motion preferences.</Criterion>
-    <Criterion>The competition theater fits a 1920 by 1080 recording viewport without scroll or overflow and exposes direct, previous, next, autoplay, and exit controls.</Criterion>
+    <Criterion>The product tour fits a 1920 by 1080 recording viewport without scroll or overflow and exposes previous, next, autoplay, and exit controls.</Criterion>
+    <Criterion>The primary surface provides clear paths to try the product, subscribe to research, inspect the developer contract, and discuss a client project.</Criterion>
   </AcceptanceCriteria>
   <SourceDigest>
     <Source>client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html</Source>
@@ -111,7 +112,7 @@
 
     const competitionSlides = [
       {
-        id:'opening', eyebrow:'GOOGLE FOR STARTUPS AI AGENTS CHALLENGE · TRACK 3',
+        id:'opening', eyebrow:'DELTASIGNAL PRODUCT TOUR · AGENTIC FINANCE',
         title:'Financial research becomes infrastructure when other agents can use it.',
         body:'DeltaSignal is a discoverable, callable, evidence-bounded issuer-intelligence agent. It turns one ticker or TripCode into a reusable research packet with SEC/XBRL evidence, ATLAS-7 interpretation, Gemini synthesis, memory, telemetry, and explicit boundaries.',
         accent:'cyan', visual:'opening'
@@ -129,13 +130,13 @@
         accent:'green', visual:'architecture'
       },
       {
-        id:'proof', eyebrow:'WORKING TRACK 3 PROOF',
+        id:'proof', eyebrow:'LIVE PRODUCT PROOF',
         title:'One HUT TripCode becomes a continuing diligence workflow.',
         body:'TF-SUB-9DA70A7F98 resolves a 10-node HUT River, links filing references, returns changed findings and weakened assumptions, preserves session context, creates monitor-next actions, and exposes usage metadata.',
         accent:'gold', visual:'proof'
       },
       {
-        id:'ecosystem', eyebrow:'WHY TRACK 3',
+        id:'ecosystem', eyebrow:'BUILT FOR YOUR AGENT STACK',
         title:'DeltaSignal is the specialist evidence node inside a larger agent ecosystem.',
         body:'Portfolio, compliance, data-room, and subscriber agents can discover the capability, invoke a bounded skill, inspect the returned evidence packet, and reuse it without rebuilding the SEC/XBRL and research-memory stack.',
         accent:'violet', visual:'ecosystem'
@@ -150,24 +151,24 @@
 
     const competitionProofs = [
       {
-        label:'01 · DISCOVER', title:'Public A2A Agent Card',
-        body:'Inspect the agent identity, skills, protocol metadata, examples, and declared output modes before execution.',
+        label:'01 · USE', title:'Run an evidence workflow',
+        body:'Open the interactive AAPL reference and see how a question becomes a bounded, provenance-rich evidence packet.',
+        href:'./client-demo/google-cloud-aapl/', action:'Try the AAPL workflow'
+      },
+      {
+        label:'02 · BUILD', title:'Connect your agent',
+        body:'Inspect the public Agent Card, MCP contract, callable skills, output modes, and evidence boundaries before integration.',
         href:'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/.well-known/agent-card.json', action:'Inspect Agent Card'
       },
       {
-        label:'02 · EXECUTE', title:'Protected Cloud Run UI',
-        body:'Exercise the deployed health, resolve, A2A, monitor, scenario, and usage routes without exposing credentials in the public site.',
-        href:'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo', action:'Open Cloud Run UI'
+        label:'03 · READ', title:'Become a subscriber',
+        body:'Follow filing-backed issuer research, ATLAS-7 structural analysis, practical agent workflows, and member-only evidence artifacts.',
+        href:'https://deltasignal.substack.com/subscribe', action:'Join DeltaSignal'
       },
       {
-        label:'03 · VERIFY', title:'Track 3 A2A Contract',
-        body:'Review the callable skill contract, evidence boundaries, TripCode/River workflow, telemetry, and Marketplace-readiness limits.',
-        href:'./docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html', action:'Read A2A Specification'
-      },
-      {
-        label:'04 · WATCH', title:'Official Competition Demo',
-        body:'Watch the submitted HUT workflow move from research memory through protected evidence execution to a reusable agent packet.',
-        href:'https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh', action:'Watch Official Demo'
+        label:'04 · PARTNER', title:'Build a client project',
+        body:'Use DeltaSignal as an evidence layer for research copilots, diligence systems, portfolio workflows, or custom financial agents.',
+        href:'mailto:constantine@aitrailblazer.com?subject=DeltaSignal%20project%20inquiry', action:'Discuss a project'
       }
     ];
 
@@ -186,7 +187,8 @@
         this.capability='evidence';
         this.menuOpen=false;
         this.elevated=false;
-        this.competitionMode=new URLSearchParams(location.search).get('competition')==='1';
+        const params=new URLSearchParams(location.search);
+        this.competitionMode=params.get('tour')==='1'||params.get('competition')==='1';
         this.competitionSlide=0;
         this.competitionPlaying=false;
         this.competitionTimer=null;
@@ -300,14 +302,15 @@
                 <span class="brand-name">DeltaSignal<small>Evidence infrastructure</small></span>
               </a>
               <button class="menu" @click=${()=>this.menuOpen=!this.menuOpen} aria-expanded=${this.menuOpen} aria-label="Toggle navigation">Menu</button>
-              <span class="challenge-chip">GOOGLE AI AGENTS · TRACK 3</span>
+              <span class="challenge-chip">AGENTIC FINANCE · EVIDENCE FIRST</span>
               <div class="navlinks ${this.menuOpen?'open':''}">
                 <a href="#platform" @click=${()=>this.menuOpen=false}>Platform</a>
                 <a href="#demo" @click=${()=>this.menuOpen=false}>Client demo</a>
                 <a href="#workflow" @click=${()=>this.menuOpen=false}>Workflow</a>
                 <a href="#trust" @click=${()=>this.menuOpen=false}>Trust</a>
                 <a href="https://github.com/aitrailblazer/deltasignal-ai-agent">GitHub</a>
-                <a href="?competition=1">Competition demo</a>
+                <a href="https://deltasignal.substack.com/subscribe">Subscribe</a>
+                <a href="?tour=1">Product tour</a>
                 <a class="nav-cta" href="./client-demo/google-cloud-aapl/">Open demo ↗</a>
               </div>
             </nav>
@@ -324,7 +327,7 @@
                   <div class="actions">
                     <a class="button primary" href="./client-demo/google-cloud-aapl/">Explore the AAPL client demo <span>→</span></a>
                     <a class="button" href="./client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html?presentation=1">Launch presentation mode</a>
-                    <a class="button competition" href="?competition=1">▶ Competition theater</a>
+                    <a class="button competition" href="?tour=1">▶ Watch the product tour</a>
                   </div>
                 </div>
                 <div class="system-card" aria-label="DeltaSignal evidence system summary">
@@ -415,10 +418,10 @@
             </section>
 
             <section class="content shell" id="competition-proof">
-              <div class="section-kicker">Competition proof surface</div>
+              <div class="section-kicker">Choose your path</div>
               <div class="section-head">
-                <h2>Not slideware.<br>Inspectable runtime proof.</h2>
-                <p>The competition story is backed by public discovery, a deployed Cloud Run interface, a documented A2A contract, and a recorded HUT research-memory workflow.</p>
+                <h2>Use the research.<br>Build on the infrastructure.</h2>
+                <p>DeltaSignal serves readers who want differentiated issuer intelligence, builders who need governed financial evidence, and teams that want a production-minded agentic research workflow.</p>
               </div>
               <div class="competition-proof-grid">
                 ${competitionProofs.map(item=>html`
@@ -431,8 +434,8 @@
                 `)}
               </div>
               <div class="actions">
-                <a class="button competition" href="?competition=1">▶ Start recording theater</a>
-                <a class="button" href="https://youtu.be/YegCr4gFDII">Watch enhanced walkthrough</a>
+                <a class="button competition" href="?tour=1">▶ Open product tour</a>
+                <a class="button" href="https://deltasignal.substack.com/subscribe">Subscribe to DeltaSignal</a>
               </div>
             </section>
 
@@ -457,7 +460,8 @@
               <p>Run the AAPL reference, inspect the architecture, or connect your own agent workflow to DeltaSignal’s governed MCP surface.</p>
               <div class="actions">
                 <a class="button primary" href="./client-demo/google-cloud-aapl/">Run the AAPL reference →</a>
-                <a class="button competition" href="?competition=1">Open competition demo</a>
+                <a class="button competition" href="?tour=1">Watch product tour</a>
+                <a class="button" href="mailto:constantine@aitrailblazer.com?subject=DeltaSignal%20project%20inquiry">Discuss a project</a>
                 <a class="button" href="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo">Open Cloud Run UI</a>
                 <a class="button" href="https://github.com/aitrailblazer/deltasignal-ai-agent">Inspect source on GitHub</a>
               </div>
@@ -481,10 +485,10 @@
       renderCompetition(){
         const slide=competitionSlides[this.competitionSlide];
         return html`
-          <main class="competition-theater" aria-label="DeltaSignal competition presentation">
+          <main class="competition-theater" aria-label="DeltaSignal product presentation">
             <div class="competition-top">
               <div class="competition-brand"><img src="./assets/deltasignal-app-icon.png" alt=""><span>DeltaSignal<small>EVIDENCE INFRASTRUCTURE FOR FINANCIAL AGENTS</small></span></div>
-              <div class="competition-track">GOOGLE FOR STARTUPS AI AGENTS CHALLENGE · TRACK 3</div>
+              <div class="competition-track">LIVE PRODUCT TOUR · EVIDENCE INFRASTRUCTURE</div>
             </div>
             <section class="competition-stage">
               <div class="competition-copy" data-accent=${slide.accent}>

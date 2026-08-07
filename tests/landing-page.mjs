@@ -56,22 +56,22 @@ try {
   if (mobileOverflow) throw new Error("Mobile landing page has horizontal overflow.");
 
   const theater = await browser.newPage({viewport: {width: 1920, height: 1080}});
-  await theater.goto(`http://127.0.0.1:${port}/?competition=1`, {
+  await theater.goto(`http://127.0.0.1:${port}/?tour=1`, {
     waitUntil: "networkidle",
   });
   if (!(await theater.locator(".competition-theater").isVisible())) {
-    throw new Error("Competition theater did not activate.");
+    throw new Error("Product tour did not activate.");
   }
   if ((await theater.locator(".competition-stage").count()) !== 1) {
-    throw new Error("Expected one competition presentation stage.");
+    throw new Error("Expected one product presentation stage.");
   }
   await theater.keyboard.press("ArrowRight");
   if (!(await theater.locator(".competition-copy h1").textContent())?.includes("fluent prose")) {
-    throw new Error("Competition keyboard navigation did not reach slide 2.");
+    throw new Error("Product-tour keyboard navigation did not reach slide 2.");
   }
   await theater.locator(".competition-controls button").nth(2).click();
   if (!(await theater.locator(".competition-copy h1").textContent())?.includes("Discover")) {
-    throw new Error("Competition next control did not reach slide 3.");
+    throw new Error("Product-tour next control did not reach slide 3.");
   }
   const theaterMetrics = await theater.evaluate(() => ({
     overflowX: document.documentElement.scrollWidth > innerWidth,
@@ -79,11 +79,11 @@ try {
     viewport: [innerWidth, innerHeight],
   }));
   if (theaterMetrics.overflowX || theaterMetrics.overflowY) {
-    throw new Error(`Competition theater overflow: ${JSON.stringify(theaterMetrics)}`);
+    throw new Error(`Product-tour overflow: ${JSON.stringify(theaterMetrics)}`);
   }
   await theater.keyboard.press("Escape");
   if (await theater.locator(".competition-theater").count()) {
-    throw new Error("Escape did not exit the competition theater.");
+    throw new Error("Escape did not exit the product tour.");
   }
 
   console.log("landing-page: PASS");
