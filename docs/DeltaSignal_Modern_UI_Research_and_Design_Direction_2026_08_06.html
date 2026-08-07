@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DeltaSignal Modern UI Research and Design Direction</title>
+  <meta name="description" content="Deep visual research and a prioritized UI direction for DeltaSignal's evidence-first financial-agent product.">
+  <style>
+    html{background:#060912;color:#f4f7fb;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    body{margin:0;min-height:100vh}
+    ui-research-app:not(:defined){display:block;padding:32px}
+  </style>
+</head>
+<body>
+  <ui-research-app></ui-research-app>
+
+  <script id="strategix-ui-research-contract" type="application/xml">
+<StrategiXVisualSpec version="1.0" status="research-complete-recommendation-ready" generated="2026-08-06" artifact="docs/DeltaSignal_Modern_UI_Research_and_Design_Direction_2026_08_06.html">
+  <CanonicalArtifact>
+    <Title>DeltaSignal Modern UI Research and Design Direction</Title>
+    <Owner>DeltaSignal</Owner>
+    <ProductSurface>aitrailblazer/deltasignal-ai-agent</ProductSurface>
+    <ResearchDate>2026-08-06</ResearchDate>
+    <ArtifactType>StrategiX visual research specification</ArtifactType>
+  </CanonicalArtifact>
+  <Purpose>Identify transferable modern-interface patterns that make DeltaSignal easier to understand, more credible as financial infrastructure, more useful to agent builders, and more effective at converting researchers, subscribers, and clients.</Purpose>
+  <ResearchMethod>
+    <Step order="1">Audit the current DeltaSignal landing page and AAPL client demo at desktop width.</Step>
+    <Step order="2">Inspect current public interfaces from product infrastructure, AI-agent, developer-tool, financial-infrastructure, and financial-data companies.</Step>
+    <Step order="3">Separate transferable interaction principles from brand-specific aesthetics.</Step>
+    <Step order="4">Score pattern fit using a DeltaSignal-specific heuristic: evidence clarity, technical credibility, buyer comprehension, distinctiveness, accessibility, and implementation cost.</Step>
+    <Step order="5">Convert the findings into a page blueprint, component contract, accessibility contract, performance targets, and phased implementation plan.</Step>
+  </ResearchMethod>
+  <CurrentSurfaceAudit>
+    <Strength>Strong evidence-first thesis and unusually explicit trust boundary.</Strength>
+    <Strength>Distinctive semantic color system for source, MCP, agent, verified, and unresolved states.</Strength>
+    <Strength>Real product proof appears in the hero instead of generic stock imagery.</Strength>
+    <Strength>The Apple example gives the infrastructure an understandable concrete case.</Strength>
+    <Friction priority="high">Primary navigation exposes too many equal-weight choices before users understand the product.</Friction>
+    <Friction priority="high">The hero statement is memorable but occupies many lines, delaying the product proof and CTA scan path.</Friction>
+    <Friction priority="high">Architecture detail arrives at nearly uniform visual intensity, increasing cognitive load for first-time visitors.</Friction>
+    <Friction priority="medium">The site explains many capabilities but offers less immediate social, operational, or quantitative proof.</Friction>
+    <Friction priority="medium">Small monospaced labels and dense cards can read as a diagram artifact rather than a polished enterprise product.</Friction>
+  </CurrentSurfaceAudit>
+  <ReferencePatterns>
+    <Reference name="Linear" url="https://linear.app/" fit="very-high">
+      <Borrow>Severe hierarchy, restrained chrome, one-sentence positioning, and product UI as the primary visual proof.</Borrow>
+      <Avoid>Near-monochrome treatment that would erase DeltaSignal evidence-state semantics.</Avoid>
+    </Reference>
+    <Reference name="Vercel" url="https://vercel.com/" fit="high">
+      <Borrow>Three-part hero composition, singular brand symbol, high negative space, and decisive paired calls to action.</Borrow>
+      <Avoid>Abstract minimalism without enough evidence context for a regulated financial workflow.</Avoid>
+    </Reference>
+    <Reference name="Stripe" url="https://stripe.com/" fit="very-high">
+      <Borrow>Explain infrastructure through outcomes, combine trust signals with product proof, and maintain strong rhythm across long pages.</Borrow>
+      <Avoid>Decorative gradient volume that competes with provenance and data.</Avoid>
+    </Reference>
+    <Reference name="Ramp" url="https://ramp.com/" fit="high">
+      <Borrow>Operational counters, visible agent activity, concise value statement, and outcome-oriented proof.</Borrow>
+      <Avoid>Newsletter interruption patterns and aggressive conversion overlays.</Avoid>
+    </Reference>
+    <Reference name="Perplexity Enterprise" url="https://www.perplexity.ai/enterprise" fit="high">
+      <Borrow>Show the product doing a realistic task, label sources visibly, and keep enterprise copy plain.</Borrow>
+      <Avoid>Generic multi-model positioning that weakens DeltaSignal's specialist-evidence identity.</Avoid>
+    </Reference>
+    <Reference name="Resend" url="https://resend.com/" fit="high">
+      <Borrow>One memorable physical metaphor, premium material treatment, and developer-first dual CTA.</Borrow>
+      <Avoid>Ultra-dark low-contrast surfaces for dense financial evidence.</Avoid>
+    </Reference>
+    <Reference name="E2B" url="https://e2b.dev/" fit="medium-high">
+      <Borrow>Strong technical voice, sharp typographic identity, and visible system components.</Borrow>
+      <Avoid>All-caps terminal density across the full site.</Avoid>
+    </Reference>
+    <Reference name="LangChain" url="https://www.langchain.com/" fit="medium-high">
+      <Borrow>Memorable narrative metaphor and credible customer proof near the first viewport.</Borrow>
+      <Avoid>Campaign imagery that can date quickly or obscure the core system.</Avoid>
+    </Reference>
+    <Reference name="Mercury" url="https://mercury.com/" fit="medium">
+      <Borrow>Atmospheric confidence and calm, premium pacing, and visible compliance disclosure.</Borrow>
+      <Avoid>Lifestyle imagery as the primary explanation of an evidence product.</Avoid>
+    </Reference>
+    <Reference name="Fiscal.ai" url="https://fiscal.ai/" fit="high">
+      <Borrow>Financial-data infrastructure framing, architectural metaphor, and direct auditability language.</Borrow>
+      <Avoid>Large cinematic imagery without showing the actual data contract.</Avoid>
+    </Reference>
+    <Reference name="Google Gemini Enterprise Agent Platform" url="https://cloud.google.com/products/gemini-enterprise-agent-platform" fit="high">
+      <Borrow>Clear platform taxonomy, task-oriented navigation, and product-highlight summaries.</Borrow>
+      <Avoid>Documentation-style density on the marketing landing page.</Avoid>
+    </Reference>
+  </ReferencePatterns>
+  <RecommendedDirection name="Evidence OS">
+    <Positioning>DeltaSignal is not another AI finance dashboard. It is the governed evidence operating system behind financial agents.</Positioning>
+    <VisualIdea>Use a calm dark evidence room with warm paper-like evidence cards, precise colored state rails, and one animated proof path.</VisualIdea>
+    <Hierarchy>
+      <Layer order="1">Outcome: Ask a better issuer question and receive an inspectable evidence packet.</Layer>
+      <Layer order="2">Proof: Show a real AAPL packet and one bounded MCP call.</Layer>
+      <Layer order="3">Method: Explain source, govern, route, review, and deliver.</Layer>
+      <Layer order="4">Depth: Expose the full specialist architecture only after the user chooses to inspect it.</Layer>
+    </Hierarchy>
+    <SemanticColor>
+      <Token name="source" value="#5CCEFF">Reported or externally anchored evidence.</Token>
+      <Token name="mcp" value="#B99AFF">DeltaSignal routing and evidence contract.</Token>
+      <Token name="agent" value="#F2C96D">Agent work or model explanation.</Token>
+      <Token name="verified" value="#65E6AE">Evidence-backed or successfully verified state.</Token>
+      <Token name="unresolved" value="#FF7F83">Missing, conflicting, unsupported, or access-limited state.</Token>
+      <Rule>Never use semantic colors as decoration detached from their evidence state.</Rule>
+    </SemanticColor>
+  </RecommendedDirection>
+  <PageBlueprint>
+    <Section order="1" name="Navigation">Five choices maximum: Product, Apple proof, MCP, Trust, Research; one primary Run Apple CTA.</Section>
+    <Section order="2" name="Hero">One outcome headline, one trust sentence, two CTAs, and a real AAPL evidence packet preview.</Section>
+    <Section order="3" name="ProofStrip">Show freshness, issuer coverage, evidence classes, MCP status, and non-advice boundary using live or clearly dated values.</Section>
+    <Section order="4" name="AppleCase">A three-step Source to MCP to Packet story with one inspectable tool call.</Section>
+    <Section order="5" name="ProductModes">Researcher, Agent Builder, and Enterprise Team paths presented as role-based outcomes.</Section>
+    <Section order="6" name="Trust">Explain what is fact, interpretation, unresolved, provenance, and access status.</Section>
+    <Section order="7" name="Architecture">Progressive disclosure: overview first; specialist details on interaction.</Section>
+    <Section order="8" name="Conversion">Run Apple, explore MCP, subscribe, or discuss a project.</Section>
+  </PageBlueprint>
+  <InteractionContract>
+    <Rule>Only one continuous animation may run in a viewport: the evidence path.</Rule>
+    <Rule>Use 180–240 millisecond state transitions for hover, expand, and tab changes.</Rule>
+    <Rule>Honor prefers-reduced-motion and preserve meaning without animation.</Rule>
+    <Rule>Use progressive disclosure for architecture, provenance, and raw envelopes.</Rule>
+    <Rule>Keep every evidence-state label visible in text; color is a secondary cue.</Rule>
+    <Rule>Do not use auto-opening modals, forced newsletter overlays, or animated backgrounds behind data.</Rule>
+  </InteractionContract>
+  <AccessibilityAndPerformance>
+    <Requirement source="WCAG 2.2 SC 1.4.3">Normal text contrast must be at least 4.5:1; large text at least 3:1.</Requirement>
+    <Requirement source="WCAG 2.2 SC 2.3.3">Interaction-triggered motion must be disableable unless essential.</Requirement>
+    <Requirement source="web.dev Core Web Vitals">Target LCP at or below 2.5 seconds, INP at or below 200 milliseconds, and CLS at or below 0.1 at the 75th percentile.</Requirement>
+    <Requirement>Primary body text should be at least 16 CSS pixels; diagram body text should be at least 13 CSS pixels at desktop and 14 CSS pixels when stacked on mobile.</Requirement>
+    <Requirement>Primary navigation must collapse before labels wrap or compress below readable size.</Requirement>
+  </AccessibilityAndPerformance>
+  <ImplementationPhases>
+    <Phase order="1" name="Hierarchy and conversion" effort="small" impact="very-high">Reduce navigation, tighten hero, add role paths, and add a real proof strip.</Phase>
+    <Phase order="2" name="Evidence component system" effort="medium" impact="very-high">Standardize evidence cards, status rails, raw-envelope drawers, source chips, and unresolved states.</Phase>
+    <Phase order="3" name="Progressive architecture" effort="medium" impact="high">Replace the always-dense diagram with overview, inspect, and presentation modes.</Phase>
+    <Phase order="4" name="Operational proof" effort="medium" impact="high">Connect dated readiness, coverage, freshness, and example response receipts.</Phase>
+    <Phase order="5" name="Polish and measurement" effort="medium" impact="medium-high">Tune motion, performance, accessibility, analytics, and conversion experiments.</Phase>
+  </ImplementationPhases>
+  <AcceptanceCriteria>
+    <Criterion>A first-time visitor can state what DeltaSignal does, for whom, and why it is trustworthy after one viewport.</Criterion>
+    <Criterion>The first viewport contains one real product proof and no more than two primary calls to action.</Criterion>
+    <Criterion>Navigation contains no more than five informational destinations plus one primary CTA.</Criterion>
+    <Criterion>Fact, interpretation, unresolved, provenance, and access status remain visually and textually distinct.</Criterion>
+    <Criterion>Architecture depth is available without dominating the first-time user path.</Criterion>
+    <Criterion>Desktop and mobile views pass contrast, reduced-motion, overflow, and Core Web Vitals targets.</Criterion>
+    <Criterion>Every borrowed pattern is transformed for DeltaSignal's evidence contract rather than copied stylistically.</Criterion>
+  </AcceptanceCriteria>
+  <DecisionLog>
+    <Decision date="2026-08-06">Retain DeltaSignal's dark evidence-infrastructure identity rather than copying Stripe or Perplexity's light surfaces.</Decision>
+    <Decision date="2026-08-06">Use Linear-level hierarchy and Stripe-level narrative rhythm as the primary structural references.</Decision>
+    <Decision date="2026-08-06">Use evidence states—not glassmorphism, gradients, or generic bento cards—as the durable visual signature.</Decision>
+    <Decision date="2026-08-06">Keep Apple as the flagship proof case while making the component system reusable for every ticker.</Decision>
+  </DecisionLog>
+  <RisksAndOpenQuestions>
+    <Risk>Live operational metrics can damage trust if stale; every metric needs a timestamp and source.</Risk>
+    <Risk>Excessive cinematic styling can make financial evidence look promotional rather than auditable.</Risk>
+    <Risk>Too much progressive disclosure can hide expert detail; raw evidence must remain one action away.</Risk>
+    <Question>Should the primary commercial CTA remain Run Apple or change by visitor role after lightweight intent selection?</Question>
+    <Question>Which readiness and coverage metrics are stable enough to publish automatically?</Question>
+  </RisksAndOpenQuestions>
+  <SourceDigest>
+    <Source accessed="2026-08-06" url="https://linear.app/">Current product-development landing page.</Source>
+    <Source accessed="2026-08-06" url="https://vercel.com/">Current agentic-infrastructure landing page.</Source>
+    <Source accessed="2026-08-06" url="https://stripe.com/">Current financial-infrastructure landing page.</Source>
+    <Source accessed="2026-08-06" url="https://ramp.com/">Current spend-management and agent-operations landing page.</Source>
+    <Source accessed="2026-08-06" url="https://www.perplexity.ai/enterprise">Current enterprise AI product page.</Source>
+    <Source accessed="2026-08-06" url="https://resend.com/">Current developer-infrastructure landing page.</Source>
+    <Source accessed="2026-08-06" url="https://e2b.dev/">Current AI-agent cloud landing page.</Source>
+    <Source accessed="2026-08-06" url="https://www.langchain.com/">Current agent-platform landing page.</Source>
+    <Source accessed="2026-08-06" url="https://mercury.com/">Current fintech landing page.</Source>
+    <Source accessed="2026-08-06" url="https://fiscal.ai/">Current financial-data infrastructure landing page.</Source>
+    <Source accessed="2026-08-06" url="https://cloud.google.com/products/gemini-enterprise-agent-platform">Current Gemini Enterprise Agent Platform page.</Source>
+    <Source accessed="2026-08-06" url="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">WCAG 2.2 contrast guidance.</Source>
+    <Source accessed="2026-08-06" url="https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html">WCAG 2.2 interaction-motion guidance.</Source>
+    <Source accessed="2026-08-06" url="https://web.dev/articles/vitals">Core Web Vitals definitions and good-experience thresholds.</Source>
+    <Source accessed="2026-08-06" url="https://aitrailblazer.github.io/deltasignal-ai-agent/">Current DeltaSignal public landing page.</Source>
+  </SourceDigest>
+  <ImplementationNotes>
+    <Note>Heuristic fit scores in the visual surface are design judgments, not externally measured rankings.</Note>
+    <Note>This research recommends a direction; it does not authorize copying source assets, proprietary illustrations, or source code.</Note>
+    <Note>Any implementation should begin with a separate scoped ExecPlan and preserve the public/private runtime boundary.</Note>
+  </ImplementationNotes>
+</StrategiXVisualSpec>
+  </script>
+
+  <script type="module">
+    import {LitElement, html, css} from 'https://unpkg.com/lit@3/index.js?module';
+
+    const references = [
+      {name:'Linear',type:'Product system',score:94,borrow:'Hierarchy · product proof · restrained chrome',avoid:'Monochrome evidence states'},
+      {name:'Stripe',type:'Financial infrastructure',score:91,borrow:'Outcome narrative · long-page rhythm · trust',avoid:'Decorative gradient overload'},
+      {name:'Vercel',type:'Agent infrastructure',score:88,borrow:'Negative space · singular symbol · decisive CTAs',avoid:'Context-free abstraction'},
+      {name:'Fiscal.ai',type:'Financial data',score:86,borrow:'Infrastructure framing · auditability language',avoid:'Cinematic image replacing product'},
+      {name:'Resend',type:'Developer infrastructure',score:84,borrow:'Memorable metaphor · premium materiality',avoid:'Low contrast on dense evidence'},
+      {name:'Google Agent Platform',type:'Enterprise agents',score:83,borrow:'Platform taxonomy · task navigation',avoid:'Docs density in marketing'},
+      {name:'Perplexity Enterprise',type:'Enterprise AI',score:82,borrow:'Real task UI · source visibility · plain copy',avoid:'Generic multi-model identity'},
+      {name:'Ramp',type:'Financial operations',score:79,borrow:'Operational proof · live counters · outcome copy',avoid:'Interruptive conversion overlays'},
+      {name:'E2B',type:'Agent cloud',score:77,borrow:'Technical voice · component visibility',avoid:'Terminal style everywhere'},
+      {name:'LangChain',type:'Agent platform',score:75,borrow:'Narrative hook · customer proof',avoid:'Campaign imagery dependence'},
+      {name:'Mercury',type:'Fintech',score:66,borrow:'Calm confidence · premium pacing · disclosure',avoid:'Lifestyle-first explanation'}
+    ];
+
+    const blueprint = [
+      ['01','Orient','One outcome headline + trust sentence + AAPL packet'],
+      ['02','Prove','Dated readiness, coverage, provenance, non-advice'],
+      ['03','Demonstrate','AAPL: source → MCP call → evidence packet'],
+      ['04','Segment','Researcher · agent builder · enterprise team'],
+      ['05','Explain','Fact · interpretation · unresolved · provenance'],
+      ['06','Inspect','Progressively disclosed specialist architecture'],
+      ['07','Convert','Run Apple · explore MCP · subscribe · contact']
+    ];
+
+    class UIResearchApp extends LitElement {
+      static styles = css`
+        :host{--bg:#060912;--panel:#0b1220;--panel2:#101a2b;--line:#243552;--ink:#f4f7fb;--muted:#9facbf;--cyan:#5cceff;--violet:#b99aff;--gold:#f2c96d;--green:#65e6ae;--red:#ff7f83;display:block;min-height:100vh;background:radial-gradient(circle at 13% 0,rgba(92,206,255,.12),transparent 28%),radial-gradient(circle at 88% 8%,rgba(185,154,255,.11),transparent 28%),var(--bg)}
+        *{box-sizing:border-box}main{width:min(1240px,calc(100vw - 32px));margin:auto;padding:28px 0 60px}.mast{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 0 24px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:11px;font-weight:900}.mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid #445572;border-radius:11px;color:var(--gold);background:#0b111d}.meta{color:var(--muted);font:800 10px "SFMono-Regular",monospace;letter-spacing:.09em;text-transform:uppercase}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:end;padding:76px 0 44px}.eyebrow{color:var(--cyan);font:900 11px "SFMono-Regular",monospace;letter-spacing:.13em;text-transform:uppercase}.hero h1{max-width:850px;margin:13px 0 20px;font-size:clamp(48px,7.2vw,91px);line-height:.91;letter-spacing:-.058em}.hero h1 span{background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;color:transparent}.hero p{max-width:760px;margin:0;color:#b7c3d3;font-size:19px;line-height:1.62}.verdict{border:1px solid #3b5474;border-radius:20px;padding:22px;background:linear-gradient(145deg,rgba(16,31,52,.96),rgba(8,15,27,.96));box-shadow:0 28px 80px #0005}.verdict b{display:block;font-size:27px;line-height:1.05}.verdict p{margin-top:12px;font-size:14px}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.chip{padding:6px 9px;border:1px solid #334966;border-radius:999px;color:#aebcd0;font:850 9px "SFMono-Regular",monospace}.chip.good{color:var(--green);border-color:#36705d}.section{padding:35px 0}.head{display:grid;grid-template-columns:1fr .75fr;gap:26px;align-items:end;margin-bottom:20px}.head h2{margin:6px 0 0;font-size:clamp(31px,4vw,52px);line-height:1;letter-spacing:-.04em}.head p{margin:0;color:var(--muted);font-size:15px}.audit{display:grid;grid-template-columns:1fr 1fr;gap:13px}.audit-card{border:1px solid var(--line);border-radius:17px;padding:21px;background:linear-gradient(150deg,var(--panel2),var(--panel))}.audit-card h3{margin:0 0 14px;font-size:19px}.audit-card ul{margin:0;padding-left:19px;color:#b2bfd0}.audit-card li{margin:9px 0}.audit-card.strong{border-color:#316a59}.audit-card.friction{border-color:#73504c}.audit-card.strong h3{color:var(--green)}.audit-card.friction h3{color:var(--red)}.matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.ref{border:1px solid var(--line);border-radius:14px;padding:17px;background:#0a1322}.ref-top{display:flex;justify-content:space-between;gap:10px;align-items:start}.ref h3{margin:0;font-size:17px}.ref small{display:block;color:#768aa5;margin-top:3px}.score{min-width:48px;text-align:right;color:var(--green);font:900 16px "SFMono-Regular",monospace}.meter{height:4px;margin:15px 0 13px;border-radius:99px;background:#1a2a42;overflow:hidden}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));border-radius:inherit}.pair{display:grid;grid-template-columns:1fr 1fr;gap:9px}.pair span{padding:9px;border-radius:9px;background:#07101d;color:#9eafc4;font-size:11px}.pair b{display:block;margin-bottom:3px;color:var(--cyan);font-size:9px;letter-spacing:.08em;text-transform:uppercase}.pair span:last-child b{color:var(--red)}.direction{overflow:hidden;border:1px solid #365373;border-radius:22px;background:radial-gradient(circle at 82% 0,rgba(185,154,255,.14),transparent 34%),linear-gradient(145deg,#0d1a2d,#070d18);box-shadow:0 34px 90px #0005}.direction-head{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;padding:29px;border-bottom:1px solid #29415f}.direction h3{margin:6px 0 0;font-size:clamp(30px,4vw,52px);line-height:1}.direction-head p{margin:0;color:#afbdd0}.evidence-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;padding:24px}.state{position:relative;min-height:154px;padding:16px;border:1px solid #2a405f;border-radius:13px;background:#07111f}.state:after{content:"→";position:absolute;right:-13px;top:46%;z-index:2;color:#7086a2;font-weight:900}.state:last-child:after{display:none}.state i{width:36px;height:36px;display:grid;place-items:center;border:1px solid currentColor;border-radius:10px;font-style:normal;font-weight:900}.state b{display:block;margin-top:15px}.state span{display:block;margin-top:7px;color:#93a4bb;font-size:12px}.source i{color:var(--cyan)}.mcp i{color:var(--violet)}.agent i{color:var(--gold)}.verified i{color:var(--green)}.unresolved i{color:var(--red)}.blueprint{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.blue-step{min-height:170px;padding:15px;border:1px solid var(--line);border-radius:13px;background:#0a1322}.blue-step em{color:var(--cyan);font:900 11px "SFMono-Regular",monospace;font-style:normal}.blue-step b{display:block;margin-top:34px;font-size:16px}.blue-step span{display:block;margin-top:8px;color:#93a4ba;font-size:11px}.tokens{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.token{padding:15px;border:1px solid var(--line);border-radius:13px;background:#091321}.swatch{height:68px;border-radius:9px;background:var(--token);box-shadow:inset 0 0 0 1px #ffffff1c}.token b{display:block;margin-top:12px}.token code{color:#899bb3;font-size:11px}.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.rule{padding:17px;border:1px solid var(--line);border-radius:13px;background:#0a1322}.rule b{display:block;color:var(--gold)}.rule span{display:block;margin-top:7px;color:#9eafc4;font-size:12px}.phases{display:grid;gap:8px}.phase{display:grid;grid-template-columns:60px .8fr 1.8fr 110px;gap:14px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:12px;background:#091220}.phase strong{color:var(--cyan);font:900 13px "SFMono-Regular",monospace}.phase b{font-size:15px}.phase span{color:#9eafc4;font-size:12px}.impact{padding:6px 8px;border:1px solid #39705f;border-radius:999px;color:var(--green)!important;text-align:center;font-weight:850}.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.source-link{padding:12px;border:1px solid var(--line);border-radius:10px;background:#08111f;color:#a9b7c9;text-decoration:none;font-size:12px}.source-link:hover{border-color:var(--cyan);color:white}.contract{margin-top:24px;border:1px solid #3b4e69;border-radius:16px;background:#040911;overflow:hidden}.contract summary{cursor:pointer;padding:15px 18px;color:var(--gold);font-weight:900}.contract pre{max-height:500px;overflow:auto;margin:0;padding:18px;border-top:1px solid #263954;color:#a8bad0;font-size:11px;white-space:pre-wrap}.note{margin-top:14px;color:#74869e;font-size:11px}.footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);color:#72839b;font-size:11px}
+        @media(max-width:980px){.hero,.head,.direction-head{grid-template-columns:1fr}.matrix{grid-template-columns:1fr 1fr}.evidence-flow,.blueprint{grid-template-columns:1fr 1fr}.state:after{display:none}.tokens{grid-template-columns:repeat(3,1fr)}.rules,.sources{grid-template-columns:1fr 1fr}.phase{grid-template-columns:50px 1fr}.phase span,.impact{grid-column:2}}
+        @media(max-width:620px){main{width:min(100% - 22px,1240px)}.mast{align-items:flex-start;flex-direction:column}.hero{padding-top:50px}.hero h1{font-size:clamp(47px,16vw,70px)}.audit,.matrix,.evidence-flow,.blueprint,.tokens,.rules,.sources{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.phase{grid-template-columns:40px 1fr}.direction-head,.evidence-flow{padding:19px}}
+      `;
+
+      render(){
+        const xml=document.getElementById('strategix-ui-research-contract')?.textContent.trim()??'';
+        return html`
+          <main>
+            <header class="mast">
+              <div class="brand"><span class="mark">DS</span><span>DeltaSignal UI Research</span></div>
+              <div class="meta">Observed 2026-08-06 · recommendation artifact · no source assets copied</div>
+            </header>
+
+            <section class="hero">
+              <div>
+                <div class="eyebrow">Modern product UI · deep comparative research</div>
+                <h1>Borrow the clarity.<br><span>Keep the evidence.</span></h1>
+                <p>DeltaSignal already owns the hard part: an evidence-first product with explicit trust boundaries. The redesign opportunity is not to add more visual effects. It is to make the product understandable in one viewport, progressively reveal its depth, and turn evidence state into the unmistakable visual signature.</p>
+              </div>
+              <aside class="verdict">
+                <div class="eyebrow">Research verdict</div>
+                <b>Build an Evidence OS—not another AI dashboard.</b>
+                <p>Use Linear's hierarchy, Stripe's infrastructure narrative, Vercel's restraint, and Ramp's operational proof. Preserve DeltaSignal's semantic colors and inspectable evidence packets.</p>
+                <div class="chips"><span class="chip good">HIGH-CONFIDENCE DIRECTION</span><span class="chip">11 INTERFACES</span><span class="chip">3 STANDARDS</span></div>
+              </aside>
+            </section>
+
+            <section class="section">
+              <div class="head"><div><div class="eyebrow">Current-state audit</div><h2>The foundation is differentiated. The hierarchy needs editing.</h2></div><p>The current site has more product truth than most agent landing pages. Its main risk is presenting expert-level architecture before a new visitor has formed a simple mental model.</p></div>
+              <div class="audit">
+                <article class="audit-card strong"><h3>Keep</h3><ul><li>Apple as the concrete flagship proof.</li><li>Fact versus interpretation versus unresolved boundaries.</li><li>Semantic colors for source, MCP, agent, verified, and missing.</li><li>Real evidence packet in the hero.</li><li>Professional dark infrastructure identity.</li></ul></article>
+                <article class="audit-card friction"><h3>Simplify</h3><ul><li>Reduce eleven navigation actions to five destinations plus one CTA.</li><li>Shorten the hero scan path and keep the proof above the fold.</li><li>Progressively disclose architecture instead of giving every card equal intensity.</li><li>Replace small diagram typography with product-scale labels.</li><li>Add dated operational proof, not more descriptive copy.</li></ul></article>
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="head"><div><div class="eyebrow">Reference pattern matrix</div><h2>What is worth borrowing—and what is not.</h2></div><p>Fit scores are a DeltaSignal-specific design heuristic, not a general ranking. They weight clarity, evidence credibility, technical buyers, distinctiveness, accessibility, and implementation cost.</p></div>
+              <div class="matrix">${references.map(r=>html`<article class="ref"><div class="ref-top"><div><h3>${r.name}</h3><small>${r.type}</small></div><span class="score">${r.score}</span></div><div class="meter"><i style=${`width:${r.score}%`}></i></div><div class="pair"><span><b>Borrow</b>${r.borrow}</span><span><b>Avoid</b>${r.avoid}</span></div></article>`)}</div>
+            </section>
+
+            <section class="section">
+              <div class="direction">
+                <div class="direction-head"><div><div class="eyebrow">Recommended design direction</div><h3>Evidence OS</h3></div><p>A calm, dark evidence room. Warm evidence cards. Precise state rails. One animated proof path. Every color means something, and every fluent explanation remains downstream of evidence.</p></div>
+                <div class="evidence-flow">
+                  <article class="state source"><i>§</i><b>Source</b><span>Reported or externally anchored facts</span></article>
+                  <article class="state mcp"><i>◇</i><b>MCP</b><span>Governed retrieval and evidence envelope</span></article>
+                  <article class="state agent"><i>✦</i><b>Agent</b><span>Bounded work and model explanation</span></article>
+                  <article class="state verified"><i>✓</i><b>Verified</b><span>Supported state with provenance</span></article>
+                  <article class="state unresolved"><i>!</i><b>Unresolved</b><span>Missing, partial, conflicting, or blocked</span></article>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="head"><div><div class="eyebrow">Landing-page blueprint</div><h2>Move from outcome to proof to depth.</h2></div><p>The sequence is deliberately asymmetric: first-time visitors get a clear product promise; experts retain one-action access to contracts, raw evidence, architecture, and provenance.</p></div>
+              <div class="blueprint">${blueprint.map(([n,t,b])=>html`<article class="blue-step"><em>${n}</em><b>${t}</b><span>${b}</span></article>`)}</div>
+            </section>
+
+            <section class="section">
+              <div class="head"><div><div class="eyebrow">Semantic visual system</div><h2>Color should encode evidence state—not decoration.</h2></div><p>Keep the existing DeltaSignal palette, but formalize it as a contract shared by landing pages, reports, diagrams, MCP receipts, ticker dashboards, and Substack visuals.</p></div>
+              <div class="tokens">
+                ${[['Source','#5CCEFF'],['MCP','#B99AFF'],['Agent','#F2C96D'],['Verified','#65E6AE'],['Unresolved','#FF7F83']].map(([n,c])=>html`<article class="token" style=${`--token:${c}`}><div class="swatch"></div><b>${n}</b><code>${c}</code></article>`)}
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="head"><div><div class="eyebrow">Interaction and quality contract</div><h2>Premium means calm, fast, and inspectable.</h2></div><p>Modern does not mean permanently animated. Motion should explain state change, performance should preserve confidence, and raw evidence should remain accessible without crowding the main path.</p></div>
+              <div class="rules">
+                <article class="rule"><b>One motion lane</b><span>Only the active evidence path animates. Everything else is still until the user interacts.</span></article>
+                <article class="rule"><b>Progressive depth</b><span>Overview first; provenance, raw envelopes, and specialist internals expand on demand.</span></article>
+                <article class="rule"><b>Readable defaults</b><span>16px body copy; 13px minimum desktop diagram body; larger when stacked on mobile.</span></article>
+                <article class="rule"><b>Contrast contract</b><span>At least 4.5:1 for normal text and 3:1 for large text under WCAG 2.2.</span></article>
+                <article class="rule"><b>Reduced motion</b><span>Honor prefers-reduced-motion and retain every state distinction without animation.</span></article>
+                <article class="rule"><b>Core Web Vitals</b><span>LCP ≤2.5s, INP ≤200ms, CLS ≤0.1 at the 75th percentile.</span></article>
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="head"><div><div class="eyebrow">Implementation order</div><h2>Make the highest-value edits first.</h2></div><p>Do not begin with a visual rewrite. Begin with information architecture, conversion clarity, and a reusable evidence component contract.</p></div>
+              <div class="phases">
+                ${[
+                  ['01','Hierarchy and conversion','Reduce navigation, tighten the hero, add role paths, and publish a dated proof strip.','Very high'],
+                  ['02','Evidence component system','Standardize evidence cards, status rails, source chips, raw drawers, and unresolved states.','Very high'],
+                  ['03','Progressive architecture','Create overview, inspect, and presentation modes instead of one permanently dense diagram.','High'],
+                  ['04','Operational proof','Connect freshness, coverage, readiness, and example response receipts with timestamps.','High'],
+                  ['05','Polish and measurement','Tune motion, accessibility, performance, analytics, and CTA experiments.','Medium-high']
+                ].map(([n,t,b,i])=>html`<article class="phase"><strong>${n}</strong><b>${t}</b><span>${b}</span><span class="impact">${i}</span></article>`)}
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="head"><div><div class="eyebrow">Source digest</div><h2>Observed public interfaces and standards.</h2></div><p>These links are evidence for pattern research, not templates to copy. Product content and visual treatments may change after the access date.</p></div>
+              <div class="sources">
+                ${[
+                  ['Linear','https://linear.app/'],['Vercel','https://vercel.com/'],['Stripe','https://stripe.com/'],['Ramp','https://ramp.com/'],['Perplexity Enterprise','https://www.perplexity.ai/enterprise'],['Resend','https://resend.com/'],['E2B','https://e2b.dev/'],['LangChain','https://www.langchain.com/'],['Mercury','https://mercury.com/'],['Fiscal.ai','https://fiscal.ai/'],['Google Agent Platform','https://cloud.google.com/products/gemini-enterprise-agent-platform'],['WCAG contrast','https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html'],['WCAG motion','https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html'],['Core Web Vitals','https://web.dev/articles/vitals'],['DeltaSignal current site','https://aitrailblazer.github.io/deltasignal-ai-agent/']
+                ].map(([n,u])=>html`<a class="source-link" href=${u}>${n} ↗</a>`)}
+              </div>
+              <details class="contract"><summary>Embedded StrategiX XML contract</summary><pre>${xml}</pre></details>
+              <p class="note">Research boundary: no external source code, proprietary asset, or copyrighted illustration was copied. Recommendations translate observed principles into DeltaSignal's own evidence-first product language.</p>
+            </section>
+
+            <footer class="footer">DeltaSignal · Modern UI research · 2026-08-06 · Design recommendation only; implementation requires a scoped ExecPlan and verification.</footer>
+          </main>
+        `;
+      }
+    }
+    customElements.define('ui-research-app',UIResearchApp);
+  </script>
+</body>
+</html>
