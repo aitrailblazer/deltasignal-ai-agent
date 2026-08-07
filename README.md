@@ -2,6 +2,8 @@
 
 DeltaSignal is an agent-native issuer-intelligence system. It turns a ticker, issuer request, or DeltaSignal TripCode into a reusable research packet with article memory, River continuity, SEC/XBRL evidence boundaries, ATLAS-7 interpretation, agent synthesis, session memory, and usage visibility.
 
+The **Apple/AAPL evidence workflow is the flagship reference**. It is the fastest way to understand the product end to end: filing evidence, ATLAS-7 structural interpretation, bounded MCP delivery, Google Cloud agent review, missing-data handling, and provenance-rich output.
+
 The product serves three connected audiences:
 
 - **Researchers and subscribers** who want differentiated, filing-backed issuer analysis.

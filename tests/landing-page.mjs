@@ -55,12 +55,23 @@ try {
   );
   if (mobileOverflow) throw new Error("Mobile landing page has horizontal overflow.");
 
+  const heroTitle = (await desktop.locator("h1").first().textContent()) ?? "";
+  if (!heroTitle.includes("Apple is the proof")) {
+    throw new Error("Apple is not the primary landing-page proof.");
+  }
+  if ((await desktop.getByRole("link", {name: /Run the Apple evidence workflow/}).count()) !== 1) {
+    throw new Error("Primary Apple workflow action is missing.");
+  }
+
   const theater = await browser.newPage({viewport: {width: 1920, height: 1080}});
   await theater.goto(`http://127.0.0.1:${port}/?tour=1`, {
     waitUntil: "networkidle",
   });
   if (!(await theater.locator(".competition-theater").isVisible())) {
     throw new Error("Product tour did not activate.");
+  }
+  if (!((await theater.locator(".competition-copy h1").textContent()) ?? "").includes("Start with Apple")) {
+    throw new Error("Product tour does not lead with the Apple reference.");
   }
   if ((await theater.locator(".competition-stage").count()) !== 1) {
     throw new Error("Expected one product presentation stage.");
