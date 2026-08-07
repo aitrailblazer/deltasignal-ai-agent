@@ -90,7 +90,14 @@ Component roles:
 ## How Google Agents Call DeltaSignal MCP
 
 The Google Cloud layer orchestrates the research; it does not recreate the
-financial evidence. A protected Cloud Run coordinator validates the request,
+financial evidence.
+
+![How Google agents call DeltaSignal MCP: an AAPL question enters a Cloud Run coordinator, is delegated to four bounded AI specialists, retrieves a provenance-rich ATLAS-7 MCP evidence envelope, passes boundary review, and becomes bounded delivery.](./assets/deltasignal-google-agents-call-mcp-topology.png)
+
+*AAPL reference topology: Google Cloud coordinates the bounded workflow, while
+DeltaSignal remains the governed SEC/XBRL evidence source.*
+
+A protected Cloud Run coordinator validates the request,
 delegates to a narrow specialist, and calls a named read-only tool on the
 [DeltaSignal ATLAS-7 MCP surface](https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/).
 The raw evidence envelope is preserved for review before Gemini writes a
