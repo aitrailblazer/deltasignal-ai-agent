@@ -1,0 +1,19 @@
+{
+  "schema": "strategix.image.provenance.v1",
+  "owner": "AITrailblazer / DeltaSignal",
+  "copyright": "(c) 2026 AITrailblazer / DeltaSignal",
+  "notice": "User-supplied conceptual artifact. Constituent counts are snapshot annotations; live MCP coverage and audit routes are authoritative.",
+  "model": "user-supplied",
+  "backend": "Codex attachment",
+  "receipt_id": "deltasignal-four-level-video-scenario-20260807",
+  "prompt_sha256": "e254912d783aa7e2c6a1a48c490997e694bfe03beb08393dfed2174a9c8c097f",
+  "input_sha256": "5ddf67467b8aef722d89f46a91257d1e5db5e43cf88ae872c50e8b70885ab3f6",
+  "output_sha256": "2084ba75a1bff162969dfc9c16808946ad642c86a2114198cfcd0f51bae12075",
+  "created_at": "2026-08-07T18:43:39Z",
+  "source_image": "/var/folders/ys/51stpkg918s_87622n6hhmm40000gn/T/codex-clipboard-542fe056-1e50-4752-bcc4-16060e265de4.png",
+  "output_image": "assets/deltasignal-four-level-evidence-synthetic-basket-framework.png",
+  "visible_branding": "DeltaSignal title in supplied artwork",
+  "artifact_title": "DeltaSignal Four-Level Evidence & Synthetic Basket Framework",
+  "focus": "Authoritative conceptual reference for Levels 1\u20134, preserved missingness, and thematic synthetic baskets in the 02:10\u201302:30 trust segment of the AAPL three-minute video scenario.",
+  "verification_boundary": "Missing levels remain null, partial, unavailable, or not applicable as returned. They must not be converted to zero scores or filled by AI inference. Printed basket counts are snapshot annotations, not live membership claims."
+}
