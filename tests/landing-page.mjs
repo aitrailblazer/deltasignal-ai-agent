@@ -36,6 +36,25 @@ try {
   if (!((await desktop.locator("#agent-architecture").textContent()) ?? "").includes("Evidence-boundary reviewer")) {
     throw new Error("Agent architecture is missing its review gate.");
   }
+  if ((await desktop.locator("#agent-architecture .arch-glyph, #agent-architecture .agent-glyph").count()) < 9) {
+    throw new Error("Agent architecture is missing recognizable stage glyphs.");
+  }
+  const flowAnimation = await desktop.locator(".arch-arrow").evaluate(
+    (element) => getComputedStyle(element, "::before").animationName,
+  );
+  if (flowAnimation !== "signal-x") {
+    throw new Error("Agent architecture directional flow animation is missing.");
+  }
+
+  const reducedMotion = await browser.newPage({viewport: {width: 1024, height: 900}});
+  await reducedMotion.emulateMedia({reducedMotion: "reduce"});
+  await reducedMotion.goto(`http://127.0.0.1:${port}/`, {waitUntil: "networkidle"});
+  const reducedAnimation = await reducedMotion.locator(".arch-arrow").evaluate(
+    (element) => getComputedStyle(element, "::before").animationName,
+  );
+  if (reducedAnimation !== "none") {
+    throw new Error("Agent architecture does not respect reduced-motion preferences.");
+  }
 
   const essentialLinks = [
     "./client-demo/google-cloud-aapl/",
