@@ -1,0 +1,1099 @@
+{
+  "generatedAt": "2026-08-07T09:15:53.113Z",
+  "results": [
+    {
+      "id": "landing",
+      "url": "http://127.0.0.1:8881/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/landing-1440x1000.png",
+      "title": "DeltaSignal · Apple Evidence Workflow and Financial-Agent Infrastructure",
+      "h1": "Apple is the proof. Financial agents need an evidence system.",
+      "headings": [
+        "Apple is the proof. Financial agents need an evidence system.",
+        "Specialists retrieve.Review protects the boundary.",
+        "One evidence system.Four governed layers.",
+        "Governed evidence before generated explanation.",
+        "See the evidence path.Control every stage.",
+        "From analyst question to inspectable evidence packet.",
+        "Readable in seconds.Inspectable for as long as needed.",
+        "Use the research.Build on the infrastructure.",
+        "Run an evidence workflow",
+        "Connect your agent",
+        "Become a subscriber",
+        "Build a client project",
+        "The limitations arepart of the product.",
+        "Don’t ask an agent to guess.Give it an evidence system."
+      ],
+      "bodyTextSample": "DeltaSignalEvidence infrastructure Menu AGENTIC FINANCE · EVIDENCE FIRST Product Apple proof Trust MCP Research Run Apple ↗ Apple · public reference case · reusable workflow Apple is the proof. Financial agents need an evidence system. Ask a real AAPL research question. DeltaSignal retrieves dated SEC filing facts, delivers them through controlled read-only tools, reviews the interpretation, and returns an inspectable evidence packet. Apple demonstrates the workflow. DeltaSignal is the underlying evidence infrastructure for supported financial-research agents—not an Apple client claim or an Apple-only product. Facts remain facts. Interpretation stays labeled. Missing evidence stays missing. Run a sample AAPL evidence report → See how evidence reaches agents READ ONLY · PROVENANCE FIRST Evidence run · AAPL QUESTION → BOUNDED TOOLS → REVIEW → CLIENT PACKET §Source evidenceSEC EDGAR · CompanyFacts / XBRLANCHORED ≋Governed data planenormalize · materialize · validateDATED ◇Controlled evide",
+      "bodyTextLength": 8120,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 33,
+      "buttons": 5,
+      "images": 3,
+      "svgs": 2,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "Product",
+          "width": 50,
+          "height": 16
+        },
+        {
+          "text": "Apple proof",
+          "width": 74,
+          "height": 16
+        },
+        {
+          "text": "Trust",
+          "width": 33,
+          "height": 16
+        },
+        {
+          "text": "MCP",
+          "width": 30,
+          "height": 16
+        },
+        {
+          "text": "Research",
+          "width": 59,
+          "height": 16
+        },
+        {
+          "text": "Try the AAPL workflow →",
+          "width": 135,
+          "height": 14
+        },
+        {
+          "text": "Inspect Agent Card →",
+          "width": 116,
+          "height": 14
+        },
+        {
+          "text": "Join DeltaSignal →",
+          "width": 99,
+          "height": 14
+        },
+        {
+          "text": "Discuss a project →",
+          "width": 105,
+          "height": 14
+        },
+        {
+          "text": "Comprehension audit",
+          "width": 104,
+          "height": 12
+        },
+        {
+          "text": "A2A specification",
+          "width": 86,
+          "height": 12
+        },
+        {
+          "text": "System architecture",
+          "width": 98,
+          "height": 12
+        },
+        {
+          "text": "GitHub",
+          "width": 34,
+          "height": 12
+        }
+      ],
+      "hasMain": true,
+      "hasNav": true,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "landing",
+      "url": "http://127.0.0.1:8881/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/landing-390x844.png",
+      "title": "DeltaSignal · Apple Evidence Workflow and Financial-Agent Infrastructure",
+      "h1": "Apple is the proof. Financial agents need an evidence system.",
+      "headings": [
+        "Apple is the proof. Financial agents need an evidence system.",
+        "Specialists retrieve.Review protects the boundary.",
+        "One evidence system.Four governed layers.",
+        "Governed evidence before generated explanation.",
+        "See the evidence path.Control every stage.",
+        "From analyst question to inspectable evidence packet.",
+        "Readable in seconds.Inspectable for as long as needed.",
+        "Use the research.Build on the infrastructure.",
+        "Run an evidence workflow",
+        "Connect your agent",
+        "Become a subscriber",
+        "Build a client project",
+        "The limitations arepart of the product.",
+        "Don’t ask an agent to guess.Give it an evidence system."
+      ],
+      "bodyTextSample": "DeltaSignalEvidence infrastructure Menu AGENTIC FINANCE · EVIDENCE FIRST Product Apple proof Trust MCP Research Run Apple ↗ Apple · public reference case · reusable workflow Apple is the proof. Financial agents need an evidence system. Ask a real AAPL research question. DeltaSignal retrieves dated SEC filing facts, delivers them through controlled read-only tools, reviews the interpretation, and returns an inspectable evidence packet. Apple demonstrates the workflow. DeltaSignal is the underlying evidence infrastructure for supported financial-research agents—not an Apple client claim or an Apple-only product. Facts remain facts. Interpretation stays labeled. Missing evidence stays missing. Run a sample AAPL evidence report → See how evidence reaches agents READ ONLY · PROVENANCE FIRST Evidence run · AAPL QUESTION → BOUNDED TOOLS → REVIEW → CLIENT PACKET §Source evidenceSEC EDGAR · CompanyFacts / XBRLANCHORED ≋Governed data planenormalize · materialize · validateDATED ◇Controlled evide",
+      "bodyTextLength": 8120,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 27,
+      "buttons": 6,
+      "images": 3,
+      "svgs": 2,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "Try the AAPL workflow →",
+          "width": 135,
+          "height": 14
+        },
+        {
+          "text": "Inspect Agent Card →",
+          "width": 116,
+          "height": 14
+        },
+        {
+          "text": "Join DeltaSignal →",
+          "width": 99,
+          "height": 14
+        },
+        {
+          "text": "Discuss a project →",
+          "width": 105,
+          "height": 14
+        },
+        {
+          "text": "Comprehension audit",
+          "width": 104,
+          "height": 12
+        },
+        {
+          "text": "A2A specification",
+          "width": 86,
+          "height": 12
+        },
+        {
+          "text": "System architecture",
+          "width": 98,
+          "height": 12
+        },
+        {
+          "text": "GitHub",
+          "width": 34,
+          "height": 12
+        },
+        {
+          "text": "Menu",
+          "width": 55,
+          "height": 33
+        }
+      ],
+      "hasMain": true,
+      "hasNav": true,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "tour",
+      "url": "http://127.0.0.1:8881/?tour=1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/tour-1440x1000.png",
+      "title": "DeltaSignal · Apple Evidence Workflow and Financial-Agent Infrastructure",
+      "h1": "Start with Apple. See the complete evidence path.",
+      "headings": [
+        "Start with Apple. See the complete evidence path.",
+        "AAPL evidence loop"
+      ],
+      "bodyTextSample": "DeltaSignalEVIDENCE INFRASTRUCTURE FOR FINANCIAL AGENTS LIVE PRODUCT TOUR · EVIDENCE INFRASTRUCTURE FLAGSHIP REFERENCE · APPLE × ATLAS-7 × MCP Start with Apple. See the complete evidence path. The AAPL reference shows how DeltaSignal turns one issuer question into a reusable research packet with SEC/XBRL evidence, ATLAS-7 interpretation, bounded agent synthesis, provenance, missingness, and explicit limits. 01 / 06 · OPENING AAPL evidence loop Apple is the reference. The workflow is reusable. ◇Agent Card + A2Apublic discovery · protected executionDISCOVER §ATLAS-7 + SEC/XBRLbounded MCP evidence productsVERIFY ◎Gemini + Cloud Runorchestration · explanation · telemetryEXPLAIN →Reusable research packetmemory · caveats · monitor-nextRETURN ← ▶ Auto play → 01 / 06 ← → NAVIGATE · SPACE AUTOPLAY · ESC EXIT Exit presentation",
+      "bodyTextLength": 828,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 4,
+      "images": 1,
+      "svgs": 0,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "Exit presentation",
+          "width": 117,
+          "height": 34
+        }
+      ],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "tour",
+      "url": "http://127.0.0.1:8881/?tour=1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/tour-390x844.png",
+      "title": "DeltaSignal · Apple Evidence Workflow and Financial-Agent Infrastructure",
+      "h1": "Start with Apple. See the complete evidence path.",
+      "headings": [
+        "Start with Apple. See the complete evidence path."
+      ],
+      "bodyTextSample": "DeltaSignalEVIDENCE INFRASTRUCTURE FOR FINANCIAL AGENTS LIVE PRODUCT TOUR · EVIDENCE INFRASTRUCTURE FLAGSHIP REFERENCE · APPLE × ATLAS-7 × MCP Start with Apple. See the complete evidence path. The AAPL reference shows how DeltaSignal turns one issuer question into a reusable research packet with SEC/XBRL evidence, ATLAS-7 interpretation, bounded agent synthesis, provenance, missingness, and explicit limits. 01 / 06 · OPENING AAPL evidence loop Apple is the reference. The workflow is reusable. ◇Agent Card + A2Apublic discovery · protected executionDISCOVER §ATLAS-7 + SEC/XBRLbounded MCP evidence productsVERIFY ◎Gemini + Cloud Runorchestration · explanation · telemetryEXPLAIN →Reusable research packetmemory · caveats · monitor-nextRETURN ← ▶ Auto play → 01 / 06 ← → NAVIGATE · SPACE AUTOPLAY · ESC EXIT Exit presentation",
+      "bodyTextLength": 828,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 4,
+      "images": 1,
+      "svgs": 0,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "aapl-demo",
+      "url": "http://127.0.0.1:8881/client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/aapl-demo-1440x1000.png",
+      "title": "Google Cloud AAPL Client Demo · DeltaSignal MCP",
+      "h1": "Google agents use DeltaSignal MCP—without hiding the proof.",
+      "headings": [
+        "Google agents use DeltaSignal MCP—without hiding the proof.",
+        "Test the architecture interactively",
+        "AAPL question → provenance-rich client packet",
+        "How the Google agents call DeltaSignal MCP",
+        "Google orchestrates the work. DeltaSignal supplies the governed evidence.",
+        "The four specialist agents",
+        "Filing facts",
+        "CompanyFacts inventory",
+        "Point-in-time history",
+        "Level applicability",
+        "What happens when a client asks a question",
+        "Run it locally",
+        "Deploy the client to Cloud Run",
+        "Fixture deployment",
+        "Live deployment",
+        "The trust contract",
+        "Continue the demo"
+      ],
+      "bodyTextSample": "DeltaSignal MCP × Google Cloud PUBLIC CLIENT REFERENCE · AAPL EVIDENCE WORKFLOW Main site ATLAS-7 MCP GitHub source FROM AN ANALYST QUESTION TO INSPECTABLE EVIDENCE Google agents use DeltaSignal MCP—without hiding the proof. This client demo recreates the useful evidence categories in the AAPL Vault: filing fundamentals, CompanyFacts inventory, point-in-time history, and honest ATLAS-7 level coverage. SAFE DEFAULT Fixture first. Live by choice. The public fixture makes zero network, Gemini, or payment calls. Live Cloud Run mode uses protected server credentials. A 402 is reported; it is never silently settled. Test the architecture interactively Use the six-stage walkthrough now, or switch to Presentation view later when recording the client video. This is a deterministic explanation surface: it visualizes the call plan without making a network, model, credential, or payment request. DELTASIGNAL MCP × GOOGLE CLOUD · INTERACTIVE EVIDENCE RUN AAPL question → provenance-rich client packet",
+      "bodyTextLength": 8012,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 8,
+      "buttons": 11,
+      "images": 1,
+      "svgs": 1,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "Explore the DeltaSignal MCP surface →",
+          "width": 227,
+          "height": 19
+        },
+        {
+          "text": "01Source",
+          "width": 81,
+          "height": 33
+        },
+        {
+          "text": "02Govern",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "03Route",
+          "width": 77,
+          "height": 33
+        },
+        {
+          "text": "04Delegate",
+          "width": 93,
+          "height": 33
+        },
+        {
+          "text": "05Review",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "06Deliver",
+          "width": 83,
+          "height": 33
+        },
+        {
+          "text": "← Back",
+          "width": 75,
+          "height": 35
+        },
+        {
+          "text": "▶ Auto play",
+          "width": 100,
+          "height": 35
+        },
+        {
+          "text": "Next →",
+          "width": 72,
+          "height": 35
+        },
+        {
+          "text": "Reset",
+          "width": 62,
+          "height": 35
+        },
+        {
+          "text": "Presentation view",
+          "width": 139,
+          "height": 35
+        }
+      ],
+      "hasMain": true,
+      "hasNav": true,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "aapl-demo",
+      "url": "http://127.0.0.1:8881/client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/aapl-demo-390x844.png",
+      "title": "Google Cloud AAPL Client Demo · DeltaSignal MCP",
+      "h1": "Google agents use DeltaSignal MCP—without hiding the proof.",
+      "headings": [
+        "Google agents use DeltaSignal MCP—without hiding the proof.",
+        "Test the architecture interactively",
+        "AAPL question → provenance-rich client packet",
+        "How the Google agents call DeltaSignal MCP",
+        "Google orchestrates the work. DeltaSignal supplies the governed evidence.",
+        "The four specialist agents",
+        "Filing facts",
+        "CompanyFacts inventory",
+        "Point-in-time history",
+        "Level applicability",
+        "What happens when a client asks a question",
+        "Run it locally",
+        "Deploy the client to Cloud Run",
+        "Fixture deployment",
+        "Live deployment",
+        "The trust contract",
+        "Continue the demo"
+      ],
+      "bodyTextSample": "DeltaSignal MCP × Google Cloud PUBLIC CLIENT REFERENCE · AAPL EVIDENCE WORKFLOW Main site ATLAS-7 MCP GitHub source FROM AN ANALYST QUESTION TO INSPECTABLE EVIDENCE Google agents use DeltaSignal MCP—without hiding the proof. This client demo recreates the useful evidence categories in the AAPL Vault: filing fundamentals, CompanyFacts inventory, point-in-time history, and honest ATLAS-7 level coverage. SAFE DEFAULT Fixture first. Live by choice. The public fixture makes zero network, Gemini, or payment calls. Live Cloud Run mode uses protected server credentials. A 402 is reported; it is never silently settled. Test the architecture interactively Use the six-stage walkthrough now, or switch to Presentation view later when recording the client video. This is a deterministic explanation surface: it visualizes the call plan without making a network, model, credential, or payment request. DELTASIGNAL MCP × GOOGLE CLOUD · INTERACTIVE EVIDENCE RUN AAPL question → provenance-rich client packet",
+      "bodyTextLength": 7948,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 8,
+      "buttons": 11,
+      "images": 1,
+      "svgs": 1,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "Explore the DeltaSignal MCP surface →",
+          "width": 227,
+          "height": 19
+        },
+        {
+          "text": "01Source",
+          "width": 81,
+          "height": 33
+        },
+        {
+          "text": "02Govern",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "03Route",
+          "width": 77,
+          "height": 33
+        },
+        {
+          "text": "04Delegate",
+          "width": 93,
+          "height": 33
+        },
+        {
+          "text": "05Review",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "06Deliver",
+          "width": 83,
+          "height": 33
+        }
+      ],
+      "hasMain": true,
+      "hasNav": true,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "aapl-presentation",
+      "url": "http://127.0.0.1:8881/client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html?presentation=1",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/aapl-presentation-1440x1000.png",
+      "title": "Google Cloud AAPL Client Demo · DeltaSignal MCP",
+      "h1": "Google agents use DeltaSignal MCP—without hiding the proof.",
+      "headings": [
+        "AAPL question → provenance-rich client packet"
+      ],
+      "bodyTextSample": "DELTASIGNAL MCP × GOOGLE CLOUD · INTERACTIVE EVIDENCE RUN AAPL question → provenance-rich client packet DETERMINISTIC · LIVE CALLS OFF 01Source 02Govern 03Route 04Delegate 05Review 06Deliver EVIDENCE SOURCES § SEC EDGAR filings · accession · filed date X CompanyFacts / XBRL concepts · units · periods ↗ Public market history dated equity observations # Governed registries issuer · basket · instrument identity DELTASIGNAL GOVERNED DATA PLANE Acquire Normalize Materialize Validate Publish ▤ Provenance ledger hashes · manifests · quality · missingness DeltaSignal MCP Evidence Fabric discover contract → check access → call bounded tool → return provenance ! Explicit soft miss 402 ≠ evidence · null ≠ zero · unavailable stays unavailable GOOGLE CLOUD AGENT RUNTIME ◇ Cloud Run coordinator plan · delegate · preserve order Filing facts form · period · accession History CompanyFacts · hashes Point-in-time filed ≤ as-of Applicability Levels 1–4 readiness ✓ Review agent + Gemini classify facts · ch",
+      "bodyTextLength": 1613,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 11,
+      "images": 0,
+      "svgs": 0,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "01Source",
+          "width": 81,
+          "height": 33
+        },
+        {
+          "text": "02Govern",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "03Route",
+          "width": 77,
+          "height": 33
+        },
+        {
+          "text": "04Delegate",
+          "width": 93,
+          "height": 33
+        },
+        {
+          "text": "05Review",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "06Deliver",
+          "width": 83,
+          "height": 33
+        },
+        {
+          "text": "← Back",
+          "width": 75,
+          "height": 35
+        },
+        {
+          "text": "▶ Auto play",
+          "width": 100,
+          "height": 35
+        },
+        {
+          "text": "Next →",
+          "width": 72,
+          "height": 35
+        },
+        {
+          "text": "Reset",
+          "width": 62,
+          "height": 35
+        },
+        {
+          "text": "Exit presentation",
+          "width": 134,
+          "height": 35
+        }
+      ],
+      "hasMain": true,
+      "hasNav": true,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "aapl-presentation",
+      "url": "http://127.0.0.1:8881/client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html?presentation=1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/aapl-presentation-390x844.png",
+      "title": "Google Cloud AAPL Client Demo · DeltaSignal MCP",
+      "h1": "Google agents use DeltaSignal MCP—without hiding the proof.",
+      "headings": [
+        "AAPL question → provenance-rich client packet"
+      ],
+      "bodyTextSample": "DELTASIGNAL MCP × GOOGLE CLOUD · INTERACTIVE EVIDENCE RUN AAPL question → provenance-rich client packet DETERMINISTIC · LIVE CALLS OFF 01Source 02Govern 03Route 04Delegate 05Review 06Deliver EVIDENCE SOURCES § SEC EDGAR filings · accession · filed date X CompanyFacts / XBRL concepts · units · periods ↗ Public market history dated equity observations # Governed registries issuer · basket · instrument identity DELTASIGNAL GOVERNED DATA PLANE Acquire Normalize Materialize Validate Publish ▤ Provenance ledger hashes · manifests · quality · missingness DeltaSignal MCP Evidence Fabric discover contract → check access → call bounded tool → return provenance ! Explicit soft miss 402 ≠ evidence · null ≠ zero · unavailable stays unavailable GOOGLE CLOUD AGENT RUNTIME ◇ Cloud Run coordinator plan · delegate · preserve order Filing facts form · period · accession History CompanyFacts · hashes Point-in-time filed ≤ as-of Applicability Levels 1–4 readiness ✓ Review agent + Gemini classify facts · ch",
+      "bodyTextLength": 1549,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 11,
+      "images": 0,
+      "svgs": 0,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "01Source",
+          "width": 81,
+          "height": 33
+        },
+        {
+          "text": "02Govern",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "03Route",
+          "width": 77,
+          "height": 33
+        },
+        {
+          "text": "04Delegate",
+          "width": 93,
+          "height": 33
+        },
+        {
+          "text": "05Review",
+          "width": 84,
+          "height": 33
+        },
+        {
+          "text": "06Deliver",
+          "width": 83,
+          "height": 33
+        }
+      ],
+      "hasMain": true,
+      "hasNav": true,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "architecture",
+      "url": "http://127.0.0.1:8881/docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/architecture-1440x1000.png",
+      "title": "DeltaSignal Evidence Fabric → Google AI Agents",
+      "h1": "",
+      "headings": [],
+      "bodyTextSample": "DeltaSignal REFERENCE ARCHITECTURE · AAPL CLIENT DEMO DAILY · READ ONLY · PROVENANCE FIRST Daily evidence → bounded agent intelligence A governed data plane separates what sources report, what ATLAS-7 interprets, and what Google agents explain. 01 · EVIDENCE SOURCES SEC EDGAR filings · accession · filed date issuer truth anchor CompanyFacts / XBRL concepts · units · periods structured filing evidence Public market history dated equity observations only when licensed + fresh Governed registries issuer · basket · instrument identity + relationship context SOURCE RULE Preserve tags, dates, units, identity. 02 · DELTASIGNAL GOVERNED DATA PLANE NIGHTLY REFRESH 1 Acquire snapshot + hash 2 Normalize ticker · CIK · tag 3 Materialize point-in-time rows 4 Validate quality · stale · unit 5 Publish dated evidence slice GOVERNED STORES Raw evidence archive immutable source snapshots retrieval time + source hash PostgreSQL governed materializations CompanyFacts + PIT + levels Provenance ledger hashe",
+      "bodyTextLength": 2918,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 0,
+      "images": 0,
+      "svgs": 1,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "architecture",
+      "url": "http://127.0.0.1:8881/docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/architecture-390x844.png",
+      "title": "DeltaSignal Evidence Fabric → Google AI Agents",
+      "h1": "",
+      "headings": [],
+      "bodyTextSample": "DeltaSignal REFERENCE ARCHITECTURE · AAPL CLIENT DEMO DAILY · READ ONLY · PROVENANCE FIRST Daily evidence → bounded agent intelligence A governed data plane separates what sources report, what ATLAS-7 interprets, and what Google agents explain. 01 · EVIDENCE SOURCES SEC EDGAR filings · accession · filed date issuer truth anchor CompanyFacts / XBRL concepts · units · periods structured filing evidence Public market history dated equity observations only when licensed + fresh Governed registries issuer · basket · instrument identity + relationship context SOURCE RULE Preserve tags, dates, units, identity. 02 · DELTASIGNAL GOVERNED DATA PLANE NIGHTLY REFRESH 1 Acquire snapshot + hash 2 Normalize ticker · CIK · tag 3 Materialize point-in-time rows 4 Validate quality · stale · unit 5 Publish dated evidence slice GOVERNED STORES Raw evidence archive immutable source snapshots retrieval time + source hash PostgreSQL governed materializations CompanyFacts + PIT + levels Provenance ledger hashe",
+      "bodyTextLength": 2918,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 0,
+      "images": 0,
+      "svgs": 1,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": false
+    },
+    {
+      "id": "comprehension-audit",
+      "url": "http://127.0.0.1:8881/docs/DeltaSignal_First_10_Seconds_Comprehension_Audit_2026_08_07.html",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/comprehension-audit-1440x1000.png",
+      "title": "DeltaSignal · First 10 Seconds Comprehension Audit",
+      "h1": "",
+      "headings": [],
+      "bodyTextSample": "",
+      "bodyTextLength": 0,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 0,
+      "images": 0,
+      "svgs": 0,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": false,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": false,
+      "mentionsHUT": false
+    },
+    {
+      "id": "comprehension-audit",
+      "url": "http://127.0.0.1:8881/docs/DeltaSignal_First_10_Seconds_Comprehension_Audit_2026_08_07.html",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/comprehension-audit-390x844.png",
+      "title": "DeltaSignal · First 10 Seconds Comprehension Audit",
+      "h1": "",
+      "headings": [],
+      "bodyTextSample": "",
+      "bodyTextLength": 0,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 0,
+      "buttons": 0,
+      "images": 0,
+      "svgs": 0,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": false,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": false,
+      "mentionsHUT": false
+    },
+    {
+      "id": "cloud-root",
+      "url": "http://127.0.0.1:8090/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/cloud-root-1440x1000.png",
+      "title": "DeltaSignal Evidence OS · Apple Reference First",
+      "h1": "Evidence agents can inspect—not just repeat.",
+      "headings": [
+        "Evidence agents can inspect—not just repeat."
+      ],
+      "bodyTextSample": "DELTASIGNAL EVIDENCE OS · GOVERNED AGENT INFRASTRUCTURE APPLE REFERENCE FIRST · REUSABLE ACROSS ISSUERS Evidence agents can inspect—not just repeat. Start with the flagship Apple workflow: dated SEC/XBRL facts move through ATLAS-7 interpretation, bounded specialist review, and a provenance-rich client packet. Then inspect HUT as the second proof for continuing research memory. Open Apple Reference Explore HUT Memory Proof © 2026 AITRAILBLAZER · DELTASIGNAL SEC/XBRL · ATLAS-7 · MCP · Google Cloud Agents ① Source · Apple SEC/XBRL Dated filing evidence, identity, period, and missingness remain attached. ② Govern · ATLAS-7 + MCP Read-only contracts separate facts, calculations, interpretation, and limits. ③ Review · Specialist Agents Bounded roles review quality, provenance, applicability, and unresolved claims. ④ Deliver · Evidence Packet Clients receive facts, labeled interpretation, confidence, caveats, and reusable follow-ups.",
+      "bodyTextLength": 940,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 2,
+      "buttons": 0,
+      "images": 1,
+      "svgs": 2,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": true
+    },
+    {
+      "id": "cloud-root",
+      "url": "http://127.0.0.1:8090/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/cloud-root-390x844.png",
+      "title": "DeltaSignal Evidence OS · Apple Reference First",
+      "h1": "Evidence agents can inspect—not just repeat.",
+      "headings": [
+        "Evidence agents can inspect—not just repeat."
+      ],
+      "bodyTextSample": "DELTASIGNAL EVIDENCE OS · GOVERNED AGENT INFRASTRUCTURE APPLE REFERENCE FIRST · REUSABLE ACROSS ISSUERS Evidence agents can inspect—not just repeat. Start with the flagship Apple workflow: dated SEC/XBRL facts move through ATLAS-7 interpretation, bounded specialist review, and a provenance-rich client packet. Then inspect HUT as the second proof for continuing research memory. Open Apple Reference Explore HUT Memory Proof © 2026 AITRAILBLAZER · DELTASIGNAL SEC/XBRL · ATLAS-7 · MCP · Google Cloud Agents ① Source · Apple SEC/XBRL Dated filing evidence, identity, period, and missingness remain attached. ② Govern · ATLAS-7 + MCP Read-only contracts separate facts, calculations, interpretation, and limits. ③ Review · Specialist Agents Bounded roles review quality, provenance, applicability, and unresolved claims. ④ Deliver · Evidence Packet Clients receive facts, labeled interpretation, confidence, caveats, and reusable follow-ups.",
+      "bodyTextLength": 940,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 2,
+      "buttons": 0,
+      "images": 1,
+      "svgs": 2,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": true
+    },
+    {
+      "id": "cloud-demo",
+      "url": "http://127.0.0.1:8090/demo",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/cloud-demo-1440x1000.png",
+      "title": "DeltaSignal · HUT Research Memory Proof",
+      "h1": "A published thesis becomes an inspectable agent workflow.",
+      "headings": [
+        "A published thesis becomes an inspectable agent workflow."
+      ],
+      "bodyTextSample": "DELTASIGNAL EVIDENCE OS · SECOND PRODUCT PROOF RESEARCH MEMORY BEYOND THE FLAGSHIP APPLE REFERENCE Cloud Run · Lit · A2A · TripCode SECOND PROOF · CONTINUING RESEARCH MEMORY A published thesis becomes an inspectable agent workflow. After Apple proves the filing-to-packet path, one HUT TripCode proves continuity: article memory, River history, ATLAS-7 boundaries, Gemini synthesis, monitor-next actions, and usage visibility. Go To HUT Proof DEMO · 2 Min Sequence TF-SUB-9DA70A7F98 This browser demo starts from the public DeltaSignal article, then runs the deployed Go Cloud Run surface used by A2A-compatible clients. The request path, response packet, and proof trail stay visible. Apple is the flagship proof. HUT demonstrates reusable memory across time. 1 TripCode starts the loop 10 HUT River nodes A2A Agent artifact path User intent + curl Cloud Run A2A agent Output Research packet MCP ATLAS-7 HUT River TripCode memory Evidence SEC/XBRL refs © 2026 AITRAILBLAZER · DELTASIGNAL",
+      "bodyTextLength": 988,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 2,
+      "buttons": 0,
+      "images": 1,
+      "svgs": 3,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": true
+    },
+    {
+      "id": "cloud-demo",
+      "url": "http://127.0.0.1:8090/demo",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/cloud-demo-390x844.png",
+      "title": "DeltaSignal · HUT Research Memory Proof",
+      "h1": "A published thesis becomes an inspectable agent workflow.",
+      "headings": [
+        "A published thesis becomes an inspectable agent workflow."
+      ],
+      "bodyTextSample": "DELTASIGNAL EVIDENCE OS · SECOND PRODUCT PROOF RESEARCH MEMORY BEYOND THE FLAGSHIP APPLE REFERENCE Cloud Run · Lit · A2A · TripCode SECOND PROOF · CONTINUING RESEARCH MEMORY A published thesis becomes an inspectable agent workflow. After Apple proves the filing-to-packet path, one HUT TripCode proves continuity: article memory, River history, ATLAS-7 boundaries, Gemini synthesis, monitor-next actions, and usage visibility. Go To HUT Proof DEMO · 2 Min Sequence TF-SUB-9DA70A7F98 This browser demo starts from the public DeltaSignal article, then runs the deployed Go Cloud Run surface used by A2A-compatible clients. The request path, response packet, and proof trail stay visible. Apple is the flagship proof. HUT demonstrates reusable memory across time. 1 TripCode starts the loop 10 HUT River nodes A2A Agent artifact path User intent + curl Cloud Run A2A agent Output Research packet MCP ATLAS-7 HUT River TripCode memory Evidence SEC/XBRL refs © 2026 AITRAILBLAZER · DELTASIGNAL",
+      "bodyTextLength": 988,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 2,
+      "buttons": 0,
+      "images": 1,
+      "svgs": 3,
+      "canvases": 0,
+      "tinyTargets": [],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": true
+    },
+    {
+      "id": "cloud-run",
+      "url": "http://127.0.0.1:8090/demo/run",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/cloud-run-1440x1000.png",
+      "title": "DeltaSignal Gemini AI Agent Demo",
+      "h1": "Run The HUT Research-Memory Proof",
+      "headings": [
+        "Run The HUT Research-Memory Proof",
+        "Run HUT Workflow",
+        "Response Workspace"
+      ],
+      "bodyTextSample": "DELTASIGNAL EVIDENCE OS · RESEARCH MEMORY PROOF SECOND PROOF AFTER THE FLAGSHIP APPLE WORKFLOW Run The HUT Research-Memory Proof Paste the private demo key, then run the same deployed Cloud Run surfaces used by the command demo. The key stays in this browser session and is sent only as X-Demo-Key. 127.0.0.1:8090 PRIVATE DEMO API KEY TRIPCODE SESSION ID Run HUT Workflow One TripCode becomes a bounded research packet. Live route 1 TripCode 10 River nodes A2A Artifact Discover Agent Card Invoke HUT Verify Packet Remember Monitor Control Usage Overview Article Health Card Resolve A2A Monitor Usage OVERVIEW This first step explains the full demo path: start from Substack research, discover the agent Response Workspace JSON proof from the deployed Go + Lit Cloud Run app. Top Scroll End Render JSON OBJECTIVE Show how Delta Signal Gemini AI Agent turns one public Substack TripCode into a bounded HUT issuer intelligence workflow: research memory, River continuity, evidence boundaries, Gemini sy",
+      "bodyTextLength": 1800,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "overflowX": false,
+      "links": 1,
+      "buttons": 13,
+      "images": 1,
+      "svgs": 8,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "Overview",
+          "width": 110,
+          "height": 36
+        },
+        {
+          "text": "Article",
+          "width": 110,
+          "height": 36
+        },
+        {
+          "text": "Health",
+          "width": 110,
+          "height": 36
+        },
+        {
+          "text": "Card",
+          "width": 111,
+          "height": 36
+        },
+        {
+          "text": "Resolve",
+          "width": 110,
+          "height": 36
+        },
+        {
+          "text": "A2A",
+          "width": 110,
+          "height": 36
+        },
+        {
+          "text": "Monitor",
+          "width": 110,
+          "height": 36
+        },
+        {
+          "text": "Usage",
+          "width": 111,
+          "height": 36
+        },
+        {
+          "text": "Top",
+          "width": 43,
+          "height": 30
+        },
+        {
+          "text": "Scroll",
+          "width": 55,
+          "height": 30
+        },
+        {
+          "text": "End",
+          "width": 45,
+          "height": 30
+        },
+        {
+          "text": "Render",
+          "width": 63,
+          "height": 30
+        },
+        {
+          "text": "JSON",
+          "width": 55,
+          "height": 30
+        }
+      ],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": true
+    },
+    {
+      "id": "cloud-run",
+      "url": "http://127.0.0.1:8090/demo/run",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "screenshot": "qa_evidence/screenshots/cloud-run-390x844.png",
+      "title": "DeltaSignal Gemini AI Agent Demo",
+      "h1": "Run The HUT Research-Memory Proof",
+      "headings": [
+        "Run The HUT Research-Memory Proof",
+        "Run HUT Workflow",
+        "Response Workspace"
+      ],
+      "bodyTextSample": "DELTASIGNAL EVIDENCE OS · RESEARCH MEMORY PROOF SECOND PROOF AFTER THE FLAGSHIP APPLE WORKFLOW Run The HUT Research-Memory Proof Paste the private demo key, then run the same deployed Cloud Run surfaces used by the command demo. The key stays in this browser session and is sent only as X-Demo-Key. 127.0.0.1:8090 PRIVATE DEMO API KEY TRIPCODE SESSION ID Run HUT Workflow One TripCode becomes a bounded research packet. Live route 1 TripCode 10 River nodes A2A Artifact Discover Agent Card Invoke HUT Verify Packet Remember Monitor Control Usage Overview Article Health Card Resolve A2A Monitor Usage OVERVIEW This first step explains the full demo path: start from Substack research, discover the agent Response Workspace JSON proof from the deployed Go + Lit Cloud Run app. Top Scroll End Render JSON OBJECTIVE Show how Delta Signal Gemini AI Agent turns one public Substack TripCode into a bounded HUT issuer intelligence workflow: research memory, River continuity, evidence boundaries, Gemini sy",
+      "bodyTextLength": 1800,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflowX": false,
+      "links": 1,
+      "buttons": 13,
+      "images": 1,
+      "svgs": 8,
+      "canvases": 0,
+      "tinyTargets": [
+        {
+          "text": "Overview",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "Article",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "Health",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "Card",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "Resolve",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "A2A",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "Monitor",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "Usage",
+          "width": 169,
+          "height": 36
+        },
+        {
+          "text": "Top",
+          "width": 43,
+          "height": 30
+        },
+        {
+          "text": "Scroll",
+          "width": 55,
+          "height": 30
+        },
+        {
+          "text": "End",
+          "width": 45,
+          "height": 30
+        },
+        {
+          "text": "Render",
+          "width": 63,
+          "height": 30
+        },
+        {
+          "text": "JSON",
+          "width": 55,
+          "height": 30
+        }
+      ],
+      "hasMain": true,
+      "hasNav": false,
+      "mentionsCompetition": false,
+      "mentionsApple": true,
+      "mentionsHUT": true
+    },
+    {
+      "id": "tour-navigation",
+      "slides": [
+        {
+          "heading": "Start with Apple. See the complete evidence path.",
+          "body": "The AAPL reference shows how DeltaSignal turns one issuer question into a reusable research packet with SEC/XBRL evidence, ATLAS-7 interpretation, bounded agent synthesis, provenance, missingness, and explicit limits.",
+          "index": "01 / 06 · OPENING",
+          "overflowX": false,
+          "overflowY": false
+        },
+        {
+          "heading": "Most financial AI ends with fluent prose—and hides the evidence path.",
+          "body": "A polished answer is not enough for an analyst, compliance team, portfolio agent, or data-room workflow. They need source identity, dates, caveats, missingness, access state, and a packet another system can verify.",
+          "index": "02 / 06 · PROBLEM",
+          "overflowX": false,
+          "overflowY": false
+        },
+        {
+          "heading": "Discover. Invoke. Verify. Remember. Return.",
+          "body": "The Apple workflow moves from issuer identity and filing evidence through bounded ATLAS-7 tools, specialist review, labeled interpretation, and a reusable client packet—without allowing fluent explanation to replace proof.",
+          "index": "03 / 06 · ARCHITECTURE",
+          "overflowX": false,
+          "overflowY": false
+        },
+        {
+          "heading": "After Apple, HUT proves the evidence system is reusable.",
+          "body": "The Apple workflow remains the flagship reference. A separate HUT TripCode then demonstrates research memory: TF-SUB-9DA70A7F98 resolves a 10-node River, links filing references, returns changed findings and weakened assumptions, preserves session context, creates monitor-next actions, and exposes usage metadata.",
+          "index": "04 / 06 · PROOF",
+          "overflowX": false,
+          "overflowY": false
+        },
+        {
+          "heading": "DeltaSignal is the specialist evidence node inside a larger agent ecosystem.",
+          "body": "Portfolio, compliance, data-room, and subscriber agents can discover the capability, invoke a bounded skill, inspect the returned evidence packet, and reuse it without rebuilding the SEC/XBRL and research-memory stack.",
+          "index": "05 / 06 · ECOSYSTEM",
+          "overflowX": false,
+          "overflowY": false
+        },
+        {
+          "heading": "Facts remain facts. Interpretation stays labeled. Missing evidence stays missing.",
+          "body": "DeltaSignal does not ask users to trust an answer because it sounds intelligent. It gives agents and humans an evidence system they can inspect, rerun, monitor, and reuse.",
+          "index": "06 / 06 · CLOSE",
+          "overflowX": false,
+          "overflowY": false
+        }
+      ]
+    }
+  ]
+}

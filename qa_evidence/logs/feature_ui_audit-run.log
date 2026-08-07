@@ -1,0 +1,222 @@
+Wrote /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/aitrailblazerGENI/deltasignal-ai-agent/qa_evidence/logs/feature_ui_audit.json
+[
+  {
+    "id": "landing",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "landing",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "tour",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "tour",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "aapl-demo",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "aapl-demo",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "aapl-presentation",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "aapl-presentation",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "architecture",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "architecture",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": true,
+    "mentionsHUT": false
+  },
+  {
+    "id": "comprehension-audit",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": false,
+    "mentionsHUT": false
+  },
+  {
+    "id": "comprehension-audit",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": false,
+    "mentionsApple": false,
+    "mentionsHUT": false
+  },
+  {
+    "id": "cloud-root",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": true,
+    "mentionsApple": false,
+    "mentionsHUT": true
+  },
+  {
+    "id": "cloud-root",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": true,
+    "mentionsApple": false,
+    "mentionsHUT": true
+  },
+  {
+    "id": "cloud-demo",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": true,
+    "mentionsApple": false,
+    "mentionsHUT": true
+  },
+  {
+    "id": "cloud-demo",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": true,
+    "mentionsApple": false,
+    "mentionsHUT": true
+  },
+  {
+    "id": "cloud-run",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": true,
+    "mentionsApple": false,
+    "mentionsHUT": true
+  },
+  {
+    "id": "cloud-run",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "httpStatus": 200,
+    "overflowX": false,
+    "mentionsCompetition": true,
+    "mentionsApple": false,
+    "mentionsHUT": true
+  },
+  {
+    "id": "tour-navigation"
+  }
+]

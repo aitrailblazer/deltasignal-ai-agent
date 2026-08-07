@@ -1,0 +1,8 @@
+$ GOWORK=off go test ./...
+?   	github.com/aitrailblazer/deltasignal-ai-agent/cmd/aapl-client-demo	[no test files]
+?   	github.com/aitrailblazer/deltasignal-ai-agent/cmd/aapl-client-demo-server	[no test files]
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/cmd/server	(cached)
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/cmd/tripcode-demo	(cached)
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/internal/aapldemo	(cached)
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/internal/agent	(cached)
+EXIT:0

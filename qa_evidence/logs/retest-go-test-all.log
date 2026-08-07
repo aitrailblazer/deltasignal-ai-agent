@@ -1,0 +1,6 @@
+?   	github.com/aitrailblazer/deltasignal-ai-agent/cmd/aapl-client-demo	[no test files]
+?   	github.com/aitrailblazer/deltasignal-ai-agent/cmd/aapl-client-demo-server	[no test files]
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/cmd/server	0.481s
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/cmd/tripcode-demo	0.372s
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/internal/aapldemo	0.429s
+ok  	github.com/aitrailblazer/deltasignal-ai-agent/internal/agent	0.385s

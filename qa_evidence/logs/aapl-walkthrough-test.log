@@ -1,0 +1,3 @@
+$ node client-demo/google-cloud-aapl/test-interactive-walkthrough.mjs
+interactive-walkthrough: PASS
+EXIT:0

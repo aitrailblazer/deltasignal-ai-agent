@@ -1,0 +1,43 @@
+{
+  "phase": "pre-fix discovery",
+  "recorded_at": "2026-08-07",
+  "source_log": "qa_evidence/logs/feature_ui_audit-run.log",
+  "findings": [
+    {
+      "feature_id": "WEB-002",
+      "result": "FAIL",
+      "evidence": "Initial Lighthouse mobile audit reported label-content-name-mismatch for the visible “Menu” button whose accessible name was “Toggle navigation”.",
+      "source": "qa_evidence/lighthouse/landing-mobile/report.json"
+    },
+    {
+      "feature_id": "WEB-014",
+      "result": "FAIL",
+      "evidence": "The final Cloud Run action opened a page whose first viewport was branded for the Google for Startups challenge and prioritized HUT rather than the Apple-first Evidence OS.",
+      "source": "qa_evidence/logs/feature_ui_audit-run.log"
+    },
+    {
+      "feature_id": "TOUR-001",
+      "result": "FAIL",
+      "evidence": "The six-slide tour changed from Apple on slides 1 and 3 to “One HUT TripCode…” on slide 4 without identifying HUT as a second proof.",
+      "source": "qa_evidence/logs/feature_ui_audit-run.log"
+    },
+    {
+      "feature_id": "CLOUD-001",
+      "result": "FAIL",
+      "evidence": "Initial root-page audit detected competition language, no Apple reference, and a HUT-first product hierarchy at desktop and mobile widths.",
+      "source": "qa_evidence/logs/feature_ui_audit-run.log"
+    },
+    {
+      "feature_id": "CLOUD-002",
+      "result": "FAIL",
+      "evidence": "Initial demo-page audit detected competition language, no Apple reference, delayed content reveals, and a sparse first viewport.",
+      "source": "qa_evidence/logs/feature_ui_audit-run.log"
+    },
+    {
+      "feature_id": "CLOUD-012",
+      "result": "FAIL",
+      "evidence": "Initial 390px mobile capture expanded to 469px and clipped the operator header, explanatory copy, and fields while root overflow was suppressed.",
+      "source": "qa_evidence/logs/feature_ui_audit-run.log"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+$ ./scripts/check-public-source-boundary.sh
+public-source-boundary: PASS
+EXIT:0

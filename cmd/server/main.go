@@ -228,6 +228,7 @@ func newMux(
 		rt.Log(logger, http.StatusOK, "product-loop")
 	})
 	registerA2ARoutes(mux, logger, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rateLimiter)
+	registerDemoUIRoutes(mux)
 	return mux
 }
 
