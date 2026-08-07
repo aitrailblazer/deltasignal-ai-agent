@@ -143,6 +143,20 @@ try {
   if (!heroTitle.includes("Apple is the proof")) {
     throw new Error("Apple is not the primary landing-page proof.");
   }
+  const projectDescription = (await desktop.locator(".project-description").textContent()) ?? "";
+  for (const phrase of [
+    "governed financial-evidence operating system",
+    "dated filings and market data",
+    "provenance-rich research packets",
+    "AI agents and human analysts",
+  ]) {
+    if (!projectDescription.includes(phrase)) {
+      throw new Error(`Top-level project description is missing: ${phrase}`);
+    }
+  }
+  if (!(await desktop.locator(".project-description").isVisible())) {
+    throw new Error("Top-level project description is not visible.");
+  }
   if ((await desktop.getByRole("link", {name: /Run a sample AAPL evidence report/}).count()) !== 1) {
     throw new Error("Primary Apple workflow action is missing.");
   }

@@ -261,6 +261,9 @@
         .hero{position:relative;min-height:720px;padding:132px 0 64px;display:flex;align-items:center}
         .hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(81,204,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(81,204,255,.12) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
         .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center}
+        .project-description{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;max-width:720px;margin-bottom:20px;padding:14px 16px;border:1px solid rgba(85,229,176,.28);border-radius:13px;background:linear-gradient(115deg,rgba(85,229,176,.10),rgba(81,204,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
+        .project-description strong{color:var(--green);font:900 9px/1.3 "SFMono-Regular",monospace;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
+        .project-description span{color:#e5f1fb;font-size:14px;line-height:1.5;font-weight:720}
         .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cyan);font:800 10px/1 "SFMono-Regular",monospace;letter-spacing:.16em;text-transform:uppercase}
         .eyebrow::before{content:"";width:22px;height:1px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
         h1{max-width:760px;margin-top:22px;font-size:clamp(54px,6vw,82px);line-height:.9;letter-spacing:-.058em}
@@ -328,7 +331,7 @@
         .record-safe{color:#61758f;font:700 8px "SFMono-Regular",monospace;letter-spacing:.09em}
         @media(max-width:980px){.hero-grid,.section-head,.capability-layout,.demo-shell{grid-template-columns:1fr}.hero{padding-top:120px}.system-card{max-width:670px}.workflow{grid-template-columns:repeat(3,1fr)}.proof-grid,.competition-proof-grid{grid-template-columns:1fr 1fr}.architecture-overview{grid-template-columns:1fr 1fr}.overview-node:not(:last-child)::after{display:none}.agent-grid{grid-template-columns:1fr 1fr}.arch-delivery{grid-template-columns:1fr}.arch-converge{display:none}.demo-visual{min-height:0}.trust-grid{grid-template-columns:1fr 1fr}.trust:nth-child(2){border-right:0}.trust:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.07)}}
         @media(max-width:700px){.shell{width:min(100% - 26px,1240px)}.challenge-chip{display:none}.navlinks{position:absolute;top:64px;left:13px;right:13px;display:none;align-items:stretch;flex-direction:column;gap:0;padding:9px;border:1px solid #253c5a;border-radius:12px;background:#081426;box-shadow:0 25px 70px #0008}.navlinks.open{display:flex}.navlinks a{padding:12px}.menu{display:block}.hero{min-height:auto;padding-bottom:56px}.hero-grid{gap:35px}h1{font-size:clamp(51px,16vw,76px)}.trust-grid,.proof-grid,.competition-proof-grid,.cap-panel ul,.demo-points,.agent-grid,.architecture-overview{grid-template-columns:1fr}.trust{border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}.trust:last-child{border-bottom:0}.arch-entry{grid-template-columns:1fr}.arch-arrow{width:1px;height:28px;margin:auto;background:linear-gradient(var(--cyan),var(--green))}.arch-arrow::after{right:-4px;top:auto;bottom:-1px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:7px solid var(--green)}.agent-architecture{padding:15px}.workflow{grid-template-columns:1fr 1fr}.work-step:not(:last-child)::after{display:none}.cap-panel{padding:23px}.demo-copy{padding:28px 22px}.demo-visual{padding:15px}.visual-badge{position:static;margin:0 15px 17px;text-align:center}.footer-grid{align-items:flex-start;flex-wrap:wrap}.footer-links{width:100%;margin-left:46px;flex-wrap:wrap}}
-        @media(max-width:430px){.workflow{grid-template-columns:1fr}.brand-name{font-size:13px}.hero{padding-top:105px}.actions .button{width:100%}}
+        @media(max-width:430px){.workflow{grid-template-columns:1fr}.brand-name{font-size:13px}.hero{padding-top:105px}.actions .button{width:100%}.project-description{grid-template-columns:1fr;gap:6px;padding:12px 13px}.project-description strong{white-space:normal}}
         @media(max-width:1000px){.competition-stage{grid-template-columns:1fr;padding-top:5vh;overflow:auto}.competition-visual{display:none}.competition-copy h1{font-size:clamp(46px,9vw,78px)}.record-safe{display:none}}
         @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.arch-arrow::before,.arch-down::before,.agent-id i{animation:none!important}}
       `;
@@ -362,6 +365,10 @@
             <section class="hero">
               <div class="shell hero-grid">
                 <div>
+                  <div class="project-description" aria-label="Project description">
+                    <strong>What DeltaSignal is</strong>
+                    <span>A governed financial-evidence operating system that turns dated filings and market data into inspectable, provenance-rich research packets for AI agents and human analysts.</span>
+                  </div>
                   <div class="eyebrow">Apple · public reference case · reusable workflow</div>
                   <h1>Apple is the proof. <span>Financial agents need an evidence system.</span></h1>
                   <p class="lede">Ask a real AAPL research question. DeltaSignal retrieves dated SEC filing facts, delivers them through controlled read-only tools, reviews the interpretation, and returns an inspectable evidence packet.</p>

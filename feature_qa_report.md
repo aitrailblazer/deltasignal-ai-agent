@@ -4,11 +4,11 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Totals
 
-- Total features discovered: 55
-- Total verified before fixes: 49
+- Total features discovered: 56
+- Total verified before fixes: 50
 - Total failed before fixes: 6
 - Total fixed: 6
-- Total verified after retest: 55
+- Total verified after retest: 56
 - Total still blocked: 0
 - Total needing product decision: 0
 
@@ -32,6 +32,7 @@ Tracker source: `feature_status_tracker.csv`
 - `docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html`
 - `docs/Google_Cloud_AAPL_MCP_Three_Minute_Video_Scenario_2026_08_06.html`
 - `docs/DeltaSignal_First_10_Seconds_Comprehension_Audit_2026_08_07.html`
+- `index.html; tests/landing-page.mjs; CHANGELOG.html`
 
 ## Commits Recorded In Tracker
 
