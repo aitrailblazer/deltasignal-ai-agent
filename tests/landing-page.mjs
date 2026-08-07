@@ -30,6 +30,12 @@ try {
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
   );
   if (desktopOverflow) throw new Error("Desktop landing page has horizontal overflow.");
+  if ((await desktop.locator("#agent-architecture .agent-card").count()) !== 4) {
+    throw new Error("Expected four bounded specialist agents in the architecture diagram.");
+  }
+  if (!((await desktop.locator("#agent-architecture").textContent()) ?? "").includes("Evidence-boundary reviewer")) {
+    throw new Error("Agent architecture is missing its review gate.");
+  }
 
   const essentialLinks = [
     "./client-demo/google-cloud-aapl/",
