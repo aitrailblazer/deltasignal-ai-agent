@@ -28,7 +28,8 @@ The product serves three connected audiences:
 | Enhanced demo video | https://youtu.be/YegCr4gFDII |
 | Guided HUT demo | https://aitrailblazer.github.io/deltasignal-ai-agent/START_HERE.html |
 | Cloud Run demo UI | https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo |
-| ATLAS-7 evidence surface | https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html |
+| DeltaSignal ATLAS-7 MCP surface | https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/ |
+| Agent-readable MCP operator contract | https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt |
 | DeltaSignal research | https://deltasignal.substack.com/ |
 
 Record the deterministic six-slide product presentation at 1920×1080:
@@ -85,6 +86,53 @@ Component roles:
 - **Gemini** orchestrates synthesis and produces readable diligence output.
 - **Cloud Run** hosts the deployed Go service and protected demo routes.
 - **A2A Agent Card** exposes skills for external agent discovery and invocation.
+
+## How Google Agents Call DeltaSignal MCP
+
+The Google Cloud layer orchestrates the research; it does not recreate the
+financial evidence. A protected Cloud Run coordinator validates the request,
+delegates to a narrow specialist, and calls a named read-only tool on the
+[DeltaSignal ATLAS-7 MCP surface](https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/).
+The raw evidence envelope is preserved for review before Gemini writes a
+readable brief.
+
+```mermaid
+flowchart LR
+  Question["Apple research question"] --> Coordinator["Cloud Run coordinator"]
+  Coordinator --> Specialist["Filing-facts specialist"]
+  Specialist --> Call["MCP tools/call<br/>deltasignal_company_fundamentals<br/>{ ticker: AAPL }"]
+  Call --> Atlas["DeltaSignal ATLAS-7 MCP"]
+  Atlas --> Envelope["Evidence envelope<br/>filing identity · values · dates<br/>quality · caveats · provenance"]
+  Envelope --> Reviewer["Boundary reviewer"]
+  Reviewer --> Gemini["Gemini explanation"]
+  Gemini --> Packet["Inspectable Apple evidence packet"]
+```
+
+Logical Apple request shape:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "aapl-fundamentals-1",
+  "method": "tools/call",
+  "params": {
+    "name": "deltasignal_company_fundamentals",
+    "arguments": {
+      "ticker": "AAPL"
+    }
+  }
+}
+```
+
+The specialist preserves issuer identity, filing form and period, accession,
+reported values, units, source dates, quality flags, hashes, caveats, route
+provenance, and access status when returned. If Apple does not disclose a
+requested item—such as direct Apple Intelligence revenue attribution—the
+result remains unresolved rather than being inferred by Gemini.
+
+The public AAPL page is a deterministic contract demonstration. Live MCP calls
+occur only in the protected server runtime. Credentials never enter the
+browser, and an HTTP 402 changes access only; it never changes the evidence.
 
 ## Agent-Native Proof
 

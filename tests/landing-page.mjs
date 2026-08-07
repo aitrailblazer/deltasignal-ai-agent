@@ -52,6 +52,10 @@ try {
   if (!architectureText.includes("GCP RUNTIME · NOT AN AGENT") || !architectureText.includes("GOOGLE AI MODEL · NOT AN AGENT")) {
     throw new Error("Technology and AI-agent roles are not explicitly distinguished.");
   }
+  const publicMCPLink = desktop.locator('a[href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/"]');
+  if ((await publicMCPLink.count()) < 2) {
+    throw new Error("Public DeltaSignal MCP surface is not linked from the primary navigation and page content.");
+  }
   const architectureType = await desktop.locator("#agent-architecture .agent-card").first().evaluate((card) => ({
     title: Number.parseFloat(getComputedStyle(card.querySelector("b")).fontSize),
     body: Number.parseFloat(getComputedStyle(card.querySelector("p")).fontSize),

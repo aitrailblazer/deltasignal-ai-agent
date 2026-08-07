@@ -20,6 +20,18 @@ try {
   const url = `http://127.0.0.1:${port}/client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html`;
 
   await page.goto(url, { waitUntil: "networkidle" });
+  const mcpSurface = page.locator('a[href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/"]');
+  if ((await mcpSurface.count()) < 2) {
+    throw new Error("Expected prominent DeltaSignal MCP links in navigation and demo content.");
+  }
+  const appleCallPath = page.locator("#mcp-call-path");
+  await appleCallPath.waitFor({ state: "visible" });
+  const callPathText = await appleCallPath.innerText();
+  for (const required of ["Cloud Run coordinator", "deltasignal_company_fundamentals", '"ticker": "AAPL"', "evidence envelope"]) {
+    if (!callPathText.includes(required)) {
+      throw new Error(`Apple MCP call visualization is missing: ${required}`);
+    }
+  }
   await page.locator("#interactive-walkthrough").scrollIntoViewIfNeeded();
 
   const tabs = page.locator("[data-step-target]");

@@ -14,16 +14,18 @@
     .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:stretch}.step{position:relative;border:1px solid var(--line);border-radius:14px;padding:16px;background:#0a1322}.step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:45%;z-index:2;color:var(--gold);font-weight:950}.step b{display:block;color:var(--gold);font-size:13px;text-transform:uppercase}.step span{display:block;color:var(--muted);font-size:13px;margin-top:7px}
     .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}.box{border:1px solid var(--line);border-radius:18px;padding:22px;background:rgba(9,18,33,.88)}.box h3{margin:0 0 10px}.box ul{margin:0;padding-left:20px;color:var(--muted)}.box li{margin:8px 0}.good{border-color:#356d5c}.warn{border-color:#725d33}.terminal{border:1px solid #2b4163;border-radius:16px;background:#02060d;overflow:hidden}.terminal .bar{padding:10px 14px;background:#111b2c;color:var(--muted);font-size:12px}.terminal pre{white-space:pre-wrap;margin:0;padding:18px;color:#d9f7ff;font-size:13px;overflow:auto}
     .truth{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.truth b{color:var(--green)}.truth .red b{color:var(--red)}.links{display:flex;flex-wrap:wrap;gap:10px}.button{display:inline-flex;align-items:center;padding:12px 15px;border-radius:11px;border:1px solid var(--line);text-decoration:none;font-weight:850;background:#101d32;color:var(--text);cursor:pointer}.button.primary{background:linear-gradient(135deg,var(--green),var(--blue));color:#041016;border:0}
+    .mcp-map{position:relative;overflow:hidden;border:1px solid #315076;border-radius:24px;padding:clamp(20px,3vw,34px);background:radial-gradient(circle at 50% 0,rgba(185,144,255,.15),transparent 34%),linear-gradient(145deg,#0c1930,#050b15 72%);box-shadow:0 28px 80px #0006}.mcp-map:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(86,200,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(86,200,255,.14) 1px,transparent 1px);background-size:42px 42px}.mcp-map>*{position:relative}.mcp-map-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:1px solid #253d5f}.mcp-map-head h3{max-width:720px;margin:5px 0 0;font-size:clamp(28px,4vw,46px);line-height:1.02;letter-spacing:-.035em}.mcp-map-head p{max-width:410px;margin:0;color:var(--muted);font-size:14px}.mcp-call-flow{display:grid;grid-template-columns:1fr 76px 1.18fr 76px 1fr;align-items:stretch;gap:10px;margin-top:26px}.mcp-system{min-height:248px;padding:21px;border:1px solid #294667;border-radius:17px;background:rgba(7,16,30,.94)}.mcp-system.google{border-color:#3d6084}.mcp-system.fabric-card{border-color:#7059a7;background:linear-gradient(155deg,rgba(48,31,81,.92),rgba(11,17,35,.96))}.mcp-system.output-card{border-color:#39735f}.mcp-icon{width:52px;height:52px;display:grid;place-items:center;border:1px solid currentColor;border-radius:15px;color:var(--blue);background:#0b1a2c;font-size:24px;font-weight:950}.mcp-icon svg{width:35px;height:35px}.mcp-icon .cloud-blue{stroke:#4285f4}.mcp-icon .cloud-red{stroke:#ea4335}.mcp-icon .cloud-yellow{stroke:#fbbc04}.mcp-icon .cloud-green{stroke:#34a853}.fabric-card .mcp-icon{color:var(--purple)}.output-card .mcp-icon{color:var(--green)}.mcp-system .label{display:block;margin-top:18px;color:#7f93ad;font:900 9px "SFMono-Regular",monospace;letter-spacing:.12em;text-transform:uppercase}.mcp-system h4{margin:6px 0 0;font-size:21px;line-height:1.12}.mcp-system p{margin:10px 0 0;color:var(--muted);font-size:13px}.mcp-system code{display:block;margin-top:14px;padding:10px;border:1px solid #293e5d;border-radius:9px;background:#050b14;color:#d9f7ff;font-size:11px;line-height:1.45;word-break:break-word}.mcp-arrow{align-self:center;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));position:relative;box-shadow:0 0 14px rgba(185,144,255,.28)}.mcp-arrow:last-of-type{background:linear-gradient(90deg,var(--purple),var(--green))}.mcp-arrow:after{content:"";position:absolute;right:-1px;top:-5px;border-left:9px solid var(--purple);border-block:6px solid transparent}.mcp-arrow:last-of-type:after{border-left-color:var(--green)}.mcp-arrow span{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);color:#8fa3bf;font:900 8px "SFMono-Regular",monospace;letter-spacing:.08em;white-space:nowrap}.apple-call{display:grid;grid-template-columns:.72fr 1.28fr;gap:14px;margin-top:16px}.call-code,.call-result{border:1px solid #273f60;border-radius:15px;background:#040911;overflow:hidden}.call-code b,.call-result b{display:block;padding:11px 14px;border-bottom:1px solid #263b59;background:#0c1728;color:var(--gold);font-size:11px;letter-spacing:.07em;text-transform:uppercase}.call-result b{color:var(--green)}.call-code pre,.call-result ul{margin:0;padding:17px}.call-code pre{white-space:pre-wrap;color:#d9f7ff;font-size:12px;line-height:1.55}.call-result ul{padding-left:35px;color:var(--muted);font-size:13px}.call-result li{margin:7px 0}.mcp-note{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-top:16px;padding:14px 16px;border:1px solid #2d4668;border-radius:12px;background:#0a1526;color:var(--muted);font-size:12px}.mcp-note strong{color:var(--text)}.mcp-note a{font-weight:900;white-space:nowrap}
     .interactive-lab{position:relative;border:1px solid #2b4568;border-radius:24px;overflow:hidden;background:linear-gradient(155deg,rgba(11,23,42,.98),rgba(4,9,18,.98));box-shadow:0 30px 90px #0007}.lab-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:22px 24px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(86,200,255,.08),transparent 48%,rgba(185,144,255,.08))}.lab-head h3{font-size:25px;margin:5px 0 0}.lab-kicker{color:var(--blue);font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}.lab-status{display:flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid #365278;border-radius:999px;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.08em;white-space:nowrap}.lab-status:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}.lab-controls{display:flex;gap:8px;flex-wrap:wrap;padding:14px 24px;border-bottom:1px solid var(--line)}.stage-tab{appearance:none;border:1px solid #263c5c;border-radius:10px;padding:9px 12px;background:#0b1628;color:#8495ad;font:800 11px/1.2 Inter,system-ui;cursor:pointer;transition:.2s}.stage-tab span{color:#526884;margin-right:5px}.stage-tab.done{color:#b8c9dc;border-color:#31536c}.stage-tab.done span{color:var(--green)}.stage-tab.active{color:#06111b;background:linear-gradient(135deg,var(--gold),var(--green));border-color:transparent;box-shadow:0 0 22px rgba(101,230,174,.18)}.stage-tab.active span{color:#17384a}
     .lab-canvas{display:grid;grid-template-columns:1fr 1.6fr 1.12fr;gap:14px;padding:22px 24px 16px;min-height:440px}.lane{position:relative;border:1px solid #213653;border-radius:17px;padding:14px;background:rgba(7,15,28,.78)}.lane-label{color:#7588a5;font-size:10px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}.node{position:relative;border:1px solid #284261;border-radius:12px;padding:12px 13px;margin-top:9px;background:#0a1728;opacity:.38;filter:saturate(.45);transform:translateY(0);transition:opacity .3s,filter .3s,transform .3s,border-color .3s,box-shadow .3s}.node b{display:block;font-size:13px}.node small{display:block;color:#8495ad;font-size:10px;margin-top:4px}.node .glyph{float:left;width:31px;height:31px;margin-right:10px;border:1px solid currentColor;border-radius:9px;display:grid;place-items:center;color:var(--blue);font-weight:950}.node.is-live{opacity:1;filter:none;border-color:var(--blue);box-shadow:0 0 22px rgba(86,200,255,.13);transform:translateY(-2px)}.node.is-complete{opacity:.82;filter:none;border-color:#315b59}.node.gold.is-live{border-color:var(--gold);box-shadow:0 0 22px rgba(247,201,105,.13)}.node.purple.is-live{border-color:var(--purple);box-shadow:0 0 22px rgba(185,144,255,.16)}.pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.pipe{padding:10px 6px;border:1px solid #263d5d;border-radius:10px;background:#0a1728;text-align:center;color:#7386a1;font-size:9px;font-weight:900;opacity:.4;transition:.25s}.pipe.is-live{opacity:1;color:#07131b;background:var(--green);border-color:var(--green)}.pipe.is-complete{opacity:.9;color:var(--green);border-color:#39765f}.fabric{margin-top:15px;padding:17px;border:1px solid #654e9d;border-radius:15px;background:linear-gradient(135deg,#241943,#15142f);opacity:.4;transition:.3s}.fabric b{display:block;font-size:18px}.fabric span{display:block;color:#bcaee1;font-size:10px;margin-top:4px}.fabric.is-live,.fabric.is-complete{opacity:1;box-shadow:0 0 24px rgba(185,144,255,.13)}.agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.packet{grid-column:1/-1;margin-top:2px}.packet-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.packet-tags i{font-style:normal;padding:4px 6px;border-radius:999px;background:#11233a;color:#8fa3bf;font-size:8px;font-weight:900;text-transform:uppercase}.packet.is-live .packet-tags i:nth-child(1){color:var(--blue)}.packet.is-live .packet-tags i:nth-child(2){color:var(--purple)}.packet.is-live .packet-tags i:nth-child(3){color:var(--red)}.packet.is-live .packet-tags i:nth-child(4){color:var(--green)}
     .lab-narration{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin:0 24px 18px;padding:17px 18px;border:1px solid #2b4364;border-radius:15px;background:#0a1425}.narration-copy b{display:block;font-size:19px}.narration-copy p{margin:5px 0 0;color:var(--muted);font-size:13px}.proof-boundary{border-left:2px solid var(--red);padding-left:13px}.proof-boundary b{color:var(--red);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.proof-boundary span{display:block;color:#b9c5d6;font-size:11px;margin-top:5px}.lab-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 24px;background:#070e1a;border-top:1px solid var(--line)}.transport{display:flex;gap:8px}.transport button{appearance:none;border:1px solid #2a4262;border-radius:9px;padding:9px 12px;background:#101d31;color:var(--text);font-weight:900;cursor:pointer}.transport button:hover{border-color:var(--blue)}.transport button:disabled{opacity:.35;cursor:not-allowed}.transport .play{background:linear-gradient(135deg,var(--green),var(--blue));color:#041016;border:0}.progress{display:flex;align-items:center;gap:10px;color:#8698b2;font-size:10px;font-weight:900}.progress-track{width:170px;height:5px;border-radius:999px;background:#182a43;overflow:hidden}.progress-bar{height:100%;width:16.666%;background:linear-gradient(90deg,var(--blue),var(--green),var(--gold));transition:width .3s}.recording-note{color:#6f819c;font-size:10px}.presentation-mode{overflow:hidden}.presentation-mode .top,.presentation-mode .hero,.presentation-mode main>.section:not(.interactive-section),.presentation-mode footer{display:none}.presentation-mode .wrap{width:100%;max-width:none}.presentation-mode .interactive-section{padding:0}.presentation-mode .interactive-section>h2,.presentation-mode .interactive-section>.lead{display:none}.presentation-mode .interactive-lab{min-height:100vh;border:0;border-radius:0;display:flex;flex-direction:column}.presentation-mode .lab-canvas{flex:1}.presentation-mode .lab-head{padding-top:28px}
-    footer{border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted);font-size:13px}@media(max-width:900px){.hero,.split,.lab-narration{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr 1fr}.truth{grid-template-columns:1fr}.lab-canvas{grid-template-columns:1fr 1fr}.lab-canvas .lane:last-child{grid-column:1/-1}.lab-head{align-items:center}}@media(max-width:620px){.grid,.flow,.lab-canvas{grid-template-columns:1fr}.step:after{display:none}.lab-canvas .lane:last-child{grid-column:auto}.lab-head,.lab-footer{align-items:flex-start;flex-direction:column}.lab-status{white-space:normal}.progress-track{width:130px}.recording-note{display:none}}
+    footer{border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted);font-size:13px}@media(max-width:900px){.hero,.split,.lab-narration,.apple-call{grid-template-columns:1fr}.mcp-map-head{display:grid;align-items:start}.grid{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr 1fr}.truth{grid-template-columns:1fr}.lab-canvas{grid-template-columns:1fr 1fr}.lab-canvas .lane:last-child{grid-column:1/-1}.lab-head{align-items:center}.mcp-call-flow{grid-template-columns:1fr}.mcp-arrow{width:2px;height:34px;margin:auto;background:linear-gradient(var(--blue),var(--purple))}.mcp-arrow:last-of-type{background:linear-gradient(var(--purple),var(--green))}.mcp-arrow:after{right:-5px;top:auto;bottom:-1px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid var(--purple)}.mcp-arrow:last-of-type:after{border-left-color:transparent;border-top-color:var(--green)}.mcp-arrow span{left:14px;bottom:8px;transform:none}}@media(max-width:620px){.grid,.flow,.lab-canvas{grid-template-columns:1fr}.step:after{display:none}.lab-canvas .lane:last-child{grid-column:auto}.lab-head,.lab-footer,.mcp-note{align-items:flex-start;flex-direction:column}.lab-status{white-space:normal}.progress-track{width:130px}.recording-note{display:none}}
   </style>
 </head>
 <body>
   <script id="strategix-contract" type="application/xml">
-    <visual-spec id="deltasignal-google-cloud-aapl-client-demo" version="1.1.0" date="2026-08-06">
+    <visual-spec id="deltasignal-google-cloud-aapl-client-demo" version="1.2.0" date="2026-08-06">
       <purpose>Show clients how bounded Google Cloud agents retrieve, classify, and explain AAPL evidence through DeltaSignal MCP.</purpose>
+      <public-mcp-surface>https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/</public-mcp-surface>
       <modes>
         <mode id="fixture" network="forbidden" payment="forbidden" default="true"/>
         <mode id="live" network="required" payment="never-automatic" credential-location="Google Secret Manager"/>
@@ -42,6 +44,7 @@
         <criterion>Unsupported ATLAS-7 levels remain missing or partial.</criterion>
         <criterion>The recording-ready walkthrough exposes six deterministic stages, keyboard navigation, autoplay, reset, and a presentation view.</criterion>
         <criterion>The interactive walkthrough performs no MCP, model, credential, or payment call.</criterion>
+        <criterion>The page visually explains the server-side Google agent to DeltaSignal MCP request and response path with an AAPL tool-call example.</criterion>
       </acceptance>
     </visual-spec>
   </script>
@@ -51,6 +54,7 @@
       <div><b>DeltaSignal MCP × Google Cloud</b><span>Public client reference · AAPL evidence workflow</span></div>
       <nav class="topnav" aria-label="Demo navigation">
         <a href="../../">Main site</a>
+        <a href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/">ATLAS-7 MCP</a>
         <a href="https://github.com/aitrailblazer/deltasignal-ai-agent/tree/main/client-demo/google-cloud-aapl">GitHub source</a>
       </nav>
     </div>
@@ -148,6 +152,79 @@
         </div>
       </section>
 
+      <section class="section" id="mcp-call-path">
+        <h2>How the Google agents call DeltaSignal MCP</h2>
+        <p class="lead">The browser never receives an MCP credential. A Google Cloud coordinator creates a bounded plan, server-side specialists call named read-only tools, and the returned evidence envelopes remain attached when Gemini explains the result.</p>
+        <div class="mcp-map">
+          <div class="mcp-map-head">
+            <div>
+              <div class="lab-kicker">Server-side request path · Apple example</div>
+              <h3>Google orchestrates the work. DeltaSignal supplies the governed evidence.</h3>
+            </div>
+            <p>The MCP surface is an external evidence service—not a model and not a hidden prompt. Tool arguments define scope; evidence envelopes define what the answer may claim.</p>
+          </div>
+          <div class="mcp-call-flow" role="img" aria-label="Cloud Run coordinator sends a bounded AAPL tool call to DeltaSignal MCP and receives a provenance-rich evidence envelope for review and Gemini explanation">
+            <article class="mcp-system google">
+              <div class="mcp-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none">
+                  <path class="cloud-blue" d="M10 24H7.5A5.5 5.5 0 0 1 6 13.2" stroke-width="4" stroke-linecap="round"/>
+                  <path class="cloud-red" d="M6 13.2A8.7 8.7 0 0 1 20.7 8" stroke-width="4" stroke-linecap="round"/>
+                  <path class="cloud-yellow" d="M20.7 8A7.2 7.2 0 0 1 27 14.4" stroke-width="4" stroke-linecap="round"/>
+                  <path class="cloud-green" d="M27 14.4A5.2 5.2 0 0 1 24.5 24H10" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="label">Google Cloud · orchestrator</span>
+              <h4>Cloud Run coordinator</h4>
+              <p>Validates the issuer and intent, selects one approved specialist tool, and sends only the required arguments.</p>
+              <code>issuer: AAPL<br>lane: filing facts<br>tool: company fundamentals</code>
+            </article>
+            <div class="mcp-arrow" aria-hidden="true"><span>tools/call</span></div>
+            <article class="mcp-system fabric-card">
+              <div class="mcp-icon" aria-hidden="true">◇</div>
+              <span class="label">External evidence service</span>
+              <h4>DeltaSignal ATLAS-7 MCP</h4>
+              <p>Resolves AAPL identity, executes the governed read-only route, and returns filing fields with dates, quality, caveats, and provenance.</p>
+              <code>deltasignal_company_fundamentals<br>{"ticker":"AAPL"}</code>
+            </article>
+            <div class="mcp-arrow" aria-hidden="true"><span>evidence envelope</span></div>
+            <article class="mcp-system output-card">
+              <div class="mcp-icon" aria-hidden="true">✓</div>
+              <span class="label">Google Cloud · reviewed output</span>
+              <h4>Review → Gemini brief</h4>
+              <p>The reviewer separates facts from interpretation and missing evidence. Gemini converts only that classified packet into readable prose.</p>
+              <code>facts + source dates<br>quality + caveats<br>unresolved + provenance</code>
+            </article>
+          </div>
+          <div class="apple-call">
+            <div class="call-code">
+              <b>Apple MCP request shape</b>
+              <pre>{
+  "jsonrpc": "2.0",
+  "id": "aapl-fundamentals-1",
+  "method": "tools/call",
+  "params": {
+    "name": "deltasignal_company_fundamentals",
+    "arguments": { "ticker": "AAPL" }
+  }
+}</pre>
+            </div>
+            <div class="call-result">
+              <b>What the specialist preserves</b>
+              <ul>
+                <li>Issuer identity, CIK, filing form, period, and accession when returned.</li>
+                <li>Reported financial values with their units and source dates.</li>
+                <li>Quality flags, evidence hashes, caveats, route provenance, and access status.</li>
+                <li>An explicit unresolved state when Apple Intelligence attribution or another requested field is not disclosed.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mcp-note">
+            <span><strong>Important:</strong> this public page demonstrates the contract deterministically. Live execution occurs from the protected server runtime; a 402 changes access, never evidence.</span>
+            <a href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/">Explore the DeltaSignal MCP surface →</a>
+          </div>
+        </div>
+      </section>
+
       <section class="section">
         <h2>The four specialist agents</h2>
         <p class="lead">Each specialist has one bounded MCP tool. The coordinator preserves the raw response and stable call order before any Gemini synthesis occurs.</p>
@@ -225,6 +302,7 @@ gcloud run deploy deltasignal-aapl-client-demo \
         <div class="links">
           <a class="button primary" href="../../docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html">Open the architecture diagram</a>
           <a class="button" href="../../docs/Google_Cloud_AAPL_MCP_Three_Minute_Video_Scenario_2026_08_06.html">Open the 3-minute video scenario</a>
+          <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/">Explore the DeltaSignal MCP surface</a>
           <a class="button" href="https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/llms-full.txt">Read the live MCP operator contract</a>
         </div>
       </section>
@@ -371,6 +449,6 @@ gcloud run deploy deltasignal-aapl-client-demo \
       }
     })();
   </script>
-  <demo-receipt data-version="1.1.0"></demo-receipt>
+  <demo-receipt data-version="1.2.0"></demo-receipt>
 </body>
 </html>
