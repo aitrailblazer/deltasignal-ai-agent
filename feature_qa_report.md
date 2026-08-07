@@ -4,11 +4,11 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Totals
 
-- Total features discovered: 57
-- Total verified before fixes: 51
+- Total features discovered: 58
+- Total verified before fixes: 52
 - Total failed before fixes: 6
 - Total fixed: 6
-- Total verified after retest: 57
+- Total verified after retest: 58
 - Total still blocked: 0
 - Total needing product decision: 0
 
@@ -33,6 +33,7 @@ Tracker source: `feature_status_tracker.csv`
 - `docs/Google_Cloud_AAPL_MCP_Three_Minute_Video_Scenario_2026_08_06.html`
 - `docs/DeltaSignal_First_10_Seconds_Comprehension_Audit_2026_08_07.html`
 - `index.html; tests/landing-page.mjs; CHANGELOG.html`
+- `index.html; assets/deltasignal-agent-native-evidence-fabric.png; tests/landing-page.mjs; CHANGELOG.html`
 
 ## Commits Recorded In Tracker
 
@@ -42,7 +43,7 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Test Evidence
 
-- Test types used: `Automated UI`, `Manual UI`, `Automated Test`, `Code Review`
+- Test types used: `Automated UI`, `Manual UI`, `Automated Test`, `Code Review`, `Automated UI + visual inspection`
 - Commands run are not captured as a dedicated tracker column, so this report only summarizes tracker-backed test evidence.
 
 ## Coverage Gaps

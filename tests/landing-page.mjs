@@ -182,6 +182,31 @@ try {
   if ((await desktop.getByRole("link", {name: /Run a sample AAPL evidence report/}).count()) !== 1) {
     throw new Error("Primary Apple workflow action is missing.");
   }
+  const evidenceFabric = desktop.locator(".evidence-fabric");
+  if ((await evidenceFabric.count()) !== 1) {
+    throw new Error("Expected one agent-native evidence-fabric infographic.");
+  }
+  const evidenceFabricImage = evidenceFabric.locator("img");
+  await evidenceFabricImage.scrollIntoViewIfNeeded();
+  if (!(await evidenceFabricImage.isVisible())) {
+    throw new Error("Agent-native evidence-fabric infographic is not visible.");
+  }
+  const evidenceFabricState = await evidenceFabricImage.evaluate((image) => ({
+    src: image.getAttribute("src"),
+    complete: image.complete,
+    naturalWidth: image.naturalWidth,
+    naturalHeight: image.naturalHeight,
+    alt: image.getAttribute("alt"),
+  }));
+  if (
+    evidenceFabricState.src !== "./assets/deltasignal-agent-native-evidence-fabric.png" ||
+    !evidenceFabricState.complete ||
+    evidenceFabricState.naturalWidth < 1200 ||
+    evidenceFabricState.naturalHeight < 800 ||
+    !evidenceFabricState.alt?.includes("SEC EDGAR")
+  ) {
+    throw new Error(`Invalid evidence-fabric infographic: ${JSON.stringify(evidenceFabricState)}`);
+  }
 
   const theater = await browser.newPage({viewport: {width: 1920, height: 1080}});
   await theater.goto(`http://127.0.0.1:${port}/?tour=1`, {
