@@ -19,6 +19,32 @@ try {
   await desktop.goto(`http://127.0.0.1:${port}/`, {waitUntil: "networkidle"});
   await desktop.locator("deltasignal-site").waitFor();
 
+  const primaryNavLinks = await desktop.locator("nav .navlinks > a").count();
+  if (primaryNavLinks !== 6) {
+    throw new Error(`Expected five primary destinations plus one action, found ${primaryNavLinks}.`);
+  }
+  if ((await desktop.locator(".hero .actions a").count()) !== 2) {
+    throw new Error("Hero must contain exactly two primary decisions.");
+  }
+  if ((await desktop.locator(".trust-strip .trust").count()) !== 4) {
+    throw new Error("Expected four operational proof-strip states.");
+  }
+  const proofStripText = (await desktop.locator(".trust-strip").textContent()) ?? "";
+  for (const required of ["REFERENCE CASE", "EVIDENCE STATE", "MCP MODE", "TRUST BOUNDARY"]) {
+    if (!proofStripText.includes(required)) throw new Error(`Proof strip is missing ${required}.`);
+  }
+  if ((await desktop.locator(".architecture-overview .overview-node").count()) !== 5) {
+    throw new Error("Progressive architecture is missing its five-stage overview.");
+  }
+  const architectureDetail = desktop.locator("#architecture-detail");
+  if ((await architectureDetail.getAttribute("class"))?.includes("open")) {
+    throw new Error("Full specialist architecture must be collapsed by default.");
+  }
+  await desktop.locator(".architecture-toggle").click();
+  if (!(await architectureDetail.getAttribute("class"))?.includes("open")) {
+    throw new Error("Full specialist architecture did not open on request.");
+  }
+
   if ((await desktop.locator("[role=tab]").count()) !== 4) {
     throw new Error("Expected four platform capability tabs.");
   }
