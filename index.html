@@ -17,13 +17,14 @@
 </head>
 <body>
   <script id="strategix-landing-contract" type="application/xml">
-<StrategiXVisualSpec version="6.0" status="lit-production-landing" generated="2026-08-06" artifact="index.html">
+<StrategiXVisualSpec version="6.1" status="lit-production-landing-and-competition-theater" generated="2026-08-06" artifact="index.html">
   <CanonicalArtifact>
     <Title>DeltaSignal Evidence Infrastructure</Title>
     <Repository>aitrailblazer/deltasignal-ai-agent</Repository>
     <PublicSurface>https://aitrailblazer.github.io/deltasignal-ai-agent/</PublicSurface>
     <PrimaryDemo>client-demo/google-cloud-aapl/</PrimaryDemo>
     <PresentationDemo>client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html?presentation=1</PresentationDemo>
+    <CompetitionTheater>?competition=1</CompetitionTheater>
     <Architecture>docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html</Architecture>
   </CanonicalArtifact>
   <Purpose>Present DeltaSignal as professional evidence infrastructure for financial agents: governed source materialization, bounded MCP delivery, Google Cloud orchestration, ATLAS-7 interpretation, and provenance-rich output.</Purpose>
@@ -45,6 +46,7 @@
     <Criterion>Primary demo, presentation, architecture, source, agent surface, and Cloud Run routes remain reachable.</Criterion>
     <Criterion>The page never claims that payment, model output, or missing data establishes evidence.</Criterion>
     <Criterion>Interactive controls work with mouse and keyboard and respect reduced-motion preferences.</Criterion>
+    <Criterion>The competition theater fits a 1920 by 1080 recording viewport without scroll or overflow and exposes direct, previous, next, autoplay, and exit controls.</Criterion>
   </AcceptanceCriteria>
   <SourceDigest>
     <Source>client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html</Source>
@@ -107,11 +109,76 @@
       ['AGENT-READY','Outputs are structured for humans, Claude, Codex, Gemini, and enterprise agents.']
     ];
 
+    const competitionSlides = [
+      {
+        id:'opening', eyebrow:'GOOGLE FOR STARTUPS AI AGENTS CHALLENGE · TRACK 3',
+        title:'Financial research becomes infrastructure when other agents can use it.',
+        body:'DeltaSignal is a discoverable, callable, evidence-bounded issuer-intelligence agent. It turns one ticker or TripCode into a reusable research packet with SEC/XBRL evidence, ATLAS-7 interpretation, Gemini synthesis, memory, telemetry, and explicit boundaries.',
+        accent:'cyan', visual:'opening'
+      },
+      {
+        id:'problem', eyebrow:'THE PROBLEM',
+        title:'Most financial AI ends with fluent prose—and hides the evidence path.',
+        body:'A polished answer is not enough for an analyst, compliance team, portfolio agent, or data-room workflow. They need source identity, dates, caveats, missingness, access state, and a packet another system can verify.',
+        accent:'red', visual:'problem'
+      },
+      {
+        id:'architecture', eyebrow:'THE DELTASIGNAL LOOP',
+        title:'Discover. Invoke. Verify. Remember. Return.',
+        body:'Public Agent Card discovery leads to protected A2A execution. DeltaSignal resolves research memory, retrieves bounded ATLAS-7 evidence through MCP, asks Gemini to explain the classified packet, verifies boundaries, and returns a reusable artifact.',
+        accent:'green', visual:'architecture'
+      },
+      {
+        id:'proof', eyebrow:'WORKING TRACK 3 PROOF',
+        title:'One HUT TripCode becomes a continuing diligence workflow.',
+        body:'TF-SUB-9DA70A7F98 resolves a 10-node HUT River, links filing references, returns changed findings and weakened assumptions, preserves session context, creates monitor-next actions, and exposes usage metadata.',
+        accent:'gold', visual:'proof'
+      },
+      {
+        id:'ecosystem', eyebrow:'WHY TRACK 3',
+        title:'DeltaSignal is the specialist evidence node inside a larger agent ecosystem.',
+        body:'Portfolio, compliance, data-room, and subscriber agents can discover the capability, invoke a bounded skill, inspect the returned evidence packet, and reuse it without rebuilding the SEC/XBRL and research-memory stack.',
+        accent:'violet', visual:'ecosystem'
+      },
+      {
+        id:'close', eyebrow:'THE PRODUCT PROMISE',
+        title:'Facts remain facts. Interpretation stays labeled. Missing evidence stays missing.',
+        body:'DeltaSignal does not ask users to trust an answer because it sounds intelligent. It gives agents and humans an evidence system they can inspect, rerun, monitor, and reuse.',
+        accent:'cyan', visual:'close'
+      }
+    ];
+
+    const competitionProofs = [
+      {
+        label:'01 · DISCOVER', title:'Public A2A Agent Card',
+        body:'Inspect the agent identity, skills, protocol metadata, examples, and declared output modes before execution.',
+        href:'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/.well-known/agent-card.json', action:'Inspect Agent Card'
+      },
+      {
+        label:'02 · EXECUTE', title:'Protected Cloud Run UI',
+        body:'Exercise the deployed health, resolve, A2A, monitor, scenario, and usage routes without exposing credentials in the public site.',
+        href:'https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo', action:'Open Cloud Run UI'
+      },
+      {
+        label:'03 · VERIFY', title:'Track 3 A2A Contract',
+        body:'Review the callable skill contract, evidence boundaries, TripCode/River workflow, telemetry, and Marketplace-readiness limits.',
+        href:'./docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html', action:'Read A2A Specification'
+      },
+      {
+        label:'04 · WATCH', title:'Official Competition Demo',
+        body:'Watch the submitted HUT workflow move from research memory through protected evidence execution to a reusable agent packet.',
+        href:'https://youtu.be/_D3q5qKF5k4?si=N4VI1WvA1rRdBWvh', action:'Watch Official Demo'
+      }
+    ];
+
     class DeltaSignalSite extends LitElement {
       static properties = {
         capability: {state:true},
         menuOpen: {state:true},
-        elevated: {state:true}
+        elevated: {state:true},
+        competitionMode: {state:true},
+        competitionSlide: {state:true},
+        competitionPlaying: {state:true}
       };
 
       constructor(){
@@ -119,16 +186,30 @@
         this.capability='evidence';
         this.menuOpen=false;
         this.elevated=false;
+        this.competitionMode=new URLSearchParams(location.search).get('competition')==='1';
+        this.competitionSlide=0;
+        this.competitionPlaying=false;
+        this.competitionTimer=null;
         this._onScroll=()=>{this.elevated=window.scrollY>18};
+        this._onKey=(event)=>{
+          if(!this.competitionMode)return;
+          if(event.key==='ArrowRight')this.setCompetitionSlide(this.competitionSlide+1);
+          if(event.key==='ArrowLeft')this.setCompetitionSlide(this.competitionSlide-1);
+          if(event.key===' '){event.preventDefault();this.toggleCompetitionPlay()}
+          if(event.key==='Escape')this.exitCompetition();
+        };
       }
 
       connectedCallback(){
         super.connectedCallback();
         window.addEventListener('scroll',this._onScroll,{passive:true});
+        window.addEventListener('keydown',this._onKey);
       }
 
       disconnectedCallback(){
         window.removeEventListener('scroll',this._onScroll);
+        window.removeEventListener('keydown',this._onKey);
+        if(this.competitionTimer)clearInterval(this.competitionTimer);
         super.disconnectedCallback();
       }
 
@@ -163,6 +244,8 @@
         .promise{margin-top:20px;padding-left:14px;border-left:2px solid var(--gold);color:#e9dba9;font-size:13px;font-weight:750}
         .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:29px}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 16px;border:1px solid #2b4566;border-radius:10px;background:#0b182a;color:#edf7ff;font-size:13px;font-weight:900;transition:transform .2s,border-color .2s,box-shadow .2s}
         .button:hover{transform:translateY(-2px);border-color:var(--cyan)}.button.primary{border:0;color:#04101a;background:linear-gradient(135deg,var(--green),var(--cyan));box-shadow:0 18px 48px rgba(81,204,255,.15)}
+        .button.competition{border-color:rgba(246,199,96,.5);background:rgba(246,199,96,.08);color:#ffe7aa}
+        .challenge-chip{display:inline-flex;align-items:center;gap:8px;margin-left:12px;padding:7px 10px;border:1px solid rgba(246,199,96,.28);border-radius:999px;color:#e8cb82;background:rgba(246,199,96,.05);font:800 8px "SFMono-Regular",monospace;letter-spacing:.1em}
         .system-card{position:relative;border:1px solid #284261;border-radius:22px;padding:18px;background:linear-gradient(145deg,rgba(12,28,49,.96),rgba(6,13,25,.96));box-shadow:0 38px 100px rgba(0,0,0,.45)}
         .system-card::after{content:"";position:absolute;inset:-1px;border-radius:22px;pointer-events:none;background:linear-gradient(135deg,rgba(81,204,255,.25),transparent 35%,rgba(85,229,176,.13));mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;padding:1px}
         .window-bar{display:flex;align-items:center;gap:6px;padding:0 0 14px;color:#71839d;font:700 9px "SFMono-Regular",monospace;letter-spacing:.1em}.dot{width:7px;height:7px;border-radius:50%;background:#28415e}.dot.live{margin-left:auto;background:var(--green);box-shadow:0 0 12px var(--green)}
@@ -179,17 +262,35 @@
         .demo-shell{margin-top:35px;display:grid;grid-template-columns:.88fr 1.12fr;overflow:hidden;border:1px solid #2b4869;border-radius:22px;background:#071321;box-shadow:0 36px 100px rgba(0,0,0,.35)}.demo-copy{padding:clamp(28px,4vw,50px)}.demo-label{color:var(--gold);font:800 10px "SFMono-Regular",monospace;letter-spacing:.15em}.demo-copy h3{margin-top:15px;font-size:clamp(32px,4vw,54px);line-height:.98;letter-spacing:-.04em}.demo-copy>p{margin-top:18px;color:var(--muted);line-height:1.65}.demo-points{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:25px}.demo-point{padding:12px;border:1px solid #1d3552;border-radius:10px;background:#0a1728}.demo-point b{display:block;color:var(--green);font-size:11px}.demo-point span{display:block;margin-top:4px;color:#8294ad;font-size:10px}.demo-visual{position:relative;display:grid;place-items:center;min-height:510px;padding:25px;background:radial-gradient(circle at 50% 48%,rgba(81,204,255,.09),transparent 50%),#050d18}.demo-visual img{width:100%;height:auto;border:1px solid #233e5d;border-radius:11px;box-shadow:0 25px 70px rgba(0,0,0,.4)}.visual-badge{position:absolute;right:36px;bottom:35px;padding:9px 11px;border:1px solid #3a597c;border-radius:9px;background:rgba(5,12,22,.88);backdrop-filter:blur(12px);color:#dcefff;font:800 8px "SFMono-Regular",monospace;letter-spacing:.09em}
         .workflow{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:36px}.work-step{position:relative;min-height:151px;padding:17px;border:1px solid #203653;border-radius:12px;background:#081426}.work-step:not(:last-child)::after{content:"";position:absolute;top:36px;right:-9px;width:10px;height:1px;background:var(--cyan);z-index:2}.work-num{color:var(--green);font:800 9px "SFMono-Regular",monospace}.work-step b{display:block;margin-top:24px;font-size:14px}.work-step span{display:block;margin-top:7px;color:#7f91aa;font-size:10px}
         .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}.proof-card{padding:20px;border-top:2px solid var(--cyan);background:linear-gradient(180deg,rgba(81,204,255,.07),rgba(8,20,38,.8));border-radius:0 0 12px 12px}.proof-card:nth-child(2){border-color:var(--green)}.proof-card:nth-child(3){border-color:var(--red)}.proof-card:nth-child(4){border-color:var(--violet)}.proof-card b{font:800 9px "SFMono-Regular",monospace;letter-spacing:.11em}.proof-card p{margin-top:12px;color:#93a4ba;font-size:12px;line-height:1.55}
+        .competition-proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}.competition-proof-card{position:relative;min-height:250px;padding:21px;border:1px solid #233b59;border-radius:14px;background:linear-gradient(150deg,#0a182a,#07111f);transition:transform .2s,border-color .2s}.competition-proof-card:hover{transform:translateY(-3px);border-color:#456b90}.competition-proof-card .proof-label{color:var(--gold);font:800 9px "SFMono-Regular",monospace;letter-spacing:.12em}.competition-proof-card h3{margin-top:25px;font-size:21px;line-height:1.1}.competition-proof-card p{margin-top:12px;color:#8fa1b9;font-size:12px;line-height:1.55}.competition-proof-card a{position:absolute;left:21px;bottom:20px;color:var(--cyan);font-size:11px;font-weight:900}
         .cta{margin:10px auto 90px;position:relative;overflow:hidden;padding:clamp(34px,6vw,78px);border:1px solid #345274;border-radius:24px;text-align:center;background:radial-gradient(circle at 50% 0,rgba(81,204,255,.16),transparent 43%),linear-gradient(145deg,#0b1a2e,#07111f)}.cta::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.035),transparent 70%)}.cta h2{position:relative;font-size:clamp(42px,6vw,76px);line-height:.94;letter-spacing:-.055em}.cta p{position:relative;max-width:680px;margin:20px auto 0;color:#a9b8cb;font-size:16px;line-height:1.6}.cta .actions{position:relative;justify-content:center}
         footer{border-top:1px solid rgba(255,255,255,.07);padding:29px 0 40px}.footer-grid{display:flex;align-items:center;gap:18px;color:#72849d;font-size:10px}.footer-grid img{width:28px;height:28px;border-radius:8px}.footer-links{display:flex;gap:15px;margin-left:auto}.footer-links a:hover{color:var(--cyan)}
-        @media(max-width:980px){.hero-grid,.section-head,.capability-layout,.demo-shell{grid-template-columns:1fr}.hero{padding-top:120px}.system-card{max-width:670px}.workflow{grid-template-columns:repeat(3,1fr)}.proof-grid{grid-template-columns:1fr 1fr}.demo-visual{min-height:0}.trust-grid{grid-template-columns:1fr 1fr}.trust:nth-child(2){border-right:0}.trust:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.07)}}
-        @media(max-width:700px){.shell{width:min(100% - 26px,1240px)}.navlinks{position:absolute;top:64px;left:13px;right:13px;display:none;align-items:stretch;flex-direction:column;gap:0;padding:9px;border:1px solid #253c5a;border-radius:12px;background:#081426;box-shadow:0 25px 70px #0008}.navlinks.open{display:flex}.navlinks a{padding:12px}.menu{display:block}.hero{min-height:auto;padding-bottom:56px}.hero-grid{gap:35px}h1{font-size:clamp(51px,16vw,76px)}.trust-grid,.proof-grid,.cap-panel ul,.demo-points{grid-template-columns:1fr}.trust{border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}.trust:last-child{border-bottom:0}.workflow{grid-template-columns:1fr 1fr}.work-step:not(:last-child)::after{display:none}.cap-panel{padding:23px}.demo-copy{padding:28px 22px}.demo-visual{padding:15px}.visual-badge{position:static;margin:0 15px 17px;text-align:center}.footer-grid{align-items:flex-start;flex-wrap:wrap}.footer-links{width:100%;margin-left:46px;flex-wrap:wrap}}
+        .competition-theater{position:relative;width:100vw;height:100vh;min-height:700px;overflow:hidden;background:#040914}
+        .competition-theater::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(81,204,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(81,204,255,.07) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(90deg,#000,transparent 68%);opacity:.36}
+        .competition-top{position:absolute;z-index:4;left:0;right:0;top:0;height:82px;display:flex;align-items:center;padding:0 4vw;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(4,9,20,.84);backdrop-filter:blur(18px)}
+        .competition-brand{display:flex;align-items:center;gap:12px;font-weight:900}.competition-brand img{width:38px;height:38px;border-radius:10px}.competition-brand small{display:block;color:#71839d;font:700 8px "SFMono-Regular",monospace;letter-spacing:.16em}
+        .competition-track{margin-left:auto;display:flex;align-items:center;gap:8px;color:#f1d78f;font:800 9px "SFMono-Regular",monospace;letter-spacing:.12em}.competition-track::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)}
+        .competition-stage{position:absolute;z-index:2;inset:82px 0 86px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:4vw;padding:3.5vh 5vw}
+        .competition-copy{max-width:900px}.competition-eyebrow{color:var(--cyan);font:800 11px "SFMono-Regular",monospace;letter-spacing:.16em}.competition-copy[data-accent="red"] .competition-eyebrow{color:var(--red)}.competition-copy[data-accent="green"] .competition-eyebrow{color:var(--green)}.competition-copy[data-accent="gold"] .competition-eyebrow{color:var(--gold)}.competition-copy[data-accent="violet"] .competition-eyebrow{color:var(--violet)}
+        .competition-copy h1{max-width:1000px;margin-top:2.5vh;font-size:clamp(48px,5.2vw,92px);line-height:.92;letter-spacing:-.055em}.competition-copy p{max-width:820px;margin-top:2.5vh;color:#aab9cb;font-size:clamp(15px,1.25vw,22px);line-height:1.6}
+        .slide-index{margin-top:3vh;color:#60738f;font:800 10px "SFMono-Regular",monospace;letter-spacing:.1em}.slide-index b{color:var(--green)}
+        .competition-visual{position:relative;min-height:min(62vh,650px);display:grid;place-items:center}.orbital{position:absolute;width:min(42vw,590px);aspect-ratio:1;border:1px solid rgba(81,204,255,.18);border-radius:50%;box-shadow:inset 0 0 70px rgba(81,204,255,.05),0 0 80px rgba(81,204,255,.05)}.orbital::before,.orbital::after{content:"";position:absolute;border:1px solid rgba(169,138,255,.16);border-radius:50%}.orbital::before{inset:11%}.orbital::after{inset:24%}
+        .visual-core{position:relative;z-index:2;width:min(35vw,500px);padding:26px;border:1px solid #2c486a;border-radius:22px;background:linear-gradient(145deg,rgba(12,29,50,.97),rgba(5,12,23,.97));box-shadow:0 35px 100px rgba(0,0,0,.55)}.visual-core h3{font-size:25px}.visual-core>p{margin-top:8px;color:#7588a2;font-size:11px}.visual-stack{display:grid;gap:8px;margin-top:20px}.visual-line{display:grid;grid-template-columns:31px 1fr auto;align-items:center;gap:10px;padding:11px;border:1px solid #1d3451;border-radius:10px;background:#081526}.visual-line i{width:31px;height:31px;display:grid;place-items:center;border:1px solid var(--cyan);border-radius:8px;color:var(--cyan);font-style:normal;font-weight:900}.visual-line:nth-child(2) i{border-color:var(--green);color:var(--green)}.visual-line:nth-child(3) i{border-color:var(--violet);color:var(--violet)}.visual-line:nth-child(4) i{border-color:var(--gold);color:var(--gold)}.visual-line b{font-size:11px}.visual-line small{display:block;color:#6d809b;font-size:8px;margin-top:2px}.visual-line span{color:var(--green);font:800 7px "SFMono-Regular",monospace}
+        .competition-proof{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:19px}.competition-proof div{padding:12px;border:1px solid #223b5b;border-radius:10px}.competition-proof b{display:block;color:var(--gold);font-size:19px}.competition-proof small{display:block;margin-top:4px;color:#7386a0;font-size:8px;text-transform:uppercase;letter-spacing:.08em}
+        .competition-bottom{position:absolute;z-index:5;left:0;right:0;bottom:0;height:86px;display:flex;align-items:center;gap:16px;padding:0 4vw;border-top:1px solid rgba(255,255,255,.08);background:#050c18}.competition-controls{display:flex;gap:8px}.competition-controls button{min-width:44px;height:42px;border:1px solid #294665;border-radius:9px;background:#0b192b;color:#e9f4ff;font-weight:900;cursor:pointer}.competition-controls button:hover{border-color:var(--cyan)}.competition-controls button:disabled{opacity:.32;cursor:not-allowed}.competition-controls .play{min-width:110px;border:0;color:#041018;background:linear-gradient(135deg,var(--green),var(--cyan))}
+        .competition-progress{flex:1;display:flex;align-items:center;gap:12px}.competition-progress span{color:#7890ad;font:800 9px "SFMono-Regular",monospace}.competition-trackline{height:4px;flex:1;max-width:370px;border-radius:999px;background:#172a43;overflow:hidden}.competition-trackline i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--green),var(--gold));transition:width .3s}.competition-exit{margin-left:auto;border:1px solid #314d6f;border-radius:9px;padding:10px 13px;color:#b4c4d7;background:#091527;font-size:11px;font-weight:900;cursor:pointer}
+        .record-safe{color:#61758f;font:700 8px "SFMono-Regular",monospace;letter-spacing:.09em}
+        @media(max-width:980px){.hero-grid,.section-head,.capability-layout,.demo-shell{grid-template-columns:1fr}.hero{padding-top:120px}.system-card{max-width:670px}.workflow{grid-template-columns:repeat(3,1fr)}.proof-grid,.competition-proof-grid{grid-template-columns:1fr 1fr}.demo-visual{min-height:0}.trust-grid{grid-template-columns:1fr 1fr}.trust:nth-child(2){border-right:0}.trust:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.07)}}
+        @media(max-width:700px){.shell{width:min(100% - 26px,1240px)}.navlinks{position:absolute;top:64px;left:13px;right:13px;display:none;align-items:stretch;flex-direction:column;gap:0;padding:9px;border:1px solid #253c5a;border-radius:12px;background:#081426;box-shadow:0 25px 70px #0008}.navlinks.open{display:flex}.navlinks a{padding:12px}.menu{display:block}.hero{min-height:auto;padding-bottom:56px}.hero-grid{gap:35px}h1{font-size:clamp(51px,16vw,76px)}.trust-grid,.proof-grid,.competition-proof-grid,.cap-panel ul,.demo-points{grid-template-columns:1fr}.trust{border-right:0;border-bottom:1px solid rgba(255,255,255,.07)}.trust:last-child{border-bottom:0}.workflow{grid-template-columns:1fr 1fr}.work-step:not(:last-child)::after{display:none}.cap-panel{padding:23px}.demo-copy{padding:28px 22px}.demo-visual{padding:15px}.visual-badge{position:static;margin:0 15px 17px;text-align:center}.footer-grid{align-items:flex-start;flex-wrap:wrap}.footer-links{width:100%;margin-left:46px;flex-wrap:wrap}}
         @media(max-width:430px){.workflow{grid-template-columns:1fr}.brand-name{font-size:13px}.hero{padding-top:105px}.actions .button{width:100%}}
+        @media(max-width:1000px){.competition-stage{grid-template-columns:1fr;padding-top:5vh;overflow:auto}.competition-visual{display:none}.competition-copy h1{font-size:clamp(46px,9vw,78px)}.record-safe{display:none}}
         @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
       `;
 
       get selected(){return capabilities.find(item=>item.id===this.capability)??capabilities[0]}
 
       render(){
+        if(this.competitionMode)return this.renderCompetition();
         const selected=this.selected;
         return html`
           <header class=${this.elevated?'elevated':''}>
@@ -199,12 +300,14 @@
                 <span class="brand-name">DeltaSignal<small>Evidence infrastructure</small></span>
               </a>
               <button class="menu" @click=${()=>this.menuOpen=!this.menuOpen} aria-expanded=${this.menuOpen} aria-label="Toggle navigation">Menu</button>
+              <span class="challenge-chip">GOOGLE AI AGENTS · TRACK 3</span>
               <div class="navlinks ${this.menuOpen?'open':''}">
                 <a href="#platform" @click=${()=>this.menuOpen=false}>Platform</a>
                 <a href="#demo" @click=${()=>this.menuOpen=false}>Client demo</a>
                 <a href="#workflow" @click=${()=>this.menuOpen=false}>Workflow</a>
                 <a href="#trust" @click=${()=>this.menuOpen=false}>Trust</a>
                 <a href="https://github.com/aitrailblazer/deltasignal-ai-agent">GitHub</a>
+                <a href="?competition=1">Competition demo</a>
                 <a class="nav-cta" href="./client-demo/google-cloud-aapl/">Open demo ↗</a>
               </div>
             </nav>
@@ -221,6 +324,7 @@
                   <div class="actions">
                     <a class="button primary" href="./client-demo/google-cloud-aapl/">Explore the AAPL client demo <span>→</span></a>
                     <a class="button" href="./client-demo/google-cloud-aapl/Google_Cloud_AAPL_DeltaSignal_MCP_Client_Demo_2026_08_06.html?presentation=1">Launch presentation mode</a>
+                    <a class="button competition" href="?competition=1">▶ Competition theater</a>
                   </div>
                 </div>
                 <div class="system-card" aria-label="DeltaSignal evidence system summary">
@@ -310,6 +414,28 @@
               </div>
             </section>
 
+            <section class="content shell" id="competition-proof">
+              <div class="section-kicker">Competition proof surface</div>
+              <div class="section-head">
+                <h2>Not slideware.<br>Inspectable runtime proof.</h2>
+                <p>The competition story is backed by public discovery, a deployed Cloud Run interface, a documented A2A contract, and a recorded HUT research-memory workflow.</p>
+              </div>
+              <div class="competition-proof-grid">
+                ${competitionProofs.map(item=>html`
+                  <article class="competition-proof-card">
+                    <div class="proof-label">${item.label}</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.body}</p>
+                    <a href=${item.href}>${item.action} →</a>
+                  </article>
+                `)}
+              </div>
+              <div class="actions">
+                <a class="button competition" href="?competition=1">▶ Start recording theater</a>
+                <a class="button" href="https://youtu.be/YegCr4gFDII">Watch enhanced walkthrough</a>
+              </div>
+            </section>
+
             <section class="content shell" id="trust">
               <div class="section-kicker">Methodology and trust layer</div>
               <div class="section-head">
@@ -331,6 +457,7 @@
               <p>Run the AAPL reference, inspect the architecture, or connect your own agent workflow to DeltaSignal’s governed MCP surface.</p>
               <div class="actions">
                 <a class="button primary" href="./client-demo/google-cloud-aapl/">Run the AAPL reference →</a>
+                <a class="button competition" href="?competition=1">Open competition demo</a>
                 <a class="button" href="https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo">Open Cloud Run UI</a>
                 <a class="button" href="https://github.com/aitrailblazer/deltasignal-ai-agent">Inspect source on GitHub</a>
               </div>
@@ -349,6 +476,107 @@
             </div>
           </footer>
         `;
+      }
+
+      renderCompetition(){
+        const slide=competitionSlides[this.competitionSlide];
+        return html`
+          <main class="competition-theater" aria-label="DeltaSignal competition presentation">
+            <div class="competition-top">
+              <div class="competition-brand"><img src="./assets/deltasignal-app-icon.png" alt=""><span>DeltaSignal<small>EVIDENCE INFRASTRUCTURE FOR FINANCIAL AGENTS</small></span></div>
+              <div class="competition-track">GOOGLE FOR STARTUPS AI AGENTS CHALLENGE · TRACK 3</div>
+            </div>
+            <section class="competition-stage">
+              <div class="competition-copy" data-accent=${slide.accent}>
+                <div class="competition-eyebrow">${slide.eyebrow}</div>
+                <h1>${slide.title}</h1>
+                <p>${slide.body}</p>
+                <div class="slide-index"><b>${String(this.competitionSlide+1).padStart(2,'0')}</b> / ${String(competitionSlides.length).padStart(2,'0')} · ${slide.id.toUpperCase()}</div>
+              </div>
+              <div class="competition-visual" aria-hidden="true">
+                <div class="orbital"></div>
+                ${this.competitionVisual(slide.visual)}
+              </div>
+            </section>
+            <div class="competition-bottom">
+              <div class="competition-controls">
+                <button @click=${()=>this.setCompetitionSlide(this.competitionSlide-1)} ?disabled=${this.competitionSlide===0} aria-label="Previous slide">←</button>
+                <button class="play" @click=${this.toggleCompetitionPlay}>${this.competitionPlaying?'❚❚ Pause':'▶ Auto play'}</button>
+                <button @click=${()=>this.setCompetitionSlide(this.competitionSlide+1)} ?disabled=${this.competitionSlide===competitionSlides.length-1} aria-label="Next slide">→</button>
+              </div>
+              <div class="competition-progress"><span>${String(this.competitionSlide+1).padStart(2,'0')} / ${String(competitionSlides.length).padStart(2,'0')}</span><div class="competition-trackline"><i style=${`width:${((this.competitionSlide+1)/competitionSlides.length)*100}%`}></i></div></div>
+              <span class="record-safe">← → NAVIGATE · SPACE AUTOPLAY · ESC EXIT</span>
+              <button class="competition-exit" @click=${this.exitCompetition}>Exit presentation</button>
+            </div>
+          </main>
+        `;
+      }
+
+      competitionVisual(kind){
+        if(kind==='proof')return html`
+          <div class="visual-core">
+            <h3>HUT research packet</h3><p class="mono">TF-SUB-9DA70A7F98 → TF-RIVER-HUT</p>
+            <div class="competition-proof">
+              <div><b>10</b><small>River nodes</small></div><div><b>9</b><small>Prior research nodes</small></div>
+              <div><b>4</b><small>Changed findings</small></div><div><b>8</b><small>Monitor-next items</small></div>
+            </div>
+          </div>`;
+        if(kind==='ecosystem')return html`
+          <div class="visual-core">
+            <h3>Specialist evidence node</h3><p>One bounded packet. Multiple enterprise consumers.</p>
+            <div class="visual-stack">
+              ${['Portfolio agent','Compliance agent','Data-room agent','Subscriber copilot'].map((name,index)=>html`<div class="visual-line"><i>${['P','C','D','S'][index]}</i><span><b>${name}</b><small>discover · invoke · verify · reuse</small></span><span>CONNECTED</span></div>`)}
+            </div>
+          </div>`;
+        if(kind==='problem')return html`
+          <div class="visual-core">
+            <h3>Trust deficit</h3><p>Fluent answers without inspectable evidence.</p>
+            <div class="visual-stack">
+              <div class="visual-line"><i>?</i><span><b>Source identity</b><small>hidden or omitted</small></span><span style="color:var(--red)">MISSING</span></div>
+              <div class="visual-line"><i>?</i><span><b>Point-in-time state</b><small>today’s facts leak backward</small></span><span style="color:var(--red)">UNSAFE</span></div>
+              <div class="visual-line"><i>?</i><span><b>Evidence vs inference</b><small>blurred into one answer</small></span><span style="color:var(--red)">BLURRED</span></div>
+            </div>
+          </div>`;
+        return html`
+          <div class="visual-core">
+            <h3>${kind==='close'?'Inspectable intelligence':'DeltaSignal agent loop'}</h3>
+            <p>${kind==='close'?'Proof remains attached to the answer.':'Discoverable, callable, evidence-bounded.'}</p>
+            <div class="visual-stack">
+              <div class="visual-line"><i>◇</i><span><b>Agent Card + A2A</b><small>public discovery · protected execution</small></span><span>DISCOVER</span></div>
+              <div class="visual-line"><i>§</i><span><b>ATLAS-7 + SEC/XBRL</b><small>bounded MCP evidence products</small></span><span>VERIFY</span></div>
+              <div class="visual-line"><i>◎</i><span><b>Gemini + Cloud Run</b><small>orchestration · explanation · telemetry</small></span><span>EXPLAIN</span></div>
+              <div class="visual-line"><i>→</i><span><b>Reusable research packet</b><small>memory · caveats · monitor-next</small></span><span>RETURN</span></div>
+            </div>
+          </div>`;
+      }
+
+      setCompetitionSlide(index){
+        this.competitionSlide=Math.max(0,Math.min(competitionSlides.length-1,index));
+        if(this.competitionSlide===competitionSlides.length-1&&this.competitionPlaying)this.stopCompetitionPlay();
+      }
+
+      toggleCompetitionPlay=()=>{
+        if(this.competitionPlaying){this.stopCompetitionPlay();return}
+        if(this.competitionSlide===competitionSlides.length-1)this.competitionSlide=0;
+        this.competitionPlaying=true;
+        this.competitionTimer=setInterval(()=>{
+          if(this.competitionSlide===competitionSlides.length-1){this.stopCompetitionPlay();return}
+          this.competitionSlide+=1;
+        },6500);
+      }
+
+      stopCompetitionPlay(){
+        if(this.competitionTimer)clearInterval(this.competitionTimer);
+        this.competitionTimer=null;
+        this.competitionPlaying=false;
+      }
+
+      exitCompetition=()=>{
+        this.stopCompetitionPlay();
+        history.replaceState(null,'',location.pathname);
+        this.competitionMode=false;
+        this.competitionSlide=0;
+        window.scrollTo({top:0});
       }
 
       workflowNote(label){

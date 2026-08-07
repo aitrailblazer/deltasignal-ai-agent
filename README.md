@@ -14,6 +14,7 @@ The entry is submitted for **Track 3** because the product is not only a working
 | Daily backend → Google agents architecture | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_Daily_Backend_to_Google_Agents_Architecture_2026_08_06.html |
 | AAPL three-minute video scenario | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/Google_Cloud_AAPL_MCP_Three_Minute_Video_Scenario_2026_08_06.html |
 | Public landing page | https://aitrailblazer.github.io/deltasignal-ai-agent/ |
+| Competition recording theater | https://aitrailblazer.github.io/deltasignal-ai-agent/?competition=1 |
 | Official submission packet | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Submission_Packet_2026_06_04.html |
 | Architecture diagram | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Architecture_Diagram.html |
 | Track 3 A2A / Marketplace spec | https://aitrailblazer.github.io/deltasignal-ai-agent/docs/DeltaSignal_AI_Agent_Track3_A2A_Marketplace.html |
@@ -22,6 +23,15 @@ The entry is submitted for **Track 3** because the product is not only a working
 | Guided HUT demo | https://aitrailblazer.github.io/deltasignal-ai-agent/START_HERE.html |
 | Cloud Run demo UI | https://deltasignal-ai-agent-mhaufviwaq-uc.a.run.app/demo |
 | ATLAS-7 evidence surface | https://aitrailblazer.github.io/deltasignal-atlas-codex-plugin/index.html |
+
+Record the deterministic six-slide competition theater at 1920×1080:
+
+```bash
+npx playwright install ffmpeg
+node scripts/record-competition-theater.mjs
+```
+
+Set `DELTASIGNAL_SITE_URL` to record a local preview instead of the deployed page.
 
 ## What It Does
 
