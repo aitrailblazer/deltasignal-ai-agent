@@ -30,3 +30,16 @@ docs/*Data_Collection*.html
 
 # Private design-partner, customer, route-validation, and competition strategy artifacts.
 private/
+
+# Google Cloud runtime implementation is maintained locally and deployed from
+# the operator workspace. The public repository exposes diagrams, contracts,
+# demos, and interfaces—not provider credentials or runtime source.
+/Dockerfile
+/cloudbuild.yaml
+/client-demo/google-cloud-aapl/.env.example
+/client-demo/google-cloud-aapl/Dockerfile
+/client-demo/google-cloud-aapl/cloudbuild.yaml
+/cmd/aapl-client-demo-server/main.go
+/internal/aapldemo/gemini.go
+/internal/agent/gemini.go
+/internal/agent/gemini_test.go

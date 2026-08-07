@@ -4,6 +4,10 @@ DeltaSignal is an agent-native issuer-intelligence system. It turns a ticker, is
 
 The **Apple/AAPL evidence workflow is the flagship reference**. It is the fastest way to understand the product end to end: filing evidence, ATLAS-7 structural interpretation, bounded MCP delivery, Google Cloud agent review, missing-data handling, and provenance-rich output.
 
+## Public repository boundary
+
+This repository publishes the product experience, evidence contracts, architecture diagrams, public demos, and integration surfaces. The Google Cloud deployment implementation—including Cloud Build configuration, container definitions, provider-specific model adapters, and protected runtime entry points—is maintained in the private operator workspace and is not distributed in the public source tree. No credentials are stored in this repository.
+
 The product serves three connected audiences:
 
 - **Researchers and subscribers** who want differentiated, filing-backed issuer analysis.
