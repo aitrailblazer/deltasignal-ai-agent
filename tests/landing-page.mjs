@@ -36,6 +36,14 @@ try {
   if ((await desktop.locator(".architecture-overview .overview-node").count()) !== 5) {
     throw new Error("Progressive architecture is missing its five-stage overview.");
   }
+  const firstViewportText = (await desktop.locator(".hero").textContent()) ?? "";
+  for (const required of ["public reference case", "not an Apple client claim", "controlled read-only tools", "not a trade or buy/sell recommendation"]) {
+    if (!firstViewportText.includes(required)) throw new Error(`First-view comprehension copy is missing: ${required}`);
+  }
+  const overviewText = (await desktop.locator(".architecture-overview").textContent()) ?? "";
+  for (const required of ["INPUT", "CONTROLLED GATEWAY", "OUTPUT", "delivers approved evidence to agents"]) {
+    if (!overviewText.includes(required)) throw new Error(`Architecture overview is missing: ${required}`);
+  }
   const architectureDetail = desktop.locator("#architecture-detail");
   if ((await architectureDetail.getAttribute("class"))?.includes("open")) {
     throw new Error("Full specialist architecture must be collapsed by default.");
@@ -135,7 +143,7 @@ try {
   if (!heroTitle.includes("Apple is the proof")) {
     throw new Error("Apple is not the primary landing-page proof.");
   }
-  if ((await desktop.getByRole("link", {name: /Run the Apple evidence workflow/}).count()) !== 1) {
+  if ((await desktop.getByRole("link", {name: /Run a sample AAPL evidence report/}).count()) !== 1) {
     throw new Error("Primary Apple workflow action is missing.");
   }
 
