@@ -262,7 +262,10 @@ func TestRunReturnsZeroWhenServerStopsCleanly(t *testing.T) {
 	}
 }
 
-func TestRunEnablesGeminiBranch(t *testing.T) {
+func TestRunIgnoresLocalOnlyGeminiEnv(t *testing.T) {
+	// The Gemini runtime is local-only per the public-source boundary
+	// (see scripts/check-public-source-boundary.sh): these env vars are
+	// inert in this repo and must not affect startup.
 	oldListen := listenAndServe
 	oldOutput := outputWriter
 	t.Cleanup(func() {

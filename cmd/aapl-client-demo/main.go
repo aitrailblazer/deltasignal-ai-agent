@@ -16,7 +16,6 @@ func main() {
 	mode := flag.String("mode", "fixture", "fixture or live")
 	question := flag.String("question", "What can the filing evidence establish about Apple, and which ATLAS-7 levels remain unsupported?", "bounded AAPL evidence question")
 	asOf := flag.String("as-of", "", "optional point-in-time cutoff (YYYY-MM-DD)")
-	synthesis := flag.String("synthesis", "deterministic", "deterministic or gemini")
 	flag.Parse()
 
 	var caller aapldemo.ToolCaller
@@ -39,9 +38,6 @@ func main() {
 	}
 
 	var synth aapldemo.Synthesizer = aapldemo.DeterministicSynthesizer{}
-	if strings.EqualFold(strings.TrimSpace(*synthesis), "gemini") {
-		synth = aapldemo.GeminiSynthesizer{Model: os.Getenv("GEMINI_MODEL")}
-	}
 	workflow := aapldemo.Workflow{Caller: caller, Synthesizer: synth, Now: now}
 	response, err := workflow.Run(context.Background(), aapldemo.Request{
 		Ticker:   "AAPL",

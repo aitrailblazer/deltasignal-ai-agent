@@ -35,11 +35,6 @@ func run() int {
 	costTracker := CostTrackerFromEnv()
 	rateLimiter := RateLimiterFromEnv()
 	var tripcodeSynthesizer agent.TripCodeSynthesizer
-	if strings.EqualFold(os.Getenv("DELTASIGNAL_USE_GEMINI"), "true") {
-		gemini := agent.GeminiSynthesizer{Model: os.Getenv("GEMINI_MODEL")}
-		coordinator.Synthesizer = gemini
-		tripcodeSynthesizer = gemini
-	}
 
 	mux := newMux(logger, coordinator, tripcodeResolver, tripcodeMemory, tripcodeSynthesizer, costTracker, rateLimiter)
 	port := os.Getenv("PORT")
