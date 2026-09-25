@@ -538,7 +538,6 @@ const demoUIHTML = `<!doctype html>
           '</span>' +
         '</span>' +
         '<span class="articleHero">' +
-          '<img src="/assets/substack-hut-article-top.png" alt="Top of the Hut 8 Substack article showing the TripCode subtitle">' +
           '<span class="substackURL">https://deltasignal.substack.com/p/hut-8-the-re-rating-has-a-deadline</span>' +
           '<a class="articleLink" href="https://deltasignal.substack.com/p/hut-8-the-re-rating-has-a-deadline" target="_blank" rel="noreferrer">Open live Substack article</a>' +
         '</span>' +
@@ -1143,7 +1142,6 @@ func registerDemoUIRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /demo/run", serveDemoUI)
 	mux.HandleFunc("GET /demo/run/", serveDemoUI)
 	mux.HandleFunc("GET /assets/deltasignal-app-icon.png", serveDeltaSignalLogo)
-	mux.HandleFunc("GET /assets/substack-hut-article-top.png", serveSubstackHUTArticleTop)
 	mux.HandleFunc("GET /assets/research-to-logic-pipeline.png", serveResearchToLogicPipeline)
 }
 
@@ -1175,20 +1173,6 @@ func serveDemoUI(w http.ResponseWriter, _ *http.Request) {
 
 func serveDeltaSignalLogo(w http.ResponseWriter, r *http.Request) {
 	path := findDemoAsset("assets", "deltasignal-app-icon.png")
-	if path == "" {
-		http.NotFound(w, r)
-		return
-	}
-	if _, err := os.Stat(path); err != nil {
-		http.NotFound(w, r)
-		return
-	}
-	w.Header().Set("Cache-Control", "public, max-age=3600")
-	http.ServeFile(w, r, path)
-}
-
-func serveSubstackHUTArticleTop(w http.ResponseWriter, r *http.Request) {
-	path := findDemoAsset("DEMO", "assets", "substack-hut-article-top.png")
 	if path == "" {
 		http.NotFound(w, r)
 		return

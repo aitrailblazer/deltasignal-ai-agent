@@ -72,7 +72,6 @@ func TestDemoUIRoute(t *testing.T) {
 			"What happens next",
 			"Health Check",
 			"Agent Discovery",
-			"/assets/substack-hut-article-top.png",
 			"https://deltasignal.substack.com/p/hut-8-the-re-rating-has-a-deadline",
 			"LitElement",
 			"customElements.define('demo-app'",
@@ -225,30 +224,6 @@ func TestDemoUILogoRoute(t *testing.T) {
 	}
 	if rr.Body.Len() == 0 {
 		t.Fatal("logo route returned empty body")
-	}
-}
-
-func TestDemoUISubstackArticleImageRoute(t *testing.T) {
-	mux := newMux(
-		slog.New(slog.NewTextHandler(io.Discard, nil)),
-		agent.Coordinator{Tools: agent.DemoToolClient{}},
-		fakeTripCodeResolver{},
-		agent.NewTripCodeMemoryStore(2),
-		fakeTripCodeSynthesizer{text: "summary"},
-		agent.NewCostTracker(agent.CostTrackerConfig{}),
-		nil,
-	)
-
-	rr := httptest.NewRecorder()
-	mux.ServeHTTP(rr, httptest.NewRequest(http.MethodGet, "/assets/substack-hut-article-top.png", nil))
-	if rr.Code != http.StatusOK {
-		t.Fatalf("article image route code = %d", rr.Code)
-	}
-	if got := rr.Header().Get("Content-Type"); !strings.Contains(got, "image/png") {
-		t.Fatalf("article image content type = %q", got)
-	}
-	if rr.Body.Len() == 0 {
-		t.Fatal("article image route returned empty body")
 	}
 }
 
